@@ -265,23 +265,25 @@ bin_PROGRAMS = kcheckgmail
 #>- 	kcheckgmailtray.cpp \
 #>- 	gmail.cpp \
 #>- 	gmailparser.cpp \
+#>- 	gmailwalletmanager.cpp \
 #>- 	prefs.kcfgc \
 #>- 	netsettingswidget.ui \
 #>- 	loginsettingswidget.ui \
 #>- 	appletsettingswidget.ui
-#>+ 9
+#>+ 10
 kcheckgmail_SOURCES=main.cpp \
 	kcheckgmailapp.cpp \
 	kcheckgmailtray.cpp \
 	gmail.cpp \
 	gmailparser.cpp \
+	gmailwalletmanager.cpp \
 	 \
 	 \
 	 \
 	 netsettingswidget.cpp loginsettingswidget.cpp appletsettingswidget.cpp prefs.cpp
 
 kcheckgmail_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
-kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO)
+kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
 
 #>- METASOURCES = AUTO
 
@@ -289,6 +291,7 @@ noinst_HEADERS = gmail.h \
 	gmailparser.h \
 	kcheckgmailapp.h \
 	kcheckgmailtray.h \
+	gmailwalletmanager.h \
 	loginsettingswidget.h \
 	netsettingswidget.h \
 	prefs.h \
@@ -310,12 +313,14 @@ bin_PROGRAMS = kcheckgmail$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
 
 am_kcheckgmail_OBJECTS = main.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
-	kcheckgmailtray.$(OBJEXT) gmail.$(OBJEXT) gmailparser.$(OBJEXT)
+	kcheckgmailtray.$(OBJEXT) gmail.$(OBJEXT) gmailparser.$(OBJEXT) \
+	gmailwalletmanager.$(OBJEXT)
 #>- kcheckgmail_OBJECTS = $(am_kcheckgmail_OBJECTS)
-#>+ 3
+#>+ 4
 kcheckgmail_OBJECTS = main.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
-	kcheckgmailtray.$(OBJEXT) gmail.$(OBJEXT) gmailparser.$(OBJEXT) netsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
-gmailparser.moc.o kcheckgmailtray.moc.o kcheckgmailapp.moc.o 
+	kcheckgmailtray.$(OBJEXT) gmail.$(OBJEXT) gmailparser.$(OBJEXT) \
+	gmailwalletmanager.$(OBJEXT) netsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
+gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailtray.moc.o kcheckgmailapp.moc.o 
 kcheckgmail_DEPENDENCIES =
 
 DEFS = @DEFS@
@@ -326,10 +331,12 @@ LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/admin/depcomp
 am__depfiles_maybe = depfiles
 #>- @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/gmail.Po ./$(DEPDIR)/gmailparser.Po \
+#>- @AMDEP_TRUE@	./$(DEPDIR)/gmailwalletmanager.Po \
 #>- @AMDEP_TRUE@	./$(DEPDIR)/kcheckgmailapp.Po \
 #>- @AMDEP_TRUE@	./$(DEPDIR)/kcheckgmailtray.Po ./$(DEPDIR)/main.Po
-#>+ 3
-@AMDEP_TRUE@DEP_FILES =  $(DEPDIR)/netsettingswidget.P $(DEPDIR)/loginsettingswidget.P $(DEPDIR)/appletsettingswidget.P $(DEPDIR)/prefs.P $(DEPDIR)/gmailparser.moc.P $(DEPDIR)/kcheckgmailtray.moc.P $(DEPDIR)/kcheckgmailapp.moc.P ./$(DEPDIR)/gmail.Po ./$(DEPDIR)/gmailparser.Po \
+#>+ 4
+@AMDEP_TRUE@DEP_FILES =  $(DEPDIR)/netsettingswidget.P $(DEPDIR)/loginsettingswidget.P $(DEPDIR)/appletsettingswidget.P $(DEPDIR)/prefs.P $(DEPDIR)/gmailparser.moc.P $(DEPDIR)/gmailwalletmanager.moc.P $(DEPDIR)/kcheckgmailtray.moc.P $(DEPDIR)/kcheckgmailapp.moc.P ./$(DEPDIR)/gmail.Po ./$(DEPDIR)/gmailparser.Po \
+@AMDEP_TRUE@	@AMDEP_TRUE@	./$(DEPDIR)/gmailwalletmanager.Po \
 @AMDEP_TRUE@	@AMDEP_TRUE@	./$(DEPDIR)/kcheckgmailapp.Po \
 @AMDEP_TRUE@	@AMDEP_TRUE@	./$(DEPDIR)/kcheckgmailtray.Po ./$(DEPDIR)/main.Po
 #>- CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -415,6 +422,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gmail.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gmailparser.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gmailwalletmanager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kcheckgmailapp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kcheckgmailtray.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
@@ -655,6 +663,13 @@ gmailparser.moc.cpp: $(srcdir)/gmailparser.h
 mocs: gmailparser.moc.cpp
 
 #>+ 3
+gmailwalletmanager.moc.cpp: $(srcdir)/gmailwalletmanager.h
+	$(MOC) $(srcdir)/gmailwalletmanager.h -o gmailwalletmanager.moc.cpp
+
+#>+ 2
+mocs: gmailwalletmanager.moc.cpp
+
+#>+ 3
 kcheckgmailtray.moc.cpp: $(srcdir)/kcheckgmailtray.h
 	$(MOC) $(srcdir)/kcheckgmailtray.h -o kcheckgmailtray.moc.cpp
 
@@ -677,7 +692,7 @@ mocs: gmail.moc
 
 #>+ 3
 clean-metasources:
-	-rm -f  gmailparser.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc
+	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc
 
 #>+ 2
 KDE_DIST=kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop loginsettingswidget.ui 
@@ -750,13 +765,14 @@ cvs-clean:
 kde-rpo-clean:
 	-rm -f *.rpo
 
-#>+ 10
+#>+ 11
 nmcheck: 
 $(srcdir)/gmailparser.cpp: netsettingswidget.h loginsettingswidget.h appletsettingswidget.h prefs.h 
 $(srcdir)/kcheckgmailtray.cpp: netsettingswidget.h loginsettingswidget.h appletsettingswidget.h prefs.h 
 gmail.o: gmail.moc 
 nmcheck-am: nmcheck
 $(srcdir)/main.cpp: netsettingswidget.h loginsettingswidget.h appletsettingswidget.h prefs.h 
+$(srcdir)/gmailwalletmanager.cpp: netsettingswidget.h loginsettingswidget.h appletsettingswidget.h prefs.h 
 gmail.lo: gmail.moc 
 $(srcdir)/kcheckgmailapp.cpp: netsettingswidget.h loginsettingswidget.h appletsettingswidget.h prefs.h 
 $(srcdir)/gmail.cpp: netsettingswidget.h loginsettingswidget.h appletsettingswidget.h prefs.h 
