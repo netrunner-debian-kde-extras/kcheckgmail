@@ -34,6 +34,7 @@
 #include <kpopupmenu.h>
 #include <krun.h>
 #include <kiconeffect.h>
+#include <dcopclient.h>
 
 #include <qfile.h>
 #include <qpainter.h>
@@ -62,9 +63,11 @@
 #define CONTEXT_CHECKNOW 103
 
 KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
-	: KSystemTray(parent, name),
+	: DCOPObject("KCheckGmailIface"),
+	KSystemTray(parent, name),
 	mHelpMenu(new KHelpMenu(this, KGlobal::instance()->aboutData(), 
-		false, actionCollection()))
+		false, actionCollection())),
+	mMailCount(-1)
 {
 	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
 	mPixCount = KSystemTray::loadIcon("kcheckgmail");
@@ -148,6 +151,12 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	} else
 		mGmail->checkLoginParams();
 	mGmail->setInterval(Prefs::interval());
+
+	// register with dcop
+	if(!kapp->dcopClient()->isRegistered()) {
+		kapp->dcopClient()->registerAs(kapp->name());
+	}
+	kapp->dcopClient()->setDefaultObject(objId());
 }
 
 void KCheckGmailTray::slotContextMenuActivated(int n)
@@ -244,18 +253,16 @@ void KCheckGmailTray::slotSettingsChanged()
 
 void KCheckGmailTray::updateCountImage()
 {
-	unsigned int count = mParser->getNewCount();
+	kdDebug() << k_funcinfo << "Count=" << mMailCount << endl;
 
-	kdDebug() << k_funcinfo << "Count=" << count << endl;
-
-	if(count == 0)
+	if(mMailCount == 0)
 		setPixmapEmpty();
 	else {
 		// based on code from kmail
 		int w = mPixGmail.width();
 		int h = mPixGmail.height();
 
-		QString countString = QString::number(count);
+		QString countString = QString::number(mMailCount);
 		QFont countFont = KGlobalSettings::generalFont();
 		countFont.setBold(true);
 
@@ -353,12 +360,12 @@ void KCheckGmailTray::slotMailArrived(unsigned int n)
 		str = i18n("There are <b>%1</b> new messages").arg(n);
 
 	KNotifyClient::event(winId(), "new-gmail-arrived", str);
-	updateCountImage();
-	updateThreadMenu();
+	slotMailCountChanged();
 }
 
 void KCheckGmailTray::slotMailCountChanged()
 {
+	mMailCount = mParser->getNewCount();
 	updateCountImage();
 	updateThreadMenu();
 }
@@ -388,6 +395,8 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 		contextMenu()->changeItem(mCheckNowId, i18n("Chec&k Mail Now"));
 	}
 	contextMenu()->setItemEnabled(mCheckNowId, true);
+
+	slotMailCountChanged();
 }
 
 void KCheckGmailTray::slotLoginStart()
@@ -492,4 +501,9 @@ void KCheckGmailTray::slotToggleLoginAnim()
 	else 
 		setPixmapAuth();
 	state = !state;
+}
+
+void KCheckGmailTray::checkMailNow()
+{
+	mGmail->slotCheckGmail();
 }

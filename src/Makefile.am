@@ -11,7 +11,8 @@ kcheckgmail_SOURCES = main.cpp \
 	prefs.kcfgc \
 	netsettingswidget.ui \
 	loginsettingswidget.ui \
-	appletsettingswidget.ui
+	appletsettingswidget.ui \
+	kcheckgmailiface.skel
 kcheckgmail_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries) 
 kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
 
@@ -21,6 +22,7 @@ noinst_HEADERS = gmail.h \
 	gmailparser.h \
 	kcheckgmailapp.h \
 	kcheckgmailtray.h \
+	kcheckgmailiface.h \
 	gmailwalletmanager.h \
 	loginsettingswidget.h \
 	netsettingswidget.h \

@@ -23,6 +23,8 @@
 #include <qpixmap.h>
 #include <qstring.h>
 
+#include "kcheckgmailiface.h"
+
 class GMail;
 class GMailParser;
 class QMouseEvent;
@@ -31,7 +33,7 @@ class KConfigDialog;
 class LoginSettingsWidget;
 class QTimer;
 
-class KCheckGmailTray : public KSystemTray
+class KCheckGmailTray : public KSystemTray, virtual public KCheckGmailIface
 {
 	Q_OBJECT
 public:
@@ -73,6 +75,10 @@ private:
 	void updateThreadMenu();
 	void initConfigDialog();
 
+	// dcop call implementations
+	int mailCount() const { return mMailCount; };
+	void checkMailNow();
+
 	QPixmap		mPixGmail,
 			mPixCount;
 	GMail		*mGmail;
@@ -88,4 +94,7 @@ private:
 	int 		mCheckNowId;
 
 	int 		mThreadsMenuId;
+
+	// mail count for dcop interface
+	int		mMailCount;
 };

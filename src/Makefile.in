@@ -65,7 +65,7 @@ am_kcheckgmail_OBJECTS = main.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
 #>+ 4
 kcheckgmail_OBJECTS = main.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
 	kcheckgmailtray.$(OBJEXT) gmail.$(OBJEXT) \
-	gmailparser.$(OBJEXT) gmailwalletmanager.$(OBJEXT) netsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
+	gmailparser.$(OBJEXT) gmailwalletmanager.$(OBJEXT) kcheckgmailiface_skel.$(OBJEXT) netsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
 gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailtray.moc.o kcheckgmailapp.moc.o 
 am__DEPENDENCIES_1 =
 kcheckgmail_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
@@ -350,8 +350,9 @@ INCLUDES = $(all_includes)
 #>- 	prefs.kcfgc \
 #>- 	netsettingswidget.ui \
 #>- 	loginsettingswidget.ui \
-#>- 	appletsettingswidget.ui
-#>+ 10
+#>- 	appletsettingswidget.ui \
+#>- 	kcheckgmailiface.skel
+#>+ 11
 kcheckgmail_SOURCES=main.cpp \
 	kcheckgmailapp.cpp \
 	kcheckgmailtray.cpp \
@@ -361,7 +362,8 @@ kcheckgmail_SOURCES=main.cpp \
 	 \
 	 \
 	 \
-	 netsettingswidget.cpp loginsettingswidget.cpp appletsettingswidget.cpp prefs.cpp
+	 \
+	 kcheckgmailiface_skel.cpp netsettingswidget.cpp loginsettingswidget.cpp appletsettingswidget.cpp prefs.cpp
 
 kcheckgmail_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries) 
 kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
@@ -370,6 +372,7 @@ noinst_HEADERS = gmail.h \
 	gmailparser.h \
 	kcheckgmailapp.h \
 	kcheckgmailtray.h \
+	kcheckgmailiface.h \
 	gmailwalletmanager.h \
 	loginsettingswidget.h \
 	netsettingswidget.h \
@@ -651,7 +654,7 @@ clean: kde-rpo-clean  clean-am
 
 #>- clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 #>+ 1
-clean-am: clean-metasources clean-ui clean-kcfg clean-bcheck  clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
+clean-am: clean-metasources clean-idl clean-ui clean-kcfg clean-bcheck  clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
 	-rm -rf ./$(DEPDIR)
@@ -723,6 +726,12 @@ messages: rc.cpp
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
 
+#>+ 5
+kcheckgmailiface.kidl: $(srcdir)/kcheckgmailiface.h $(DCOP_DEPENDENCIES)
+	$(DCOPIDL) $(srcdir)/kcheckgmailiface.h > kcheckgmailiface.kidl || ( rm -f kcheckgmailiface.kidl ; false )
+kcheckgmailiface_skel.cpp: kcheckgmailiface.kidl
+	$(DCOPIDL2CPP) --c++-suffix cpp --no-signals --no-stub kcheckgmailiface.kidl
+
 #>+ 3
 gmailparser.moc.cpp: $(srcdir)/gmailparser.h
 	$(MOC) $(srcdir)/gmailparser.h -o gmailparser.moc.cpp
@@ -763,7 +772,12 @@ clean-metasources:
 	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc
 
 #>+ 2
-KDE_DIST=Makefile.in kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop kcheckgmail loginsettingswidget.ui Makefile.am 
+KDE_DIST=kcheckgmail_dcop.diff Makefile.in kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop loginsettingswidget.ui Makefile.am 
+
+#>+ 4
+clean-idl:
+	-rm -f \
+	kcheckgmailiface_skel.cpp kcheckgmailiface_skel.h kcheckgmailiface.kidl 
 
 #>+ 6
 clean-ui:
