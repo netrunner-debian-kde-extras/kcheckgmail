@@ -208,8 +208,12 @@ void GMailParser::parseThread(const QString &data)
 	QMap<QString,bool> *oldMap = getThreadList();
 	int newid = 0;
 
+	if(oldMap)
+		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
+	else
+		kdDebug() << k_funcinfo << "no oldmap" << endl;
+
 	while((pos = rx.search(data, pos)) != -1) {
-		
 		Thread *t = new Thread;
 		t->id = newid ++;
 		t->replyId = rx.cap(1);

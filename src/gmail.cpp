@@ -37,13 +37,13 @@
 
 #ifdef DUMP_HTML
 #include <qfile.h>
-bool gDumpStarted = false;
 #endif
 
 static const QString 
 gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginBoxAuth",
 gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in&service=mail"
-	"&continue=http://gmail.google.com/gmail",
+	"&continue=https://gmail.google.com/gmail",
+	
 gGMailCheckURL = "http://gmail.google.com/gmail?search=inbox"
 	"&as_subset=unread&view=tl&start=0",
 gGMailPostLoginURLFormat = "http://gmail.google.com/gmail?_sgh=%s";
@@ -110,6 +110,13 @@ void GMail::login()
 
 		mCookieMap->clear();
 
+		
+		QString cookie;
+		long int t = time(NULL);
+		cookie.sprintf("T%ld/%ld/%ld", t - 2, t - 1, t);
+
+		parseCookies("Set-Cookie: GMAIL_LOGIN="+cookie+";");
+
 		QString str;
 		str.sprintf(gGMailLoginPostFormat.ascii(), 
 					mUsername.ascii(), 
@@ -145,13 +152,12 @@ void GMail::slotLoginResult(KIO::Job *job)
 	} else {
 		parseCookies(job->queryMetaData("setcookies"));
 
-		kdDebug() << k_funcinfo << "Have Token? [" << mLoginToken << "]" << endl;
-
 		if(mLoginToken) {
 			postLogin();
 			// NOTE: LoginLock is still locked()
 		} else {
 			mLoginLock->unlock();
+			kdDebug() << "Cookies=" << cookieString() << endl;
 			emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
 		}
 	}
@@ -163,12 +169,13 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
 		QCString str(data, data.size() + 1);
+		parseCookies(job->queryMetaData("setcookies"));
 		QRegExp rx("_sgh%3[Dd](.*)&service=mail");
 		if(rx.search(str) >= 0) {
 			if(mLoginToken)
 				delete mLoginToken;
 			mLoginToken = new QString(rx.cap(1));
-		} 
+		}
 	}
 }
 
@@ -257,15 +264,27 @@ void GMail::slotCheckResult(KIO::Job *job)
 		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
 
 	kdDebug() << k_funcinfo << "Check finished." << endl;
+
+#ifdef DUMP_HTML
+		QFile f(DUMP_HTML_FILE);
+		
+		f.open( IO_WriteOnly | IO_Append );
+		
+		QTextStream stream(&f);
+		stream << mPageBuffer;
+		stream << endl << "##################### END DUMP" << endl 
+			<< endl;
+
+		f.close();
+#endif
+
 		
 	mTimer->start(MILLISECS(mInterval));
 	emit checkDone(mPageBuffer);
 	mPageBuffer = "";
 
 	mCheckLock->unlock();
-#ifdef DUMP_HTML
-	gDumpStarted = false;
-#endif
+
 }
 
 void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
@@ -276,23 +295,6 @@ void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 		QCString str(data, data.size() + 1);
 		mPageBuffer.append(str);
 
-#ifdef DUMP_HTML
-		QString myString(str);
-		
-		QFile f(DUMP_HTML_FILE);
-		
-		if(!gDumpStarted) {
-			gDumpStarted = true;
-			f.open( IO_WriteOnly | IO_Truncate );
-
-		} else
-			f.open( IO_WriteOnly | IO_Append );
-		
-		QTextStream stream(&f);
-		stream << myString;
-
-		f.close();
-#endif
 	}
 }
 

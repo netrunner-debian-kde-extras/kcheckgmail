@@ -60,6 +60,7 @@ private:
 	void showKNotifyDialog();
 	void showPrefsDialog();
 	void updateCountImage();
+	void updateThreadMenu();
 
 	QPixmap		mPixGmail,
 			mPixLight,
@@ -72,4 +73,6 @@ private:
 
 	// menu id for the check now button
 	int 		mCheckNowId;
+
+	int 		mThreadsMenuId;
 };

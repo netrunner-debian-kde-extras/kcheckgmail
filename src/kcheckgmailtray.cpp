@@ -119,8 +119,9 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	menu->insertItem(SmallIcon("mozilla"), 
 		i18n("&Launch Browser"), CONTEXT_LAUNCHBROWSER);
 
-	menu->insertItem(SmallIcon("kcheckgmail"), i18n("Threads"),
+	mThreadsMenuId = menu->insertItem(SmallIcon("kcheckgmail"), i18n("Threads"),
 		mThreadsMenu);
+	contextMenu()->setItemEnabled(mThreadsMenuId, false);
 
 	menu->insertSeparator();
 
@@ -158,6 +159,7 @@ void KCheckGmailTray::slotContextMenuActivated(int n)
 
 void KCheckGmailTray::slotThreadsMenuActivated(int n)
 {
+	kdDebug() << k_funcinfo << "n=" << n << endl;
 	const GMailParser::Thread &t = mParser->getThread(n);
 
 	if(!t.isNull) {
@@ -244,6 +246,55 @@ void KCheckGmailTray::updateCountImage()
 	}
 }
 
+void KCheckGmailTray::updateThreadMenu()
+{
+	mThreadsMenu->clear();
+
+	QMap<QString,bool> *threads = mParser->getThreadList();
+	QValueList<QString> klist = threads->keys();
+	QValueList<QString>::iterator iter = klist.begin();
+
+	int numItems = 0;
+
+	kdDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
+	
+	while(iter != klist.end()) {
+		bool isNew = (*threads)[*iter];
+		if(isNew) {
+			const GMailParser::Thread &t = mParser->getThread(*iter);
+			if(!t.isNull) {
+				QString str = t.senders;
+				str += " - ";
+				str += t.subject;
+				
+				// TODO: move this somewhere else
+				QRegExp rmSender("\\<span id=.*>");
+				rmSender.setMinimal(true);
+				str.remove(rmSender);
+				
+				QRegExp slash("\\\\");
+				QRegExp b("<b>");
+				QRegExp b2("</b>");
+				QRegExp span2("</span>");
+
+				str.remove(slash);
+				str.remove(b);
+				str.remove(b2);
+				str.remove(span2);
+				
+				mThreadsMenu->insertItem(str, t.id);
+				numItems ++;
+			}
+		}
+		iter ++;
+	}
+	
+	if(numItems > 0)
+		contextMenu()->setItemEnabled(mThreadsMenuId, true);
+	else
+		contextMenu()->setItemEnabled(mThreadsMenuId, false);
+}
+
 void KCheckGmailTray::slotMailArrived(unsigned int n)
 {
 	QString str;
@@ -255,47 +306,13 @@ void KCheckGmailTray::slotMailArrived(unsigned int n)
 
 	KNotifyClient::event(winId(), "new-gmail-arrived", str);
 	updateCountImage();
-
-	// rebuild threads list
-	mThreadsMenu->clear();
-
-	QMap<QString,bool> *threads = mParser->getThreadList();
-	QValueList<QString> klist = threads->keys();
-	QValueList<QString>::iterator iter = klist.begin();
-
-	while(iter != klist.end()) {
-		bool isNew = (*threads)[*iter];
-		if(isNew) {
-			const GMailParser::Thread &t = mParser->getThread(*iter);
-			if(!t.isNull) {
-				QString str = t.senders;
-				str += " ";
-				str += t.subject;
-				
-				// TODO: move this somewhere else
-				QRegExp rmSender("\\<span id=.*>");
-				rmSender.setMinimal(true);
-				str.remove(rmSender);
-				
-				QRegExp b("\\<b\\>");
-				QRegExp b2("\\</b\\>");
-				QRegExp span2("\\<\\/span\\>");
-
-				str.remove(b);
-				str.remove(b2);
-				str.remove(span2);
-				
-				mThreadsMenu->insertItem(str, t.id);
-
-			}
-		}
-		iter ++;
-	}
+	updateThreadMenu();
 }
 
 void KCheckGmailTray::slotMailCountChanged()
 {
 	updateCountImage();
+	updateThreadMenu();
 }
 
 void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &why)
@@ -381,7 +398,6 @@ void KCheckGmailTray::slotCheckDone(const QString &data)
 {
 	mParser->parse(data);
 	contextMenu()->setItemEnabled(mCheckNowId, true);
-	kdDebug() << "AT THE END OF SLOTCHECKDONE\n";
 }
 
 void KCheckGmailTray::slotVersionMismatch()
