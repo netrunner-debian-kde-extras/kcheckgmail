@@ -1,1 +1,10 @@
 See the INSTALL file for information on how to install KCheckGmail.
+
+
+Using KCheckGmail
+
+The first time you use KCheckGmail, right-click and open the configuration
+dialog. Enter your username, password and the checking interval, and click ok.
+Assuming your username/password is correct, you will either get a standard
+google icon (meaning, 0 new messages) or a faded out icon with your new message
+count. A single left click on the icon will open Gmail in KDEs default browser.
