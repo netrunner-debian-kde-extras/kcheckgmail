@@ -49,7 +49,7 @@ gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in&service=mail"
 	
 gGMailCheckURL = "%s://gmail.google.com/gmail?search=inbox"
 	"&as_subset=unread&view=tl&start=0",
-gGMailPostLoginURLFormat = "%s://gmail.google.com/gmail?_sgh=%s";
+gGMailPostLoginURLFormat = "%s://gmail.google.com/gmail?auth=%s";
 
 
 #define MILLISECS(x) (x * 1000)
@@ -189,12 +189,12 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 	} else {
 		QCString str(data, data.size() + 1);
 		parseCookies(job->queryMetaData("setcookies"));
-		QRegExp rx("_sgh%3[Dd](.*)&service=mail");
+		QRegExp rx("auth%3[Dd](.*)&amp;service=mail");
 		if(rx.search(str) >= 0) {
 			if(mLoginToken)
 				delete mLoginToken;
 			mLoginToken = new QString(rx.cap(1));
-		}
+		} 
 	}
 }
 
