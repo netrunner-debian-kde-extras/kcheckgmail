@@ -1,28 +1,240 @@
-2004-09-26 Matthew Wlazlo <mwlazlo@gmail.com>
-	* src/gmail.{cpp,h}:
-	* src/gmailwalletmanager.{cpp,h}:
-	* src/kcheckgmailtray.{cpp,h}:
-	* src/loginsettingswidget.ui:
-	* src/prefs.kcfg:
-		- use GMailWalletManager; Wallet support.
-	* src/kcheckgmailtray.{cpp,h}:
-	 	- open config dialog if no username present.
-	
-2004-08-27 Matthew Wlazlo <mwlazlo@gmail.com>
-	* src/gmailparser.cpp:
-	* src/gmailparser.h:
-		- parses downloaded HTML and retrieves new message count
-	* src/gmail.cpp:
-	* src/gmail.h:
-		- This class no longer checks the message count.
-		- Collate all downloaded HTML for sending to gmailparser..
-		  
-2004-08-21 Matthew Wlazlo <mwlazlo@gmail.com>
-	* src/gmail.cpp:
-	* src/gmail.h:
-		- Cookies now kept in QMap
-		- Many other changes to make logins work again
+2004-11-07 13:21  petrol_pumper
 
-2004-08-13 Matthew Wlazlo <mwlazlo@gmail.com>
-	* src/gmail.cpp:
-		- debugging code, writes incoming HTML to /tmp/gmail.html
+	* cvs2cl.pl: changelog generation script
+
+2004-11-07 13:13  petrol_pumper
+
+	* Makefile.in, configure, configure.in, configure.in.in,
+	  doc/Makefile.in, doc/en/Makefile.in, icons/Makefile.in,
+	  po/Makefile.in, src/Makefile.am, src/Makefile.in: updated build
+	  stuff
+
+2004-11-07 13:11  petrol_pumper
+
+	* src/: kcheckgmailtray.cpp, kcheckgmailtray.h: removed mPixLight
+
+2004-10-29 15:18  petrol_pumper
+
+	* src/: gmailparser.cpp, gmailparser.h: do checking for new
+	  messages outside of parseThread()
+
+2004-10-03 11:39  petrol_pumper
+
+	* src/: kcheckgmailtray.cpp, kcheckgmailtray.h: use KIconEffects
+	  for showing status rather than separate pixmaps
+
+2004-10-03 11:22  petrol_pumper
+
+	* icons/: cr16-app-kcheckgmailauth.png,
+	  cr16-app-kcheckgmaillight.png: use KIconEffects rather than these
+
+2004-10-03 09:10  petrol_pumper
+
+	* src/main.cpp: added credit for german translation
+
+2004-10-03 07:46  petrol_pumper
+
+	* po/: de.po, es.po, it.po: updated translations
+
+2004-10-02 13:21  petrol_pumper
+
+	* src/Makefile.in: Makefile.in was regenerated
+
+2004-10-02 13:04  petrol_pumper
+
+	* src/main.cpp: added italian translator to authors, get version
+	  from config.h
+
+2004-10-02 13:03  petrol_pumper
+
+	* src/gmailwalletmanager.cpp: oops, forgot brace around if
+	  statement!
+
+2004-10-02 13:02  petrol_pumper
+
+	* src/: gmail.cpp, gmailwalletmanager.h: removed "busy" check, not
+	  used
+
+2004-10-02 13:02  petrol_pumper
+
+	* admin/cvs.sh: updated cvs.sh script
+
+2004-10-02 13:02  petrol_pumper
+
+	* configure.in.in: updated version
+
+2004-10-02 13:01  petrol_pumper
+
+	* AUTHORS: updated AUTHORS
+
+2004-10-02 12:58  petrol_pumper
+
+	* po/kcheckgmail.pot: updated .pot file
+
+2004-10-02 12:37  petrol_pumper
+
+	* po/: it.po, it_IT.po, kcheckgmail.pot: italian translation file
+	  has proper name
+
+2004-10-02 05:29  petrol_pumper
+
+	* src/kcheckgmailtray.cpp: option in version alert to ignore dialog
+
+2004-10-02 05:29  petrol_pumper
+
+	* src/: gmailparser.cpp, gmailparser.h: destroy and rebuild thread
+	  menu each parse.
+
+2004-09-26 20:27  petrol_pumper
+
+	* po/it.po, src/eventsrc, src/kcheckgmail.desktop: added italian
+	  translation
+
+2004-09-26 20:24  petrol_pumper
+
+	* ChangeLog, TODO: modified TODO, changelog
+
+2004-09-26 20:21  petrol_pumper
+
+	* src/: kcheckgmailtray.cpp, kcheckgmailtray.h: wallet support,
+	  open config dialog if no username present
+
+2004-09-26 20:20  petrol_pumper
+
+	* src/: Makefile.am, gmail.cpp, gmailwalletmanager.cpp,
+	  gmailwalletmanager.h, loginsettingswidget.ui, prefs.kcfg,
+	  gmail.h: wallet support
+
+2004-09-13 16:40  petrol_pumper
+
+	* src/gmail.cpp: #include time.h
+
+2004-09-12 20:05  petrol_pumper
+
+	* src/: appletsettingswidget.ui, gmailparser.h,
+	  kcheckgmailtray.cpp, prefs.kcfg: optionally display a warning if
+	  gmail version changes
+
+2004-09-12 17:41  petrol_pumper
+
+	* src/: gmail.cpp, gmail_constants.h, gmailparser.cpp,
+	  kcheckgmailtray.cpp, kcheckgmailtray.h: show sender and subject
+	  in threads menu
+
+2004-08-27 07:48  petrol_pumper
+
+	* Makefile.in, acinclude.m4, aclocal.m4, config.h.in, configure,
+	  configure.files, configure.in, stamp-h.in, doc/Makefile.in,
+	  doc/en/Makefile.in, icons/Makefile.in, po/Makefile.in,
+	  src/Makefile.in: adding automake/autoconf generated files.
+
+2004-08-27 05:59  petrol_pumper
+
+	* ChangeLog, TODO, src/Makefile.am, src/eventsrc, src/gmail.cpp,
+	  src/gmail.h, src/gmailparser.cpp, src/gmailparser.h,
+	  src/kcheckgmailtray.cpp, src/kcheckgmailtray.h: parser
+
+2004-08-27 05:05  petrol_pumper
+
+	* doc/en/index.docbook: removed documentation
+
+2004-08-23 11:31  petrol_pumper
+
+	* src/: appletsettingswidget.ui, loginsettingswidget.ui: fudge qt
+	  version as 3.2
+
+2004-08-23 10:58  petrol_pumper
+
+	* src/eventsrc: updated portugese translation
+
+2004-08-22 12:56  petrol_pumper
+
+	* src/gmail.cpp: Dont dereference mLoginToken list in debug
+
+2004-08-21 23:27  petrol_pumper
+
+	* INSTALL: updated instructions
+
+2004-08-21 23:18  petrol_pumper
+
+	* AUTHORS, ChangeLog, src/main.cpp: updated changelog, AUTHORS and
+	  credits
+
+2004-08-21 23:10  petrol_pumper
+
+	* src/: gmail.cpp, gmail.h: gmail login now works
+
+2004-08-21 23:06  petrol_pumper
+
+	* TODO: updated
+
+2004-08-13 03:39  petrol_pumper
+
+	* po/: kcheckgmail.pot, pt_BR.po: brazillian translation
+
+2004-08-13 02:06  petrol_pumper
+
+	* README: more instructions
+
+2004-08-13 01:19  petrol_pumper
+
+	* AUTHORS, COPYING, ChangeLog, Doxyfile, INSTALL, Makefile.am,
+	  Makefile.cvs, NEWS, README, TODO, configure.in.in,
+	  kcheckgmail.kdevelop, subdirs, admin/ChangeLog,
+	  admin/Doxyfile.am, admin/Doxyfile.global, admin/Makefile.common,
+	  admin/acinclude.m4.in, admin/am_edit, admin/bcheck.pl,
+	  admin/compile, admin/conf.change.pl, admin/config.guess,
+	  admin/config.pl, admin/config.sub, admin/configure.in.bot.end,
+	  admin/configure.in.min, admin/cvs-clean.pl, admin/cvs.sh,
+	  admin/debianrules, admin/depcomp, admin/detect-autoconf.sh,
+	  admin/install-sh, admin/libtool.m4.in, admin/ltmain.sh,
+	  admin/missing, admin/mkinstalldirs, admin/nmcheck, admin/ylwrap,
+	  doc/Makefile.am, doc/en/Makefile.am, doc/en/index.docbook,
+	  icons/Makefile.am, icons/cr128-app-kcheckgmail.png,
+	  icons/cr16-app-kcheckgmail.png,
+	  icons/cr16-app-kcheckgmailauth.png,
+	  icons/cr16-app-kcheckgmaillight.png,
+	  icons/cr22-app-kcheckgmail.png, icons/cr32-app-kcheckgmail.png,
+	  icons/cr48-app-kcheckgmail.png, icons/cr64-app-kcheckgmail.png,
+	  icons/svg/convert-all.sh, icons/svg/kcheckgmail.svg,
+	  icons/svg/kcheckgmailauth.svg, icons/svg/kcheckgmaillight.svg,
+	  po/Makefile.am, src/Makefile.am, src/appletsettingswidget.ui,
+	  src/eventsrc, src/gmail.cpp, src/gmail.h,
+	  src/kcheckgmail.desktop, src/kcheckgmail.lsm,
+	  src/kcheckgmailapp.cpp, src/kcheckgmailapp.h,
+	  src/kcheckgmailtray.cpp, src/kcheckgmailtray.h,
+	  src/loginsettingswidget.ui, src/main.cpp,
+	  src/netsettingswidget.ui, src/prefs.kcfg, src/prefs.kcfgc,
+	  templates/cpp, templates/h: Initial revision
+
+2004-08-13 01:19  petrol_pumper
+
+	* AUTHORS, COPYING, ChangeLog, Doxyfile, INSTALL, Makefile.am,
+	  Makefile.cvs, NEWS, README, TODO, configure.in.in,
+	  kcheckgmail.kdevelop, subdirs, admin/ChangeLog,
+	  admin/Doxyfile.am, admin/Doxyfile.global, admin/Makefile.common,
+	  admin/acinclude.m4.in, admin/am_edit, admin/bcheck.pl,
+	  admin/compile, admin/conf.change.pl, admin/config.guess,
+	  admin/config.pl, admin/config.sub, admin/configure.in.bot.end,
+	  admin/configure.in.min, admin/cvs-clean.pl, admin/cvs.sh,
+	  admin/debianrules, admin/depcomp, admin/detect-autoconf.sh,
+	  admin/install-sh, admin/libtool.m4.in, admin/ltmain.sh,
+	  admin/missing, admin/mkinstalldirs, admin/nmcheck, admin/ylwrap,
+	  doc/Makefile.am, doc/en/Makefile.am, doc/en/index.docbook,
+	  icons/Makefile.am, icons/cr128-app-kcheckgmail.png,
+	  icons/cr16-app-kcheckgmail.png,
+	  icons/cr16-app-kcheckgmailauth.png,
+	  icons/cr16-app-kcheckgmaillight.png,
+	  icons/cr22-app-kcheckgmail.png, icons/cr32-app-kcheckgmail.png,
+	  icons/cr48-app-kcheckgmail.png, icons/cr64-app-kcheckgmail.png,
+	  icons/svg/convert-all.sh, icons/svg/kcheckgmail.svg,
+	  icons/svg/kcheckgmailauth.svg, icons/svg/kcheckgmaillight.svg,
+	  po/Makefile.am, src/Makefile.am, src/appletsettingswidget.ui,
+	  src/eventsrc, src/gmail.cpp, src/gmail.h,
+	  src/kcheckgmail.desktop, src/kcheckgmail.lsm,
+	  src/kcheckgmailapp.cpp, src/kcheckgmailapp.h,
+	  src/kcheckgmailtray.cpp, src/kcheckgmailtray.h,
+	  src/loginsettingswidget.ui, src/main.cpp,
+	  src/netsettingswidget.ui, src/prefs.kcfg, src/prefs.kcfgc,
+	  templates/cpp, templates/h: importing
+
