@@ -38,6 +38,7 @@
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qregexp.h>
+#include <kpassdlg.h>
 
 #include "appletsettingswidget.h"
 #include "kcheckgmailtray.h"
@@ -48,6 +49,7 @@
 #include "config.h"
 #include "gmail.h"
 #include "gmailparser.h"
+#include "gmailwalletmanager.h"
 
 // if catchAccidentalClick is true, wait 3 seconds before opening another
 // browser window
@@ -74,7 +76,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	// initialise and hook up the parser
 	mParser = new GMailParser();
-
 
 	connect(mParser, SIGNAL(mailArrived(unsigned int)), 
 		this, SLOT(slotMailArrived(unsigned int)));
@@ -133,9 +134,19 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	connect(menu, SIGNAL(activated(int)), SLOT(slotContextMenuActivated(int)));
 
-	mGmail->setLoginParams(Prefs::gmailUsername(), Prefs::gmailPassword());
-	mGmail->setInterval(Prefs::interval());
+	connect(GMailWalletManager::instance(), SIGNAL(getWalletPassword(const QString&)),
+		mGmail, SLOT(slotGetWalletPassword(const QString&)));
+	connect(GMailWalletManager::instance(), SIGNAL(setWalletPassword(bool)),
+		mGmail, SLOT(slotSetWalletPassword(bool)));
 
+	initConfigDialog();
+
+	if(Prefs::gmailUsername().length() == 0) {
+		mLoginSettings->gmailPassword->erase();
+		showPrefsDialog();
+	} else
+		mGmail->checkLoginParams();
+	mGmail->setInterval(Prefs::interval());
 }
 
 void KCheckGmailTray::slotContextMenuActivated(int n)
@@ -197,8 +208,27 @@ void KCheckGmailTray::showKNotifyDialog()
 
 void KCheckGmailTray::slotSettingsChanged()
 {
-	mGmail->setLoginParams(Prefs::gmailUsername(), Prefs::gmailPassword());
-	mGmail->setInterval(Prefs::interval());
+	bool loginOk = true;
+	const char *passwd = mLoginSettings->gmailPassword->password();
+
+	kdDebug() << k_funcinfo << passwd << endl;
+	
+	if(strlen(passwd) == 0) {
+		KMessageBox::error(0, i18n("Please enter a password"));
+		QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+	} else {
+		kdDebug() << "strncmp: " << strncmp(passwd, "\007\007\007", 3) << endl;
+
+		if(strncmp(passwd, "\007\007\007", 3) != 0) {
+			kdDebug() << k_funcinfo << "setting wallet" << endl;
+			loginOk = GMailWalletManager::instance()->set(mLoginSettings->gmailPassword->password());
+			mLoginSettings->gmailPassword->erase();
+			mLoginSettings->gmailPassword->insert("\007\007\007");
+		} else
+			kdDebug() << k_funcinfo << "passwd unchanged: " << passwd << endl;
+		
+		mGmail->setInterval(Prefs::interval());
+	}
 }
 
 void KCheckGmailTray::updateCountImage()
@@ -364,29 +394,35 @@ void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
 
 }
 
-void KCheckGmailTray::showPrefsDialog()
+void KCheckGmailTray::initConfigDialog()
 {
-	if(KConfigDialog::showDialog("KCheckGmailSettingsDialog"))
-		return;
-	
-	KConfigDialog *dialog = new KConfigDialog(this,
+	mConfigDialog = new KConfigDialog(this,
 					"KCheckGmailSettingsDialog",
 					Prefs::self(),
 					KDialogBase::IconList,
 					KDialogBase::Ok | KDialogBase::Cancel);
-	connect(dialog, SIGNAL(settingsChanged()),
+//	connect(mConfigDialog, SIGNAL(settingsChanged()),
+//		this, SLOT(slotSettingsChanged()));
+	connect(mConfigDialog, SIGNAL(finished()),
 		this, SLOT(slotSettingsChanged()));
 
-	LoginSettingsWidget *lwid = new LoginSettingsWidget(0, "LoginSettings");
-	dialog->addPage(lwid, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
+	mLoginSettings = new LoginSettingsWidget(0, "LoginSettings");
+	mConfigDialog->addPage(mLoginSettings, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
 
 	NetworkSettingsWidget *nwid = new NetworkSettingsWidget(0, "NetworkSettings");
-	dialog->addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
+	mConfigDialog->addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
 
 	AppletSettingsWidget *awid = new AppletSettingsWidget(0, "AppletSettings");
-	dialog->addPage(awid, i18n("Applet"), "configure", i18n("Applet Settings"));
+	mConfigDialog->addPage(awid, i18n("Applet"), "configure", i18n("Applet Settings"));
 
-	dialog->show();
+	mLoginSettings->gmailPassword->erase();
+	mLoginSettings->gmailPassword->insert("\007\007\007");
+}
+
+void KCheckGmailTray::showPrefsDialog()
+{
+	if(!KConfigDialog::showDialog("KCheckGmailSettingsDialog")) 
+		mConfigDialog->show();
 }
 
 void KCheckGmailTray::slotCheckStart()

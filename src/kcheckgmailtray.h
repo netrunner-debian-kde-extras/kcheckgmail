@@ -26,6 +26,8 @@ class GMail;
 class GMailParser;
 class QMouseEvent;
 class KHelpMenu;
+class KConfigDialog;
+class LoginSettingsWidget;
 
 class KCheckGmailTray : public KSystemTray
 {
@@ -43,6 +45,7 @@ protected slots:
 
 	// KConfigDialog
 	void slotSettingsChanged();
+	void showPrefsDialog();
 
 	// GMail
 	void slotLoginDone(bool success, bool spawnedFromTimer, const QString &errmsg);
@@ -58,9 +61,9 @@ protected slots:
 private:
 	void launchBrowser(const QString &url = QString::null);
 	void showKNotifyDialog();
-	void showPrefsDialog();
 	void updateCountImage();
 	void updateThreadMenu();
+	void initConfigDialog();
 
 	QPixmap		mPixGmail,
 			mPixLight,
@@ -70,6 +73,8 @@ private:
 	GMailParser	*mParser;
 	KHelpMenu	*mHelpMenu;
 	KPopupMenu	*mThreadsMenu;
+	LoginSettingsWidget* mLoginSettings;
+	KConfigDialog* mConfigDialog;
 
 	// menu id for the check now button
 	int 		mCheckNowId;
