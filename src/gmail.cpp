@@ -23,6 +23,7 @@
 #define DUMP_HTML_FILE "/tmp/gmail.html"
 
 #include "gmail.h"
+#include "gmailwalletmanager.h"
 #include "prefs.h"
 
 #include <kio/job.h>
@@ -80,11 +81,18 @@ GMail::~GMail()
 	delete mCookieMap;
 }
 
-void GMail::setLoginParams(const QString &username, const QString &password)
+void GMail::slotSetWalletPassword(bool)
 {
-	if(mUsername != username || mPassword != password) {
+	checkLoginParams();
+}
+
+void GMail::checkLoginParams()
+{
+	QString username = Prefs::gmailUsername();
+	const QString& password = GMailWalletManager::instance()->getHash();
+	if(mUsername != username || mPasswordHash != password) {
 		mUsername = username;
-		mPassword = password;
+		mPasswordHash = password;
 		
 		if(mLoginLock->tryLock()) {
 			if(mLoginToken)
@@ -101,6 +109,34 @@ void GMail::setLoginParams(const QString &username, const QString &password)
 	}
 }
 
+void GMail::slotGetWalletPassword(const QString& pass)
+{
+	QString str;
+	str.sprintf(gGMailLoginPostFormat.ascii(), 
+				mUsername.ascii(), 
+				pass.ascii());
+	kdDebug() << "Sending login: " << str << endl;
+
+	QCString b(str.utf8());
+	QByteArray postData(b);
+
+	// get rid of terminating 0x0
+	postData.truncate(b.length());
+
+	KIO::TransferJob *job = KIO::http_post(
+		gGMailLoginURL,
+		postData, false);
+	job->addMetaData("content-type", "Content-Type: application/x-www-form-urlencoded");
+	job->addMetaData("cookies", "manual");
+	job->addMetaData("cache", "reload");
+
+	connect(job, SIGNAL(result(KIO::Job*)),
+		SLOT(slotLoginResult(KIO::Job*)));
+
+	connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
+		SLOT(slotLoginData(KIO::Job*, const QByteArray&)));
+
+}
 
 ///////////////////////////////////////////////////////////////////////////
 // Initial login exchange methods
@@ -111,7 +147,6 @@ void GMail::login()
 		emit loginStart();
 
 		mCookieMap->clear();
-
 		
 		QString cookie;
 		long int t = time(NULL);
@@ -119,29 +154,12 @@ void GMail::login()
 
 		parseCookies("Set-Cookie: GMAIL_LOGIN="+cookie+";");
 
-		QString str;
-		str.sprintf(gGMailLoginPostFormat.ascii(), 
-					mUsername.ascii(), 
-					mPassword.ascii());
-
-		QCString b(str.utf8());
-		QByteArray postData(b);
-	
-		// get rid of terminating 0x0
-		postData.truncate(b.length());
-
-		KIO::TransferJob *job = KIO::http_post(
-			gGMailLoginURL,
-			postData, false);
-		job->addMetaData("content-type", "Content-Type: application/x-www-form-urlencoded");
-		job->addMetaData("cookies", "manual");
-		job->addMetaData("cache", "reload");
-
-		connect(job, SIGNAL(result(KIO::Job*)),
-			SLOT(slotLoginResult(KIO::Job*)));
-
-		connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
-			SLOT(slotLoginData(KIO::Job*, const QByteArray&)));
+		kdDebug() << k_funcinfo << "Waiting for wallet..." << endl;
+		// this will call back to gotWalletPassword().
+		// we will continue the process from there.
+		GMailWalletManager::instance()->get();
+		kdDebug() << k_funcinfo << "WalletBusy=" <<
+		GMailWalletManager::instance()->busy() << endl;
 	}
 }
 

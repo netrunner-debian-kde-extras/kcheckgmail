@@ -23,6 +23,8 @@
 #include <qobject.h>
 #include <qstring.h>
 
+#include "gmailwalletmanager.h"
+
 namespace KIO { class Job; }
 
 class QTimer;
@@ -39,11 +41,13 @@ public:
 	GMail();
 	virtual ~GMail();
 
-	void setLoginParams(const QString &username, const QString &password);
+	void checkLoginParams();
 	void setInterval(unsigned int i);
 
 	bool isLoggedIn();
 	bool isChecking();
+
+	void gotWalletPassword(QString str);
 
 protected:
 	void login();
@@ -65,9 +69,9 @@ private:
 	// true if timer spawned this check/login attempt.
 	bool mLoginFromTimer;
 	bool mCheckFromTimer;
-
+	
 	QString mUsername;
-	QString mPassword;
+	QString mPasswordHash;
 	QMap<QString,QString> *mCookieMap;
 	QString *mLoginToken;
 	QString mPageBuffer;
@@ -76,6 +80,8 @@ private:
 
 public slots:
 	void slotCheckGmail();
+	void slotGetWalletPassword(const QString&);
+	void slotSetWalletPassword(bool);
 
 protected slots:
 	void slotLoginResult(KIO::Job*);
