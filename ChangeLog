@@ -1,3 +1,18 @@
+2004-11-18 10:13  petrol_pumper
+
+	* src/eventsrc: translation fix
+
+2004-11-18 10:10  petrol_pumper
+
+	* src/: gmailparser.cpp, gmailparser.h: a threads msgid should be
+	  unique across chunks!
+
+2004-11-17 13:08  petrol_pumper
+
+	* ChangeLog, Makefile.in, doc/Makefile.in, doc/en/Makefile.in,
+	  icons/Makefile.in, po/Makefile.in, src/Makefile.in: updated
+	  ChangeLog and Makefile.in (for translation)
+
 2004-11-17 13:00  petrol_pumper
 
 	* src/main.cpp: updated credits list
