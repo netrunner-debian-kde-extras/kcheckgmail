@@ -426,7 +426,7 @@ uninstall-am: uninstall-kde-icons  uninstall-info-am
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=cr128-app-kcheckgmail.png cr22-app-kcheckgmail.png Makefile.in cr64-app-kcheckgmail.png cr32-app-kcheckgmail.png cr48-app-kcheckgmail.png cr16-app-kcheckgmail.png 
+KDE_DIST=cr128-app-kcheckgmail.png cr64-app-kcheckgmail.png cr16-app-kcheckgmail.png cr48-app-kcheckgmail.png cr32-app-kcheckgmail.png Makefile.in cr22-app-kcheckgmail.png 
 
 #>+ 2
 docs-am:
@@ -526,5 +526,5 @@ kde-rpo-clean:
 	-rm -f *.rpo
 
 #>+ 3
-nmcheck: 
 nmcheck-am: nmcheck
+nmcheck: 

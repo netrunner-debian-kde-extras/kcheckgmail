@@ -722,7 +722,7 @@ dist-hook:
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=configure.files Doxyfile Makefile.in kcheckgmail.kdevelop subdirs Makefile.cvs cvs2cl.pl stamp-h.in 
+KDE_DIST=Makefile.cvs Makefile.in cvs2cl.pl configure.files subdirs diff.diff Doxyfile stamp-h.in kcheckgmail.kdevelop 
 
 #>+ 2
 docs-am:
@@ -781,5 +781,5 @@ kde-rpo-clean:
 	-rm -f *.rpo
 
 #>+ 3
-nmcheck: 
 nmcheck-am: nmcheck
+nmcheck: 

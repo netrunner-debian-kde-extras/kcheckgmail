@@ -1,3 +1,44 @@
+2004-11-17 13:00  petrol_pumper
+
+	* src/main.cpp: updated credits list
+
+2004-11-17 12:56  petrol_pumper
+
+	* po/fr.po: french translation
+
+2004-11-17 12:54  petrol_pumper
+
+	* po/: it.po, it_IT.po, ru.po: updated italian translation
+
+2004-11-17 12:53  petrol_pumper
+
+	* po/de.po: german translation updates
+
+2004-11-17 12:51  petrol_pumper
+
+	* src/kcheckgmailtray.cpp: make sure to use https settings when
+	  reading mail as well
+
+2004-11-17 12:43  petrol_pumper
+
+	* src/: gmail.cpp, netsettingswidget.ui, prefs.kcfg: added option
+	  to use https connections for checking
+
+2004-11-17 12:31  petrol_pumper
+
+	* Makefile.in, aclocal.m4, configure, configure.in,
+	  configure.in.in, doc/Makefile.in, doc/en/Makefile.in,
+	  icons/Makefile.in, po/Makefile.in, src/Makefile.in: updated
+	  version number
+
+2004-11-07 13:49  petrol_pumper
+
+	* src/gmailparser.h: updated version number
+
+2004-11-07 13:22  petrol_pumper
+
+	* ChangeLog: updated Changelog
+
 2004-11-07 13:21  petrol_pumper
 
 	* cvs2cl.pl: changelog generation script

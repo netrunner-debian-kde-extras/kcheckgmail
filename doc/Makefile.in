@@ -642,5 +642,5 @@ kde-rpo-clean:
 	-rm -f *.rpo
 
 #>+ 3
-nmcheck: 
 nmcheck-am: nmcheck
+nmcheck: 

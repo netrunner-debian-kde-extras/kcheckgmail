@@ -258,8 +258,8 @@ xdg_directorydir = @xdg_directorydir@
 xdg_menudir = @xdg_menudir@
 #>- POFILES = AUTO
 #>+ 2
-POFILES = de.po es.po it.po it_IT.po pt_BR.po
-GMOFILES = de.gmo es.gmo it.gmo it_IT.gmo pt_BR.gmo
+POFILES = de.po es.po it.po fr.po pt_BR.po ru.po
+GMOFILES = de.gmo es.gmo it.gmo fr.gmo pt_BR.gmo ru.gmo
 subdir = po
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/admin/mkinstalldirs
@@ -433,9 +433,9 @@ uninstall-am: uninstall-info-am
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=kcheckgmail.pot es.po it.po Makefile.in it_IT.po pt_BR.po de.po 
+KDE_DIST=es.po it.gmo de.gmo kcheckgmail.pot it.po pt_BR.po pt_BR.gmo Makefile.in fr.po es.gmo de.po ru.po 
 
-#>+ 16
+#>+ 19
 de.gmo: de.po
 	rm -f de.gmo; $(GMSGFMT) -o de.gmo $(srcdir)/de.po
 	test ! -f de.gmo || touch de.gmo
@@ -445,20 +445,23 @@ es.gmo: es.po
 it.gmo: it.po
 	rm -f it.gmo; $(GMSGFMT) -o it.gmo $(srcdir)/it.po
 	test ! -f it.gmo || touch it.gmo
-it_IT.gmo: it_IT.po
-	rm -f it_IT.gmo; $(GMSGFMT) -o it_IT.gmo $(srcdir)/it_IT.po
-	test ! -f it_IT.gmo || touch it_IT.gmo
+fr.gmo: fr.po
+	rm -f fr.gmo; $(GMSGFMT) -o fr.gmo $(srcdir)/fr.po
+	test ! -f fr.gmo || touch fr.gmo
 pt_BR.gmo: pt_BR.po
 	rm -f pt_BR.gmo; $(GMSGFMT) -o pt_BR.gmo $(srcdir)/pt_BR.po
 	test ! -f pt_BR.gmo || touch pt_BR.gmo
+ru.gmo: ru.po
+	rm -f ru.gmo; $(GMSGFMT) -o ru.gmo $(srcdir)/ru.po
+	test ! -f ru.gmo || touch ru.gmo
 
 #>+ 3
 clean-nls:
-	-rm -f  de.gmo es.gmo it.gmo it_IT.gmo pt_BR.gmo
+	-rm -f  de.gmo es.gmo it.gmo fr.gmo pt_BR.gmo ru.gmo
 
 #>+ 10
 install-nls:
-	@for base in de es it it_IT pt_BR ; do \
+	@for base in de es it fr pt_BR ru ; do \
 	  echo $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
 	  $(mkinstalldirs) $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES ; \
 	  if test -f $$base.gmo; then $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
@@ -467,13 +470,14 @@ install-nls:
 	done
 
 
-#>+ 7
+#>+ 8
 uninstall-nls:
 	rm -f $(DESTDIR)$(kde_locale)/de/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/es/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/it/LC_MESSAGES/$(PACKAGE).mo
-	rm -f $(DESTDIR)$(kde_locale)/it_IT/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/fr/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/pt_BR/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/ru/LC_MESSAGES/$(PACKAGE).mo
 
 #>+ 2
 all-nls: $(GMOFILES)
