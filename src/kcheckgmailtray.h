@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <ksystemtray.h>
+#include <kiconeffect.h>
 #include <qpixmap.h>
 #include <qstring.h>
 
@@ -28,6 +29,7 @@ class QMouseEvent;
 class KHelpMenu;
 class KConfigDialog;
 class LoginSettingsWidget;
+class QTimer;
 
 class KCheckGmailTray : public KSystemTray
 {
@@ -37,6 +39,9 @@ public:
 
 protected:
 	void mousePressEvent(QMouseEvent*);
+
+	void setPixmapAuth();
+	void setPixmapEmpty();
 
 protected slots:
 	// KPopupMenu
@@ -58,6 +63,9 @@ protected slots:
 	void slotMailCountChanged();
 	void slotVersionMismatch();
 
+	// login "animation"
+	void slotToggleLoginAnim();
+
 private:
 	void launchBrowser(const QString &url = QString::null);
 	void showKNotifyDialog();
@@ -67,7 +75,6 @@ private:
 
 	QPixmap		mPixGmail,
 			mPixLight,
-			mPixAuth,
 			mPixCount;
 	GMail		*mGmail;
 	GMailParser	*mParser;
@@ -75,6 +82,8 @@ private:
 	KPopupMenu	*mThreadsMenu;
 	LoginSettingsWidget* mLoginSettings;
 	KConfigDialog* mConfigDialog;
+	KIconEffect mIconEffect;
+	QTimer *mLoginAnim;
 
 	// menu id for the check now button
 	int 		mCheckNowId;

@@ -33,6 +33,7 @@
 #include <knotifydialog.h>
 #include <kpopupmenu.h>
 #include <krun.h>
+#include <kiconeffect.h>
 
 #include <qfile.h>
 #include <qpainter.h>
@@ -66,10 +67,12 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 		false, actionCollection()))
 {
 	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
-	mPixLight = KSystemTray::loadIcon("kcheckgmaillight");
-	mPixAuth = KSystemTray::loadIcon("kcheckgmailauth");
+	setPixmapAuth();
 
-	setPixmap(mPixAuth);
+	mLoginAnim = new QTimer(this, "KCheckGmail::login");
+	connect(mLoginAnim, SIGNAL(timeout()), 
+		this, SLOT(slotToggleLoginAnim()));
+
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 	connect(this, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 	//QToolTip::add(this, i18n("KCheckGmail"));
@@ -128,9 +131,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	menu->insertItem(SmallIcon("help"),KStdGuiItem::help().text(),
 		mHelpMenu->menu());
-
-//	KAction *quitAction = actionCollection()->action(KStdAction::name(KStdAction::Quit));
-//	quitAction->plug(menu);
 
 	connect(menu, SIGNAL(activated(int)), SLOT(slotContextMenuActivated(int)));
 
@@ -238,11 +238,11 @@ void KCheckGmailTray::updateCountImage()
 	kdDebug() << k_funcinfo << "Count=" << count << endl;
 
 	if(count == 0)
-		setPixmap(mPixGmail);
+		setPixmapEmpty();
 	else {
 		// based on code from kmail
-		int w = mPixLight.width();
-		int h = mPixLight.height();
+		int w = mPixGmail.width();
+		int h = mPixGmail.height();
 
 		QString countString = QString::number(count);
 		QFont countFont = KGlobalSettings::generalFont();
@@ -264,8 +264,12 @@ void KCheckGmailTray::updateCountImage()
 		}
 
 		mPixCount.resize(w, h);
-		copyBlt(&mPixCount, 0, 0,
-			&mPixLight, 0, 0, w, h);
+
+		mPixCount = mIconEffect.apply(mPixGmail, 
+			KIconEffect::ToGamma,
+			0.80,
+			Qt::red,
+			false);
 
 		QPainter p(&mPixCount);
 		p.setFont(countFont);
@@ -347,8 +351,11 @@ void KCheckGmailTray::slotMailCountChanged()
 
 void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &why)
 {
+	mLoginAnim->stop();
+
 	kdDebug() << k_funcinfo << endl << "ok=" << ok << " evtFromTimer=" <<
 		evtFromTimer << " why=" << why << endl << endl;
+
 	if(!ok) {
 		static QString lastExcuse = "";
 		if(why != lastExcuse || !evtFromTimer) {
@@ -358,11 +365,11 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 			lastExcuse = why;
 		}
 		
-		setPixmap(mPixAuth);
+		setPixmapAuth();
 		contextMenu()->changeItem(mCheckNowId, i18n("Login and Chec&k Mail"));
 		
 	} else {
-		setPixmap(mPixGmail);
+		setPixmapEmpty();
 		KNotifyClient::event(winId(), "gmail-login-yes", i18n("Now logged in to Gmail!"));
 		contextMenu()->changeItem(mCheckNowId, i18n("Chec&k Mail Now"));
 	}
@@ -372,8 +379,9 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 void KCheckGmailTray::slotLoginStart()
 {
 	kdDebug() << k_funcinfo << endl;
-	setPixmap(mPixAuth);
+	setPixmapAuth();
 	contextMenu()->setItemEnabled(mCheckNowId, false);
+	mLoginAnim->start(200);
 }
 
 void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
@@ -401,8 +409,7 @@ void KCheckGmailTray::initConfigDialog()
 					Prefs::self(),
 					KDialogBase::IconList,
 					KDialogBase::Ok | KDialogBase::Cancel);
-//	connect(mConfigDialog, SIGNAL(settingsChanged()),
-//		this, SLOT(slotSettingsChanged()));
+
 	connect(mConfigDialog, SIGNAL(finished()),
 		this, SLOT(slotSettingsChanged()));
 
@@ -413,7 +420,7 @@ void KCheckGmailTray::initConfigDialog()
 	mConfigDialog->addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
 
 	AppletSettingsWidget *awid = new AppletSettingsWidget(0, "AppletSettings");
-	mConfigDialog->addPage(awid, i18n("Applet"), "configure", i18n("Applet Settings"));
+	mConfigDialog->addPage(awid, i18n("Behavior"), "configure", i18n("Behavior"));
 
 	mLoginSettings->gmailPassword->erase();
 	mLoginSettings->gmailPassword->insert("\007\007\007");
@@ -447,4 +454,28 @@ void KCheckGmailTray::slotVersionMismatch()
 			i18n("Version changed"),
 			"IgnoreVersionChange");
 	}
+}
+
+void KCheckGmailTray::setPixmapAuth()
+{
+	setPixmap(mIconEffect.apply(mPixGmail, 
+		KIconEffect::Colorize,
+		0.80,
+		Qt::red,
+		false));
+}
+
+void KCheckGmailTray::setPixmapEmpty()
+{
+	setPixmap(mPixGmail);
+}
+
+void KCheckGmailTray::slotToggleLoginAnim()
+{
+	static bool state = false;
+	if(state) 
+		setPixmapEmpty();
+	else 
+		setPixmapAuth();
+	state = !state;
 }
