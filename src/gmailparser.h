@@ -115,6 +115,7 @@ protected:
 private:
 	QString mVersion;
 	unsigned int mInvites;
+	unsigned int mCurMsgId;
 	Quota mQuota;
 	DefaultSearchSummary mSummary;
 	std::vector<Label> mLabels;

@@ -52,6 +52,7 @@ void GMailParser::parse(const QString &data)
 			<< rx.errorString() << endl;
 	} 
 
+	mCurMsgId = 0;
 	unsigned int oldNewCount = getNewCount();
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
@@ -218,8 +219,6 @@ void GMailParser::parseThread(const QString &data, const QMap<QString,bool>* old
 	*/
 
 	unsigned int newMsgCount = 0;
-	int newid = 0;
-
 
 	if(oldMap)
 		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
@@ -228,7 +227,7 @@ void GMailParser::parseThread(const QString &data, const QMap<QString,bool>* old
 
 	while((pos = rx.search(data, pos)) != -1) {
 		Thread *t = new Thread;
-		t->id = newid ++;
+		t->id = mCurMsgId ++;
 		t->replyId = rx.cap(1);
 		t->isNew = rx.cap(2).toInt();
 		t->unknown1 = rx.cap(3).toUInt();
