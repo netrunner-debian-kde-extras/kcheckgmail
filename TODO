@@ -10,6 +10,8 @@ KIO slave representation of gmail. Read your Gmail messages from konq?
 Should the configuration dialog be displayed when the username/password is
 empty?
 
+user defined icon for the systray
+
 DONE: put a 3 second timer in pressMouseEvent to detect accidental multiple clicks.
 
 DONE: config option -- KDE default browser or custom
