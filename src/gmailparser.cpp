@@ -52,6 +52,12 @@ void GMailParser::parse(const QString &data)
 			<< rx.errorString() << endl;
 	} 
 
+	unsigned int oldNewCount = getNewCount();
+	QMap<QString,bool> *oldMap = getThreadList();
+	freeThreadList();
+
+	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
+
 	while((pos = rx.search(data, pos)) != -1) {
 		QString str = rx.cap(1);
 		QRegExp rxType("^\"([a-z]+)\",");
@@ -65,7 +71,7 @@ void GMailParser::parse(const QString &data)
 			str.remove(tokPos, tokLen);
 			
 			if(tok == D_THREAD) {
-				parseThread(str);
+				parseThread(str, oldMap);
 			} else if(tok == D_VERSION) {
 				parseVersion(str);
 			} else if(tok == D_QUOTA) {
@@ -82,6 +88,14 @@ void GMailParser::parse(const QString &data)
 
 		pos += rx.matchedLength();
 	}
+
+	if(oldMap)
+		delete oldMap;
+
+	kdDebug() << k_funcinfo << "getNewCount()=" << getNewCount() << endl;
+	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
+	if(oldNewCount != getNewCount())
+		emit mailCountChanged();
 }
 
 void GMailParser::parseQuota(const QString &data)
@@ -172,7 +186,7 @@ void GMailParser::parseLabel(const QString &data)
 		 << "\n---Data---\n" << endl;
 }
 
-void GMailParser::parseThread(const QString &data)
+void GMailParser::parseThread(const QString &data, const QMap<QString,bool>* oldMap)
 {
 	QRegExp rx(
 		"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyId 
@@ -203,14 +217,9 @@ void GMailParser::parseThread(const QString &data)
 	thread is not from you
 	*/
 
-	unsigned int oldNewCount = getNewCount();
 	unsigned int newMsgCount = 0;
-	QMap<QString,bool> *oldMap = getThreadList();
 	int newid = 0;
 
-	freeThreadList();
-
-	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
 
 	if(oldMap)
 		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
@@ -252,16 +261,8 @@ void GMailParser::parseThread(const QString &data)
 	kdDebug() << k_funcinfo << "Finished searching for threads in: " << endl;
 	kdDebug() << data << endl;
 
-	if(oldMap)
-		delete oldMap;
-
 	if(newMsgCount > 0)
 		emit mailArrived(newMsgCount);
-		
-	kdDebug() << k_funcinfo << "getNewCount()=" << getNewCount() << endl;
-	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
-	if(oldNewCount != getNewCount())
-		emit mailCountChanged();
 }
 
 void GMailParser::parseVersion(const QString &data)

@@ -107,7 +107,7 @@ protected:
 	void parseQuota(const QString&);
 	void parseDefaultSummary(const QString&);
 	void parseLabel(const QString&);
-	void parseThread(const QString&);
+	void parseThread(const QString&, const QMap<QString,bool>*);
 	void parseVersion(const QString&);
 	void parseInvite(const QString&);
 	void freeThreadList();
