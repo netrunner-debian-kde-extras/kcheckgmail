@@ -1,48 +1,50 @@
+# translation of de.po to 
 # translation of de_DE.po to deutsch
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Marcus Thiesen <marcus@thiesen.org>, 2004.
+# Patrick Trettenbrein <patrick.trettenbrein@gmx.net>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: de_DE\n"
+"Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-02 12:55+1000\n"
-"PO-Revision-Date: 2004-10-02 12:14-0400\n"
-"Last-Translator: Marcus Thiesen <marcus@thiesen.org>\n"
-"Language-Team: deutsch <de@li.org>\n"
+"PO-Revision-Date: 2004-11-11 15:22+0100\n"
+"Last-Translator: Patrick Trettenbrein <patrick.trettenbrein@gmx.net>\n"
+"Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: _translatorinfo.cpp:1
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
-msgstr "Marcus Thiesen"
+msgstr "Patrick Trettenbrein"
 
 #: _translatorinfo.cpp:3
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "marcus@thiesen.org"
+msgstr "patrick.trettenbrein@kdemail.net"
 
 #: appletsettingswidget.cpp:94
 msgid "AppletSettingsWidget"
-msgstr ""
+msgstr "Programm Einstellungsfenster"
 
 #: appletsettingswidget.cpp:95
 msgid "Tray Icon"
-msgstr ""
+msgstr "Systemabschnittssymbol"
 
 #: appletsettingswidget.cpp:96 prefs.cpp:58
 msgid "Open browser to Gmail on left click"
-msgstr "Browser auf GMail öffnen bei klick"
+msgstr "Browser auf GMail öffnen bei Klick"
 
 #: appletsettingswidget.cpp:97 prefs.cpp:62
 msgid "Catch accidental left clicks when launching the browser"
-msgstr "Versehentliche klicks beim starten des Browsers abfangen"
+msgstr "Versehentliche Klicks beim starten des Browsers abfangen"
 
 #: appletsettingswidget.cpp:98
 msgid "Browser"
@@ -50,7 +52,7 @@ msgstr "Browser"
 
 #: appletsettingswidget.cpp:99
 msgid "Use the default KDE browser"
-msgstr "Den default KDE Browser benutzen"
+msgstr "Den KDE standart Browser benutzen"
 
 #: appletsettingswidget.cpp:100
 msgid "Use an alternative browser"
@@ -58,11 +60,11 @@ msgstr "Einen alternativen Browser benutzen"
 
 #: appletsettingswidget.cpp:101
 msgid "Debug"
-msgstr ""
+msgstr "Fehler beseitigen"
 
 #: appletsettingswidget.cpp:102 prefs.cpp:51
 msgid "Display an alert if GMail version changes"
-msgstr "Benachrichtigen falls sich GMail Version ändert"
+msgstr "Benachrichtigen falls sich die GMail Version ändert"
 
 #: gmail.cpp:180
 msgid "Invalid username or password"
@@ -80,29 +82,29 @@ msgstr "KCheckGmail konnte Kwallet nich öffnen. Bitte die Einstellungen überpr
 msgid ""
 "KCheckGmail cannot store your password securely in your wallet. Do you want "
 "to save the password in the unsafe configuration file instead?"
-msgstr "KCheckGmail konnte das Passwort nicht in dem sicheren KWallet speichern. Soll es stattdessen in der nicht sicheren Konfigurationsdatei gespeichert werden?"
+msgstr "KCheckGmail konnte das Passwort nicht im sicheren KWallet speichern. Soll es stattdessen in der nicht sicheren Konfigurationsdatei gespeichert werden?"
 
 #: gmailwalletmanager.cpp:191
 msgid "Unable to store secure password"
-msgstr "Konnte das Passwort nicht speichern"
+msgstr "Passwort konnte nicht gespeichert werden"
 
 #: gmailwalletmanager.cpp:192 gmailwalletmanager.cpp:238
 msgid "Store unsafe"
-msgstr "Nicht sicher speichern"
+msgstr "Unsicher speichern"
 
 #: gmailwalletmanager.cpp:235
 msgid ""
 "KCheckGmail cannot retrieve your password from your wallet. Do you want to "
 "save the password in the unsafe configuration file instead?"
-msgstr "KCheckGmail konnte das Passwort nicht aus KWallet holen. Soll es stattdessen in der nicht sicheren Konfigurationsdatei gespeichert werden?"
+msgstr "KCheckGmail konnte das Passwort nicht aus KWallet abfragen. Soll es stattdessen in der nicht sicheren Konfigurationsdatei gespeichert werden?"
 
 #: gmailwalletmanager.cpp:237
 msgid "Unable to retrieve secure password"
-msgstr "Konnte das Passwort nicht holen"
+msgstr "Konnte das Passwort nicht abfragen"
 
 #: kcheckgmailtray.cpp:111 main.cpp:45
 msgid "KCheckGmail"
-msgstr ""
+msgstr "KCheckGmail"
 
 #: kcheckgmailtray.cpp:113
 msgid "Configure &Notications..."
@@ -138,7 +140,7 @@ msgstr "Sie haben <b>%1</b> neue Nachrichten"
 
 #: kcheckgmailtray.cpp:358
 msgid "An error occurred logging in to Gmail<br><b>%1</b>"
-msgstr "Beim anmelden bei GMail trat  ein fehler auf.<br><b>%1</b>"
+msgstr "Beim anmelden bei GMail trat ein Fehler auf.<br><b>%1</b>"
 
 #: kcheckgmailtray.cpp:368
 msgid "Now logged in to Gmail!"
@@ -177,15 +179,15 @@ msgid ""
 "Gmail has been upgraded since this version of KCheckGmail was released. This "
 "may cause all sort of strange errors. Please check for an upgrade to "
 "KCheckGmail soon."
-msgstr "Die Version von GMail wurde erhöht seit diese Version von KCheckGmail veröffentlich wurde. Dieses kann zu fehlern führen. Bitte überprüfen sie ob es eine neue Version von KCheckGmail gibt."
+msgstr "Eine neue Version GMail ist erschienen, seit diese Version von KCheckGmail veröffentlich wurde. Dies kann zu Fehlern führen. Bitte überprüfen sie ob es eine neue Version von KCheckGmail gibt."
 
 #: kcheckgmailtray.cpp:449
 msgid "Version changed"
-msgstr "Versionsänderung"
+msgstr "Version geändert"
 
 #: loginsettingswidget.cpp:75
 msgid "LoginSettingsWidget"
-msgstr ""
+msgstr "Anmeldungseinstellungen Fenster"
 
 #: loginsettingswidget.cpp:76
 msgid "Username:"
@@ -197,17 +199,17 @@ msgstr "Passwort:"
 
 #: loginsettingswidget.cpp:78 prefs.cpp:47
 msgid "Use KDE Wallet to store password"
-msgstr "KDE Wallet benutzen um das Passwort zu speichern"
+msgstr "KWallet benutzen um das Passwort zu speichern"
 
 #: main.cpp:36
 msgid "Application is being auto-started at KDE session start"
-msgstr "Programm wird automatisch beim starten einer KDE Session gestartet."
+msgstr "Programm wird automatisch beim Starten einer KDE Sitzung gestartet."
 
 #: main.cpp:48
 msgid ""
 "System tray application to display how many\n"
 "email messages you have in your Gmail account."
-msgstr "System Tray Programm um die Anzahl der\nNachrichten in einem GMail Account anzuzeigen"
+msgstr "Systemabschnitt Programm um die Anzahl der\nNachrichten in einem GMail Account anzuzeigen"
 
 #: main.cpp:55
 msgid "Primary author and maintainer"
@@ -223,7 +225,7 @@ msgstr "Italienische Übersetzung"
 
 #: netsettingswidget.cpp:57
 msgid "NetworkSettingsWidget"
-msgstr ""
+msgstr "Netzwerkeinstellungen Fenster"
 
 #: netsettingswidget.cpp:58
 msgid "Checking Interval"
@@ -239,7 +241,7 @@ msgstr "Abfrageinterval"
 
 #: prefs.cpp:33
 msgid "How many seconds to wait before checking for new mail."
-msgstr "Die Zeit in Sekunden die gewartet werden soll bevor nach Mail gesehen wird"
+msgstr "Die Zeit in Sekunden die gewartet werden soll bevor nach Mail gesehen wird."
 
 #: prefs.cpp:39
 msgid "Username"
@@ -247,7 +249,7 @@ msgstr "Benutzername"
 
 #: prefs.cpp:40
 msgid "Your Gmail username"
-msgstr "Der GMail Benutzername"
+msgstr "Ihr GMail Benutzername"
 
 #: prefs.cpp:43
 msgid "Password"
@@ -255,36 +257,36 @@ msgstr "Passwort"
 
 #: prefs.cpp:44
 msgid "Password for checking your Gmail account"
-msgstr "Das Passwort zur Abfrage des GMail Accounts"
+msgstr "Das Passwort zur Abfrage des GMail Kontos"
 
 #: prefs.cpp:48
 msgid "Use the KDE Wallet system to store your Gmail password."
-msgstr "Das KDE Wallet benutzen um das GMail Passwort zu speichern"
+msgstr "KWallet benutzen um das GMail Passwort zu speichern."
 
 #: prefs.cpp:52
 msgid "If Google update the GMail code, display an alert"
-msgstr "Einen Alarm anzeigen wenn Google das GMail System überarbeitet"
+msgstr "Eine Nachricht anzeigen wenn Google das GMail System überarbeitet hat."
 
 #: prefs.cpp:59
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGmail icon is "
 "clicked."
-msgstr "Wenn aktiviert wird der default KDE Webbrowser gestarten wenn das KCheckGmail Icon angeklickt wird"
+msgstr "Wenn ausgewählt, wird der standart KDE Browser gestartet wenn das KCheckGmail Icon angeklickt wird."
 
 #: prefs.cpp:63
 msgid ""
 "If enabled, every time you click on the KCheckGmail icon will disable it for "
 "a few seconds, thus preventing you from accidentaly opening more than one "
 "window"
-msgstr "Wenn aktiviert wird das KCheckGmail Icon für ein paar Sekunden deaktiviert um zu verhindern, das versehentlich mehrere Fenster gestartet werden"
+msgstr "Wenn ausgewählt, wird das KCheckGmail Icon für ein paar Sekunden deaktiviert um zu verhindern, das versehentlich mehrere Fenster gestartet werden."
 
 #: prefs.cpp:66
 msgid "Use the KDE default browser"
-msgstr "Den KDE default Browser verwenden"
+msgstr "Den KDE standart Browser verwenden"
 
 #: prefs.cpp:67
 msgid "Use whatever browser is configured as the KDE default to check your Gmail"
-msgstr "Benutzt den Browser der als default KDE Browser eingerichtet ist um die Nachrichten anzuzeigen"
+msgstr "Benutze den Browser der als standart Browser in KDE eingerichtet ist um die Nachrichten anzuzeigen"
 
 #: prefs.cpp:70 prefs.cpp:73
 msgid "Use a custom browser"
@@ -292,6 +294,6 @@ msgstr "Benutzerdefinierten Browser verwenden"
 
 #: prefs.cpp:74
 msgid "Use a custom browser other than the KDE default to check your Gmail"
-msgstr "Einen benutzerdefinierten Browser Verwenden um die GMail Nachrichten Anzuzeigen"
+msgstr "Einen benutzerdefinierten Browser verwenden um die Nachrichten anzuzeigen"
 
 
