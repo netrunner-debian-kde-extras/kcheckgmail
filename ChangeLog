@@ -1,3 +1,13 @@
+2004-09-26 Matthew Wlazlo <mwlazlo@gmail.com>
+	* src/gmail.{cpp,h}:
+	* src/gmailwalletmanager.{cpp,h}:
+	* src/kcheckgmailtray.{cpp,h}:
+	* src/loginsettingswidget.ui:
+	* src/prefs.kcfg:
+		- use GMailWalletManager; Wallet support.
+	* src/kcheckgmailtray.{cpp,h}:
+	 	- open config dialog if no username present.
+	
 2004-08-27 Matthew Wlazlo <mwlazlo@gmail.com>
 	* src/gmailparser.cpp:
 	* src/gmailparser.h:

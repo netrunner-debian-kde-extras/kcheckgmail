@@ -1,14 +1,5 @@
-Use kdewallet to store/retrieve the password...
-
-Write a flex parser for the javascript returned from google. It will be
-possible to use this data to differentiate messages when an email arrives at
-the same time an email is read...
-
 It would be nice, although not sure how possible at this stage, to have a
 KIO slave representation of gmail. Read your Gmail messages from konq?
-
-Should the configuration dialog be displayed when the username/password is
-empty?
 
 user defined icon for the systray
 
