@@ -60,6 +60,8 @@ int main(int argc, char **argv)
 	about.addCredit("Dudalev Michael", I18N_NOOP("Russian Translation"), "dudalev@gmail.com");
 	about.addCredit("Patrick Trettenbrein", I18N_NOOP("German Translation Updates"), "patrick.trettenbrein@gmx.net");
 	about.addCredit("Alexis Bunel", I18N_NOOP("French Translation"), "alexisbunel@gmail.com");
+	about.addCredit("Jarosław Kamper", I18N_NOOP("Polish Translation"), "jaroslawkamper@gmail.com");
+
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");
 
