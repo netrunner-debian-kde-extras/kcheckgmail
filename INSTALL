@@ -5,6 +5,8 @@ Quick start instructions
 # ./configure ... 
 # make install
 
+KCheckGmail should be available from the "Internet" menu.
+
 That's it! 
 
 Please email any bug reports/ideas/suggestions to mwlazlo@gmail.com. 
