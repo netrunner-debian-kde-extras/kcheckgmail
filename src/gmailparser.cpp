@@ -135,7 +135,7 @@ void GMailParser::parseQuota(const QString &data)
 void GMailParser::parseDefaultSummary(const QString &data)
 {
 	QStringList list = QStringList::split(",",data);
-	if(list.size() == 6) {
+	if(list.size() == 7) {
 		QStringList::Iterator iter = list.begin();
 		int i = 0;
 		while(iter != list.end()) {
@@ -169,15 +169,15 @@ void GMailParser::parseDefaultSummary(const QString &data)
 
 		kdDebug() << k_funcinfo << endl  
 			<< "inbox=" << mSummary.inbox << "\n"
-			<< "starred=" << mSummary.inbox << "\n"
-			<< "sent=" << mSummary.inbox << "\n"
-			<< "all=" << mSummary.inbox << "\n"
-			<< "spam=" << mSummary.inbox << "\n"
-			<< "trash=" << mSummary.inbox << endl;
+			<< "starred=" << mSummary.starred << "\n"
+			<< "sent=" << mSummary.sent << "\n"
+			<< "all=" << mSummary.all << "\n"
+			<< "spam=" << mSummary.spam << "\n"
+			<< "trash=" << mSummary.trash << endl;
 
 	} else
 		kdDebug() << k_funcinfo << "Wrong number of elements in ds: "
-			<< list.size() << ", should be: 6." << endl;
+			<< list.size() << ", should be: 7." << endl;
 }
 
 void GMailParser::parseLabel(const QString &data)
@@ -201,7 +201,8 @@ void GMailParser::parseThread(const QString &data, const QMap<QString,bool>* old
 		"\\s*\\[([^\\]]*)\\]\\s*,"	// labels
 		"\\s*\"([^\"]*)\"\\s*,"		// attachments
 		"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgId
-		"\\s*([0-9]+)\\s*\\]" 		// unknown3
+		"\\s*([0-9]+)\\s*,"              // unknown3
+		"\\s*\"([^\"]*)\"\\s*\\]"		// unknown3
 		);
 
 	int pos = 0;
