@@ -1,7 +1,6 @@
 Quick start instructions
 
 
-# make -f Makefile.cvs
 # ./configure ... 
 # make install
 

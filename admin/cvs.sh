@@ -581,7 +581,7 @@ for subdir in $dirs; do
    fi
    perl -e '$mes=0; while (<STDIN>) { next if (/^(if\s|else\s|endif)/); if (/^messages:/) { $mes=1; print $_; next; } if ($mes) { if (/$\\(XGETTEXT\)/ && / -o/) { s/ -o \$\(podir\)/ _translatorinfo.cpp -o \$\(podir\)/ } print $_; } else { print $_; } }' < Makefile.am | egrep -v '^include ' > _transMakefile
 
-   kdepotpath=${includedir:-${KDEDIR:-`kde-config --prefix`}/include/kde}/kde.pot
+   kdepotpath=${includedir:-${KDEDIR:-`kde-config --prefix`}/include}/kde.pot
 
    $MAKE -s -f _transMakefile podir=$podir EXTRACTRC="$EXTRACTRC" PREPARETIPS="$PREPARETIPS" \
 	XGETTEXT="${XGETTEXT:-xgettext} -C -ki18n -ktr2i18n -kI18N_NOOP -kaliasLocale -x $kdepotpath" messages 

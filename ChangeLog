@@ -1,3 +1,20 @@
+2004-12-13 13:28  petrol_pumper
+
+	* src/gmailparser.cpp: fixed parsing error, updated debugging
+	  output
+
+2004-11-18 12:04  petrol_pumper
+
+	* po/kcheckgmail.pot: updated main .pot
+
+2004-11-18 12:02  petrol_pumper
+
+	* po/ru.po: updated russian translation
+
+2004-11-18 10:23  petrol_pumper
+
+	* ChangeLog: updated
+
 2004-11-18 10:13  petrol_pumper
 
 	* src/eventsrc: translation fix
