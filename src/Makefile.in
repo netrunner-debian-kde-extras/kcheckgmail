@@ -140,11 +140,13 @@ ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
+ENABLE_PERMISSIVE_FLAG = @ENABLE_PERMISSIVE_FLAG@
 EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
 FRAMEWORK_COREAUDIO = @FRAMEWORK_COREAUDIO@
 GMSGFMT = @GMSGFMT@
+HAVE_GCC_VISIBILITY = @HAVE_GCC_VISIBILITY@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -168,6 +170,8 @@ KDE_USE_NMCHECK_FALSE = @KDE_USE_NMCHECK_FALSE@
 KDE_USE_NMCHECK_TRUE = @KDE_USE_NMCHECK_TRUE@
 KDE_XSL_STYLESHEET = @KDE_XSL_STYLESHEET@
 LDFLAGS = @LDFLAGS@
+LDFLAGS_AS_NEEDED = @LDFLAGS_AS_NEEDED@
+LDFLAGS_NEW_DTAGS = @LDFLAGS_NEW_DTAGS@
 LIBCOMPAT = @LIBCOMPAT@
 LIBCRYPT = @LIBCRYPT@
 LIBDL = @LIBDL@
@@ -189,10 +193,14 @@ LIB_KDECORE = @LIB_KDECORE@
 LIB_KDEPIM = @LIB_KDEPIM@
 LIB_KDEPRINT = @LIB_KDEPRINT@
 LIB_KDEUI = @LIB_KDEUI@
+LIB_KDNSSD = @LIB_KDNSSD@
 LIB_KFILE = @LIB_KFILE@
 LIB_KFM = @LIB_KFM@
 LIB_KHTML = @LIB_KHTML@
+LIB_KIMPROXY = @LIB_KIMPROXY@
 LIB_KIO = @LIB_KIO@
+LIB_KJS = @LIB_KJS@
+LIB_KNEWSTUFF = @LIB_KNEWSTUFF@
 LIB_KPARTS = @LIB_KPARTS@
 LIB_KSPELL = @LIB_KSPELL@
 LIB_KSYCOCA = @LIB_KSYCOCA@
@@ -207,6 +215,7 @@ LIB_XRENDER = @LIB_XRENDER@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
+MAKEKDEWIDGETS = @MAKEKDEWIDGETS@
 MCOPIDL = @MCOPIDL@
 MEINPROC = @MEINPROC@
 MOC = @MOC@
@@ -278,6 +287,8 @@ host_os = @host_os@
 host_vendor = @host_vendor@
 include_ARTS_FALSE = @include_ARTS_FALSE@
 include_ARTS_TRUE = @include_ARTS_TRUE@
+include_x11_FALSE = @include_x11_FALSE@
+include_x11_TRUE = @include_x11_TRUE@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
@@ -322,6 +333,8 @@ target_alias = @target_alias@
 target_cpu = @target_cpu@
 target_os = @target_os@
 target_vendor = @target_vendor@
+unsermake_enable_pch_FALSE = @unsermake_enable_pch_FALSE@
+unsermake_enable_pch_TRUE = @unsermake_enable_pch_TRUE@
 x_includes = @x_includes@
 x_libraries = @x_libraries@
 xdg_appsdir = @xdg_appsdir@
@@ -750,7 +763,7 @@ clean-metasources:
 	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc
 
 #>+ 2
-KDE_DIST=Makefile.in kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop loginsettingswidget.ui Makefile.am 
+KDE_DIST=Makefile.in kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop kcheckgmail loginsettingswidget.ui Makefile.am 
 
 #>+ 6
 clean-ui:
@@ -853,13 +866,13 @@ appletsettingswidget.cpp: $(srcdir)/appletsettingswidget.ui appletsettingswidget
 	echo '#include <kdialog.h>' > appletsettingswidget.cpp
 	echo '#include <klocale.h>' >> appletsettingswidget.cpp
 	$(UIC) -tr ${UIC_TR} -i appletsettingswidget.h $(srcdir)/appletsettingswidget.ui > appletsettingswidget.cpp.temp ; ret=$$?; \
-	$(PERL) -pe "s,${UIC_TR}( \"\" ),QString::null,g" appletsettingswidget.cpp.temp | $(PERL) -pe "s,${UIC_TR}( \"\"\, \"\" ),QString::null,g" | $(PERL) -pe "s,image([0-9][0-9]*)_data,img\$$1_appletsettingswidget,g" >> appletsettingswidget.cpp ;\
+	$(PERL) -pe "s,${UIC_TR}( \"\" ),QString::null,g" appletsettingswidget.cpp.temp | $(PERL) -pe "s,${UIC_TR}( \"\"\, \"\" ),QString::null,g" | $(PERL) -pe "s,image([0-9][0-9]*)_data,img\$$1_appletsettingswidget,g" | $(PERL) -pe "s,: QWizard\(,: KWizard(,g" >> appletsettingswidget.cpp ;\
 	rm -f appletsettingswidget.cpp.temp ;\
 	if test "$$ret" = 0; then echo '#include "appletsettingswidget.moc"' >> appletsettingswidget.cpp; else rm -f appletsettingswidget.cpp ; exit $$ret ; fi
 
 appletsettingswidget.h: $(srcdir)/appletsettingswidget.ui
-	$(UIC) -o appletsettingswidget.h $(srcdir)/appletsettingswidget.ui
-
+	rm -rf appletsettingswidget.h;
+	$(UIC) $(srcdir)/appletsettingswidget.ui | $(PERL) -pi -e "s,public QWizard,public KWizard,g; s,#include <qwizard.h>,#include <kwizard.h>,g" >> appletsettingswidget.h ;
 appletsettingswidget.moc: appletsettingswidget.h
 	$(MOC) appletsettingswidget.h -o appletsettingswidget.moc
 
@@ -868,13 +881,13 @@ loginsettingswidget.cpp: $(srcdir)/loginsettingswidget.ui loginsettingswidget.h 
 	echo '#include <kdialog.h>' > loginsettingswidget.cpp
 	echo '#include <klocale.h>' >> loginsettingswidget.cpp
 	$(UIC) -tr ${UIC_TR} -i loginsettingswidget.h $(srcdir)/loginsettingswidget.ui > loginsettingswidget.cpp.temp ; ret=$$?; \
-	$(PERL) -pe "s,${UIC_TR}( \"\" ),QString::null,g" loginsettingswidget.cpp.temp | $(PERL) -pe "s,${UIC_TR}( \"\"\, \"\" ),QString::null,g" | $(PERL) -pe "s,image([0-9][0-9]*)_data,img\$$1_loginsettingswidget,g" >> loginsettingswidget.cpp ;\
+	$(PERL) -pe "s,${UIC_TR}( \"\" ),QString::null,g" loginsettingswidget.cpp.temp | $(PERL) -pe "s,${UIC_TR}( \"\"\, \"\" ),QString::null,g" | $(PERL) -pe "s,image([0-9][0-9]*)_data,img\$$1_loginsettingswidget,g" | $(PERL) -pe "s,: QWizard\(,: KWizard(,g" >> loginsettingswidget.cpp ;\
 	rm -f loginsettingswidget.cpp.temp ;\
 	if test "$$ret" = 0; then echo '#include "loginsettingswidget.moc"' >> loginsettingswidget.cpp; else rm -f loginsettingswidget.cpp ; exit $$ret ; fi
 
 loginsettingswidget.h: $(srcdir)/loginsettingswidget.ui
-	$(UIC) -o loginsettingswidget.h $(srcdir)/loginsettingswidget.ui
-
+	rm -rf loginsettingswidget.h;
+	$(UIC) $(srcdir)/loginsettingswidget.ui | $(PERL) -pi -e "s,public QWizard,public KWizard,g; s,#include <qwizard.h>,#include <kwizard.h>,g" >> loginsettingswidget.h ;
 loginsettingswidget.moc: loginsettingswidget.h
 	$(MOC) loginsettingswidget.h -o loginsettingswidget.moc
 
@@ -883,12 +896,12 @@ netsettingswidget.cpp: $(srcdir)/netsettingswidget.ui netsettingswidget.h netset
 	echo '#include <kdialog.h>' > netsettingswidget.cpp
 	echo '#include <klocale.h>' >> netsettingswidget.cpp
 	$(UIC) -tr ${UIC_TR} -i netsettingswidget.h $(srcdir)/netsettingswidget.ui > netsettingswidget.cpp.temp ; ret=$$?; \
-	$(PERL) -pe "s,${UIC_TR}( \"\" ),QString::null,g" netsettingswidget.cpp.temp | $(PERL) -pe "s,${UIC_TR}( \"\"\, \"\" ),QString::null,g" | $(PERL) -pe "s,image([0-9][0-9]*)_data,img\$$1_netsettingswidget,g" >> netsettingswidget.cpp ;\
+	$(PERL) -pe "s,${UIC_TR}( \"\" ),QString::null,g" netsettingswidget.cpp.temp | $(PERL) -pe "s,${UIC_TR}( \"\"\, \"\" ),QString::null,g" | $(PERL) -pe "s,image([0-9][0-9]*)_data,img\$$1_netsettingswidget,g" | $(PERL) -pe "s,: QWizard\(,: KWizard(,g" >> netsettingswidget.cpp ;\
 	rm -f netsettingswidget.cpp.temp ;\
 	if test "$$ret" = 0; then echo '#include "netsettingswidget.moc"' >> netsettingswidget.cpp; else rm -f netsettingswidget.cpp ; exit $$ret ; fi
 
 netsettingswidget.h: $(srcdir)/netsettingswidget.ui
-	$(UIC) -o netsettingswidget.h $(srcdir)/netsettingswidget.ui
-
+	rm -rf netsettingswidget.h;
+	$(UIC) $(srcdir)/netsettingswidget.ui | $(PERL) -pi -e "s,public QWizard,public KWizard,g; s,#include <qwizard.h>,#include <kwizard.h>,g" >> netsettingswidget.h ;
 netsettingswidget.moc: netsettingswidget.h
 	$(MOC) netsettingswidget.h -o netsettingswidget.moc

@@ -87,11 +87,13 @@ ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
+ENABLE_PERMISSIVE_FLAG = @ENABLE_PERMISSIVE_FLAG@
 EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
 FRAMEWORK_COREAUDIO = @FRAMEWORK_COREAUDIO@
 GMSGFMT = @GMSGFMT@
+HAVE_GCC_VISIBILITY = @HAVE_GCC_VISIBILITY@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -115,6 +117,8 @@ KDE_USE_NMCHECK_FALSE = @KDE_USE_NMCHECK_FALSE@
 KDE_USE_NMCHECK_TRUE = @KDE_USE_NMCHECK_TRUE@
 KDE_XSL_STYLESHEET = @KDE_XSL_STYLESHEET@
 LDFLAGS = @LDFLAGS@
+LDFLAGS_AS_NEEDED = @LDFLAGS_AS_NEEDED@
+LDFLAGS_NEW_DTAGS = @LDFLAGS_NEW_DTAGS@
 LIBCOMPAT = @LIBCOMPAT@
 LIBCRYPT = @LIBCRYPT@
 LIBDL = @LIBDL@
@@ -136,10 +140,14 @@ LIB_KDECORE = @LIB_KDECORE@
 LIB_KDEPIM = @LIB_KDEPIM@
 LIB_KDEPRINT = @LIB_KDEPRINT@
 LIB_KDEUI = @LIB_KDEUI@
+LIB_KDNSSD = @LIB_KDNSSD@
 LIB_KFILE = @LIB_KFILE@
 LIB_KFM = @LIB_KFM@
 LIB_KHTML = @LIB_KHTML@
+LIB_KIMPROXY = @LIB_KIMPROXY@
 LIB_KIO = @LIB_KIO@
+LIB_KJS = @LIB_KJS@
+LIB_KNEWSTUFF = @LIB_KNEWSTUFF@
 LIB_KPARTS = @LIB_KPARTS@
 LIB_KSPELL = @LIB_KSPELL@
 LIB_KSYCOCA = @LIB_KSYCOCA@
@@ -154,6 +162,7 @@ LIB_XRENDER = @LIB_XRENDER@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
+MAKEKDEWIDGETS = @MAKEKDEWIDGETS@
 MCOPIDL = @MCOPIDL@
 MEINPROC = @MEINPROC@
 MOC = @MOC@
@@ -225,6 +234,8 @@ host_os = @host_os@
 host_vendor = @host_vendor@
 include_ARTS_FALSE = @include_ARTS_FALSE@
 include_ARTS_TRUE = @include_ARTS_TRUE@
+include_x11_FALSE = @include_x11_FALSE@
+include_x11_TRUE = @include_x11_TRUE@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
@@ -269,6 +280,8 @@ target_alias = @target_alias@
 target_cpu = @target_cpu@
 target_os = @target_os@
 target_vendor = @target_vendor@
+unsermake_enable_pch_FALSE = @unsermake_enable_pch_FALSE@
+unsermake_enable_pch_TRUE = @unsermake_enable_pch_TRUE@
 x_includes = @x_includes@
 x_libraries = @x_libraries@
 xdg_appsdir = @xdg_appsdir@
@@ -470,7 +483,7 @@ uninstall-am: uninstall-info-am
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=Makefile.in kcheckgmail.pot ru.po pt_BR.po pl.po de.po es.po it.po fr.po Makefile.am 
+KDE_DIST=pt_BR.gmo pl.gmo Makefile.in kcheckgmail.pot ru.po ru.gmo pt_BR.po it.gmo de.gmo pl.po de.po es.po fr.gmo es.gmo it.po fr.po Makefile.am 
 
 #>+ 22
 de.gmo: de.po

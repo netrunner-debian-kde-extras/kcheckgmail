@@ -40,9 +40,9 @@ target_triplet = @target@
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
-	TODO admin/ChangeLog admin/compile admin/config.guess \
-	admin/config.sub admin/depcomp admin/install-sh \
-	admin/ltmain.sh admin/missing admin/mkinstalldirs admin/ylwrap
+	TODO admin/compile admin/config.guess admin/config.sub \
+	admin/depcomp admin/install-sh admin/ltmain.sh admin/missing \
+	admin/mkinstalldirs admin/ylwrap
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
@@ -118,11 +118,13 @@ ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
+ENABLE_PERMISSIVE_FLAG = @ENABLE_PERMISSIVE_FLAG@
 EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
 FRAMEWORK_COREAUDIO = @FRAMEWORK_COREAUDIO@
 GMSGFMT = @GMSGFMT@
+HAVE_GCC_VISIBILITY = @HAVE_GCC_VISIBILITY@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -146,6 +148,8 @@ KDE_USE_NMCHECK_FALSE = @KDE_USE_NMCHECK_FALSE@
 KDE_USE_NMCHECK_TRUE = @KDE_USE_NMCHECK_TRUE@
 KDE_XSL_STYLESHEET = @KDE_XSL_STYLESHEET@
 LDFLAGS = @LDFLAGS@
+LDFLAGS_AS_NEEDED = @LDFLAGS_AS_NEEDED@
+LDFLAGS_NEW_DTAGS = @LDFLAGS_NEW_DTAGS@
 LIBCOMPAT = @LIBCOMPAT@
 LIBCRYPT = @LIBCRYPT@
 LIBDL = @LIBDL@
@@ -167,10 +171,14 @@ LIB_KDECORE = @LIB_KDECORE@
 LIB_KDEPIM = @LIB_KDEPIM@
 LIB_KDEPRINT = @LIB_KDEPRINT@
 LIB_KDEUI = @LIB_KDEUI@
+LIB_KDNSSD = @LIB_KDNSSD@
 LIB_KFILE = @LIB_KFILE@
 LIB_KFM = @LIB_KFM@
 LIB_KHTML = @LIB_KHTML@
+LIB_KIMPROXY = @LIB_KIMPROXY@
 LIB_KIO = @LIB_KIO@
+LIB_KJS = @LIB_KJS@
+LIB_KNEWSTUFF = @LIB_KNEWSTUFF@
 LIB_KPARTS = @LIB_KPARTS@
 LIB_KSPELL = @LIB_KSPELL@
 LIB_KSYCOCA = @LIB_KSYCOCA@
@@ -185,6 +193,7 @@ LIB_XRENDER = @LIB_XRENDER@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
+MAKEKDEWIDGETS = @MAKEKDEWIDGETS@
 MCOPIDL = @MCOPIDL@
 MEINPROC = @MEINPROC@
 MOC = @MOC@
@@ -256,6 +265,8 @@ host_os = @host_os@
 host_vendor = @host_vendor@
 include_ARTS_FALSE = @include_ARTS_FALSE@
 include_ARTS_TRUE = @include_ARTS_TRUE@
+include_x11_FALSE = @include_x11_FALSE@
+include_x11_TRUE = @include_x11_TRUE@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
@@ -300,6 +311,8 @@ target_alias = @target_alias@
 target_cpu = @target_cpu@
 target_os = @target_os@
 target_vendor = @target_vendor@
+unsermake_enable_pch_FALSE = @unsermake_enable_pch_FALSE@
+unsermake_enable_pch_TRUE = @unsermake_enable_pch_TRUE@
 x_includes = @x_includes@
 x_libraries = @x_libraries@
 xdg_appsdir = @xdg_appsdir@
@@ -329,13 +342,14 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 #>- 	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  Makefile'; \
 #>- 	cd $(top_srcdir) && \
 #>- 	  $(AUTOMAKE) --gnu  Makefile
-#>+ 13
+#>+ 14
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
 	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu '; \
+ (  \
 	      cd $(srcdir) && $(AUTOMAKE) --gnu  \
-		&& exit 0; \
+	 ) || exit 1; echo ' cd $(top_srcdir) && perl admin/am_edit '; cd $(top_srcdir) && perl admin/am_edit && exit 0;  \
 	      exit 1;; \
 	  esac; \
 	done; \
@@ -785,20 +799,11 @@ KDE_DIST=cvs2cl.pl stamp-h.in subdirs Makefile.in configure.files config.h.in di
 #>+ 2
 docs-am:
 
-#>+ 16
+#>+ 7
 force-reedit:
-		@for dep in $?; do \
-	  case '$(am__configure_deps)' in \
-	    *$$dep*) \
-	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu '; \
+	 \
 	      cd $(srcdir) && $(AUTOMAKE) --gnu  \
-		&& exit 0; \
-	      exit 1;; \
-	  esac; \
-	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  Makefile'; \
-	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  Makefile
+	
 	cd $(top_srcdir) && perl admin/am_edit Makefile.in
 
 
