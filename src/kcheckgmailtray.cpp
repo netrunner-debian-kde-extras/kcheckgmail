@@ -182,7 +182,7 @@ void KCheckGmailTray::slotThreadsMenuActivated(int n)
 			url = "http";
 
 		url.append("://gmail.google.com/gmail?view=cv&search=inbox&tearoff=1");
-		url.append("&fs=1&th=");
+		url.append("&lvp=-1&cvp=1&fs=1&tf=1&fs=1&th=");
 		url.append(t.msgId);
 		launchBrowser(url);
 	}
