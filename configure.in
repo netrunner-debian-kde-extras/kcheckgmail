@@ -1,3 +1,7 @@
+dnl =======================================================
+dnl FILE: ./admin/configure.in.min
+dnl =======================================================
+
 dnl    This file is part of the KDE libraries/packages
 dnl    Copyright (C) 2001 Stephan Kulow (coolo@kde.org)
  
@@ -36,7 +40,7 @@ dnl Perform program name transformation
 AC_ARG_PROGRAM
 
 dnl Automake doc recommends to do this only here. (Janos)
-AM_INIT_AUTOMAKE(kcheckgmail, 0.1) dnl searches for some needed programs
+AM_INIT_AUTOMAKE(kcheckgmail, 0.4.1) dnl searches for some needed programs
 
 KDE_SET_PREFIX
 
@@ -55,6 +59,10 @@ AM_KDE_WITH_NLS
 
 KDE_USE_QT(3.2)
 AC_PATH_KDE
+dnl =======================================================
+dnl FILE: configure.in.in
+dnl =======================================================
+
 #MIN_CONFIG(3.2)
 
 dnl PACKAGE set before

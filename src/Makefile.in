@@ -282,7 +282,7 @@ kcheckgmail_SOURCES=main.cpp \
 	 \
 	 netsettingswidget.cpp loginsettingswidget.cpp appletsettingswidget.cpp prefs.cpp
 
-kcheckgmail_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
+kcheckgmail_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries) 
 kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
 
 #>- METASOURCES = AUTO
@@ -695,7 +695,7 @@ clean-metasources:
 	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc
 
 #>+ 2
-KDE_DIST=kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop loginsettingswidget.ui 
+KDE_DIST=kcheckgmail.lsm diff.diff prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop loginsettingswidget.ui 
 
 #>+ 6
 clean-ui:

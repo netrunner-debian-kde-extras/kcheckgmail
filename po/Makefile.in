@@ -258,8 +258,8 @@ xdg_directorydir = @xdg_directorydir@
 xdg_menudir = @xdg_menudir@
 #>- POFILES = AUTO
 #>+ 2
-POFILES = pt_BR.po
-GMOFILES = pt_BR.gmo
+POFILES = it.po pt_BR.po it_IT.po de.po es.po
+GMOFILES = it.gmo pt_BR.gmo it_IT.gmo de.gmo es.gmo
 subdir = po
 mkinstalldirs = $(SHELL) $(top_srcdir)/admin/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -415,20 +415,32 @@ uninstall-am: uninstall-info-am
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=kcheckgmail.pot pt_BR.po 
+KDE_DIST=pt_BR.gmo kcheckgmail.pot pt_BR.po it.gmo de.gmo de.po es.po it_IT.po es.gmo it_IT.gmo it.po 
 
-#>+ 4
+#>+ 16
+it.gmo: it.po
+	rm -f it.gmo; $(GMSGFMT) -o it.gmo $(srcdir)/it.po
+	test ! -f it.gmo || touch it.gmo
 pt_BR.gmo: pt_BR.po
 	rm -f pt_BR.gmo; $(GMSGFMT) -o pt_BR.gmo $(srcdir)/pt_BR.po
 	test ! -f pt_BR.gmo || touch pt_BR.gmo
+it_IT.gmo: it_IT.po
+	rm -f it_IT.gmo; $(GMSGFMT) -o it_IT.gmo $(srcdir)/it_IT.po
+	test ! -f it_IT.gmo || touch it_IT.gmo
+de.gmo: de.po
+	rm -f de.gmo; $(GMSGFMT) -o de.gmo $(srcdir)/de.po
+	test ! -f de.gmo || touch de.gmo
+es.gmo: es.po
+	rm -f es.gmo; $(GMSGFMT) -o es.gmo $(srcdir)/es.po
+	test ! -f es.gmo || touch es.gmo
 
 #>+ 3
 clean-nls:
-	-rm -f  pt_BR.gmo
+	-rm -f  it.gmo pt_BR.gmo it_IT.gmo de.gmo es.gmo
 
 #>+ 10
 install-nls:
-	@for base in pt_BR ; do \
+	@for base in it pt_BR it_IT de es ; do \
 	  echo $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
 	  $(mkinstalldirs) $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES ; \
 	  if test -f $$base.gmo; then $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
@@ -437,9 +449,13 @@ install-nls:
 	done
 
 
-#>+ 3
+#>+ 7
 uninstall-nls:
+	rm -f $(DESTDIR)$(kde_locale)/it/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/pt_BR/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/it_IT/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/de/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/es/LC_MESSAGES/$(PACKAGE).mo
 
 #>+ 2
 all-nls: $(GMOFILES)

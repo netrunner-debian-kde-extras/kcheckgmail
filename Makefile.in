@@ -656,7 +656,7 @@ dist-hook:
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=subdirs configure.files Makefile.cvs Doxyfile kcheckgmail.kdevelop 
+KDE_DIST=stamp-h.in subdirs configure.files diff.diff Makefile.cvs Doxyfile kcheckgmail.kdevelop 
 
 #>+ 2
 docs-am:

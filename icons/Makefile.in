@@ -408,19 +408,17 @@ uninstall-am: uninstall-kde-icons  uninstall-info-am
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=cr128-app-kcheckgmail.png cr16-app-kcheckgmaillight.png cr32-app-kcheckgmail.png cr22-app-kcheckgmail.png cr16-app-kcheckgmail.png cr48-app-kcheckgmail.png cr64-app-kcheckgmail.png cr16-app-kcheckgmailauth.png 
+KDE_DIST=cr128-app-kcheckgmail.png cr32-app-kcheckgmail.png cr22-app-kcheckgmail.png cr16-app-kcheckgmail.png cr48-app-kcheckgmail.png cr64-app-kcheckgmail.png 
 
 #>+ 2
 docs-am:
 
-#>+ 44
+#>+ 40
 install-kde-icons:
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/128x128/apps
 	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps
 	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
-	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmailauth.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmailauth.png
-	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmaillight.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmaillight.png
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/22x22/apps
 	$(INSTALL_DATA) $(srcdir)/cr22-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps
@@ -445,8 +443,6 @@ install-kde-icons:
 uninstall-kde-icons:
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmailauth.png
-	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmaillight.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png
