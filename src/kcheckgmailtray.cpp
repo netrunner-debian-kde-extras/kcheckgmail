@@ -175,7 +175,13 @@ void KCheckGmailTray::slotThreadsMenuActivated(int n)
 	const GMailParser::Thread &t = mParser->getThread(n);
 
 	if(!t.isNull) {
-		QString url = "http://gmail.google.com/gmail?view=cv&search=inbox&tearoff=1";
+		QString url;
+		if(Prefs::useHTTPS())
+			url = "https";
+		else
+			url = "http";
+
+		url.append("://gmail.google.com/gmail?view=cv&search=inbox&tearoff=1");
 		url.append("&fs=1&th=");
 		url.append(t.msgId);
 		launchBrowser(url);
@@ -186,9 +192,13 @@ void KCheckGmailTray::launchBrowser(const QString &url)
 {
 	QString loadURL;
 
-	if(url == QString::null)
-		loadURL = "http://gmail.google.com/gmail";
-	else
+	if(url == QString::null) {
+		if(Prefs::useHTTPS()) 
+			loadURL = "https";
+		else
+			loadURL = "http";
+		loadURL.append("://gmail.google.com/gmail");
+	} else
 		loadURL = url;
 
 	if(Prefs::useDefaultBrowser())
