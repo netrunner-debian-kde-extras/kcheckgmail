@@ -83,6 +83,7 @@ GMail::~GMail()
 
 void GMail::slotSetWalletPassword(bool)
 {
+	kdDebug() << k_funcinfo << "now, check login params." << endl;
 	checkLoginParams();
 }
 
@@ -158,8 +159,6 @@ void GMail::login()
 		// this will call back to gotWalletPassword().
 		// we will continue the process from there.
 		GMailWalletManager::instance()->get();
-		kdDebug() << k_funcinfo << "WalletBusy=" <<
-		GMailWalletManager::instance()->busy() << endl;
 	}
 }
 

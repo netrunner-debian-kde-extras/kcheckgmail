@@ -23,8 +23,6 @@ public:
 
 	const QString& getHash() const { return mHash; }
 
-	bool busy() { return mMux.locked(); }
-
 protected:
 	void openWallet();
 	bool storeWallet();
@@ -48,6 +46,7 @@ private:
 	QString mPassword;
 	QString mHash;
 	QMutex mMux;
+	bool mUseWallet;
 };
 
 #endif
