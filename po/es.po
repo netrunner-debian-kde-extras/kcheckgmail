@@ -1,0 +1,215 @@
+# translation of es_ES.po to 
+# translation of es_ES.po to
+# translation of it.po to Italiano
+# translation of kcheckgmail.po to Italiano
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Samuele Kaplun <kaplun@aliceposta.it>, 2004.
+# Felipe Morales Moreno <felipe.morales@wanadoo.es>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: es_ES\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-06 22:32-0400\n"
+"PO-Revision-Date: 2004-10-02 11:17+0200\n"
+"Last-Translator: Felipe Morales Moreno <felipe.morales@wanadoo.es>\n"
+"Language-Team:  <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Felipe Morales"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "felipe.morales@wanadoo.es"
+
+#: appletsettingswidget.cpp:88
+msgid "AppletSettingsWidget"
+msgstr "AppletSettingsWidget"
+
+#: appletsettingswidget.cpp:89
+msgid "Tray Icon"
+msgstr "Icono de Bandeja del Sistema"
+
+#: appletsettingswidget.cpp:90 prefs.cpp:50
+msgid "Open browser to Gmail on left click"
+msgstr "Abrir navegador con Gmail con un click izquierdo"
+
+#: appletsettingswidget.cpp:91 prefs.cpp:54
+msgid "Catch accidental left clicks when launching the browser"
+msgstr "Capturar clicks izquierdos accidentales en la apertura del navegador"
+
+#: appletsettingswidget.cpp:92
+msgid "Browser"
+msgstr "Browser"
+
+#: appletsettingswidget.cpp:93
+msgid "Use the default KDE browser"
+msgstr "Utilizar el navegador predeterminado de KDE"
+
+#: appletsettingswidget.cpp:94
+msgid "Use an alternative browser"
+msgstr "Utilizar un navegador alternativo"
+
+#: kcheckgmailapp.moc.cpp:34 kcheckgmailapp.moc.cpp:42
+msgid "KCheckGmailApp"
+msgstr "KCheckGmailApp"
+
+#: kcheckgmailtray.cpp:97 main.cpp:43
+msgid "KCheckGmail"
+msgstr "KCheckGmail"
+
+#: kcheckgmailtray.cpp:99
+msgid "Configure &Notications..."
+msgstr "Configurar &Notificaciones..."
+
+#: kcheckgmailtray.cpp:101
+msgid "&Configure KCheckGmail..."
+msgstr "&Configurar KCheckGmail..."
+
+#: kcheckgmailtray.cpp:104 kcheckgmailtray.cpp:243
+msgid "Login and Chec&k Mail"
+msgstr "&Acceder y Comprobar Correo"
+
+#: kcheckgmailtray.cpp:107
+msgid "&Launch Browser"
+msgstr "&Lanzar navegador"
+
+#: kcheckgmailtray.cpp:216
+msgid "There is <b>1</b> new message"
+msgstr "Hay <b>1</b> nuevo mensaje"
+
+#: kcheckgmailtray.cpp:218
+msgid "There are <b>%1</b> new messages"
+msgstr "Hay <b>%1</b> nuevos mensajes"
+
+#: kcheckgmailtray.cpp:237
+msgid "An error occurred logging in to Gmail<br><b>%1</b>"
+msgstr "Un error ocurrió accediendo a Gmail<br><b>%1</b>"
+
+#: kcheckgmailtray.cpp:247
+msgid "Now logged in to Gmail!"
+msgstr "Conectado con éxito a Gmail!"
+
+#: kcheckgmailtray.cpp:248
+msgid "Chec&k Mail Now"
+msgstr "Comprobar Correo A&hora"
+
+#: kcheckgmailtray.cpp:292
+msgid "Login"
+msgstr "Acceso"
+
+#: kcheckgmailtray.cpp:292
+msgid "Login Settings"
+msgstr "Configuración del acceso"
+
+#: kcheckgmailtray.cpp:295
+msgid "Network"
+msgstr "Red"
+
+#: kcheckgmailtray.cpp:295
+msgid "Network Settings"
+msgstr "Configuración de la red"
+
+#: kcheckgmailtray.cpp:298
+msgid "Applet"
+msgstr "Applet"
+
+#: kcheckgmailtray.cpp:298
+msgid "Applet Settings"
+msgstr "Configuración del Applet"
+
+#: kcheckgmailtray.moc.cpp:34 kcheckgmailtray.moc.cpp:42
+msgid "KCheckGmailTray"
+msgstr "KCheckGmailTray"
+
+#: loginsettingswidget.cpp:69
+msgid "LoginSettingsWidget"
+msgstr "LoginSettingsWidget"
+
+#: loginsettingswidget.cpp:70
+msgid "Username:"
+msgstr "Nombre de usuario:"
+
+#: loginsettingswidget.cpp:71
+msgid "Password:"
+msgstr "Clave:"
+
+#: main.cpp:34
+msgid "Application is being auto-started at KDE session start"
+msgstr "La aplicación se  iniciará automáticamente en el inicio de KDE"
+
+#: netsettingswidget.cpp:57
+msgid "NetworkSettingsWidget"
+msgstr "NetworkSettingsWidget"
+
+#: netsettingswidget.cpp:58
+msgid "Checking Interval"
+msgstr "Intervalo de comprobación"
+
+#: netsettingswidget.cpp:59
+msgid " seconds"
+msgstr " segundos"
+
+#: prefs.cpp:32
+msgid "Polling interval"
+msgstr "Intervalo de control periódico"
+
+#: prefs.cpp:33
+msgid "How many seconds to wait before checking for new mail."
+msgstr "Cuantos segundos esperar antes de comprobar si existe nuevo correo."
+
+#: prefs.cpp:39
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: prefs.cpp:40
+msgid "Your Gmail username"
+msgstr "Tu nombre de usuario de Gmail"
+
+#: prefs.cpp:43
+msgid "Password"
+msgstr "Password"
+
+#: prefs.cpp:44
+msgid "Password for checking your Gmail account"
+msgstr "Tu clave para verificar la cuenta de Gmail"
+
+#: prefs.cpp:51
+msgid ""
+"If enabled, launch the default KDE web browser when the KCheckGmail icon is "
+"clicked."
+msgstr "Si está habilitado lanza el navegador por defecto de KDE al pursar el icono de KCheckGmail."
+
+#: prefs.cpp:55
+msgid ""
+"If enabled, every time you click on the KCheckGmail icon will disable it for "
+"a few seconds, thus preventing you from accidentaly opening more than one "
+"window"
+msgstr "Si está habilitado, cada vez que pulses en el icono de KCheckGmail se deshabilitará por unos segundos, evitando abrir más de un navegador"
+
+#: prefs.cpp:58
+msgid "Use the KDE default browser"
+msgstr "Utilizar el navegador predefinido de KDE"
+
+#: prefs.cpp:59
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
+msgstr "Utilizar el navegador predefinido como navegador por defecto de KDE para comprobar Gmail"
+
+#: prefs.cpp:62 prefs.cpp:65
+msgid "Use a custom browser"
+msgstr "Utilizar un navegador personalizado"
+
+#: prefs.cpp:66
+msgid "Use a custom browser other than the KDE default to check your Gmail"
+msgstr "Utilizar un navegador personalizado en lugar del navegador KDE por defecto para comprobar Gmail"
+
