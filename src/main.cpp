@@ -28,7 +28,9 @@
 
 #include <stdlib.h>
 
-static const char kcheckgmailVersion[] = "0.2";
+#include "config.h"
+
+static const char kcheckgmailVersion[] = VERSION;
 static const KCmdLineOptions gOptions[] =
 {
 	{ "login", I18N_NOOP("Application is being auto-started at KDE session start"), 0L },
@@ -42,14 +44,17 @@ int main(int argc, char **argv)
 	KAboutData about("kcheckgmail",
 		I18N_NOOP("KCheckGmail"), 
 		kcheckgmailVersion, 
-		"Kicker applet to display how many email messages you have in your Gmail account.",
+		I18N_NOOP(
+		"System tray application to display how many\nemail "
+		"messages you have in your Gmail account."),
 		KAboutData::License_GPL, 
 		"(C) 2004 Matthew Wlazlo", 
 		0, // text
-		0, // homePageAddress
+		"http://sf.net/projects/kcheckgmail", // homePageAddress
 		"mwlazlo@gmail.com");
-	about.addAuthor("Matthew Wlazlo", 0, "mwlazlo@gmail.com");
-	about.addAuthor("Rogério Pereira Araújo", "Brazilian portuguese", "rogerio.araujo@gmail.com");
+	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Primary author and maintainer"), "mwlazlo@gmail.com");
+	about.addAuthor("Rogério Pereira Araújo", I18N_NOOP("Brazilian Portuguese Translation"), "rogerio.araujo@gmail.com");
+	about.addAuthor("Samuele Kaplun", I18N_NOOP("Italian Translation"), "kaplun@aliceposta.it");
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");
 
