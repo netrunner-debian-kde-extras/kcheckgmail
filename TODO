@@ -1,0 +1,39 @@
+Use kdewallet to store/retrieve the password...
+
+Write a flex parser for the javascript returned from google. It will be
+possible to use this data to differentiate messages when an email arrives at
+the same time an email is read...
+
+It would be nice, although not sure how possible at this stage, to have a
+KIO slave representation of gmail. Read your Gmail messages from konq?
+
+Should the configuration dialog be displayed when the username/password is
+empty?
+
+DONE: put a 3 second timer in pressMouseEvent to detect accidental multiple clicks.
+
+DONE: config option -- KDE default browser or custom
+
+DONE: Notify only once if login fails, except if the user explicitly clicks Check/Login...
+
+DONE: Display a reason why if login fails
+
+DONE: Change "Check Now" text to "Login / Check Now" when not logged in
+
+DONE: Disable login/check now button when check/login is in progress
+
+DONE: KNotify events
+
+DONE: Check now button
+
+DONE: convert from KPanelApplet to KSystemTray
+
+
+like how about selecting a contact from KCheckGmail and have it launch the
+browser with a gmail compose message page showing?
+
+
+One suggestion I have is to allow different notifications based on the gmail
+label an incoming email gets; that way a different tune could be played
+depending on who sent you an email. I don't know if the gmail protocols provide
+the label info, but I think this would be helpful.

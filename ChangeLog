@@ -1,0 +1,3 @@
+2004-08-13 Matthew Wlazlo <mwlazlo@gmail.com>
+	* src/gmail.cpp:
+		- debugging code, writes incoming HTML to /tmp/gmail.html

@@ -1,0 +1,10 @@
+Quick start instructions
+
+
+# make -f Makefile.cvs
+# ./configure ... 
+# make install
+
+That's it! 
+
+Please email any bug reports/ideas/suggestions to mwlazlo@gmail.com. 

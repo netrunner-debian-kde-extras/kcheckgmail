@@ -1,0 +1,66 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>NetworkSettingsWidget</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>NetworkSettingsWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>352</width>
+            <height>114</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>NetworkSettingsWidget</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="KIntNumInput">
+            <property name="name">
+                <cstring>kcfg_Interval</cstring>
+            </property>
+            <property name="label">
+                <string>Checking Interval</string>
+            </property>
+            <property name="value">
+                <number>60</number>
+            </property>
+            <property name="minValue">
+                <number>10</number>
+            </property>
+            <property name="maxValue">
+                <number>86400</number>
+            </property>
+            <property name="suffix">
+                <string> seconds</string>
+            </property>
+        </widget>
+        <spacer>
+            <property name="name">
+                <cstring>spacer1</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Vertical</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>170</height>
+                </size>
+            </property>
+        </spacer>
+    </vbox>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>knuminput.h</includehint>
+    <includehint>knuminput.h</includehint>
+</includehints>
+</UI>

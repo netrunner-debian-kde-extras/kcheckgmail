@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=KCheckGmail
+Name[xx]=xxKCheckGmailxx
+Comment=A Kicker applet to display how many email messages you have in your Gmail account.
+Comment[xx]=xxKicker applet to display how many email messages you have in your Gmail accountxx
+Exec=kcheckgmail
+Icon=kcheckgmail
+X-KDE-StartupNotify=true
+Type=Application
+Categories=Qt;KDE;Network

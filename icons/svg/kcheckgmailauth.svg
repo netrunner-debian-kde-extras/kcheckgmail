@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   id="svg3418"
+   sodipodi:version="0.32"
+   inkscape:version="0.39"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   width="200.00000mm"
+   height="200.00000mm"
+   sodipodi:docbase="/home/matt"
+   sodipodi:docname="google-notloggedin.svg"
+   inkscape:export-filename="/home/matt/google-logo-2.png"
+   inkscape:export-xdpi="25.400000"
+   inkscape:export-ydpi="25.400000">
+  <defs
+     id="defs3420" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1.0000000"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.00000000"
+     inkscape:cx="313.03181"
+     inkscape:cy="287.08600"
+     inkscape:window-width="1016"
+     inkscape:window-height="718"
+     showgrid="true"
+     inkscape:grid-bbox="false"
+     inkscape:grid-points="false"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata3421">
+    <rdf:RDF
+       id="RDF3422">
+      <cc:Work
+         rdf:about=""
+         id="Work3423">
+        <dc:format
+           id="format3424">image/svg+xml</dc:format>
+        <dc:type
+           id="type3426"
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#52ba39;stroke-width:42.507267;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
+     d="M 40.051267,21.700312 L 708.94809,21.700312"
+     id="path4677" />
+  <path
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#52ba39;stroke-width:42.518208;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
+     d="M -1.1166731,687.80431 L 668.12455,687.80431"
+     id="path4691" />
+  <path
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#2059ee;stroke-width:42.413540;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
+     d="M 20.463898,1.4782707 L 20.463898,667.42863"
+     id="path4692" />
+  <path
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#d51008;stroke-width:42.428642;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
+     d="M 689.21545,43.278599 L 689.21545,709.70316"
+     id="path4693" />
+  <text
+     xml:space="preserve"
+     style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#3161bd;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;"
+     x="0.77545404"
+     y="10.535378"
+     id="text4694"
+     transform="scale(63.88280,57.89988)"><tspan
+       id="tspan4695"
+       style="fill:#3161bd;fill-opacity:1.0000000;">G</tspan></text>
+  <g
+     id="g4706"
+     transform="translate(2.879134,51.82441)">
+    <path
+       sodipodi:type="arc"
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#ff0000;stroke-width:65.437202;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
+       id="path4698"
+       sodipodi:cx="287.91339"
+       sodipodi:cy="266.71436"
+       sodipodi:rx="195.78110"
+       sodipodi:ry="182.82500"
+       d="M 483.69449 266.71436 A 195.78110 182.82500 0 1 0 92.132294,266.71436 A 195.78110 182.82500 0 1 0 483.69449 266.71436 z"
+       transform="matrix(0.811910,0.000000,0.000000,0.910097,5.208438,6.620638)" />
+    <path
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#ff0000;stroke-width:56.250000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
+       d="M 349.81476,128.51592 L 125.24232,353.08836"
+       id="path4704" />
+  </g>
+</svg>

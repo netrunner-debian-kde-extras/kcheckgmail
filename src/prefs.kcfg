@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+	<kcfgfile name="kcheckgmailrc" />
+	<group name="Network Settings">
+		<entry name="Interval" type="UInt">
+			<label>Polling interval</label>
+			<default>60</default>
+			<min>10</min>
+			<max>86400</max>
+			<whatsthis>How many seconds to wait before checking for new mail.</whatsthis>
+		</entry>
+	</group>
+
+	<group name="Gmail Settings">
+			<entry name="GmailUsername" type="String">
+					<label>Username</label>
+					<whatsthis>Your Gmail username</whatsthis>
+			</entry>
+			<entry name="GmailPassword" type="Password">
+					<label>Password</label>
+					<whatsthis>Password for checking your Gmail account</whatsthis>
+			</entry>
+	</group>
+
+	<group name="Applet Settings">
+		<entry name="AllowLeftClickOpen" type="Bool">
+			<label>Open browser to Gmail on left click</label>
+			<default>true</default>
+			<whatsthis>If enabled, launch the default KDE web browser when the KCheckGmail icon is clicked.</whatsthis>
+		</entry>
+		<entry name="CatchAccidentalClick" type="Bool">
+			<label>Catch accidental left clicks when launching the browser</label>
+			<default>true</default>
+			<whatsthis>If enabled, every time you click on the KCheckGmail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window</whatsthis>
+		</entry>
+		<entry name="UseDefaultBrowser" type="Bool">
+			<label>Use the KDE default browser</label>
+			<default>true</default>
+			<whatsthis>Use whatever browser is configured as the KDE default to check your Gmail</whatsthis>
+		</entry>
+		<entry name="UseAltBrowser" type="Bool">
+			<label>Use a custom browser</label>
+			<default>false</default>
+		</entry>
+		<entry name="CustomBrowser" type="Path">
+			<label>Use a custom browser</label>
+			<default>firefox %u</default>
+			<whatsthis>Use a custom browser other than the KDE default to check your Gmail</whatsthis>
+		</entry>
+	</group>
+</kcfg>
