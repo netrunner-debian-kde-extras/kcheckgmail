@@ -1,3 +1,12 @@
+2004-08-27 Matthew Wlazlo <mwlazlo@gmail.com>
+	* src/gmailparser.cpp:
+	* src/gmailparser.h:
+		- parses downloaded HTML and retrieves new message count
+	* src/gmail.cpp:
+	* src/gmail.h:
+		- This class no longer checks the message count.
+		- Collate all downloaded HTML for sending to gmailparser..
+		  
 2004-08-21 Matthew Wlazlo <mwlazlo@gmail.com>
 	* src/gmail.cpp:
 	* src/gmail.h:

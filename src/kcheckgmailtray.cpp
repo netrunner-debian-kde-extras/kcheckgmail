@@ -37,6 +37,7 @@
 #include <qfile.h>
 #include <qpainter.h>
 #include <qtimer.h>
+#include <qregexp.h>
 
 #include "appletsettingswidget.h"
 #include "kcheckgmailtray.h"
@@ -46,6 +47,7 @@
 
 #include "config.h"
 #include "gmail.h"
+#include "gmailparser.h"
 
 // if catchAccidentalClick is true, wait 3 seconds before opening another
 // browser window
@@ -70,29 +72,39 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	connect(this, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 	//QToolTip::add(this, i18n("KCheckGmail"));
 
+	// initialise and hook up the parser
+	mParser = new GMailParser();
+
+
+	connect(mParser, SIGNAL(mailArrived(unsigned int)), 
+		this, SLOT(slotMailArrived(unsigned int)));
+
+	connect(mParser, SIGNAL(mailCountChanged()), 
+		this, SLOT(slotMailCountChanged()));
+
+	connect(mParser, SIGNAL(versionMismatch()), 
+		this, SLOT(slotVersionMismatch()));
 
 	// initialise and hook up the GMail object
 	mGmail = new GMail();
 
-	connect(mGmail, SIGNAL(startLogin()), 
+	connect(mGmail, SIGNAL(loginStart()), 
 		this, SLOT(slotLoginStart()));
 
 	connect(mGmail, SIGNAL(loginDone(bool, bool, const QString&)), 
 		this, SLOT(slotLoginDone(bool, bool, const QString&)));
 
-	connect(mGmail, SIGNAL(newMail(unsigned int)), 
-		this, SLOT(slotNewMail(unsigned int)));
+	connect(mGmail, SIGNAL(checkStart()), 
+		this, SLOT(slotCheckStart()));
 
-	connect(mGmail, SIGNAL(mailCountChanged(unsigned int)), 
-		this, SLOT(slotMailCountChanged(unsigned int)));
-
-	connect(mGmail, SIGNAL(startCheck()), 
-		this, SLOT(slotStartCheck()));
-
-	connect(mGmail, SIGNAL(stopCheck()), 
-		this, SLOT(slotStopCheck()));
+	connect(mGmail, SIGNAL(checkDone(const QString&)), 
+		this, SLOT(slotCheckDone(const QString&)));
 
 	// initialise the menu
+	mThreadsMenu = new KPopupMenu(this, "KCheckGmail Threads menu");
+	connect(mThreadsMenu, SIGNAL(activated(int)),
+		SLOT(slotThreadsMenuActivated(int)));
+	
 	KPopupMenu *menu = contextMenu();
 	menu->clear();
 	menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGmail"));
@@ -107,10 +119,14 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	menu->insertItem(SmallIcon("mozilla"), 
 		i18n("&Launch Browser"), CONTEXT_LAUNCHBROWSER);
 
+	menu->insertItem(SmallIcon("kcheckgmail"), i18n("Threads"),
+		mThreadsMenu);
+
 	menu->insertSeparator();
 
 	menu->insertItem(SmallIcon("help"),KStdGuiItem::help().text(),
 		mHelpMenu->menu());
+
 //	KAction *quitAction = actionCollection()->action(KStdAction::name(KStdAction::Quit));
 //	quitAction->plug(menu);
 
@@ -140,14 +156,33 @@ void KCheckGmailTray::slotContextMenuActivated(int n)
 	}
 }
 
-void KCheckGmailTray::launchBrowser()
+void KCheckGmailTray::slotThreadsMenuActivated(int n)
 {
+	const GMailParser::Thread &t = mParser->getThread(n);
+
+	if(!t.isNull) {
+		QString url = "http://gmail.google.com/gmail?view=cv&search=inbox&tearoff=1";
+		url.append("&fs=1&th=");
+		url.append(t.msgId);
+		launchBrowser(url);
+	}
+}
+
+void KCheckGmailTray::launchBrowser(const QString &url)
+{
+	QString loadURL;
+
+	if(url == QString::null)
+		loadURL = "http://gmail.google.com/gmail";
+	else
+		loadURL = url;
+
 	if(Prefs::useDefaultBrowser())
-		kapp->invokeBrowser("http://gmail.google.com");
+		kapp->invokeBrowser(loadURL);
 	else {
 		QString s = Prefs::customBrowser();
 		QMap<QChar,QString> map;
-		map.insert('u', "http://gmail.google.com");
+		map.insert('u', loadURL);
 		s = KMacroExpander::expandMacrosShellQuote(s, map);
 		KRun::runCommand(QFile::encodeName(s));
 	}
@@ -166,7 +201,7 @@ void KCheckGmailTray::slotSettingsChanged()
 
 void KCheckGmailTray::updateCountImage()
 {
-	unsigned int count = mGmail->getMailCount();
+	unsigned int count = mParser->getNewCount();
 
 	kdDebug() << k_funcinfo << "Count=" << count << endl;
 
@@ -209,7 +244,7 @@ void KCheckGmailTray::updateCountImage()
 	}
 }
 
-void KCheckGmailTray::slotNewMail(unsigned int n)
+void KCheckGmailTray::slotMailArrived(unsigned int n)
 {
 	QString str;
 
@@ -220,9 +255,45 @@ void KCheckGmailTray::slotNewMail(unsigned int n)
 
 	KNotifyClient::event(winId(), "new-gmail-arrived", str);
 	updateCountImage();
+
+	// rebuild threads list
+	mThreadsMenu->clear();
+
+	QMap<QString,bool> *threads = mParser->getThreadList();
+	QValueList<QString> klist = threads->keys();
+	QValueList<QString>::iterator iter = klist.begin();
+
+	while(iter != klist.end()) {
+		bool isNew = (*threads)[*iter];
+		if(isNew) {
+			const GMailParser::Thread &t = mParser->getThread(*iter);
+			if(!t.isNull) {
+				QString str = t.senders;
+				str += " ";
+				str += t.subject;
+				
+				// TODO: move this somewhere else
+				QRegExp rmSender("\\<span id=.*>");
+				rmSender.setMinimal(true);
+				str.remove(rmSender);
+				
+				QRegExp b("\\<b\\>");
+				QRegExp b2("\\</b\\>");
+				QRegExp span2("\\<\\/span\\>");
+
+				str.remove(b);
+				str.remove(b2);
+				str.remove(span2);
+				
+				mThreadsMenu->insertItem(str, t.id);
+
+			}
+		}
+		iter ++;
+	}
 }
 
-void KCheckGmailTray::slotMailCountChanged(unsigned int)
+void KCheckGmailTray::slotMailCountChanged()
 {
 	updateCountImage();
 }
@@ -301,14 +372,25 @@ void KCheckGmailTray::showPrefsDialog()
 	dialog->show();
 }
 
-void KCheckGmailTray::slotStartCheck()
+void KCheckGmailTray::slotCheckStart()
 {
-	kdDebug() << k_funcinfo << endl;
 	contextMenu()->setItemEnabled(mCheckNowId, false);
 }
 
-void KCheckGmailTray::slotStopCheck()
+void KCheckGmailTray::slotCheckDone(const QString &data)
 {
-	kdDebug() << k_funcinfo << endl;
+	mParser->parse(data);
 	contextMenu()->setItemEnabled(mCheckNowId, true);
+	kdDebug() << "AT THE END OF SLOTCHECKDONE\n";
+}
+
+void KCheckGmailTray::slotVersionMismatch()
+{
+	static bool warned = false;
+	
+	if(!warned) {
+		warned = true;
+		KNotifyClient::event(winId(), "gmail-version-mismatch", 
+			i18n("Gmail has been upgraded since this version of KCheckGmail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGmail soon."));
+	}
 }

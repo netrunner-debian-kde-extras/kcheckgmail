@@ -6,6 +6,7 @@ kcheckgmail_SOURCES = main.cpp \
 	kcheckgmailapp.cpp \
 	kcheckgmailtray.cpp \
 	gmail.cpp \
+	gmailparser.cpp \
 	prefs.kcfgc \
 	netsettingswidget.ui \
 	loginsettingswidget.ui \
@@ -15,8 +16,15 @@ kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO)
 
 METASOURCES = AUTO
 
-noinst_HEADERS = gmail.h kcheckgmailapp.h kcheckgmailtray.h loginsettingswidget.h \
-	netsettingswidget.h  prefs.h appletsettingswidget.h
+noinst_HEADERS = gmail.h \
+	gmailparser.h \
+	kcheckgmailapp.h \
+	kcheckgmailtray.h \
+	loginsettingswidget.h \
+	netsettingswidget.h \
+	prefs.h \
+	gmail_constants.h \
+	appletsettingswidget.h
 
 xdg_apps_DATA = kcheckgmail.desktop
 

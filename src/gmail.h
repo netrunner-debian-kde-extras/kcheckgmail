@@ -42,12 +42,8 @@ public:
 	void setLoginParams(const QString &username, const QString &password);
 	void setInterval(unsigned int i);
 
-	unsigned int getMailCount() { return mMailCount; }
 	bool isLoggedIn();
 	bool isChecking();
-
-	// generate Cookie: string from mCookie
-	QString cookieString();
 
 protected:
 	void login();
@@ -56,11 +52,13 @@ protected:
 
 	void parseCookies(const QString &str);
 
+	// generate Cookie: string from mCookie
+	QString cookieString();
+
 private:
 	unsigned int mInterval;
 	QMutex *mCheckLock;
 	QMutex *mLoginLock;
-	unsigned int mMailCount;
 
 	bool mLoginParamsChanged;
 
@@ -72,6 +70,7 @@ private:
 	QString mPassword;
 	QMap<QString,QString> *mCookieMap;
 	QString *mLoginToken;
+	QString mPageBuffer;
 	
 	QTimer *mTimer;
 
@@ -91,13 +90,11 @@ protected slots:
 	void slotCheckData(KIO::Job*, const QByteArray&);
 
 signals:
-	void startLogin();
+	void loginStart();
 	void loginDone(bool success, bool spawnedFromTimer, const QString &why = QString::null);
-	void newMail(unsigned int count);
-	void mailCountChanged(unsigned int count);
 
-	void startCheck();
-	void stopCheck();
+	void checkStart();
+	void checkDone(const QString &data);
 };
 
 #endif

@@ -23,4 +23,9 @@ Comment=Failed to login to Gmail
 Comment[pt_BR]=Falha ao logar no Gmail
 default_presentation=16
 
+[gmail-version-mismatch]
+Name=Gmail version has changed!
+Comment=Gmail version has changed!
+default_presentation=2
+
 # None = 0, Sound = 1, Messagebox = 2, Logfile = 4, Stderr = 8, PassivePopup = 16, Execute = 32

@@ -23,6 +23,7 @@
 #include <qstring.h>
 
 class GMail;
+class GMailParser;
 class QMouseEvent;
 class KHelpMenu;
 
@@ -36,17 +37,26 @@ protected:
 	void mousePressEvent(QMouseEvent*);
 
 protected slots:
+	// KPopupMenu
 	void slotContextMenuActivated(int);
-	void slotLoginDone(bool success, bool spawnedFromTimer, const QString &errmsg);
-	void slotLoginStart();
-	void slotStartCheck();
-	void slotStopCheck();
-	void slotMailCountChanged(unsigned int count);
-	void slotNewMail(unsigned int count);
+	void slotThreadsMenuActivated(int);
+
+	// KConfigDialog
 	void slotSettingsChanged();
 
+	// GMail
+	void slotLoginDone(bool success, bool spawnedFromTimer, const QString &errmsg);
+	void slotLoginStart();
+	void slotCheckStart();
+	void slotCheckDone(const QString &data);
+
+	// GMailParser
+	void slotMailArrived(unsigned int n);
+	void slotMailCountChanged();
+	void slotVersionMismatch();
+
 private:
-	void launchBrowser();
+	void launchBrowser(const QString &url = QString::null);
 	void showKNotifyDialog();
 	void showPrefsDialog();
 	void updateCountImage();
@@ -56,7 +66,9 @@ private:
 			mPixAuth,
 			mPixCount;
 	GMail		*mGmail;
+	GMailParser	*mParser;
 	KHelpMenu	*mHelpMenu;
+	KPopupMenu	*mThreadsMenu;
 
 	// menu id for the check now button
 	int 		mCheckNowId;

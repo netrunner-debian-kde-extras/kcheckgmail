@@ -12,24 +12,6 @@ empty?
 
 user defined icon for the systray
 
-DONE: put a 3 second timer in pressMouseEvent to detect accidental multiple clicks.
-
-DONE: config option -- KDE default browser or custom
-
-DONE: Notify only once if login fails, except if the user explicitly clicks Check/Login...
-
-DONE: Display a reason why if login fails
-
-DONE: Change "Check Now" text to "Login / Check Now" when not logged in
-
-DONE: Disable login/check now button when check/login is in progress
-
-DONE: KNotify events
-
-DONE: Check now button
-
-DONE: convert from KPanelApplet to KSystemTray
-
 
 like how about selecting a contact from KCheckGmail and have it launch the
 browser with a gmail compose message page showing?

@@ -27,7 +27,7 @@
 
 #include <kio/job.h>
 #include <kio/global.h>
-
+#include <klocale.h>
 #include <kdebug.h>
 
 #include <qmap.h>
@@ -52,14 +52,13 @@ gGMailPostLoginURLFormat = "http://gmail.google.com/gmail?_sgh=%s";
 #define MILLISECS(x) (x * 1000)
 
 
-GMail::GMail()
+GMail::GMail() : QObject(0, "GMailNetwork")
 {
 	mInterval = Prefs::interval();
 	mCheckLock = new QMutex();
 	mLoginLock = new QMutex();
 	mCookieMap = new QMap<QString,QString>();
 	mLoginToken = 0;
-	mMailCount = 0;
 	mLoginParamsChanged = false;
 
 	mTimer = new QTimer(this);
@@ -107,7 +106,7 @@ void GMail::setLoginParams(const QString &username, const QString &password)
 void GMail::login()
 {
 	if(mLoginLock->tryLock()) {
-		emit startLogin();
+		emit loginStart();
 
 		mCookieMap->clear();
 
@@ -153,7 +152,7 @@ void GMail::slotLoginResult(KIO::Job *job)
 			// NOTE: LoginLock is still locked()
 		} else {
 			mLoginLock->unlock();
-			emit loginDone(false, mLoginFromTimer, "Invalid username or password");
+			emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
 		}
 	}
 }
@@ -214,11 +213,12 @@ void GMail::slotPostLoginResult(KIO::Job *job)
 			emit loginDone(true, mLoginFromTimer);
 			checkGMail();
 		} else
-			emit loginDone(false, mLoginFromTimer, "Unknown error retrieving cookies");
+			emit loginDone(false, mLoginFromTimer, 
+				i18n("Unknown error retrieving cookies"));
 	}
 }
 
-void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
+void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &)
 {
 	if(job->error() != 0) {
 		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
@@ -236,7 +236,7 @@ void GMail::checkGMail()
 		kdDebug() << k_funcinfo << "Starting check..." << endl;
 		// stop timer. start again when we have some sort of result.
 		mTimer->stop();
-		emit startCheck();
+		emit checkStart();
 
 		KIO::TransferJob *job = KIO::get(gGMailCheckURL, true, false);
 		job->addMetaData("cookies", "manual");
@@ -258,9 +258,11 @@ void GMail::slotCheckResult(KIO::Job *job)
 
 	kdDebug() << k_funcinfo << "Check finished." << endl;
 		
-	mCheckLock->unlock();
 	mTimer->start(MILLISECS(mInterval));
-	emit stopCheck();
+	emit checkDone(mPageBuffer);
+	mPageBuffer = "";
+
+	mCheckLock->unlock();
 #ifdef DUMP_HTML
 	gDumpStarted = false;
 #endif
@@ -272,6 +274,7 @@ void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
 		QCString str(data, data.size() + 1);
+		mPageBuffer.append(str);
 
 #ifdef DUMP_HTML
 		QString myString(str);
@@ -290,23 +293,6 @@ void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 
 		f.close();
 #endif
-		
-		// TODO: collate all data, then do more intelligent parsing in
-		// slotCheckResult.
-
-		//D(["ds",NEW_EMAIL,0,0,0,0,0]
-		QRegExp rx("D\\(\\[\"ds\",([0-9]*),");
-		if(rx.search(str) >= 0) {
-			unsigned int n = rx.cap(1).toUInt();
-			if(n > mMailCount) {
-				mMailCount = n;
-				emit newMail(n);
-			} else if(n != mMailCount) {
-				mMailCount = n;
-				emit mailCountChanged(n);
-			}
-			kdDebug() << k_funcinfo << "count=" << n << endl;
-		}
 	}
 }
 
@@ -339,7 +325,7 @@ bool GMail::isLoggedIn()
 	bool ret = false;
 
 	if(!mLoginLock->locked()) {
-		if(mCookieMap->find("GMAIL_AT") != mCookieMap->end())
+		if(!mCookieMap->isEmpty() && mCookieMap->find("GMAIL_AT") != mCookieMap->end())
 			ret = true;
 	}
 
