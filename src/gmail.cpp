@@ -47,9 +47,9 @@ gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginBoxAuth",
 gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in&service=mail"
 	"&continue=https://gmail.google.com/gmail",
 	
-gGMailCheckURL = "http://gmail.google.com/gmail?search=inbox"
+gGMailCheckURL = "%s://gmail.google.com/gmail?search=inbox"
 	"&as_subset=unread&view=tl&start=0",
-gGMailPostLoginURLFormat = "http://gmail.google.com/gmail?_sgh=%s";
+gGMailPostLoginURLFormat = "%s://gmail.google.com/gmail?_sgh=%s";
 
 
 #define MILLISECS(x) (x * 1000)
@@ -206,7 +206,11 @@ void GMail::postLogin()
 	// this is expected to be locked.
 	if(!mLoginLock->tryLock()) {
 		QString url;
-		url.sprintf(gGMailPostLoginURLFormat.ascii(), mLoginToken->ascii());
+		url.sprintf(gGMailPostLoginURLFormat.ascii(), 
+			(Prefs::useHTTPS()
+				? "https" 
+				: "http" ), 
+			mLoginToken->ascii());
 
 		KIO::TransferJob *job = KIO::get(url, true, false);
 		job->addMetaData("cookies", "manual");
@@ -264,7 +268,16 @@ void GMail::checkGMail()
 		mTimer->stop();
 		emit checkStart();
 
-		KIO::TransferJob *job = KIO::get(gGMailCheckURL, true, false);
+		QString url;
+
+		url.sprintf(gGMailCheckURL.ascii(),
+			(Prefs::useHTTPS()
+				? "https" 
+				: "http" ));
+
+		kdDebug() << k_funcinfo << "GET: " << url << endl;
+
+		KIO::TransferJob *job = KIO::get(url, true, false);
 		job->addMetaData("cookies", "manual");
 		job->addMetaData("setcookies", cookieString());
 		job->addMetaData("cache", "reload");

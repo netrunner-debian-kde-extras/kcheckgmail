@@ -8,18 +8,18 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>352</width>
-            <height>114</height>
+            <width>436</width>
+            <height>240</height>
         </rect>
     </property>
     <property name="caption">
         <string>NetworkSettingsWidget</string>
     </property>
-    <vbox>
+    <grid>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="KIntNumInput">
+        <widget class="KIntNumInput" row="0" column="0" rowspan="1" colspan="2">
             <property name="name">
                 <cstring>kcfg_Interval</cstring>
             </property>
@@ -39,7 +39,7 @@
                 <string> seconds</string>
             </property>
         </widget>
-        <spacer>
+        <spacer row="2" column="1">
             <property name="name">
                 <cstring>spacer1</cstring>
             </property>
@@ -52,11 +52,22 @@
             <property name="sizeHint">
                 <size>
                     <width>20</width>
-                    <height>170</height>
+                    <height>100</height>
                 </size>
             </property>
         </spacer>
-    </vbox>
+        <widget class="QCheckBox" row="1" column="0">
+            <property name="name">
+                <cstring>kcfg_UseHTTPS</cstring>
+            </property>
+            <property name="text">
+                <string>Use https connections for checking mail</string>
+            </property>
+            <property name="whatsThis" stdset="0">
+                <string>&lt;blockquote&gt;Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting.&lt;/blockquote&gt;</string>
+            </property>
+        </widget>
+    </grid>
 </widget>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
