@@ -208,6 +208,10 @@ void GMailParser::parseThread(const QString &data)
 	QMap<QString,bool> *oldMap = getThreadList();
 	int newid = 0;
 
+	freeThreadList();
+
+	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
+
 	if(oldMap)
 		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
 	else
@@ -231,26 +235,22 @@ void GMailParser::parseThread(const QString &data)
 		t->isNull = false;
 
 		// truly a new msg? inc counter
-
+		kdDebug() << k_funcinfo << "truly a new msg? inc counter" << endl;
 		if(t->isNew && (!oldMap || 
 			(oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
-		}
+		} else
+			kdDebug() << "Message [" << t->msgId << "] is NOT new." << endl;
 		
-		// cleanup
-		QMap<QString,Thread*>::iterator oldPos = mThreads.find(t->msgId);
-		if(oldPos != mThreads.end()) {
-			Thread *old = *oldPos;
-			delete old;
-			mThreads.remove(oldPos);
-		}
-
 		// (re-)insert
 		mThreads.insert(t->msgId, t);
 
 		pos += rx.matchedLength();
 	}
+
+	kdDebug() << k_funcinfo << "Finished searching for threads in: " << endl;
+	kdDebug() << data << endl;
 
 	if(oldMap)
 		delete oldMap;
@@ -258,6 +258,8 @@ void GMailParser::parseThread(const QString &data)
 	if(newMsgCount > 0)
 		emit mailArrived(newMsgCount);
 		
+	kdDebug() << k_funcinfo << "getNewCount()=" << getNewCount() << endl;
+	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
 	if(oldNewCount != getNewCount())
 		emit mailCountChanged();
 }
@@ -302,6 +304,23 @@ QMap<QString, bool> *GMailParser::getThreadList() const
 	return ret;
 }
 
+
+void GMailParser::freeThreadList()
+{
+	if(!mThreads.isEmpty()) {
+
+		QValueList<QString> klist = mThreads.keys();
+		QValueList<QString>::iterator iter = klist.begin();
+
+		while(iter != klist.end()) {
+			Thread *t = mThreads[*iter];
+			delete t;
+			iter ++;
+		}
+	}
+
+	mThreads.clear();
+}
 
 const GMailParser::Thread& GMailParser::getThread(const QString &msgId) const
 {
