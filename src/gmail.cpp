@@ -35,6 +35,8 @@
 #include <qregexp.h>
 #include <qtimer.h>
 
+#include <time.h>
+
 #ifdef DUMP_HTML
 #include <qfile.h>
 #endif
