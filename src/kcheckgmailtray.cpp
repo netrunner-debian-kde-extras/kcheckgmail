@@ -404,7 +404,7 @@ void KCheckGmailTray::slotVersionMismatch()
 {
 	static bool warned = false;
 	
-	if(!warned) {
+	if(Prefs::alertVersionChange() && !warned) {
 		warned = true;
 		KNotifyClient::event(winId(), "gmail-version-mismatch", 
 			i18n("Gmail has been upgraded since this version of KCheckGmail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGmail soon."));

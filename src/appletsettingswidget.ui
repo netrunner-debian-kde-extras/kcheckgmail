@@ -105,6 +105,25 @@
                     <bool>true</bool>
                 </property>
             </widget>
+            <widget class="KURLRequester">
+                <property name="name">
+                    <cstring>kcfg_CustomBrowser</cstring>
+                </property>
+                <property name="enabled">
+                    <bool>false</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>60</x>
+                        <y>80</y>
+                        <width>306</width>
+                        <height>26</height>
+                    </rect>
+                </property>
+                <property name="showLocalProtocol" stdset="0">
+                    <bool>true</bool>
+                </property>
+            </widget>
             <widget class="QRadioButton">
                 <property name="name">
                     <cstring>kcfg_UseAltBrowser</cstring>
@@ -121,29 +140,34 @@
                     <string>Use an alternative browser</string>
                 </property>
             </widget>
-            <widget class="KURLRequester">
+        </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox2</cstring>
+            </property>
+            <property name="title">
+                <string>Debug</string>
+            </property>
+            <widget class="QCheckBox">
                 <property name="name">
-                    <cstring>kcfg_CustomBrowser</cstring>
-                </property>
-                <property name="enabled">
-                    <bool>false</bool>
+                    <cstring>kcfg_AlertVersionChange</cstring>
                 </property>
                 <property name="geometry">
                     <rect>
-                        <x>60</x>
-                        <y>80</y>
-                        <width>306</width>
-                        <height>26</height>
+                        <x>11</x>
+                        <y>22</y>
+                        <width>368</width>
+                        <height>21</height>
                     </rect>
                 </property>
-                <property name="showLocalProtocol">
-                    <bool>true</bool>
+                <property name="text">
+                    <string>Display an alert if GMail version changes</string>
                 </property>
             </widget>
         </widget>
         <spacer>
             <property name="name">
-                <cstring>spacer1</cstring>
+                <cstring>spacer3</cstring>
             </property>
             <property name="orientation">
                 <enum>Vertical</enum>
@@ -154,14 +178,12 @@
             <property name="sizeHint">
                 <size>
                     <width>20</width>
-                    <height>80</height>
+                    <height>40</height>
                 </size>
             </property>
         </spacer>
     </vbox>
 </widget>
-<customwidgets>
-</customwidgets>
 <connections>
     <connection>
         <sender>kcfg_UseAltBrowser</sender>
@@ -172,6 +194,8 @@
 </connections>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
+    <includehint>kurlrequester.h</includehint>
+    <includehint>klineedit.h</includehint>
     <includehint>kpushbutton.h</includehint>
 </includehints>
 </UI>

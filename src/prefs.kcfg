@@ -21,6 +21,11 @@
 					<label>Password</label>
 					<whatsthis>Password for checking your Gmail account</whatsthis>
 			</entry>
+			<entry name="AlertVersionChange" type="Bool">
+				<label>Display an alert if GMail version changes</label>
+				<default>false</default>
+				<whatsthis>If Google update the GMail code, display an alert</whatsthis>
+			</entry>
 	</group>
 
 	<group name="Applet Settings">
