@@ -67,6 +67,7 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 		false, actionCollection()))
 {
 	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
+	mPixCount = KSystemTray::loadIcon("kcheckgmail");
 	setPixmapAuth();
 
 	mLoginAnim = new QTimer(this, "KCheckGmail::login");
@@ -285,44 +286,47 @@ void KCheckGmailTray::updateThreadMenu()
 	mThreadsMenu->clear();
 
 	QMap<QString,bool> *threads = mParser->getThreadList();
-	QValueList<QString> klist = threads->keys();
-	QValueList<QString>::iterator iter = klist.begin();
-
 	int numItems = 0;
 
-	kdDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
-	
-	while(iter != klist.end()) {
-		bool isNew = (*threads)[*iter];
-		if(isNew) {
-			const GMailParser::Thread &t = mParser->getThread(*iter);
-			if(!t.isNull) {
-				QString str = t.senders;
-				str += " - ";
-				str += t.subject;
-				
-				// TODO: move this somewhere else
-				QRegExp rmSender("\\<span id=.*>");
-				rmSender.setMinimal(true);
-				str.remove(rmSender);
-				
-				QRegExp slash("\\\\");
-				QRegExp b("<b>");
-				QRegExp b2("</b>");
-				QRegExp span2("</span>");
+	if(threads) {
 
-				str.remove(slash);
-				str.remove(b);
-				str.remove(b2);
-				str.remove(span2);
-				
-				mThreadsMenu->insertItem(str, t.id);
-				numItems ++;
+		QValueList<QString> klist = threads->keys();
+		QValueList<QString>::iterator iter = klist.begin();
+
+		kdDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
+		
+		while(iter != klist.end()) {
+			bool isNew = (*threads)[*iter];
+			if(isNew) {
+				const GMailParser::Thread &t = mParser->getThread(*iter);
+				if(!t.isNull) {
+					QString str = t.senders;
+					str += " - ";
+					str += t.subject;
+					
+					// TODO: move this somewhere else
+					QRegExp rmSender("\\<span id=.*>");
+					rmSender.setMinimal(true);
+					str.remove(rmSender);
+					
+					QRegExp slash("\\\\");
+					QRegExp b("<b>");
+					QRegExp b2("</b>");
+					QRegExp span2("</span>");
+
+					str.remove(slash);
+					str.remove(b);
+					str.remove(b2);
+					str.remove(span2);
+					
+					mThreadsMenu->insertItem(str, t.id);
+					numItems ++;
+				}
 			}
+			iter ++;
 		}
-		iter ++;
 	}
-	
+
 	if(numItems > 0)
 		contextMenu()->setItemEnabled(mThreadsMenuId, true);
 	else

@@ -74,7 +74,6 @@ private:
 	void initConfigDialog();
 
 	QPixmap		mPixGmail,
-			mPixLight,
 			mPixCount;
 	GMail		*mGmail;
 	GMailParser	*mParser;
