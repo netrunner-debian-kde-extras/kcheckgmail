@@ -53,8 +53,9 @@ int main(int argc, char **argv)
 		"http://sf.net/projects/kcheckgmail", // homePageAddress
 		"mwlazlo@gmail.com");
 	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Primary author and maintainer"), "mwlazlo@gmail.com");
-	about.addAuthor("Rogério Pereira Araújo", I18N_NOOP("Brazilian Portuguese Translation"), "rogerio.araujo@gmail.com");
-	about.addAuthor("Samuele Kaplun", I18N_NOOP("Italian Translation"), "kaplun@aliceposta.it");
+	about.addCredit("Rogério Pereira Araújo", I18N_NOOP("Brazilian Portuguese Translation"), "rogerio.araujo@gmail.com");
+	about.addCredit("Samuele Kaplun", I18N_NOOP("Italian Translation"), "kaplun@aliceposta.it");
+	about.addCredit("Marcus Thiesen", I18N_NOOP("German Translation"), "marcus@thiesen.org");
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");
 
