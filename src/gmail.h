@@ -27,6 +27,7 @@ namespace KIO { class Job; }
 
 class QTimer;
 class QMutex;
+template<class Key, class Value> class QMap;
 
 /**
 @author Matthew Wlazlo
@@ -45,9 +46,15 @@ public:
 	bool isLoggedIn();
 	bool isChecking();
 
+	// generate Cookie: string from mCookie
+	QString cookieString();
+
 protected:
 	void login();
+	void postLogin();
 	void checkGMail();
+
+	void parseCookies(const QString &str);
 
 private:
 	unsigned int mInterval;
@@ -63,8 +70,8 @@ private:
 
 	QString mUsername;
 	QString mPassword;
-	QString mCookie;
-	QString *mCookieGV;
+	QMap<QString,QString> *mCookieMap;
+	QString *mLoginToken;
 	
 	QTimer *mTimer;
 
@@ -74,6 +81,9 @@ public slots:
 protected slots:
 	void slotLoginResult(KIO::Job*);
 	void slotLoginData(KIO::Job*, const QByteArray&);
+
+	void slotPostLoginResult(KIO::Job*);
+	void slotPostLoginData(KIO::Job*, const QByteArray&);
 
 	void slotTimeout();
 
