@@ -1,3 +1,18 @@
+2005-01-25 15:51  petrol_pumper
+
+	* src/gmail.cpp: cookie is passed out using a different name
+
+2005-01-25 15:50  petrol_pumper
+
+	* src/kcheckgmailtray.cpp: changed message view params
+
+2004-12-13 13:54  petrol_pumper
+
+	* ChangeLog, INSTALL, Makefile.in, aclocal.m4, configure,
+	  configure.in, configure.in.in, admin/cvs.sh, doc/Makefile.in,
+	  doc/en/Makefile.in, icons/Makefile.in, po/Makefile.in,
+	  src/Makefile.in: updated version and autoconf files
+
 2004-12-13 13:28  petrol_pumper
 
 	* src/gmailparser.cpp: fixed parsing error, updated debugging
