@@ -1,3 +1,9 @@
+2004-08-21 Matthew Wlazlo <mwlazlo@gmail.com>
+	* src/gmail.cpp:
+	* src/gmail.h:
+		- Cookies now kept in QMap
+		- Many other changes to make logins work again
+
 2004-08-13 Matthew Wlazlo <mwlazlo@gmail.com>
 	* src/gmail.cpp:
 		- debugging code, writes incoming HTML to /tmp/gmail.html

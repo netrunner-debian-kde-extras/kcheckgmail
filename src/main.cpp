@@ -49,6 +49,7 @@ int main(int argc, char **argv)
 		0, // homePageAddress
 		"mwlazlo@gmail.com");
 	about.addAuthor("Matthew Wlazlo", 0, "mwlazlo@gmail.com");
+	about.addAuthor("Rogério Pereira Araújo", "Brazilian portuguese", "rogerio.araujo@gmail.com");
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");
 
