@@ -146,7 +146,7 @@ void GMail::slotLoginResult(KIO::Job *job)
 	} else {
 		parseCookies(job->queryMetaData("setcookies"));
 
-		kdDebug() << k_funcinfo << "Have Token? [" << *mLoginToken << "]" << endl;
+		kdDebug() << k_funcinfo << "Have Token? [" << mLoginToken << "]" << endl;
 
 		if(mLoginToken) {
 			postLogin();
