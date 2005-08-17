@@ -1,3 +1,57 @@
+2005-08-18 00:31  petrol_pumper
+
+	* configure, configure.in, configure.in.in: updated version
+
+2005-08-17 23:53  petrol_pumper
+
+	* src/gmailparser.h: change of version
+
+2005-08-17 23:50  petrol_pumper
+
+	* src/gmailparser.cpp: fixed thread regex bug
+
+2005-03-04 02:24  petrol_pumper
+
+	* Makefile.in, configure, configure.in, configure.in.in,
+	  doc/Makefile.in, doc/en/Makefile.in, icons/Makefile.in,
+	  src/Makefile.am, src/Makefile.in, src/kcheckgmailiface.h,
+	  src/kcheckgmailtray.cpp, src/kcheckgmailtray.h: added dcop hack,
+	  updated version to 0.6
+
+2005-03-04 02:23  petrol_pumper
+
+	* po/: Makefile.in, pl.po: another polish update. try this one..
+
+2005-01-27 10:09  petrol_pumper
+
+	* po/pl.po: updated polish translation
+
+2005-01-25 22:44  petrol_pumper
+
+	* Makefile.cvs, Makefile.in, acinclude.m4, config.h.in, configure,
+	  configure.in, admin/Doxyfile.global, admin/Makefile.common,
+	  admin/acinclude.m4.in, admin/am_edit, admin/conf.change.pl,
+	  admin/config.guess, admin/config.sub, admin/configure.in.bot.end,
+	  admin/cvs.sh, admin/debianrules, admin/detect-autoconf.sh,
+	  admin/libtool.m4.in, admin/ltmain.sh, doc/Makefile.in,
+	  doc/en/Makefile.in, icons/Makefile.in, po/Makefile.in,
+	  src/Makefile.in: updated admin directory to HEAD from kde-common
+
+2005-01-25 22:20  petrol_pumper
+
+	* Makefile.in, aclocal.m4, configure, configure.in,
+	  configure.in.in, doc/Makefile.in, doc/en/Makefile.in,
+	  icons/Makefile.in, po/Makefile.in, src/Makefile.in: changed
+	  version and rebuilt autoconf files
+
+2005-01-25 22:16  petrol_pumper
+
+	* po/pl.po, src/main.cpp: added polish translation
+
+2005-01-25 15:54  petrol_pumper
+
+	* ChangeLog: updated changelog
+
 2005-01-25 15:51  petrol_pumper
 
 	* src/gmail.cpp: cookie is passed out using a different name
