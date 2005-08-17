@@ -187,14 +187,15 @@ void GMailParser::parseLabel(const QString &data)
 		 << "\n---Data---\n" << endl;
 }
 
-void GMailParser::parseThread(const QString &data, const QMap<QString,bool>* oldMap)
+void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap)
 {
-	QRegExp rx(
+	static QRegExp killEscapes("\\\\\"");
+	static QRegExp rx(
 		"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyId 
 		"\\s*([0-9]+)\\s*," 		// isNew
 		"\\s*([0-9]+)\\s*,"		// unknown1
 		"\\s*\"([^\"]*)\"\\s*,"		// date
-		"\\s*\"([^\"]*)\"\\s*,"		// senders
+		"\\s*\"([^\"]*)\",\\s*"		// senders
 		"\\s*\"([^\"]*)\"\\s*,"		// chevron
 		"\\s*\"([^\"]*)\"\\s*,"		// subject
 		"\\s*\"([^\"]*)\"\\s*,"		// snippet
@@ -204,6 +205,9 @@ void GMailParser::parseThread(const QString &data, const QMap<QString,bool>* old
 		"\\s*([0-9]+)\\s*,"              // unknown3
 		"\\s*\"([^\"]*)\"\\s*\\]"		// unknown3
 		);
+
+	QString data = _data;
+	data.replace(killEscapes, "");
 
 	int pos = 0;
 
