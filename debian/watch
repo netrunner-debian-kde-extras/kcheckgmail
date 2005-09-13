@@ -1,0 +1,3 @@
+# uscan
+version=2
+ftp://heanet.dl.sourceforge.net/k/kc/kcheckgmail/kcheckgmail-(.+)\.tar\.bz2 debian uupdate

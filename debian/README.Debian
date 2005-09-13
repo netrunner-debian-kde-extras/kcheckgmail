@@ -1,0 +1,8 @@
+kcheckgmail for Debian
+----------------------
+
+	* Everything as from upstream. I have just disabled rpath, to 
+ comply with Debian Policy.
+
+
+ -- Jose Luis Tallon <jltallon@adv-solutions.net>, Sun, 10 Oct 2004 03:34:34 +0200
