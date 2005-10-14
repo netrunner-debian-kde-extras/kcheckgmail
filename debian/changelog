@@ -1,3 +1,10 @@
+kcheckgmail (0.5.4-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * work around gcc-4.0 FTBFS on some architectures
+
+ -- LaMont Jones <lamont@debian.org>  Fri, 14 Oct 2005 19:28:30 +0000
+
 kcheckgmail (0.5.4-1) unstable; urgency=low
 
   * New upstream version

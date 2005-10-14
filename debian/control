@@ -2,7 +2,7 @@ Source: kcheckgmail
 Section: kde
 Priority: optional
 Maintainer: Jose Luis Tallon <jltallon@adv-solutions.net>
-Build-Depends: debhelper (>= 4.1.0), autotools-dev, kdelibs4-dev, libqt3-mt-dev, autoconf
+Build-Depends: debhelper (>= 4.1.0), autotools-dev, kdelibs4-dev, libqt3-mt-dev, autoconf, g++-3.4 [arm m68k hppa]
 Standards-Version: 3.6.2
 
 Package: kcheckgmail
