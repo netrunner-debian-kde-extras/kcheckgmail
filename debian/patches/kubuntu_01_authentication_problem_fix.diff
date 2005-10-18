@@ -1,0 +1,85 @@
+diff -Nru kcheckgmail-0.5.4.orig/src/gmail.cpp kcheckgmail-0.5.4/src/gmail.cpp
+--- kcheckgmail-0.5.4.orig/src/gmail.cpp	2005-01-25 05:51:07.000000000 +0100
++++ kcheckgmail-0.5.4/src/gmail.cpp	2005-10-18 19:28:37.000000000 +0200
+@@ -44,8 +44,7 @@
+ 
+ static const QString 
+ gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginBoxAuth",
+-gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in&service=mail"
+-	"&continue=https://gmail.google.com/gmail",
++gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in",
+ 	
+ gGMailCheckURL = "%s://gmail.google.com/gmail?search=inbox"
+ 	"&as_subset=unread&view=tl&start=0",
+@@ -74,10 +73,8 @@
+ {
+ 	delete mCheckLock;
+ 	delete mLoginLock;
+-	if(mLoginToken) {
+-		delete mLoginToken;
++	if(mLoginToken) 
+ 		mLoginToken = 0;
+-	}
+ 	delete mCookieMap;
+ }
+ 
+@@ -97,8 +94,7 @@
+ 		
+ 		if(mLoginLock->tryLock()) {
+ 			if(mLoginToken)
+-				delete mLoginToken;
+-			mLoginToken = 0;
++			    mLoginToken = 0;
+ 			mLoginLock->unlock();
+ 			mLoginFromTimer = false;
+ 			login();
+@@ -149,12 +145,6 @@
+ 
+ 		mCookieMap->clear();
+ 		
+-		QString cookie;
+-		long int t = time(NULL);
+-		cookie.sprintf("T%ld/%ld/%ld", t - 2, t - 1, t);
+-
+-		parseCookies("Set-Cookie: GMAIL_LOGIN="+cookie+";");
+-
+ 		kdDebug() << k_funcinfo << "Waiting for wallet..." << endl;
+ 		// this will call back to gotWalletPassword().
+ 		// we will continue the process from there.
+@@ -189,12 +179,8 @@
+ 	} else {
+ 		QCString str(data, data.size() + 1);
+ 		parseCookies(job->queryMetaData("setcookies"));
+-		QRegExp rx("auth%3[Dd](.*)&amp;service=mail");
+-		if(rx.search(str) >= 0) {
+-			if(mLoginToken)
+-				delete mLoginToken;
+-			mLoginToken = new QString(rx.cap(1));
+-		} 
++		// auth cookie no longer exists, no need to check for it
++		mLoginToken = 1;
+ 	}
+ }
+ 
+@@ -209,8 +195,7 @@
+ 		url.sprintf(gGMailPostLoginURLFormat.ascii(), 
+ 			(Prefs::useHTTPS()
+ 				? "https" 
+-				: "http" ), 
+-			mLoginToken->ascii());
++				: "http" )); 
+ 
+ 		KIO::TransferJob *job = KIO::get(url, true, false);
+ 		job->addMetaData("cookies", "manual");
+diff -Nru kcheckgmail-0.5.4.orig/src/gmail.h kcheckgmail-0.5.4/src/gmail.h
+--- kcheckgmail-0.5.4.orig/src/gmail.h	2004-09-26 12:22:26.000000000 +0200
++++ kcheckgmail-0.5.4/src/gmail.h	2005-10-18 19:15:12.000000000 +0200
+@@ -73,7 +73,7 @@
+ 	QString mUsername;
+ 	QString mPasswordHash;
+ 	QMap<QString,QString> *mCookieMap;
+-	QString *mLoginToken;
++	unsigned int mLoginToken;
+ 	QString mPageBuffer;
+ 	
+ 	QTimer *mTimer;
