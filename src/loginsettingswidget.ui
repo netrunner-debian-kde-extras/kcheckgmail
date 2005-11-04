@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>LoginSettingsWidget</class>
 <widget class="QWidget">
     <property name="name">
@@ -81,13 +81,17 @@
         </widget>
     </grid>
 </widget>
-<customwidgets>
-</customwidgets>
+<tabstops>
+    <tabstop>kcfg_GmailUsername</tabstop>
+    <tabstop>gmailPassword</tabstop>
+    <tabstop>kcfg_PasswordFromWallet</tabstop>
+</tabstops>
 <variables>
     <variable access="public">bool passwdUnchanged;</variable>
 </variables>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
+    <includehint>klineedit.h</includehint>
     <includehint>kpassdlg.h</includehint>
 </includehints>
 </UI>
