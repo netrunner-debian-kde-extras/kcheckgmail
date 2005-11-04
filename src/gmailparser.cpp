@@ -190,20 +190,22 @@ void GMailParser::parseLabel(const QString &data)
 void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap)
 {
 	static QRegExp killEscapes("\\\\\"");
+
 	static QRegExp rx(
-		"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyId 
-		"\\s*([0-9]+)\\s*," 		// isNew
+		"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyID
+		"\\s*([0-9]+)\\s*,"		// isNew
 		"\\s*([0-9]+)\\s*,"		// unknown1
-		"\\s*\"([^\"]*)\"\\s*,"		// date
-		"\\s*\"([^\"]*)\",\\s*"		// senders
+		"\\s*\"([^\"]*)\"\\s*,"		// date_short
+		"\\s*\"([^\"]*)\"\\s*,"		// senders
 		"\\s*\"([^\"]*)\"\\s*,"		// chevron
 		"\\s*\"([^\"]*)\"\\s*,"		// subject
 		"\\s*\"([^\"]*)\"\\s*,"		// snippet
 		"\\s*\\[([^\\]]*)\\]\\s*,"	// labels
 		"\\s*\"([^\"]*)\"\\s*,"		// attachments
-		"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgId
-		"\\s*([0-9]+)\\s*,"              // unknown3
-		"\\s*\"([^\"]*)\"\\s*\\]"		// unknown3
+		"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
+		"\\s*([0-9]+)\\s*,"		// unknown2
+		"\\s*\"([^\"]*)\"\\s*,"		// date_long
+		"\\s*([0-9]+)\\s*"		// unknown3
 		);
 
 	QString data = _data;
@@ -236,7 +238,7 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->replyId = rx.cap(1);
 		t->isNew = rx.cap(2).toInt();
 		t->unknown1 = rx.cap(3).toUInt();
-		t->date = rx.cap(4);
+		t->date_short = rx.cap(4);
 		t->senders = rx.cap(5);
 		t->chevron = rx.cap(6);
 		t->subject = rx.cap(7);
@@ -244,7 +246,9 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->labels = rx.cap(9);
 		t->attachments = rx.cap(10);
 		t->msgId = rx.cap(11);
-		t->unknown3 = rx.cap(12).toUInt();
+		t->unknown2 = rx.cap(12).toUInt();
+		t->date_long = rx.cap(13);
+		t->unknown3 = rx.cap(14).toUInt();
 		t->isNull = false;
 
 		// truly a new msg? inc counter
