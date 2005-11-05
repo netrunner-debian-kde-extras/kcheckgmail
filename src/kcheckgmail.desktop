@@ -1,14 +1,14 @@
 [Desktop Entry]
 Encoding=UTF-8
-Type=Application
-Exec=kcheckgmail
-Icon=kcheckgmail
 Name=KCheckGmail
 Name[it]=KCheckGmail
-Name[es]=KCheckGmail
+Name[xx]=xxKCheckGmailxx
 Comment=A Kicker applet to display how many email messages you have in your Gmail account.
 Comment[it]=Un applet del pannello per visualizzare quanti messaggi sono contenuti nel tuo account Gmail.
-Comment[es]=Applet para kicker que muestra cuántos mensajes nuevos hay en su cuenta de Gmail.
+Comment[xx]=xxKicker applet to display how many email messages you have in your Gmail accountxx
+Exec=kcheckgmail
+Icon=kcheckgmail
 X-KDE-StartupNotify=true
+Type=Application
 Categories=Qt;KDE;Network
 

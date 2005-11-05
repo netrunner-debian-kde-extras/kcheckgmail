@@ -17,8 +17,6 @@
 
 
 
-SOURCES = $(kcheckgmail_SOURCES)
-
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -66,7 +64,7 @@ am_kcheckgmail_OBJECTS = main.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
 kcheckgmail_OBJECTS = main.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
 	kcheckgmailtray.$(OBJEXT) gmail.$(OBJEXT) \
 	gmailparser.$(OBJEXT) gmailwalletmanager.$(OBJEXT) kcheckgmailiface_skel.$(OBJEXT) netsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
-gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailtray.moc.o kcheckgmailapp.moc.o 
+gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailapp.moc.o kcheckgmailtray.moc.o 
 am__DEPENDENCIES_1 =
 kcheckgmail_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -77,18 +75,18 @@ am__depfiles_maybe = depfiles
 #>+ 2
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) $(KDE_CXXFLAGS)
-#>- LTCXXCOMPILE = $(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) \
+#>- LTCXXCOMPILE = $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) \
 #>- 	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
 #>- 	$(AM_CXXFLAGS) $(CXXFLAGS)
 #>+ 3
-LTCXXCOMPILE = $(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) \
+LTCXXCOMPILE = $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) \
 	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
 	$(AM_CXXFLAGS) $(CXXFLAGS) $(KDE_CXXFLAGS)
 CXXLD = $(CXX)
-#>- CXXLINK = $(LIBTOOL) --mode=link --tag=CXX $(CXXLD) $(AM_CXXFLAGS) \
+#>- CXXLINK = $(LIBTOOL) --tag=CXX --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 #>- 	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 #>+ 2
-CXXLINK = $(LIBTOOL) --mode=link --tag=CXX $(CXXLD) $(AM_CXXFLAGS) \
+CXXLINK = $(LIBTOOL) --tag=CXX --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(KDE_CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(kcheckgmail_SOURCES)
 DIST_SOURCES = $(kcheckgmail_SOURCES)
@@ -747,18 +745,18 @@ gmailwalletmanager.moc.cpp: $(srcdir)/gmailwalletmanager.h
 mocs: gmailwalletmanager.moc.cpp
 
 #>+ 3
-kcheckgmailtray.moc.cpp: $(srcdir)/kcheckgmailtray.h
-	$(MOC) $(srcdir)/kcheckgmailtray.h -o kcheckgmailtray.moc.cpp
-
-#>+ 2
-mocs: kcheckgmailtray.moc.cpp
-
-#>+ 3
 kcheckgmailapp.moc.cpp: $(srcdir)/kcheckgmailapp.h
 	$(MOC) $(srcdir)/kcheckgmailapp.h -o kcheckgmailapp.moc.cpp
 
 #>+ 2
 mocs: kcheckgmailapp.moc.cpp
+
+#>+ 3
+kcheckgmailtray.moc.cpp: $(srcdir)/kcheckgmailtray.h
+	$(MOC) $(srcdir)/kcheckgmailtray.h -o kcheckgmailtray.moc.cpp
+
+#>+ 2
+mocs: kcheckgmailtray.moc.cpp
 
 #>+ 3
 gmail.moc: $(srcdir)/gmail.h
@@ -769,10 +767,10 @@ mocs: gmail.moc
 
 #>+ 3
 clean-metasources:
-	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc
+	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailapp.moc.cpp kcheckgmailtray.moc.cpp gmail.moc
 
 #>+ 2
-KDE_DIST=kcheckgmail_dcop.diff Makefile.in kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop loginsettingswidget.ui Makefile.am 
+KDE_DIST=Makefile.in kcheckgmail.lsm prefs.kcfgc appletsettingswidget.ui eventsrc netsettingswidget.ui prefs.kcfg kcheckgmail.desktop Makefile.am loginsettingswidget.ui 
 
 #>+ 4
 clean-idl:

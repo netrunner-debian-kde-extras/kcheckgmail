@@ -44,7 +44,8 @@
 
 static const QString 
 gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginBoxAuth",
-gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in",
+gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in&service=mail"
+	"&continue=https://gmail.google.com/gmail",
 	
 gGMailCheckURL = "%s://gmail.google.com/gmail?search=inbox"
 	"&as_subset=unread&view=tl&start=0",
@@ -73,8 +74,10 @@ GMail::~GMail()
 {
 	delete mCheckLock;
 	delete mLoginLock;
-	if(mLoginToken) 
+	if(mLoginToken) {
+		delete mLoginToken;
 		mLoginToken = 0;
+	}
 	delete mCookieMap;
 }
 
@@ -94,7 +97,8 @@ void GMail::checkLoginParams()
 		
 		if(mLoginLock->tryLock()) {
 			if(mLoginToken)
-			    mLoginToken = 0;
+				delete mLoginToken;
+			mLoginToken = 0;
 			mLoginLock->unlock();
 			mLoginFromTimer = false;
 			login();
@@ -145,6 +149,12 @@ void GMail::login()
 
 		mCookieMap->clear();
 		
+		QString cookie;
+		long int t = time(NULL);
+		cookie.sprintf("T%ld/%ld/%ld", t - 2, t - 1, t);
+
+		parseCookies("Set-Cookie: GMAIL_LOGIN="+cookie+";");
+
 		kdDebug() << k_funcinfo << "Waiting for wallet..." << endl;
 		// this will call back to gotWalletPassword().
 		// we will continue the process from there.
@@ -179,8 +189,12 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 	} else {
 		QCString str(data, data.size() + 1);
 		parseCookies(job->queryMetaData("setcookies"));
-		// auth cookie no longer exists, no need to check for it
-		mLoginToken = 1;
+		QRegExp rx("auth%3[Dd](.*)&amp;service=mail");
+		if(rx.search(str) >= 0) {
+			if(mLoginToken)
+				delete mLoginToken;
+			mLoginToken = new QString(rx.cap(1));
+		} 
 	}
 }
 
@@ -195,7 +209,8 @@ void GMail::postLogin()
 		url.sprintf(gGMailPostLoginURLFormat.ascii(), 
 			(Prefs::useHTTPS()
 				? "https" 
-				: "http" )); 
+				: "http" ), 
+			mLoginToken->ascii());
 
 		KIO::TransferJob *job = KIO::get(url, true, false);
 		job->addMetaData("cookies", "manual");

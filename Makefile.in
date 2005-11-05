@@ -42,7 +42,8 @@ DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
 	TODO admin/ChangeLog admin/compile admin/config.guess \
 	admin/config.sub admin/depcomp admin/install-sh \
-	admin/ltmain.sh admin/missing admin/mkinstalldirs admin/ylwrap
+	admin/ltmain.sh admin/missing admin/mkinstalldirs admin/ylwrap \
+	config.guess config.sub
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
@@ -413,7 +414,13 @@ uninstall-info-am:
 #     (which will cause the Makefiles to be regenerated when you run `make');
 # (2) otherwise, pass the desired values on the `make' command line.
 $(RECURSIVE_TARGETS):
-	@set fnord $$MAKEFLAGS; amf=$$2; \
+	@failcom='exit 1'; \
+	for f in x $$MAKEFLAGS; do \
+	  case $$f in \
+	    *=* | --[!k]*);; \
+	    *k*) failcom='fail=yes';; \
+	  esac; \
+	done; \
 	dot_seen=no; \
 	target=`echo $@ | sed s/-recursive//`; \
 	list='$(SUBDIRS)'; for subdir in $$list; do \
@@ -425,7 +432,7 @@ $(RECURSIVE_TARGETS):
 	    local_target="$$target"; \
 	  fi; \
 	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
-	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	  || eval $$failcom; \
 	done; \
 	if test "$$dot_seen" = "no"; then \
 	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
@@ -433,7 +440,13 @@ $(RECURSIVE_TARGETS):
 
 mostlyclean-recursive clean-recursive distclean-recursive \
 maintainer-clean-recursive:
-	@set fnord $$MAKEFLAGS; amf=$$2; \
+	@failcom='exit 1'; \
+	for f in x $$MAKEFLAGS; do \
+	  case $$f in \
+	    *=* | --[!k]*);; \
+	    *k*) failcom='fail=yes';; \
+	  esac; \
+	done; \
 	dot_seen=no; \
 	case "$@" in \
 	  distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
@@ -454,7 +467,7 @@ maintainer-clean-recursive:
 	    local_target="$$target"; \
 	  fi; \
 	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
-	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	  || eval $$failcom; \
 	done && test -z "$$fail"
 tags-recursive:
 	list='$(SUBDIRS)'; for subdir in $$list; do \
@@ -793,8 +806,30 @@ dist-hook:
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
 
+clean-bcheck: 
+	rm -f *.bchecktest.cc *.bchecktest.cc.class a.out
+
+bcheck: bcheck-recursive
+
+bcheck-am:
+	@for i in ; do \
+	    if test $(srcdir)/$$i -nt $$i.bchecktest.cc; then \
+	        echo "int main() {return 0;}" > $$i.bchecktest.cc ; \
+	        echo "#include \"$$i\"" >> $$i.bchecktest.cc ; \
+	        echo "$$i"; \
+	        if ! $(CXX) $(DEFS) -I. -I$(srcdir) -I$(top_builddir) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(KDE_CXXFLAGS)  --dump-class-hierarchy -c $$i.bchecktest.cc; then \
+	            rm -f $$i.bchecktest.cc; exit 1; \
+	        fi ; \
+	        echo "" >> $$i.bchecktest.cc.class; \
+	        perl $(top_srcdir)/admin/bcheck.pl $$i.bchecktest.cc.class || { rm -f $$i.bchecktest.cc; exit 1; }; \
+	        rm -f a.out; \
+	    fi ; \
+	done
+
+
+
 #>+ 2
-KDE_DIST=cvs2cl.pl stamp-h.in subdirs Makefile.in configure.files config.h.in configure.in Makefile.cvs aclocal.m4 Doxyfile kcheckgmail.kdevelop configure Makefile.am acinclude.m4 
+KDE_DIST=cvs2cl.pl stamp-h.in subdirs Makefile.in configure.files config.h.in configure.in aclocal.m4 Doxyfile kcheckgmail.kdevelop acinclude.m4 configure Makefile.am 
 
 #>+ 2
 docs-am:

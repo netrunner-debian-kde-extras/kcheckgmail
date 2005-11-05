@@ -1,17 +1,22 @@
+kcheckgmail (0.5.5-1) unstable; urgency=low
+
+  * New upstream version
+    - Fixes message count issue (Closes: #336242)
+
+  * Package sponsored by Roberto Lumbreras <rover@debian.org>
+
+ -- Jose Luis Tallon <jltallon@adv-solutions.net>  Sat,  5 Nov 2005 23:30:46 +0100
+
 kcheckgmail (0.5.4-2) unstable; urgency=low
 
-  * Acknowledge NMU: FTBFS in hppa & other arches
-    -- thanks, Lamont! (Closes: #334034)
+  * Acknowledge NMU -- thanks, Lamont! (Closes: #334034)
 
   * Solve authentication problems (Closes: #328515)
     (fix forwarded from KUbuntu; thanks, guys!)
 
-  * Fixed .desktop file - bad encoding (Closes: #333396)
-    - update-desktop-database still complains -- is it buggy?
-
   * Package sponsored by Roberto Lumbreras <rover@debian.org>
 
- -- Jose Luis Tallon <jltallon@adv-solutions.net>  Tue, 18 Oct 2005 21:47:04 +0200
+ -- Jose Luis Tallon <jltallon@adv-solutions.net>  Tue, 18 Oct 2005 21:35:02 +0200
 
 kcheckgmail (0.5.4-1.1) unstable; urgency=low
 
