@@ -1,4 +1,7 @@
-
+2005-12-17 12:05  pef83
+	* src/gmailparser.{cpp,h}: updated regexp code to get it working when
+	  GMail's language is set to something different than English(US)
+	 			    
 2005-11-04 12:55  pef83
 	* src/gmail.{cpp,h}: fixed authentication problem
 	* src/gmailparser.{cpp,h} : fixed not reported old/news mails problem
