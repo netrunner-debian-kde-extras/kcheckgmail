@@ -1,3 +1,6 @@
+2005-12-17 13:01  pef83
+	* src/gmailparser.h: updated GMail version.
+
 2005-12-17 12:30  pef83
 	* src/kcheckgmail.desktop: was dos-formatted (#1123070), 
 	  added french comment.

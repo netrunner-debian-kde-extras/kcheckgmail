@@ -27,7 +27,7 @@
 #include <vector>
 
 // version of Gmail KCheckGmail works with
-static const QString gGMailVersion = "51a4dc5081b98a29,cb6e092c102a1489,7";
+static const QString gGMailVersion = "65e56e631b4fb98b,f50abc47944a85ed,15";
 
 /**
 @author Matthew Wlazlo
