@@ -6,6 +6,7 @@ Name[xx]=xxKCheckGmailxx
 Comment=A Kicker applet to display how many email messages you have in your Gmail account.
 Comment[it]=Un applet del pannello per visualizzare quanti messaggi sono contenuti nel tuo account Gmail.
 Comment[xx]=xxKicker applet to display how many email messages you have in your Gmail accountxx
+Comment[fr]=Un applet kicker qui affiche le nombre de messages sur un compte GMail.
 Exec=kcheckgmail
 Icon=kcheckgmail
 X-KDE-StartupNotify=true
