@@ -204,9 +204,14 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		"\\s*\"([^\"]*)\"\\s*,"		// attachments
 		"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
 		"\\s*([0-9]+)\\s*,"		// unknown2
-		"\\s*\"([^\"]*)\"\\s*,"		// date_long
-		"\\s*([0-9]+)\\s*"		// unknown3
+		"\\s*\"([^\"]*)\"\\s*"		// date_long
+		"(,\\s*([0-9]+)\\s*,)?"		// unknown3 *EN_us
+		"(\\s*\"([^\"]*)\"\\s*,)?"	// unknown4 *EN_us
+		"(\\s*([0-9]+)\\s*\\])?"	// unknown5 *EN_us
 		);
+
+	// *EN_us: only exists if GMail "Display language" is set to English (US)
+	// settings->mail settings->general->language
 
 	QString data = _data;
 	data.replace(killEscapes, "");

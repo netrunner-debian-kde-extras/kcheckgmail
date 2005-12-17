@@ -77,6 +77,8 @@ public:
 		unsigned int unknown2;
 		QString date_long;
 		unsigned int unknown3;
+		QString unknown4;
+		unsigned int unknown5;
 		bool isNull; 
 	} Thread;
 public:
