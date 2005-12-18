@@ -1,3 +1,6 @@
+2005-12-18 13:03 pef83
+	* po/ko.po: added korean translation (thanks to <syn333 at gmail dot com>)
+
 2005-12-17 13:01  pef83
 	* src/gmailparser.h: updated GMail version.
 
