@@ -1,3 +1,13 @@
+kcheckgmail (0.5.5-2) unstable; urgency=low
+
+  * Acknowledge NMU (Closes: #385834)
+
+  * Added upstream SV localization (Closes: #345177)
+
+  * Updated to Standards-Version 3.7.2 with no changes.
+
+ -- Jose Luis Tallon <jltallon@adv-solutions.net>  Thu, 21 Sep 2006  0:18:14 +0200
+
 kcheckgmail (0.5.5-1.1) unstable; urgency=low
 
   * NMU.

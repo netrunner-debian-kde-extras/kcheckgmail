@@ -3,7 +3,7 @@ Section: kde
 Priority: optional
 Maintainer: Jose Luis Tallon <jltallon@adv-solutions.net>
 Build-Depends: debhelper (>= 4.1.0), autotools-dev, kdelibs4-dev, libqt3-mt-dev, autoconf
-Standards-Version: 3.6.2
+Standards-Version: 3.7.2
 
 Package: kcheckgmail
 Architecture: any

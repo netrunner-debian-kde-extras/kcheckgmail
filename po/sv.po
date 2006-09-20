@@ -1,0 +1,361 @@
+# Swedish translation of kcheckgmail.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Daniel Nylander <po@danielnylander.se>, 2005
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kcheckgmail 0.5.5-1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-11-18 12:00+1100\n"
+"PO-Revision-Date: 2005-12-30 06:32+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Daniel Nylander"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "<po@danielnylander.se>"
+
+#: appletsettingswidget.cpp:94
+#: rc.cpp:1
+msgid "AppletSettingsWidget"
+msgstr "AppletSettingsWidget"
+
+#: appletsettingswidget.cpp:95
+#: rc.cpp:2
+msgid "Tray Icon"
+msgstr "Panelikon"
+
+#: appletsettingswidget.cpp:96
+#: prefs.cpp:62
+#: rc.cpp:3
+#: rc.cpp:31
+msgid "Open browser to Gmail on left click"
+msgstr "Öppna webbläsare mot Gmail vid vänsterklick"
+
+#: appletsettingswidget.cpp:97
+#: prefs.cpp:66
+#: rc.cpp:4
+#: rc.cpp:33
+msgid "Catch accidental left clicks when launching the browser"
+msgstr "Fånga felaktiga vänsterklick när webbläsaren startas"
+
+#: appletsettingswidget.cpp:98
+#: rc.cpp:5
+msgid "Browser"
+msgstr "Webbläsare"
+
+#: appletsettingswidget.cpp:99
+#: rc.cpp:6
+msgid "Use the default KDE browser"
+msgstr "Använd förvald KDE-webbläsare"
+
+#: appletsettingswidget.cpp:100
+#: rc.cpp:7
+msgid "Use an alternative browser"
+msgstr "Använd en alternativ webbläsare"
+
+#: appletsettingswidget.cpp:101
+#: rc.cpp:8
+msgid "Debug"
+msgstr "Felsök"
+
+#: appletsettingswidget.cpp:102
+#: prefs.cpp:55
+#: rc.cpp:9
+#: rc.cpp:29
+msgid "Display an alert if GMail version changes"
+msgstr "Visa en varning om Gmail-versionen ändras"
+
+#: gmail.cpp:180
+msgid "Invalid username or password"
+msgstr "Ogiltigt användarnamn eller lösenord"
+
+#: gmail.cpp:247
+msgid "Unknown error retrieving cookies"
+msgstr "Okänt fel vid mottagning av kakor"
+
+#: gmailwalletmanager.cpp:99
+msgid "KCheckGmail could not open the wallet. Please check your preferences."
+msgstr "KCheckGmail kunde inte öppna plånboken. Kontrollera dina inställningar."
+
+#: gmailwalletmanager.cpp:189
+msgid "KCheckGmail cannot store your password securely in your wallet. Do you want to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail kan inte lagra ditt lösenord på ett säkert sätt i din plånbok. Vill du spara lösenordet i den icke-säkra konfigurationsfilen istället?"
+
+#: gmailwalletmanager.cpp:191
+msgid "Unable to store secure password"
+msgstr "Kan inte spara lösenord säkert"
+
+#: gmailwalletmanager.cpp:192
+#: gmailwalletmanager.cpp:238
+msgid "Store unsafe"
+msgstr "Spara utan skydd"
+
+#: gmailwalletmanager.cpp:235
+msgid "KCheckGmail cannot retrieve your password from your wallet. Do you want to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail kan inte hämta ditt lösenord från din plånbok. Vill du spara lösenordet i den icke-säkra konfigurationsfilen istället?"
+
+#: gmailwalletmanager.cpp:237
+msgid "Unable to retrieve secure password"
+msgstr "Kunde inte hämta säkert lösenord"
+
+#: kcheckgmailtray.cpp:115
+#: main.cpp:45
+msgid "KCheckGmail"
+msgstr "KCheckGmail"
+
+#: kcheckgmailtray.cpp:117
+msgid "Configure &Notications..."
+msgstr "Konfigurera &notifieringar..."
+
+#: kcheckgmailtray.cpp:119
+msgid "&Configure KCheckGmail..."
+msgstr "&Konfigurera KCheckGmail..."
+
+#: kcheckgmailtray.cpp:122
+#: kcheckgmailtray.cpp:383
+msgid "Login and Chec&k Mail"
+msgstr "Logga in och &kontrollera e-post"
+
+#: kcheckgmailtray.cpp:125
+msgid "&Launch Browser"
+msgstr "&Starta webbläsare"
+
+#: kcheckgmailtray.cpp:127
+msgid "Threads"
+msgstr "Trådar"
+
+#: kcheckgmailtray.cpp:228
+msgid "Please enter a password"
+msgstr "Ange ett lösenord"
+
+#: kcheckgmailtray.cpp:351
+msgid "There is <b>1</b> new message"
+msgstr "Det finns <b>1</b> nytt meddelande"
+
+#: kcheckgmailtray.cpp:353
+msgid "There are <b>%1</b> new messages"
+msgstr "Det finns <b>%1</b> nya meddelanden"
+
+#: kcheckgmailtray.cpp:377
+msgid "An error occurred logging in to Gmail<br><b>%1</b>"
+msgstr "Ett fel inträffade vid inloggning mot Gmail<br><b>%1</b>"
+
+#: kcheckgmailtray.cpp:387
+msgid "Now logged in to Gmail!"
+msgstr "Inloggad på Gmail!"
+
+#: kcheckgmailtray.cpp:388
+msgid "Chec&k Mail Now"
+msgstr "&Kontrollera e-post nu"
+
+#: kcheckgmailtray.cpp:431
+msgid "Login"
+msgstr "Logga in"
+
+#: kcheckgmailtray.cpp:431
+msgid "Login Settings"
+msgstr "Inloggningsinställningar"
+
+#: kcheckgmailtray.cpp:434
+msgid "Network"
+msgstr "Nätverk"
+
+#: kcheckgmailtray.cpp:434
+msgid "Network Settings"
+msgstr "Nätverksinställningar"
+
+#: kcheckgmailtray.cpp:437
+msgid "Behavior"
+msgstr "Beteende"
+
+#: kcheckgmailtray.cpp:467
+msgid "Gmail has been upgraded since this version of KCheckGmail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGmail soon."
+msgstr "Gmail har blivit uppgraderad sedan denna version av KCheckGmail gavs ut. Detta kan orsaka alla möjliga konstiga fel. Vänligen leta efter en uppgradering för KCheckGmail."
+
+#: kcheckgmailtray.cpp:468
+msgid "Version changed"
+msgstr "Version ändrad"
+
+#: loginsettingswidget.cpp:74
+#: rc.cpp:10
+msgid "LoginSettingsWidget"
+msgstr "LoginSettingsWidget"
+
+#: loginsettingswidget.cpp:75
+#: rc.cpp:11
+msgid "Username:"
+msgstr "Användarnamn:"
+
+#: loginsettingswidget.cpp:76
+#: rc.cpp:12
+msgid "Password:"
+msgstr "Lösenord:"
+
+#: loginsettingswidget.cpp:77
+#: prefs.cpp:51
+#: rc.cpp:13
+#: rc.cpp:27
+msgid "Use KDE Wallet to store password"
+msgstr "Använd KDE:s plånbok för att lagra lösenord"
+
+#: main.cpp:36
+msgid "Application is being auto-started at KDE session start"
+msgstr "Programmet startas automatiskt när KDE-sessionen startar"
+
+#: main.cpp:48
+msgid ""
+"System tray application to display how many\n"
+"email messages you have in your Gmail account."
+msgstr ""
+"Panelprogram som visar hur många e-postmeddelanden\n"
+"du har i ditt Gmail-konto."
+
+#: main.cpp:55
+msgid "Primary author and maintainer"
+msgstr "Huvudsaklig upphovsman och underhåll"
+
+#: main.cpp:56
+msgid "Brazilian Portuguese Translation"
+msgstr "Brazilisk-Portugisisk översättning"
+
+#: main.cpp:57
+msgid "Italian Translation"
+msgstr "Spansk översättning"
+
+#: main.cpp:58
+msgid "Spanish Translation"
+msgstr "Spansk översättning"
+
+#: main.cpp:59
+msgid "German Translation"
+msgstr "Tysk översättning"
+
+#: main.cpp:60
+msgid "Russian Translation"
+msgstr "Rysk översättning"
+
+#: main.cpp:61
+msgid "German Translation Updates"
+msgstr "Tyska uppdaterade översättningar"
+
+#: main.cpp:62
+msgid "French Translation"
+msgstr "Fransk översättning"
+
+#: netsettingswidget.cpp:63
+#: rc.cpp:14
+msgid "NetworkSettingsWidget"
+msgstr "NetworkSettingsWidget"
+
+#: netsettingswidget.cpp:64
+#: rc.cpp:15
+msgid "Checking Interval"
+msgstr "Kontrollintervall"
+
+#: netsettingswidget.cpp:65
+#: rc.cpp:16
+msgid " seconds"
+msgstr " sekunder"
+
+#: netsettingswidget.cpp:66
+#: prefs.cpp:36
+#: rc.cpp:17
+#: rc.cpp:21
+msgid "Use https connections for checking mail"
+msgstr "Används https-anslutningar för kontroll av post"
+
+#: netsettingswidget.cpp:67
+#: rc.cpp:18
+msgid "<blockquote>Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting.</blockquote>"
+msgstr "<blockquote>Använd säkra anslutningar när kontroll efter ny post görs. Notera att inloggningsprocessen använder https oavsett denna inställning.</blockquote>"
+
+#: prefs.cpp:32
+#: rc.cpp:19
+msgid "Polling interval"
+msgstr "Kontrollintervall"
+
+#: prefs.cpp:33
+#: rc.cpp:20
+msgid "How many seconds to wait before checking for new mail."
+msgstr "Hur många sekunders väntan mellan kontroller av ny post."
+
+#: prefs.cpp:37
+#: rc.cpp:22
+msgid "Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting."
+msgstr "Använd säkra anslutningar vid kontroll av ny post. Notera att inloggningsprocessen använder https oavsett denna inställning."
+
+#: prefs.cpp:43
+#: rc.cpp:23
+msgid "Username"
+msgstr "Användarnamn"
+
+#: prefs.cpp:44
+#: rc.cpp:24
+msgid "Your Gmail username"
+msgstr "Ditt Gmail-användarnamn"
+
+#: prefs.cpp:47
+#: rc.cpp:25
+msgid "Password"
+msgstr "Lösenord"
+
+#: prefs.cpp:48
+#: rc.cpp:26
+msgid "Password for checking your Gmail account"
+msgstr "Lösenord för att kontrollera ditt Gmail-konto"
+
+#: prefs.cpp:52
+#: rc.cpp:28
+msgid "Use the KDE Wallet system to store your Gmail password."
+msgstr "Använd KDE:s plånbokssystem för att lagra ditt Gmail-lösenord."
+
+#: prefs.cpp:56
+#: rc.cpp:30
+msgid "If Google update the GMail code, display an alert"
+msgstr "Om Google uppdaterar Gmail-koden, visa en varning"
+
+#: prefs.cpp:63
+#: rc.cpp:32
+msgid "If enabled, launch the default KDE web browser when the KCheckGmail icon is clicked."
+msgstr "Om aktiverad startas den förvalda KDE-webbläsaren när KCheckGmail-ikonen klickas på."
+
+#: prefs.cpp:67
+#: rc.cpp:34
+msgid "If enabled, every time you click on the KCheckGmail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window"
+msgstr "Om aktiverad kommer KCheckGmail-ikonen att stängas av ett antal sekunder varje gång du klickar på den, detta förhindrar att du av misstag öppnar fler än ett fönster"
+
+#: prefs.cpp:70
+#: rc.cpp:35
+msgid "Use the KDE default browser"
+msgstr "Använd förvald KDE-webbläsare"
+
+#: prefs.cpp:71
+#: rc.cpp:36
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
+msgstr "Använd den webbläsare som är konfigurerad som förvald i KDE för att kontrollera din Gmail"
+
+#: prefs.cpp:74
+#: prefs.cpp:77
+#: rc.cpp:37
+#: rc.cpp:38
+msgid "Use a custom browser"
+msgstr "Använd en anpassad webbläsare"
+
+#: prefs.cpp:78
+#: rc.cpp:39
+msgid "Use a custom browser other than the KDE default to check your Gmail"
+msgstr "Använd en anpassad webbläsare annan än den förvalda i KDE för att kontrollera din Gmail"
+
