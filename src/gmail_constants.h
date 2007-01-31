@@ -28,6 +28,7 @@
 #define D_LOADED_SUCCESS	"ld"
 #define D_LOADED_ERROR	"le"
 #define D_QUICKLOADED	"ql"
+#define D_COMPOSE_FROM_ADDRESS	"cfs"
 #define QU_SPACEUSED	0
 #define QU_QUOTA	1
 #define QU_PERCENT	2
