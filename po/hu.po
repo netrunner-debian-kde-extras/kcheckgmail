@@ -1,0 +1,298 @@
+# translation of de.po to 
+# translation of de_DE.po to deutsch
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Marcus Thiesen <marcus@thiesen.org>, 2004.
+# Patrick Trettenbrein <patrick.trettenbrein@gmx.net>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: de\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-02 12:55+1000\n"
+"PO-Revision-Date: 2007-01-06 23:08+0100\n"
+"Last-Translator: Peter Avramucz <muczy@freestart.hu>\n"
+"Language-Team:  <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Peter Avramucz"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "muczy@freestart.hu"
+
+#: appletsettingswidget.cpp:94
+msgid "AppletSettingsWidget"
+msgstr "Programm Einstellungsfenster"
+
+#: appletsettingswidget.cpp:95
+msgid "Tray Icon"
+msgstr "Tálcaikon"
+
+#: appletsettingswidget.cpp:96
+#: prefs.cpp:58
+msgid "Open browser to Gmail on left click"
+msgstr "Bal egérgombra böngésző megnyitása"
+
+#: appletsettingswidget.cpp:97
+#: prefs.cpp:62
+msgid "Catch accidental left clicks when launching the browser"
+msgstr "Véletlen bal kattintások elkapása böngésző indításkor"
+
+#: appletsettingswidget.cpp:98
+msgid "Browser"
+msgstr "Böngésző"
+
+#: appletsettingswidget.cpp:99
+msgid "Use the default KDE browser"
+msgstr "KDE alapértelmezett böngészőjének használata"
+
+#: appletsettingswidget.cpp:100
+msgid "Use an alternative browser"
+msgstr "Altarnatív böngésző használata"
+
+#: appletsettingswidget.cpp:101
+msgid "Debug"
+msgstr "Hibakeresés"
+
+#: appletsettingswidget.cpp:102
+#: prefs.cpp:51
+msgid "Display an alert if GMail version changes"
+msgstr "GMail verzióváltozásnál figyelmeztessen"
+
+#: gmail.cpp:180
+msgid "Invalid username or password"
+msgstr "Rossz felhasználónév vagy jelszó"
+
+#: gmail.cpp:243
+msgid "Unknown error retrieving cookies"
+msgstr "Ismeretlen hibe a sütik fogadásakor"
+
+#: gmailwalletmanager.cpp:99
+msgid "KCheckGmail could not open the wallet. Please check your preferences."
+msgstr "A KCheckGmail nem tudta megnyitni a noteszt. Kérem ellenőrizze a beállításokat."
+
+#: gmailwalletmanager.cpp:189
+msgid "KCheckGmail cannot store your password securely in your wallet. Do you want to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail nem tudja biztonságosan tárolni jelszavát a noteszében. Kívánja, hogy helyette a nem biztonságos konfigurációs fájlban tárolódjon a jelszó?"
+
+#: gmailwalletmanager.cpp:191
+msgid "Unable to store secure password"
+msgstr "Nem tudtam a jelszót biztonságosan tárolni"
+
+#: gmailwalletmanager.cpp:192
+#: gmailwalletmanager.cpp:238
+msgid "Store unsafe"
+msgstr "Nem biztonságos tárolás"
+
+#: gmailwalletmanager.cpp:235
+msgid "KCheckGmail cannot retrieve your password from your wallet. Do you want to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail nem tudta a jelszavát a noteszből kinyerni. Kívánja, hogy helyette a nem biztonságos konfigurációs fájlban tárolódjon a jelszó?"
+
+#: gmailwalletmanager.cpp:237
+msgid "Unable to retrieve secure password"
+msgstr "Nem tudtam a biztonságos jelszót kinyerni"
+
+#: kcheckgmailtray.cpp:111
+#: main.cpp:45
+msgid "KCheckGmail"
+msgstr "KCheckGmail"
+
+#: kcheckgmailtray.cpp:113
+msgid "Configure &Notications..."
+msgstr "&Figyelmeztetések beállítása..."
+
+#: kcheckgmailtray.cpp:115
+msgid "&Configure KCheckGmail..."
+msgstr "KCheckGmail &beállítása..."
+
+#: kcheckgmailtray.cpp:118
+#: kcheckgmailtray.cpp:364
+msgid "Login and Chec&k Mail"
+msgstr "Bejelentkezés és email &ellenőrzés "
+
+#: kcheckgmailtray.cpp:121
+msgid "&Launch Browser"
+msgstr "&Böngésző indtása"
+
+#: kcheckgmailtray.cpp:123
+msgid "Threads"
+msgstr "Hírcsoportok"
+
+#: kcheckgmailtray.cpp:219
+msgid "Please enter a password"
+msgstr "Kérem írja be a jelszót"
+
+#: kcheckgmailtray.cpp:335
+msgid "There is <b>1</b> new message"
+msgstr "<b>1</b> új üzenet"
+
+#: kcheckgmailtray.cpp:337
+msgid "There are <b>%1</b> new messages"
+msgstr "<b>%1</b> új üzenet"
+
+#: kcheckgmailtray.cpp:358
+msgid "An error occurred logging in to Gmail<br><b>%1</b>"
+msgstr "Hiba történt bejelentkezéskor<br><b>%1</b>"
+
+#: kcheckgmailtray.cpp:368
+msgid "Now logged in to Gmail!"
+msgstr "Bejelentkezve a GMail-be!"
+
+#: kcheckgmailtray.cpp:369
+msgid "Chec&k Mail Now"
+msgstr "Emailek &ellenőrzése most"
+
+#: kcheckgmailtray.cpp:412
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#: kcheckgmailtray.cpp:412
+msgid "Login Settings"
+msgstr "Bejelentkezés beállításai"
+
+#: kcheckgmailtray.cpp:415
+msgid "Network"
+msgstr "Hálózat"
+
+#: kcheckgmailtray.cpp:415
+msgid "Network Settings"
+msgstr "Hálózati beállítások"
+
+#: kcheckgmailtray.cpp:418
+msgid "Applet"
+msgstr "Alkalmazás"
+
+#: kcheckgmailtray.cpp:418
+msgid "Applet Settings"
+msgstr "Alkalmazás beállítások"
+
+#: kcheckgmailtray.cpp:448
+msgid "Gmail has been upgraded since this version of KCheckGmail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGmail soon."
+msgstr "A GMail frissült a KCheckGmail ezen verziója óta. Ez midenféle furcsa hibához vezethet. Kérem ellenőrizze, hogy elérhető-e frissítés a KCheckGmail-hez."
+
+#: kcheckgmailtray.cpp:449
+msgid "Version changed"
+msgstr "Verzió vátozás"
+
+#: loginsettingswidget.cpp:75
+msgid "LoginSettingsWidget"
+msgstr "Anmeldungseinstellungen Fenster"
+
+#: loginsettingswidget.cpp:76
+msgid "Username:"
+msgstr "Felhasználónév:"
+
+#: loginsettingswidget.cpp:77
+msgid "Password:"
+msgstr "Jelszó:"
+
+#: loginsettingswidget.cpp:78
+#: prefs.cpp:47
+msgid "Use KDE Wallet to store password"
+msgstr "Használja a KWallet-et a jelszó tárolására"
+
+#: main.cpp:36
+msgid "Application is being auto-started at KDE session start"
+msgstr "A program automatikusan elindul a KDE-vel"
+
+#: main.cpp:48
+msgid ""
+"System tray application to display how many\n"
+"email messages you have in your Gmail account."
+msgstr ""
+"Tálcaikon, amely jelzi, hogy hány\n"
+"email érkezett GMail fiókjába."
+
+#: main.cpp:55
+msgid "Primary author and maintainer"
+msgstr "Elsődleges szerző és karbantartó"
+
+#: main.cpp:56
+msgid "Brazilian Portuguese Translation"
+msgstr "Brazil portugál fordítás"
+
+#: main.cpp:57
+msgid "Italian Translation"
+msgstr "Olasz fordítás"
+
+#: netsettingswidget.cpp:57
+msgid "NetworkSettingsWidget"
+msgstr "Netzwerkeinstellungen Fenster"
+
+#: netsettingswidget.cpp:58
+msgid "Checking Interval"
+msgstr "Frissítési időköz"
+
+#: netsettingswidget.cpp:59
+msgid " seconds"
+msgstr " másodperc"
+
+#: prefs.cpp:32
+msgid "Polling interval"
+msgstr "Kérdezési időköz"
+
+#: prefs.cpp:33
+msgid "How many seconds to wait before checking for new mail."
+msgstr "Hány másodpercet várjon mielőtt új emaileket keres."
+
+#: prefs.cpp:39
+msgid "Username"
+msgstr "Felhasználóinév"
+
+#: prefs.cpp:40
+msgid "Your Gmail username"
+msgstr "Az Ön GMail felhasználóneve"
+
+#: prefs.cpp:43
+msgid "Password"
+msgstr "Jelszó"
+
+#: prefs.cpp:44
+msgid "Password for checking your Gmail account"
+msgstr "Jelszó a GMail fiók ellenőrzéséhez"
+
+#: prefs.cpp:48
+msgid "Use the KDE Wallet system to store your Gmail password."
+msgstr "KDE Wallet használata a jelszó tárolásához"
+
+#: prefs.cpp:52
+msgid "If Google update the GMail code, display an alert"
+msgstr "Ha a Google frissíti a GMail kódját értesítsen."
+
+#: prefs.cpp:59
+msgid "If enabled, launch the default KDE web browser when the KCheckGmail icon is clicked."
+msgstr "Ha engedélyezve van, indítsa el a KDE alapértelmezett böngészőjét, ha a KCheckGmail ikonjára kattint."
+
+#: prefs.cpp:63
+msgid "If enabled, every time you click on the KCheckGmail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window"
+msgstr "Ha engedélyezve van, mindig amikor a KCheckGmail ikonra kattint pár másodpercre kikapcsol, elkerülve ezzel hogy véletlenül több ablakot nyisson meg."
+
+#: prefs.cpp:66
+msgid "Use the KDE default browser"
+msgstr "KDE alapértelmezett böngészőjének használata"
+
+#: prefs.cpp:67
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
+msgstr "Használja a KDE alapértelmezett böngészőjét GMail ellenőrzésre, bármi is legyen az"
+
+#: prefs.cpp:70
+#: prefs.cpp:73
+msgid "Use a custom browser"
+msgstr "Saját böngésző használata"
+
+#: prefs.cpp:74
+msgid "Use a custom browser other than the KDE default to check your Gmail"
+msgstr "Saját böngésző használata, ami eltér a KDE alapértelmezettjétől, a GMail ellenőrzésre"
+
+
+ 	  	 

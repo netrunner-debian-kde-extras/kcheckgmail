@@ -1,0 +1,332 @@
+# translation of kcheckgmail.po to
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Uğur Çetin <ugur.jnmbk@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcheckgmail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-11-18 12:00+1100\n"
+"PO-Revision-Date: 2006-09-13 04:55+0300\n"
+"Last-Translator: Uğur Çetin <ugur.jnmbk@gmail.com>\n"
+"Language-Team:  <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Uğur Çetin"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "jnmbk@users.sourceforge.net"
+
+#: appletsettingswidget.cpp:94 rc.cpp:1
+msgid "AppletSettingsWidget"
+msgstr "AppletSettingsWidget"
+
+#: appletsettingswidget.cpp:95 rc.cpp:2
+msgid "Tray Icon"
+msgstr "Sistem Çekmecesi Simgesi"
+
+#: appletsettingswidget.cpp:96 prefs.cpp:62 rc.cpp:3 rc.cpp:31
+msgid "Open browser to Gmail on left click"
+msgstr "Sol tuşla tıklanınca tarayıcıda Gmail açılsın"
+
+#: appletsettingswidget.cpp:97 prefs.cpp:66 rc.cpp:4 rc.cpp:33
+msgid "Catch accidental left clicks when launching the browser"
+msgstr "Tarayıcı açılırken yanlışlıkla yapılan sol tıklamaları yakala"
+
+#: appletsettingswidget.cpp:98 rc.cpp:5
+msgid "Browser"
+msgstr "Tarayıcı"
+
+#: appletsettingswidget.cpp:99 rc.cpp:6
+msgid "Use the default KDE browser"
+msgstr "Varsayılan KDE tarayıcısını kullan"
+
+#: appletsettingswidget.cpp:100 rc.cpp:7
+msgid "Use an alternative browser"
+msgstr "Başka tarayıcı kullan"
+
+#: appletsettingswidget.cpp:101 rc.cpp:8
+msgid "Debug"
+msgstr "Hata ayıkla"
+
+#: appletsettingswidget.cpp:102 prefs.cpp:55 rc.cpp:9 rc.cpp:29
+msgid "Display an alert if GMail version changes"
+msgstr "Gmail sürümü değişirse uyarı göster"
+
+#: gmail.cpp:180
+msgid "Invalid username or password"
+msgstr "Yanlış kullanıcı adı veya parola"
+
+#: gmail.cpp:247
+msgid "Unknown error retrieving cookies"
+msgstr "Çerezlar alınırken bilinmeyen bir hata oluştu"
+
+#: gmailwalletmanager.cpp:99
+msgid "KCheckGmail could not open the wallet. Please check your preferences."
+msgstr "KCheckGmail cüzdan uygulamasını açamadı. Lütfen seçeneklerinizi kontrol edin."
+
+#: gmailwalletmanager.cpp:189
+msgid ""
+"KCheckGmail cannot store your password securely in your wallet. Do you want "
+"to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail parolanızı cüzdana güvenli olarak kaydedemedi. Bunun yerine ayar dosyasına açık bir şekilde kaydedilsin mi?"
+
+#: gmailwalletmanager.cpp:191
+msgid "Unable to store secure password"
+msgstr "Parola güvenli olaraka kaydedilemedi"
+
+#: gmailwalletmanager.cpp:192 gmailwalletmanager.cpp:238
+msgid "Store unsafe"
+msgstr "Açık olarak kaydet"
+
+#: gmailwalletmanager.cpp:235
+msgid ""
+"KCheckGmail cannot retrieve your password from your wallet. Do you want to "
+"save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail şifrenizi cüzdandan alamadı. Parolanızı açık olarak ayar dosyasına kaydetmek ister misiniz?"
+
+#: gmailwalletmanager.cpp:237
+msgid "Unable to retrieve secure password"
+msgstr "Güvenli parola alınamadı"
+
+#: kcheckgmailtray.cpp:115 main.cpp:45
+msgid "KCheckGmail"
+msgstr "KCheckGmail"
+
+#: kcheckgmailtray.cpp:117
+msgid "Configure &Notications..."
+msgstr "&Bildirimleri Yapılandır"
+
+#: kcheckgmailtray.cpp:119
+msgid "&Configure KCheckGmail..."
+msgstr "KCheckMail &Ayarları"
+
+#: kcheckgmailtray.cpp:122 kcheckgmailtray.cpp:383
+msgid "Login and Chec&k Mail"
+msgstr "Posta'yı &Kontrol Et"
+
+#: kcheckgmailtray.cpp:125
+msgid "&Launch Browser"
+msgstr "&Tarayıcıyı Başlat"
+
+#: kcheckgmailtray.cpp:127
+msgid "Threads"
+msgstr "Süreçler"
+
+#: kcheckgmailtray.cpp:228
+msgid "Please enter a password"
+msgstr "Lütfen bir parola girin"
+
+#: kcheckgmailtray.cpp:351
+msgid "There is <b>1</b> new message"
+msgstr "<b>1</b> tane yeni e-postanız var"
+
+#: kcheckgmailtray.cpp:353
+msgid "There are <b>%1</b> new messages"
+msgstr "<b>%1</b> tane yeni e-postanız var"
+
+#: kcheckgmailtray.cpp:377
+msgid "An error occurred logging in to Gmail<br><b>%1</b>"
+msgstr "Gmail'e bağlanırken bir hata oluştu<br><b>%1</b>"
+
+#: kcheckgmailtray.cpp:387
+msgid "Now logged in to Gmail!"
+msgstr "Gmail ile bağlantı kuruldu!"
+
+#: kcheckgmailtray.cpp:388
+msgid "Chec&k Mail Now"
+msgstr "Şimdi Kotrol &Et"
+
+#: kcheckgmailtray.cpp:431
+msgid "Login"
+msgstr "Giriş"
+
+#: kcheckgmailtray.cpp:431
+msgid "Login Settings"
+msgstr "Giriş Ayarları"
+
+#: kcheckgmailtray.cpp:434
+msgid "Network"
+msgstr "Ağ"
+
+#: kcheckgmailtray.cpp:434
+msgid "Network Settings"
+msgstr "Ağ Ayarları"
+
+#: kcheckgmailtray.cpp:437
+msgid "Behavior"
+msgstr "Davranış"
+
+#: kcheckgmailtray.cpp:467
+msgid ""
+"Gmail has been upgraded since this version of KCheckGmail was released. This "
+"may cause all sort of strange errors. Please check for an upgrade to "
+"KCheckGmail soon."
+msgstr "KCheckMail'in bu sürümünden sonra GMail yenilenmiş. Bu nedenle garip hatalarla karşılaşabilirsiniz. Lütfen KcheckMail'in yeni bir sürümü çıkıp çıkmadığını kontrol edin."
+
+#: kcheckgmailtray.cpp:468
+msgid "Version changed"
+msgstr "Sürüm Değişikliği"
+
+#: loginsettingswidget.cpp:74 rc.cpp:10
+msgid "LoginSettingsWidget"
+msgstr "LoginSettingsWidget"
+
+#: loginsettingswidget.cpp:75 rc.cpp:11
+msgid "Username:"
+msgstr "Kullanıcı adı:"
+
+#: loginsettingswidget.cpp:76 rc.cpp:12
+msgid "Password:"
+msgstr "Parola:"
+
+#: loginsettingswidget.cpp:77 prefs.cpp:51 rc.cpp:13 rc.cpp:27
+msgid "Use KDE Wallet to store password"
+msgstr "Parolayı KDE cüzdanında sakla"
+
+#: main.cpp:36
+msgid "Application is being auto-started at KDE session start"
+msgstr "Uygulama KDE oturumu başlangıcında otomatik olarak başlatılıyor"
+
+#: main.cpp:48
+msgid ""
+"System tray application to display how many\n"
+"email messages you have in your Gmail account."
+msgstr ""
+"Gmail hesabınızda kaç e-posta olduğunu kontrol\n"
+"eden sistem çekmecesi uygulaması."
+
+#: main.cpp:55
+msgid "Primary author and maintainer"
+msgstr "Geliştirici"
+
+#: main.cpp:56
+msgid "Brazilian Portuguese Translation"
+msgstr "Brezilya Porekizcesi Çevirisi"
+
+#: main.cpp:57
+msgid "Italian Translation"
+msgstr "İtalyanca Çeviri"
+
+#: main.cpp:58
+msgid "Spanish Translation"
+msgstr "İspanyolca Çeviri"
+
+#: main.cpp:59
+msgid "German Translation"
+msgstr "Almanca Çeviri"
+
+#: main.cpp:60
+msgid "Russian Translation"
+msgstr "Rusça Çeviri"
+
+#: main.cpp:61
+msgid "German Translation Updates"
+msgstr "Almanca çeviri güncellemesi"
+
+#: main.cpp:62
+msgid "French Translation"
+msgstr "Fransızca Çeviri"
+
+#: netsettingswidget.cpp:63 rc.cpp:14
+msgid "NetworkSettingsWidget"
+msgstr "NetworkSettingsWidget"
+
+#: netsettingswidget.cpp:64 rc.cpp:15
+msgid "Checking Interval"
+msgstr "Kontrol sıklığı"
+
+#: netsettingswidget.cpp:65 rc.cpp:16
+msgid " seconds"
+msgstr " saniye"
+
+#: netsettingswidget.cpp:66 prefs.cpp:36 rc.cpp:17 rc.cpp:21
+msgid "Use https connections for checking mail"
+msgstr "Posta kontrolü için güvenli bağlantı (https) kullan"
+
+#: netsettingswidget.cpp:67 rc.cpp:18
+msgid ""
+"<blockquote>Use secure connections when checking for new mail. Note that the "
+"login procedure uses https regardless of this setting.</blockquote>"
+msgstr "<blockquote>Yeni postaları kontrol ederken güvenli bağlantı kullan. Giriş yapılırken bu ayardan bağımsız olarak her zaman güvenli bağlantı kullanılır.</blockquote>"
+
+#: prefs.cpp:32 rc.cpp:19
+msgid "Polling interval"
+msgstr "Yoklama aralığı"
+
+#: prefs.cpp:33 rc.cpp:20
+msgid "How many seconds to wait before checking for new mail."
+msgstr "Yeni postaları kontrol etmek için kaç saniye bekleneceğini belirler."
+
+#: prefs.cpp:37 rc.cpp:22
+msgid ""
+"Use secure connections when checking for new mail. Note that the login "
+"procedure uses https regardless of this setting."
+msgstr "Yeni postaları kontrol ederken güvenli bağlantı kullan. Giriş yapılırken bu ayardan bağımsız olarak her zaman güvenli bağlantı kullanılır."
+
+#: prefs.cpp:43 rc.cpp:23
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: prefs.cpp:44 rc.cpp:24
+msgid "Your Gmail username"
+msgstr "Gmail kullanıcı adınız"
+
+#: prefs.cpp:47 rc.cpp:25
+msgid "Password"
+msgstr "Parola"
+
+#: prefs.cpp:48 rc.cpp:26
+msgid "Password for checking your Gmail account"
+msgstr "Gmail hesabını kontrol etmede kullanılacak parola"
+
+#: prefs.cpp:52 rc.cpp:28
+msgid "Use the KDE Wallet system to store your Gmail password."
+msgstr "Gmail parolasını saklamak için KDE cüzdan sistemini kullan."
+
+#: prefs.cpp:56 rc.cpp:30
+msgid "If Google update the GMail code, display an alert"
+msgstr "Google, GMail'de değişiklik yaparsa bir uyarı ver"
+
+#: prefs.cpp:63 rc.cpp:32
+msgid ""
+"If enabled, launch the default KDE web browser when the KCheckGmail icon is "
+"clicked."
+msgstr "Etkinse KCheckGmail simgesi tıklandığında varsayılan KDE tarayıcısı başlar."
+
+#: prefs.cpp:67 rc.cpp:34
+msgid ""
+"If enabled, every time you click on the KCheckGmail icon will disable it for "
+"a few seconds, thus preventing you from accidentaly opening more than one "
+"window"
+msgstr "Etkinse KCheckGmail simgesi tıklandığında birkaç saniyeliğine simge tıklanamaz hale gelir. Böylece birden fazla tarayıcı penceresi açılmaz"
+
+#: prefs.cpp:70 rc.cpp:35
+msgid "Use the KDE default browser"
+msgstr "Varsayılan KDE tarayıcısını kullan"
+
+#: prefs.cpp:71 rc.cpp:36
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
+msgstr "Gmaile gitmek için KDE varsayılanı neyse o tarayıcıyı kullanır"
+
+#: prefs.cpp:74 prefs.cpp:77 rc.cpp:37 rc.cpp:38
+msgid "Use a custom browser"
+msgstr "Başka bir tarayıcı kullan"
+
+#: prefs.cpp:78 rc.cpp:39
+msgid "Use a custom browser other than the KDE default to check your Gmail"
+msgstr "Gmaile gitmek için KDE varsayılanı dışında bir tarayıcı kullanır"
+
+
+ 	  	 
