@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>NetworkSettingsWidget</class>
 <widget class="QWidget">
     <property name="name">
@@ -24,7 +24,7 @@
                 <cstring>kcfg_Interval</cstring>
             </property>
             <property name="label">
-                <string>Checking Interval</string>
+                <string>Chec&amp;king Interval</string>
             </property>
             <property name="value">
                 <number>60</number>
@@ -61,7 +61,13 @@
                 <cstring>kcfg_UseHTTPS</cstring>
             </property>
             <property name="text">
-                <string>Use https connections for checking mail</string>
+                <string>&amp;Use https connections for checking mail</string>
+            </property>
+            <property name="accel">
+                <string>Alt+U</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
             </property>
             <property name="whatsThis" stdset="0">
                 <string>&lt;blockquote&gt;Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting.&lt;/blockquote&gt;</string>
