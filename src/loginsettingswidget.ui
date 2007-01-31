@@ -54,7 +54,13 @@
                 <cstring>kcfg_PasswordFromWallet</cstring>
             </property>
             <property name="text">
-                <string>Use KDE Wallet to store password</string>
+                <string>&amp;Use KDE Wallet to store password</string>
+            </property>
+            <property name="accel">
+                <string>Alt+U</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
             </property>
         </widget>
         <spacer row="3" column="1">
