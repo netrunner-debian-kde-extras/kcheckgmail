@@ -29,26 +29,27 @@ GMailParser::GMailParser() :
 	mInvites(0)
 {
 	mSummary.inbox = 0;
-	mSummary.starred = 0;
-	mSummary.sent = 0;
-	mSummary.all = 0;
+// 	mSummary.starred = 0;
+	mSummary.drafts = 0;
+// 	mSummary.sent = 0;
+// 	mSummary.all = 0;
 	mSummary.spam = 0;
-	mSummary.trash = 0;
+// 	mSummary.trash = 0;
 }
 
 GMailParser::~GMailParser()
 {
 }
 
-void GMailParser::parse(const QString &data)
+void GMailParser::parse(const QString &_data)
 {
-	QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
+	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
 
 	rx.setMinimal(true);
 
 	if(!rx.isValid()) {
-		kdDebug() << k_funcinfo << "Invalid RX!\n"
+		kdWarning() << k_funcinfo << "Invalid RX!\n"
 			<< rx.errorString() << endl;
 	} 
 
@@ -58,6 +59,8 @@ void GMailParser::parse(const QString &data)
 	freeThreadList();
 
 	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
+
+	QString data = QString::fromUtf8(_data);
 
 	while((pos = rx.search(data, pos)) != -1) {
 		QString str = rx.cap(1);
@@ -132,56 +135,50 @@ void GMailParser::parseQuota(const QString &data)
 			<< list.size() << ", should be: 4." << endl;
 }
 
-void GMailParser::parseDefaultSummary(const QString &data)
+void GMailParser::parseDefaultSummary(const QString &_data)
 {
-	QStringList list = QStringList::split(",",data);
-	if(list.size() == 7) {
-		QStringList::Iterator iter = list.begin();
-		int i = 0;
-		while(iter != list.end()) {
-			QString str = *iter;
-			int val = str.toUInt();
-			switch(i) {
-				case 0:
-					mSummary.inbox = val;
-					break;
-				case 1:
-					mSummary.starred = val;
-					break;
-				case 2:
-					mSummary.sent = val;
-					break;
-				case 3:
-					mSummary.all = val;
-					break;
-				case 4:
-					mSummary.spam = val;
-					break;
-				case 5:
-					mSummary.trash = val;
-					break;
-				default:
-					break;
-			}
-			iter++;
-			i++;
-		}
+	static QRegExp rx("\"([a-z]+)\",([0-9]+)");
 
-		kdDebug() << k_funcinfo << endl  
-			<< "inbox=" << mSummary.inbox << "\n"
-			<< "starred=" << mSummary.starred << "\n"
-			<< "sent=" << mSummary.sent << "\n"
-			<< "all=" << mSummary.all << "\n"
-			<< "spam=" << mSummary.spam << "\n"
-			<< "trash=" << mSummary.trash << endl;
+	if(!rx.isValid()) {
+		kdWarning() << k_funcinfo << "Invalid RX!\n"
+			<< rx.errorString() << endl;
+	}
+	QString data = _data;
+	int pos = 0;
 
-	} else
-		kdDebug() << k_funcinfo << "Wrong number of elements in ds: "
-			<< list.size() << ", should be: 7." << endl;
+	while((pos = rx.search(data, pos)) != -1) {
+		QString str_name = rx.cap(1), str_val = rx.cap(2);
+		int val = str_val.toUInt();
+
+		// TODO: replace this with a nicer switch/case code
+		if( QString::compare(str_name,"inbox") == 0)
+			mSummary.inbox = val;
+		else if( QString::compare(str_name,"drafts") == 0)
+			mSummary.drafts = val;
+		else if( QString::compare(str_name,"spam") == 0)
+			mSummary.spam = val;
+		else kdDebug() << k_funcinfo << "unkown identifier " << str_name << endl;
+
+		pos += rx.matchedLength();
+	}
+	kdDebug() << k_funcinfo << endl  
+		<< "inbox=" << mSummary.inbox << "\n"
+		<< "drafts=" << mSummary.drafts << "\n"
+		<< "spam=" << mSummary.spam << "\n" << endl;
 }
 
 void GMailParser::parseLabel(const QString &data)
 {
+	static QRegExp rx(
+		"\\[\"([^\"]+)\""	// label name
+		",([0-9]+)\\]"		// unread
+		);
+
+	if(!rx.isValid()) {
+		kdWarning() << k_funcinfo << "Invalid RX!\n"
+			<< rx.errorString() << endl;
+	}
+
 	kdDebug() << k_funcinfo 
 		<< "\n+++Data++\n" << data 
 		 << "\n---Data---\n" << endl;
@@ -210,7 +207,7 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		"(\\s*([0-9]+)\\s*\\])?"	// unknown5 *EN_us
 		);
 
-	// *EN_us: only exists if GMail "Display language" is set to English (US)
+	// NOTE: *EN_us: only exists if GMail "Display language" is set to English (US)
 	// settings->mail settings->general->language
 
 	QString data = _data;
@@ -221,7 +218,7 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	rx.setMinimal(true);
 
 	if(!rx.isValid()) {
-		kdDebug() << k_funcinfo << "Invalid RX!\n"
+		kdWarning() << k_funcinfo << "Invalid RX!\n"
 			<< rx.errorString() << endl;
 	}
 	
