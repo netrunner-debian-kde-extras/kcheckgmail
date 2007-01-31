@@ -53,6 +53,7 @@ int main(int argc, char **argv)
 		"http://sf.net/projects/kcheckgmail", // homePageAddress
 		"mwlazlo@gmail.com");
 	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Primary author and maintainer"), "mwlazlo@gmail.com");
+	about.addAuthor("Raphael Geissert", I18N_NOOP("Maintainer"), "atomo64@gmail.com");
 	about.addCredit("Rogério Pereira Araújo", I18N_NOOP("Brazilian Portuguese Translation"), "rogerio.araujo@gmail.com");
 	about.addCredit("Samuele Kaplun", I18N_NOOP("Italian Translation"), "kaplun@aliceposta.it");
 	about.addCredit("Felipe Morales", I18N_NOOP("Spanish Translation"), "felipe.morales@wanadoo.es");
@@ -61,6 +62,9 @@ int main(int argc, char **argv)
 	about.addCredit("Patrick Trettenbrein", I18N_NOOP("German Translation Updates"), "patrick.trettenbrein@gmx.net");
 	about.addCredit("Alexis Bunel", I18N_NOOP("French Translation"), "alexisbunel@gmail.com");
 	about.addCredit("Jarosław Kamper", I18N_NOOP("Polish Translation"), "jaroslawkamper@gmail.com");
+	about.addCredit("Uğur Çetin", I18N_NOOP("Turkish Translation"), "jnmbk@users.sourceforge.net");
+	about.addCredit("Peter Avramucz", I18N_NOOP("Hungarian Translation"), "muczy@freestart.hu");
+	about.addCredit("Daniel Nylander", I18N_NOOP("Swedish Translation"), "po@danielnylander.se");
 
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");
