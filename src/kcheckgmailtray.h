@@ -73,6 +73,7 @@ private:
 	void showKNotifyDialog();
 	void updateCountImage();
 	void updateThreadMenu();
+	void composeMail();
 	void initConfigDialog();
 
 	// dcop call implementations
