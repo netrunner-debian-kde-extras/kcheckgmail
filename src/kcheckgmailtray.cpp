@@ -61,6 +61,7 @@
 #define CONTEXT_LAUNCHBROWSER 101
 #define CONTEXT_NOTIFY 102
 #define CONTEXT_CHECKNOW 103
+#define CONTEXT_COMPOSE 104
 
 KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	: DCOPObject("KCheckGmailIface"),
@@ -126,6 +127,8 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 		mGmail, SLOT(slotCheckGmail()));
 	menu->insertItem(SmallIcon("mozilla"), 
 		i18n("&Launch Browser"), CONTEXT_LAUNCHBROWSER);
+	menu->insertItem(SmallIcon("mozilla"),
+		i18n("Co&mpose Mail"), CONTEXT_COMPOSE);
 
 	mThreadsMenuId = menu->insertItem(SmallIcon("kcheckgmail"), i18n("Threads"),
 		mThreadsMenu);
@@ -175,6 +178,9 @@ void KCheckGmailTray::slotContextMenuActivated(int n)
 		case CONTEXT_NOTIFY:
 			showKNotifyDialog();
 			break;
+		case CONTEXT_COMPOSE:
+			composeMail();
+			break;
 	}
 }
 
@@ -190,7 +196,7 @@ void KCheckGmailTray::slotThreadsMenuActivated(int n)
 		else
 			url = "http";
 
-		url.append("://gmail.google.com/gmail?view=cv&search=inbox&tearoff=1");
+		url.append("://mail.google.com/mail/?view=cv&search=inbox&tearoff=1");
 		url.append("&lvp=-1&cvp=1&fs=1&tf=1&fs=1&th=");
 		url.append(t.msgId);
 		launchBrowser(url);
@@ -206,7 +212,7 @@ void KCheckGmailTray::launchBrowser(const QString &url)
 			loadURL = "https";
 		else
 			loadURL = "http";
-		loadURL.append("://gmail.google.com/gmail");
+		loadURL.append("://mail.google.com/mail");
 	} else
 		loadURL = url;
 
@@ -219,6 +225,18 @@ void KCheckGmailTray::launchBrowser(const QString &url)
 		s = KMacroExpander::expandMacrosShellQuote(s, map);
 		KRun::runCommand(QFile::encodeName(s));
 	}
+}
+
+void KCheckGmailTray::composeMail()
+{
+	QString url;
+	if(Prefs::useHTTPS())
+		url = "https";
+	else
+		url = "http";
+
+	url.append("://mail.google.com/mail/?view=cm&fs=1&tearoff=1");
+	launchBrowser(url);
 }
 
 void KCheckGmailTray::showKNotifyDialog()
@@ -322,19 +340,12 @@ void KCheckGmailTray::updateThreadMenu()
 					str += t.subject;
 					
 					// TODO: move this somewhere else
-					QRegExp rmSender("\\<span id=.*>");
-					rmSender.setMinimal(true);
-					str.remove(rmSender);
+					QRegExp rmSpan("\\<span id.*>");
+					rmSpan.setMinimal(true);
+					str.remove(rmSpan);
 					
-					QRegExp slash("\\\\");
-					QRegExp b("<b>");
-					QRegExp b2("</b>");
-					QRegExp span2("</span>");
-
-					str.remove(slash);
-					str.remove(b);
-					str.remove(b2);
-					str.remove(span2);
+					QRegExp rest("\\\\|<b>|</b>|</span>");
+					str.remove(rest);
 					
 					mThreadsMenu->insertItem(str, t.id);
 					numItems ++;
