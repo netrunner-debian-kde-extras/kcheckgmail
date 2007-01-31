@@ -46,9 +46,9 @@ static const QString
 gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginBoxAuth",
 gGMailLoginPostFormat = "Email=%s&Passwd=%s&null=Sign%%20in",
 	
-gGMailCheckURL = "%s://gmail.google.com/gmail?search=inbox"
-	"&as_subset=unread&view=tl&start=0",
-gGMailPostLoginURLFormat = "%s://gmail.google.com/gmail?auth=%s";
+gGMailCheckURL = "%s://mail.google.com/mail/?search=query"
+	"&q=%%20is%%3Aunread%%20in%%3Ainbox&as_subset=unread&view=tl&start=0",
+gGMailPostLoginURLFormat = "%s://mail.google.com/mail/";
 
 
 #define MILLISECS(x) (x * 1000)
