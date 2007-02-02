@@ -41,6 +41,7 @@
 #include <qtimer.h>
 #include <qregexp.h>
 #include <kpassdlg.h>
+#include <klineedit.h>
 
 #include "appletsettingswidget.h"
 #include "kcheckgmailtray.h"
@@ -125,9 +126,9 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	mCheckNowId = menu->insertItem(SmallIcon("launch"), 
 		i18n("Login and Chec&k Mail"), 
 		mGmail, SLOT(slotCheckGmail()));
-	menu->insertItem(SmallIcon("mozilla"), 
+	menu->insertItem(SmallIcon("konqueror"), 
 		i18n("&Launch Browser"), CONTEXT_LAUNCHBROWSER);
-	menu->insertItem(SmallIcon("mozilla"),
+	menu->insertItem(SmallIcon("email"),
 		i18n("Co&mpose Mail"), CONTEXT_COMPOSE);
 
 	mThreadsMenuId = menu->insertItem(SmallIcon("kcheckgmail"), i18n("Threads"),
@@ -248,14 +249,26 @@ void KCheckGmailTray::slotSettingsChanged()
 {
 	bool loginOk = true;
 	const char *passwd = mLoginSettings->gmailPassword->password();
+	const QString user = mLoginSettings->kcfg_GmailUsername->originalText();
 
 	kdDebug() << k_funcinfo << passwd << endl;
 	
-	if(strlen(passwd) == 0) {
-		KMessageBox::error(0, i18n("Please enter a password"));
-		QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+	if(strlen(passwd) == 0 ) {
+		kdDebug() << k_funcinfo << "user: " << user << endl;
+		if(strlen(user) == 0) {
+			int res = KMessageBox::warningYesNo(0, i18n("No account information has been entered. Do you want to quit?"));
+
+			kdDebug() << k_funcinfo << "res: " << res << endl;
+
+			if( res == KMessageBox::Yes ) {
+				emit quitSelected();
+				qApp->quit();
+			} else {
+				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+			}
+		}
 	} else {
-		kdDebug() << "strncmp: " << strncmp(passwd, "\007\007\007", 3) << endl;
+		kdDebug() << "strnKCheckGmailTray::slotSettingsChangedcmp: " << strncmp(passwd, "\007\007\007", 3) << endl;
 
 		if(strncmp(passwd, "\007\007\007", 3) != 0) {
 			kdDebug() << k_funcinfo << "setting wallet" << endl;
