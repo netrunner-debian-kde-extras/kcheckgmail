@@ -1,6 +1,5 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# KCheckGmail
+# This file is distributed under the same license as the kcheckgmail package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,12 +7,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-18 12:00+1100\n"
+"POT-Creation-Date: 2007-02-01 21:38-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: _translatorinfo.cpp:1
@@ -28,47 +27,11 @@ msgid ""
 "Your emails"
 msgstr ""
 
-#: appletsettingswidget.cpp:94 rc.cpp:1
-msgid "AppletSettingsWidget"
-msgstr ""
-
-#: appletsettingswidget.cpp:95 rc.cpp:2
-msgid "Tray Icon"
-msgstr ""
-
-#: appletsettingswidget.cpp:96 prefs.cpp:62 rc.cpp:3 rc.cpp:31
-msgid "Open browser to Gmail on left click"
-msgstr ""
-
-#: appletsettingswidget.cpp:97 prefs.cpp:66 rc.cpp:4 rc.cpp:33
-msgid "Catch accidental left clicks when launching the browser"
-msgstr ""
-
-#: appletsettingswidget.cpp:98 rc.cpp:5
-msgid "Browser"
-msgstr ""
-
-#: appletsettingswidget.cpp:99 rc.cpp:6
-msgid "Use the default KDE browser"
-msgstr ""
-
-#: appletsettingswidget.cpp:100 rc.cpp:7
-msgid "Use an alternative browser"
-msgstr ""
-
-#: appletsettingswidget.cpp:101 rc.cpp:8
-msgid "Debug"
-msgstr ""
-
-#: appletsettingswidget.cpp:102 prefs.cpp:55 rc.cpp:9 rc.cpp:29
-msgid "Display an alert if GMail version changes"
-msgstr ""
-
-#: gmail.cpp:180
+#: gmail.cpp:178
 msgid "Invalid username or password"
 msgstr ""
 
-#: gmail.cpp:247
+#: gmail.cpp:240
 msgid "Unknown error retrieving cookies"
 msgstr ""
 
@@ -100,99 +63,87 @@ msgstr ""
 msgid "Unable to retrieve secure password"
 msgstr ""
 
-#: kcheckgmailtray.cpp:115 main.cpp:45
+#: kcheckgmailtray.cpp:120 main.cpp:45
 msgid "KCheckGmail"
 msgstr ""
 
-#: kcheckgmailtray.cpp:117
+#: kcheckgmailtray.cpp:122
 msgid "Configure &Notications..."
 msgstr ""
 
-#: kcheckgmailtray.cpp:119
+#: kcheckgmailtray.cpp:124
 msgid "&Configure KCheckGmail..."
 msgstr ""
 
-#: kcheckgmailtray.cpp:122 kcheckgmailtray.cpp:383
+#: kcheckgmailtray.cpp:127 kcheckgmailtray.cpp:414
 msgid "Login and Chec&k Mail"
 msgstr ""
 
-#: kcheckgmailtray.cpp:125
+#: kcheckgmailtray.cpp:130
 msgid "&Launch Browser"
 msgstr ""
 
-#: kcheckgmailtray.cpp:127
+#: kcheckgmailtray.cpp:132
+msgid "Co&mpose Mail"
+msgstr ""
+
+#: kcheckgmailtray.cpp:134
 msgid "Threads"
 msgstr ""
 
-#: kcheckgmailtray.cpp:228
-msgid "Please enter a password"
+#: kcheckgmailtray.cpp:259
+msgid "No account information has been entered. Do you want to quit?"
 msgstr ""
 
-#: kcheckgmailtray.cpp:351
+#: kcheckgmailtray.cpp:382
 msgid "There is <b>1</b> new message"
 msgstr ""
 
-#: kcheckgmailtray.cpp:353
+#: kcheckgmailtray.cpp:384
 msgid "There are <b>%1</b> new messages"
 msgstr ""
 
-#: kcheckgmailtray.cpp:377
+#: kcheckgmailtray.cpp:408
 msgid "An error occurred logging in to Gmail<br><b>%1</b>"
 msgstr ""
 
-#: kcheckgmailtray.cpp:387
+#: kcheckgmailtray.cpp:418
 msgid "Now logged in to Gmail!"
 msgstr ""
 
-#: kcheckgmailtray.cpp:388
+#: kcheckgmailtray.cpp:419
 msgid "Chec&k Mail Now"
 msgstr ""
 
-#: kcheckgmailtray.cpp:431
+#: kcheckgmailtray.cpp:464
 msgid "Login"
 msgstr ""
 
-#: kcheckgmailtray.cpp:431
+#: kcheckgmailtray.cpp:464
 msgid "Login Settings"
 msgstr ""
 
-#: kcheckgmailtray.cpp:434
+#: kcheckgmailtray.cpp:467
 msgid "Network"
 msgstr ""
 
-#: kcheckgmailtray.cpp:434
+#: kcheckgmailtray.cpp:467
 msgid "Network Settings"
 msgstr ""
 
-#: kcheckgmailtray.cpp:437
+#: kcheckgmailtray.cpp:470
 msgid "Behavior"
 msgstr ""
 
-#: kcheckgmailtray.cpp:467
+#: kcheckgmailtray.cpp:500
 msgid ""
 "Gmail has been upgraded since this version of KCheckGmail was released. This "
 "may cause all sort of strange errors. Please check for an upgrade to "
 "KCheckGmail soon."
 msgstr ""
 
-#: kcheckgmailtray.cpp:468
+#: kcheckgmailtray.cpp:501
 msgid "Version changed"
-msgstr ""
-
-#: loginsettingswidget.cpp:74 rc.cpp:10
-msgid "LoginSettingsWidget"
-msgstr ""
-
-#: loginsettingswidget.cpp:75 rc.cpp:11
-msgid "Username:"
-msgstr ""
-
-#: loginsettingswidget.cpp:76 rc.cpp:12
-msgid "Password:"
-msgstr ""
-
-#: loginsettingswidget.cpp:77 prefs.cpp:51 rc.cpp:13 rc.cpp:27
-msgid "Use KDE Wallet to store password"
 msgstr ""
 
 #: main.cpp:36
@@ -210,119 +161,312 @@ msgid "Primary author and maintainer"
 msgstr ""
 
 #: main.cpp:56
-msgid "Brazilian Portuguese Translation"
+msgid "Maintainer"
 msgstr ""
 
 #: main.cpp:57
-msgid "Italian Translation"
+msgid "Brazilian Portuguese Translation"
 msgstr ""
 
 #: main.cpp:58
-msgid "Spanish Translation"
+msgid "Italian Translation"
 msgstr ""
 
 #: main.cpp:59
-msgid "German Translation"
+msgid "Spanish Translation"
 msgstr ""
 
 #: main.cpp:60
-msgid "Russian Translation"
+msgid "German Translation"
 msgstr ""
 
 #: main.cpp:61
-msgid "German Translation Updates"
+msgid "Russian Translation"
 msgstr ""
 
 #: main.cpp:62
+msgid "German Translation Updates"
+msgstr ""
+
+#: main.cpp:63
 msgid "French Translation"
 msgstr ""
 
-#: netsettingswidget.cpp:63 rc.cpp:14
+#: main.cpp:64
+msgid "Polish Translation"
+msgstr ""
+
+#: main.cpp:65
+msgid "Turkish Translation"
+msgstr ""
+
+#: main.cpp:66
+msgid "Hungarian Translation"
+msgstr ""
+
+#: main.cpp:67
+msgid "Swedish Translation"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 16
+#: rc.cpp:3
+#, no-c-format
+msgid "AppletSettingsWidget"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 33
+#: rc.cpp:6
+#, no-c-format
+msgid "Tray Icon"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 44
+#. i18n: file prefs.kcfg line 48
+#: rc.cpp:9 rc.cpp:118
+#, no-c-format
+msgid "Open browser to Gmail on left click"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 52
+#. i18n: file prefs.kcfg line 53
+#: rc.cpp:12 rc.cpp:124
+#, no-c-format
+msgid "Catch accidental left clicks when launching the browser"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 62
+#: rc.cpp:15
+#, no-c-format
+msgid "Browser"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 102
+#: rc.cpp:18
+#, no-c-format
+msgid "Use the default KDE browser"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 140
+#: rc.cpp:21
+#, no-c-format
+msgid "Use an alternative browser"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 149
+#: rc.cpp:24
+#, no-c-format
+msgid "Debug"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 164
+#. i18n: file prefs.kcfg line 40
+#: rc.cpp:27 rc.cpp:112
+#, no-c-format
+msgid "Display an alert if GMail version changes"
+msgstr ""
+
+#. i18n: file loginsettingswidget.ui line 16
+#: rc.cpp:30
+#, no-c-format
+msgid "LoginSettingsWidget"
+msgstr ""
+
+#. i18n: file loginsettingswidget.ui line 35
+#: rc.cpp:33
+#, no-c-format
+msgid "Username:"
+msgstr ""
+
+#. i18n: file loginsettingswidget.ui line 46
+#: rc.cpp:36
+#, no-c-format
+msgid "Password:"
+msgstr ""
+
+#. i18n: file loginsettingswidget.ui line 57
+#: rc.cpp:39
+#, no-c-format
+msgid "&Use KDE Wallet to store password"
+msgstr ""
+
+#. i18n: file loginsettingswidget.ui line 60
+#. i18n: file netsettingswidget.ui line 67
+#: rc.cpp:42 rc.cpp:57
+#, no-c-format
+msgid "Alt+U"
+msgstr ""
+
+#. i18n: file netsettingswidget.ui line 16
+#: rc.cpp:45
+#, no-c-format
 msgid "NetworkSettingsWidget"
 msgstr ""
 
-#: netsettingswidget.cpp:64 rc.cpp:15
-msgid "Checking Interval"
+#. i18n: file netsettingswidget.ui line 27
+#: rc.cpp:48
+#, no-c-format
+msgid "Chec&king Interval"
 msgstr ""
 
-#: netsettingswidget.cpp:65 rc.cpp:16
+#. i18n: file netsettingswidget.ui line 39
+#: rc.cpp:51
+#, no-c-format
 msgid " seconds"
 msgstr ""
 
-#: netsettingswidget.cpp:66 prefs.cpp:36 rc.cpp:17 rc.cpp:21
-msgid "Use https connections for checking mail"
+#. i18n: file netsettingswidget.ui line 64
+#: rc.cpp:54
+#, no-c-format
+msgid "&Use https connections for checking mail"
 msgstr ""
 
-#: netsettingswidget.cpp:67 rc.cpp:18
+#. i18n: file netsettingswidget.ui line 73
+#: rc.cpp:60
+#, no-c-format
 msgid ""
 "<blockquote>Use secure connections when checking for new mail. Note that the "
 "login procedure uses https regardless of this setting.</blockquote>"
 msgstr ""
 
-#: prefs.cpp:32 rc.cpp:19
+#. i18n: file popup.ui line 16
+#: rc.cpp:63
+#, no-c-format
+msgid "New eMail Notification"
+msgstr ""
+
+#. i18n: file popup.ui line 31
+#: rc.cpp:66
+#, no-c-format
+msgid "<b>Subject:</b>"
+msgstr ""
+
+#. i18n: file popup.ui line 47
+#: rc.cpp:69
+#, no-c-format
+msgid "<b>From:</b>"
+msgstr ""
+
+#. i18n: file prefs.kcfg line 7
+#: rc.cpp:76
+#, no-c-format
 msgid "Polling interval"
 msgstr ""
 
-#: prefs.cpp:33 rc.cpp:20
+#. i18n: file prefs.kcfg line 11
+#: rc.cpp:79
+#, no-c-format
 msgid "How many seconds to wait before checking for new mail."
 msgstr ""
 
-#: prefs.cpp:37 rc.cpp:22
+#. i18n: file prefs.kcfg line 14
+#: rc.cpp:82
+#, no-c-format
+msgid "Use https connections for checking mail"
+msgstr ""
+
+#. i18n: file prefs.kcfg line 16
+#: rc.cpp:85
+#, no-c-format
 msgid ""
 "Use secure connections when checking for new mail. Note that the login "
 "procedure uses https regardless of this setting."
 msgstr ""
 
-#: prefs.cpp:43 rc.cpp:23
+#. i18n: file prefs.kcfg line 22
+#: rc.cpp:88
+#, no-c-format
 msgid "Username"
 msgstr ""
 
-#: prefs.cpp:44 rc.cpp:24
+#. i18n: file prefs.kcfg line 23
+#: rc.cpp:91
+#, no-c-format
 msgid "Your Gmail username"
 msgstr ""
 
-#: prefs.cpp:47 rc.cpp:25
+#. i18n: file prefs.kcfg line 26
+#: rc.cpp:94
+#, no-c-format
 msgid "Password"
 msgstr ""
 
-#: prefs.cpp:48 rc.cpp:26
+#. i18n: file prefs.kcfg line 27
+#: rc.cpp:97
+#, no-c-format
 msgid "Password for checking your Gmail account"
 msgstr ""
 
-#: prefs.cpp:52 rc.cpp:28
+#. i18n: file prefs.kcfg line 30
+#: rc.cpp:100
+#, no-c-format
+msgid "Use KDE Wallet to store password"
+msgstr ""
+
+#. i18n: file prefs.kcfg line 32
+#: rc.cpp:103
+#, no-c-format
 msgid "Use the KDE Wallet system to store your Gmail password."
 msgstr ""
 
-#: prefs.cpp:56 rc.cpp:30
+#. i18n: file prefs.kcfg line 35
+#: rc.cpp:106
+#, no-c-format
+msgid "Only search for new messages in inbox"
+msgstr ""
+
+#. i18n: file prefs.kcfg line 37
+#: rc.cpp:109
+#, no-c-format
+msgid ""
+"By disabling this option new messages are searched in anywhere (this "
+"includes spam, trash, etc)."
+msgstr ""
+
+#. i18n: file prefs.kcfg line 42
+#: rc.cpp:115
+#, no-c-format
 msgid "If Google update the GMail code, display an alert"
 msgstr ""
 
-#: prefs.cpp:63 rc.cpp:32
+#. i18n: file prefs.kcfg line 50
+#: rc.cpp:121
+#, no-c-format
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGmail icon is "
 "clicked."
 msgstr ""
 
-#: prefs.cpp:67 rc.cpp:34
+#. i18n: file prefs.kcfg line 55
+#: rc.cpp:127
+#, no-c-format
 msgid ""
 "If enabled, every time you click on the KCheckGmail icon will disable it for "
 "a few seconds, thus preventing you from accidentaly opening more than one "
 "window"
 msgstr ""
 
-#: prefs.cpp:70 rc.cpp:35
+#. i18n: file prefs.kcfg line 58
+#: rc.cpp:130
+#, no-c-format
 msgid "Use the KDE default browser"
 msgstr ""
 
-#: prefs.cpp:71 rc.cpp:36
+#. i18n: file prefs.kcfg line 60
+#: rc.cpp:133
+#, no-c-format
 msgid ""
 "Use whatever browser is configured as the KDE default to check your Gmail"
 msgstr ""
 
-#: prefs.cpp:74 prefs.cpp:77 rc.cpp:37 rc.cpp:38
+#. i18n: file prefs.kcfg line 63
+#. i18n: file prefs.kcfg line 67
+#: rc.cpp:136 rc.cpp:139
+#, no-c-format
 msgid "Use a custom browser"
 msgstr ""
 
-#: prefs.cpp:78 rc.cpp:39
+#. i18n: file prefs.kcfg line 69
+#: rc.cpp:142
+#, no-c-format
 msgid "Use a custom browser other than the KDE default to check your Gmail"
 msgstr ""
