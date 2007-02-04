@@ -6,34 +6,42 @@ Comment=KCheckGmail
 Name=New Gmail Arrived
 Name[it]=Arrivata nuova Gmail
 Name[pt_BR]=Chegou um novo Gmail
+Name[es]=Nuevo Gmail ha arrivado
 Comment=New Gmail Arrived
 Comment[it]=Arrivata nuova posta Gmail
 Comment[pt_BR]=Chegou um novo Gmail
+Comment[es]=Nuevo Gmail ha arrivado
 default_presentation=16
 
 [gmail-login-yes]
 Name=Logged in to Gmail!
 Name[it]=Connessi a Gmail!
 Name[pt_BR]=VocÃª estÃ¡ logado no Gmail!
+Name[es]=¡Identificado en Gmail!
 Comment=Logged in to Gmail!
 Comment[it]=Connessi a Gmail!
 Comment[pt_BR]=VocÃª estÃ¡ logado no Gmail!
+Comment[es]=¡Identificado en Gmail!
 default_presentation=16
 
 [gmail-login-no]
 Name=Failed to login to Gmail
 Name[it]=Connessione a Gmail fallita
 Name[pt_BR]=Falha ao logar no Gmail
+Name[es]=No se ha podido conectar a Gmail
 Comment=Failed to login to Gmail
 Comment[it]=Connessione a Gmail fallita
 Comment[pt_BR]=Falha ao logar no Gmail
+Comment[es]=No se ha podido conectar a Gmail
 default_presentation=16
 
 [gmail-version-mismatch]
 Name=Gmail version has changed!
 Name[it]=La versione di Gmail Ãš cambiata!
+Name[es]=¡La versión de Gmail ha cambiado!
 Comment=Gmail version has changed!
 Comment[it]=La versione di Gmail Ãš cambiata!
+Comment[es]=¡La versión de Gmail ha cambiado!
 default_presentation=2
 
 # None = 0, Sound = 1, Messagebox = 2, Logfile = 4, Stderr = 8, PassivePopup = 16, Execute = 32
