@@ -24,14 +24,9 @@
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qmap.h>
+#include <qmemarray.h>
 #include <vector>
 
-// version of Gmail KCheckGmail works with
-static const QString gGMailVersion = "65e56e631b4fb98b,f50abc47944a85ed,15";
-//u695tac9h3qn,93a8e3f857e8a529,34,1,2zysse3gag82
-//1cdla58rq9q29,9930dc54804b344a,35,1,1x4nkpwjfkc8x
-//14rx07tjuxv31,7530096a84569c0b,34,1,2zysse3gag82
-//1ob2pma58lk91,93a8e3f857e8a529,35,1,1exl39kx7mipo
 /**
 @author Matthew Wlazlo
 */
@@ -85,6 +80,15 @@ public:
 		unsigned int unknown5;
 		bool isNull; 
 	} Thread;
+	
+	// "v"
+	typedef struct {
+		QString unknown1;
+		QString language;
+		unsigned int unknown2;
+		unsigned int unknown3;
+		QString version;
+	} Version;
 public:
 	GMailParser();
 	virtual ~GMailParser();
@@ -93,7 +97,7 @@ public:
 	
 	unsigned int getNewCount() const;
 
-	const QString &getVersion() const { return mVersion; }
+// 	const QString &getVersion() const { return mVersion; }
 	unsigned int getInvites() const { return mInvites; }
 
 	const DefaultSearchSummary &getSummary() const { return mSummary; }
@@ -121,12 +125,14 @@ protected:
 	void freeThreadList();
 
 private:
-	QString mVersion;
+	Version mVersion;
 	unsigned int mInvites;
 	unsigned int mCurMsgId;
 	Quota mQuota;
 	DefaultSearchSummary mSummary;
 	std::vector<Label> mLabels;
 	QMap<QString,Thread*> mThreads;
+	QMemArray<QString> gGMailVersion;
+	QMap<QString, QString> gGMailLanguageCode;
 };
 #endif
