@@ -23,9 +23,9 @@
 
 #include <kdebug.h>
 #include <qregexp.h>
+#include <klocale.h>
 
 GMailParser::GMailParser() :
-	mVersion(gGMailVersion),
 	mInvites(0)
 {
 	mSummary.inbox = 0;
@@ -35,6 +35,38 @@ GMailParser::GMailParser() :
 // 	mSummary.all = 0;
 	mSummary.spam = 0;
 // 	mSummary.trash = 0;
+	
+	// NOTE: when adding more supported gmail versions resize()'s value MUST be changed
+	gGMailVersion.resize(3);
+	//gmail versions kcheckgmail works with:
+	gGMailVersion[0] = "1exl39kx7mipo";
+	gGMailVersion[1] = "1x4nkpwjfkc8x";
+	gGMailVersion[2] = "1ddh9n6glzd1c";
+
+	//gmail language identifiers:
+	gGMailLanguageCode.insert("7fba835ed0312d54",i18n("Spanish"));
+	gGMailLanguageCode.insert("7530096a84569c0b",i18n("French"));
+	gGMailLanguageCode.insert("21208aa200ae6920",i18n("Italian"));
+	gGMailLanguageCode.insert("cd21242a38a63f0",i18n("German"));
+	gGMailLanguageCode.insert("9930dc54804b344a",i18n("English (US)"));
+	gGMailLanguageCode.insert("93a8e3f857e8a529",i18n("English (UK)"));
+	gGMailLanguageCode.insert("d414bf5ecc193e94",i18n("Portuguese"));
+	gGMailLanguageCode.insert("421a229c26e5115",i18n("Turkish"));
+	gGMailLanguageCode.insert("f8c7fb73ac445a2f",i18n("Polish"));
+	gGMailLanguageCode.insert("d880d89755cacbab",i18n("Russian"));
+	gGMailLanguageCode.insert("a680d09b1f097e52",i18n("Croatian"));
+	gGMailLanguageCode.insert("690643eba4fb5b28",i18n("Dutch"));
+	gGMailLanguageCode.insert("b6a1b7dea1a8a18",i18n("Hungarian"));
+	gGMailLanguageCode.insert("fa2444e0ab7696ed",i18n("Swedish"));
+	gGMailLanguageCode.insert("cb207eb0643c6e51",i18n("Norwegian"));
+	gGMailLanguageCode.insert("bee0f0eace8c0ee8",i18n("Lithuanian"));
+	gGMailLanguageCode.insert("e7b392f9cad18fbb",i18n("Hebrew"));
+	gGMailLanguageCode.insert("62efb853bef926",i18n("Greek"));
+	gGMailLanguageCode.insert("88595fc43e710562",i18n("Chinese Simplified"));
+	gGMailLanguageCode.insert("c368aa1b815d1a8a",i18n("Czech"));
+	gGMailLanguageCode.insert("a680d09b1f097e52",i18n("Croatian"));
+	gGMailLanguageCode.insert("e35d4c2af8d5feba",i18n("Catalan"));
+	gGMailLanguageCode.insert("b8e15ea37ed4f16",i18n("Arabic"));
 }
 
 GMailParser::~GMailParser()
@@ -107,7 +139,7 @@ void GMailParser::parseQuota(const QString &data)
 	QStringList list = QStringList::split(",",data);
 	if(list.size() == 4) {
 		QStringList::Iterator iter = list.begin();
-		int i = 0;
+		unsigned int i = 0;
 		while(iter != list.end()) {
 			QString val = *iter;
 			val.remove('"');
@@ -131,7 +163,7 @@ void GMailParser::parseQuota(const QString &data)
 			i++;
 		}
 	} else
-		kdDebug() << k_funcinfo << "Wrong number of elements in qu: "
+		kdWarning() << k_funcinfo << "Wrong number of elements in qu: "
 			<< list.size() << ", should be: 4." << endl;
 }
 
@@ -178,16 +210,20 @@ void GMailParser::parseLabel(const QString &data)
 		kdWarning() << k_funcinfo << "Invalid RX!\n"
 			<< rx.errorString() << endl;
 	}
+	int pos = 0;
 
-	kdDebug() << k_funcinfo 
-		<< "\n+++Data++\n" << data 
-		 << "\n---Data---\n" << endl;
+	while((pos = rx.search(data, pos)) != -1) {
+		
+		kdDebug() << k_funcinfo << rx.cap(2) << " unread messages for label " << rx.cap(1) << endl;
+		pos += rx.matchedLength();
+	}
 }
 
 void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap)
 {
 	static QRegExp killEscapes("\\\\\"");
 
+	//Matches messages when snippets are on
 	static QRegExp rx(
 		"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyID
 		"\\s*([0-9]+)\\s*,"		// isNew
@@ -202,13 +238,30 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
 		"\\s*([0-9]+)\\s*,"		// unknown2
 		"\\s*\"([^\"]*)\"\\s*"		// date_long
-		"(,\\s*([0-9]+)\\s*,)?"		// unknown3 *EN_us
-		"(\\s*\"([^\"]*)\"\\s*,)?"	// unknown4 *EN_us
-		"(\\s*([0-9]+)\\s*\\])?"	// unknown5 *EN_us
-		);
+		"(,\\s*([0-9]+)\\s*,)?"		// unknown3
+		"(\\s*\"([^\"]*)\"\\s*,)?"	// unknown4
+		"(\\s*([0-9]+)\\s*\\])?"	// unknown5
+	 );
 
-	// NOTE: *EN_us: only exists if GMail "Display language" is set to English (US)
-	// settings->mail settings->general->language
+	//Matches messages when snippets are off
+	static QRegExp rx2(
+		"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyID
+		"\\s*([0-9]+)\\s*,"		// isNew
+		"\\s*([0-9]+)\\s*,"		// unknown1
+		"\\s*\"([^\"]*)\"\\s*,"		// date_short
+		"\\s*\"([^\"]*)\"\\s*,"		// senders
+		"\\s*\"([^\"]*)\"\\s*,"		// chevron
+		"\\s*\"([^\"]*)\"\\s*,"		// subject
+		"(\\s*),"			// snippet
+		"\\s*\\[([^\\]]*)\\]\\s*,"	// labels
+		"\\s*\"([^\"]*)\"\\s*,"		// attachments
+		"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
+		"\\s*([0-9]+)\\s*,"		// unknown2
+		"\\s*\"([^\"]*)\"\\s*"		// date_long
+		"(,\\s*([0-9]+)\\s*,)?"		// unknown3
+		"(\\s*\"([^\"]*)\"\\s*,)?"	// unknown4
+		"(\\s*([0-9]+)\\s*\\])?"	// unknown5
+	 );
 
 	QString data = _data;
 	data.replace(killEscapes, "");
@@ -216,10 +269,16 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	int pos = 0;
 
 	rx.setMinimal(true);
+	rx2.setMinimal(true);
 
 	if(!rx.isValid()) {
 		kdWarning() << k_funcinfo << "Invalid RX!\n"
 			<< rx.errorString() << endl;
+	}
+
+	if(!rx2.isValid()) {
+		kdWarning() << k_funcinfo << "Invalid RX2!\n"
+				<< rx2.errorString() << endl;
 	}
 	
 	/*
@@ -253,8 +312,6 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->unknown3 = rx.cap(14).toUInt();
 		t->isNull = false;
 
-		// truly a new msg? inc counter
-		kdDebug() << k_funcinfo << "truly a new msg? inc counter" << endl;
 		if(t->isNew && (!oldMap || 
 			(oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
@@ -268,21 +325,102 @@ void GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		pos += rx.matchedLength();
 	}
 
+	pos = 0;
+	
+	// TODO: only perform this if not all msgs were parsed (by checking counters)
+	while((pos = rx2.search(data, pos)) != -1) {
+		Thread *t = new Thread;
+		t->id = mCurMsgId ++;
+		t->replyId = rx2.cap(1);
+		t->isNew = rx2.cap(2).toInt();
+		t->unknown1 = rx2.cap(3).toUInt();
+		t->date_short = rx2.cap(4);
+		t->senders = rx2.cap(5);
+		t->chevron = rx2.cap(6);
+		t->subject = rx2.cap(7);
+		t->snippet = rx2.cap(8);
+		t->labels = rx2.cap(9);
+		t->attachments = rx2.cap(10);
+		t->msgId = rx2.cap(11);
+		t->unknown2 = rx2.cap(12).toUInt();
+		t->date_long = rx2.cap(13);
+		t->unknown3 = rx2.cap(14).toUInt();
+		t->isNull = false;
+
+		if(t->isNew && (!oldMap || 
+				 (oldMap->find(t->msgId) == oldMap->end()))) {
+			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
+			newMsgCount ++;
+				 } else
+					 kdDebug() << "Message [" << t->msgId << "] is NOT new." << endl;
+		
+		// (re-)insert
+					 mThreads.insert(t->msgId, t);
+
+					 pos += rx2.matchedLength();
+	}
+
 	kdDebug() << k_funcinfo << "Finished searching for threads in: " << endl;
 	kdDebug() << data << endl;
+	kdDebug() << k_funcinfo << "newMsgCount: " << newMsgCount << endl;
 
 	if(newMsgCount > 0)
 		emit mailArrived(newMsgCount);
 }
 
-void GMailParser::parseVersion(const QString &data)
+void GMailParser::parseVersion(const QString &_data)
 {
-	mVersion = data;
-	mVersion.remove('"');
-
-	kdDebug() << k_funcinfo << "Version=" << mVersion << endl;
-
-	if(mVersion != gGMailVersion)
+	QString data = _data;
+	data.remove('"');
+	
+	kdDebug() << k_funcinfo << "Version string: " << data << endl;
+	
+	QStringList list = QStringList::split(",",data);
+	if(list.size() != 5)
+		kdWarning() << k_funcinfo << "Wrong number of elements: "
+				<< list.size() << ", should be: 5." << endl;
+	QStringList::Iterator iter = list.begin();
+	unsigned int i = 0;
+	while(iter != list.end()) {
+		QString str = *iter;
+		switch(i) {
+			case 0:
+				mVersion.unknown1 = str;
+				break;
+			case 1:
+				mVersion.language = str;
+				break;
+			case 2:
+				mVersion.unknown2 = str.toUInt();
+				break;
+			case 3:
+				mVersion.unknown3 = str.toUInt();
+				break;
+			case 4:
+				mVersion.version = str;
+				break;
+			default:
+				kdWarning() << k_funcinfo << "Unknown version token: " << str << "(" << i <<")" << endl;
+				break;
+		}
+		iter++;
+		i++;
+	}
+	kdDebug() << k_funcinfo << "GMail version " << mVersion.version << endl;
+	
+	bool ok = false;
+	
+	for( i = 0; i < gGMailVersion.size() ; i++ ) {
+		if( gGMailVersion[i] == mVersion.version )
+			ok = true;
+	}
+	
+	if(gGMailLanguageCode.contains(mVersion.language))
+		kdDebug() << k_funcinfo << "GMail language: " << gGMailLanguageCode[mVersion.language] << endl;
+	else
+		kdWarning() << k_funcinfo << "Unknown language code: " << mVersion.language << endl;
+	
+	if(!ok)
 		emit versionMismatch();
 }
 
@@ -290,8 +428,10 @@ void GMailParser::parseInvite(const QString &data)
 {
 	bool ok = true;
 	mInvites = data.toUInt(&ok);
-	if(!ok)
+	if(!ok) {
 		mInvites = 0;
+		kdWarning() << k_funcinfo << "Couldn't convert data toUInt, data is " << data << endl;
+	}
 	kdDebug() << k_funcinfo << "Invites=" << mInvites << endl;
 }
 
