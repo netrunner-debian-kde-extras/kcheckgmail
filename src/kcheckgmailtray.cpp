@@ -191,13 +191,8 @@ void KCheckGmailTray::slotThreadsMenuActivated(int n)
 	const GMailParser::Thread &t = mParser->getThread(n);
 
 	if(!t.isNull) {
-		QString url;
-		if(Prefs::useHTTPS())
-			url = "https";
-		else
-			url = "http";
-
-		url.append("://mail.google.com/mail/?view=cv&search=inbox&tearoff=1");
+		QString url=getUrlBase();
+		url.append("?view=cv&search=inbox&tearoff=1");
 		url.append("&lvp=-1&cvp=1&fs=1&tf=1&fs=1&th=");
 		url.append(t.msgId);
 		launchBrowser(url);
@@ -208,13 +203,9 @@ void KCheckGmailTray::launchBrowser(const QString &url)
 {
 	QString loadURL;
 
-	if(url == QString::null) {
-		if(Prefs::useHTTPS()) 
-			loadURL = "https";
-		else
-			loadURL = "http";
-		loadURL.append("://mail.google.com/mail");
-	} else
+	if(url == QString::null)
+		loadURL = getUrlBase();
+	else
 		loadURL = url;
 
 	if(Prefs::useDefaultBrowser())
@@ -230,13 +221,8 @@ void KCheckGmailTray::launchBrowser(const QString &url)
 
 void KCheckGmailTray::composeMail()
 {
-	QString url;
-	if(Prefs::useHTTPS())
-		url = "https";
-	else
-		url = "http";
-
-	url.append("://mail.google.com/mail/?view=cm&fs=1&tearoff=1");
+	QString url=getUrlBase();
+	url.append("?view=cm&fs=1&tearoff=1");
 	launchBrowser(url);
 }
 
@@ -255,10 +241,8 @@ void KCheckGmailTray::slotSettingsChanged()
 	
 	if(strlen(passwd) == 0 ) {
 		kdDebug() << k_funcinfo << "user: " << user << endl;
-		if(strlen(user) == 0) {
+		if(user.length() == 0) {
 			int res = KMessageBox::warningYesNo(0, i18n("No account information has been entered. Do you want to quit?"));
-
-			kdDebug() << k_funcinfo << "res: " << res << endl;
 
 			if( res == KMessageBox::Yes ) {
 				emit quitSelected();
@@ -268,9 +252,9 @@ void KCheckGmailTray::slotSettingsChanged()
 			}
 		}
 	} else {
-		kdDebug() << "strnKCheckGmailTray::slotSettingsChangedcmp: " << strncmp(passwd, "\007\007\007", 3) << endl;
+		kdDebug() << k_funcinfo << " strncmp: " << strncmp(passwd, "\007\007\007", 3) << endl;
 
-		if(strncmp(passwd, "\007\007\007", 3) != 0) {
+		if( strncmp(passwd, "\007\007\007", 3) != 0) {
 			kdDebug() << k_funcinfo << "setting wallet" << endl;
 			loginOk = GMailWalletManager::instance()->set(mLoginSettings->gmailPassword->password());
 			mLoginSettings->gmailPassword->erase();
@@ -530,4 +514,18 @@ void KCheckGmailTray::slotToggleLoginAnim()
 void KCheckGmailTray::checkMailNow()
 {
 	mGmail->slotCheckGmail();
+}
+
+QString KCheckGmailTray::getUrlBase()
+{
+	QString base;
+
+	base.sprintf("http%s://mail.google.com/%s/",
+		     		(Prefs::useHTTPS())? 
+		    			"s":"",
+				/*(Prefs::isGAP4D())? 
+						"":*/"mail"
+		    );
+
+	return base;
 }

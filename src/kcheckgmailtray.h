@@ -75,6 +75,7 @@ private:
 	void updateThreadMenu();
 	void composeMail();
 	void initConfigDialog();
+	QString getUrlBase();
 
 	// dcop call implementations
 	int mailCount() const { return mMailCount; };
