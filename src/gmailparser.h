@@ -24,7 +24,7 @@
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qmap.h>
-#include <qmemarray.h>
+#include <qvaluevector.h>
 #include <vector>
 
 /**
@@ -132,7 +132,7 @@ private:
 	DefaultSearchSummary mSummary;
 	std::vector<Label> mLabels;
 	QMap<QString,Thread*> mThreads;
-	QMemArray<QString> gGMailVersion;
+	QValueVector<QString> gGMailVersion;
 	QMap<QString, QString> gGMailLanguageCode;
 };
 #endif
