@@ -65,6 +65,8 @@ int main(int argc, char **argv)
 	about.addCredit("Uğur Çetin", I18N_NOOP("Turkish Translation"), "jnmbk@users.sourceforge.net");
 	about.addCredit("Peter Avramucz", I18N_NOOP("Hungarian Translation"), "muczy@freestart.hu");
 	about.addCredit("Daniel Nylander", I18N_NOOP("Swedish Translation"), "po@danielnylander.se");
+	about.addCredit("Andrius Štikonas", I18N_NOOP("Lithuanian Translation"), "stikonas@gmail.com");
+	about.addCredit("Henrik Pihl", I18N_NOOP("Estonian Translation"), "ahvenas@gmail.com");
 
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");

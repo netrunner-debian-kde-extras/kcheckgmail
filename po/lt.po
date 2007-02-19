@@ -1,0 +1,465 @@
+# KCheckGmail
+# This file is distributed under the same license as the kcheckgmail package.
+# Andrius Štikonas <stikonas@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kcheckgmail.lt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-02-01 21:38-0600\n"
+"PO-Revision-Date: 2007-02-08 23:09+0300\n"
+"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Andrius Štikonas"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "stikonas@gmail.com"
+
+#: gmail.cpp:178
+msgid "Invalid username or password"
+msgstr "Klaidingas vartotojo vardas ar slaptažodis"
+
+#: gmail.cpp:240
+msgid "Unknown error retrieving cookies"
+msgstr "Nežinoma klaida gaunant slapukus"
+
+#: gmailwalletmanager.cpp:99
+msgid "KCheckGmail could not open the wallet. Please check your preferences."
+msgstr "KCheckGmail negali atidaryti jūsų slaptažodinės. Patikrinkite savo nustatymus."
+
+#: gmailwalletmanager.cpp:189
+msgid "KCheckGmail cannot store your password securely in your wallet. Do you want to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail negali saugiai išsaugoti slaptažodžio jūsų slaptažodinėje. Ar norite išsaugoti slaptažodį nesaugioje konfigūracijos byloje?"
+
+#: gmailwalletmanager.cpp:191
+msgid "Unable to store secure password"
+msgstr "Nepavyksta išsaugoti saugaus slaptažodžio"
+
+#: gmailwalletmanager.cpp:192
+#: gmailwalletmanager.cpp:238
+msgid "Store unsafe"
+msgstr "Saugoti nesaugiai"
+
+#: gmailwalletmanager.cpp:235
+msgid "KCheckGmail cannot retrieve your password from your wallet. Do you want to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGmail negali gauti jūsų slaptažodžio iš slaptažodinės. Ar norite išsaugoti slaptažodį nesaugioje konfigūracijos byloje?"
+
+#: gmailwalletmanager.cpp:237
+msgid "Unable to retrieve secure password"
+msgstr "Nepavyksta gauti saugaus slaptažodžio"
+
+#: kcheckgmailtray.cpp:120
+#: main.cpp:45
+msgid "KCheckGmail"
+msgstr "KCheckGmail"
+
+#: kcheckgmailtray.cpp:122
+msgid "Configure &Notications..."
+msgstr "Konfigūruoti &pranešimus..."
+
+#: kcheckgmailtray.cpp:124
+msgid "&Configure KCheckGmail..."
+msgstr "&Konfigūruoti KCheckGmail..."
+
+#: kcheckgmailtray.cpp:127
+#: kcheckgmailtray.cpp:414
+msgid "Login and Chec&k Mail"
+msgstr "Prisijungti ir &patikrinti paštą"
+
+#: kcheckgmailtray.cpp:130
+msgid "&Launch Browser"
+msgstr "&Paleisti naršyklę"
+
+#: kcheckgmailtray.cpp:132
+msgid "Co&mpose Mail"
+msgstr "&Sukurti laišką"
+
+#: kcheckgmailtray.cpp:134
+msgid "Threads"
+msgstr "Gijos"
+
+#: kcheckgmailtray.cpp:259
+msgid "No account information has been entered. Do you want to quit?"
+msgstr "Nebuvo įvesta jokios paskyros informacijos. Ar norite išjugti?"
+
+#: kcheckgmailtray.cpp:382
+msgid "There is <b>1</b> new message"
+msgstr "Yra <b>1</b> naujas pranešimas"
+
+#: kcheckgmailtray.cpp:384
+#, fuzzy
+msgid "There are <b>%1</b> new messages"
+msgstr "Yra <b>%1</b> naujų pranešimų"
+
+#: kcheckgmailtray.cpp:408
+msgid "An error occurred logging in to Gmail<br><b>%1</b>"
+msgstr "Įvyko klaida prisijungiant prie Gmail<br><b>%1</b>"
+
+#: kcheckgmailtray.cpp:418
+msgid "Now logged in to Gmail!"
+msgstr "Dabar prisijungta prie Gmail!"
+
+#: kcheckgmailtray.cpp:419
+msgid "Chec&k Mail Now"
+msgstr "Dabar &patikrinti paštą"
+
+#: kcheckgmailtray.cpp:464
+msgid "Login"
+msgstr "Prisijungti"
+
+#: kcheckgmailtray.cpp:464
+msgid "Login Settings"
+msgstr "Prisijungimo nustatymai"
+
+#: kcheckgmailtray.cpp:467
+msgid "Network"
+msgstr "Tinklas"
+
+#: kcheckgmailtray.cpp:467
+msgid "Network Settings"
+msgstr "Tinklo nustatymai"
+
+#: kcheckgmailtray.cpp:470
+msgid "Behavior"
+msgstr "Elgesys"
+
+#: kcheckgmailtray.cpp:500
+msgid "Gmail has been upgraded since this version of KCheckGmail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGmail soon."
+msgstr "Gmail buvo atnaujintas po to, kai ši KCheckGmail versija buvo išleista. Tai gali sukelti įvairių keistų klaidų. Prašom artimiausiu metu patikrinti KCheckGmail atnaujinimo."
+
+#: kcheckgmailtray.cpp:501
+msgid "Version changed"
+msgstr "Versija pakeista"
+
+#: main.cpp:36
+msgid "Application is being auto-started at KDE session start"
+msgstr "Programa paleidžiama KDE sesijos pradžioje"
+
+#: main.cpp:48
+msgid ""
+"System tray application to display how many\n"
+"email messages you have in your Gmail account."
+msgstr ""
+"Sistemos dėklo programa rodo kiek\n"
+"naujų el. pašto laiškų jūs turite Gmail paskyroje."
+
+#: main.cpp:55
+msgid "Primary author and maintainer"
+msgstr "Pagrindinis autorius ir prižiūrėtojas"
+
+#: main.cpp:56
+msgid "Maintainer"
+msgstr "Prižiūrėtojas"
+
+#: main.cpp:57
+msgid "Brazilian Portuguese Translation"
+msgstr "Vertimas į brazilijos portugalų kalbą"
+
+#: main.cpp:58
+msgid "Italian Translation"
+msgstr "Vertimas į italų kalbą"
+
+#: main.cpp:59
+msgid "Spanish Translation"
+msgstr "Vertimas į ispanų kalbą"
+
+#: main.cpp:60
+msgid "German Translation"
+msgstr "Vertimas į vokiečių kalbą"
+
+#: main.cpp:61
+msgid "Russian Translation"
+msgstr "Vertimas į rusų kalbą"
+
+#: main.cpp:62
+msgid "German Translation Updates"
+msgstr "Vokiečių kalbos vertimų atnaujinimas"
+
+#: main.cpp:63
+msgid "French Translation"
+msgstr "Vertimas į prancūzų kalbą"
+
+#: main.cpp:64
+msgid "Polish Translation"
+msgstr "Vertimas į lenkų kalbą"
+
+#: main.cpp:65
+msgid "Turkish Translation"
+msgstr "Vertimas į turkų kalbą"
+
+#: main.cpp:66
+msgid "Hungarian Translation"
+msgstr "Vertimas į vengrų kalbą"
+
+#: main.cpp:67
+msgid "Swedish Translation"
+msgstr "Vertimas į švedų kalbą"
+
+#. i18n: file appletsettingswidget.ui line 16
+#: rc.cpp:3
+#, no-c-format
+msgid "AppletSettingsWidget"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 33
+#: rc.cpp:6
+#, no-c-format
+msgid "Tray Icon"
+msgstr "Sistemos dėklo ženkliukas"
+
+#. i18n: file appletsettingswidget.ui line 44
+#. i18n: file prefs.kcfg line 48
+#: rc.cpp:9
+#: rc.cpp:118
+#, no-c-format
+msgid "Open browser to Gmail on left click"
+msgstr "Atidaryti naršyklę su Gmail kairiuoju spragtelėjimu"
+
+#. i18n: file appletsettingswidget.ui line 52
+#. i18n: file prefs.kcfg line 53
+#: rc.cpp:12
+#: rc.cpp:124
+#, no-c-format
+msgid "Catch accidental left clicks when launching the browser"
+msgstr "Gaudyti atsitiktinius kairiuosius spragtelėjimus atidarant naršyklę"
+
+#. i18n: file appletsettingswidget.ui line 62
+#: rc.cpp:15
+#, no-c-format
+msgid "Browser"
+msgstr "Naršyklė"
+
+#. i18n: file appletsettingswidget.ui line 102
+#: rc.cpp:18
+#, no-c-format
+msgid "Use the default KDE browser"
+msgstr "Naudoti numatytą KDE naršyklę"
+
+#. i18n: file appletsettingswidget.ui line 140
+#: rc.cpp:21
+#, no-c-format
+msgid "Use an alternative browser"
+msgstr "Naudoti alternatyvią naršyklę"
+
+#. i18n: file appletsettingswidget.ui line 149
+#: rc.cpp:24
+#, no-c-format
+msgid "Debug"
+msgstr "Derinti"
+
+#. i18n: file appletsettingswidget.ui line 164
+#. i18n: file prefs.kcfg line 40
+#: rc.cpp:27
+#: rc.cpp:112
+#, no-c-format
+msgid "Display an alert if GMail version changes"
+msgstr "Rodyti įspėjimą, jei pasikeis Gmail versija"
+
+#. i18n: file loginsettingswidget.ui line 16
+#: rc.cpp:30
+#, no-c-format
+msgid "LoginSettingsWidget"
+msgstr ""
+
+#. i18n: file loginsettingswidget.ui line 35
+#: rc.cpp:33
+#, no-c-format
+msgid "Username:"
+msgstr "Vartotojo vardas:"
+
+#. i18n: file loginsettingswidget.ui line 46
+#: rc.cpp:36
+#, no-c-format
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+#. i18n: file loginsettingswidget.ui line 57
+#: rc.cpp:39
+#, no-c-format
+msgid "&Use KDE Wallet to store password"
+msgstr "&Naudoti KDE slaptažodinę slaptažodžių saugojimui"
+
+#. i18n: file loginsettingswidget.ui line 60
+#. i18n: file netsettingswidget.ui line 67
+#: rc.cpp:42
+#: rc.cpp:57
+#, no-c-format
+msgid "Alt+U"
+msgstr "Alt+U"
+
+#. i18n: file netsettingswidget.ui line 16
+#: rc.cpp:45
+#, no-c-format
+msgid "NetworkSettingsWidget"
+msgstr ""
+
+#. i18n: file netsettingswidget.ui line 27
+#: rc.cpp:48
+#, no-c-format
+msgid "Chec&king Interval"
+msgstr "&Tikrinimo intervalas"
+
+#. i18n: file netsettingswidget.ui line 39
+#: rc.cpp:51
+#, fuzzy, no-c-format
+msgid " seconds"
+msgstr " sekundžių"
+
+#. i18n: file netsettingswidget.ui line 64
+#: rc.cpp:54
+#, no-c-format
+msgid "&Use https connections for checking mail"
+msgstr "&Naudoti https susijungimus pašto tikrinimui"
+
+#. i18n: file netsettingswidget.ui line 73
+#: rc.cpp:60
+#, no-c-format
+msgid "<blockquote>Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting.</blockquote>"
+msgstr "<blockquote>Naudoti saugius prisijungimus tikrinant naują paštą. Žinokite, kad prisijungimo procedūra nepriklausomai nuo šio nustatymo naudos https.</blockquote>"
+
+#. i18n: file popup.ui line 16
+#: rc.cpp:63
+#, no-c-format
+msgid "New eMail Notification"
+msgstr "Pranešimas apie naują paštą"
+
+#. i18n: file popup.ui line 31
+#: rc.cpp:66
+#, no-c-format
+msgid "<b>Subject:</b>"
+msgstr "<b>Tema:</b>"
+
+#. i18n: file popup.ui line 47
+#: rc.cpp:69
+#, no-c-format
+msgid "<b>From:</b>"
+msgstr "<b>Nuo:</b>"
+
+#. i18n: file prefs.kcfg line 7
+#: rc.cpp:76
+#, no-c-format
+msgid "Polling interval"
+msgstr "Tinrinimo intervalas"
+
+#. i18n: file prefs.kcfg line 11
+#: rc.cpp:79
+#, no-c-format
+msgid "How many seconds to wait before checking for new mail."
+msgstr "Kiek sekundžių palaukti prieš tikrinant paštą."
+
+#. i18n: file prefs.kcfg line 14
+#: rc.cpp:82
+#, no-c-format
+msgid "Use https connections for checking mail"
+msgstr "Naudoti https susijungimus pašto tikrinimui"
+
+#. i18n: file prefs.kcfg line 16
+#: rc.cpp:85
+#, no-c-format
+msgid "Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting."
+msgstr "Naudoti saugius prisijungimus tikrinant paštą. Žinokite, kad prisijungimo procedūra nepriklausomai nuo šio nustatymo naudos https."
+
+#. i18n: file prefs.kcfg line 22
+#: rc.cpp:88
+#, no-c-format
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#. i18n: file prefs.kcfg line 23
+#: rc.cpp:91
+#, no-c-format
+msgid "Your Gmail username"
+msgstr "Jūsų Gmail vartotojo vardas"
+
+#. i18n: file prefs.kcfg line 26
+#: rc.cpp:94
+#, no-c-format
+msgid "Password"
+msgstr "Slaptažodis"
+
+#. i18n: file prefs.kcfg line 27
+#: rc.cpp:97
+#, no-c-format
+msgid "Password for checking your Gmail account"
+msgstr "Slaptažodis jūsų Gmail paskyros tikrinimui"
+
+#. i18n: file prefs.kcfg line 30
+#: rc.cpp:100
+#, no-c-format
+msgid "Use KDE Wallet to store password"
+msgstr "Naudoti KDE slaptažodinę slaptažodžių saugojimui"
+
+#. i18n: file prefs.kcfg line 32
+#: rc.cpp:103
+#, no-c-format
+msgid "Use the KDE Wallet system to store your Gmail password."
+msgstr "Naudoti KDE slaptažodinių sistemą jūsų Gmail slaptažodžio saugojimui."
+
+#. i18n: file prefs.kcfg line 35
+#: rc.cpp:106
+#, no-c-format
+msgid "Only search for new messages in inbox"
+msgstr "Naujų laiškų ieškoti tik gautuose laiškuose"
+
+#. i18n: file prefs.kcfg line 37
+#: rc.cpp:109
+#, no-c-format
+msgid "By disabling this option new messages are searched in anywhere (this includes spam, trash, etc)."
+msgstr "Uždraudus šią pparinktį, naujų laiškų bus ieškoma visur (įskaitant spamą, šiukšliadėžę ir pan.)"
+
+#. i18n: file prefs.kcfg line 42
+#: rc.cpp:115
+#, no-c-format
+msgid "If Google update the GMail code, display an alert"
+msgstr "Jei Google atnaujins GMail kodą, parodyti įspėjimą"
+
+#. i18n: file prefs.kcfg line 50
+#: rc.cpp:121
+#, no-c-format
+msgid "If enabled, launch the default KDE web browser when the KCheckGmail icon is clicked."
+msgstr "Jei įgalinta, paleis numatytą KDE naršyklę, kai KCheckGmail ženkliukas spragtelėjamas."
+
+#. i18n: file prefs.kcfg line 55
+#: rc.cpp:127
+#, no-c-format
+msgid "If enabled, every time you click on the KCheckGmail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window"
+msgstr "Jei įgalinta, tai kiekvieną kartą spragtelint KCheckGmail, ženkliukas bus išjungtas kelioms sekundėms taip apsaugant nuo atsitiktinio kelių langų atidarymo"
+
+#. i18n: file prefs.kcfg line 58
+#: rc.cpp:130
+#, no-c-format
+msgid "Use the KDE default browser"
+msgstr "Naudoti numatytą KDE naršyklę"
+
+#. i18n: file prefs.kcfg line 60
+#: rc.cpp:133
+#, no-c-format
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
+msgstr "Naudoti bet kokią naršyklę, sukonfigūruotą kaip KDE numatyta, Gmail tikrinimui"
+
+#. i18n: file prefs.kcfg line 63
+#. i18n: file prefs.kcfg line 67
+#: rc.cpp:136
+#: rc.cpp:139
+#, no-c-format
+msgid "Use a custom browser"
+msgstr "Naudoti pasirinktą naršyklę"
+
+#. i18n: file prefs.kcfg line 69
+#: rc.cpp:142
+#, no-c-format
+msgid "Use a custom browser other than the KDE default to check your Gmail"
+msgstr "Naudoti pasirinktą naršyklę, kitą, nei numatyta KDE, kad patikrintumėte Gmail"
+
