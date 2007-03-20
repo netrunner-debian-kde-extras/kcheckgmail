@@ -109,6 +109,9 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	connect(mGmail, SIGNAL(checkDone(const QString&)), 
 		this, SLOT(slotCheckDone(const QString&)));
+	
+	connect(kapp, SIGNAL(shutDown()),
+		 mGmail, SLOT(slotLogOut()));
 
 	// initialise the menu
 	mThreadsMenu = new KPopupMenu(this, "KCheckGmail Threads menu");
@@ -246,7 +249,7 @@ void KCheckGmailTray::slotSettingsChanged()
 
 			if( res == KMessageBox::Yes ) {
 				emit quitSelected();
-				qApp->quit();
+				kapp->quit();
 			} else {
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
 			}
@@ -337,12 +340,35 @@ void KCheckGmailTray::updateThreadMenu()
 					str += t.subject;
 					
 					// TODO: move this somewhere else
-					QRegExp rmSpan("\\<span id.*>");
+					QRegExp rmSpan("\\<span id.*>\\|\\u003cspan id.*>|\\u003cspan id.*\\>|\\u003cspan id.*\\003e|\\u003cspan id.*\\003e");
 					rmSpan.setMinimal(true);
 					str.remove(rmSpan);
 					
-					QRegExp rest("\\\\|<b>|</b>|</span>");
+					QRegExp rest(	"\\\\|"
+							
+							"<b>|"
+							"\\u003cb\\>|"
+							"u003cb>"
+							"<b\\>|"
+							"\\u003b>|"
+							"<b\\003e|"
+							"\\u003b\\003e|"
+							
+							"</b>|"
+							"\\u003/b>|"
+							"003c/b>"
+							"\\u003c/b\\>|"
+							"</b\\003e|"
+							"\\u003/b\\003e|"
+							
+							"</span>|"
+							"\\u003/span>|"
+							"u003c/span>"
+							"</span\\003e|"
+							"\\u003/span\\003e|");
 					str.remove(rest);
+					
+					kdDebug() << "inserting: " << str << endl;
 					
 					mThreadsMenu->insertItem(str, t.id);
 					numItems ++;
@@ -362,10 +388,8 @@ void KCheckGmailTray::slotMailArrived(unsigned int n)
 {
 	QString str;
 
-	if(n == 1)
-		str = i18n("There is <b>1</b> new message");
-	else
-		str = i18n("There are <b>%1</b> new messages").arg(n);
+	str = i18n("There is <b>1</b> new message",
+		   "There are <b>%n</b> new messages", n);
 
 	KNotifyClient::event(winId(), "new-gmail-arrived", str);
 	slotMailCountChanged();
