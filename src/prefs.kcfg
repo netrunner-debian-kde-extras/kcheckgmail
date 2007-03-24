@@ -20,7 +20,7 @@
 	<group name="Gmail Settings">
 		<entry name="GmailUsername" type="String">
 			<label>Username</label>
-			<whatsthis>Your Gmail username</whatsthis>
+			<whatsthis>Your Gmail username or your Google Hosted Domain email address</whatsthis>
 		</entry>
 		<entry name="GmailPassword" type="Password">
 			<label>Password</label>
@@ -31,7 +31,11 @@
 			<default>true</default>
 			<whatsthis>Use the KDE Wallet system to store your Gmail password.</whatsthis>
 		</entry>
-
+		<!--<entry name="SearchOnlyInInbox" type="Bool">
+			<label>Only search for new messages in inbox</label>
+			<default>true</default>
+			<whatsthis>By disabling this option new messages are searched in anywhere (this includes spam, trash, etc).</whatsthis>
+		</entry>-->
 		<entry name="AlertVersionChange" type="Bool">
 			<label>Display an alert if GMail version changes</label>
 			<default>false</default>
