@@ -29,6 +29,8 @@
 #define D_LOADED_ERROR	"le"
 #define D_QUICKLOADED	"ql"
 #define D_COMPOSE_FROM_ADDRESS	"cfs"
+#define D_FOOTER_TIP	"ft"
+#define D_WEB_CLIP	"ad"
 #define QU_SPACEUSED	0
 #define QU_QUOTA	1
 #define QU_PERCENT	2
