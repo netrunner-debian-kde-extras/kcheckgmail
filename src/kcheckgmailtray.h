@@ -44,11 +44,13 @@ protected:
 
 	void setPixmapAuth();
 	void setPixmapEmpty();
+	
 
 protected slots:
 	// KPopupMenu
 	void slotContextMenuActivated(int);
 	void slotThreadsMenuActivated(int);
+	void slotThreadsItemHighlighted(int);
 
 	// KConfigDialog
 	void slotSettingsChanged();
@@ -58,12 +60,14 @@ protected slots:
 	void slotLoginDone(bool success, bool spawnedFromTimer, const QString &errmsg);
 	void slotLoginStart();
 	void slotCheckStart();
+	void slotSessionChanged();
 	void slotCheckDone(const QString &data);
 
 	// GMailParser
 	void slotMailArrived(unsigned int n);
 	void slotMailCountChanged();
 	void slotVersionMismatch();
+	void slotgNameChanged(QString name);
 
 	// login "animation"
 	void slotToggleLoginAnim();

@@ -40,6 +40,7 @@
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qregexp.h>
+#include <qtooltip.h>
 #include <kpassdlg.h>
 #include <klineedit.h>
 
@@ -81,7 +82,8 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 	connect(this, SIGNAL(quitSelected()), kapp, SLOT(quit()));
-	//QToolTip::add(this, i18n("KCheckGmail"));
+	
+	QToolTip::add(this, i18n("KCheckGMail"));
 
 	// initialise and hook up the parser
 	mParser = new GMailParser();
@@ -94,6 +96,10 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	connect(mParser, SIGNAL(versionMismatch()), 
 		this, SLOT(slotVersionMismatch()));
+
+	connect(mParser, SIGNAL(gNameChanged(QString)), 
+		this, SLOT(slotgNameChanged(QString)));
+	
 
 	// initialise and hook up the GMail object
 	mGmail = new GMail();
@@ -109,15 +115,21 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	connect(mGmail, SIGNAL(checkDone(const QString&)), 
 		this, SLOT(slotCheckDone(const QString&)));
+
+	connect(mGmail, SIGNAL(sessionChanged()), 
+		this, SLOT(slotSessionChanged()));
 	
 	connect(kapp, SIGNAL(shutDown()),
 		 mGmail, SLOT(slotLogOut()));
 
-	// initialise the menu
+	// initialise the threads menu
 	mThreadsMenu = new KPopupMenu(this, "KCheckGmail Threads menu");
 	connect(mThreadsMenu, SIGNAL(activated(int)),
 		SLOT(slotThreadsMenuActivated(int)));
+	connect(mThreadsMenu, SIGNAL(highlighted(int)),
+		SLOT(slotThreadsItemHighlighted(int)));
 	
+	// initialise the menu
 	KPopupMenu *menu = contextMenu();
 	menu->clear();
 	menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGmail"));
@@ -202,6 +214,11 @@ void KCheckGmailTray::slotThreadsMenuActivated(int n)
 	}
 }
 
+void KCheckGmailTray::slotThreadsItemHighlighted(int n)
+{
+	KNotifyClient::userEvent(mThreadsMenu->winId(),mThreadsMenu->whatsThis(n),16);
+}
+
 void KCheckGmailTray::launchBrowser(const QString &url)
 {
 	QString loadURL;
@@ -224,7 +241,7 @@ void KCheckGmailTray::launchBrowser(const QString &url)
 
 void KCheckGmailTray::composeMail()
 {
-	QString url=getUrlBase();
+	QString url = getUrlBase();
 	url.append("?view=cm&fs=1&tearoff=1");
 	launchBrowser(url);
 }
@@ -321,7 +338,7 @@ void KCheckGmailTray::updateThreadMenu()
 	mThreadsMenu->clear();
 
 	QMap<QString,bool> *threads = mParser->getThreadList();
-	int numItems = 0;
+	int numItems = 0, id;
 
 	if(threads) {
 
@@ -338,39 +355,10 @@ void KCheckGmailTray::updateThreadMenu()
 					QString str = t.senders;
 					str += " - ";
 					str += t.subject;
+					str.replace("&","&&");
 					
-					// TODO: move this somewhere else
-					QRegExp rmSpan("\\<span id.*>\\|\\u003cspan id.*>|\\u003cspan id.*\\>|\\u003cspan id.*\\003e|\\u003cspan id.*\\003e");
-					rmSpan.setMinimal(true);
-					str.remove(rmSpan);
-					
-					QRegExp rest(	"\\\\|"
-							
-							"<b>|"
-							"\\u003cb\\>|"
-							"u003cb>"
-							"<b\\>|"
-							"\\u003b>|"
-							"<b\\003e|"
-							"\\u003b\\003e|"
-							
-							"</b>|"
-							"\\u003/b>|"
-							"003c/b>"
-							"\\u003c/b\\>|"
-							"</b\\003e|"
-							"\\u003/b\\003e|"
-							
-							"</span>|"
-							"\\u003/span>|"
-							"u003c/span>"
-							"</span\\003e|"
-							"\\u003/span\\003e|");
-					str.remove(rest);
-					
-					kdDebug() << "inserting: " << str << endl;
-					
-					mThreadsMenu->insertItem(str, t.id);
+					id = mThreadsMenu->insertItem(str, t.id);
+					mThreadsMenu->setWhatsThis(id, t.snippet);
 					numItems ++;
 				}
 			}
@@ -378,10 +366,7 @@ void KCheckGmailTray::updateThreadMenu()
 		}
 	}
 
-	if(numItems > 0)
-		contextMenu()->setItemEnabled(mThreadsMenuId, true);
-	else
-		contextMenu()->setItemEnabled(mThreadsMenuId, false);
+	contextMenu()->setItemEnabled(mThreadsMenuId, (numItems > 0));
 }
 
 void KCheckGmailTray::slotMailArrived(unsigned int n)
@@ -397,7 +382,7 @@ void KCheckGmailTray::slotMailArrived(unsigned int n)
 
 void KCheckGmailTray::slotMailCountChanged()
 {
-	mMailCount = mParser->getNewCount();
+	mMailCount = mParser->getNewCount(true);
 	updateCountImage();
 	updateThreadMenu();
 }
@@ -542,14 +527,19 @@ void KCheckGmailTray::checkMailNow()
 
 QString KCheckGmailTray::getUrlBase()
 {
-	QString base;
+	QString base = "%1://mail.google.com/%2/";
+	
+	return base.arg((Prefs::useHTTPS())? "https" : "http", mGmail->getURLPart());
+}
 
-	base.sprintf("http%s://mail.google.com/%s/",
-		     		(Prefs::useHTTPS())? 
-		    			"s":"",
-				/*(Prefs::isGAP4D())? 
-						"":*/"mail"
-		    );
+void KCheckGmailTray::slotgNameChanged(QString name)
+{
+	kdDebug() << k_funcinfo << "Updating tooltip" << endl;
+	QToolTip::remove( this );
+	QToolTip::add(this, i18n("KCheckGMail - Notifying about new email for %1").arg(name));
+}
 
-	return base;
+void KCheckGmailTray::slotSessionChanged()
+{
+	KNotifyClient::event(winId(), "gmail-session-changed", i18n("An other session has been opened, logging out from it!"));
 }
