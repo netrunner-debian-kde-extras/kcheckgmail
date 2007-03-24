@@ -96,6 +96,7 @@ public:
 	void parse(const QString &data);
 	
 	unsigned int getNewCount() const;
+	unsigned int getNewCount(bool realCount) const;
 
 // 	const QString &getVersion() const { return mVersion; }
 	unsigned int getInvites() const { return mInvites; }
@@ -114,15 +115,21 @@ signals:
 	void mailArrived(unsigned int count);
 	void mailCountChanged();
 	void versionMismatch();
+	void gNameChanged(QString name);
 
 protected:
 	void parseQuota(const QString&);
 	void parseDefaultSummary(const QString&);
 	void parseLabel(const QString&);
-	void parseThread(const QString&, const QMap<QString,bool>*);
+	uint parseThread(const QString&, const QMap<QString,bool>*);
 	void parseVersion(const QString&);
 	void parseInvite(const QString&);
+	void parseGName(const QString&);
 	void freeThreadList();
+	
+	QString stripTags(QString data);
+	QString convertEntities(QString data);
+	QString cleanUpData(QString data);
 
 private:
 	Version mVersion;
@@ -134,5 +141,6 @@ private:
 	QMap<QString,Thread*> mThreads;
 	QValueVector<QString> gGMailVersion;
 	QMap<QString, QString> gGMailLanguageCode;
+	QString gName;
 };
 #endif
