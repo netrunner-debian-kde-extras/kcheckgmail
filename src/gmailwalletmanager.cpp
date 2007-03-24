@@ -110,8 +110,6 @@ void GMailWalletManager::slotWalletChangedStatus()
 {
 	kdDebug() << k_funcinfo << endl;
 
-	kdDebug() << k_funcinfo << endl;
-
 	if(!mWallet)
 		kdDebug() << k_funcinfo << "status changed but mWallet == 0" << endl;
 	else
@@ -180,6 +178,7 @@ bool GMailWalletManager::storeWallet()
 			kdDebug() << k_funcinfo << mPassword << endl;
 			mWallet->writePassword("gmailPassword", mPassword);
 			clearPassword();
+			emit setWalletPassword(true);
 		} else {
 			kdDebug() << k_funcinfo << "Wallet Not Open.." << endl;
 			openWallet();
@@ -262,6 +261,7 @@ bool GMailWalletManager::getKConfig()
 void GMailWalletManager::clearPassword()
 {
 	kdDebug() << k_funcinfo << endl;
+
 	mPassword.fill('0');
 	mPassword = "";
 }
