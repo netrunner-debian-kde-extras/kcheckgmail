@@ -25,6 +25,7 @@
 #include <kaboutdata.h>
 #include <kglobal.h>
 #include <kiconloader.h>
+#include <kstartupinfo.h>
 
 #include <stdlib.h>
 
@@ -51,7 +52,7 @@ int main(int argc, char **argv)
 		"http://kcheckgmail.sf.net",
 		"atomo64@gmail.com");//http://sf.net/tracker/?group_id=116095&atid=673717
 	
-	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Primary author and maintainer"), "mwlazlo@gmail.com");
+	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Original author"), "mwlazlo@gmail.com");
 	about.addAuthor("Raphael Geissert", I18N_NOOP("Maintainer"), "atomo64@gmail.com");
 	
 	about.addCredit("Rogério Pereira Araújo", I18N_NOOP("Brazilian Portuguese Translation"), "rogerio.araujo@gmail.com");
@@ -82,10 +83,13 @@ int main(int argc, char **argv)
 		return EXIT_SUCCESS;
 	}
 	
+	if (!KUniqueApplication::start()) {
+		KStartupInfo::handleAutoAppStartedSending();
+		fprintf(stderr, i18n("KCheckGMail is already running!\n"));
+		return EXIT_SUCCESS;
+	}
+	
 	KCheckGmailApp app;
 
         return app.exec();
-
-
-	return EXIT_SUCCESS;
 }
