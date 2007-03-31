@@ -38,13 +38,16 @@ class KCheckGmailTray : public KSystemTray, virtual public KCheckGmailIface
 	Q_OBJECT
 public:
 	KCheckGmailTray(QWidget *parent = 0, const char *name = 0);
+	void start();
 
 protected:
 	void mousePressEvent(QMouseEvent*);
 
 	void setPixmapAuth();
+	void setPixmapSnooze();
 	void setPixmapEmpty();
 	
+	void toggleAnim(bool restoreToState);
 
 protected slots:
 	// KPopupMenu
@@ -78,12 +81,16 @@ private:
 	void updateCountImage();
 	void updateThreadMenu();
 	void composeMail();
+	void snooze();
 	void initConfigDialog();
 	QString getUrlBase();
 
 	// dcop call implementations
 	int mailCount() const { return mMailCount; };
 	void checkMailNow();
+	void whereAmI();
+	
+	void takeScreenshotOfTrayIcon();
 
 	QPixmap		mPixGmail,
 			mPixCount;
@@ -96,11 +103,12 @@ private:
 	KIconEffect mIconEffect;
 	QTimer *mLoginAnim;
 
-	// menu id for the check now button
-	int 		mCheckNowId;
-
-	int 		mThreadsMenuId;
+	// menu ids
+	int	mCheckNowId;
+	int	mThreadsMenuId;
 
 	// mail count for dcop interface
-	int		mMailCount;
+	int	mMailCount;
+	
+	bool isSnoozing;
 };
