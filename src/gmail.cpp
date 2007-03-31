@@ -38,6 +38,7 @@
 
 #include <kapp.h>
 #include <dcopclient.h>
+#include <kcharsets.h>
 
 #ifdef DUMP_PAGES
 #include <qfile.h>
@@ -51,53 +52,35 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 	mInterval = Prefs::interval();
 	mCheckLock = new QMutex();
 	mLoginLock = new QMutex();
-	mLoginToken = 0;
 	mLoginParamsChanged = false;
 	isGAP4D = false;
 	
-	/** GMail/Google cookies:
-		TZ: (timezone offset)
-		GMAIL_LOGIN: page_timer/page_timer/timer_at_login
-		RTT(Round Trip Time): (end - start)
-	Details:
-	RTT: checks how many seconds it takes to load the image (https://mail.google.com/mail/images/c.gif?t=timestamp) and result is set to RTT
-	Pinging user: https://mail.google.com/mail?gxlu=(user)&zx=(timestamp) is used to detect whether the user exists or not, if so, focus on the password field
-	
-	Other stuff:
-	hl: lang code, two characters
-	gl: country code, two characters
-	ltmpl: possible values: ca_tlsosm, ca_tlsosm_video
-	*/
-	
 	//Any % should be replaced with @ due to a problem with QString not looking for escaped %
 	gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginAuth";
-	gGMailLoginPostFormat = "Email=%1&Passwd=%2&null=Sign+in&service=mail"
+	gGMailLoginPOSTFormat = "Email=%1&Passwd=%2&null=Sign+in&service=mail"
 			"&continue=http@3A@2F@2Fmail.google.com@2Fmail@3F"
 			"&ltmpl=ca_tlsosm&ltmplcache=2&rm=false&PersistentCookie=false";
-	gGMailPostLoginURLFormat = "%1://mail.google.com/mail/?auth=";
 	gGMailCheckURL = "%1://mail.google.com/mail/?search=query"
 			"&q=@20is@3Aunread@20in@3A%2&as_subset=unread&view=tl&start=0";
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
 	
 	gGAP4DLoginURL = "https://www.google.com/a/%1/LoginAction";
-	gGAP4DLoginPostFormat = "userName=%1&password=%2&at=null&service=mail";
+	gGAP4DLoginPOSTFormat = "userName=%1&password=%2&at=null&service=mail"
+			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%3@2F"
+			"&persistent=false";
 	gGAP4DCheckURL = "%1://mail.google.com/a/%2/?search=query"
 			"&q=@20is@3Aunread@20in@3A%3&as_subset=unread&view=tl&start=0";
-	gGAP4DPostLoginURLFormat = "%1://mail.google.com/a/%2/";
 	gGAP4DLogOut = "https://mail.google.com/a/%1/?logout";
 	
 	mTimer = new QTimer(this);
 	connect(mTimer, SIGNAL(timeout()), this, SLOT(slotTimeout()));
 
-	mTimer->start(MILLISECS(mInterval));
 }
 
 GMail::~GMail()
 {
 	delete mCheckLock;
 	delete mLoginLock;
-	if(mLoginToken) 
-		mLoginToken = 0;
 }
 
 void GMail::slotSetWalletPassword(bool)
@@ -110,88 +93,49 @@ void GMail::checkLoginParams()
 {
 	QString username = Prefs::gmailUsername();
 	const QString& password = GMailWalletManager::instance()->getHash();
-	if(mUsername != username || mPasswordHash != password) {
-		mUsername = username;
-		mPasswordHash = password;
-		
-		useUsername = mUsername;
-		useDomain = "";
-		isGAP4D = false;
-		
-		if( mUsername.find("@") != -1 ) {
-			
-			if ( QString::compare(mUsername.section("@",1),"gmail.com") != 0 &&
-				QString::compare(mUsername.section("@",1),"googlemail.com") != 0) {
-				kdDebug() << k_funcinfo << mUsername << " seems to be a GAP4D account" << endl;
-				isGAP4D = true;
-				useDomain = mUsername.section("@",1);
-				
-				/*****             REMOVE THIS TO RE-ENABLE GAP4D SUPPORT                  *****/
-				
-				emit loginDone(false, mLoginFromTimer, "GAP4D support is disabled because it needs to be fixed!");
-				return;
-			}
-			useUsername = mUsername.section("@",0,0);
-		}
-		
-		kdDebug() << k_funcinfo << "Using " << useUsername << " as username and " << useDomain << " as domain" << endl;
-		
-		getURLPart(true);
-		
-		if(mLoginLock->tryLock()) {
-			if(mLoginToken)
-			    mLoginToken = 0;
-			mLoginLock->unlock();
-			
-			//Try to log out if a session already exists (because it might be from an other address)
-			if(isLoggedIn(false)) {
-				kdDebug() << k_funcinfo << "A gmail session was already open, logging out from it" << endl;
-				logOut();
-			}
-			
-			mLoginFromTimer = false;
-			login();
-		} else {
-			kdDebug() << k_funcinfo << "Login in process. "
-				<< "scheduling login for next timeout." << endl;
-			mLoginParamsChanged = true;
-		}
-	}
-}
-
-void GMail::slotGetWalletPassword(const QString& pass)
-{
-	QString str, LoginPostFormat, LoginURL;
 	
-	if(isGAP4D) {
-		LoginPostFormat = gGAP4DLoginPostFormat;
-		LoginURL = QString(gGAP4DLoginURL).arg(useDomain).replace('@','%');
+	if(mUsername == username && mPasswordHash == password
+		  || username.length() == 0 || strlen(password) == 0)
+		return;
+	
+	mUsername = username;
+	mPasswordHash = password;
+	
+	useUsername = mUsername;
+	useDomain = "";
+	isGAP4D = false;
+	
+	if( mUsername.find("@") != -1 ) {
+		
+		if ( QString::compare(mUsername.section("@",1),"gmail.com") != 0 &&
+			QString::compare(mUsername.section("@",1),"googlemail.com") != 0) {
+			kdDebug() << k_funcinfo << mUsername << " seems to be a GAP4D account" << endl;
+			isGAP4D = true;
+			useDomain = mUsername.section("@",1);
+		}
+		useUsername = mUsername.section("@",0,0);
+	}
+	
+	kdDebug() << k_funcinfo << "Using " << useUsername << " as username and " << useDomain << " as domain" << endl;
+	
+	getURLPart(true);
+	
+	if(mLoginLock->tryLock()) {
+		mLoginLock->unlock();
+		
+		//Try to log out if a session already exists (because it might be from an other address)
+		if(isLoggedIn(false)) {
+			kdDebug() << k_funcinfo << "A gmail session was already open, logging out from it" << endl;
+			logOut();
+		}
+		
+		mLoginFromTimer = false;
+		login();
 	} else {
-		LoginPostFormat = gGMailLoginPostFormat;
-		LoginURL = gGMailLoginURL;
+		kdDebug() << k_funcinfo << "Login in process. "
+			<< "scheduling login for next timeout." << endl;
+		mLoginParamsChanged = true;
 	}
-	
-	str = QString(LoginPostFormat).arg(useUsername,pass).replace('@','%');
-	kdDebug() << k_funcinfo << "Sending login: " << str << endl;
-
-	QCString b(str.utf8());
-	QByteArray postData(b);
-
-	// get rid of terminating 0x0
-	postData.truncate(b.length());
-	
-	KIO::TransferJob *job = KIO::http_post(
-		LoginURL,
-		postData, false);
-	job->addMetaData("content-type", "Content-Type: application/x-www-form-urlencoded");
-	job->addMetaData("cookies", "auto");
-	job->addMetaData("cache", "reload");
-	
-	connect(job, SIGNAL(result(KIO::Job*)),
-		SLOT(slotLoginResult(KIO::Job*)));
-	
-	connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
-		SLOT(slotLoginData(KIO::Job*, const QByteArray&)));
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -209,66 +153,39 @@ void GMail::login()
 	}
 }
 
-void GMail::slotLoginResult(KIO::Job *job)
-{	
-	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
-		mLoginLock->unlock();
-		emit loginDone(false, mLoginFromTimer, job->errorString());
+void GMail::slotGetWalletPassword(const QString& pass)
+{
+	QString str, LoginPOSTFormat, LoginURL;
+	
+	if(isGAP4D) {
+		LoginPOSTFormat = QString(gGAP4DLoginPOSTFormat).replace("%3",useDomain);
+		LoginURL = QString(gGAP4DLoginURL).arg(useDomain).replace('@','%');
 	} else {
-
-		if(mLoginToken) {
-			if(isGAP4D) {
-				mLoginLock->unlock();
-				if(!isLoggedIn()) {
-					emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
-				} else {
-					emit loginDone(true, mLoginFromTimer);
-					checkGMail();
-				}
-				return;
-			}
-			
-			static QRegExp rx("http[s]?://mail.google.com/mail\\?auth=([_\\d\\w\\-]+)");
-			int found;
-			
-			kdDebug() << k_funcinfo << "mLoginToken: true" << endl;
-
-			if(!rx.isValid()) {
-				kdWarning() << k_funcinfo << "Invalid RX!\n"
-						<< rx.errorString() << endl;
-			}
-			
-			found = rx.search(mLoginBuffer);
-			
-			if( found == -1 ) {
-				if(mLoginBuffer.find("onload") != -1 && (
-							mLoginBuffer.find("FixForm") != -1 ||
-							mLoginBuffer.find("start_time") != -1)) {
-				
-					mLoginLock->unlock();
-					emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
-				} else {
-					kdWarning() << k_funcinfo << " auth info couldn't be found!" << endl;
-					dump2File("gmail_login.html",mLoginBuffer);
-					
-					mLoginLock->unlock();
-					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
-				}
-			} else {
-			
-				//gGMailPostLoginURLFormat is the _format_, gGMailPostLoginURL is the one to be used
-				gGMailPostLoginURL = gGMailPostLoginURLFormat + rx.cap(1);
-				
-				mLoginBuffer = "";
-				postLogin();
-				// NOTE: LoginLock is still locked()
-			}
-		} else {
-			mLoginLock->unlock();
-			emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
-		}
+		LoginPOSTFormat = gGMailLoginPOSTFormat;
+		LoginURL = gGMailLoginURL;
 	}
+	
+	str = QString(LoginPOSTFormat).arg(useUsername,pass).replace('@','%');
+	kdDebug() << k_funcinfo << "Sending login: " << str << endl;
+
+	QCString b(str.utf8());
+	QByteArray postData(b);
+
+	// get rid of terminating 0x0
+	postData.truncate(b.length());
+	
+	KIO::TransferJob *job = KIO::http_post(
+			LoginURL,
+	postData, false);
+	job->addMetaData("content-type", "Content-Type: application/x-www-form-urlencoded");
+	job->addMetaData("cookies", "auto");
+	job->addMetaData("cache", "reload");
+	
+	connect(job, SIGNAL(result(KIO::Job*)),
+		SLOT(slotLoginResult(KIO::Job*)));
+	
+	connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
+		SLOT(slotLoginData(KIO::Job*, const QByteArray&)));
 }
 
 void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
@@ -280,48 +197,81 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 	} else {
 		QCString str(data, data.size() + 1);
 		mLoginBuffer.append(str);
+	}
+}
 
-		// auth cookie no longer exists, no need to check for it
-		mLoginToken = 1;
+void GMail::slotLoginResult(KIO::Job *job)
+{	
+	if(job->error() != 0) {
+		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+		mLoginLock->unlock();
+		emit loginDone(false, mLoginFromTimer, job->errorString());
+	} else {
+		
+		QString redirection;
+		
+		redirection = getRedirectURL(mLoginBuffer);
+		
+		if( redirection == QString::null ) {
+			
+			if(!isLoggedIn(false)) {
+				if(mLoginBuffer.find("onload") != -1 && (
+							mLoginBuffer.find("FixForm") != -1 ||
+							mLoginBuffer.find("start_time") != -1)) {
+				
+					mLoginLock->unlock();
+					emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
+				} else {
+					kdWarning() << k_funcinfo << " Redirection couldn't be found!" << endl;
+					dump2File("gmail_login.html",mLoginBuffer);
+					
+					mLoginLock->unlock();
+					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
+				}
+			} else {
+				//no more redirections?
+				kdWarning() << k_funcinfo << "No redirection was found, but seems like we are logged in!" << endl;
+				
+				slotPostLoginResult(job);
+			}
+		} else {
+			mLoginBuffer = "";
+			postLogin(redirection);
+			// NOTE: LoginLock is still locked()
+		}
 	}
 }
 
 ///////////////////////////////////////////////////////////////////////////
 // Post login procedure: Gather cookies
 ///////////////////////////////////////////////////////////////////////////
-void GMail::postLogin()
+void GMail::postLogin(QString url)
 {
 	// this is expected to be locked.
-	if(!mLoginLock->tryLock()) {
+	if(mLoginLock->locked()) {
 		
-		QString url;
+		QRegExp rx("^(http[s]?://)(.*)$");
+		int found;
 		
-		if(!isGAP4D)
-			url = QString(gGMailPostLoginURL).arg(
-				(Prefs::useHTTPS()
-					? "https" 
-					: "http" )).replace('@','%');
-		else
-		{
-			/*kdDebug() << k_funcinfo << " isGAP4D: " << isGAP4D << "; " ;
-			
-			if( !mCookieMap->contains("GMAIL_AT") && mCookieMap->contains("HID")) {
-				kdDebug() << " First " << k_funcinfo << " call seems to have finished, now using HID to get GMAIL_AT "<< endl;
-				url = QString(gGAP4DGetGMAIL_ATURL).arg(
-					(Prefs::useHTTPS()
-						? "https" 
-						: "http" ),
-					useDomain,
-					mCookieMap->find("HID").data()).replace('@','%');
-			} else {
-				kdDebug() << " This seems to be the first call to " << k_funcinfo << ", we are expecting a HID "<< endl;
-				url = QString(gGAP4DPostLoginURLFormat).arg(
-						(Prefs::useHTTPS()
-							? "https" 
-							: "http" ),
-						useDomain).replace('@','%');
-			}*/
+		if(!rx.isValid()) {
+			kdWarning() << k_funcinfo << "Invalid RX!\n"
+					<< rx.errorString() << endl;
 		}
+		
+		found = rx.search(url);
+		
+		if(found == -1) {
+			kdWarning() <<  "This can't be a valid url! " << url << endl;
+		}
+		
+		if(rx.cap(1).compare("https://") != 0) {
+			url = (Prefs::useHTTPS()? "https" : "http" );
+			url.append("://");
+			url.append(rx.cap(2));
+		}
+		
+		mPostLoginBuffer = "";
+		
 		kdDebug() << k_funcinfo << "Starting job to " << url << endl;
 
 		KIO::TransferJob *job = KIO::get(url, true, false);
@@ -335,13 +285,23 @@ void GMail::postLogin()
 			SLOT(slotPostLoginData(KIO::Job*, const QByteArray&)));
 	} else {
 		kdWarning() << k_funcinfo << "mLoginLock is not locked!" << endl;
-		mLoginLock->unlock();
+	}
+}
+
+void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
+{
+	kdDebug() << k_funcinfo << endl;
+
+	if(job->error() != 0) {
+		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+	} else {
+		QCString str(data, data.size() + 1);
+		mPostLoginBuffer.append(str);
 	}
 }
 
 void GMail::slotPostLoginResult(KIO::Job *job)
 {
-
 	if(job->error() != 0) {
 		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
 
@@ -352,27 +312,21 @@ void GMail::slotPostLoginResult(KIO::Job *job)
 		mLoginLock->unlock();
 		
 		if(isLoggedIn()) {
-			if(true/*mCookieMap->contains("GMAIL_AT")*/) {
-				//kdDebug() << k_funcinfo << "We got a GMAIL_AT, emiting signal" << endl;
-				
-				emit loginDone(true, mLoginFromTimer);
-				checkGMail();
-			} else { //If we don't have a GMAIL_AT it means we got a HID
-				kdDebug() << k_funcinfo << "No GMAIL_AT, but we got a HID, calling postLogin() again; and keeping mLoginLock locked()" << endl;
-				mLoginLock->tryLock();
-				postLogin();
-			}
+			
+			emit loginDone(true, mLoginFromTimer);
+			checkGMail();
 		} else {
-			emit loginDone(false, mLoginFromTimer, 
+			QString url = getRedirectURL(mPostLoginBuffer);
+			
+			if(url == QString::null) {
+				emit loginDone(false, mLoginFromTimer, 
 				       i18n("Unknown error retrieving cookies"));
+			} else {
+				kdDebug() << k_funcinfo << "Found an other redirect!: " << url << endl;
+				mLoginLock->tryLock();
+				postLogin(url);
+			}
 		}
-	}
-}
-
-void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &)
-{
-	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
 	}
 }
 
@@ -421,6 +375,16 @@ void GMail::checkGMail()
 	}
 }
 
+void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
+{
+	if(job->error() != 0) {
+		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+	} else {
+		QCString str(data, data.size() + 1);
+		mPageBuffer.append(str);
+	}
+}
+
 void GMail::slotCheckResult(KIO::Job *job)
 {
 	if(job->error() != 0) 
@@ -460,17 +424,6 @@ void GMail::slotCheckResult(KIO::Job *job)
 	}
 }
 
-void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
-{
-	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
-	} else {
-		QCString str(data, data.size() + 1);
-		mPageBuffer.append(str);
-
-	}
-}
-
 ///////////////////////////////////////////////////////////////////////////
 // Other methods...
 ///////////////////////////////////////////////////////////////////////////
@@ -479,20 +432,38 @@ void GMail::slotTimeout()
 	if((!mLoginLock->locked() && !isLoggedIn()) || mLoginParamsChanged) {
 		mLoginFromTimer = true;
 		login();
-	} else
+	} else {
 		if(!mLoginLock->locked() && isLoggedIn()) {
 			// do the check
 			mCheckFromTimer = true;
 			checkGMail();
 		}
+	}
+}
+
+void GMail::setInterval(unsigned int i, bool forceStart)
+{
+	bool running;
+	
+	if(i > Prefs::self()->intervalItem()->minValue().toUInt() && mInterval != i) {
+		mInterval = i;
+		
+		if(forceStart)
+			running = true;
+		else
+			running = mTimer->isActive();
+		
+		mTimer->changeInterval(MILLISECS(mInterval));
+		
+		//Prevent starting the timer when it wasn't needed to
+		if(!running)
+			mTimer->stop();
+	}
 }
 
 void GMail::setInterval(unsigned int i)
 {
-	if(i > Prefs::self()->intervalItem()->minValue().toUInt() && mInterval != i) {
-		mInterval = i;
-		mTimer->changeInterval(MILLISECS(mInterval));
-	} 
+	setInterval(i,false);
 }
 
 bool GMail::isLoggedIn(bool lockCheck)
@@ -500,7 +471,7 @@ bool GMail::isLoggedIn(bool lockCheck)
 	bool ret = false;
 	
 	if( !lockCheck || ( lockCheck && !mLoginLock->locked() ) ) {
-		if(cookieExists(ACTION_TOKEN_COOKIE) /*|| mCookieMap->contains("HID") */)
+		if(cookieExists(ACTION_TOKEN_COOKIE))
 			ret = true;
 		else kdDebug() << k_funcinfo << ACTION_TOKEN_COOKIE << " wasn't found!" << endl;
 	} else kdDebug() << "mLoginLock is locked" << endl;
@@ -667,6 +638,31 @@ void GMail::slotSessionChanged()
 	mUsername = "";
 	mPasswordHash = "";
 	checkLoginParams();
+}
+
+QString GMail::getRedirectURL(QString buffer)
+{
+	static QRegExp rx("<meta[ ]+.*url='(http[s]?://[^']+)'.*>");
+	int found;
+	QString url;
+	
+	kdDebug() << k_funcinfo << endl;
+
+	if(!rx.isValid()) {
+		kdWarning() << k_funcinfo << "Invalid RX!\n"
+				<< rx.errorString() << endl;
+	}
+			
+	found = rx.search(buffer);
+			
+	if( found == -1 ) {
+		return QString::null;
+	}
+	
+	url = KCharsets::resolveEntities(rx.cap(1));
+	
+	kdDebug() << k_funcinfo << "Found redirection to " << url << endl;
+	return url;
 }
 
 #include "gmail.moc"
