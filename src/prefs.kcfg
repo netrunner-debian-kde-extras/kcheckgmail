@@ -6,9 +6,16 @@
 		<entry name="Interval" type="UInt">
 			<label>Polling interval</label>
 			<default>60</default>
-			<min>10</min>
+			<min>15</min>
 			<max>86400</max>
 			<whatsthis>How many seconds to wait before checking for new mail.</whatsthis>
+		</entry>
+		<entry name="Snooze" type="UInt">
+			<label>Snooze period</label>
+			<default>5</default>
+			<min>1</min>
+			<max>1440</max>
+			<whatsthis>How many many minutes to snooze.</whatsthis>
 		</entry>
 		<entry name="UseHTTPS" type="Bool">
 			<label>Use https connections for checking mail</label>
