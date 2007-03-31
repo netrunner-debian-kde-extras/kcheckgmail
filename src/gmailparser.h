@@ -97,6 +97,7 @@ public:
 	
 	unsigned int getNewCount() const;
 	unsigned int getNewCount(bool realCount) const;
+	unsigned int getNewCount(bool realCount, QString box) const;
 
 // 	const QString &getVersion() const { return mVersion; }
 	unsigned int getInvites() const { return mInvites; }
@@ -110,6 +111,10 @@ public:
 	QMap<QString,bool> *getThreadList() const;
 	const Thread &getThread(const QString &msgId) const;
 	const Thread &getThread(int id) const;
+	
+	QString stripTags(QString data);
+	QString convertEntities(QString data);
+	QString cleanUpData(QString data);
 
 signals:
 	void mailArrived(unsigned int count);
@@ -126,10 +131,6 @@ protected:
 	void parseInvite(const QString&);
 	void parseGName(const QString&);
 	void freeThreadList();
-	
-	QString stripTags(QString data);
-	QString convertEntities(QString data);
-	QString cleanUpData(QString data);
 
 private:
 	Version mVersion;
