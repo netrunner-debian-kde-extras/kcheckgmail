@@ -74,7 +74,7 @@ int main(int argc, char **argv)
 
         KCmdLineArgs::init(argc, argv, &about);
         KCmdLineArgs::addCmdLineOptions(gOptions);
-        KApplication::addCmdLineOptions();
+        KUniqueApplication::addCmdLineOptions();
 	
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 	
