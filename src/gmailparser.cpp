@@ -29,6 +29,12 @@
 #include <klocale.h>
 #include <kcharsets.h>
 
+/**
+ * Gmail's response parser object constructor.
+ *
+ * This class parses the resulting data of a call to
+ * Gmail's JavaScript interface.
+*/
 GMailParser::GMailParser() :
 	mInvites(0)
 {
@@ -42,14 +48,14 @@ GMailParser::GMailParser() :
 	
 	// NOTE: when adding more supported gmail versions resize()'s value MUST be changed
 	gGMailVersion.resize(4);
-	//gmail versions kcheckgmail works with:
+	//Gmail versions kcheckgmail works with.
 	gGMailVersion[0] = "1exl39kx7mipo";
 	gGMailVersion[1] = "1x4nkpwjfkc8x";
 	gGMailVersion[2] = "1ddh9n6glzd1c";
 	gGMailVersion[3] = "11qm1wldxu1ww";
 
-	//gmail language identifiers:
 #ifdef DETECT_GLANGUAGE
+	// Gmail language identifiers:
 	gGMailLanguageCode.insert("7fba835ed0312d54",i18n("Spanish"));
 	gGMailLanguageCode.insert("7530096a84569c0b",i18n("French"));
 	gGMailLanguageCode.insert("21208aa200ae6920",i18n("Italian"));
@@ -94,10 +100,22 @@ GMailParser::GMailParser() :
 #endif
 }
 
+/**
+ * Object destructor.
+*/
 GMailParser::~GMailParser()
 {
 }
 
+/**
+ * Main parser.
+ *
+ * The main parsing process starts here.
+ * It splits the content of _data into blocks
+ * which are later passed to sub-parsers.
+ *
+ * @param _data Gmail's JavaScript response
+*/
 void GMailParser::parse(const QString &_data)
 {
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
@@ -169,6 +187,16 @@ void GMailParser::parse(const QString &_data)
 // Parsers
 ///////////////////////////////////////////////////////////////////////////
 
+
+/**
+ * Threads/emails parser.
+ *
+ * This parser takes care of extracting the available data from the emails block.
+ *
+ * @param _data The messages data block
+ * @param oldMap The old messages map, used to detect whether a message was already reported as new or not
+ * @return The number of unread messages that were found in _data
+*/
 uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap)
 {
 	//Matches messages when snippets are on
@@ -314,6 +342,13 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	return newMsgCount;
 }
 
+/**
+ * Gmail version information parser.
+ *
+ * This parser extracts some information from the version string.
+ *
+ * @param _data The data block
+*/
 void GMailParser::parseVersion(const QString &_data)
 {
 	QString data = _data;
@@ -376,6 +411,14 @@ void GMailParser::parseVersion(const QString &_data)
 	}
 }
 
+/**
+ * Quota information parser.
+ *
+ * This parser extracts quota information like 
+ * the amount of space used, available, the used percentage, etc.
+ *
+ * @param data The data block
+*/
 void GMailParser::parseQuota(const QString &data)
 {	
 	QStringList list = QStringList::split(",",data);
@@ -409,6 +452,13 @@ void GMailParser::parseQuota(const QString &data)
 			<< list.size() << ", should be: 4." << endl;
 }
 
+/**
+ * Default summary parser.
+ *
+ * This parser extracts the number of unread messages in the inbox, drafts and spam.
+ *
+ * @param _data The data block
+*/
 void GMailParser::parseDefaultSummary(const QString &_data)
 {
 	static QRegExp rx("\"([a-z]+)\",([0-9]+)");
@@ -440,6 +490,14 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 		<< "spam=" << mSummary.spam << "\n" << endl;
 }
 
+/**
+ * Lables parser.
+ *
+ * This parser extracts the number of unread messages per label.
+ *
+ * @param data The data block
+ * @todo Store a QMap with the labels information
+*/
 void GMailParser::parseLabel(const QString &data)
 {
 	static QRegExp rx(
@@ -455,13 +513,19 @@ void GMailParser::parseLabel(const QString &data)
 	
 	kdDebug() << k_funcinfo << endl;
 
-	//TODO: store the labels in a QMap
 	while((pos = rx.search(data, pos)) != -1) {
 		kdDebug() << rx.cap(1) << " has " << rx.cap(2) << " unread messages" << endl;
 		pos += rx.matchedLength();
 	}
 }
 
+/**
+ * Invites information parser.
+ *
+ * This parser extracts the number of available invites.
+ *
+ * @param data The data block
+*/
 void GMailParser::parseInvite(const QString &data)
 {
 	bool ok = true;
@@ -472,6 +536,13 @@ void GMailParser::parseInvite(const QString &data)
 	kdDebug() << k_funcinfo << "Invites=" << mInvites << endl;
 }
 
+/**
+ * Gaia Name parser.
+ *
+ * This parser extracts the account's owner name (a.k.a. Gaia Name)
+ *
+ * @param data The data block
+*/
 void GMailParser::parseGName(const QString &data)
 {
 	QString newName = data;
@@ -489,6 +560,11 @@ void GMailParser::parseGName(const QString &data)
 // Data accessors
 ///////////////////////////////////////////////////////////////////////////
 
+/**
+ * Return the list of parsed messages together with their isNew value
+ *
+ * @return A list with the msgId's as the keys and isNew as the value
+ */
 QMap<QString, bool> *GMailParser::getThreadList() const
 {
 	QMap<QString, bool> *ret = 0;
@@ -509,6 +585,12 @@ QMap<QString, bool> *GMailParser::getThreadList() const
 	return ret;
 }
 
+/**
+ * Return the thread information of the thread specified by msgId
+ *
+ * @param msgId The message Id of the thread
+ * @return A copy of the Thread
+*/
 const GMailParser::Thread& GMailParser::getThread(const QString &msgId) const
 {
 	static Thread nullThread;
@@ -522,6 +604,12 @@ const GMailParser::Thread& GMailParser::getThread(const QString &msgId) const
 		return *(*iter);
 }
 
+/**
+ * Return the thread information of the thread specified by id.
+ *
+ * @param id The numerical id of the thread
+ * @return A copy of the Thread
+*/
 const GMailParser::Thread& GMailParser::getThread(int id) const
 {
 	static Thread nullThread;
@@ -540,6 +628,17 @@ const GMailParser::Thread& GMailParser::getThread(int id) const
 	return *ret;
 }
 
+/**
+ * Retrieve the number of unread messages.
+ *
+ * If realCount is false the box parameter is ignored.
+ *
+ * @param realCount If the number of unread messages should be taken from the totals or only from the parsed messages
+ * @param box The name of the box (inbox, drafts, spam; or in the future: label) from where the real number of unread messages should be taken from
+ * @return The number of unread messages
+ * @example getNewCount(true,"inbox") Get the real number of unread messages in the inbox
+ * @todo Check if box is the name of a label
+*/
 unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 {
 	unsigned int ret = 0;
@@ -551,7 +650,6 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 			return mSummary.drafts;
 		else if(box.compare("spam") == 0)
 			return mSummary.spam;
-		//TODO: check if box is the name of a label
 	}
 	
 	QMap<QString, bool> *lst = getThreadList();
@@ -569,12 +667,23 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 	return ret;
 }
 
+/**
+ * Retrieve the number of unread messages.
+ *
+ * @param realCount If the number of unread messages should be taken from the totals or only from the parsed messages
+ * @return The number of unread messages
+ * @todo Replace the default box "inbox" with the box where the new emails are being searched from
+*/
 unsigned int GMailParser::getNewCount(bool realCount) const
 {
-	//TODO: replace inbox with the box where the new emails are being searched
 	return getNewCount(realCount,"inbox");
 }
 
+/**
+ * Retrieve the number of unread messages.
+ *
+ * @return The number of unread messages that were parsed
+*/
 unsigned int GMailParser::getNewCount() const
 {
 	return getNewCount(false);
@@ -601,6 +710,14 @@ void GMailParser::freeThreadList()
 	mThreads.clear();
 }
 
+/**
+ * Tags stripper.
+ *
+ * This function removes all tags from data.
+ *
+ * @param data The data to be processed
+ * @return The content of data without tags
+*/
 QString GMailParser::stripTags(QString data)
 {
 	static QRegExp tags("<[^>]+>|</[^>]+>|<[^>]+/>");
@@ -615,6 +732,14 @@ QString GMailParser::stripTags(QString data)
 	return data;
 }
 
+/**
+ * JavaScript entities converter.
+ *
+ * This function converts all \uXXXX to their right representation.
+ *
+ * @param data The data to be processed
+ * @return The content of data with the converted entities
+*/
 QString GMailParser::convertEntities(QString data)
 {
 	QChar c;
@@ -634,6 +759,17 @@ QString GMailParser::convertEntities(QString data)
 	return data;
 }
 
+/**
+ * All-in-one data cleaner.
+ *
+ * This function passes the data to 
+ * convertEntities, stripTags and KCharsets::resolveEntities
+ *
+ * @see convertEntities
+ * @see stripTags
+ * @param data The data to be cleaned up
+ * @return The cleaned up data
+*/
 QString GMailParser::cleanUpData(QString data)
 {
 	data = convertEntities(data);
