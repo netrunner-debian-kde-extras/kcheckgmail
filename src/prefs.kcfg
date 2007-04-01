@@ -15,7 +15,7 @@
 			<default>5</default>
 			<min>1</min>
 			<max>1440</max>
-			<whatsthis>How many many minutes to snooze.</whatsthis>
+			<whatsthis>How many minutes to snooze.</whatsthis>
 		</entry>
 		<entry name="UseHTTPS" type="Bool">
 			<label>Use https connections for checking mail</label>
