@@ -141,7 +141,9 @@ private:
 	std::vector<Label> mLabels;
 	QMap<QString,Thread*> mThreads;
 	QValueVector<QString> gGMailVersion;
+#ifdef DETECT_GLANGUAGE
 	QMap<QString, QString> gGMailLanguageCode;
+#endif
 	QString gName;
 };
 #endif
