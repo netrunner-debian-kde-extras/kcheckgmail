@@ -74,7 +74,8 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 	
 	mTimer = new QTimer(this);
 	connect(mTimer, SIGNAL(timeout()), this, SLOT(slotTimeout()));
-
+	connect(this, SIGNAL(sessionChanged()), 
+		this, SLOT(slotSessionChanged()));
 }
 
 GMail::~GMail()
@@ -95,7 +96,7 @@ void GMail::checkLoginParams()
 	const QString& password = GMailWalletManager::instance()->getHash();
 	
 	if(mUsername == username && mPasswordHash == password
-		  || username.length() == 0 || strlen(password) == 0)
+		  || username.length() == 0)
 		return;
 	
 	mUsername = username;
@@ -120,8 +121,7 @@ void GMail::checkLoginParams()
 	
 	getURLPart(true);
 	
-	if(mLoginLock->tryLock()) {
-		mLoginLock->unlock();
+	if(!mLoginLock->locked()) {
 		
 		//Try to log out if a session already exists (because it might be from an other address)
 		if(isLoggedIn(false)) {
@@ -433,7 +433,7 @@ void GMail::slotTimeout()
 		mLoginFromTimer = true;
 		login();
 	} else {
-		if(!mLoginLock->locked() && isLoggedIn()) {
+		if(isLoggedIn()) {
 			// do the check
 			mCheckFromTimer = true;
 			checkGMail();
@@ -608,12 +608,15 @@ bool GMail::cookieExists(QString cookieName,QString url)
 	found = search.search(cookies);
 	ret = ( found != -1 );
 	
-	if(ret && QString::compare(cookieName,ACTION_TOKEN_COOKIE) == 0) {
+	if(ret && cookieName.compare(ACTION_TOKEN_COOKIE) == 0) {
 		if(sessionCookie.compare(search.cap(2)) != 0) {
-			if(sessionCookie.length() != 0)
-				emit sessionChanged();
+			QString oldSessionCookie;
 			
+			oldSessionCookie = sessionCookie;
 			sessionCookie = search.cap(2);
+			
+			if(oldSessionCookie.length() != 0)
+				emit sessionChanged();
 		}
 	}
 	
