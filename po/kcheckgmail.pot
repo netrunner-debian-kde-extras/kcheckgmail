@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-03-31 20:32-0600\n"
+"POT-Creation-Date: 2007-04-03 23:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
 #: _translatorinfo.cpp:1
@@ -198,12 +198,12 @@ msgid "Bulgarian"
 msgstr ""
 
 #: gmailwalletmanager.cpp:99
-msgid "KCheckGmail could not open the wallet. Please check your preferences."
+msgid "KCheckGMail could not open the wallet. Please check your preferences."
 msgstr ""
 
 #: gmailwalletmanager.cpp:188
 msgid ""
-"KCheckGmail cannot store your password securely in your wallet. Do you want "
+"KCheckGMail cannot store your password securely in your wallet. Do you want "
 "to save the password in the unsafe configuration file instead?"
 msgstr ""
 
@@ -217,7 +217,7 @@ msgstr ""
 
 #: gmailwalletmanager.cpp:234
 msgid ""
-"KCheckGmail cannot retrieve your password from your wallet. Do you want to "
+"KCheckGMail cannot retrieve your password from your wallet. Do you want to "
 "save the password in the unsafe configuration file instead?"
 msgstr ""
 
@@ -225,12 +225,8 @@ msgstr ""
 msgid "Unable to retrieve secure password"
 msgstr ""
 
-#: kcheckgmailtray.cpp:86
+#: kcheckgmailtray.cpp:86 kcheckgmailtray.cpp:137 main.cpp:44
 msgid "KCheckGMail"
-msgstr ""
-
-#: kcheckgmailtray.cpp:137 main.cpp:44
-msgid "KCheckGmail"
 msgstr ""
 
 #: kcheckgmailtray.cpp:139
@@ -238,7 +234,7 @@ msgid "Configure &Notications..."
 msgstr ""
 
 #: kcheckgmailtray.cpp:141
-msgid "&Configure KCheckGmail..."
+msgid "&Configure KCheckGMail..."
 msgstr ""
 
 #: kcheckgmailtray.cpp:144 kcheckgmailtray.cpp:462
@@ -340,9 +336,9 @@ msgstr ""
 
 #: kcheckgmailtray.cpp:572
 msgid ""
-"Gmail has been upgraded since this version of KCheckGmail was released. This "
+"Gmail has been upgraded since this version of KCheckGMail was released. This "
 "may cause all sort of strange errors. Please check for an upgrade to "
-"KCheckGmail soon."
+"KCheckGMail soon."
 msgstr ""
 
 #: kcheckgmailtray.cpp:573
@@ -351,7 +347,7 @@ msgstr ""
 
 #: kcheckgmailtray.cpp:634
 msgid ""
-"<p>KCheckGmail is already running</p><p>You can find it "
+"<p>KCheckGMail is already running</p><p>You can find it "
 "here:</p><p><center><img source=\"systray_shot\"></center></p>"
 msgstr ""
 
@@ -383,58 +379,10 @@ msgid "Maintainer"
 msgstr ""
 
 #: main.cpp:58
-msgid "Brazilian Portuguese Translation"
-msgstr ""
-
-#: main.cpp:59
-msgid "Italian Translation"
-msgstr ""
-
-#: main.cpp:60
-msgid "Spanish Translation"
-msgstr ""
-
-#: main.cpp:61
-msgid "German Translation"
-msgstr ""
-
-#: main.cpp:62
-msgid "Russian Translation"
-msgstr ""
-
-#: main.cpp:63
-msgid "German Translation Updates"
-msgstr ""
-
-#: main.cpp:64
-msgid "French Translation"
-msgstr ""
-
-#: main.cpp:65
-msgid "Polish Translation"
-msgstr ""
-
-#: main.cpp:66
-msgid "Turkish Translation"
-msgstr ""
-
-#: main.cpp:67
-msgid "Hungarian Translation"
-msgstr ""
-
-#: main.cpp:68
-msgid "Swedish Translation"
-msgstr ""
-
-#: main.cpp:69
-msgid "Lithuanian Translation"
+msgid "Everybody who helped testing and translating KCheckGMail"
 msgstr ""
 
 #: main.cpp:70
-msgid "Estonian Translation"
-msgstr ""
-
-#: main.cpp:82
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
@@ -442,7 +390,7 @@ msgid ""
 "Google Inc."
 msgstr ""
 
-#: main.cpp:88
+#: main.cpp:76
 msgid "KCheckGMail is already running!\n"
 msgstr ""
 
