@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2004-08-06 22:32-0400\n"
-"PO-Revision-Date: 2007-03-31 21:57-0600\n"
-"Last-Translator: Raphael Geissert <atomo64@gmail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2007-04-01 22:56-0500\n"
+"Last-Translator: Raphael G <atomo64@gmail.com>\n"
+"Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -246,7 +246,7 @@ msgstr "&Configurar KCheckGmail..."
 
 #: kcheckgmailtray.cpp:144 kcheckgmailtray.cpp:462
 msgid "Login and Chec&k Mail"
-msgstr "&Acceder y Comprobar Correo"
+msgstr "&Acceder y comprobar correo"
 
 #: kcheckgmailtray.cpp:147
 msgid "&Launch Browser"
@@ -328,11 +328,11 @@ msgstr "Un error ha ocurrido al acceder a a Gmail <br><b>%1</b>"
 
 #: kcheckgmailtray.cpp:467
 msgid "Now logged in to Gmail!"
-msgstr "Conectado con éxito a Gmail!"
+msgstr "¡Conectado con éxito a Gmail!"
 
 #: kcheckgmailtray.cpp:468
 msgid "Chec&k Mail Now"
-msgstr "Comprobar Correo A&hora"
+msgstr "Comprobar correo a&hora"
 
 #: kcheckgmailtray.cpp:501
 #, c-format
