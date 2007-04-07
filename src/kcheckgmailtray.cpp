@@ -134,11 +134,11 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	// initialise the menu
 	KPopupMenu *menu = contextMenu();
 	menu->clear();
-	menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGmail"));
+	menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
 	menu->insertItem(SmallIcon("knotify"), 
 		i18n("Configure &Notications..."), CONTEXT_NOTIFY);
 	menu->insertItem(SmallIcon("configure"), 
-		i18n("&Configure KCheckGmail..."), CONTEXT_CONFIGURE);
+		i18n("&Configure KCheckGMail..."), CONTEXT_CONFIGURE);
 	menu->insertSeparator();
 	mCheckNowId = menu->insertItem(SmallIcon("launch"), 
 		i18n("Login and Chec&k Mail"), 
@@ -569,7 +569,7 @@ void KCheckGmailTray::slotVersionMismatch()
 	if(Prefs::alertVersionChange() && !warned) {
 		warned = true;
 		KMessageBox::information(0,
-					 i18n("Gmail has been upgraded since this version of KCheckGmail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGmail soon."),
+					 i18n("Gmail has been upgraded since this version of KCheckGMail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGMail soon."),
 					 i18n("Version changed"),
 					 "IgnoreVersionChange");
 	}
@@ -631,7 +631,7 @@ void KCheckGmailTray::whereAmI()
 {
 	takeScreenshotOfTrayIcon();
 	KMessageBox::information(0,
-				 i18n("<p>KCheckGmail is already running</p><p>You can find it here:</p><p><center><img source=\"systray_shot\"></center></p>"),
+				 i18n("<p>KCheckGMail is already running</p><p>You can find it here:</p><p><center><img source=\"systray_shot\"></center></p>"),
 				 i18n("Already Running"));
 }
 

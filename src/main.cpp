@@ -41,7 +41,7 @@ static const KCmdLineOptions gOptions[] =
 int main(int argc, char **argv)
 {
 	KAboutData about("kcheckgmail",
-		I18N_NOOP("KCheckGmail"), 
+		I18N_NOOP("KCheckGMail"), 
 		kcheckgmailVersion, 
 		I18N_NOOP(
 		"System tray application to display how many\nnew email "
@@ -50,24 +50,12 @@ int main(int argc, char **argv)
 		"(C) 2004 Matthew Wlazlo", 
 		0, // text
 		"http://kcheckgmail.sf.net",
-		"atomo64@gmail.com");//http://sf.net/tracker/?group_id=116095&atid=673717
+		"kcheckgmail-development@lists.sourceforge.net");
 	
 	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Original author"), "mwlazlo@gmail.com");
 	about.addAuthor("Raphael Geissert", I18N_NOOP("Maintainer"), "atomo64@gmail.com");
 	
-	about.addCredit("Rogério Pereira Araújo", I18N_NOOP("Brazilian Portuguese Translation"), "rogerio.araujo@gmail.com");
-	about.addCredit("Samuele Kaplun", I18N_NOOP("Italian Translation"), "kaplun@aliceposta.it");
-	about.addCredit("Felipe Morales", I18N_NOOP("Spanish Translation"), "felipe.morales@wanadoo.es");
-	about.addCredit("Marcus Thiesen", I18N_NOOP("German Translation"), "marcus@thiesen.org");
-	about.addCredit("Dudalev Michael", I18N_NOOP("Russian Translation"), "dudalev@gmail.com");
-	about.addCredit("Patrick Trettenbrein", I18N_NOOP("German Translation Updates"), "patrick.trettenbrein@gmx.net");
-	about.addCredit("Alexis Bunel", I18N_NOOP("French Translation"), "alexisbunel@gmail.com");
-	about.addCredit("Jarosław Kamper", I18N_NOOP("Polish Translation"), "jaroslawkamper@gmail.com");
-	about.addCredit("Uğur Çetin", I18N_NOOP("Turkish Translation"), "jnmbk@users.sourceforge.net");
-	about.addCredit("Peter Avramucz", I18N_NOOP("Hungarian Translation"), "muczy@freestart.hu");
-	about.addCredit("Daniel Nylander", I18N_NOOP("Swedish Translation"), "po@danielnylander.se");
-	about.addCredit("Andrius Štikonas", I18N_NOOP("Lithuanian Translation"), "stikonas@gmail.com");
-	about.addCredit("Henrik Pihl", I18N_NOOP("Estonian Translation"), "ahvenas@gmail.com");
+	about.addCredit(I18N_NOOP("Everybody who helped testing and translating KCheckGMail"), 0, 0, 0);
 
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");

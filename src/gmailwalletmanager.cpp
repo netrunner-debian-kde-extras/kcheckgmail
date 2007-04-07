@@ -96,7 +96,7 @@ void GMailWalletManager::openWallet()
 		mWallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(),
 		                    0, KWallet::Wallet::Asynchronous);
 		if(!mWallet)
-			KMessageBox::error(0, i18n("KCheckGmail could not open "
+			KMessageBox::error(0, i18n("KCheckGMail could not open "
 				"the wallet. Please check your preferences."));
 		else {
 			kdDebug() << k_funcinfo << "connecting wallet" << endl;
@@ -185,7 +185,7 @@ bool GMailWalletManager::storeWallet()
 		}
 	} else {
 		if(KMessageBox::warningContinueCancel(0, 
-			i18n("KCheckGmail cannot store your password securely in your wallet. "
+			i18n("KCheckGMail cannot store your password securely in your wallet. "
 			"Do you want to save the password in the unsafe configuration file instead?"),
 			i18n("Unable to store secure password"),
 			KGuiItem(i18n("Store unsafe"), "unlock"),
@@ -231,7 +231,7 @@ bool GMailWalletManager::getWallet()
 			openWallet();
 	} else {
 		if(KMessageBox::warningContinueCancel(0, 
-			i18n("KCheckGmail cannot retrieve your password from your wallet. "
+			i18n("KCheckGMail cannot retrieve your password from your wallet. "
 			"Do you want to save the password in the unsafe configuration file instead?"),
 			i18n("Unable to retrieve secure password"),
 			KGuiItem(i18n("Store unsafe"), "unlock"),
