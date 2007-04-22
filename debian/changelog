@@ -1,3 +1,21 @@
+kcheckgmail (0.5.6-1) unstable; urgency=low
+
+  * New upstream version (Closes: #415234)
+    - Works on amd64 (Closes: #420264, #378192)
+
+  * Several upstream fixes
+    - More efficient (Closes: #349531)
+    - Fixes charset issues (Closes: #296420)
+    - Proprely opens GMail (Closes: #378192, #420264)
+
+  * Build enhancements
+    - Completely disable debug verbose debugging code (Closes: #407509)
+
+  * Many thanks to Raphael G <atomo64@gmail.com>, for adopting KCheckGmail
+    upstream and providing so much help and feedback.    
+
+ -- Jose Luis Tallon <jltallon@adv-solutions.net>  Sun, 22 Apr 2007 20:54:46 +0200
+
 kcheckgmail (0.5.5-2) unstable; urgency=low
 
   * Acknowledge NMU (Closes: #385834)

@@ -34,7 +34,7 @@ msgstr "Nombre de usuario o clave incorrecto"
 
 #: gmail.cpp:229
 msgid "GMail's login procedure has changed, check for new version"
-msgstr "El procedimiento de inicio de sesión ha cambiado, verifica la disponibilidad de una nueva versión"
+msgstr "El procedimiento de inicio de sesión ha cambiado, verifique la disponibilidad de una nueva versión"
 
 #: gmail.cpp:323
 msgid "Unknown error retrieving cookies"
@@ -58,7 +58,7 @@ msgstr "Alemán"
 
 #: gmailparser.cpp:63
 msgid "English (US)"
-msgstr "Inglés (EUA)"
+msgstr "Inglés (EEUU)"
 
 #: gmailparser.cpp:64
 msgid "English (UK)"
@@ -202,17 +202,17 @@ msgstr "Búlgaro"
 
 #: gmailwalletmanager.cpp:99
 msgid "KCheckGmail could not open the wallet. Please check your preferences."
-msgstr "KCheckGmail no pudo abrir la billetera. Por favor checa tus preferencias."
+msgstr "KCheckGmail no pudo abrir KWallet. Por favor compruebe las preferencias."
 
 #: gmailwalletmanager.cpp:188
 msgid ""
 "KCheckGmail cannot store your password securely in your wallet. Do you want "
 "to save the password in the unsafe configuration file instead?"
-msgstr "KCheckGmail no pudo guardar la clave seguramente en tu billetera. ¿Desea guardar la contraseña en el archivo de configuración (inseguro)?"
+msgstr "KCheckGmail no pudo guardar la clave de forma segura en su KWallet. ¿Desea guardar la contraseña en el archivo de configuración (inseguro)?"
 
 #: gmailwalletmanager.cpp:190
 msgid "Unable to store secure password"
-msgstr "No ha sido posible guardar la clave seguramente"
+msgstr "No ha sido posible guardar la clave de forma segura"
 
 #: gmailwalletmanager.cpp:191 gmailwalletmanager.cpp:237
 msgid "Store unsafe"
@@ -222,11 +222,11 @@ msgstr "Guardar inseguramente"
 msgid ""
 "KCheckGmail cannot retrieve your password from your wallet. Do you want to "
 "save the password in the unsafe configuration file instead?"
-msgstr "KCheckGmail no pudo obtener la clave desde tu billetera. ¿Desea guardar la contraseña en el archivo de configuración (inseguro)?"
+msgstr "KCheckGmail no pudo obtener la clave desde KWallet. ¿Desea guardar la contraseña en el archivo de configuración (inseguro)?"
 
 #: gmailwalletmanager.cpp:236
 msgid "Unable to retrieve secure password"
-msgstr "No ha sido posible obtener la clave seguramente"
+msgstr "No ha sido posible obtener la clave de forma segura"
 
 #: kcheckgmailtray.cpp:86
 msgid "KCheckGMail"
@@ -270,7 +270,7 @@ msgid ""
 "here: </p><p><center><img source=\"systray_shot\"></center></p>When you "
 "right-click on that icon you will see a menu, from which you can see the "
 "Threads menu containing the newest email of your account."
-msgstr "<p><center>¡Bienvenido a KCheckGMail!</center></p><p>Aquí puedes localizar a KChechGMail: </p><p><center><img source=\"systray_shot\"></center></p> Al hacer clic con botón derecho del cursor en el icono aparecerá un menú, en el cual encontrarás el menú \"Conversaciones\" que contiene los últimos mensajes de la cuenta."
+msgstr "<p><center>¡Bienvenido a KCheckGMail!</center></p><p>Aquí puede encontrar KChechGMail: </p><p><center><img source=\"systray_shot\"></center></p> Al hacer clic con botón derecho del cursor en el icono aparecerá un menú, en el cual encontrará el menú \"Conversaciones\" que contiene los últimos mensajes de la cuenta."
 
 #: kcheckgmailtray.cpp:198
 msgid "Welcome"
@@ -320,11 +320,11 @@ msgstr "Comportamiento"
 
 #: kcheckgmailtray.cpp:401
 msgid "No account information has been entered. Do you want to quit?"
-msgstr "No has introducido ninguna información sobre la cuenta. ¿Deseas salir?"
+msgstr "No ha introducido ninguna información sobre la cuenta. ¿Desea salir?"
 
 #: kcheckgmailtray.cpp:456
 msgid "An error occurred logging in to Gmail<br><b>%1</b>"
-msgstr "Un error ha ocurrido al acceder a a Gmail <br><b>%1</b>"
+msgstr "Ha ocurrido un error al acceder a a Gmail: <br><b>%1</b>"
 
 #: kcheckgmailtray.cpp:467
 msgid "Now logged in to Gmail!"
@@ -352,7 +352,7 @@ msgid ""
 "Gmail has been upgraded since this version of KCheckGmail was released. This "
 "may cause all sort of strange errors. Please check for an upgrade to "
 "KCheckGmail soon."
-msgstr "Gmail ha sido actualizado desde que esta versión de KCheckGmail fue publicada. Esto puede causar todo tipo de errores extraños. Por favor comprueba si hay una nueva versión disponible lo más pronto posible."
+msgstr "Gmail ha sido actualizado desde que esta versión de KCheckGmail fue publicada. Esto puede causar todo tipo de errores extraños. Por favor compruebe si hay una nueva versión disponible lo más pronto posible."
 
 #: kcheckgmailtray.cpp:573
 msgid "Version changed"
@@ -383,7 +383,7 @@ msgid ""
 "new email messages you have in your Gmail account."
 msgstr ""
 "Aplicación de la barra del sistema para mostrar\n"
-" cuántos nuevos mensajes de correo se tienen\n"
+" cuántos nuevos mensajes de correo hay\n"
 " en una cuenta de Gmail."
 
 #: main.cpp:55
@@ -459,7 +459,7 @@ msgstr ""
 
 #: main.cpp:88
 msgid "KCheckGMail is already running!\n"
-msgstr "KCheckGMail ya está siendo ejecutado!\n"
+msgstr "KCheckGMail ya está en ejecución!\n"
 
 #. i18n: file appletsettingswidget.ui line 16
 #: rc.cpp:3
@@ -625,7 +625,7 @@ msgstr "Utilizar conexiones https al obtener correo"
 msgid ""
 "Use secure connections when checking for new mail. Note that the login "
 "procedure uses https regardless of this setting."
-msgstr "Utilizar conexiones seguras al obtener correo nuevo. Notar que la identificación del usuario usa https a pesar del valor de esta opción."
+msgstr "Utilizar conexiones seguras al obtener correo nuevo. Nótese que la identificación del usuario usa https independientemente del valor de esta opción."
 
 #. i18n: file prefs.kcfg line 29
 #: rc.cpp:87
@@ -649,7 +649,7 @@ msgstr "Contraseña"
 #: rc.cpp:96
 #, no-c-format
 msgid "Password for checking your Gmail account"
-msgstr "Tu clave para verificar la cuenta de Gmail"
+msgstr "Clave para verificar la cuenta de Gmail"
 
 #. i18n: file prefs.kcfg line 37
 #: rc.cpp:99
@@ -675,7 +675,7 @@ msgstr "Únicamente buscar nuevos mensajes en la bandeja de entrada"
 msgid ""
 "By disabling this option new messages are searched in anywhere (this "
 "includes spam, trash, etc)."
-msgstr "Al deshabilitar esta opción nuevos mensajes son buscados en todos lados (incluyendo correo no deseado, eliminados, etc)."
+msgstr "Al deshabilitar esta opción se buscan nuevos mensajes en todas las carpetas (incluyendo correo no deseado, eliminados, etc)."
 
 #. i18n: file prefs.kcfg line 49
 #: rc.cpp:114
@@ -689,7 +689,7 @@ msgstr "Si Google actualiza el código de GMail, mostrar una alerta"
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGmail icon is "
 "clicked."
-msgstr "Si está habilitado lanza el navegador por defecto de KDE al pursar el icono de KCheckGmail."
+msgstr "Si está habilitado, lanza el navegador por defecto de KDE al pursar el icono de KCheckGmail."
 
 #. i18n: file prefs.kcfg line 62
 #: rc.cpp:126

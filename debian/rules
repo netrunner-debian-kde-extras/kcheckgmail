@@ -43,7 +43,8 @@ config.status: configure
 	--prefix=/usr --disable-rpath \
 	--mandir=\$${prefix}/share/man \
 	--infodir=\$${prefix}/share/info \
-	kde_htmldir=/usr/share/doc/kde/HTML
+	kde_htmldir=/usr/share/doc/kde/HTML \
+	--disable-debug
 
 
 build: build-stamp
