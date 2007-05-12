@@ -1,18 +1,21 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KCheckGMail
-Name[es]=KCheckGMail
-Name[lt]=KCheckGMail
 Name[tr]=KCheckGMail
+Name[pl]=KCheckGMail
+Name[lt]=KCheckGMail
+Name[es]=KCheckGMail
 Name[it]=KCheckGMail
 Name[xx]=xxKCheckGMailxx
 GenericName=New email notifier
-GenericName[es]=Notificador de correo nuevo
-GenericName[lt]=Naujo el. pašto pranešiklis
 GenericName[tr]=Yeni E-posta Bildiricisi
+GenericName[pl]=Powiadomienia o nowej poczcie
+GenericName[lt]=Naujo el. pašto pranešiklis
+GenericName[es]=Notificador de correo nuevo
 Comment=A Kicker applet to display how many email messages you have in your Gmail account.
-Comment[es]=Mini aplicación que muestra el número de mensajes sin leer en una cuenta de Gmail.
 Comment[tr]=Gmail hesabınızda kaç tane yeni e-posta olduğunu gösteren bir panel programcığıdır.
+Comment[pl]=Aplet panelu do pokazywania zawartości Twojej skrzynki pocztowej Gmail
+Comment[es]=Mini aplicación que muestra el número de mensajes sin leer en una cuenta de Gmail.
 Comment[it]=Un applet del pannello per visualizzare quanti messaggi sono contenuti nel tuo account Gmail.
 Comment[xx]=xxKicker applet to display how many email messages you have in your Gmail accountxx
 Comment[fr]=Un applet kicker qui affiche le nombre de messages sur un compte GMail.
