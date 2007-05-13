@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 // define this symbol if you want to try to detect the language of your account
-#undef DETECT_GLANGUAGE
+#define DETECT_GLANGUAGE
 
 #include "gmailparser.h"
 #include "gmail_constants.h"
@@ -61,7 +61,7 @@ GMailParser::GMailParser() :
 	gGMailLanguageCode.insert("21208aa200ae6920",i18n("Italian"));
 	gGMailLanguageCode.insert("cd21242a38a63f0",i18n("German"));
 	gGMailLanguageCode.insert("9930dc54804b344a",i18n("English (US)"));
-	gGMailLanguageCode.insert("93a8e3f857e8a529",i18n("English (UK)"));
+	gGMailLanguageCode.insert("f59adb920ee42615",i18n("English (UK)"));
 	gGMailLanguageCode.insert("d414bf5ecc193e94",i18n("Portuguese"));
 	gGMailLanguageCode.insert("421a229c26e5115",i18n("Turkish"));
 	gGMailLanguageCode.insert("f8c7fb73ac445a2f",i18n("Polish"));
@@ -422,7 +422,7 @@ void GMailParser::parseVersion(const QString &_data)
 void GMailParser::parseQuota(const QString &data)
 {	
 	QStringList list = QStringList::split(",",data);
-	if(list.size() == 4) {
+	if(list.size() == 4 || list.size() == 9) {
 		QStringList::Iterator iter = list.begin();
 		unsigned int i = 0;
 		while(iter != list.end()) {
@@ -449,7 +449,7 @@ void GMailParser::parseQuota(const QString &data)
 		}
 	} else
 		kdWarning() << k_funcinfo << "Wrong number of elements in qu: "
-			<< list.size() << ", should be: 4." << endl;
+			<< list.size() << ", should be 4 or 9." << endl;
 }
 
 /**
