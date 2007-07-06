@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,6 +22,8 @@
 #include <kiconeffect.h>
 #include <qpixmap.h>
 #include <qstring.h>
+#include <qstringlist.h>
+
 
 #include "kcheckgmailiface.h"
 
@@ -68,9 +70,11 @@ protected slots:
 
 	// GMailParser
 	void slotMailArrived(unsigned int n);
+	void slotMailArrived(QString subject);
 	void slotMailCountChanged();
 	void slotVersionMismatch();
 	void slotgNameChanged(QString name);
+	void slotNoUnreadMail();
 
 	// login "animation"
 	void slotToggleLoginAnim();
@@ -81,7 +85,6 @@ private:
 	void updateCountImage();
 	void updateThreadMenu();
 	void composeMail();
-	void snooze();
 	void initConfigDialog();
 	QString getUrlBase();
 
@@ -89,6 +92,14 @@ private:
 	int mailCount() const { return mMailCount; };
 	void checkMailNow();
 	void whereAmI();
+	void showIcon();
+	void hideIcon();
+	QStringList getThreads();
+	QString getThreadSubject(QString msgId);
+	QString getThreadSender(QString msgId);
+	QString getThreadSnippet(QString msgId);
+	QStringList getThreadAttachments(QString msgId);
+	bool isNewThread(QString msgId);
 	
 	void takeScreenshotOfTrayIcon();
 
@@ -110,5 +121,5 @@ private:
 	// mail count for dcop interface
 	int	mMailCount;
 	
-	bool isSnoozing;
+	bool iconDisplayed;
 };

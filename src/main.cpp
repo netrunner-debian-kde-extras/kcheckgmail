@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 		"System tray application to display how many\nnew email "
 		"messages you have in your Gmail account."),
 		KAboutData::License_GPL, 
-		"(C) 2004 Matthew Wlazlo", 
+		"(C) 2004 Matthew Wlazlo\n(C) 2007 Raphael Geissert", 
 		0, // text
 		"http://kcheckgmail.sf.net",
 		"kcheckgmail-development@lists.sourceforge.net");

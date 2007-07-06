@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>AppletSettingsWidget</class>
 <widget class="QWidget">
     <property name="name">
@@ -8,181 +8,252 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>396</width>
-            <height>352</height>
+            <width>422</width>
+            <height>385</height>
         </rect>
     </property>
     <property name="caption">
         <string>AppletSettingsWidget</string>
     </property>
-    <vbox>
+    <widget class="QLayoutWidget">
         <property name="name">
-            <cstring>unnamed</cstring>
+            <cstring>layout1</cstring>
         </property>
-        <property name="margin">
-            <number>0</number>
+        <property name="geometry">
+            <rect>
+                <x>1</x>
+                <y>1</y>
+                <width>420</width>
+                <height>383</height>
+            </rect>
         </property>
-        <property name="spacing">
-            <number>0</number>
-        </property>
-        <widget class="QGroupBox">
+        <grid>
             <property name="name">
-                <cstring>groupBox1</cstring>
+                <cstring>unnamed</cstring>
             </property>
-            <property name="title">
-                <string>Tray Icon</string>
-            </property>
-            <vbox>
+            <widget class="QGroupBox" row="2" column="0">
                 <property name="name">
-                    <cstring>unnamed</cstring>
+                    <cstring>groupBox2</cstring>
+                </property>
+                <property name="title">
+                    <string>Debug</string>
                 </property>
                 <widget class="QCheckBox">
                     <property name="name">
-                        <cstring>kcfg_AllowLeftClickOpen</cstring>
+                        <cstring>kcfg_AlertVersionChange</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>22</y>
+                            <width>368</width>
+                            <height>21</height>
+                        </rect>
                     </property>
                     <property name="text">
-                        <string>Open browser to Gmail on left click</string>
+                        <string>Display an alert if GMail version changes</string>
                     </property>
                 </widget>
+            </widget>
+            <widget class="QGroupBox" row="3" column="0">
+                <property name="name">
+                    <cstring>groupBox3</cstring>
+                </property>
+                <property name="title">
+                    <string>Other</string>
+                </property>
                 <widget class="QCheckBox">
                     <property name="name">
-                        <cstring>kcfg_CatchAccidentalClick</cstring>
+                        <cstring>kcfg_DisplaySubjectOnSingleMail</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>331</width>
+                            <height>22</height>
+                        </rect>
                     </property>
                     <property name="text">
-                        <string>Catch accidental left clicks when launching the browser</string>
+                        <string>Display sub&amp;ject when only one new email arrives</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+J</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                    <property name="tristate">
+                        <bool>false</bool>
                     </property>
                 </widget>
-            </vbox>
-        </widget>
-        <widget class="QButtonGroup">
-            <property name="name">
-                <cstring>buttonGroup1</cstring>
-            </property>
-            <property name="title">
-                <string>Browser</string>
-            </property>
-            <spacer>
+            </widget>
+            <widget class="QButtonGroup" row="1" column="0">
                 <property name="name">
-                    <cstring>spacer4</cstring>
+                    <cstring>buttonGroup1</cstring>
+                </property>
+                <property name="title">
+                    <string>Browser</string>
+                </property>
+                <widget class="KURLRequester">
+                    <property name="name">
+                        <cstring>kcfg_CustomBrowser</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>202</x>
+                            <y>79</y>
+                            <width>185</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <property name="showLocalProtocol">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer4</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>185</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>81</y>
+                            <width>185</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </spacer>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>kcfg_UseAltBrowser</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>51</y>
+                            <width>376</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Use an alternative browser</string>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>kcfg_UseDefaultBrowser</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>23</y>
+                            <width>376</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Use the default KDE browser</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+U</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer9</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>390</x>
+                            <y>80</y>
+                            <width>20</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </spacer>
+            </widget>
+            <spacer row="4" column="0">
+                <property name="name">
+                    <cstring>spacer3</cstring>
                 </property>
                 <property name="orientation">
-                    <enum>Horizontal</enum>
+                    <enum>Vertical</enum>
                 </property>
                 <property name="sizeType">
                     <enum>Expanding</enum>
                 </property>
                 <property name="sizeHint">
                     <size>
-                        <width>40</width>
+                        <width>20</width>
                         <height>20</height>
                     </size>
                 </property>
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>80</y>
-                        <width>40</width>
-                        <height>20</height>
-                    </rect>
-                </property>
             </spacer>
-            <widget class="QRadioButton">
+            <widget class="QGroupBox" row="0" column="0">
                 <property name="name">
-                    <cstring>kcfg_UseDefaultBrowser</cstring>
+                    <cstring>groupBox1</cstring>
                 </property>
-                <property name="geometry">
-                    <rect>
-                        <x>20</x>
-                        <y>20</y>
-                        <width>352</width>
-                        <height>21</height>
-                    </rect>
+                <property name="title">
+                    <string>Tray Icon</string>
                 </property>
-                <property name="text">
-                    <string>Use the default KDE browser</string>
-                </property>
-                <property name="checked">
-                    <bool>true</bool>
-                </property>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>kcfg_AllowLeftClickOpen</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Open &amp;browser to Gmail on left click</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+B</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>kcfg_CatchAccidentalClick</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Catch accidental left clicks when launching the browser</string>
+                        </property>
+                    </widget>
+                </vbox>
             </widget>
-            <widget class="KURLRequester">
-                <property name="name">
-                    <cstring>kcfg_CustomBrowser</cstring>
-                </property>
-                <property name="enabled">
-                    <bool>false</bool>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>60</x>
-                        <y>80</y>
-                        <width>306</width>
-                        <height>26</height>
-                    </rect>
-                </property>
-                <property name="showLocalProtocol" stdset="0">
-                    <bool>true</bool>
-                </property>
-            </widget>
-            <widget class="QRadioButton">
-                <property name="name">
-                    <cstring>kcfg_UseAltBrowser</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>20</x>
-                        <y>50</y>
-                        <width>352</width>
-                        <height>21</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Use an alternative browser</string>
-                </property>
-            </widget>
-        </widget>
-        <widget class="QGroupBox">
-            <property name="name">
-                <cstring>groupBox2</cstring>
-            </property>
-            <property name="title">
-                <string>Debug</string>
-            </property>
-            <widget class="QCheckBox">
-                <property name="name">
-                    <cstring>kcfg_AlertVersionChange</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>11</x>
-                        <y>22</y>
-                        <width>368</width>
-                        <height>21</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Display an alert if GMail version changes</string>
-                </property>
-            </widget>
-        </widget>
-        <spacer>
-            <property name="name">
-                <cstring>spacer3</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>40</height>
-                </size>
-            </property>
-        </spacer>
-    </vbox>
+        </grid>
+    </widget>
 </widget>
 <connections>
     <connection>

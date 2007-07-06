@@ -2,6 +2,18 @@
 <!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
 <kcfg>
 	<kcfgfile name="kcheckgmailrc" />
+	<group name="Advanced Settings">
+		<entry name="searchFor" type="String">
+			<label>Search For:</label>
+			<default>in:inbox is:unread</default>
+			<whatsthis>When checking for new email's this is the search query sent to Google Mail. Don't forget to add is:unread to improve the search.</whatsthis>
+		</entry>
+		<entry name="gMailSimpleInterface" type="Bool">
+			<label>Open Gmail in simple interface</label>
+			<default>false</default>
+			<whatsthis>This option lets you make KCheckGMail open Gmail using the simple interface (only HTML) or the full interface (unmarked).</whatsthis>
+		</entry>
+	</group>
 	<group name="Network Settings">
 		<entry name="Interval" type="UInt">
 			<label>Polling interval</label>
@@ -9,13 +21,6 @@
 			<min>15</min>
 			<max>86400</max>
 			<whatsthis>How many seconds to wait before checking for new mail.</whatsthis>
-		</entry>
-		<entry name="Snooze" type="UInt">
-			<label>Snooze period</label>
-			<default>5</default>
-			<min>1</min>
-			<max>1440</max>
-			<whatsthis>How many minutes to snooze.</whatsthis>
 		</entry>
 		<entry name="UseHTTPS" type="Bool">
 			<label>Use https connections for checking mail</label>
@@ -38,11 +43,6 @@
 			<default>true</default>
 			<whatsthis>Use the KDE Wallet system to store your Gmail password.</whatsthis>
 		</entry>
-		<!--<entry name="SearchOnlyInInbox" type="Bool">
-			<label>Only search for new messages in inbox</label>
-			<default>true</default>
-			<whatsthis>By disabling this option new messages are searched in anywhere (this includes spam, trash, etc).</whatsthis>
-		</entry>-->
 		<entry name="AlertVersionChange" type="Bool">
 			<label>Display an alert if GMail version changes</label>
 			<default>false</default>
@@ -54,12 +54,12 @@
 		<entry name="AllowLeftClickOpen" type="Bool">
 			<label>Open browser to Gmail on left click</label>
 			<default>true</default>
-			<whatsthis>If enabled, launch the default KDE web browser when the KCheckGmail icon is clicked.</whatsthis>
+			<whatsthis>If enabled, launch the default KDE web browser when the KCheckGMail icon is clicked.</whatsthis>
 		</entry>
 		<entry name="CatchAccidentalClick" type="Bool">
 			<label>Catch accidental left clicks when launching the browser</label>
 			<default>true</default>
-			<whatsthis>If enabled, every time you click on the KCheckGmail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window</whatsthis>
+			<whatsthis>If enabled, every time you click on the KCheckGMail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window</whatsthis>
 		</entry>
 		<entry name="UseDefaultBrowser" type="Bool">
 			<label>Use the KDE default browser</label>
@@ -74,6 +74,11 @@
 			<label>Use a custom browser</label>
 			<default>firefox %u</default>
 			<whatsthis>Use a custom browser other than the KDE default to check your Gmail</whatsthis>
+		</entry>
+		<entry name="DisplaySubjectOnSingleMail" type="Bool">
+			<label>Display subject when only one new email arrives</label>
+			<default>true</default>
+			<whatsthis>Display message's subject when only one new email arrives</whatsthis>
 		</entry>
 	</group>
 </kcfg>

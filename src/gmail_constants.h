@@ -3,7 +3,7 @@
 
 #define D_VERSION	"v"
 #define D_QUOTA	"qu"
-#define D_DEFAULTSEARCH_SUMMARY	"ds"
+#define D_DEFAULT_SUMMARY	"ds"
 #define D_THREADLIST_SUMMARY	"ts"
 #define D_THREADLIST_END	"te"
 #define D_THREAD	"t"

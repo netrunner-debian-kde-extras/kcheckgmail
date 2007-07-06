@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 // define this symbol if you want to write the fetched data to disc
-#undef DUMP_PAGES
+#define DUMP_PAGES
 #define DUMP_DIR "/tmp/"
 
 #include "gmail.h"
@@ -39,6 +39,7 @@
 #include <kapp.h>
 #include <dcopclient.h>
 #include <kcharsets.h>
+#include <kurl.h>
 
 #ifdef DUMP_PAGES
 #include <qfile.h>
@@ -61,7 +62,7 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 			"&continue=http@3A@2F@2Fmail.google.com@2Fmail@3F"
 			"&ltmpl=ca_tlsosm&ltmplcache=2&rm=false&PersistentCookie=false";
 	gGMailCheckURL = "%1://mail.google.com/mail/?search=query"
-			"&q=@20is@3Aunread@20in@3A%2&as_subset=unread&view=tl&start=0";
+			"&q=%2&as_subset=unread&view=tl&start=0";
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
 	
 	gGAP4DLoginURL = "https://www.google.com/a/%1/LoginAction";
@@ -69,7 +70,7 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%3@2F"
 			"&persistent=false";
 	gGAP4DCheckURL = "%1://mail.google.com/a/%2/?search=query"
-			"&q=@20is@3Aunread@20in@3A%3&as_subset=unread&view=tl&start=0";
+			"&q=%3&as_subset=unread&view=tl&start=0";
 	gGAP4DLogOut = "https://mail.google.com/a/%1/?logout";
 	
 	mTimer = new QTimer(this);
@@ -119,8 +120,6 @@ void GMail::checkLoginParams()
 	
 	kdDebug() << k_funcinfo << "Using " << useUsername << " as username and " << useDomain << " as domain" << endl;
 	
-	getURLPart(true);
-	
 	if(!mLoginLock->locked()) {
 		
 		//Try to log out if a session already exists (because it might be from an other address)
@@ -165,8 +164,11 @@ void GMail::slotGetWalletPassword(const QString& pass)
 		LoginURL = gGMailLoginURL;
 	}
 	
-	str = QString(LoginPOSTFormat).arg(useUsername,pass).replace('@','%');
-	kdDebug() << k_funcinfo << "Sending login: " << str << endl;
+	str = QString(LoginPOSTFormat).arg(
+			KURL::encode_string(useUsername),
+			KURL::encode_string(pass)
+					  ).replace('@','%');
+	kdDebug() << k_funcinfo << "Requesting login URL" << endl;
 
 	QCString b(str.utf8());
 	QByteArray postData(b);
@@ -176,7 +178,8 @@ void GMail::slotGetWalletPassword(const QString& pass)
 	
 	KIO::TransferJob *job = KIO::http_post(
 			LoginURL,
-	postData, false);
+			postData,
+   			false);
 	job->addMetaData("content-type", "Content-Type: application/x-www-form-urlencoded");
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
@@ -347,19 +350,17 @@ void GMail::checkGMail()
 			url = QString(gGMailCheckURL).arg(
 				(Prefs::useHTTPS()
 					? "https" 
-					: "http" ),"inbox"/*,
-				(Prefs::SearchOnlyInInbox()
-					? "inbox" 
-					: "anywhere" )*/).replace('@','%');
+					: "http" ),
+				KURL::encode_string(Prefs::searchFor())
+							 ).replace('@','%');
 		else
 			url = QString(gGAP4DCheckURL).arg(
 				(Prefs::useHTTPS()
 					? "https" 
 					: "http" ),
-				useDomain,"inbox"/*,
-				(Prefs::SearchOnlyInInbox()
-					? "inbox" 
-					: "anywhere" )*/).replace('@','%');
+				useDomain,
+				KURL::encode_string(Prefs::searchFor())
+							 ).replace('@','%');
 
 		kdDebug() << k_funcinfo << "GET: " << url << endl;
 
@@ -392,7 +393,7 @@ void GMail::slotCheckResult(KIO::Job *job)
 
 	kdDebug() << k_funcinfo << "Check finished." << endl;
 
-	dump2File("gmail_data.html",mPageBuffer);
+	dump2File("gmail_data.html", mPageBuffer);
 	
 	static QRegExp rx("top.location=[\"|\']http[s]?://www.google.com/accounts/ServiceLogin");
 	int found;
@@ -495,13 +496,9 @@ void GMail::slotCheckGmail()
 	}
 }
 
-QString GMail::getURLPart(bool refresh)
+QString GMail::getURLPart()
 {
-	static QString part;
-	
-	if(!refresh && part.length() > 0) {
-		return part;
-	}
+	QString part;
 	
 	if(isGAP4D) {
 		part = QString("a/%1").arg(useDomain);
@@ -512,11 +509,6 @@ QString GMail::getURLPart(bool refresh)
 	return part;
 }
 
-QString GMail::getURLPart()
-{
-	return getURLPart(false);
-}
-
 void GMail::logOut()
 {
 	if(!isLoggedIn())
@@ -524,12 +516,13 @@ void GMail::logOut()
 	
 	sessionCookie = QString::null;
 	
-	QString logout_url = (!isGAP4D)? gGMailLogOut : QString(gGAP4DLogOut).arg(useDomain);
+	QString logoutUrl = (!isGAP4D)? gGMailLogOut : QString(gGAP4DLogOut).arg(useDomain);
 	
-	KIO::TransferJob *job = KIO::get(logout_url, true, false);
+	KIO::TransferJob *job = KIO::get(logoutUrl, true, false);
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
-	kdDebug() << "Loging out! " << logout_url << endl;
+	kdDebug() << "Loging out! " << logoutUrl << endl;
+	sleep(5);
 }
 
 void GMail::slotLogOut()

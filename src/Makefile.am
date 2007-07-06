@@ -2,18 +2,11 @@ INCLUDES = $(all_includes)
 
 bin_PROGRAMS = kcheckgmail
 
-kcheckgmail_SOURCES = main.cpp \
-	kcheckgmailapp.cpp \
-	kcheckgmailtray.cpp \
-	gmail.cpp \
-	gmailparser.cpp \
-	gmailwalletmanager.cpp \
-	prefs.kcfgc \
-	netsettingswidget.ui \
-	loginsettingswidget.ui \
-	appletsettingswidget.ui \
-	kcheckgmailiface.skel
-kcheckgmail_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries) 
+kcheckgmail_SOURCES = advancedsettingswidget.ui appletsettingswidget.ui \
+	gmail.cpp gmailparser.cpp gmailwalletmanager.cpp kcheckgmailapp.cpp \
+	kcheckgmailiface.skel kcheckgmailtray.cpp loginsettingswidget.ui main.cpp \
+	netsettingswidget.ui prefs.kcfgc
+kcheckgmail_LDFLAGS = $(KDE_PLUGIN) $(all_libraries)
 kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
 
 METASOURCES = AUTO
@@ -28,7 +21,8 @@ noinst_HEADERS = gmail.h \
 	netsettingswidget.h \
 	prefs.h \
 	gmail_constants.h \
-	appletsettingswidget.h
+	appletsettingswidget.h \
+	advancedsettingswidget.h
 
 xdg_apps_DATA = kcheckgmail.desktop
 

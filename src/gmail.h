@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -49,7 +49,6 @@ public:
 	bool isLoggedIn();
 	bool isChecking();
 	
-	QString getURLPart(bool refresh);
 	QString getURLPart();
 	
 	void gotWalletPassword(QString str);

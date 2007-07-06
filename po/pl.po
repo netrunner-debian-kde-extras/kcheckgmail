@@ -401,7 +401,7 @@ msgid ""
 "Google Inc."
 msgstr "Informacja o legalności\n"
 "Google, Gmail i Google Mail są zastrzeżonymi znakami handlowymi Google Inc.\n"
-"KCheckGmail ani jego autorzy nie są w żaden sposób powiązani z Google Inc.\n"
+"KCheckGmail ani jego autorzy nie są w żaden sposób powiązani z Google Inc."
 
 #: main.cpp:76
 msgid "KCheckGMail is already running!\n"
