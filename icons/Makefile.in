@@ -59,101 +59,30 @@ $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png: $(top_srcdir)/ic
 	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png
 
 top_icons_kcheckgmailicondir = $(kde_datadir)/kcheckgmail/icons
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.new.png: $(top_srcdir)/icons/cr128-app-kcheckgmail.new.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps
-	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.new.png
 
 $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png: $(top_srcdir)/icons/cr128-app-kcheckgmail.png
 	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps
 	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png
 
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmailauth.png: $(top_srcdir)/icons/cr128-app-kcheckgmailauth.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps
-	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmailauth.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmaillight.png: $(top_srcdir)/icons/cr128-app-kcheckgmaillight.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps
-	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmaillight.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.new.png: $(top_srcdir)/icons/cr16-app-kcheckgmail.new.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps
-	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.new.png
-
 $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png: $(top_srcdir)/icons/cr16-app-kcheckgmail.png
 	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps
 	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmailauth.png: $(top_srcdir)/icons/cr16-app-kcheckgmailauth.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps
-	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmailauth.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmaillight.png: $(top_srcdir)/icons/cr16-app-kcheckgmaillight.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps
-	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmaillight.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.new.png: $(top_srcdir)/icons/cr22-app-kcheckgmail.new.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps
-	$(INSTALL_DATA) $(srcdir)/cr22-app-kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.new.png
 
 $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png: $(top_srcdir)/icons/cr22-app-kcheckgmail.png
 	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps
 	$(INSTALL_DATA) $(srcdir)/cr22-app-kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png
 
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmailauth.png: $(top_srcdir)/icons/cr22-app-kcheckgmailauth.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps
-	$(INSTALL_DATA) $(srcdir)/cr22-app-kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmailauth.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmaillight.png: $(top_srcdir)/icons/cr22-app-kcheckgmaillight.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps
-	$(INSTALL_DATA) $(srcdir)/cr22-app-kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmaillight.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.new.png: $(top_srcdir)/icons/cr32-app-kcheckgmail.new.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps
-	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.new.png
-
 $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png: $(top_srcdir)/icons/cr32-app-kcheckgmail.png
 	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps
 	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmailauth.png: $(top_srcdir)/icons/cr32-app-kcheckgmailauth.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps
-	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmailauth.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmaillight.png: $(top_srcdir)/icons/cr32-app-kcheckgmaillight.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps
-	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmaillight.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.new.png: $(top_srcdir)/icons/cr48-app-kcheckgmail.new.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps
-	$(INSTALL_DATA) $(srcdir)/cr48-app-kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.new.png
 
 $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png: $(top_srcdir)/icons/cr48-app-kcheckgmail.png
 	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps
 	$(INSTALL_DATA) $(srcdir)/cr48-app-kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png
 
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmailauth.png: $(top_srcdir)/icons/cr48-app-kcheckgmailauth.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps
-	$(INSTALL_DATA) $(srcdir)/cr48-app-kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmailauth.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmaillight.png: $(top_srcdir)/icons/cr48-app-kcheckgmaillight.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps
-	$(INSTALL_DATA) $(srcdir)/cr48-app-kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmaillight.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.new.png: $(top_srcdir)/icons/cr64-app-kcheckgmail.new.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps
-	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.new.png
-
 $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.png: $(top_srcdir)/icons/cr64-app-kcheckgmail.png
 	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps
 	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmailauth.png: $(top_srcdir)/icons/cr64-app-kcheckgmailauth.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps
-	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmailauth.png
-
-$(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmaillight.png: $(top_srcdir)/icons/cr64-app-kcheckgmaillight.png
-	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps
-	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmaillight.png
 
 $(top_builddir)/icons/Makefile: $(top_builddir)/config.status $(top_srcdir)/icons/Makefile.in
 	cd $(top_builddir) && $(SHELL) ./config.status icons/Makefile
@@ -162,7 +91,7 @@ all: $(top_builddir)/icons/Makefile
 final: 
 	@echo no programs available to recreate as final. Call in subdirs
 
-install-kde-icons-top_icons: $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/22x22/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/128x128/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.new.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmailauth.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmaillight.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmaillight.png
+install-kde-icons-top_icons: $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/22x22/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/128x128/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png
 uninstall-kde-icons-top_icons: 
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/22x22/apps/kcheckgmail.png
@@ -171,29 +100,11 @@ uninstall-kde-icons-top_icons:
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.new.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmailauth.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmaillight.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmaillight.png
 	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmaillight.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.new.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.new.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmailauth.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmailauth.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmaillight.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmailauth.png
 	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.new.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmailauth.png
 	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.new.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.new.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmailauth.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmaillight.png
 	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmaillight.png
 
-KDE_ICON = $(srcdir)/cr64-app-kcheckgmail.png $(srcdir)/cr22-app-kcheckgmail.png $(srcdir)/cr32-app-kcheckgmail.png $(srcdir)/cr128-app-kcheckgmail.png $(srcdir)/cr16-app-kcheckgmail.png $(srcdir)/cr48-app-kcheckgmail.png $(srcdir)/cr64-app-kcheckgmail.png $(srcdir)/cr48-app-kcheckgmail.new.png $(srcdir)/cr48-app-kcheckgmailauth.png $(srcdir)/cr16-app-kcheckgmaillight.png $(srcdir)/cr32-app-kcheckgmaillight.png $(srcdir)/cr22-app-kcheckgmail.png $(srcdir)/cr22-app-kcheckgmaillight.png $(srcdir)/cr16-app-kcheckgmail.new.png $(srcdir)/cr32-app-kcheckgmail.new.png $(srcdir)/cr32-app-kcheckgmailauth.png $(srcdir)/cr128-app-kcheckgmailauth.png $(srcdir)/cr128-app-kcheckgmaillight.png $(srcdir)/cr22-app-kcheckgmailauth.png $(srcdir)/cr32-app-kcheckgmail.png $(srcdir)/cr128-app-kcheckgmail.png $(srcdir)/cr22-app-kcheckgmail.new.png $(srcdir)/cr16-app-kcheckgmailauth.png $(srcdir)/cr16-app-kcheckgmail.png $(srcdir)/cr64-app-kcheckgmail.new.png $(srcdir)/cr128-app-kcheckgmail.new.png $(srcdir)/cr64-app-kcheckgmailauth.png $(srcdir)/cr48-app-kcheckgmaillight.png $(srcdir)/cr48-app-kcheckgmail.png $(srcdir)/cr64-app-kcheckgmaillight.png
+KDE_ICON = $(srcdir)/cr64-app-kcheckgmail.png $(srcdir)/cr22-app-kcheckgmail.png $(srcdir)/cr32-app-kcheckgmail.png $(srcdir)/cr128-app-kcheckgmail.png $(srcdir)/cr16-app-kcheckgmail.png $(srcdir)/cr48-app-kcheckgmail.png $(srcdir)/cr64-app-kcheckgmail.png $(srcdir)/cr22-app-kcheckgmail.png $(srcdir)/cr32-app-kcheckgmail.png $(srcdir)/cr128-app-kcheckgmail.png $(srcdir)/cr16-app-kcheckgmail.png $(srcdir)/cr48-app-kcheckgmail.png
 .PHONY: all final install-kde-icons-top_icons uninstall-kde-icons-top_icons
