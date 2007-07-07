@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-03 23:44-0500\n"
+"POT-Creation-Date: 2007-07-06 19:07-0500\n"
 "PO-Revision-Date: 2007-04-04 08:03+0300\n"
 "Last-Translator: Uğur Çetin <ugur.jnmbk@gmail.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -35,7 +35,9 @@ msgstr "Yanlış kullanıcı adı veya parola"
 
 #: gmail.cpp:229
 msgid "GMail's login procedure has changed, check for new version"
-msgstr "GMail'in giriş algoritması değişmiş, yeni bir sürüm var mı diye kontrol edin"
+msgstr ""
+"GMail'in giriş algoritması değişmiş, yeni bir sürüm var mı diye "
+"kontrol edin"
 
 #: gmail.cpp:323
 msgid "Unknown error retrieving cookies"
@@ -203,15 +205,17 @@ msgstr "Bulgarca"
 
 #: gmailwalletmanager.cpp:99
 msgid "KCheckGMail could not open the wallet. Please check your preferences."
-msgstr "KCheckGmail cüzdan uygulamasını açamadı. Lütfen seçeneklerinizi kontrol edin."
+msgstr ""
+"KCheckGmail cüzdan uygulamasını açamadı. Lütfen seçeneklerinizi "
+"kontrol edin."
 
 #: gmailwalletmanager.cpp:188
 msgid ""
 "KCheckGMail cannot store your password securely in your wallet. Do you want "
 "to save the password in the unsafe configuration file instead?"
 msgstr ""
-"KCheckGmail parolanızı cüzdana güvenli olarak kaydedemedi. Bunun yerine ayar "
-"dosyasına açık bir şekilde kaydedilsin mi?"
+"KCheckGmail parolanızı cüzdana güvenli olarak kaydedemedi. Bunun yerine "
+"ayar dosyasına açık bir şekilde kaydedilsin mi?"
 
 #: gmailwalletmanager.cpp:190
 msgid "Unable to store secure password"
@@ -225,7 +229,9 @@ msgstr "Açık olarak kaydet"
 msgid ""
 "KCheckGMail cannot retrieve your password from your wallet. Do you want to "
 "save the password in the unsafe configuration file instead?"
-msgstr "KCheckGmail şifrenizi cüzdandan alamadı. Parolanızı açık olarak ayar dosyasına kaydetmek ister misiniz?"
+msgstr ""
+"KCheckGmail şifrenizi cüzdandan alamadı. Parolanızı açık olarak ayar "
+"dosyasına kaydetmek ister misiniz?"
 
 #: gmailwalletmanager.cpp:236
 msgid "Unable to retrieve secure password"
@@ -271,9 +277,10 @@ msgid ""
 "Threads menu containing the newest email of your account."
 msgstr ""
 "<p><center>KCheckGMail'e hoş geldiniz!</center></p><p>KCheckGMail'e buradan "
-"ulaşabilirsiniz: </p><p><center><img source=\"systray_shot\"></center></p>Bu "
-"simgeye sağ tıkladığınızda e-posta hesabınıza gelen son postaların bulunduğu "
-"bir menü göreceksiniz."
+"ulaşabilirsiniz: </p><p><center><img "
+"source=\"systray_shot\"></center></p>Bu simgeye sağ tıkladığınızda "
+"e-posta hesabınıza gelen son postaların bulunduğu bir menü "
+"göreceksiniz."
 
 #: kcheckgmailtray.cpp:198
 msgid "Welcome"
@@ -290,8 +297,8 @@ msgid ""
 msgstr ""
 "Google, Gmail ve Google Mail; Google Inc.'in ticari markalarıdır. \n"
 "KCheckGMail ve yazarlarının Google Inc. ile hiçbir ilgisi yoktur.\n"
-"Bu programı kullanarak Gmail veya Google Mail'in kullanım sözleşmesini ihlal "
-"ediyor veya etmiyor olabilirsiniz..\n"
+"Bu programı kullanarak Gmail veya Google Mail'in kullanım sözleşmesini "
+"ihlal ediyor veya etmiyor olabilirsiniz..\n"
 "KCheckGMail'i kullanmak istediğinizden emin misiniz?"
 
 #: kcheckgmailtray.cpp:214
@@ -358,8 +365,8 @@ msgid ""
 "KCheckGMail soon."
 msgstr ""
 "KCheckMail'in bu sürümünden sonra GMail yenilenmiş. Bu nedenle garip "
-"hatalarla karşılaşabilirsiniz. Lütfen KcheckMail'in yeni bir sürümü çıkıp "
-"çıkmadığını kontrol edin."
+"hatalarla karşılaşabilirsiniz. Lütfen KcheckMail'in yeni bir sürümü "
+"çıkıp çıkmadığını kontrol edin."
 
 #: kcheckgmailtray.cpp:573
 msgid "Version changed"
@@ -367,11 +374,11 @@ msgstr "Sürüm Değişikliği"
 
 #: kcheckgmailtray.cpp:634
 msgid ""
-"<p>KCheckGMail is already running</p><p>You can find it here:</"
-"p><p><center><img source=\"systray_shot\"></center></p>"
+"<p>KCheckGMail is already running</p><p>You can find it "
+"here:</p><p><center><img source=\"systray_shot\"></center></p>"
 msgstr ""
-"<p>KCheckGmail zaten çalışıyor</p><p>Buradan erişebilirsiniz:</"
-"p><p><center><img source=\"systray_shot\"></center></p>"
+"<p>KCheckGmail zaten çalışıyor</p><p>Buradan "
+"erişebilirsiniz:</p><p><center><img source=\"systray_shot\"></center></p>"
 
 #: kcheckgmailtray.cpp:635
 msgid "Already Running"
@@ -443,7 +450,8 @@ msgstr "Sol tuşla tıklanınca tarayıcıda Gmail açılsın"
 #: rc.cpp:12 rc.cpp:123
 #, no-c-format
 msgid "Catch accidental left clicks when launching the browser"
-msgstr "Tarayıcı açılırken yanlışlıkla yapılan sol tıklamaları yakala"
+msgstr ""
+"Tarayıcı açılırken yanlışlıkla yapılan sol tıklamaları yakala"
 
 #. i18n: file appletsettingswidget.ui line 62
 #: rc.cpp:15
@@ -548,9 +556,9 @@ msgid ""
 "<blockquote>Use secure connections when checking for new mail. Note that the "
 "login procedure uses https regardless of this setting.</blockquote>"
 msgstr ""
-"<blockquote>Yeni postaları kontrol ederken güvenli bağlantı kullan. Giriş "
-"yapılırken bu ayardan bağımsız olarak her zaman güvenli bağlantı kullanılır."
-"</blockquote>"
+"<blockquote>Yeni postaları kontrol ederken güvenli bağlantı kullan. "
+"Giriş yapılırken bu ayardan bağımsız olarak her zaman güvenli "
+"bağlantı kullanılır.</blockquote>"
 
 #. i18n: file prefs.kcfg line 7
 #: rc.cpp:69
@@ -562,7 +570,8 @@ msgstr "Yoklama aralığı"
 #: rc.cpp:72
 #, no-c-format
 msgid "How many seconds to wait before checking for new mail."
-msgstr "Yeni postaları kontrol etmek için kaç saniye bekleneceğini belirler."
+msgstr ""
+"Yeni postaları kontrol etmek için kaç saniye bekleneceğini belirler."
 
 #. i18n: file prefs.kcfg line 14
 #: rc.cpp:75
@@ -589,8 +598,9 @@ msgid ""
 "Use secure connections when checking for new mail. Note that the login "
 "procedure uses https regardless of this setting."
 msgstr ""
-"Yeni postaları kontrol ederken güvenli bağlantı kullan. Giriş yapılırken bu "
-"ayardan bağımsız olarak her zaman güvenli bağlantı kullanılır."
+"Yeni postaları kontrol ederken güvenli bağlantı kullan. Giriş "
+"yapılırken bu ayardan bağımsız olarak her zaman güvenli bağlantı "
+"kullanılır."
 
 #. i18n: file prefs.kcfg line 29
 #: rc.cpp:87
@@ -641,8 +651,8 @@ msgid ""
 "By disabling this option new messages are searched in anywhere (this "
 "includes spam, trash, etc)."
 msgstr ""
-"Bunu iptal ederseniz Çöp Kutusu ve Spam gibi diğer bölümlere gelen e-"
-"postalar da kontrol edilir."
+"Bunu iptal ederseniz Çöp Kutusu ve Spam gibi diğer bölümlere gelen "
+"e-postalar da kontrol edilir."
 
 #. i18n: file prefs.kcfg line 49
 #: rc.cpp:114
@@ -656,7 +666,9 @@ msgstr "Google, GMail'de değişiklik yaparsa bir uyarı ver"
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGmail icon is "
 "clicked."
-msgstr "Etkinse KCheckGmail simgesi tıklandığında varsayılan KDE tarayıcısı başlar."
+msgstr ""
+"Etkinse KCheckGmail simgesi tıklandığında varsayılan KDE tarayıcısı "
+"başlar."
 
 #. i18n: file prefs.kcfg line 62
 #: rc.cpp:126
@@ -678,7 +690,8 @@ msgstr "Varsayılan KDE tarayıcısını kullan"
 #. i18n: file prefs.kcfg line 67
 #: rc.cpp:132
 #, no-c-format
-msgid "Use whatever browser is configured as the KDE default to check your Gmail"
+msgid ""
+"Use whatever browser is configured as the KDE default to check your Gmail"
 msgstr "Gmaile gitmek için KDE varsayılanı neyse o tarayıcıyı kullanır"
 
 #. i18n: file prefs.kcfg line 70
@@ -691,5 +704,60 @@ msgstr "Başka bir tarayıcı kullan"
 #: rc.cpp:141
 #, no-c-format
 msgid "Use a custom browser other than the KDE default to check your Gmail"
-msgstr "Gmaile gitmek için KDE varsayılanı dışında bir tarayıcı kullanır"
+msgstr ""
+"Gmaile gitmek için KDE varsayılanı dışında bir tarayıcı kullanır"
 
+#. new-gmail-arrived - Name new-gmail-arrived - Comment
+#: eventsrc:1 eventsrc:2
+msgid "New Gmail Arrived"
+msgstr "Yeni Gmail Geldi"
+
+#. gmail-login-yes - Name gmail-login-yes - Comment
+#: eventsrc:3 eventsrc:4
+msgid "Logged in to Gmail"
+msgstr "Gmail'e giriş yapıldı"
+
+#. gmail-login-no - Name gmail-login-no - Comment
+#: eventsrc:5 eventsrc:6
+msgid "Failed to login to Gmail"
+msgstr "Gmail'e giriş yapılamadı"
+
+#. gmail-version-mismatch - Name gmail-version-mismatch - Comment
+#: eventsrc:7 eventsrc:8
+msgid "Gmail version has changed"
+msgstr "Gmail sürümü değişmiş"
+
+#. gmail-session-changed - Name
+#: eventsrc:9
+msgid "New Gmail session is open"
+msgstr "Yeni Gmail oturumu açık"
+
+#. gmail-session-changed - Comment
+#: eventsrc:10
+msgid "An other session has been opened"
+msgstr "Başka bir oturum açıldı"
+
+#. gmail-mail-snippet - Name
+#: eventsrc:11
+msgid "Mail Snippet"
+msgstr "Posta Özetleri"
+
+#. gmail-mail-snippet - Comment
+#: eventsrc:12
+msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgstr ""
+"Fareyi menüdeki bir konunun üzerine getirince görünen e-posta özetleri"
+
+#. GenericName
+#: kcheckgmail.desktop:2
+msgid "New email notifier"
+msgstr "Yeni E-posta Bildiricisi"
+
+#. Comment
+#: kcheckgmail.desktop:3
+msgid ""
+"A Kicker applet to display how many email messages you have in your Gmail "
+"account."
+msgstr ""
+"Gmail hesabınızda kaç tane yeni e-posta olduğunu gösteren bir panel "
+"programcığıdır."

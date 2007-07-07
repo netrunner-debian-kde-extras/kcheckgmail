@@ -1,11 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-07-05 21:52-0500\n"
+"POT-Creation-Date: 2007-07-06 18:11-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -225,7 +226,9 @@ msgstr ""
 msgid "Unable to retrieve secure password"
 msgstr ""
 
-#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#. Name
+#: kcheckgmail.desktop:1 kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140
+#: main.cpp:44
 msgid "KCheckGMail"
 msgstr ""
 
@@ -726,4 +729,56 @@ msgstr ""
 #: rc.cpp:166
 #, no-c-format
 msgid "Display message's subject when only one new email arrives"
+msgstr ""
+
+#. new-gmail-arrived - Name new-gmail-arrived - Comment
+#: eventsrc:1 eventsrc:2
+msgid "New Gmail Arrived"
+msgstr ""
+
+#. gmail-login-yes - Name gmail-login-yes - Comment
+#: eventsrc:3 eventsrc:4
+msgid "Logged in to Gmail"
+msgstr ""
+
+#. gmail-login-no - Name gmail-login-no - Comment
+#: eventsrc:5 eventsrc:6
+msgid "Failed to login to Gmail"
+msgstr ""
+
+#. gmail-version-mismatch - Name gmail-version-mismatch - Comment
+#: eventsrc:7 eventsrc:8
+msgid "Gmail version has changed"
+msgstr ""
+
+#. gmail-session-changed - Name
+#: eventsrc:9
+msgid "New Gmail session is open"
+msgstr ""
+
+#. gmail-session-changed - Comment
+#: eventsrc:10
+msgid "An other session has been opened"
+msgstr ""
+
+#. gmail-mail-snippet - Name
+#: eventsrc:11
+msgid "Mail Snippet"
+msgstr ""
+
+#. gmail-mail-snippet - Comment
+#: eventsrc:12
+msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgstr ""
+
+#. GenericName
+#: kcheckgmail.desktop:2
+msgid "New email notifier"
+msgstr ""
+
+#. Comment
+#: kcheckgmail.desktop:3
+msgid ""
+"A Kicker applet to display how many email messages you have in your Gmail "
+"account."
 msgstr ""
