@@ -396,11 +396,17 @@ void GMail::slotCheckResult(KIO::Job *job)
 	dump2File("gmail_data.html", mPageBuffer);
 	
 	static QRegExp rx("top.location=[\"|\']http[s]?://www.google.com/accounts/ServiceLogin");
+	static QRegExp rx2("gmail_error=[0-9]*;");
 	int found;
 	
 	if(!rx.isValid()) {
 		kdWarning() << k_funcinfo << "Invalid RX!\n"
 				<< rx.errorString() << endl;
+	}
+	
+	if(!rx2.isValid()) {
+		kdWarning() << k_funcinfo << "Invalid RX2!\n"
+				<< rx2.errorString() << endl;
 	}
 			
 	found = rx.search(mPageBuffer);
@@ -415,6 +421,18 @@ void GMail::slotCheckResult(KIO::Job *job)
 		mUsername = "";
 		mPasswordHash = "";
 		checkLoginParams();
+	} 
+			
+	found = rx2.search(mPageBuffer);
+	
+	if( found != -1 ) {
+		kdWarning() << k_funcinfo << "Gmail is unavailable because of server-side errors!" << endl;
+		
+		mPageBuffer = "";
+		mCheckLock->unlock();
+		
+		// let's try again in 60 seconds
+		setInterval(60, true);
 	} else {
 		
 		mTimer->start(MILLISECS(mInterval));
@@ -430,15 +448,15 @@ void GMail::slotCheckResult(KIO::Job *job)
 ///////////////////////////////////////////////////////////////////////////
 void GMail::slotTimeout()
 {
-	if((!mLoginLock->locked() && !isLoggedIn()) || mLoginParamsChanged) {
+	//reset interval
+	setInterval(Prefs::interval());
+	if(!isLoggedIn() || mLoginParamsChanged) {
 		mLoginFromTimer = true;
 		login();
 	} else {
-		if(isLoggedIn()) {
-			// do the check
-			mCheckFromTimer = true;
-			checkGMail();
-		}
+		// do the check
+		mCheckFromTimer = true;
+		checkGMail();
 	}
 }
 
