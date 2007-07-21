@@ -54,6 +54,7 @@ GMailParser::GMailParser() :
 	gGMailVersion.append("1ddh9n6glzd1c");
 	gGMailVersion.append("11qm1wldxu1ww");
 
+	// TODO: read this from a file
 #ifdef DETECT_GLANGUAGE
 	// Gmail language identifiers:
 	gGMailLanguageCode.insert("7fba835ed0312d54",i18n("Spanish"));
@@ -120,6 +121,7 @@ void GMailParser::parse(const QString &_data)
 {
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
+	unsigned int oldNewCount, NewCount = 0;
 
 	rx.setMinimal(true);
 
@@ -129,11 +131,9 @@ void GMailParser::parse(const QString &_data)
 	} 
 
 	mCurMsgId = 0;
-	unsigned int oldNewCount = getNewCount(), NewCount = 0;
+	oldNewCount = getNewCount();
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
-
-	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
 
 	QString data = QString::fromUtf8(_data);
 
@@ -165,7 +165,7 @@ void GMailParser::parse(const QString &_data)
 				parseGName(str);
 			}/* else if(tok == D_THREADLIST_SUMMARY) {
 				parseThreadSummary(str);
-			}*/
+			}*///D(["ts",0,20/*max shown*/,4/*total results*/,0,"Search results for: in:inbox is:unread","in:inbox is:unread","113e12c0cc4"/*search id?*/,9,,"",""]
 
 		}
 
@@ -270,11 +270,15 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	*/
 
 	unsigned int newMsgCount = 0;
-
-	if(oldMap)
+	QString oldLatestThread;
+	
+	if(oldMap) {
 		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
-	else
+		oldLatestThread = oldMap->begin().key();
+	} else {
 		kdDebug() << k_funcinfo << "no oldmap" << endl;
+	}
+	kdDebug() << k_funcinfo << "oldLatestThread=" << oldLatestThread << endl;
 
 	while((pos = rx.search(data, pos)) != -1) {
 		Thread *t = new Thread;
@@ -296,7 +300,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->isNull = false;
 
 		if(t->isNew && (!oldMap || 
-				 (oldMap->find(t->msgId) == oldMap->end()))) {
+				 (oldMap->find(t->msgId) == oldMap->end() && (t->msgId > oldLatestThread || t->replyId > oldLatestThread)))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
 		} else
@@ -330,7 +334,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->isNull = false;
 
 		if(t->isNew && (!oldMap || 
-				 (oldMap->find(t->msgId) == oldMap->end()))) {
+				 (oldMap->find(t->msgId) == oldMap->end() && (t->msgId > oldLatestThread || t->replyId > oldLatestThread)))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
 		} else
@@ -567,7 +571,7 @@ void GMailParser::parseGName(const QString &data)
 	if(newName != gName) {
 		gName = newName;
 		kdDebug() << "Gaia name: " << gName << endl;
-		emit gNameChanged(gName);
+		emit gNameUpdate(gName);
 	}
 }
 
@@ -663,6 +667,11 @@ const GMailParser::Thread& GMailParser::getLastThread() const
 		return *(*iter);
 }
 
+const QString GMailParser::getGaiaName() const
+{	
+	return gName;
+}
+
 /**
  * Retrieve the number of unread messages.
  *
@@ -718,21 +727,23 @@ unsigned int GMailParser::getNewCount(bool realCount) const
 	QRegExp rx2("label:([^ ]+)");
 	QString box;
 	
-	if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
-		// If none are specified gmail will return any unread mail (except spam and drafts)
-		// TODO: to fix this we need to count all messages (!drafts,!spam, inbox + labels)
-		realCount = false;
-		//box = "inbox";
-	} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
-		//there's no other way to know how many emails are in:inbox and in specified label:LABEL
-		realCount = false;
-	} else if (rx.search(Prefs::searchFor()) != -1) {
-		box = rx.cap(1);
-	} else if (rx2.search(Prefs::searchFor()) != -1) {
-		box = rx2.cap(1);
-		
-		if (eLabels.contains(box)) {
-			box = eLabels[box];
+	if (realCount) {
+		if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
+			// If none are specified gmail will return any unread mail (except spam and drafts)
+			// TODO: to fix this we need to count all messages (!drafts,!spam, inbox + labels)
+			realCount = false;
+			//box = "inbox";
+		} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
+			//there's no other way to know how many emails are in:inbox and in specified label:LABEL
+			realCount = false;
+		} else if (rx.search(Prefs::searchFor()) != -1) {
+			box = rx.cap(1);
+		} else if (rx2.search(Prefs::searchFor()) != -1) {
+			box = rx2.cap(1);
+			
+			if (eLabels.contains(box)) {
+				box = eLabels[box];
+			}
 		}
 	}
 	

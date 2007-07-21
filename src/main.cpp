@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 	
 	if(args->isSet("legal")) {
-		printf (i18n("Legal Information:\nGoogle, Gmail and Google Mail are registered trademarks of Google Inc.\nKCheckGMail nor it's authors are in any way affiliated nor endorsed by Google Inc.") + "\n");
+		printf (i18n("Legal Information:\nGoogle, Gmail and Google Mail are registered trademarks of Google Inc.\nKCheckGMail nor its authors are in any way affiliated nor endorsed by Google Inc.") + "\n");
 		return EXIT_SUCCESS;
 	}
 	

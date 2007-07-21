@@ -23,6 +23,7 @@
 #define DUMP_DIR "/tmp/"
 
 #include "gmail.h"
+#include "gmailparser.h"
 #include "gmailwalletmanager.h"
 #include "prefs.h"
 #include "gmail_constants.h"
@@ -39,7 +40,6 @@
 #include <kapp.h>
 #include <dcopclient.h>
 #include <kcharsets.h>
-#include <kurl.h>
 
 #ifdef DUMP_PAGES
 #include <qfile.h>
@@ -57,18 +57,17 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 	isGAP4D = false;
 	
 	//Any % should be replaced with @ due to a problem with QString not looking for escaped %
-	gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginAuth";
-	gGMailLoginPOSTFormat = "Email=%1&Passwd=%2&null=Sign+in&service=mail"
+	gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginAuth?service=mail";
+	gGMailLoginPOSTFormat = "Email=%1&Passwd=%2&signIn=Sign+in&service=mail"
 			"&continue=http@3A@2F@2Fmail.google.com@2Fmail@3F"
-			"&ltmpl=ca_tlsosm&ltmplcache=2&rm=false&PersistentCookie=false";
+			"&ltmpl=default&ltmplcache=2&rm=false&rmShown=1";
 	gGMailCheckURL = "%1://mail.google.com/mail/?search=query"
 			"&q=%2&as_subset=unread&view=tl&start=0";
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
 	
 	gGAP4DLoginURL = "https://www.google.com/a/%1/LoginAction";
 	gGAP4DLoginPOSTFormat = "userName=%1&password=%2&at=null&service=mail"
-			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%3@2F"
-			"&persistent=false";
+			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%3";
 	gGAP4DCheckURL = "%1://mail.google.com/a/%2/?search=query"
 			"&q=%3&as_subset=unread&view=tl&start=0";
 	gGAP4DLogOut = "https://mail.google.com/a/%1/?logout";
@@ -102,6 +101,7 @@ void GMail::checkLoginParams()
 	
 	mUsername = username;
 	mPasswordHash = password;
+	sessionCookie = QString::null;
 	
 	useUsername = mUsername;
 	useDomain = "";
@@ -125,7 +125,7 @@ void GMail::checkLoginParams()
 		//Try to log out if a session already exists (because it might be from an other address)
 		if(isLoggedIn(false)) {
 			kdDebug() << k_funcinfo << "A gmail session was already open, logging out from it" << endl;
-			logOut();
+			logOut(true);
 		}
 		
 		mLoginFromTimer = false;
@@ -170,6 +170,8 @@ void GMail::slotGetWalletPassword(const QString& pass)
 					  ).replace('@','%');
 	kdDebug() << k_funcinfo << "Requesting login URL" << endl;
 
+	loginRedirection = "";
+	
 	QCString b(str.utf8());
 	QByteArray postData(b);
 
@@ -189,6 +191,9 @@ void GMail::slotGetWalletPassword(const QString& pass)
 	
 	connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
 		SLOT(slotLoginData(KIO::Job*, const QByteArray&)));
+	
+	connect(job, SIGNAL(redirection(KIO::Job*, const KURL&)),
+		SLOT(slotLoginRedirection(KIO::Job*, const KURL&)));
 }
 
 void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
@@ -196,17 +201,28 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 	kdDebug() << k_funcinfo << endl;
 
 	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
 		QCString str(data, data.size() + 1);
 		mLoginBuffer.append(str);
 	}
 }
 
+void GMail::slotLoginRedirection(KIO::Job *job, const KURL &url)
+{
+	kdDebug() << k_funcinfo << url.url() << endl;
+
+	if(job->error() != 0) {
+		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+	} else {
+		loginRedirection = url;
+	}
+}
+
 void GMail::slotLoginResult(KIO::Job *job)
 {	
 	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 		mLoginLock->unlock();
 		emit loginDone(false, mLoginFromTimer, job->errorString());
 	} else {
@@ -214,33 +230,68 @@ void GMail::slotLoginResult(KIO::Job *job)
 		QString redirection;
 		
 		redirection = getRedirectURL(mLoginBuffer);
+		dump2File("gmail_login.html", mLoginBuffer);
 		
 		if( redirection == QString::null ) {
 			
 			if(!isLoggedIn(false)) {
 				if(mLoginBuffer.find("onload") != -1 && (
-							mLoginBuffer.find("FixForm") != -1 ||
-							mLoginBuffer.find("start_time") != -1)) {
+						mLoginBuffer.find("FixForm") != -1 ||
+						mLoginBuffer.find("start_time") != -1)) {
 				
 					mLoginLock->unlock();
 					emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
+					return;
 				} else {
 					kdWarning() << k_funcinfo << " Redirection couldn't be found!" << endl;
-					dump2File("gmail_login.html",mLoginBuffer);
 					
 					mLoginLock->unlock();
 					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
+					return;
 				}
+			} else if (mLoginBuffer.find("?ui=html") != -1 && (
+				   		mLoginBuffer.find("nocheckbrowser") != -1 || 
+						mLoginBuffer.find("noscript") != -1 )) { 
+				kdDebug() << k_funcinfo << "Google is performing dirty JS check, bypassing it" << endl;
+				
+				if (loginRedirection.isEmpty()) {
+					kdWarning() << k_funcinfo << "loginRedirection is empty!" << endl;
+					mLoginLock->unlock();
+					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
+					return;
+				}
+				
+				mLoginBuffer = "";
+				
+				KURL _url;
+				
+				_url = loginRedirection;
+				_url.setQuery("ui=html&zy=n");
+				
+				if (!_url.isValid()) {
+					kdWarning() << k_funcinfo << "New _url is invalid!:" << _url.url() << endl;
+					mLoginLock->unlock();
+					// let's show a nice error message to the user instead
+					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
+					return;
+				}
+				
+				postLogin(_url.url());
+				
+				
 			} else {
 				//no more redirections?
 				kdWarning() << k_funcinfo << "No redirection was found, but seems like we are logged in!" << endl;
 				
+				mLoginBuffer = "";
 				slotPostLoginResult(job);
+				return;
 			}
 		} else {
 			mLoginBuffer = "";
 			postLogin(redirection);
 			// NOTE: LoginLock is still locked()
+			return;
 		}
 	}
 }
@@ -264,7 +315,10 @@ void GMail::postLogin(QString url)
 		found = rx.search(url);
 		
 		if(found == -1) {
-			kdWarning() <<  "This can't be a valid url! " << url << endl;
+			kdWarning() <<  "This can't be a valid url!: " << url << endl;
+			if (!KURL(url).isValid()) {
+				kdError() <<  "This is absolutely a non-valid URL!: " << url << endl;
+			}
 		}
 		
 		if(rx.cap(1).compare("https://") != 0) {
@@ -296,7 +350,7 @@ void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 	kdDebug() << k_funcinfo << endl;
 
 	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
 		QCString str(data, data.size() + 1);
 		mPostLoginBuffer.append(str);
@@ -306,7 +360,7 @@ void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 void GMail::slotPostLoginResult(KIO::Job *job)
 {
 	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 
 		mLoginLock->unlock();
 		emit loginDone(false, mLoginFromTimer, job->errorString());
@@ -316,12 +370,18 @@ void GMail::slotPostLoginResult(KIO::Job *job)
 		
 		if(isLoggedIn()) {
 			
+			mPostLoginBuffer = "";
 			emit loginDone(true, mLoginFromTimer);
 			checkGMail();
+			
 		} else {
+			
 			QString url = getRedirectURL(mPostLoginBuffer);
 			
 			if(url == QString::null) {
+				dump2File("gmail_postlogin.html", mPostLoginBuffer);
+				mPostLoginBuffer = "";
+				
 				emit loginDone(false, mLoginFromTimer, 
 				       i18n("Unknown error retrieving cookies"));
 			} else {
@@ -329,6 +389,7 @@ void GMail::slotPostLoginResult(KIO::Job *job)
 				mLoginLock->tryLock();
 				postLogin(url);
 			}
+			
 		}
 	}
 }
@@ -379,7 +440,7 @@ void GMail::checkGMail()
 void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 {
 	if(job->error() != 0) {
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
 		QCString str(data, data.size() + 1);
 		mPageBuffer.append(str);
@@ -389,13 +450,13 @@ void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 void GMail::slotCheckResult(KIO::Job *job)
 {
 	if(job->error() != 0) 
-		kdDebug() << k_funcinfo << "error: " << job->errorString() << endl;
+		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 
 	kdDebug() << k_funcinfo << "Check finished." << endl;
 
 	dump2File("gmail_data.html", mPageBuffer);
 	
-	static QRegExp rx("top.location=[\"|\']http[s]?://www.google.com/accounts/ServiceLogin");
+	static QRegExp rx("top\\.location=[\"\']http[s]?://www\\.google\\.com/accounts/ServiceLogin");
 	static QRegExp rx2("gmail_error=[0-9]*;");
 	int found;
 	
@@ -408,7 +469,7 @@ void GMail::slotCheckResult(KIO::Job *job)
 		kdWarning() << k_funcinfo << "Invalid RX2!\n"
 				<< rx2.errorString() << endl;
 	}
-			
+	
 	found = rx.search(mPageBuffer);
 			
 	if( found != -1 || !isLoggedIn() ) {
@@ -421,6 +482,8 @@ void GMail::slotCheckResult(KIO::Job *job)
 		mUsername = "";
 		mPasswordHash = "";
 		checkLoginParams();
+		
+		return;
 	} 
 			
 	found = rx2.search(mPageBuffer);
@@ -433,14 +496,14 @@ void GMail::slotCheckResult(KIO::Job *job)
 		
 		// let's try again in 60 seconds
 		setInterval(60, true);
-	} else {
-		
-		mTimer->start(MILLISECS(mInterval));
-		emit checkDone(mPageBuffer);
-		mPageBuffer = "";
-	
-		mCheckLock->unlock();
+		return;
 	}
+	
+	setInterval(mInterval, true);
+	emit checkDone(mPageBuffer);
+	mPageBuffer = "";
+	
+	mCheckLock->unlock();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -448,8 +511,6 @@ void GMail::slotCheckResult(KIO::Job *job)
 ///////////////////////////////////////////////////////////////////////////
 void GMail::slotTimeout()
 {
-	//reset interval
-	setInterval(Prefs::interval());
 	if(!isLoggedIn() || mLoginParamsChanged) {
 		mLoginFromTimer = true;
 		login();
@@ -464,10 +525,10 @@ void GMail::setInterval(unsigned int i, bool forceStart)
 {
 	bool running;
 	
-	if(i > Prefs::self()->intervalItem()->minValue().toUInt() && mInterval != i) {
+	if(i > Prefs::self()->intervalItem()->minValue().toUInt()) {
 		mInterval = i;
 		
-		if(forceStart)
+		if (forceStart)
 			running = true;
 		else
 			running = mTimer->isActive();
@@ -482,7 +543,7 @@ void GMail::setInterval(unsigned int i, bool forceStart)
 
 void GMail::setInterval(unsigned int i)
 {
-	setInterval(i,false);
+	setInterval(i, false);
 }
 
 bool GMail::isLoggedIn(bool lockCheck)
@@ -505,11 +566,10 @@ bool GMail::isLoggedIn()
 
 void GMail::slotCheckGmail()
 {
+	mCheckFromTimer = false;
 	if(!isLoggedIn()) {
-		mLoginFromTimer = false;
 		login();
 	} else {
-		mCheckFromTimer = false;
 		checkGMail();
 	}
 }
@@ -527,10 +587,12 @@ QString GMail::getURLPart()
 	return part;
 }
 
-void GMail::logOut()
+void GMail::logOut(bool force)
 {
-	if(!isLoggedIn())
+	if(!isLoggedIn() && !force)
 		return;
+	
+	emit logingOut();
 	
 	sessionCookie = QString::null;
 	
@@ -540,12 +602,17 @@ void GMail::logOut()
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
 	kdDebug() << "Loging out! " << logoutUrl << endl;
-	sleep(5);
+	sleep(1);
+}
+
+void GMail::logOut()
+{
+	logOut(false);
 }
 
 void GMail::slotLogOut()
 {
-	logOut();
+	logOut(true);
 }
 
 void GMail::dump2File(const QString filename, const QString data)
@@ -554,6 +621,8 @@ void GMail::dump2File(const QString filename, const QString data)
 	QString dump_dir = DUMP_DIR;
 		
 	dump_dir += filename;
+	
+	kdDebug() << k_funcinfo << "Dumping data to file " << dump_dir << endl;
 		
 	QFile f(dump_dir);
 		
@@ -613,7 +682,6 @@ bool GMail::cookieExists(QString cookieName,QString url)
 		kdWarning() << k_funcinfo << "Invalid RX!\n"
 				<< search.errorString() << endl;
 	}
-			
 	
 	 
 	found = search.search(cookies);
@@ -646,7 +714,7 @@ void GMail::slotSessionChanged()
 	logOut();
 	
 	if(mCheckLock->locked())
-	mCheckLock->unlock();
+		mCheckLock->unlock();
 	
 	//Clearing values will force login
 	mUsername = "";
@@ -655,28 +723,51 @@ void GMail::slotSessionChanged()
 }
 
 QString GMail::getRedirectURL(QString buffer)
-{
-	static QRegExp rx("<meta[ ]+.*url='(http[s]?://[^']+)'.*>");
+{	
+	static QRegExp metaRX("<meta[ ]+.*url='(http[s]?://[^']+)'.*>");
+	static QRegExp jsRX  ("location\\.replace[ ]*\\([ ]*['\"](http[s]?://[^'\"]+)['\"][ ]*\\)");
 	int found;
-	QString url;
+	QString url, jsurl;
 	
 	kdDebug() << k_funcinfo << endl;
 
-	if(!rx.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX!\n"
-				<< rx.errorString() << endl;
+	if(!metaRX.isValid()) {
+		kdWarning() << k_funcinfo << "Invalid metaRX!\n"
+				<< metaRX.errorString() << endl;
 	}
-			
-	found = rx.search(buffer);
+
+	if(!jsRX.isValid()) {
+		kdWarning() << k_funcinfo << "Invalid jsRX!\n"
+				<< jsRX.errorString() << endl;
+	}
+	
+	found = metaRX.search(buffer);
 			
 	if( found == -1 ) {
 		return QString::null;
 	}
 	
-	url = KCharsets::resolveEntities(rx.cap(1));
+	url = KCharsets::resolveEntities(metaRX.cap(1));
 	
-	kdDebug() << k_funcinfo << "Found redirection to " << url << endl;
-	return url;
+	// now let's check if there's a JS redirection (location.replace)
+	found = jsRX.search(buffer);
+	
+	if( found == -1 ) {
+		return url;
+	}
+	
+	jsurl = GMailParser::cleanUpData(jsRX.cap(1));
+	
+	// if both match it's ok
+	if (url.compare(jsurl) == 0) {
+		kdDebug() << k_funcinfo << "Found redirection to " << url << endl;
+		return url;
+	} else {
+		// otherwise use JS redirection
+		kdDebug() << k_funcinfo << "META and JS redirections do not match! META: " << url << "JS: " << jsurl << endl;
+		return jsurl;
+	}
+	
 }
 
 #include "gmail.moc"

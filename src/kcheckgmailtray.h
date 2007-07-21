@@ -23,6 +23,7 @@
 #include <qpixmap.h>
 #include <qstring.h>
 #include <qstringlist.h>
+#include <qmap.h>
 
 
 #include "kcheckgmailiface.h"
@@ -73,8 +74,9 @@ protected slots:
 	void slotMailArrived(QString subject);
 	void slotMailCountChanged();
 	void slotVersionMismatch();
-	void slotgNameChanged(QString name);
+	void slotgNameUpdate(QString name);
 	void slotNoUnreadMail();
+	void slotLogingOut();
 
 	// login "animation"
 	void slotToggleLoginAnim();
@@ -100,6 +102,8 @@ private:
 	QString getThreadSnippet(QString msgId);
 	QStringList getThreadAttachments(QString msgId);
 	bool isNewThread(QString msgId);
+	QMap<QString, unsigned int> getLabels();
+	QString getGaiaName();
 	
 	void takeScreenshotOfTrayIcon();
 

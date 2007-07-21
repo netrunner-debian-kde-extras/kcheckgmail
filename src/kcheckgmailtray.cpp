@@ -102,8 +102,8 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	connect(mParser, SIGNAL(versionMismatch()), 
 		this, SLOT(slotVersionMismatch()));
 
-	connect(mParser, SIGNAL(gNameChanged(QString)), 
-		this, SLOT(slotgNameChanged(QString)));
+	connect(mParser, SIGNAL(gNameUpdate(QString)), 
+		this, SLOT(slotgNameUpdate(QString)));
 	
 
 	// initialise and hook up the GMail object
@@ -206,7 +206,7 @@ void KCheckGmailTray::start()
 		
 		legalCont = KMessageBox::warningContinueCancel(0,
 				i18n("Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-						"KCheckGMail nor it's authors are in any way affiliated nor endorsed by Google Inc.\n"
+						"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google Inc.\n"
 						"By using this application you may or may not be violating "
 						"the Terms of Use and/or the Program Policies "
 						"of Gmail or Google Mail.\n"
@@ -347,9 +347,9 @@ void KCheckGmailTray::slotThreadsItemHighlighted(int n)
 
 void KCheckGmailTray::slotThreadsMenuActivated(int n)
 {
-	//kdDebug() << k_funcinfo << "n=" << n << endl;
 	const GMailParser::Thread &t = mParser->getThread(n);
 
+	// make sure the thread does exist
 	if(!t.isNull) {
 		QString url = getUrlBase();
 		
@@ -524,6 +524,8 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 		
 		setPixmapAuth();
 		contextMenu()->changeItem(mCheckNowId, i18n("Login and Chec&k Mail"));
+		QToolTip::remove( this );
+		QToolTip::add(this, i18n("KCheckGMail"));
 		
 	} else {
 		setPixmapEmpty();
@@ -533,6 +535,12 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 	contextMenu()->setItemEnabled(mCheckNowId, true);
 
 	slotMailCountChanged();
+}
+
+void KCheckGmailTray::slotLogingOut()
+{
+	// simulate a failed login attempt
+	slotLoginDone(false, true, QString::null);
 }
 
 void KCheckGmailTray::slotCheckStart()
@@ -711,7 +719,18 @@ bool KCheckGmailTray::isNewThread(QString msgId)
 	
 	return t.isNew;
 }
-/*QString labels;*/
+
+QMap<QString, unsigned int> KCheckGmailTray::getLabels()
+{
+	QMap<QString, unsigned int> labels = mParser->getLabels();
+	
+	return labels;
+}
+
+QString KCheckGmailTray::getGaiaName()
+{
+	return mParser->getGaiaName();
+}
 
 void KCheckGmailTray::checkMailNow()
 {
@@ -756,10 +775,6 @@ void KCheckGmailTray::updateCountImage()
 		QFontMetrics qfm(countFont);
 		int width = qfm.width(countString);
 
-		/*kdDebug() << "------- countFontSize=" << countFontSize 
-				<< " width=" << width << " w=" << w << endl;
-
-		kdDebug() << "pixelSize="<<countFont.pixelSize()<<endl;*/
 		if(width > w) {
 			countFontSize *= float(w) / float(width);
 			countFont.setPointSizeFloat( countFontSize );
@@ -798,6 +813,8 @@ void KCheckGmailTray::whereAmI()
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::takeScreenshotOfTrayIcon()
 {
+	static bool taken = false;
+	
         // Process the events else the icon will not be there and the screenie will fail!
 	kapp->processEvents();
 
@@ -813,6 +830,14 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 	int th = this->height();
 	int w = desktopWidth / 4;
 	int h = desktopHeight / 9;
+	
+	// Catch invalid positions (2007 - Raphael Geissert)
+	/*if (this->pos().x() <= 0 || this->pos().y() <= 0 ) {
+		if (!taken) {
+			QMimeSourceFactory::defaultFactory()->setPixmap( "systray_shot", mPixGmail );
+		}
+		return;
+	}*/
 	int x = g.x() + tw/2 - w/2;               // Center the rectange in the systray icon
 	int y = g.y() + th/2 - h/2;
 	if ( x < 0 )                 x = 0;       // Move the rectangle to stay in the desktop limits
@@ -840,13 +865,15 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 
         // Associate source to image and show the dialog:
 	QMimeSourceFactory::defaultFactory()->setPixmap( "systray_shot", finalShot );
+	
+	taken = true;
 
         // End copied block
         // ********************************************************************************
 }
 
 
-void KCheckGmailTray::slotgNameChanged(QString name)
+void KCheckGmailTray::slotgNameUpdate(QString name)
 {
 	static QString sname;
 	kdDebug() << k_funcinfo << "Updating tooltip" << endl;

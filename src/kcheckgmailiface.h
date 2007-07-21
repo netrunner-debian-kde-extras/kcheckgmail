@@ -20,6 +20,7 @@
 
 #include "dcopobject.h"
 #include <qstringlist.h>
+#include <qmap.h>
 
 class KCheckGmailIface : virtual public DCOPObject
 {
@@ -37,5 +38,7 @@ class KCheckGmailIface : virtual public DCOPObject
 	virtual QString getThreadSnippet(QString msgId) = 0;
 	virtual QStringList getThreadAttachments(QString msgId) = 0;
 	virtual bool isNewThread(QString msgId) = 0;
+	virtual QMap<QString, unsigned int> getLabels() = 0;
+	virtual QString getGaiaName() = 0;
 };
 

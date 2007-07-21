@@ -38,19 +38,19 @@ $(top_builddir)/src/Makefile: $(top_builddir)/config.status $(top_srcdir)/src/Ma
 	cd $(top_builddir) && $(SHELL) ./config.status src/Makefile
 
 $(top_builddir)/src/gmailparser.moc.cpp: $(top_srcdir)/src/gmailparser.h
-	@echo 'creating $(top_builddir)/src/gmailparser.moc.cpp'
+	@echo '[34mcreating[0m $(top_builddir)/src/gmailparser.moc.cpp[0m'
 	@$(MOC) $? -o $@
 
 $(top_builddir)/src/gmailwalletmanager.moc.cpp: $(top_srcdir)/src/gmailwalletmanager.h
-	@echo 'creating $(top_builddir)/src/gmailwalletmanager.moc.cpp'
+	@echo '[34mcreating[0m $(top_builddir)/src/gmailwalletmanager.moc.cpp[0m'
 	@$(MOC) $? -o $@
 
 $(top_builddir)/src/kcheckgmailapp.moc.cpp: $(top_srcdir)/src/kcheckgmailapp.h
-	@echo 'creating $(top_builddir)/src/kcheckgmailapp.moc.cpp'
+	@echo '[34mcreating[0m $(top_builddir)/src/kcheckgmailapp.moc.cpp[0m'
 	@$(MOC) $? -o $@
 
 $(top_builddir)/src/kcheckgmailtray.moc.cpp: $(top_srcdir)/src/kcheckgmailtray.h
-	@echo 'creating $(top_builddir)/src/kcheckgmailtray.moc.cpp'
+	@echo '[34mcreating[0m $(top_builddir)/src/kcheckgmailtray.moc.cpp[0m'
 	@$(MOC) $? -o $@
 
 all: $(top_builddir)/src/Makefile
@@ -68,7 +68,7 @@ __um_includes_dcopref.h = kcheckgmailapp.cpp
 __um_includes_gmail.h = kcheckgmailtray.cpp gmail.cpp
 __um_includes_gmail.moc = gmail.cpp
 __um_includes_gmail_constants.h = gmail.cpp gmailparser.cpp
-__um_includes_gmailparser.h = kcheckgmailtray.cpp gmailparser.cpp
+__um_includes_gmailparser.h = kcheckgmailtray.cpp gmail.cpp gmailparser.cpp
 __um_includes_gmailwalletmanager.h = kcheckgmailtray.cpp gmailwalletmanager.cpp gmail.cpp
 __um_includes_kaboutdata.h = main.cpp
 __um_includes_kaction.h = kcheckgmailtray.cpp
@@ -106,18 +106,17 @@ __um_includes_loginsettingswidget.h = kcheckgmailtray.cpp
 __um_includes_netsettingswidget.h = kcheckgmailtray.cpp
 __um_includes_prefs.h = kcheckgmailtray.cpp gmailwalletmanager.cpp gmail.cpp gmailparser.cpp
 __um_includes_qfile.h = kcheckgmailtray.cpp gmail.cpp
-__um_includes_qmap.h = kcheckgmailtray.cpp gmailparser.cpp
+__um_includes_qmap.h = kcheckgmailtray.cpp kcheckgmailapp.cpp gmail.cpp gmailparser.cpp
 __um_includes_qmutex.h = kcheckgmailtray.cpp gmailwalletmanager.cpp gmail.cpp
 __um_includes_qobject.h = kcheckgmailtray.cpp gmailwalletmanager.cpp gmail.cpp gmailparser.cpp
 __um_includes_qpainter.h = kcheckgmailtray.cpp
 __um_includes_qpixmap.h = kcheckgmailtray.cpp kcheckgmailapp.cpp
 __um_includes_qregexp.h = kcheckgmailtray.cpp gmail.cpp gmailparser.cpp
 __um_includes_qstring.h = kcheckgmailtray.cpp kcheckgmailapp.cpp gmail.cpp gmailparser.cpp
-__um_includes_qstringlist.h = kcheckgmailtray.cpp gmailparser.cpp
+__um_includes_qstringlist.h = kcheckgmailtray.cpp kcheckgmailapp.cpp gmail.cpp gmailparser.cpp
 __um_includes_qtimer.h = kcheckgmailtray.cpp gmail.cpp
 __um_includes_qtooltip.h = kcheckgmailtray.cpp
-__um_includes_qvaluevector.h = kcheckgmailtray.cpp gmailparser.cpp
+__um_includes_qvaluevector.h = kcheckgmailtray.cpp gmail.cpp gmailparser.cpp
 __um_includes_stdlib.h = main.cpp
-__um_includes_vector = kcheckgmailtray.cpp gmailparser.cpp
 kcheckgmail_SOURCES = advancedsettingswidget.ui appletsettingswidget.ui gmail.cpp gmailparser.cpp gmailwalletmanager.cpp kcheckgmailapp.cpp kcheckgmailiface.skel kcheckgmailtray.cpp loginsettingswidget.ui main.cpp netsettingswidget.ui prefs.kcfgc gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp
 .PHONY: all final

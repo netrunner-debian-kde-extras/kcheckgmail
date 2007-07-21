@@ -25,7 +25,7 @@
 #include <qstringlist.h>
 #include <qmap.h>
 #include <qvaluevector.h>
-#include <vector>
+//#include <vector>
 
 /**
 @author Matthew Wlazlo
@@ -51,13 +51,7 @@ public:
 // 		unsigned int all;
 		unsigned int spam;
 // 		unsigned int trash;
-	} DefaultSearchSummary;
-	
-	// "ct" : array
-	/*typedef struct {
-		QString name;
-		unsigned int count;
-	} Label;*/
+	} DefaultSearchSummary;	
 
 	// "t"
 	typedef struct {
@@ -116,11 +110,12 @@ public:
 
 // 	const QString &getVersion() const { return mVersion; }
 	unsigned int getInvites() const { return mInvites; }
+	const QString getGaiaName() const;
 
 	const DefaultSearchSummary &getSummary() const { return mSummary; }
 
 	const Quota& getQuota() const { return mQuota; }
-	/*const QValueVector<Label>& getLabels() const { return mLabels; }*/
+	const QMap<QString, unsigned int> getLabels() const { return mLabels; }
 
 	// key = msgId, bool = isNew
 	QMap<QString,bool> *getThreadList() const;
@@ -128,16 +123,16 @@ public:
 	const Thread &getThread(int id) const;
 	const Thread &getLastThread() const;
 	
-	QString stripTags(QString data);
-	QString convertEntities(QString data);
-	QString cleanUpData(QString data);
+	static QString stripTags(QString data);
+	static QString convertEntities(QString data);
+	static QString cleanUpData(QString data);
 
 signals:
 	void mailArrived(unsigned int count);
 	void mailCountChanged();
 	void versionMismatch();
 	void noUnreadMail();
-	void gNameChanged(QString name);
+	void gNameUpdate(QString name);
 
 protected:
 	void parseQuota(const QString&);
