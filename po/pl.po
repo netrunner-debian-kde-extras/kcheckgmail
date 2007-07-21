@@ -4,7 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kcheckgmail\n"
-"POT-Creation-Date: 2007-07-06 18:11-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-07-11 18:53-0500\n"
 "PO-Revision-Date: 2007-05-11 10:38+0200\n"
 "Last-Translator: Łukasz Derkacz <lderkacz@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -37,7 +38,7 @@ msgstr ""
 "Procedura logowania do Gmail uległa zmianie, proszę sprawdzić nową wersję "
 "KCheckGmaila"
 
-#: gmail.cpp:326
+#: gmail.cpp:332
 msgid "Unknown error retrieving cookies"
 msgstr "Nieznany błąd podczas odbioru plików cookie"
 
@@ -236,8 +237,8 @@ msgid "Unable to retrieve secure password"
 msgstr "Nie mogę uzyskać zabezpieczonego hasła"
 
 #. Name
-#: kcheckgmail.desktop:1 kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140
-#: main.cpp:44
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#: kcheckgmail.desktop:1
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
@@ -282,10 +283,11 @@ msgid "Welcome"
 msgstr "Witamy"
 
 #: kcheckgmailtray.cpp:208
+#, fuzzy
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
 "By using this application you may or may not be violating the Terms of Use "
 "and/or the Program Policies of Gmail or Google Mail.\n"
 "Are you sure you want to use KCheckGMail?"
@@ -448,11 +450,12 @@ msgid "Everybody who helped testing and translating KCheckGMail"
 msgstr "Wszyscy, którzy pomagali testować i tłumaczyć KCheckGmail"
 
 #: main.cpp:70
+#, fuzzy
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc."
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
 msgstr ""
 "Informacja o legalności\n"
 "Google, Gmail i Google Mail są zastrzeżonymi znakami handlowymi Google Inc.\n"
@@ -820,6 +823,16 @@ msgstr "Fragment wiadomości"
 msgid "eMail snippets when moving the mouse over a threads menu entry"
 msgstr ""
 "Fragmenty wiadomości kiedy myszka przesuwa się nad kolejnymi wątkami w menu"
+
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr ""
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr ""
 
 #. GenericName
 #: kcheckgmail.desktop:2

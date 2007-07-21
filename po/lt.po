@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-06 18:11-0500\n"
-"PO-Revision-Date: 2007-04-04 15:16+0300\n"
+"POT-Creation-Date: 2007-07-11 18:53-0500\n"
+"PO-Revision-Date: 2007-07-09 16:05+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
 "Pasikeitė GMail prisijungimo procedūra, patikrinkite ar nėra naujos versijos"
 
-#: gmail.cpp:326
+#: gmail.cpp:332
 msgid "Unknown error retrieving cookies"
 msgstr "Nežinoma klaida gaunant slapukus"
 
@@ -238,8 +238,8 @@ msgid "Unable to retrieve secure password"
 msgstr "Nepavyksta gauti saugaus slaptažodžio"
 
 #. Name
-#: kcheckgmail.desktop:1 kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140
-#: main.cpp:44
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#: kcheckgmail.desktop:1
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
@@ -284,10 +284,11 @@ msgid "Welcome"
 msgstr "Sveiki atvykę"
 
 #: kcheckgmailtray.cpp:208
+#, fuzzy
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
 "By using this application you may or may not be violating the Terms of Use "
 "and/or the Program Policies of Gmail or Google Mail.\n"
 "Are you sure you want to use KCheckGMail?"
@@ -309,6 +310,11 @@ msgid ""
 "%1\n"
 "Attachments: %2"
 msgstr ""
+"%1\n"
+"Priedas: %2\n"
+"%1\n"
+"Priedai: %2%1\n"
+"Priedų: %2"
 
 #: kcheckgmailtray.cpp:402
 msgid "Login"
@@ -332,12 +338,11 @@ msgstr "Elgesys"
 
 #: kcheckgmailtray.cpp:411
 msgid "Advanced"
-msgstr ""
+msgstr "Išsamiau"
 
 #: kcheckgmailtray.cpp:411
-#, fuzzy
 msgid "Advanced Settings"
-msgstr "Prisijungimo nustatymai"
+msgstr "Išsamesni nustatymai"
 
 #: kcheckgmailtray.cpp:429
 msgid "No account information has been entered. Do you want to quit?"
@@ -382,13 +387,12 @@ msgstr ""
 "Yra <b>%n</b> naujų pranešimų"
 
 #: kcheckgmailtray.cpp:572
-#, fuzzy
 msgid "New mail arrived: <i>%1</i>"
-msgstr "Atvyko naujas Gmail"
+msgstr "Gautas naujas paštas: <i>%1</i>"
 
 #: kcheckgmailtray.cpp:580
 msgid "There are no unread messages"
-msgstr ""
+msgstr "Yra neperskaitytų pranešimų"
 
 #: kcheckgmailtray.cpp:627
 msgid "An other account has been opened, logging out from it!"
@@ -450,11 +454,12 @@ msgid "Everybody who helped testing and translating KCheckGMail"
 msgstr "Visi, kurie padėjo testuoti ir vertė KCheckGMail"
 
 #: main.cpp:70
+#, fuzzy
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc."
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
 msgstr ""
 "Teisinė informacija:\n"
 "Google, Gmail ir Google Mail yra registruoti Google Inc. prekės ženklai.\n"
@@ -474,13 +479,13 @@ msgstr ""
 #: rc.cpp:6 rc.cpp:94
 #, no-c-format
 msgid "Open Gmail in simple interface"
-msgstr ""
+msgstr "Atverti Gmail su paprasta sąsaja"
 
 #. i18n: file advancedsettingswidget.ui line 72
 #: rc.cpp:10 rc.cpp:88
 #, no-c-format
 msgid "Search For:"
-msgstr ""
+msgstr "Ieškoti:"
 
 #. i18n: file appletsettingswidget.ui line 16
 #: rc.cpp:13
@@ -504,19 +509,19 @@ msgstr "Rodyti įspėjimą, jei pasikeis Gmail versija"
 #: rc.cpp:22
 #, no-c-format
 msgid "Other"
-msgstr ""
+msgstr "Kiti"
 
 #. i18n: file appletsettingswidget.ui line 78
 #: rc.cpp:25
 #, no-c-format
 msgid "Display sub&ject when only one new email arrives"
-msgstr ""
+msgstr "Rodyti &temą tik tada, kai atvyksta naujas vienas laiškas"
 
 #. i18n: file appletsettingswidget.ui line 81
 #: rc.cpp:28
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Alt+J"
-msgstr "Alt+U"
+msgstr "Alt+J"
 
 #. i18n: file appletsettingswidget.ui line 96
 #: rc.cpp:31
@@ -532,9 +537,9 @@ msgstr "Naudoti alternatyvią naršyklę"
 
 #. i18n: file appletsettingswidget.ui line 171
 #: rc.cpp:37
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Use the default KDE browser"
-msgstr "Naudoti numatytą KDE naršyklę"
+msgstr "&Naudoti numatytą KDE naršyklę"
 
 #. i18n: file appletsettingswidget.ui line 174
 #: rc.cpp:40 rc.cpp:67 rc.cpp:82
@@ -550,15 +555,15 @@ msgstr "Sistemos dėklo ženkliukas"
 
 #. i18n: file appletsettingswidget.ui line 239
 #: rc.cpp:46
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Open &browser to Gmail on left click"
-msgstr "Atidaryti naršyklę su Gmail kairiuoju spragtelėjimu"
+msgstr "Atidaryti &naršyklę su Gmail kairiuoju spragtelėjimu"
 
 #. i18n: file appletsettingswidget.ui line 242
 #: rc.cpp:49
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Alt+B"
-msgstr "Alt+U"
+msgstr "Alt+B"
 
 #. i18n: file appletsettingswidget.ui line 250
 #: rc.cpp:52 rc.cpp:142
@@ -632,6 +637,8 @@ msgid ""
 "When checking for new email's this is the search query sent to Google Mail. "
 "Don't forget to add is:unread to improve the search."
 msgstr ""
+"Tikrinant naujo pašto paieškos užklausa nusiunčiama į Google Mail. "
+"Neužmirškite pridėti is:unread, kad pagerintumėte paiešką."
 
 #. i18n: file prefs.kcfg line 14
 #: rc.cpp:97
@@ -640,6 +647,8 @@ msgid ""
 "This option lets you make KCheckGMail open Gmail using the simple interface "
 "(only HTML) or the full interface (unmarked)."
 msgstr ""
+"Ši parinktis leidžia KCheckGMail atverti Gmail naudojant paprastą sąsają "
+"(tik HTML) arba pilną sąsają (nepažymėta)."
 
 #. i18n: file prefs.kcfg line 19
 #: rc.cpp:100
@@ -719,24 +728,24 @@ msgstr "Atidaryti naršyklę su Gmail kairiuoju spragtelėjimu"
 
 #. i18n: file prefs.kcfg line 57
 #: rc.cpp:139
-#, fuzzy, no-c-format
+#, no-c-format
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGMail icon is "
 "clicked."
 msgstr ""
-"Jei įgalinta, paleis numatytą KDE naršyklę, kai KCheckGmail ženkliukas "
+"Jei įgalinta, paleis numatytą KDE naršyklę, kai KCheckGMail ženkliukas "
 "spragtelėjamas."
 
 #. i18n: file prefs.kcfg line 62
 #: rc.cpp:145
-#, fuzzy, no-c-format
+#, no-c-format
 msgid ""
 "If enabled, every time you click on the KCheckGMail icon will disable it for "
 "a few seconds, thus preventing you from accidentaly opening more than one "
 "window"
 msgstr ""
-"Jei įgalinta, tai kiekvieną kartą spragtelint KCheckGmail, ženkliukas bus "
-"išjungtas kelioms sekundėms taip apsaugant nuo atsitiktinio kelių langų "
+"Jei įgalinta, tai kiekvieną kartą spragtelint KCheckGMail, ženkliukas bus "
+"išjungtas kelioms sekundėms, taip apsaugant nuo atsitiktinio kelių langų "
 "atidarymo"
 
 #. i18n: file prefs.kcfg line 65
@@ -771,13 +780,13 @@ msgstr ""
 #: rc.cpp:163
 #, no-c-format
 msgid "Display subject when only one new email arrives"
-msgstr ""
+msgstr "Rodyti temą tik tada, kai atvyksta naujas vienas laiškas"
 
 #. i18n: file prefs.kcfg line 81
 #: rc.cpp:166
 #, no-c-format
 msgid "Display message's subject when only one new email arrives"
-msgstr ""
+msgstr "Rodyti pranešimo temą tik tada, kai atvyksta vienas naujas laiškas"
 
 #. new-gmail-arrived - Name new-gmail-arrived - Comment
 #: eventsrc:1 eventsrc:2
@@ -818,6 +827,17 @@ msgstr "Pašto fragmentas"
 #: eventsrc:12
 msgid "eMail snippets when moving the mouse over a threads menu entry"
 msgstr "pašto fragmentai, kai pelė judinama virš gijų meniu įrašo"
+
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr ""
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+#, fuzzy
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Yra neperskaitytų pranešimų"
 
 #. GenericName
 #: kcheckgmail.desktop:2

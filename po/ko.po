@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ko\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-06 18:11-0500\n"
+"POT-Creation-Date: 2007-07-11 18:53-0500\n"
 "PO-Revision-Date: 2005-12-05 14:54+0900\n"
 "Last-Translator: ChoSeongWoo <syn333@gmail.com>\n"
 "Language-Team: Korean <>\n"
@@ -36,7 +36,7 @@ msgstr "사용자 이름이나 비밀번호가 틀림"
 msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
 
-#: gmail.cpp:326
+#: gmail.cpp:332
 msgid "Unknown error retrieving cookies"
 msgstr "쿠키를 받는 중 알 수 없는 오류"
 
@@ -236,8 +236,8 @@ msgid "Unable to retrieve secure password"
 msgstr "비밀번호를 암호화해서 받을 수 없음"
 
 #. Name
-#: kcheckgmail.desktop:1 kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140
-#: main.cpp:44
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#: kcheckgmail.desktop:1
 #, fuzzy
 msgid "KCheckGMail"
 msgstr "KCheckGmail"
@@ -283,8 +283,8 @@ msgstr ""
 #: kcheckgmailtray.cpp:208
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
 "By using this application you may or may not be violating the Terms of Use "
 "and/or the Program Policies of Gmail or Google Mail.\n"
 "Are you sure you want to use KCheckGMail?"
@@ -439,8 +439,8 @@ msgstr ""
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc."
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
 msgstr ""
 
 #: main.cpp:76
@@ -798,6 +798,17 @@ msgstr ""
 #: eventsrc:12
 msgid "eMail snippets when moving the mouse over a threads menu entry"
 msgstr ""
+
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr ""
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+#, fuzzy
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "<b>%1</b>개의 새 메일이 있습니다"
 
 #. GenericName
 #: kcheckgmail.desktop:2

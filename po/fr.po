@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-06 18:11-0500\n"
+"POT-Creation-Date: 2007-07-11 18:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr "Nom d'utilisateur ou mot de passe invalide"
 msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
 
-#: gmail.cpp:326
+#: gmail.cpp:332
 msgid "Unknown error retrieving cookies"
 msgstr "Erreur inconnue lors de la récupération des cookies"
 
@@ -238,8 +238,8 @@ msgid "Unable to retrieve secure password"
 msgstr "Impossible de récupérer le mot de passe sécurisé"
 
 #. Name
-#: kcheckgmail.desktop:1 kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140
-#: main.cpp:44
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#: kcheckgmail.desktop:1
 #, fuzzy
 msgid "KCheckGMail"
 msgstr "KCheckGmail"
@@ -285,8 +285,8 @@ msgstr ""
 #: kcheckgmailtray.cpp:208
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
 "By using this application you may or may not be violating the Terms of Use "
 "and/or the Program Policies of Gmail or Google Mail.\n"
 "Are you sure you want to use KCheckGMail?"
@@ -445,8 +445,8 @@ msgstr ""
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc."
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
 msgstr ""
 
 #: main.cpp:76
@@ -811,6 +811,17 @@ msgstr ""
 msgid "eMail snippets when moving the mouse over a threads menu entry"
 msgstr ""
 
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr ""
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+#, fuzzy
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Vous avez <b>%1</b> nouveaux messages"
+
 #. GenericName
 #: kcheckgmail.desktop:2
 msgid "New email notifier"
@@ -818,13 +829,10 @@ msgstr ""
 
 #. Comment
 #: kcheckgmail.desktop:3
-#, fuzzy
 msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
 "account."
-msgstr ""
-"L'icone de notification vous montre combien\n"
-"de messages vous avez sur votre compte GMail."
+msgstr "Un applet kicker qui affiche le nombre de messages sur un compte GMail."
 
 #~ msgid "Please enter a password"
 #~ msgstr "Rentrez un mot de passe"

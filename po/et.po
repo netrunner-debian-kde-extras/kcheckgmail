@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcheckgmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-06 18:11-0500\n"
+"POT-Creation-Date: 2007-07-11 18:53-0500\n"
 "PO-Revision-Date: 2007-02-15 17:29+0200\n"
 "Last-Translator: Henrik Pihl <ahvenas@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -36,7 +36,7 @@ msgstr "Vigane kasutajanimi või parool"
 msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
 
-#: gmail.cpp:326
+#: gmail.cpp:332
 msgid "Unknown error retrieving cookies"
 msgstr "Tundmatu viga küpsiste hankimisel"
 
@@ -238,8 +238,8 @@ msgid "Unable to retrieve secure password"
 msgstr "Ei suutnud hankida turvalist parooli"
 
 #. Name
-#: kcheckgmail.desktop:1 kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140
-#: main.cpp:44
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#: kcheckgmail.desktop:1
 #, fuzzy
 msgid "KCheckGMail"
 msgstr "KCheckGmail "
@@ -285,8 +285,8 @@ msgstr ""
 #: kcheckgmailtray.cpp:208
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
 "By using this application you may or may not be violating the Terms of Use "
 "and/or the Program Policies of Gmail or Google Mail.\n"
 "Are you sure you want to use KCheckGMail?"
@@ -444,8 +444,8 @@ msgstr ""
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc."
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
 msgstr ""
 
 #: main.cpp:76
@@ -775,21 +775,18 @@ msgstr ""
 
 #. gmail-login-yes - Name gmail-login-yes - Comment
 #: eventsrc:3 eventsrc:4
-#, fuzzy
 msgid "Logged in to Gmail"
-msgstr "Edukalt sisselogitud GMaili!"
+msgstr "Sisselogitud Gmaili"
 
 #. gmail-login-no - Name gmail-login-no - Comment
 #: eventsrc:5 eventsrc:6
-#, fuzzy
 msgid "Failed to login to Gmail"
-msgstr "Edukalt sisselogitud GMaili!"
+msgstr "Ei suutnud sisse logida Gmaili"
 
 #. gmail-version-mismatch - Name gmail-version-mismatch - Comment
 #: eventsrc:7 eventsrc:8
-#, fuzzy
 msgid "Gmail version has changed"
-msgstr "Versioon on muutunud"
+msgstr "Gmaili versioon on muutunud!"
 
 #. gmail-session-changed - Name
 #: eventsrc:9
@@ -810,6 +807,17 @@ msgstr ""
 #: eventsrc:12
 msgid "eMail snippets when moving the mouse over a threads menu entry"
 msgstr ""
+
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr ""
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+#, fuzzy
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Postkastis on <b>%1</b> uut teadet"
 
 #. GenericName
 #: kcheckgmail.desktop:2

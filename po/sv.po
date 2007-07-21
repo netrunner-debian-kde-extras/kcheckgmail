@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcheckgmail 0.5.5-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-06 18:11-0500\n"
+"POT-Creation-Date: 2007-07-11 18:53-0500\n"
 "PO-Revision-Date: 2005-12-30 06:32+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -35,7 +35,7 @@ msgstr "Ogiltigt användarnamn eller lösenord"
 msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
 
-#: gmail.cpp:326
+#: gmail.cpp:332
 msgid "Unknown error retrieving cookies"
 msgstr "Okänt fel vid mottagning av kakor"
 
@@ -236,8 +236,8 @@ msgid "Unable to retrieve secure password"
 msgstr "Kunde inte hämta säkert lösenord"
 
 #. Name
-#: kcheckgmail.desktop:1 kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140
-#: main.cpp:44
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#: kcheckgmail.desktop:1
 #, fuzzy
 msgid "KCheckGMail"
 msgstr "KCheckGmail"
@@ -283,8 +283,8 @@ msgstr ""
 #: kcheckgmailtray.cpp:208
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
 "By using this application you may or may not be violating the Terms of Use "
 "and/or the Program Policies of Gmail or Google Mail.\n"
 "Are you sure you want to use KCheckGMail?"
@@ -442,8 +442,8 @@ msgstr ""
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
-"KCheckGMail nor it's authors are in any way affiliated nor endorsed by "
-"Google Inc."
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
 msgstr ""
 
 #: main.cpp:76
@@ -808,6 +808,17 @@ msgstr ""
 #: eventsrc:12
 msgid "eMail snippets when moving the mouse over a threads menu entry"
 msgstr ""
+
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr ""
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+#, fuzzy
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Det finns <b>%1</b> nya meddelanden"
 
 #. GenericName
 #: kcheckgmail.desktop:2
