@@ -22,8 +22,8 @@
 <affiliation><address><email>atomo64@gmail.com</email></address></affiliation>
 </author>
 </authorgroup>
-<date>2007-05-12</date>
-<releaseinfo>0.5.6</releaseinfo>
+<date>2007-07-18</date>
+<releaseinfo>0.5.7</releaseinfo>
 <abstract>
 <para>&kcheckgmail; is a simple KDE systray application that notifies when new email is received in a GMail account.</para>
 </abstract>
@@ -39,13 +39,16 @@
 
     <sect1 id="features">
       <title>Features</title>
-      <para>Available in multiple languages</para>
-      <para>Google Applications for Domains Support! </para>
-      <para>eMail snippets </para>
-      <para>Snooze support! </para>
-      <para>Store password safely, using the KDE Wallet</para>
-      <para>Customizable check interval</para>
-      <para>Secure login and data retrieval by using https</para>
+      <itemizedlist>
+      <listitem><para>Available in multiple languages</para></listitem>
+      <!--<listitem><para>Google Applications for Domains Support! </para></listitem>-->
+      <listitem><para>eMail snippets</para></listitem>
+      <listitem><para>DCOP interface to Google Mail</para></listitem>
+      <listitem><para>Custom search</para></listitem>
+      <listitem><para>Store password safely, using the KDE Wallet</para></listitem>
+      <listitem><para>Customizable check interval</para></listitem>
+      <listitem><para>Secure login and data retrieval by using https</para></listitem>
+      </itemizedlist>
     </sect1>
   </chapter>
 
@@ -54,22 +57,24 @@
 
     <sect1 id="how-to-obtain-kcheckgmail">
       <title>How to obtain &kcheckgmail;</title>
-      <para>Download the source package from http://kcheckgmail.sourceforge.net/ and extract.</para>
+      <para>Download the source package from <ulink url="http://kcheckgmail.sourceforge.net/">http://kcheckgmail.sourceforge.net/</ulink> and extract.</para>
     </sect1>
 
     <sect1 id="requirements">
       <title>Requirements</title>
-      <para>&kcheckgmail; 0.5.6 has only been tested with KDE 3.5.x but it might also work with older versions.</para>
+      <para>&kcheckgmail; 0.5.7 has only been tested with KDE 3.5.x but it might also work with older versions.</para>
+      <para>Since version 0.5.7 &kcheckgmail; requires the usage of unsermake instead of make.</para>
+      <para>Check the <ulink url="http://wiki.kde.org/tiki-index.php?page=unsermake">unsermake wiki</ulink> for more information.</para>
     </sect1>
 
     <sect1 id="compilation-and-installation">
       <title>Compilation and Installation</title>
 
-      <para>Compiling &kcheckgmail; is very easy.  The following should do
+      <para>Compiling &kcheckgmail; is very easy. The following should do
 	it: <screen>
 <prompt>%</prompt> <userinput><command>./configure</command></userinput>
-<prompt>%</prompt> <userinput><command>make</command></userinput>
-<prompt>%</prompt> <userinput><command>make</command> install</userinput></screen>
+<prompt>%</prompt> <userinput><command>unsermake</command></userinput>
+<prompt>%</prompt> <userinput><command>unsermake</command> install</userinput></screen>
       </para>
 
       <para>That should do it! Should you run into any problems,
@@ -80,7 +85,50 @@
 
   <chapter id="using-kcheckgmail">
     <title>Using &kcheckgmail;</title>
+    <sect1 id="using-kcheckgmail-interface">
+      <title>Using &kcheckgmail;'s interface</title>
     <para>&kcheckgmail; is an intuitive and simple to use application.</para>
+    <para>If you have any question check the <ulink
+	url="http://kcheckgmail.sourceforge.net/help.html">online FAQ</ulink>.</para>
+    </sect1>
+
+    <sect1 id="dcop-interface">
+      <title>DCOP Interface</title>
+
+      <para>Since version 0.5.7 &kcheckgmail; provides a more useful DCOP interface:
+	<screen>
+<prompt>%</prompt> <userinput><command>dcop kcheckgmail KCheckGmailIface</command></userinput>
+int mailCount()
+void checkMailNow()
+void whereAmI()
+void showIcon()
+void hideIcon()
+QStringList getThreads()
+QString getThreadSubject(QString msgId)
+QString getThreadSender(QString msgId)
+QString getThreadSnippet(QString msgId)
+QStringList getThreadAttachments(QString msgId)
+bool isNewThread(QString msgId)
+QMap&lt;QString,unsigned int&gt; getLabels()
+QString getGaiaName()
+</screen></para>
+      <itemizedlist>
+      <title>DCOP Interface methods</title>
+      <listitem><para>mailCount: The number of unread messages (depends on the search query being used).</para></listitem>
+      <listitem><para>checkMailNow: Makes &kcheckgmail; check for new emails.</para></listitem>
+      <listitem><para>whereAmI: Displays a window displaying &kcheckgmail;'s location.</para></listitem>
+      <listitem><para>showIcon: Show &kcheckgmail;'s icon.</para></listitem>
+      <listitem><para>hideIcon: Hide &kcheckgmail;'s icon.</para></listitem>
+      <listitem><para>getThreads: Returns a QStringList containing the msgId which &kcheckgmail; knows about.</para></listitem>
+      <listitem><para>getThreadSubject: Returns the subject of a message with the given msgId.</para></listitem>
+      <listitem><para>getThreadSender: Returns the sender of a message with the given msgId.</para></listitem>
+      <listitem><para>getThreadSnippet: Returns the snippet of a message with the given msgId.</para></listitem>
+      <listitem><para>getThreadAttachments: Returns a QStringList containing the attachment names of a message with the given msgId.</para></listitem>
+      <listitem><para>isNewThread: Returns whether the a message with the given msgId is unread or not.</para></listitem>
+      <listitem><para>getLabels: Returns a map with the keys being the label names and the values the number of unread messages.</para></listitem>
+      <listitem><para>getGaiaName: Returns the Gaia Name (name of the owner of the account).</para></listitem>
+      </itemizedlist>
+    </sect1>
   </chapter>
 <!--
   <chapter id="questionsanswersandtips">

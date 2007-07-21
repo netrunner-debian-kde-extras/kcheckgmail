@@ -38,11 +38,6 @@ $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/common: $(UNSERMAKE_FORCE_INSTALL)
 	-rm -f $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/common
 	$(LN_S) $(kde_libs_htmldir)/en/common $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/common
 
-$(DESTDIR)$(kde_htmldir)/en/kcheckgmail/compilation-and-installation.html: $(top_srcdir)/doc/en/compilation-and-installation.html $(UNSERMAKE_FORCE_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kde_htmldir)/en/kcheckgmail
-	@echo $(INSTALL_DATA) $(top_srcdir)/doc/en/compilation-and-installation.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/compilation-and-installation.html ;\
-	$(INSTALL_DATA) $(top_srcdir)/doc/en/compilation-and-installation.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/compilation-and-installation.html
-
 $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.cache.bz2: $(top_builddir)/doc/en/index.cache.bz2 $(UNSERMAKE_FORCE_INSTALL)
 	$(mkinstalldirs) $(DESTDIR)$(kde_htmldir)/en/kcheckgmail
 	@if test -f $(top_builddir)/doc/en/index.cache.bz2; then \
@@ -55,35 +50,10 @@ $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.docbook: $(top_srcdir)/doc/en/inde
 	@echo $(INSTALL_DATA) $(top_srcdir)/doc/en/index.docbook $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.docbook ;\
 	$(INSTALL_DATA) $(top_srcdir)/doc/en/index.docbook $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.docbook
 
-$(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.html: $(top_srcdir)/doc/en/index.html $(UNSERMAKE_FORCE_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kde_htmldir)/en/kcheckgmail
-	@echo $(INSTALL_DATA) $(top_srcdir)/doc/en/index.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.html ;\
-	$(INSTALL_DATA) $(top_srcdir)/doc/en/index.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.html
-
-$(DESTDIR)$(kde_htmldir)/en/kcheckgmail/installation.html: $(top_srcdir)/doc/en/installation.html $(UNSERMAKE_FORCE_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kde_htmldir)/en/kcheckgmail
-	@echo $(INSTALL_DATA) $(top_srcdir)/doc/en/installation.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/installation.html ;\
-	$(INSTALL_DATA) $(top_srcdir)/doc/en/installation.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/installation.html
-
-$(DESTDIR)$(kde_htmldir)/en/kcheckgmail/introduction.html: $(top_srcdir)/doc/en/introduction.html $(UNSERMAKE_FORCE_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kde_htmldir)/en/kcheckgmail
-	@echo $(INSTALL_DATA) $(top_srcdir)/doc/en/introduction.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/introduction.html ;\
-	$(INSTALL_DATA) $(top_srcdir)/doc/en/introduction.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/introduction.html
-
-$(DESTDIR)$(kde_htmldir)/en/kcheckgmail/requirements.html: $(top_srcdir)/doc/en/requirements.html $(UNSERMAKE_FORCE_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kde_htmldir)/en/kcheckgmail
-	@echo $(INSTALL_DATA) $(top_srcdir)/doc/en/requirements.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/requirements.html ;\
-	$(INSTALL_DATA) $(top_srcdir)/doc/en/requirements.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/requirements.html
-
-$(DESTDIR)$(kde_htmldir)/en/kcheckgmail/using-kcheckgmail.html: $(top_srcdir)/doc/en/using-kcheckgmail.html $(UNSERMAKE_FORCE_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kde_htmldir)/en/kcheckgmail
-	@echo $(INSTALL_DATA) $(top_srcdir)/doc/en/using-kcheckgmail.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/using-kcheckgmail.html ;\
-	$(INSTALL_DATA) $(top_srcdir)/doc/en/using-kcheckgmail.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/using-kcheckgmail.html
-
 $(top_builddir)/doc/en/Makefile: $(top_builddir)/config.status $(top_srcdir)/doc/en/Makefile.in
 	cd $(top_builddir) && $(SHELL) ./config.status doc/en/Makefile
 
-$(top_builddir)/doc/en/index.cache.bz2: $(KDE_XSL_STYLESHEET) $(top_srcdir)/doc/en/introduction.html $(top_srcdir)/doc/en/installation.html $(top_srcdir)/doc/en/index.html $(top_srcdir)/doc/en/using-kcheckgmail.html $(top_srcdir)/doc/en/compilation-and-installation.html $(top_srcdir)/doc/en/requirements.html $(top_srcdir)/doc/en/index.docbook
+$(top_builddir)/doc/en/index.cache.bz2: $(KDE_XSL_STYLESHEET) $(top_srcdir)/doc/en/index.docbook
 	@if test -n "$(MEINPROC)"; then echo $(MEINPROC) --check --cache $(top_builddir)/doc/en/index.cache.bz2 $(top_srcdir)/doc/en/index.docbook; $(MEINPROC) --check --cache $(top_builddir)/doc/en/index.cache.bz2 $(top_srcdir)/doc/en/index.docbook; fi
 
 all: $(top_builddir)/doc/en/Makefile
@@ -95,12 +65,12 @@ final:
 	@echo no programs available to recreate as final. Call in subdirs
 
 install-docs-top_doc_en: $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/common $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.cache.bz2
-install-nls-top_doc_en: $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/introduction.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/installation.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/using-kcheckgmail.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/compilation-and-installation.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/requirements.html $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.docbook
+install-nls-top_doc_en: $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/index.docbook
 uninstall-docs-top_doc_en: 
 	-rm -rf $(kde_htmldir)/en/kcheckgmail
 
 uninstall-nls-top_doc_en: 
-	for base in introduction.html installation.html index.html using-kcheckgmail.html compilation-and-installation.html requirements.html index.docbook; do \
+	for base in index.docbook; do \
 	  rm -f $(DESTDIR)$(kde_htmldir)/en/kcheckgmail/$$base ;\
 	done
 
