@@ -1,25 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg3418"
    sodipodi:version="0.32"
-   inkscape:version="0.39"
+   inkscape:version="0.45.1"
    width="200.00000mm"
    height="200.00000mm"
-   sodipodi:docbase="/home/matt"
-   sodipodi:docname="google.svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:cc="http://web.resource.org/cc/"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:xml="http://www.w3.org/XML/1998/namespace"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:xlink="http://www.w3.org/1999/xlink">
+   sodipodi:docbase="/home/raphael/Dev/C++/kcheckgmail/cvs/icons/svg"
+   sodipodi:docname="kcheckgmail.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
-     id="defs3420" />
+     id="defs3420">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4305">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop4307" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop4309" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4305"
+       id="linearGradient4311"
+       x1="3.24725"
+       y1="203.50707"
+       x2="16.05125"
+       y2="203.50707"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -27,54 +48,108 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.00000000"
-     inkscape:cx="345.71171"
-     inkscape:cy="286.66962"
-     inkscape:window-width="1016"
-     inkscape:window-height="718"
+     inkscape:zoom="0.65975396"
+     inkscape:cx="384.42515"
+     inkscape:cy="358.74511"
+     inkscape:window-width="1018"
+     inkscape:window-height="741"
      showgrid="true"
      inkscape:grid-bbox="false"
      inkscape:grid-points="false"
      inkscape:window-x="0"
-     inkscape:window-y="0" />
+     inkscape:window-y="0"
+     inkscape:current-layer="svg3418" />
   <metadata
      id="metadata3421">
-    <rdf:RDF
-       id="RDF3422">
+    <rdf:RDF>
       <cc:Work
-         rdf:about=""
-         id="Work3423">
-        <dc:format
-           id="format3424">image/svg+xml</dc:format>
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
         <dc:type
-           id="type3426"
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <path
-     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#52ba39;stroke-width:42.507267;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
-     d="M 40.051267,21.700312 L 708.94809,21.700312"
-     id="path4677" />
+     sodipodi:nodetypes="cc"
+     id="path27614"
+     d="M 423.72339,403.85761 C 491.50773,528.04378 491.04823,527.59654 491.00125,527.4634"
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#e48787;stroke-width:12.03263664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
   <path
-     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#52ba39;stroke-width:42.518208;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
-     d="M -1.1166731,687.80431 L 668.12455,687.80431"
-     id="path4691" />
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#e48787;stroke-width:14;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 262.78876,380.7699 C 85.874907,517.84494 87.074183,517.35129 87.196788,517.20435"
+     id="path7225"
+     sodipodi:nodetypes="cc" />
   <path
-     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#2059ee;stroke-width:42.413540;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
-     d="M 20.463898,1.4782707 L 20.463898,667.42863"
-     id="path4692" />
+     sodipodi:type="arc"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:32.11992645;stroke-linejoin:miter;marker-start:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path2170"
+     sodipodi:cx="428.94778"
+     sodipodi:cy="114.50055"
+     sodipodi:rx="57.597229"
+     sodipodi:ry="51.534363"
+     d="M 486.54501 114.50055 A 57.597229 51.534363 0 1 1  371.35056,114.50055 A 57.597229 51.534363 0 1 1  486.54501 114.50055 z"
+     transform="matrix(2.6345218,0,0,2.2827009,-760.99534,-98.367026)" />
   <path
-     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#d51008;stroke-width:42.428642;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000;"
-     d="M 689.21545,43.278599 L 689.21545,709.70316"
-     id="path4693" />
-  <text
+     transform="matrix(1.7631535,0,0,1.3088186,-231.10501,-50.517065)"
+     d="M 486.54501 114.50055 A 57.597229 51.534363 0 1 1  371.35056,114.50055 A 57.597229 51.534363 0 1 1  486.54501 114.50055 z"
+     sodipodi:ry="51.534363"
+     sodipodi:rx="57.597229"
+     sodipodi:cy="114.50055"
+     sodipodi:cx="428.94778"
+     id="path3143"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:32.11992645;stroke-linejoin:miter;marker-start:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:type="arc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#e48787;stroke-width:20.52;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 228.736,10.047318 C 456.51055,9.1143303 656.52628,23.43985 656.52628,23.43985"
+     id="path3231" />
+  <path
+     transform="matrix(2.6003117,0,0,3.141525,-813.01253,129.93407)"
+     d="M 486.54501 114.50055 A 57.597229 51.534363 0 1 1  371.35056,114.50055 A 57.597229 51.534363 0 1 1  486.54501 114.50055 z"
+     sodipodi:ry="51.534363"
+     sodipodi:rx="57.597229"
+     sodipodi:cy="114.50055"
+     sodipodi:cx="428.94778"
+     id="path3145"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:32.11992645;stroke-linejoin:miter;marker-start:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:type="arc" />
+  <path
+     sodipodi:type="arc"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:32.11992645;stroke-linejoin:miter;marker-start:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path3147"
+     sodipodi:cx="428.94778"
+     sodipodi:cy="114.50055"
+     sodipodi:rx="57.597229"
+     sodipodi:ry="51.534363"
+     d="M 486.54501 114.50055 A 57.597229 51.534363 0 1 1  371.35056,114.50055 A 57.597229 51.534363 0 1 1  486.54501 114.50055 z"
+     transform="matrix(1.7705459,0,0,1.2582572,-590.46937,472.13158)" />
+  <path
+     transform="matrix(1.7800083,0,0,1.1953034,-395.96937,484.64484)"
+     d="M 486.54501 114.50055 A 57.597229 51.534363 0 1 1  371.35056,114.50055 A 57.597229 51.534363 0 1 1  486.54501 114.50055 z"
+     sodipodi:ry="51.534363"
+     sodipodi:rx="57.597229"
+     sodipodi:cy="114.50055"
+     sodipodi:cx="428.94778"
+     id="path3149"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:32.11992645;stroke-linejoin:miter;marker-start:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:type="arc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#e48787;stroke-width:20.51304054;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 65.203251,699.66159 L 475.90756,697.95698"
+     id="path4124" />
+  <flowRoot
      xml:space="preserve"
-     style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#3161bd;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;"
-     x="0.77545404"
-     y="10.535378"
-     id="text4694"
-     transform="scale(63.88280,57.89988)"><tspan
-       id="tspan4695"
-       style="fill:#3161bd;fill-opacity:1.0000000;">G</tspan></text>
-</svg>
+     id="flowRoot2247"
+     transform="matrix(50.932579,0,0,62.429728,-135.9821,-12349.506)"
+     style="font-size:12px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#df3f3f;fill-opacity:1;stroke:#df3f3f;stroke-opacity:1;font-family:Annifont;stroke-width:1.00000193;stroke-miterlimit:4;stroke-dasharray:none"><flowRegion
+       id="flowRegion2249"
+       style="fill:url(#linearGradient4311);fill-opacity:1"><rect
+         id="rect2251"
+         width="706.32391"
+         height="504.73361"
+         x="3.0314331"
+         y="197.86496"
+         style="font-size:12px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#df3f3f;fill-opacity:1;stroke:#df3f3f;stroke-opacity:1;font-family:Annifont;stroke-width:1.00000193;stroke-miterlimit:4;stroke-dasharray:none" /></flowRegion><flowPara
+       id="flowPara2253"
+       style="fill:#df3f3f;fill-opacity:1;stroke:#df3f3f;stroke-opacity:1;stroke-width:1.00000193;stroke-miterlimit:4;stroke-dasharray:none">M</flowPara></flowRoot></svg>
