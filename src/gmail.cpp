@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 // define this symbol if you want to write the fetched data to disc
-#define DUMP_PAGES
+#undef DUMP_PAGES
 #define DUMP_DIR "/tmp/"
 
 #include "gmail.h"

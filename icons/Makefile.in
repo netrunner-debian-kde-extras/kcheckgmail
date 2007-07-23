@@ -59,7 +59,6 @@ $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png: $(top_srcdir)/ic
 	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png
 
 top_icons_kcheckgmailicondir = $(kde_datadir)/kcheckgmail/icons
-
 $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png: $(top_srcdir)/icons/cr128-app-kcheckgmail.png
 	@test -d $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps || $(mkinstalldirs) $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps
 	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmail.png $(DESTDIR)$(top_icons_kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png
