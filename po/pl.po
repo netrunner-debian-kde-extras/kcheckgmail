@@ -283,7 +283,6 @@ msgid "Welcome"
 msgstr "Witamy"
 
 #: kcheckgmailtray.cpp:208
-#, fuzzy
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
 "KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
@@ -450,7 +449,6 @@ msgid "Everybody who helped testing and translating KCheckGMail"
 msgstr "Wszyscy, którzy pomagali testować i tłumaczyć KCheckGmail"
 
 #: main.cpp:70
-#, fuzzy
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
