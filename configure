@@ -5255,7 +5255,7 @@ fi
         case $host in
           *-*-linux-gnu)
             CFLAGS="-std=iso9899:1990 -W -Wall -Wchar-subscripts -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_BSD_SOURCE $CFLAGS"
-            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wconversion -Wchar-subscripts $CXXFLAGS"
+            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wchar-subscripts $CXXFLAGS"
 
 { echo "$as_me:$LINENO: checking whether $CXX supports -Wmissing-format-attribute" >&5
 echo $ECHO_N "checking whether $CXX supports -Wmissing-format-attribute... $ECHO_C" >&6; }
@@ -28758,7 +28758,7 @@ if test -z "$kde_x_includes" || test "x$kde_x_includes" = xNONE; then
   X_INCLUDES="-I$x_includes"
 fi
 
-if test -z "$kde_x_libraries" || test "x$kde_x_libraries" = xNONE; then
+if test -z "$kde_x_libraries" || test "x$kde_x_libraries" = xNONE || test "$kde_x_libraries" = "/usr/lib"; then
   X_LDFLAGS=""
   x_libraries="/usr/lib";  else
   x_libraries=$kde_x_libraries

@@ -983,7 +983,7 @@ if test -z "$kde_x_includes" || test "x$kde_x_includes" = xNONE; then
   X_INCLUDES="-I$x_includes"
 fi
 
-if test -z "$kde_x_libraries" || test "x$kde_x_libraries" = xNONE; then
+if test -z "$kde_x_libraries" || test "x$kde_x_libraries" = xNONE || test "$kde_x_libraries" = "/usr/lib"; then
   X_LDFLAGS=""
   x_libraries="/usr/lib"; dnl better than nothing :-
  else
@@ -3186,7 +3186,7 @@ AC_DEFUN([AC_CHECK_COMPILERS],
         case $host in
           *-*-linux-gnu)	
             CFLAGS="-std=iso9899:1990 -W -Wall -Wchar-subscripts -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_BSD_SOURCE $CFLAGS"
-            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wconversion -Wchar-subscripts $CXXFLAGS"
+            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wchar-subscripts $CXXFLAGS"
             KDE_CHECK_COMPILER_FLAG(Wmissing-format-attribute, [CXXFLAGS="$CXXFLAGS -Wformat-security -Wmissing-format-attribute"])
             KDE_CHECK_C_COMPILER_FLAG(Wmissing-format-attribute, [CFLAGS="$CFLAGS -Wformat-security -Wmissing-format-attribute"])
           ;;
@@ -5203,9 +5203,10 @@ else
       for dir in $javadirs; do
           dnl Check for the java executable
 	  if test -x "$dir/java"; then
+	      sane_path=$(cd $dir; /bin/pwd)
 	      dnl And also check for a libjvm.so somewhere under there
 	      dnl Since we have to go to the parent dir, /usr/bin is excluded, /usr is too big.
-              if test "$dir" != "/usr/bin"; then
+              if test "$sane_path" != "/usr/bin"; then
                   libjvmdir=`find $dir/.. -name libjvm.so | sed 's,libjvm.so,,'|head -n 1`
 		  if test ! -f $libjvmdir/libjvm.so; then continue; fi
 		  jredirs="$jredirs $dir"
