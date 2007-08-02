@@ -25,7 +25,7 @@
 <date>2007-07-18</date>
 <releaseinfo>0.5.7</releaseinfo>
 <abstract>
-<para>&kcheckgmail; is a simple KDE systray application that notifies when new email is received in a GMail account.</para>
+<para>&kcheckgmail; is a simple KDE systray application that notifies when new email is received in a Gmail account.</para>
 </abstract>
 <keywordset>
 <keyword>KDE</keyword>
@@ -122,7 +122,7 @@ QString getGaiaName()
       <listitem><para>getThreadSender: Returns the sender of a message with the given msgId.</para></listitem>
       <listitem><para>getThreadSnippet: Returns the snippet of a message with the given msgId.</para></listitem>
       <listitem><para>getThreadAttachments: Returns a QStringList containing the attachment names of a message with the given msgId.</para></listitem>
-      <listitem><para>isNewThread: Returns whether the a message with the given msgId is unread or not.</para></listitem>
+      <listitem><para>isNewThread: Returns whether the message with the given msgId is unread or not.</para></listitem>
       <listitem><para>getLabels: Returns a map with the keys being the label names and the values the number of unread messages.</para></listitem>
       <listitem><para>getGaiaName: Returns the Gaia Name (name of the owner of the account).</para></listitem>
       </itemizedlist>
