@@ -122,7 +122,7 @@ void GMailParser::parse(const QString &_data)
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
 	unsigned int oldNewCount, NewCount = 0;
-	static QString oldLatestThread;
+	static QString oldLatestThread = "0";
 
 	rx.setMinimal(true);
 
@@ -302,8 +302,8 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->unknown3 = rx.cap(14).toUInt();
 		t->isNull = false;
 
-		if(t->isNew && (!oldMap || 
-				 (oldMap->find(t->msgId) == oldMap->end() && (t->msgId > oldLatestThread || t->replyId > oldLatestThread)))) {
+		if(t->isNew && (t->msgId > oldLatestThread || t->replyId > oldLatestThread) && (!oldMap || 
+				 (oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
 		} else
@@ -336,8 +336,8 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->unknown3 = rx2.cap(14).toUInt();
 		t->isNull = false;
 
-		if(t->isNew && (!oldMap || 
-				 (oldMap->find(t->msgId) == oldMap->end() && (t->msgId > oldLatestThread || t->replyId > oldLatestThread)))) {
+		if(t->isNew && (t->msgId > oldLatestThread || t->replyId > oldLatestThread) && (!oldMap || 
+				 (oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
 		} else
