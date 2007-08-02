@@ -602,7 +602,6 @@ void GMail::logOut(bool force)
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
 	kdDebug() << "Loging out! " << logoutUrl << endl;
-	sleep(1);
 }
 
 void GMail::logOut()
