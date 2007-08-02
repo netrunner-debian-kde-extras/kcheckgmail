@@ -122,6 +122,7 @@ void GMailParser::parse(const QString &_data)
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
 	unsigned int oldNewCount, NewCount = 0;
+	static QString oldLatestThread;
 
 	rx.setMinimal(true);
 
@@ -134,6 +135,17 @@ void GMailParser::parse(const QString &_data)
 	oldNewCount = getNewCount();
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
+	
+	if(oldMap) {
+		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
+		if (oldMap->begin().key() > oldLatestThread) {
+			oldLatestThread = oldMap->begin().key();
+		}
+	} else {
+		kdDebug() << k_funcinfo << "no oldmap" << endl;
+	}
+	
+	kdDebug() << k_funcinfo << "oldLatestThread=" << oldLatestThread << endl;
 
 	QString data = QString::fromUtf8(_data);
 
@@ -150,7 +162,7 @@ void GMailParser::parse(const QString &_data)
 			str.remove(tokPos, tokLen);
 			
 			if(tok == D_THREAD) {
-				NewCount += parseThread(str, oldMap);
+				NewCount += parseThread(str, oldMap, oldLatestThread);
 			} else if(tok == D_VERSION) {
 				parseVersion(str);
 			} else if(tok == D_QUOTA) {
@@ -204,7 +216,7 @@ void GMailParser::parse(const QString &_data)
  * @param oldMap The old messages map, used to detect whether a message was already reported as new or not
  * @return The number of unread messages that were found in _data
 */
-uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap)
+uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap, const QString &oldLatestThread)
 {
 	//Matches messages when snippets are on
 	static QRegExp rx(
@@ -270,15 +282,6 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	*/
 
 	unsigned int newMsgCount = 0;
-	QString oldLatestThread;
-	
-	if(oldMap) {
-		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
-		oldLatestThread = oldMap->begin().key();
-	} else {
-		kdDebug() << k_funcinfo << "no oldmap" << endl;
-	}
-	kdDebug() << k_funcinfo << "oldLatestThread=" << oldLatestThread << endl;
 
 	while((pos = rx.search(data, pos)) != -1) {
 		Thread *t = new Thread;
@@ -399,7 +402,7 @@ void GMailParser::parseVersion(const QString &_data)
 		iter++;
 		i++;
 	}
-	kdDebug() << "GMail version " << mVersion.version << endl;
+	kdDebug() << "Gmail version " << mVersion.version << endl;
 	
 	bool ok = false;
 	
@@ -410,13 +413,13 @@ void GMailParser::parseVersion(const QString &_data)
 	
 #ifdef DETECT_GLANGUAGE
 	if(gGMailLanguageCode.contains(mVersion.language))
-		kdDebug() << "GMail language: " << gGMailLanguageCode[mVersion.language] << endl;
+		kdDebug() << "Gmail language: " << gGMailLanguageCode[mVersion.language] << endl;
 	else
 		kdWarning() << k_funcinfo << "Unknown language code: " << mVersion.language << endl;
 #endif
 	
 	if(!ok) {
-		kdWarning() << k_funcinfo << "GMail version " << mVersion.version << " is not supported, check for updates!" << endl;
+		kdWarning() << k_funcinfo << "Gmail version " << mVersion.version << " is not supported, check for updates!" << endl;
 		emit versionMismatch();
 	}
 }

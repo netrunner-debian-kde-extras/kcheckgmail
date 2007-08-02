@@ -138,7 +138,7 @@ protected:
 	void parseQuota(const QString&);
 	void parseDefaultSummary(const QString&);
 	void parseLabel(const QString&);
-	uint parseThread(const QString&, const QMap<QString,bool>*);
+	uint parseThread(const QString&, const QMap<QString,bool>*, const QString&);
 	void parseVersion(const QString&);
 	void parseInvite(const QString&);
 	void parseGName(const QString&);
