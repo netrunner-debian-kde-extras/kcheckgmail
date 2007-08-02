@@ -177,6 +177,12 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	kapp->dcopClient()->setDefaultObject(objId());
 }
 
+
+KCheckGmailTray::~KCheckGmailTray()
+{
+    QToolTip::remove(this);
+}
+
 void KCheckGmailTray::start()
 {
 	static bool started = false;
@@ -813,7 +819,6 @@ void KCheckGmailTray::whereAmI()
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::takeScreenshotOfTrayIcon()
 {
-	static bool taken = false;
 	
         // Process the events else the icon will not be there and the screenie will fail!
 	kapp->processEvents();
@@ -823,7 +828,17 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
         // The part about the border is copied from  KSystemTray::displayCloseMessage()
 	//
         // Compute size and position of the pixmap to be grabbed:
-	QPoint g = this->mapToGlobal( this-> pos() );
+	QPoint g = this-> pos();
+
+        //Catch invalid positions (2007 - Raphael Geissert)
+        if (g.x() < 0) {
+            g.setX(0);
+        }
+        if (g.y() < 0) {
+            g.setY(0);
+        }
+        g = this->mapToGlobal( g );
+
 	int desktopWidth  = kapp->desktop()->width();
 	int desktopHeight = kapp->desktop()->height();
 	int tw = this->width();
@@ -831,13 +846,6 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 	int w = desktopWidth / 4;
 	int h = desktopHeight / 9;
 	
-	// Catch invalid positions (2007 - Raphael Geissert)
-	/*if (this->pos().x() <= 0 || this->pos().y() <= 0 ) {
-		if (!taken) {
-			QMimeSourceFactory::defaultFactory()->setPixmap( "systray_shot", mPixGmail );
-		}
-		return;
-	}*/
 	int x = g.x() + tw/2 - w/2;               // Center the rectange in the systray icon
 	int y = g.y() + th/2 - h/2;
 	if ( x < 0 )                 x = 0;       // Move the rectangle to stay in the desktop limits
@@ -865,8 +873,6 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 
         // Associate source to image and show the dialog:
 	QMimeSourceFactory::defaultFactory()->setPixmap( "systray_shot", finalShot );
-	
-	taken = true;
 
         // End copied block
         // ********************************************************************************
@@ -892,16 +898,7 @@ void KCheckGmailTray::setPixmapAuth()
 {
 	setPixmap(mIconEffect.apply(mPixGmail, 
 		  KIconEffect::Colorize,
-		  0.70,
-		  Qt::red,
-		  false));
-}
-
-void KCheckGmailTray::setPixmapSnooze()
-{
-	setPixmap(mIconEffect.apply(mPixCount, 
-		  KIconEffect::Colorize,
-		  0.75,
+		  0.60,
 		  Qt::lightGray,
 		  false));
 }
