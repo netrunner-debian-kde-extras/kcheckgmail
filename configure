@@ -2578,7 +2578,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=kcheckgmail
- VERSION=0.5.7
+ VERSION=0.5.7.1
 
 
 cat >>confdefs.h <<_ACEOF

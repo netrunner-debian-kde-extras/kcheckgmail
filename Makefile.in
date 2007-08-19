@@ -878,7 +878,7 @@ dist-hook:
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=cvs2cl.pl stamp-h.in kcheckgmail.kdevelop.pcs subdirs Makefile.in configure.files config.h.in kcheckgmail.1 kcheckgmail.kdevses configure.in Makefile.cvs aclocal.m4 Doxyfile kcheckgmail.kdevelop Makefile.am configure acinclude.m4 
+KDE_DIST=cvs2cl.pl stamp-h.in kcheckgmail.kdevelop.pcs subdirs Makefile.in configure.files kcheckgmail.1 config.h.in kcheckgmail.kdevses configure.in Makefile.cvs aclocal.m4 Doxyfile kcheckgmail.kdevelop acinclude.m4 Makefile.am configure 
 
 #>+ 2
 docs-am:

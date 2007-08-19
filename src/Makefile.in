@@ -64,7 +64,7 @@ am_kcheckgmail_OBJECTS = gmail.$(OBJEXT) gmailparser.$(OBJEXT) \
 kcheckgmail_OBJECTS = gmail.$(OBJEXT) gmailparser.$(OBJEXT) \
 	gmailwalletmanager.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
 	kcheckgmailtray.$(OBJEXT) main.$(OBJEXT) kcheckgmailiface_skel.$(OBJEXT) advancedsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) netsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
-gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailtray.moc.o kcheckgmailapp.moc.o 
+gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailapp.moc.o kcheckgmailtray.moc.o 
 am__DEPENDENCIES_1 =
 kcheckgmail_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -746,18 +746,18 @@ gmailwalletmanager.moc.cpp: $(srcdir)/gmailwalletmanager.h
 mocs: gmailwalletmanager.moc.cpp
 
 #>+ 3
-kcheckgmailtray.moc.cpp: $(srcdir)/kcheckgmailtray.h
-	$(MOC) $(srcdir)/kcheckgmailtray.h -o kcheckgmailtray.moc.cpp
-
-#>+ 2
-mocs: kcheckgmailtray.moc.cpp
-
-#>+ 3
 kcheckgmailapp.moc.cpp: $(srcdir)/kcheckgmailapp.h
 	$(MOC) $(srcdir)/kcheckgmailapp.h -o kcheckgmailapp.moc.cpp
 
 #>+ 2
 mocs: kcheckgmailapp.moc.cpp
+
+#>+ 3
+kcheckgmailtray.moc.cpp: $(srcdir)/kcheckgmailtray.h
+	$(MOC) $(srcdir)/kcheckgmailtray.h -o kcheckgmailtray.moc.cpp
+
+#>+ 2
+mocs: kcheckgmailtray.moc.cpp
 
 #>+ 3
 gmail.moc: $(srcdir)/gmail.h
@@ -768,10 +768,10 @@ mocs: gmail.moc
 
 #>+ 3
 clean-metasources:
-	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc
+	-rm -f  gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailapp.moc.cpp kcheckgmailtray.moc.cpp gmail.moc
 
 #>+ 2
-KDE_DIST=Makefile.in kcheckgmail.lsm appletsettingswidget.ui prefs.kcfgc advancedsettingswidget.ui eventsrc prefs.kcfg netsettingswidget.ui kcheckgmail.desktop Makefile.am loginsettingswidget.ui 
+KDE_DIST=prefs.kcfgc eventsrc prefs.kcfg kcheckgmail.desktop loginsettingswidget.ui Makefile.in kcheckgmail.lsm advancedsettingswidget.ui appletsettingswidget.ui netsettingswidget.ui Makefile.am 
 
 #>+ 4
 clean-idl:

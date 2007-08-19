@@ -490,50 +490,50 @@ uninstall-am: uninstall-kde-icons  uninstall-info-am
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=cr128-app-kcheckgmail.png Makefile.in cr16-app-kcheckgmail.png cr32-app-kcheckgmail.png cr22-app-kcheckgmail.png cr48-app-kcheckgmail.png cr64-app-kcheckgmail.png Makefile.am 
+KDE_DIST=cr128-app-kcheckgmail.png Makefile.in cr32-app-kcheckgmail.png cr22-app-kcheckgmail.png cr16-app-kcheckgmail.png cr48-app-kcheckgmail.png cr64-app-kcheckgmail.png Makefile.am 
 
 #>+ 2
 docs-am:
 
 #>+ 40
 install-kde-icons:
+	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps
+	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/64x64/apps
 	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/22x22/apps
 	$(INSTALL_DATA) $(srcdir)/cr22-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png
-	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps
-	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/128x128/apps
 	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png
-	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps
-	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
+	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps
+	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/48x48/apps
 	$(INSTALL_DATA) $(srcdir)/cr48-app-kcheckgmail.png $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png
+	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps
+	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps
 	$(INSTALL_DATA) $(srcdir)/cr64-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/22x22/apps
 	$(INSTALL_DATA) $(srcdir)/cr22-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/22x22/apps/kcheckgmail.png
-	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps
-	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/128x128/apps
 	$(INSTALL_DATA) $(srcdir)/cr128-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/128x128/apps/kcheckgmail.png
-	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps
-	$(INSTALL_DATA) $(srcdir)/cr16-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/kcheckgmail.png
+	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps
+	$(INSTALL_DATA) $(srcdir)/cr32-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	$(mkinstalldirs) $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps
 	$(INSTALL_DATA) $(srcdir)/cr48-app-kcheckgmail.png $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/kcheckgmail.png
 
 uninstall-kde-icons:
+	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/64x64/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/22x22/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/128x128/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/16x16/apps/kcheckgmail.png
+	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kcheckgmailicondir)/crystalsvg/48x48/apps/kcheckgmail.png
+	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/64x64/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/22x22/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/128x128/apps/kcheckgmail.png
-	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/16x16/apps/kcheckgmail.png
+	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/32x32/apps/kcheckgmail.png
 	-rm -f $(DESTDIR)$(kde_icondir)/crystalsvg/48x48/apps/kcheckgmail.png
 
 #>+ 15

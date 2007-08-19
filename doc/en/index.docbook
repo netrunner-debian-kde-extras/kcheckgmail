@@ -22,8 +22,8 @@
 <affiliation><address><email>atomo64@gmail.com</email></address></affiliation>
 </author>
 </authorgroup>
-<date>2007-07-18</date>
-<releaseinfo>0.5.7</releaseinfo>
+<date>2007-08-19</date>
+<releaseinfo>0.5.7.1</releaseinfo>
 <abstract>
 <para>&kcheckgmail; is a simple KDE systray application that notifies when new email is received in a Gmail account.</para>
 </abstract>
@@ -62,7 +62,7 @@
 
     <sect1 id="requirements">
       <title>Requirements</title>
-      <para>&kcheckgmail; 0.5.7 has only been tested with KDE 3.5.x but it might also work with older versions.</para>
+      <para>&kcheckgmail; 0.5.7.1 has only been tested with KDE 3.5.x but it might also work with older versions.</para>
     </sect1>
 
     <sect1 id="compilation-and-installation">
