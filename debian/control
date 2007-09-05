@@ -2,12 +2,16 @@ Source: kcheckgmail
 Section: kde
 Priority: optional
 Maintainer: Jose Luis Tallon <jltallon@adv-solutions.net>
+Uploaders: Jose Luis Tallon <jltallon@adv-solutions.net>, Raphael Geissert <atomo64@gmail.com>
 Build-Depends: debhelper (>= 4.1.0), autotools-dev, kdelibs4-dev, libqt3-mt-dev, autoconf
 Standards-Version: 3.7.2
+Homepage: http://kcheckgmail.sourceforge.net/
 
 Package: kcheckgmail
 Architecture: any
-Depends: kdebase-bin (>= 3.2), ${shlibs:Depends}, ${misc:Depends}
-Description: KDE systray application to check GMail accounts
- KCheckGMail is a KDE systray application which checks GMail accounts for
- new mail. It includes KWallet support.
+Depends: kdebase-bin (>= 3.2), ${shlibs:Depends}
+Description: A Gmail notifier for KDE
+ KCheckGMail is a KDE systray application which checks Gmail accounts for
+ new mail.
+ .
+ It includes KWallet support within some other features.

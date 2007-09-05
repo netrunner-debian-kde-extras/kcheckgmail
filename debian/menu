@@ -1,2 +1,2 @@
-?package(kcheckgmail):needs="X11" section="Apps/Net"\
+?package(kcheckgmail):needs="X11" section="Applications/Network/Communication"\
   title="kcheckgmail" command="/usr/bin/kcheckgmail"

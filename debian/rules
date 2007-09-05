@@ -1,10 +1,4 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# This file was originally written by Joey Hess and Craig Small.
-# As a special exception, when this file is copied by dh-make into a
-# dh-make output file, you may use that output file without restriction.
-# This special exception was added by Craig Small in version 0.37 of dh-make.
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
@@ -18,19 +12,18 @@ DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 #GCC4_ICES_HERE := arm m68k hppa
 DEB_HOST_ARCH_CPU ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
 
-#ifneq (,$(filter $(DEB_HOST_ARCH_CPU),$(GCC4_ICES_HERE)))
-#	export CC=gcc-3.4
-#	export CPP=cpp-3.4
-#	export CXX=g++-3.4
-#endif
-
-
 CFLAGS = -Wall -g
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -O0
 else
 	CFLAGS += -O2
+endif
+
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+        CONFIGFLAGS += --enable-debug=full
+else
+        CONFIGFLAGS += --disable-debug
 endif
 
 config.status: configure
@@ -44,7 +37,7 @@ config.status: configure
 	--mandir=\$${prefix}/share/man \
 	--infodir=\$${prefix}/share/info \
 	kde_htmldir=/usr/share/doc/kde/HTML \
-	--disable-debug
+	$(CONFIGFLAGS)
 
 
 build: build-stamp
@@ -54,7 +47,6 @@ build-stamp:  config.status
 
 	# Add here commands to compile the package.
 	$(MAKE)
-	#docbook-to-man debian/kcheckgmail.sgml > kcheckgmail.1
 
 	touch build-stamp
 
@@ -63,7 +55,7 @@ clean:
 	dh_testroot
 
 	# Add here commands to clean up after the build process.
-	-$(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) distclean
 	$(RM) po/*.gmo
 	$(RM) config.log config.status config.sub config.guess
 	$(RM) build-stamp
@@ -89,15 +81,11 @@ binary-arch: build install
 	dh_testroot
 	dh_installchangelogs ChangeLog
 	dh_installdocs
-#	dh_installexamples
-#	dh_install
 	dh_installmenu
-#	dh_installdebconf	
-#	dh_installinfo
-	dh_installman
+	dh_desktop
 	dh_link
 	dh_strip
-	dh_compress
+	dh_compress -X.docbook
 	dh_fixperms
 	dh_installdeb
 	dh_shlibdeps

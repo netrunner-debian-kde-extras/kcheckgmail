@@ -1,3 +1,26 @@
+kcheckgmail (0.5.7.2-1) unstable; urgency=low
+
+  * New upstream release
+    - Removes Encoding entry from the .desktop file
+    - Fixes hypens issue with man page
+    - Other minor fixes
+
+ -- Raphael Geissert <atomo64@gmail.com>  Sat, 29 Sep 2007 21:01:39 -0500
+
+kcheckgmail (0.5.7.1-1) unstable; urgency=low
+
+  * New upstream version
+    - Several enhacements and bug fixes
+    - Man page is now provided by upstream, dropping debian/additions/kcheckgmail.1
+  * Changed the menu entry from Apps/Net to Applications/Network/Communication to accomplish with the new Debian menu subpolicy
+  * Prevent dh_compress from compressing the docbook
+  * Replaced -$(MAKE) distclean with [ ! -f Makefile ] || $(MAKE) distclean
+  * Adding myself as co-maintainer
+  * debian/rules is now DEB_BUILD_OPTIONS=debug aware
+  * Fixed debian/watch so it correctly reports new upstream versions
+
+ -- Raphael Geissert <atomo64@gmail.com>  Wed, 05 Sep 2007 16:24:00 -0500
+
 kcheckgmail (0.5.6-1) unstable; urgency=low
 
   * New upstream version (Closes: #415234)

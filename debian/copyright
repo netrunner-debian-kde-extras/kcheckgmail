@@ -1,11 +1,15 @@
 This package was debianized by Jose Luis Tallon <jltallon@adv-solutions.net> on
 Sun, 10 Oct 2004 03:34:34 +0200.
 
-It was downloaded from http://sourceforge.net/projects/kcheckgmail
+It was downloaded from http://kcheckgmail.sourceforge.net/download.html
 
-Copyright: (c) 2004 Matthew Wlazlo <mwlazlo@gmail.com>
+Copyright:
+	(c) 2004-2006 Matthew Wlazlo <mwlazlo@gmail.com>
+	(c) 2007 Raphael Geissert <atomo64@gmail.com>
 
-Upstream Author: Matthew Wlzalo <mwlazlo@gmail.com>
+Upstream Authors:
+	Matthew Wlzalo <mwlazlo@gmail.com>
+	Raphael Geissert <atomo64@gmail.com>
 
 License:
 
