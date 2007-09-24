@@ -346,9 +346,8 @@ void KCheckGmailTray::slotThreadsItemHighlighted(int n)
 	}
 	
 	if (attachmentsCount > 0) {
-		// NOTE: %1 is the mail snippet and %2 is the attachments list
-		message = i18n("%1\nAttachment: %2", "%1\nAttachments: %2", attachmentsCount)
-				.arg(message, attachments.join(", "));
+		message.append(i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
+				.arg(attachments.join(", ")));
 	}
 	
 	KNotifyClient::event(mThreadsMenu->winId(), "gmail-mail-snippet", message);
