@@ -321,35 +321,36 @@ void KCheckGmailTray::composeMail()
 
 void KCheckGmailTray::slotThreadsItemHighlighted(int n)
 {
-	// NOTE: the mime-type/icon code isn't enabled because KNotify won't display the icon
 	GMailParser::Thread t = mParser->getThread(n);
 	
 	if (t.subject.isEmpty()) {
 		return;
 	}
 
-	QStringList::Iterator it = t.attachments.begin();
+	QStringList::ConstIterator it = t.attachments.begin();
 	QStringList attachments;
-	QString message = t.snippet,/* iconURL, format, */fileName;
+	QString message = t.snippet, iconType, iconFileName, format, fileName;
 	unsigned int attachmentsCount = 0;
-	
-	/*format = i 1 8 n("format used to display the attachments (%1 is the icon, %2 is the file name)",
-		      "<img src=\"%1\"> %2");*/
-		
+	KMimeType::Ptr mimetype;
+
+	format = i18n("format used to display the attachments (%1 is the icon, %2 is the file name)", "<img src=\"%1\"> %2");
+
 	for (; it != t.attachments.end(); ++it ) {
 		attachmentsCount++;
-		fileName = *it;
-		/*iconURL = KMimeType::iconForURL(KURL(fileName));
-		kdDebug() << "Attachment name: " << fileName << ", iconURL: " << iconURL << endl;
-		attachments.append(format.arg(iconURL, fileName));*/
-		attachments.append(fileName);
+		fileName = *it; // attachment filename
+
+		mimetype = KMimeType::findByPath(fileName, 0, true); // no disk access
+		iconType = mimetype->icon(QString::null, false);
+		iconFileName = KGlobal::instance()->iconLoader()->iconPath(iconType, KIcon::Small);
+		kdDebug() << "Attachment name: " << fileName << ", iconType: " << iconType << endl;
+		attachments.append(format.arg(iconFileName, fileName));
 	}
-	
+
 	if (attachmentsCount > 0) {
-		message.append(i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
+		message.append("\n" + i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
 				.arg(attachments.join(", ")));
 	}
-	
+
 	KNotifyClient::event(mThreadsMenu->winId(), "gmail-mail-snippet", message);
 }
 
