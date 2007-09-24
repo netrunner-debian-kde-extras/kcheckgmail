@@ -304,7 +304,7 @@ void GMail::postLogin(QString url)
 	// this is expected to be locked.
 	if(mLoginLock->locked()) {
 		
-		QRegExp rx("^(http[s]?://)(.*)$");
+		static QRegExp rx("^(http[s]?://)(.*)$");
 		int found;
 		
 		if(!rx.isValid()) {
