@@ -48,8 +48,6 @@ GMailParser::GMailParser() :
 	mSummary.spam = 0;
 // 	mSummary.trash = 0;
 	
-	previousLatestThread = "0";
-	
 	//Gmail versions kcheckgmail works with.
 	gGMailVersion.append("1exl39kx7mipo");
 	gGMailVersion.append("1x4nkpwjfkc8x");
@@ -124,6 +122,7 @@ void GMailParser::parse(const QString &_data)
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
 	unsigned int oldNewCount, NewCount = 0;
+	static QString oldLatestThread = "0";
 
 	rx.setMinimal(true);
 
@@ -139,14 +138,14 @@ void GMailParser::parse(const QString &_data)
 	
 	if(oldMap) {
 		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
-		if (oldMap->begin().key() > previousLatestThread) {
-			previousLatestThread = oldMap->begin().key();
+		if (oldMap->begin().key() > oldLatestThread) {
+			oldLatestThread = oldMap->begin().key();
 		}
 	} else {
 		kdDebug() << k_funcinfo << "no oldmap" << endl;
 	}
 	
-	kdDebug() << k_funcinfo << "previousLatestThread=" << previousLatestThread << endl;
+	kdDebug() << k_funcinfo << "oldLatestThread=" << oldLatestThread << endl;
 
 	QString data = QString::fromUtf8(_data);
 
@@ -163,7 +162,7 @@ void GMailParser::parse(const QString &_data)
 			str.remove(tokPos, tokLen);
 			
 			if(tok == D_THREAD) {
-				NewCount += parseThread(str, oldMap);
+				NewCount += parseThread(str, oldMap, oldLatestThread);
 			} else if(tok == D_VERSION) {
 				parseVersion(str);
 			} else if(tok == D_QUOTA) {
@@ -217,7 +216,7 @@ void GMailParser::parse(const QString &_data)
  * @param oldMap The old messages map, used to detect whether a message was already reported as new or not
  * @return The number of unread messages that were found in _data
 */
-uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap)
+uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* oldMap, const QString &oldLatestThread)
 {
 	//Matches messages when snippets are on
 	static QRegExp rx(
@@ -303,7 +302,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->unknown3 = rx.cap(14).toUInt();
 		t->isNull = false;
 
-		if(t->isNew && (t->msgId > previousLatestThread || t->replyId > previousLatestThread) && (!oldMap || 
+		if(t->isNew && (t->msgId > oldLatestThread || t->replyId > oldLatestThread) && (!oldMap || 
 				 (oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
@@ -337,7 +336,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->unknown3 = rx2.cap(14).toUInt();
 		t->isNull = false;
 
-		if(t->isNew && (t->msgId > previousLatestThread || t->replyId > previousLatestThread) && (!oldMap || 
+		if(t->isNew && (t->msgId > oldLatestThread || t->replyId > oldLatestThread) && (!oldMap || 
 				 (oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
@@ -727,8 +726,8 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 */
 unsigned int GMailParser::getNewCount(bool realCount) const
 {
-	static QRegExp rx ("in:([^ ]+)");
-	static QRegExp rx2("label:([^ ]+)");
+	QRegExp rx ("in:([^ ]+)");
+	QRegExp rx2("label:([^ ]+)");
 	QString box;
 	
 	if (realCount) {

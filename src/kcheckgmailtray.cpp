@@ -104,9 +104,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	connect(mParser, SIGNAL(gNameUpdate(QString)), 
 		this, SLOT(slotgNameUpdate(QString)));
-
-	connect(mParser, SIGNAL(noUnreadMail()), 
-		this, SLOT(slotNoUnreadMail()));
 	
 
 	// initialise and hook up the GMail object
@@ -321,36 +318,36 @@ void KCheckGmailTray::composeMail()
 
 void KCheckGmailTray::slotThreadsItemHighlighted(int n)
 {
+	// NOTE: the mime-type/icon code isn't enabled because KNotify won't display the icon
 	GMailParser::Thread t = mParser->getThread(n);
 	
 	if (t.subject.isEmpty()) {
 		return;
 	}
 
-	QStringList::ConstIterator it = t.attachments.begin();
+	QStringList::Iterator it = t.attachments.begin();
 	QStringList attachments;
-	QString message = t.snippet, iconType, iconFileName, format, fileName;
+	QString message = t.snippet,/* iconURL, format, */fileName;
 	unsigned int attachmentsCount = 0;
-	KMimeType::Ptr mimetype;
-
-	format = i18n("format used to display the attachments (%1 is the icon, %2 is the file name)", "<img src=\"%1\"> %2");
-
+	
+	/*format = i 1 8 n("format used to display the attachments (%1 is the icon, %2 is the file name)",
+		      "<img src=\"%1\"> %2");*/
+		
 	for (; it != t.attachments.end(); ++it ) {
 		attachmentsCount++;
-		fileName = *it; // attachment filename
-
-		mimetype = KMimeType::findByPath(fileName, 0, true); // no disk access
-		iconType = mimetype->icon(QString::null, false);
-		iconFileName = KGlobal::instance()->iconLoader()->iconPath(iconType, KIcon::Small);
-		kdDebug() << "Attachment name: " << fileName << ", iconType: " << iconType << endl;
-		attachments.append(format.arg(iconFileName, fileName));
+		fileName = *it;
+		/*iconURL = KMimeType::iconForURL(KURL(fileName));
+		kdDebug() << "Attachment name: " << fileName << ", iconURL: " << iconURL << endl;
+		attachments.append(format.arg(iconURL, fileName));*/
+		attachments.append(fileName);
 	}
-
+	
 	if (attachmentsCount > 0) {
-		message.append("\n" + i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
-				.arg(attachments.join(", ")));
+		// NOTE: %1 is the mail snippet and %2 is the attachments list
+		message = i18n("%1\nAttachment: %2", "%1\nAttachments: %2", attachmentsCount)
+				.arg(message, attachments.join(", "));
 	}
-
+	
 	KNotifyClient::event(mThreadsMenu->winId(), "gmail-mail-snippet", message);
 }
 
