@@ -104,6 +104,9 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	connect(mParser, SIGNAL(gNameUpdate(QString)), 
 		this, SLOT(slotgNameUpdate(QString)));
+
+	connect(mParser, SIGNAL(noUnreadMail()), 
+		this, SLOT(slotNoUnreadMail()));
 	
 
 	// initialise and hook up the GMail object

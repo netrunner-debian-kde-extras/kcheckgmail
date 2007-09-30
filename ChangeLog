@@ -1,3 +1,36 @@
+2007-09-23 20:38  atomo64
+
+	* src/: eventsrc, kcheckgmail.desktop: Partially updated French
+	  translation
+
+2007-09-23 20:12  atomo64
+
+	* src/: gmail.cpp, gmailparser.cpp, gmailparser.h: Made some
+	  QRegExp's static
+
+2007-09-23 20:01  atomo64
+
+	* src/kcheckgmail.desktop: Removed 'Encoding' entry to conform to
+	  the Desktop Entry Specification 1.0
+
+2007-09-23 19:58  atomo64
+
+	* kcheckgmail.1: Fixed some hypens
+
+2007-09-23 19:55  atomo64
+
+	* src/main.cpp: Replaced C stuff with its C++ equivalent (thanks to
+	  Luis Pereira)
+
+2007-09-08 19:18  atomo64
+
+	* src/kcheckgmailtray.cpp: Fixed missing connection between
+	  noUnreadMail signal with the slotNoUnreadMail slot
+
+2007-08-19 01:34  atomo64
+
+	* ChangeLog: Updated changelog
+
 2007-08-19 01:26  atomo64
 
 	* configure, Makefile.in, configure.in, configure.in.in,
