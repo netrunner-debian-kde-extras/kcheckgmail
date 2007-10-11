@@ -227,7 +227,7 @@ void KCheckGmailTray::start()
 		else {
 			//NOTE: kapp->quit(); doesn't quit immediately
 			//There should be no harm on doing this because _nothing_ special has been loaded yet
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 	}
 	
