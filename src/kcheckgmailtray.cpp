@@ -46,6 +46,7 @@
 #include <qtooltip.h>
 #include <kpassdlg.h>
 #include <klineedit.h>
+#include <qbitmap.h>
 
 #include "appletsettingswidget.h"
 #include "kcheckgmailtray.h"
@@ -77,7 +78,11 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	mMailCount(-1)
 {
 	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
-	mPixCount = KSystemTray::loadIcon("kcheckgmail");
+	mLightIconImage = mIconEffect.apply(mPixGmail,
+						KIconEffect::ToGamma,
+						0.90,
+						Qt::red,
+						false);
 
 	mLoginAnim = new QTimer(this, "KCheckGmail::login");
 	connect(mLoginAnim, SIGNAL(timeout()), 
@@ -565,28 +570,7 @@ void KCheckGmailTray::slotCheckDone(const QString &data)
 
 void KCheckGmailTray::slotMailArrived(unsigned int n)
 {
-	if (n == 1 && Prefs::displaySubjectOnSingleMail()) {
-		GMailParser::Thread t;
-		t = mParser->getLastThread();
-		if (!t.isNull) {
-			slotMailArrived(t.subject);
-			return;
-		}
-	}
-	QString str;
-
-	str = i18n("There is <b>1</b> new message",
-		   "There are <b>%n</b> new messages", n);
-
-	KNotifyClient::event(winId(), "new-gmail-arrived", str);
-	slotMailCountChanged();
-}
-
-void KCheckGmailTray::slotMailArrived(QString subject)
-{
-	QString str;
-	
-	str = i18n("New mail arrived: <i>%1</i>").arg(subject);
+	QString str = newEmailNotifyMessage(n, Prefs::displaySenderOnSingleMail(), Prefs::displaySubjectOnSingleMail(), Prefs::displaySnippetOnSingleMail());
 	
 	KNotifyClient::event(winId(), "new-gmail-arrived", str);
 	slotMailCountChanged();
@@ -763,6 +747,9 @@ void KCheckGmailTray::slotVersionMismatch()
 // Tray icon - related functions
 ///////////////////////////////////////////////////////////////////////////
 
+/**
+ * Update the number of unread messages in the tray icon
+ */
 void KCheckGmailTray::updateCountImage()
 {
 	kdDebug() << k_funcinfo << "Count=" << mMailCount << endl;
@@ -789,20 +776,23 @@ void KCheckGmailTray::updateCountImage()
 			countFont.setPointSizeFloat( countFontSize );
 		}
 
-		mPixCount.resize(w, h);
-
-		mPixCount = mIconEffect.apply(mPixGmail, 
-					      KIconEffect::ToGamma,
-					      0.80,
-					      Qt::red,
-					      false);
-
-		QPainter p(&mPixCount);
+		QPixmap numberPixmap(w, h);
+		numberPixmap.fill(Qt::lightGray);
+		QPainter p(&numberPixmap);
 		p.setFont(countFont);
-		p.setPen(Qt::black);
-		p.drawText(mPixCount.rect(), Qt::AlignCenter, countString);
+		p.setPen(Qt::blue);
+		p.drawText(numberPixmap.rect(), Qt::AlignCenter, countString);
+		numberPixmap.setMask(numberPixmap.createHeuristicMask());
+		QImage numberImage = numberPixmap.convertToImage();
 
-		setPixmap(mPixCount);
+		// do the overlay
+		QImage iconWithNumberImage = mLightIconImage.copy();
+		KIconEffect::overlay(iconWithNumberImage, numberImage);
+
+		// convert from QImage to QPixmap
+		QPixmap iconWithNumber;
+		iconWithNumber.convertFromImage(iconWithNumberImage);
+		setPixmap(iconWithNumber);
 	}
 }
 
@@ -926,4 +916,47 @@ void KCheckGmailTray::toggleAnim(bool restoreToState)
 void KCheckGmailTray::slotToggleLoginAnim()
 {
 	toggleAnim(false);
+}
+
+/**
+ * Creates the notifying message displayed when email arrives.
+ *
+ * @param n Number of arrived emails
+ * @param showSender If true shows the email sender
+ * @param showSubject If true shows the email subject
+ * @param showSnippet If true shows the email message snippet
+ * @return The (i18n) string that will be displayed
+ */
+QString KCheckGmailTray::newEmailNotifyMessage(unsigned int n, bool showSender, bool showSubject, bool showSnippet)
+{
+	bool newLine = false;
+
+	if  ( (n == 1) && (showSender || showSubject || showSnippet) ) {
+		GMailParser::Thread t;
+		t = mParser->getLastThread();
+		if (!t.isNull) {
+			QString str;
+			str = i18n("<center><b>New mail arrived</b></center>");
+			if (showSender) {
+				str.append(i18n("<b>Sender:</b> <i>%1</i>").arg(t.senders));
+				newLine = true;
+			}
+			if (showSubject) {
+				if (newLine) {
+					str.append("<br>");
+				}
+				str.append( i18n("<b>Subject:</b> <i>%1</i>").arg(t.subject));
+				newLine = true;
+			}
+			if (showSnippet) {
+				if (newLine) {
+					str.append("<br>");
+				}
+				str.append(t.snippet);
+			}
+			return str;
+		}
+	}
+	return i18n("There is <b>1</b> new mail message",
+		   "There are <b>%n</b> new mail messages", n);
 }

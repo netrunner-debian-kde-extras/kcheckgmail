@@ -71,7 +71,6 @@ protected slots:
 
 	// GMailParser
 	void slotMailArrived(unsigned int n);
-	void slotMailArrived(QString subject);
 	void slotMailCountChanged();
 	void slotVersionMismatch();
 	void slotgNameUpdate(QString name);
@@ -107,8 +106,8 @@ private:
 	
 	void takeScreenshotOfTrayIcon();
 
-	QPixmap		mPixGmail,
-			mPixCount;
+	QPixmap		mPixGmail;
+	QImage		mLightIconImage;
 	GMail		*mGmail;
 	GMailParser	*mParser;
 	KHelpMenu	*mHelpMenu;
@@ -126,4 +125,7 @@ private:
 	int	mMailCount;
 	
 	bool iconDisplayed;
+
+	// helper functions
+	QString newEmailNotifyMessage(unsigned int n, bool showSenders, bool showSubject, bool showSnippet);
 };

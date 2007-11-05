@@ -75,10 +75,20 @@
 			<default>firefox %u</default>
 			<whatsthis>Use a custom browser other than the KDE default to check your Gmail</whatsthis>
 		</entry>
-		<entry name="DisplaySubjectOnSingleMail" type="Bool">
-			<label>Display subject when only one new email arrives</label>
+		<entry name="DisplaySenderOnSingleMail" type="Bool">
+			<label>Display sender</label>
+			<whatsthis>Display message sender</whatsthis>
 			<default>true</default>
-			<whatsthis>Display message's subject when only one new email arrives</whatsthis>
+		</entry>
+		<entry name="DisplaySubjectOnSingleMail" type="Bool">
+			<label>Display subject</label>
+			<whatsthis>Display message subject</whatsthis>
+			<default>true</default>
+		</entry>
+		<entry name="DisplaySnippetOnSingleMail" type="Bool">
+			<label>Display snippet</label>
+			<whatsthis>Display message snippet</whatsthis>
+			<default>false</default>
 		</entry>
 	</group>
 </kcfg>
