@@ -62,7 +62,7 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 			"&continue=http@3A@2F@2Fmail.google.com@2Fmail@3F"
 			"&ltmpl=default&ltmplcache=2&rm=false&rmShown=1";
 	gGMailCheckURL = "%1://mail.google.com/mail/?search=query"
-			"&q=%2&as_subset=unread&view=tl&start=0";
+			"&q=%2&as_subset=unread&view=tl&start=0&init=1&ui=1";
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
 	
 	gGAP4DLoginURL = "https://www.google.com/a/%1/LoginAction";
