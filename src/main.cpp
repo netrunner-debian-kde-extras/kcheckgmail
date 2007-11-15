@@ -47,14 +47,14 @@ int main(int argc, char **argv)
 		"System tray application to display how many\nnew email "
 		"messages you have in your Gmail account."),
 		KAboutData::License_GPL, 
-		"(C) 2004 Matthew Wlazlo\n(C) 2007 Raphael Geissert", 
+		"(C) 2004 Matthew Wlazlo\n(C) 2007 Raphael Geissert\n(C) 2007 Luis Pereira", 
 		0, // text
 		"http://kcheckgmail.sf.net",
 		"kcheckgmail-development@lists.sourceforge.net");
 	
 	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Original author"), "mwlazlo@gmail.com");
 	about.addAuthor("Raphael Geissert", I18N_NOOP("Maintainer"), "atomo64@gmail.com");
-	
+	about.addAuthor("Luis Pereira", I18N_NOOP("Developer"), "luis.artur.pereira@gmail.com");
 	about.addCredit(I18N_NOOP("Everybody who helped testing and translating KCheckGMail"), 0, 0, 0);
 
 
