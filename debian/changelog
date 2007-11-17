@@ -1,3 +1,12 @@
+kcheckgmail (0.5.7.3-1) unstable; urgency=low
+
+  * New upstream release (Closes: #452580)
+    - Fixed a login problem caused by a new version of gmail.
+  * Updated package description
+  * Added Vcs-Svn and Vcs-Browser entries
+
+ -- Raphael Geissert <atomo64@gmail.com>  Fri, 16 Nov 2007 22:01:54 -0600
+
 kcheckgmail (0.5.7.2-1) unstable; urgency=low
 
   * New upstream release
