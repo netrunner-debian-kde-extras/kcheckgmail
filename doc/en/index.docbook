@@ -23,7 +23,7 @@
 </author>
 </authorgroup>
 <date>2007-11-15</date>
-<releaseinfo>0.5.7.3</releaseinfo>
+<releaseinfo>0.5.7.4</releaseinfo>
 <abstract>
 <para>&kcheckgmail; is a simple KDE systray application that notifies when new email is received in a Gmail account.</para>
 </abstract>
