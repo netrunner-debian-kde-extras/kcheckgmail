@@ -1,3 +1,15 @@
+kcheckgmail (0.5.7.4-1) unstable; urgency=medium
+
+  * New upstream release
+    - Added Walloon translation
+    - Updated Polish translation
+    - Don't prefer the js redirection, affects all users thus the medium urgency
+    - Added missing #include <cstdlib>, fixing a FTBFS with GCC 4.3
+       (Closes: #456050)
+  * Updated to Standards-Version: 3.7.3, no change needed
+
+ -- Raphael Geissert <atomo64@gmail.com>  Thu, 13 Dec 2007 22:31:12 -0600
+
 kcheckgmail (0.5.7.3-1) unstable; urgency=low
 
   * New upstream release (Closes: #452580)
