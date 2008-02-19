@@ -134,7 +134,7 @@ $unsermake = "";
 # backward compatible: if $UNSERMAKE points to a path, use it
 $unsermake = findProgram('unsermake') if (defined($ENV{'UNSERMAKE'}) and $ENV{'UNSERMAKE'} =~ /\//);
 # new compatible: if it says 'yes', use the one from path
-$unsermake = which('unsermake') if ($ENV{'UNSERMAKE'} ne 'no');
+$unsermake = which('unsermake') if ($ENV{'UNSERMAKE'} eq 'yes');
 
 ($automake_suffix) = $automake =~ /.*automake(.*)$/;
 
