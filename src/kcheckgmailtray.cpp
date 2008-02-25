@@ -353,7 +353,7 @@ void KCheckGmailTray::slotThreadsItemHighlighted(int n)
 	}
 
 	if (attachmentsCount > 0) {
-		message.append("\n" + i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
+		message.append("<br>" + i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
 				.arg(attachments.join(", ")));
 	}
 
