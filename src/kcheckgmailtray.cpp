@@ -19,6 +19,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <cstdlib>
 #include <kaction.h>
 #include <kapplication.h>
 #include <kconfigdialog.h>
