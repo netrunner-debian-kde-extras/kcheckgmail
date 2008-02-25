@@ -754,7 +754,6 @@ QString GMail::getRedirectURL(QString buffer)
 	if( found == -1 ) {
 		return url;
 	}
-	
 	jsurl = GMailParser::cleanUpData(jsRX.cap(1));
 	
 	// if both match it's ok
@@ -763,8 +762,8 @@ QString GMail::getRedirectURL(QString buffer)
 		return url;
 	} else {
 		// otherwise use JS redirection
-		kdDebug() << k_funcinfo << "META and JS redirections do not match! META: " << url << "JS: " << jsurl << endl;
-		return jsurl;
+		kdDebug() << k_funcinfo << "META and JS redirections do not match! META: " << url << " JS: " << jsurl << endl;
+		return /*js*/url;
 	}
 	
 }
