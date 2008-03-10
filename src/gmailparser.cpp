@@ -134,7 +134,7 @@ void GMailParser::parse(const QString &_data)
 	} 
 
 	mCurMsgId = 0;
-	oldNewCount = getNewCount();
+	oldNewCount = unread();
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
 	
@@ -192,7 +192,7 @@ void GMailParser::parse(const QString &_data)
 	kdDebug() << k_funcinfo << "NewCount=" << NewCount << endl;
 	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
 	
-	int realCount = getNewCount(true);
+	int realCount = unread(TotalCount);
 	if (oldNewCount == 0 && realCount != 0)
 		NewCount = realCount;
 	
@@ -680,18 +680,18 @@ const QString GMailParser::getGaiaName() const
 /**
  * Retrieve the number of unread messages.
  *
- * If realCount is false the box parameter is ignored.
+ * If mode is ParsedOnlyCount the box parameter is ignored.
  *
- * @param realCount If the number of unread messages should be taken from the totals or only from the parsed messages
+ * @param mode If the number of unread messages should be taken from the totals or only from the parsed messages
  * @param box The name of the box (inbox, drafts, spam; or in the future: label) from where the real number of unread messages should be taken from
  * @return The number of unread messages
- * @example getNewCount(true,"inbox") Get the real number of unread messages in the inbox
+ * @example unread(GMailParser::TotalCount,"inbox") Get the real number of unread messages in the inbox
 */
-unsigned int GMailParser::getNewCount(bool realCount, QString box) const
+unsigned int GMailParser::unread(CountMode mode, QString box) const
 {
 	unsigned int ret = 0;
 	
-	if(realCount == true) {
+	if(mode == TotalCount) {
 		if(box.compare("inbox") == 0)
 			return mSummary.inbox;
 		else if(box.compare("drafts") == 0)
@@ -702,7 +702,7 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 			if (mLabels.contains(box))
 				return mLabels[box];
 		}
-		kdWarning() << k_funcinfo << "The box " << box << " doesn't exist! returning value as if realCount=false" << endl;
+		kdWarning() << k_funcinfo << "The box " << box << " doesn't exist! returning value as if mode=ParsedOnlyCount" << endl;
 	}
 	
 	QMap<QString, bool> *lst = getThreadList();
@@ -723,24 +723,24 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 /**
  * Retrieve the number of unread messages.
  *
- * @param realCount If the number of unread messages should be taken from the totals or only from the parsed messages
+ * @param mode If the number of unread messages should be taken from the totals or only from the parsed messages
  * @return The number of unread messages
 */
-unsigned int GMailParser::getNewCount(bool realCount) const
+unsigned int GMailParser::unread(CountMode mode) const
 {
 	static QRegExp rx ("in:([^ ]+)");
 	static QRegExp rx2("label:([^ ]+)");
 	QString box;
 	
-	if (realCount) {
+	if (mode == TotalCount) {
 		if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
 			// If none are specified gmail will return any unread mail (except spam and drafts)
 			// TODO: to fix this we need to count all messages (!drafts,!spam, inbox + labels)
-			realCount = false;
+			mode = ParsedOnlyCount;
 			//box = "inbox";
 		} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
 			//there's no other way to know how many emails are in:inbox and in specified label:LABEL
-			realCount = false;
+			mode = ParsedOnlyCount;
 		} else if (rx.search(Prefs::searchFor()) != -1) {
 			box = rx.cap(1);
 		} else if (rx2.search(Prefs::searchFor()) != -1) {
@@ -752,7 +752,7 @@ unsigned int GMailParser::getNewCount(bool realCount) const
 		}
 	}
 	
-	return getNewCount(realCount, box);
+	return unread(mode, box);
 }
 
 /**
@@ -760,9 +760,9 @@ unsigned int GMailParser::getNewCount(bool realCount) const
  *
  * @return The number of unread messages that were parsed
 */
-unsigned int GMailParser::getNewCount() const
+unsigned int GMailParser::unread() const
 {
-	return getNewCount(false);
+	return unread(ParsedOnlyCount);
 }
 
 ///////////////////////////////////////////////////////////////////////////

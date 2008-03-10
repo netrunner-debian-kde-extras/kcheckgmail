@@ -571,7 +571,7 @@ void KCheckGmailTray::slotNoUnreadMail()
 
 void KCheckGmailTray::slotMailCountChanged()
 {
-	mMailCount = mParser->getNewCount(true);
+	mMailCount = mParser->unread(GMailParser::TotalCount);
 	updateCountImage();
 	updateThreadMenu();
 }

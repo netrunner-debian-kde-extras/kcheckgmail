@@ -99,14 +99,19 @@ public:
 		QString unknown3;
 	} ThreadSummary;*/
 public:
+	enum CountMode {
+		TotalCount,
+		ParsedOnlyCount
+	};
+		
 	GMailParser();
 	virtual ~GMailParser();
 
 	void parse(const QString &data);
 	
-	unsigned int getNewCount() const;
-	unsigned int getNewCount(bool realCount) const;
-	unsigned int getNewCount(bool realCount, QString box) const;
+	unsigned int unread() const;
+	unsigned int unread(CountMode mode ) const;
+	unsigned int unread(CountMode mode, QString box) const;
 
 // 	const QString &getVersion() const { return mVersion; }
 	unsigned int getInvites() const { return mInvites; }
