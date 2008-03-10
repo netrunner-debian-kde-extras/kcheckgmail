@@ -17,8 +17,7 @@ GMailWalletManager::GMailWalletManager()
 
 GMailWalletManager::~GMailWalletManager()
 {
-	if(mWallet)
-		delete mWallet;
+	delete mWallet;
 }
 
 GMailWalletManager *GMailWalletManager::instance()
@@ -159,10 +158,8 @@ void GMailWalletManager::slotWalletChangedStatus()
 
 void GMailWalletManager::slotCloseWallet()
 {
-	if(mWallet) {
-		delete mWallet;
-		mWallet = 0;
-	}
+	delete mWallet;
+	mWallet = 0;
 }
 
 bool GMailWalletManager::storeWallet()
