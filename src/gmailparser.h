@@ -109,7 +109,6 @@ public:
 
 	void parse(const QString &data);
 	
-	unsigned int unread() const;
 	unsigned int unread(CountMode mode ) const;
 	unsigned int unread(CountMode mode, QString box) const;
 

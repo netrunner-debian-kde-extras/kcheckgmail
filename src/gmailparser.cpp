@@ -134,7 +134,7 @@ void GMailParser::parse(const QString &_data)
 	} 
 
 	mCurMsgId = 0;
-	oldNewCount = unread();
+	oldNewCount = unread(ParsedOnlyCount);
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
 	
@@ -755,15 +755,6 @@ unsigned int GMailParser::unread(CountMode mode) const
 	return unread(mode, box);
 }
 
-/**
- * Retrieve the number of unread messages.
- *
- * @return The number of unread messages that were parsed
-*/
-unsigned int GMailParser::unread() const
-{
-	return unread(ParsedOnlyCount);
-}
 
 ///////////////////////////////////////////////////////////////////////////
 // Clean up functions
