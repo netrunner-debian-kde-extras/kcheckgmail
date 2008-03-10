@@ -33,9 +33,8 @@ namespace KCheckGmail {
 class ConfigDialog : public KConfigDialog {
 	Q_OBJECT
 public:
-    ConfigDialog(QWidget *parent, const char *name, KConfigSkeleton *config, DialogType dialogType = IconList, int dialogButtons = Ok|Cancel);
-
-    virtual ~ConfigDialog();
+	ConfigDialog(QWidget *parent, const char *name, KConfigSkeleton *config, DialogType dialogType = IconList, int dialogButtons = Ok|Cancel);
+	virtual ~ConfigDialog();
 
 	void erasePassword();
 	void insertPassword(const char* passw);
