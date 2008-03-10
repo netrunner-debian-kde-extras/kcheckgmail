@@ -28,6 +28,8 @@
 
 #include "kcheckgmailiface.h"
 
+namespace KCheckGmail { class ConfigDialog; }
+
 class GMail;
 class GMailParser;
 class QMouseEvent;
@@ -112,8 +114,7 @@ private:
 	GMailParser	*mParser;
 	KHelpMenu	*mHelpMenu;
 	KPopupMenu	*mThreadsMenu;
-	LoginSettingsWidget* mLoginSettings;
-	KConfigDialog* mConfigDialog;
+	KCheckGmail::ConfigDialog* mConfigDialog;
 	KIconEffect mIconEffect;
 	QTimer *mLoginAnim;
 
