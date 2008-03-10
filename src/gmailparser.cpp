@@ -124,7 +124,8 @@ void GMailParser::parse(const QString &_data)
 {
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
-	unsigned int oldNewCount, NewCount = 0;
+	unsigned int previousParsedOnlyUnread = 0;
+	unsigned int currentUnread = 0;
 
 	rx.setMinimal(true);
 
@@ -134,7 +135,7 @@ void GMailParser::parse(const QString &_data)
 	} 
 
 	mCurMsgId = 0;
-	oldNewCount = unread(ParsedOnlyCount);
+	previousParsedOnlyUnread = unread(ParsedOnlyCount);
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
 	
@@ -164,7 +165,7 @@ void GMailParser::parse(const QString &_data)
 			str.remove(tokPos, tokLen);
 			
 			if(tok == D_THREAD) {
-				NewCount += parseThread(str, oldMap);
+				currentUnread += parseThread(str, oldMap);
 			} else if(tok == D_VERSION) {
 				parseVersion(str);
 			} else if(tok == D_QUOTA) {
@@ -189,18 +190,18 @@ void GMailParser::parse(const QString &_data)
 	if(oldMap)
 		delete oldMap;
 
-	kdDebug() << k_funcinfo << "NewCount=" << NewCount << endl;
-	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
+	kdDebug() << k_funcinfo << "currentUnread=" << currentUnread << endl;
+	kdDebug() << k_funcinfo << "previousParsedOnlyUnread=" << previousParsedOnlyUnread << endl;
 	
-	int realCount = unread(TotalCount);
-	if (oldNewCount == 0 && realCount != 0)
-		NewCount = realCount;
+	int currentTotalUnread = unread(TotalCount);
+	if (previousParsedOnlyUnread == 0 && currentTotalUnread != 0)
+		currentUnread = currentTotalUnread;
 	
-	if(NewCount > 0)
-		emit mailArrived(NewCount);
-	if(oldNewCount != NewCount)
+	if(currentUnread > 0)
+		emit mailArrived(currentUnread);
+	if(previousParsedOnlyUnread != currentUnread)
 		emit mailCountChanged();
-	if(realCount == 0)
+	if(currentTotalUnread == 0)
 		emit noUnreadMail();
 }
 
