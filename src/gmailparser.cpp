@@ -186,8 +186,8 @@ void GMailParser::parse(const QString &_data)
 		pos += rx.matchedLength();
 	}
 
-	if(oldMap)
-		delete oldMap;
+	delete oldMap;
+	oldMap = 0;
 
 	kdDebug() << k_funcinfo << "NewCount=" << NewCount << endl;
 	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
@@ -781,6 +781,7 @@ void GMailParser::freeThreadList()
 		while(iter != klist.end()) {
 			Thread *t = mThreads[*iter];
 			delete t;
+			t = 0;
 			iter ++;
 		}
 	}
