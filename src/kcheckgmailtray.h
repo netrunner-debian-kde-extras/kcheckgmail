@@ -28,8 +28,6 @@
 
 #include "kcheckgmailiface.h"
 
-namespace KCheckGmail { class ConfigDialog; }
-
 class GMail;
 class GMailParser;
 class QMouseEvent;
@@ -37,6 +35,7 @@ class KHelpMenu;
 class KConfigDialog;
 class LoginSettingsWidget;
 class QTimer;
+class KAction;
 
 class KCheckGmailTray : public KSystemTray, virtual public KCheckGmailIface
 {
@@ -56,7 +55,6 @@ protected:
 
 protected slots:
 	// KPopupMenu
-	void slotContextMenuActivated(int);
 	void slotThreadsMenuActivated(int);
 	void slotThreadsItemHighlighted(int);
 
@@ -82,12 +80,14 @@ protected slots:
 	// login "animation"
 	void slotToggleLoginAnim();
 
-private:
-	void launchBrowser(const QString &url = QString::null);
+private slots:
 	void showKNotifyDialog();
+	void launchBrowser(const QString &url = QString::null);
+	void composeMail();
+
+private:
 	void updateCountImage();
 	void updateThreadMenu();
-	void composeMail();
 	void initConfigDialog();
 	QString getUrlBase();
 
@@ -114,13 +114,16 @@ private:
 	GMailParser	*mParser;
 	KHelpMenu	*mHelpMenu;
 	KPopupMenu	*mThreadsMenu;
-	KCheckGmail::ConfigDialog* mConfigDialog;
+	LoginSettingsWidget* mLoginSettings;
+	KConfigDialog* mConfigDialog;
 	KIconEffect mIconEffect;
 	QTimer *mLoginAnim;
 
 	// menu ids
-	int	mCheckNowId;
 	int	mThreadsMenuId;
+
+	// actions
+	KAction* mLoginCheckMailAction;
 
 	// mail count for dcop interface
 	int	mMailCount;

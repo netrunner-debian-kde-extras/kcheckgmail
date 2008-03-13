@@ -49,7 +49,6 @@
 #include <klineedit.h>
 #include <qbitmap.h>
 
-#include "configdialog.h"
 #include "appletsettingswidget.h"
 #include "kcheckgmailtray.h"
 #include "loginsettingswidget.h"
@@ -62,22 +61,14 @@
 #include "gmailparser.h"
 #include "gmailwalletmanager.h"
 
-
 // if catchAccidentalClick is true, wait 3 seconds before opening another
 // browser window
 #define ACCIDENTAL_CLICK_TIMEOUT (3 * 1000) 
 
-#define CONTEXT_CONFIGURE 100
-#define CONTEXT_LAUNCHBROWSER 101
-#define CONTEXT_NOTIFY 102
-#define CONTEXT_CHECKNOW 103
-#define CONTEXT_COMPOSE 104
 
 KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	: DCOPObject("KCheckGmailIface"),
 	KSystemTray(parent, name),
-	mHelpMenu(new KHelpMenu(this, KGlobal::instance()->aboutData(), 
-		false, actionCollection())),
 	mMailCount(-1)
 {
 	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
@@ -138,41 +129,49 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	connect(kapp, SIGNAL(shutDown()),
 		 mGmail, SLOT(slotLogOut()));
 
+
 	// initialise the threads menu
 	mThreadsMenu = new KPopupMenu(this, "KCheckGmail Threads menu");
 	connect(mThreadsMenu, SIGNAL(activated(int)),
 		SLOT(slotThreadsMenuActivated(int)));
 	connect(mThreadsMenu, SIGNAL(highlighted(int)),
 		SLOT(slotThreadsItemHighlighted(int)));
-	
+
+
+	KActionCollection* actions = actionCollection();
+
 	// initialise the menu
 	KPopupMenu *menu = contextMenu();
 	menu->clear();
 	menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
-	menu->insertItem(SmallIcon("knotify"), 
-		i18n("Configure &Notications..."), CONTEXT_NOTIFY);
-	menu->insertItem(SmallIcon("configure"), 
-		i18n("&Configure KCheckGMail..."), CONTEXT_CONFIGURE);
-	menu->insertSeparator();
-	mCheckNowId = menu->insertItem(SmallIcon("launch"), 
-		i18n("Login and Chec&k Mail"), 
-		mGmail, SLOT(slotCheckGmail()));
-	menu->insertItem(SmallIcon("konqueror"), 
-		i18n("&Launch Browser"), CONTEXT_LAUNCHBROWSER);
-	menu->insertItem(SmallIcon("email"),
-			 i18n("Co&mpose Mail"), CONTEXT_COMPOSE);
 
-	mThreadsMenuId = menu->insertItem(SmallIcon("kcheckgmail"), i18n("Th&reads"),
-		mThreadsMenu);
-	
+ 	(new KAction(i18n("Configure &Notications"), "knotify", "",
+		this, SLOT(showKNotifyDialog()), actions))->plug( menu );
+
+	(new KAction(i18n("&Configure KCheckGMail..."), "configure", "",
+		this, SLOT( showPrefsDialog()), actions))->plug(menu);
+
+	menu->insertSeparator();
+
+	mLoginCheckMailAction = new KAction(i18n("Login and Chec&k Mail"), "launch", "",
+		mGmail, SLOT(slotCheckGmail()), actions);
+	mLoginCheckMailAction->plug(menu);
+	mLoginCheckMailAction->setEnabled(false);
+
+	(new KAction(i18n("&Launch Browser"), "konqueror", "",
+		this, SLOT(launchBrowser()), actions))->plug(menu);
+
+	(new KAction(i18n("Co&mpose Mail"), "email", "",
+		this, SLOT(composeMail()), actions ))->plug(menu);
+
+	mThreadsMenuId = menu->insertItem(SmallIcon("kcheckgmail"),
+		i18n("Th&reads"), mThreadsMenu);
 	contextMenu()->setItemEnabled(mThreadsMenuId, false);
 
 	menu->insertSeparator();
 
-	menu->insertItem(SmallIcon("help"),KStdGuiItem::help().text(),
-		mHelpMenu->menu());
-
-	connect(menu, SIGNAL(activated(int)), SLOT(slotContextMenuActivated(int)));
+	mHelpMenu = new KHelpMenu(this, KGlobal::instance()->aboutData(), false, actions);
+	menu->insertItem(SmallIcon("help"), KStdGuiItem::help().text(), mHelpMenu->menu());
 
 	connect(GMailWalletManager::instance(), SIGNAL(getWalletPassword(const QString&)),
 		mGmail, SLOT(slotGetWalletPassword(const QString&)));
@@ -240,7 +239,7 @@ void KCheckGmailTray::start()
 	}
 	
 	if(Prefs::gmailUsername().length() == 0) {
-		mConfigDialog->erasePassword();
+		mLoginSettings->gmailPassword->erase();
 		showPrefsDialog();
 	}
 	
@@ -255,27 +254,6 @@ void KCheckGmailTray::start()
 // Menu functions
 ///////////////////////////////////////////////////////////////////////////
 
-void KCheckGmailTray::slotContextMenuActivated(int n)
-{
-	kdDebug() << k_funcinfo << "context=" << n << endl;
-
-	switch(n) {
-		case CONTEXT_CHECKNOW:
-			break;
-		case CONTEXT_CONFIGURE:
-			showPrefsDialog();
-			break;
-		case CONTEXT_LAUNCHBROWSER:
-			launchBrowser();
-			break;
-		case CONTEXT_NOTIFY:
-			showKNotifyDialog();
-			break;
-		case CONTEXT_COMPOSE:
-			composeMail();
-			break;
-	}
-}
 
 void KCheckGmailTray::showPrefsDialog()
 {
@@ -406,7 +384,7 @@ void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
 
 void KCheckGmailTray::initConfigDialog()
 {
-	mConfigDialog = new KCheckGmail::ConfigDialog(this,
+	mConfigDialog = new KConfigDialog(this,
 					  "KCheckGmailSettingsDialog",
 					  Prefs::self(),
 					  KDialogBase::IconList,
@@ -414,13 +392,28 @@ void KCheckGmailTray::initConfigDialog()
 
 	connect(mConfigDialog, SIGNAL(finished()),
 		this, SLOT(slotSettingsChanged()));
+
+	mLoginSettings = new LoginSettingsWidget(0, "LoginSettings");
+	mConfigDialog->addPage(mLoginSettings, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
+
+	NetworkSettingsWidget *nwid = new NetworkSettingsWidget(0, "NetworkSettings");
+	mConfigDialog->addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
+
+	AppletSettingsWidget *awid = new AppletSettingsWidget(0, "AppletSettings");
+	mConfigDialog->addPage(awid, i18n("Behavior"), "configure", i18n("Behavior"));
+
+	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(0, "AdvancedSettings");
+	mConfigDialog->addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
+
+	mLoginSettings->gmailPassword->erase();
+	mLoginSettings->gmailPassword->insert("\007\007\007");
 }
 
 void KCheckGmailTray::slotSettingsChanged()
 {
 	bool loginOk = true;
-	const char *passwd = mConfigDialog->password();
-	const QString user = mConfigDialog->username();
+	const char *passwd = mLoginSettings->gmailPassword->password();
+	const QString user = mLoginSettings->kcfg_GmailUsername->originalText();
 	int res;
 
 	kdDebug() << k_funcinfo << passwd << endl;
@@ -443,9 +436,9 @@ void KCheckGmailTray::slotSettingsChanged()
 
 		if( strncmp(passwd, "\007\007\007", 3) != 0) {
 			kdDebug() << k_funcinfo << "setting wallet" << endl;
-			loginOk = GMailWalletManager::instance()->set(mConfigDialog->password());
-			mConfigDialog->erasePassword();
-			mConfigDialog->insertPassword("\007\007\007");
+			loginOk = GMailWalletManager::instance()->set(mLoginSettings->gmailPassword->password());
+			mLoginSettings->gmailPassword->erase();
+			mLoginSettings->gmailPassword->insert("\007\007\007");
 		} else
 			kdDebug() << k_funcinfo << "passwd unchanged: " << passwd << endl;
 		
@@ -504,7 +497,7 @@ void KCheckGmailTray::slotLoginStart()
 {
 	kdDebug() << k_funcinfo << endl;
 	setPixmapAuth();
-	contextMenu()->setItemEnabled(mCheckNowId, false);
+	mLoginCheckMailAction->setEnabled(false);
 	mLoginAnim->start(200);
 }
 
@@ -525,16 +518,16 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 		}
 		
 		setPixmapAuth();
-		contextMenu()->changeItem(mCheckNowId, i18n("Login and Chec&k Mail"));
+		mLoginCheckMailAction->setText(i18n("Login and Chec&k Mail"));
 		QToolTip::remove( this );
 		QToolTip::add(this, i18n("KCheckGMail"));
 		
 	} else {
 		setPixmapEmpty();
 		KNotifyClient::event(winId(), "gmail-login-yes", i18n("Now logged in to Gmail!"));
-		contextMenu()->changeItem(mCheckNowId, i18n("Chec&k Mail Now"));
+		mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 	}
-	contextMenu()->setItemEnabled(mCheckNowId, true);
+	mLoginCheckMailAction->setEnabled(true);
 
 	slotMailCountChanged();
 }
@@ -547,13 +540,13 @@ void KCheckGmailTray::slotLogingOut()
 
 void KCheckGmailTray::slotCheckStart()
 {
-	contextMenu()->setItemEnabled(mCheckNowId, false);
+	mLoginCheckMailAction->setEnabled(false);
 }
 
 void KCheckGmailTray::slotCheckDone(const QString &data)
 {	
 	mParser->parse(data);
-	contextMenu()->setItemEnabled(mCheckNowId, true);
+	mLoginCheckMailAction->setEnabled(true);
 }
 
 void KCheckGmailTray::slotMailArrived(unsigned int n)
@@ -571,7 +564,7 @@ void KCheckGmailTray::slotNoUnreadMail()
 
 void KCheckGmailTray::slotMailCountChanged()
 {
-	mMailCount = mParser->unread(GMailParser::TotalCount);
+	mMailCount = mParser->getNewCount(true);
 	updateCountImage();
 	updateThreadMenu();
 }
