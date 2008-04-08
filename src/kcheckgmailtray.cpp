@@ -606,6 +606,8 @@ void KCheckGmailTray::updateThreadMenu()
 			}
 			iter ++;
 		}
+		delete threads;
+		threads = 0;
 	}
 
 	contextMenu()->setItemEnabled(mThreadsMenuId, (numItems > 0));
@@ -651,6 +653,10 @@ QStringList KCheckGmailTray::getThreads()
 			iter ++;
 		}
 	}
+
+	delete threads;
+	threads = 0;
+
 	return out;
 }
 

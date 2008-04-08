@@ -718,6 +718,9 @@ unsigned int GMailParser::unread(CountMode mode, QString box) const
 		}
 	}
 	
+	delete lst;
+	lst = 0;
+
 	return ret;
 }
 
