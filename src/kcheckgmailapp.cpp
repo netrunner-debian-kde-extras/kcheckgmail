@@ -19,14 +19,12 @@
  ***************************************************************************/
 
 #include "kcheckgmailapp.h"
-#include "kcheckgmailtray.h"
+#include "kcheckgmailcore.h"
+
 #include <dcopref.h>
 
 KCheckGmailApp::KCheckGmailApp()
-	: mTray(new KCheckGmailTray(0, "KCheckGmailTray"))
 {
-	mTray->show();
-	mTray->start();
 }
 
 int KCheckGmailApp::newInstance()
@@ -36,6 +34,7 @@ int KCheckGmailApp::newInstance()
 		DCOPRef execute( "kcheckgmail", "KCheckGmailIface" );
 		DCOPReply reply = execute.call( "whereAmI" );
 	} else {
+		const KCheckGmailCore& kcgmCore = KCheckGmailCore::instance();
 		secondMe = true;
 	}
 	return 0;

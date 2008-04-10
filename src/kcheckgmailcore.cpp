@@ -1,6 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2008 by Luis Pereira <luis.artur.pereira@gmail.com>     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,16 +17,29 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <kuniqueapplication.h>
+#include "kcheckgmailcore.h"
+#include "kcheckgmailtray.h"
 
-class KCheckGmailCore;
 
-class KCheckGmailApp : public KUniqueApplication {
-	Q_OBJECT
+KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
+	: QObject(parent, name),
+	  mTray(new KCheckGmailTray(0, "KCheckGmailTray"))
+{
+	mTray->show();
+	mTray->start();
+}
 
-public:
-	KCheckGmailApp();
-	int newInstance();
 
-	private:
-};
+KCheckGmailCore::~KCheckGmailCore()
+{
+	delete mTray;
+	mTray = 0;
+}
+
+KCheckGmailCore& KCheckGmailCore::instance()
+{
+	static KCheckGmailCore object(0, "KCheckGmailCore");
+	return object;
+}
+
+#include "kcheckgmailcore.moc"
