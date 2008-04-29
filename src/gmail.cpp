@@ -82,9 +82,13 @@ GMail::GMail(QObject* parent, const char* name) : QObject(parent, name)
 
 GMail::~GMail()
 {
+	if (mCheckLock->locked())
+		mCheckLock->unlock();
 	delete mCheckLock;
 	mCheckLock = 0;
 
+	if (mLoginLock->locked())
+		mLoginLock->unlock();
 	delete mLoginLock;
 	mLoginLock = 0;
 }
