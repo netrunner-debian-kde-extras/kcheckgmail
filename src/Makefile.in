@@ -54,15 +54,17 @@ binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_kcheckgmail_OBJECTS = configdialog.$(OBJEXT) gmail.$(OBJEXT) \
 	gmailparser.$(OBJEXT) gmailwalletmanager.$(OBJEXT) \
-	kcheckgmailapp.$(OBJEXT) kcheckgmailcore.$(OBJEXT) \
-	kcheckgmailtray.$(OBJEXT) main.$(OBJEXT)
+	jsprotocol.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
+	kcheckgmailcore.$(OBJEXT) kcheckgmailtray.$(OBJEXT) \
+	mailcounter.$(OBJEXT) main.$(OBJEXT)
 #>- kcheckgmail_OBJECTS = $(am_kcheckgmail_OBJECTS)
-#>+ 5
+#>+ 6
 kcheckgmail_OBJECTS = configdialog.$(OBJEXT) gmail.$(OBJEXT) \
 	gmailparser.$(OBJEXT) gmailwalletmanager.$(OBJEXT) \
-	kcheckgmailapp.$(OBJEXT) kcheckgmailcore.$(OBJEXT) \
-	kcheckgmailtray.$(OBJEXT) main.$(OBJEXT) kcheckgmailiface_skel.$(OBJEXT) advancedsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) netsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
-gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailapp.moc.o kcheckgmailtray.moc.o 
+	jsprotocol.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
+	kcheckgmailcore.$(OBJEXT) kcheckgmailtray.$(OBJEXT) \
+	mailcounter.$(OBJEXT) main.$(OBJEXT) kcheckgmailiface_skel.$(OBJEXT) advancedsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) netsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
+kcheckgmailapp.moc.o gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailtray.moc.o 
 am__DEPENDENCIES_1 =
 kcheckgmail_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 #>- kcheckgmail_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -357,22 +359,22 @@ xdg_directorydir = @xdg_directorydir@
 xdg_menudir = @xdg_menudir@
 INCLUDES = $(all_includes)
 #>- kcheckgmail_SOURCES = advancedsettingswidget.ui appletsettingswidget.ui \
-#>- 	configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp kcheckgmailapp.cpp \
-#>- 	kcheckgmailcore.cpp kcheckgmailiface.skel kcheckgmailtray.cpp loginsettingswidget.ui \
-#>- 	main.cpp netsettingswidget.ui prefs.kcfgc
+#>- 	configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp jsprotocol.cpp \
+#>- 	kcheckgmailapp.cpp kcheckgmailcore.cpp kcheckgmailiface.skel kcheckgmailtray.cpp \
+#>- 	loginsettingswidget.ui mailcounter.cpp main.cpp netsettingswidget.ui prefs.kcfgc
 #>+ 4
 kcheckgmail_SOURCES=  \
-	configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp kcheckgmailapp.cpp \
-	kcheckgmailcore.cpp  kcheckgmailtray.cpp  \
-	main.cpp   kcheckgmailiface_skel.cpp advancedsettingswidget.cpp appletsettingswidget.cpp loginsettingswidget.cpp netsettingswidget.cpp prefs.cpp
+	configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp jsprotocol.cpp \
+	kcheckgmailapp.cpp kcheckgmailcore.cpp  kcheckgmailtray.cpp \
+	 mailcounter.cpp main.cpp   kcheckgmailiface_skel.cpp advancedsettingswidget.cpp appletsettingswidget.cpp loginsettingswidget.cpp netsettingswidget.cpp prefs.cpp
 
 kcheckgmail_LDFLAGS = $(KDE_PLUGIN) $(all_libraries)
 kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
 #>- METASOURCES = AUTO
 noinst_HEADERS = advancedsettingswidget.h appletsettingswidget.h configdialog.h \
-	gmail.h gmail_constants.h gmailparser.h gmailwalletmanager.h kcheckgmailapp.h \
-	kcheckgmailcore.h kcheckgmailiface.h kcheckgmailtray.h loginsettingswidget.h \
-	netsettingswidget.h prefs.h
+	gmail.h gmail_constants.h gmailparser.h gmailwalletmanager.h jsprotocol.h \
+	kcheckgmailapp.h kcheckgmailcore.h kcheckgmailcore_p.h kcheckgmailiface.h \
+	kcheckgmailtray.h loginsettingswidget.h mailcounter.h netsettingswidget.h prefs.h
 
 xdg_apps_DATA = kcheckgmail.desktop
 rcdir = $(kde_datadir)/kcheckgmail
@@ -468,9 +470,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gmail.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gmailparser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gmailwalletmanager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jsprotocol.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kcheckgmailapp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kcheckgmailcore.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kcheckgmailtray.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mailcounter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 
 .cpp.o:
@@ -749,6 +753,13 @@ configdialog.moc: $(srcdir)/configdialog.h
 mocs: configdialog.moc
 
 #>+ 3
+kcheckgmailapp.moc.cpp: $(srcdir)/kcheckgmailapp.h
+	$(MOC) $(srcdir)/kcheckgmailapp.h -o kcheckgmailapp.moc.cpp
+
+#>+ 2
+mocs: kcheckgmailapp.moc.cpp
+
+#>+ 3
 gmailparser.moc.cpp: $(srcdir)/gmailparser.h
 	$(MOC) $(srcdir)/gmailparser.h -o gmailparser.moc.cpp
 
@@ -761,13 +772,6 @@ gmailwalletmanager.moc.cpp: $(srcdir)/gmailwalletmanager.h
 
 #>+ 2
 mocs: gmailwalletmanager.moc.cpp
-
-#>+ 3
-kcheckgmailapp.moc.cpp: $(srcdir)/kcheckgmailapp.h
-	$(MOC) $(srcdir)/kcheckgmailapp.h -o kcheckgmailapp.moc.cpp
-
-#>+ 2
-mocs: kcheckgmailapp.moc.cpp
 
 #>+ 3
 kcheckgmailtray.moc.cpp: $(srcdir)/kcheckgmailtray.h
@@ -784,11 +788,18 @@ gmail.moc: $(srcdir)/gmail.h
 mocs: gmail.moc
 
 #>+ 3
-clean-metasources:
-	-rm -f  kcheckgmailcore.moc configdialog.moc gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailapp.moc.cpp kcheckgmailtray.moc.cpp gmail.moc
+jsprotocol.moc: $(srcdir)/jsprotocol.h
+	$(MOC) $(srcdir)/jsprotocol.h -o jsprotocol.moc
 
 #>+ 2
-KDE_DIST=Makefile.in kcheckgmail.lsm advancedsettingswidget.ui appletsettingswidget.ui prefs.kcfgc eventsrc netsettingswidget.ui prefs.kcfg kcheckgmail.desktop loginsettingswidget.ui Makefile.am 
+mocs: jsprotocol.moc
+
+#>+ 3
+clean-metasources:
+	-rm -f  kcheckgmailcore.moc configdialog.moc kcheckgmailapp.moc.cpp gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp gmail.moc jsprotocol.moc
+
+#>+ 2
+KDE_DIST=Makefile.in kcheckgmail.lsm advancedsettingswidget.ui appletsettingswidget.ui prefs.kcfgc eventsrc netsettingswidget.ui prefs.kcfg kcheckgmail.desktop loginsettingswidget.ui Makefile.am
 
 #>+ 4
 clean-idl:
@@ -869,12 +880,14 @@ no-final-install:
 kde-rpo-clean:
 	-rm -f *.rpo
 
-#>+ 17
+#>+ 21
 $(srcdir)/configdialog.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
 $(srcdir)/main.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
 $(srcdir)/gmailwalletmanager.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+jsprotocol.lo: jsprotocol.moc 
 $(srcdir)/kcheckgmailcore.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
 configdialog.o: configdialog.moc 
+$(srcdir)/mailcounter.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
 nmcheck: 
 kcheckgmailcore.o: kcheckgmailcore.moc 
 $(srcdir)/gmailparser.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
@@ -882,9 +895,11 @@ kcheckgmailcore.lo: kcheckgmailcore.moc
 $(srcdir)/kcheckgmailtray.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
 gmail.o: gmail.moc 
 nmcheck-am: nmcheck
+$(srcdir)/jsprotocol.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
 configdialog.lo: configdialog.moc 
 gmail.lo: gmail.moc 
 $(srcdir)/kcheckgmailapp.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+jsprotocol.o: jsprotocol.moc 
 $(srcdir)/gmail.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
 
 #>+ 66

@@ -36,8 +36,8 @@
  * This class parses the resulting data of a call to
  * Gmail's JavaScript interface.
 */
-GMailParser::GMailParser() :
-		QObject(0, "GMailParser"),
+GMailParser::GMailParser(QObject* parent, const char* name) :
+		QObject(parent, name),
 		mInvites(0)
 {
 	mSummary.inbox = 0;
@@ -124,8 +124,6 @@ void GMailParser::parse(const QString &_data)
 {
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
-	unsigned int previousParsedOnlyUnread = 0;
-	unsigned int currentUnread = 0;
 
 	rx.setMinimal(true);
 
@@ -135,7 +133,7 @@ void GMailParser::parse(const QString &_data)
 	} 
 
 	mCurMsgId = 0;
-	previousParsedOnlyUnread = unread(ParsedOnlyCount);
+
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
 	
@@ -152,6 +150,10 @@ void GMailParser::parse(const QString &_data)
 
 	QString data = QString::fromUtf8(_data);
 
+	/*
+	 * mailsArrived refers to new messages in the parsed threads
+	 */
+	unsigned int arrivedMails = 0;
 	while((pos = rx.search(data, pos)) != -1) {
 		QString str = rx.cap(1);
 		QRegExp rxType("^\"([a-z]+)\",");
@@ -165,7 +167,7 @@ void GMailParser::parse(const QString &_data)
 			str.remove(tokPos, tokLen);
 			
 			if(tok == D_THREAD) {
-				currentUnread += parseThread(str, oldMap);
+				arrivedMails += parseThread(str, oldMap);
 			} else if(tok == D_VERSION) {
 				parseVersion(str);
 			} else if(tok == D_QUOTA) {
@@ -190,19 +192,7 @@ void GMailParser::parse(const QString &_data)
 	delete oldMap;
 	oldMap = 0;
 
-	kdDebug() << k_funcinfo << "currentUnread=" << currentUnread << endl;
-	kdDebug() << k_funcinfo << "previousParsedOnlyUnread=" << previousParsedOnlyUnread << endl;
-	
-	int currentTotalUnread = unread(TotalCount);
-	if (previousParsedOnlyUnread == 0 && currentTotalUnread != 0)
-		currentUnread = currentTotalUnread;
-	
-	if(currentUnread > 0)
-		emit mailArrived(currentUnread);
-	if(previousParsedOnlyUnread != currentUnread)
-		emit mailCountChanged();
-	if(currentTotalUnread == 0)
-		emit noUnreadMail();
+	emit countUpdate(arrivedMails);
 }
 
 ///////////////////////////////////////////////////////////////////////////

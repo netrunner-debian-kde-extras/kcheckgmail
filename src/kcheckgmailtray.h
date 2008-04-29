@@ -26,7 +26,6 @@
 #include <qmap.h>
 
 
-#include "kcheckgmailiface.h"
 
 namespace KCheckGmail { class ConfigDialog; }
 
@@ -39,98 +38,51 @@ class LoginSettingsWidget;
 class QTimer;
 class KAction;
 
-class KCheckGmailTray : public KSystemTray, virtual public KCheckGmailIface
+class KCheckGmailTray : public KSystemTray
 {
 	Q_OBJECT
 public:
 	KCheckGmailTray(QWidget *parent = 0, const char *name = 0);
 	virtual ~KCheckGmailTray();
-	void start();
+
+	void takeScreenshotOfTrayIcon();
+
+	void setPixmapAuth();
+	void setPixmapEmpty();
+    void stopAnim();
+    void startAnim(unsigned int t);
+	void toggleAnim(bool restoreToState);
+	void showIcon();
+	void hideIcon();
+	void whereAmI();
+
+signals:
+	void leftButtonClicked();
 
 protected:
 	void mousePressEvent(QMouseEvent*);
 
-	void setPixmapAuth();
-	void setPixmapEmpty();
-	
-	void toggleAnim(bool restoreToState);
-
-protected slots:
-	// KPopupMenu
-	void slotThreadsMenuActivated(int);
-	void slotThreadsItemHighlighted(int);
-
-	// KConfigDialog
-	void slotSettingsChanged();
-	void showPrefsDialog();
-
-	// GMail
-	void slotLoginDone(bool success, bool spawnedFromTimer, const QString &errmsg);
-	void slotLoginStart();
-	void slotCheckStart();
-	void slotSessionChanged();
-	void slotCheckDone(const QString &data);
+public slots:
 
 	// GMailParser
-	void slotMailArrived(unsigned int n);
-	void slotMailCountChanged();
+	void slotMailCountChanged(int n);
 	void slotVersionMismatch();
 	void slotgNameUpdate(QString name);
 	void slotNoUnreadMail();
-	void slotLogingOut();
 
 	// login "animation"
 	void slotToggleLoginAnim();
 
-private slots:
-	void showKNotifyDialog();
-	void launchBrowser(const QString &url = QString::null);
-	void composeMail();
-
 private:
 	void updateCountImage();
-	void updateThreadMenu();
-	void initConfigDialog();
-	QString getUrlBase();
-
-	// dcop call implementations
-	int mailCount() const { return mMailCount; };
-	void checkMailNow();
-	void whereAmI();
-	void showIcon();
-	void hideIcon();
-	QStringList getThreads();
-	QString getThreadSubject(QString msgId);
-	QString getThreadSender(QString msgId);
-	QString getThreadSnippet(QString msgId);
-	QStringList getThreadAttachments(QString msgId);
-	bool isNewThread(QString msgId);
-	QMap<QString, unsigned int> getLabels();
-	QString getGaiaName();
-	
-	void takeScreenshotOfTrayIcon();
 
 	QPixmap		mPixGmail;
 	QImage		mLightIconImage;
-	GMail		*mGmail;
-	GMailParser	*mParser;
-	KHelpMenu	*mHelpMenu;
-	KPopupMenu	*mThreadsMenu;
-	KCheckGmail::ConfigDialog* mConfigDialog;
+
 	KIconEffect mIconEffect;
 	QTimer *mLoginAnim;
 
-	// menu ids
-	int	mThreadsMenuId;
-
-	// actions
-	KAction* mLoginCheckMailAction;
-
-	// mail count for dcop interface
 	int	mMailCount;
 	
 	bool iconDisplayed;
-
-	// helper functions
-	QString newEmailNotifyMessage(unsigned int n, bool showSenders, bool showSubject, bool showSnippet);
 };

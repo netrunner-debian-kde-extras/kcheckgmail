@@ -39,7 +39,7 @@ class GMail : public QObject
 {
 	Q_OBJECT
 public:
-	GMail();
+	GMail(QObject* parent = 0, const char* name = 0);
 	virtual ~GMail();
 
 	void checkLoginParams();

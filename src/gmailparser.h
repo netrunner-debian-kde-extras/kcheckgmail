@@ -104,7 +104,7 @@ public:
 		ParsedOnlyCount
 	};
 		
-	GMailParser();
+	GMailParser(QObject* parent = 0, const char* name = 0);
 	virtual ~GMailParser();
 
 	void parse(const QString &data);
@@ -133,11 +133,9 @@ public:
 	static QString cleanUpData(QString data);
 
 signals:
-	void mailArrived(unsigned int count);
-	void mailCountChanged();
 	void versionMismatch();
-	void noUnreadMail();
 	void gNameUpdate(QString name);
+	void countUpdate(unsigned int arrivedMails);
 
 protected:
 	void parseQuota(const QString&);

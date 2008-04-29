@@ -49,7 +49,7 @@
 #define MILLISECS(x) (x * 1000)
 
 
-GMail::GMail() : QObject(0, "GMailNetwork")
+GMail::GMail(QObject* parent, const char* name) : QObject(parent, name)
 {
 	mInterval = Prefs::interval();
 	mCheckLock = new QMutex();

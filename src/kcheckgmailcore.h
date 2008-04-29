@@ -21,15 +21,62 @@
 #define KCHECKGMAIL_CORE_H
 
 #include <qobject.h>
+#include "kcheckgmailiface.h"
+
+#include <kdebug.h>
+
 
 class KCheckGmailCore;
 class KCheckGmailTray;
 
-class KCheckGmailCore : public QObject {
+namespace KCheckGmail {
+	class JSProtocol;
+};
+
+class KPopupMenu;
+class KActionCollection;
+using KCheckGmail::JSProtocol;
+
+
+/*
+ * This class contains code moved (and sometimes modified) from the
+ * following classes:
+ *
+ * KCheckGmailTray
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>
+ */
+class KCheckGmailCore : public QObject, virtual public KCheckGmailIface {
 	Q_OBJECT
 
 public:
 	static KCheckGmailCore& instance();
+
+signals:
+	void quitSelected();
+
+private slots:
+	void slotShowKNotifyDialog();
+	void slotShowPrefsDialog();
+
+	void slotLaunchBrowser(const QString &url = QString::null);
+	void slotComposeMail();
+
+	void slotLeftButtonClicked();
+
+	void slotThreadsMenuActivated(int);
+	void slotThreadsItemHighlighted(int);
+	void updateThreadMenu(QMap<QString, int> entries);
+
+	void slotMailArrived(unsigned int);
+
+	void slotSettingsChanged();	
+	void slotLoginDone(bool ok, bool isExcuseNeeded, const QString& message);
+	void slotLoginStart();
+	void slotCheckStart();
+	void slotSessionChanged();
+	void slotCheckDone();
+	void slotLogingOut();
 
 private:
 	KCheckGmailCore(QObject* parent = 0, const char* name = 0);
@@ -37,7 +84,35 @@ private:
 	KCheckGmailCore(KCheckGmailCore&);
 	KCheckGmailCore& operator=(const KCheckGmailCore&);
 
-	KCheckGmailTray* mTray;
+	void initTray();
+	void initActions();
+	void buidTrayPopupMenu();
+	void initConfigDialog();
+	void makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray);
+	void start();
+
+	QString getUrlBase();
+
+	QString newEmailNotifyMessage(unsigned int n, bool showSender, bool showSubject, bool showSnippet);
+
+	// dcop call implementations
+	int mailCount() const;
+	void checkMailNow();
+	void showIcon();
+	void hideIcon();
+	void whereAmI();
+	QStringList getThreads();
+	QString getThreadSubject(QString msgId);
+	QString getThreadSender(QString msgId);
+	QString getThreadSnippet(QString msgId);
+	QStringList getThreadAttachments(QString msgId);
+	bool isNewThread(QString msgId);
+	QMap<QString, unsigned int> getLabels();
+	QString getGaiaName();
+
+private:
+	class Private;
+	Private* d;
 };
 
 #endif
