@@ -18,6 +18,7 @@ GMailWalletManager::GMailWalletManager()
 GMailWalletManager::~GMailWalletManager()
 {
 	delete mWallet;
+	mWallet = 0;
 }
 
 GMailWalletManager *GMailWalletManager::instance()

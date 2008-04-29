@@ -83,7 +83,10 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 GMail::~GMail()
 {
 	delete mCheckLock;
+	mCheckLock = 0;
+
 	delete mLoginLock;
+	mLoginLock = 0;
 }
 
 void GMail::slotSetWalletPassword(bool)
