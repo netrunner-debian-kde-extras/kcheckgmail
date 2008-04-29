@@ -59,11 +59,11 @@ int main(int argc, char **argv)
 	about.addCredit(I18N_NOOP("Everybody who helped testing and translating KCheckGMail"), 0, 0, 0);
 
 
-        KGlobal::locale()->setMainCatalogue("kcheckgmail");
+	KGlobal::locale()->setMainCatalogue("kcheckgmail");
 
-        KCmdLineArgs::init(argc, argv, &about);
-        KCmdLineArgs::addCmdLineOptions(gOptions);
-        KUniqueApplication::addCmdLineOptions();
+	KCmdLineArgs::init(argc, argv, &about);
+	KCmdLineArgs::addCmdLineOptions(gOptions);
+	KUniqueApplication::addCmdLineOptions();
 	
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 	
@@ -80,5 +80,5 @@ int main(int argc, char **argv)
 	
 	KCheckGmailApp app;
 
-        return app.exec();
+	return app.exec();
 }

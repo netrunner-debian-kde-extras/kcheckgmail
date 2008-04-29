@@ -39,4 +39,3 @@ int KCheckGmailApp::newInstance()
 	}
 	return 0;
 }
-

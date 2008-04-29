@@ -29,5 +29,5 @@ public:
 	KCheckGmailApp();
 	int newInstance();
 
-	private:
+private:
 };
