@@ -20,7 +20,6 @@
 
 #include <kuniqueapplication.h>
 
-class KCheckGmailCore;
 
 class KCheckGmailApp : public KUniqueApplication {
 	Q_OBJECT
