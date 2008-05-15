@@ -35,16 +35,16 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 
 	// Copied from KCheckGmailTray::initConfigDialog();
 
-	mLoginSettings = new LoginSettingsWidget(0, "LoginSettings");
+	mLoginSettings = new LoginSettingsWidget(this, "LoginSettings");
 	addPage(mLoginSettings, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
 
-	NetworkSettingsWidget *nwid = new NetworkSettingsWidget(0, "NetworkSettings");
+	NetworkSettingsWidget *nwid = new NetworkSettingsWidget(this, "NetworkSettings");
 	addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
 
-	AppletSettingsWidget *awid = new AppletSettingsWidget(0, "AppletSettings");
+	AppletSettingsWidget *awid = new AppletSettingsWidget(this, "AppletSettings");
 	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior"));
 
-	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(0, "AdvancedSettings");
+	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(this, "AdvancedSettings");
 	addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
 
 	mLoginSettings->gmailPassword->erase();

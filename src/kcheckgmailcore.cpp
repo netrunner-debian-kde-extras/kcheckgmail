@@ -76,11 +76,11 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
 
 KCheckGmailCore::~KCheckGmailCore()
 {
+	if (d->mConfigDialog)
+		d->mConfigDialog->deleteLater();
+
 	delete d->mTray;
 	d->mTray = 0;
-
-	delete d->mConfigDialog;
-	d->mConfigDialog = 0;
 
 	delete d;
 	d = 0;
