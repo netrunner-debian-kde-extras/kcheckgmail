@@ -1,22 +1,24 @@
-# translation of de.po to 
-# translation of de_DE.po to deutsch
+# translation of hu.po to
+# translation of de.po to
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
 # Marcus Thiesen <marcus@thiesen.org>, 2004.
 # Patrick Trettenbrein <patrick.trettenbrein@gmx.net>, 2004.
-#
+# Avramucz Péter <muczyjoe@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: de\n"
+"Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-23 20:17-0500\n"
-"PO-Revision-Date: 2007-01-06 23:08+0100\n"
-"Last-Translator: Peter Avramucz <muczy@freestart.hu>\n"
-"Language-Team:  <de@li.org>\n"
+"PO-Revision-Date: 2008-03-13 22:18+0100\n"
+"Last-Translator: Avramucz Péter <muczyjoe@gmail.com>\n"
+"Language-Team:  <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: _translatorinfo.cpp:1
 msgid ""
@@ -28,7 +30,7 @@ msgstr "Peter Avramucz"
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "muczy@freestart.hu"
+msgstr "muczyjoe@gmail.com "
 
 #: gmail.cpp:243
 msgid "Invalid username or password"
@@ -36,7 +38,7 @@ msgstr "Rossz felhasználónév vagy jelszó"
 
 #: gmail.cpp:249 gmail.cpp:260 gmail.cpp:275
 msgid "GMail's login procedure has changed, check for new version"
-msgstr ""
+msgstr "Megváltozott a GMail belépési procedúrája megváltozott, ellenőrizze, elérhető-e újabb verzió"
 
 #: gmail.cpp:386
 msgid "Unknown error retrieving cookies"
@@ -44,170 +46,167 @@ msgstr "Ismeretlen hibe a sütik fogadásakor"
 
 #: gmailparser.cpp:62
 msgid "Spanish"
-msgstr ""
+msgstr "Spanyol"
 
 #: gmailparser.cpp:63
 msgid "French"
-msgstr ""
+msgstr "Francia"
 
 #: gmailparser.cpp:64
 msgid "Italian"
-msgstr ""
+msgstr "Olasz"
 
 #: gmailparser.cpp:65
 msgid "German"
-msgstr ""
+msgstr "Német"
 
 #: gmailparser.cpp:66
 msgid "English (US)"
-msgstr ""
+msgstr "Angol (US)"
 
 #: gmailparser.cpp:67
 msgid "English (UK)"
-msgstr ""
+msgstr "Angol (UK)"
 
 #: gmailparser.cpp:68
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugál"
 
 #: gmailparser.cpp:69
 msgid "Turkish"
-msgstr ""
+msgstr "Török"
 
 #: gmailparser.cpp:70
 msgid "Polish"
-msgstr ""
+msgstr "Lengyel"
 
 #: gmailparser.cpp:71
 msgid "Russian"
-msgstr ""
+msgstr "Orosz"
 
 #: gmailparser.cpp:72 gmailparser.cpp:83
 msgid "Croatian"
-msgstr ""
+msgstr "Horvát"
 
 #: gmailparser.cpp:73
 msgid "Dutch"
-msgstr ""
+msgstr "Holland"
 
 #: gmailparser.cpp:74
 msgid "Hungarian"
-msgstr ""
+msgstr "Magyar"
 
 #: gmailparser.cpp:75
 msgid "Swedish"
-msgstr ""
+msgstr "Svéd"
 
 #: gmailparser.cpp:76
 msgid "Norwegian"
-msgstr ""
+msgstr "Norvég"
 
 #: gmailparser.cpp:77
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litván"
 
 #: gmailparser.cpp:78
 msgid "Hebrew"
-msgstr ""
+msgstr "Héber"
 
 #: gmailparser.cpp:79
 msgid "Greek"
-msgstr ""
+msgstr "Görög"
 
 #: gmailparser.cpp:80
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Kínai (egyszerűsített)"
 
 #: gmailparser.cpp:81
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Kínai (hagyományos)"
 
 #: gmailparser.cpp:82
 msgid "Czech"
-msgstr ""
+msgstr "Cseh"
 
 #: gmailparser.cpp:84
 msgid "Catalan"
-msgstr ""
+msgstr "Katalán"
 
 #: gmailparser.cpp:85
 msgid "Arabic"
-msgstr ""
+msgstr "Arab"
 
 #: gmailparser.cpp:86
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonéz"
 
 #: gmailparser.cpp:87
 msgid "Japanese"
-msgstr ""
+msgstr "Japán"
 
 #: gmailparser.cpp:88
 msgid "Korean"
-msgstr ""
+msgstr "Koreai"
 
 #: gmailparser.cpp:89
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: gmailparser.cpp:90
 msgid "Thai"
-msgstr ""
+msgstr "Thai"
 
 #: gmailparser.cpp:91
 msgid "Danish"
-msgstr ""
+msgstr "Dán"
 
 #: gmailparser.cpp:92
 msgid "Estonian"
-msgstr ""
+msgstr "Észt"
 
 #: gmailparser.cpp:93
 msgid "Icelandic"
-msgstr ""
+msgstr "Izlandi"
 
 #: gmailparser.cpp:94
 msgid "Latvian"
-msgstr ""
+msgstr "Lett"
 
 #: gmailparser.cpp:95
 msgid "Romanian"
-msgstr ""
+msgstr "Román"
 
 #: gmailparser.cpp:96
 msgid "Slovak"
-msgstr ""
+msgstr "Szlovák"
 
 #: gmailparser.cpp:97
 msgid "Slovenian"
-msgstr ""
+msgstr "Szlovén"
 
 #: gmailparser.cpp:98
 msgid "Finnish"
-msgstr ""
+msgstr "Finn"
 
 #: gmailparser.cpp:99
 msgid "Tagalog"
-msgstr ""
+msgstr "Tagalog"
 
 #: gmailparser.cpp:100
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnám"
 
 #: gmailparser.cpp:101
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrán"
 
 #: gmailparser.cpp:102
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bolgár"
 
 #: gmailwalletmanager.cpp:101
-#, fuzzy
 msgid "KCheckGMail could not open the wallet. Please check your preferences."
-msgstr ""
-"A KCheckGmail nem tudta megnyitni a noteszt. Kérem ellenőrizze a "
-"beállításokat."
+msgstr "A KCheckGmail nem tudta megnyitni a noteszt. Kérem ellenőrizze a beállításokat."
 
 #: gmailwalletmanager.cpp:185
 #, fuzzy
@@ -265,12 +264,11 @@ msgstr "&Böngésző indtása"
 
 #: kcheckgmailtray.cpp:155
 msgid "Co&mpose Mail"
-msgstr ""
+msgstr "E&mail írása"
 
 #: kcheckgmailtray.cpp:157
-#, fuzzy
 msgid "Th&reads"
-msgstr "Hírcsoportok"
+msgstr "Szá&lak"
 
 #: kcheckgmailtray.cpp:201
 msgid ""
@@ -278,11 +276,11 @@ msgid ""
 "here: </p><p><center><img source=\"systray_shot\"></center></p>When you "
 "right-click on that icon you will see a menu, from which you can see the "
 "Threads menu containing the newest email of your account."
-msgstr ""
+msgstr "<p><center>A KCheckGMail üdvözli Önt!</center></p><p>A KCheckGMail elérhető itt: </p><p><center><img source=\"systray_shot\"></center></p>Ha jobb egégombbal kattint az ikonra, egy menüt fog látni, ahonnan eléri a Szálak menüpontot, ami e legújabb emailjeit tartalmazza."
 
 #: kcheckgmailtray.cpp:207
 msgid "Welcome"
-msgstr ""
+msgstr "Üdvözlöm"
 
 #: kcheckgmailtray.cpp:217
 msgid ""
@@ -296,13 +294,15 @@ msgstr ""
 
 #: kcheckgmailtray.cpp:223
 msgid "Legal Information"
-msgstr ""
+msgstr "Jogi információk"
 
 #: kcheckgmailtray.cpp:349
 msgid ""
 "_n: Attachment: %1\n"
 "Attachments: %1"
 msgstr ""
+"_n: Csatolmányok: %1\n"
+"Csatolmányok: %1"
 
 #: kcheckgmailtray.cpp:410
 msgid "Login"
@@ -322,20 +322,19 @@ msgstr "Hálózati beállítások"
 
 #: kcheckgmailtray.cpp:416
 msgid "Behavior"
-msgstr ""
+msgstr "Viselkedés"
 
 #: kcheckgmailtray.cpp:419
 msgid "Advanced"
-msgstr ""
+msgstr "Szakértő"
 
 #: kcheckgmailtray.cpp:419
-#, fuzzy
 msgid "Advanced Settings"
-msgstr "Alkalmazás beállítások"
+msgstr "Szakértői beállítások"
 
 #: kcheckgmailtray.cpp:437
 msgid "No account information has been entered. Do you want to quit?"
-msgstr ""
+msgstr "Nem adott meg azonosító információkat. Ki akar lépni?"
 
 #: kcheckgmailtray.cpp:467
 msgid ""
@@ -344,18 +343,18 @@ msgid ""
 "all unread emails.</p><p>If what you want is to show the new emails in your "
 "inbox use <i>in:inbox</i> or leave empty.</p><p>Are you sure you want to "
 "proceed without specifying location?</p>"
-msgstr ""
+msgstr "<p>Az Ön által megadott keresendő szöveg nem adja meg, hogy hol történjen az olvasatlan üzenetek keresése.</p><p>Egy <i>in:</i> és <i>label:</i> nélküli keresés az összes olvasatlan emailt fogja visszaadni.</p><p>Amennyiben azt szeretné, hogy az új emailek megjelenjenek a bejövő mappában, használja ezt: <i>in:inbox</i> vagy hagyja üresen.</p><p>Biztos benne, hogy folytatni kívánja hely meghatározása nékül?</p>"
 
 #: kcheckgmailtray.cpp:482
 msgid ""
 "<p>The search string you provided doesn't contain <i>is:unread</i>.</p><p>It "
 "should be set to ensure more unread messages are retrieved.</p><p>Are you "
 "sure you want to proceed?</p>"
-msgstr ""
+msgstr "<p>Az Ön által megadott keresendő szöveg nem tartalmazza ezt: <i>is:unread</i>.</p><p>Be kell állítani, hogy több új üzenet is érkezzen.</p><p>Biztos benne, hogy folytatni kívánja?</p>"
 
 #: kcheckgmailtray.cpp:528
 msgid "An error occurred logging in to Gmail<br><b>%1</b>"
-msgstr "Hiba történt bejelentkezéskor<br><b>%1</b>"
+msgstr "Hiba történta GMail-be történő bejelentkezéskor<br><b>%1</b>"
 
 #: kcheckgmailtray.cpp:540
 msgid "Now logged in to Gmail!"
@@ -366,24 +365,25 @@ msgid "Chec&k Mail Now"
 msgstr "Emailek &ellenőrzése most"
 
 #: kcheckgmailtray.cpp:578
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "_n: There is <b>1</b> new message\n"
 "There are <b>%n</b> new messages"
-msgstr "<b>%1</b> új üzenet"
+msgstr ""
+"<b>1</b> új üzenet van\n"
+"<b>%n</b> új üzenet van"
 
 #: kcheckgmailtray.cpp:588
 msgid "New mail arrived: <i>%1</i>"
-msgstr ""
+msgstr "Új levél érkezett : <i>%1</i>"
 
 #: kcheckgmailtray.cpp:596
-#, fuzzy
 msgid "There are no unread messages"
-msgstr "<b>%1</b> új üzenet"
+msgstr "Nincsenek olvasatlan üzenetek"
 
 #: kcheckgmailtray.cpp:643
 msgid "An other account has been opened, logging out from it!"
-msgstr ""
+msgstr "Egy másik azonosító meg lett nyitva, kijelentkezés belőle!"
 
 #: kcheckgmailtray.cpp:755
 #, fuzzy
@@ -405,19 +405,21 @@ msgid ""
 "<p>KCheckGMail is already running</p><p>You can find it here:</"
 "p><p><center><img source=\"systray_shot\"></center></p>"
 msgstr ""
+"<p>A KCheckGMail már fut</p><p>Itt megtalálja:</"
+"p><p><center><img source=\"systray_shot\"></center></p>"
 
 #: kcheckgmailtray.cpp:818
 msgid "Already Running"
-msgstr ""
+msgstr "Már fut"
 
 #: kcheckgmailtray.cpp:896
 #, c-format
 msgid "KCheckGMail - Notifying about new email for %1"
-msgstr ""
+msgstr "KCheckGMail - Figylemeztetés új email érkezésekor ehhez: %1"
 
 #: main.cpp:37
 msgid "Display legal information"
-msgstr ""
+msgstr "Jogi információ mutatása"
 
 #: main.cpp:47
 #, fuzzy
@@ -430,15 +432,15 @@ msgstr ""
 
 #: main.cpp:55
 msgid "Original author"
-msgstr ""
+msgstr "Eredeti szerző"
 
 #: main.cpp:56
 msgid "Maintainer"
-msgstr ""
+msgstr "Karbantartó"
 
 #: main.cpp:58
 msgid "Everybody who helped testing and translating KCheckGMail"
-msgstr ""
+msgstr "Mindenki aki segített tesztelni és fordítani a KCheckGMail-t"
 
 #: main.cpp:70
 msgid ""
@@ -450,31 +452,31 @@ msgstr ""
 
 #: main.cpp:76
 msgid "KCheckGMail is already running!\n"
-msgstr ""
+msgstr "A KCheckGMail már fut!\n"
 
 #. i18n: file advancedsettingswidget.ui line 16
 #: rc.cpp:3
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "AdvancedSettingsWidget"
-msgstr "Programm Einstellungsfenster"
+msgstr "AdvancedSettingsWidget"
 
 #. i18n: file advancedsettingswidget.ui line 61
 #: rc.cpp:6 rc.cpp:97
 #, no-c-format
 msgid "Open Gmail in simple interface"
-msgstr ""
+msgstr "Gmail megnyitása egyszerű nézetben"
 
 #. i18n: file advancedsettingswidget.ui line 72
 #: rc.cpp:10 rc.cpp:91
 #, no-c-format
 msgid "Search For:"
-msgstr ""
+msgstr "Keresés:"
 
 #. i18n: file appletsettingswidget.ui line 16
 #: rc.cpp:13
 #, no-c-format
 msgid "AppletSettingsWidget"
-msgstr "Programm Einstellungsfenster"
+msgstr "AppletSettingsWidget"
 
 #. i18n: file appletsettingswidget.ui line 35
 #: rc.cpp:16
@@ -492,25 +494,25 @@ msgstr "GMail verzióváltozásnál figyelmeztessen"
 #: rc.cpp:22
 #, no-c-format
 msgid "Alt+Y"
-msgstr ""
+msgstr "Alt+Y"
 
 #. i18n: file appletsettingswidget.ui line 59
 #: rc.cpp:25
 #, no-c-format
 msgid "Other"
-msgstr ""
+msgstr "Egyéb"
 
 #. i18n: file appletsettingswidget.ui line 70
 #: rc.cpp:28
 #, no-c-format
 msgid "Display sub&ject when only one new email arrives"
-msgstr ""
+msgstr "Tárgy mutatása, amikor csak egy új email érkezik"
 
 #. i18n: file appletsettingswidget.ui line 73
 #: rc.cpp:31
 #, no-c-format
 msgid "Alt+J"
-msgstr ""
+msgstr "Alt+J"
 
 #. i18n: file appletsettingswidget.ui line 89
 #: rc.cpp:34
@@ -528,7 +530,7 @@ msgstr "KDE alapértelmezett böngészőjének használata"
 #: rc.cpp:40 rc.cpp:70 rc.cpp:85
 #, no-c-format
 msgid "Alt+U"
-msgstr ""
+msgstr "Alt+U"
 
 #. i18n: file appletsettingswidget.ui line 154
 #: rc.cpp:43
@@ -552,7 +554,7 @@ msgstr "Bal egérgombra böngésző megnyitása"
 #: rc.cpp:52
 #, no-c-format
 msgid "Alt+B"
-msgstr ""
+msgstr "Alt+B"
 
 #. i18n: file appletsettingswidget.ui line 204
 #: rc.cpp:55 rc.cpp:145
@@ -564,7 +566,7 @@ msgstr "Véletlen bal kattintások elkapása böngésző indításkor"
 #: rc.cpp:58
 #, no-c-format
 msgid "LoginSettingsWidget"
-msgstr "Anmeldungseinstellungen Fenster"
+msgstr "LoginSettingsWidget"
 
 #. i18n: file loginsettingswidget.ui line 35
 #: rc.cpp:61
@@ -580,15 +582,15 @@ msgstr "Jelszó:"
 
 #. i18n: file loginsettingswidget.ui line 57
 #: rc.cpp:67
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Use KDE Wallet to store password"
-msgstr "Használja a KWallet-et a jelszó tárolására"
+msgstr "Használja a KDE Wallet-et a jelszó tárolására"
 
 #. i18n: file netsettingswidget.ui line 16
 #: rc.cpp:73
 #, no-c-format
 msgid "NetworkSettingsWidget"
-msgstr "Netzwerkeinstellungen Fenster"
+msgstr "NetworkSettingsWidget"
 
 #. i18n: file netsettingswidget.ui line 44
 #: rc.cpp:76
@@ -606,7 +608,7 @@ msgstr " másodperc"
 #: rc.cpp:82
 #, no-c-format
 msgid "&Use https connections for checking mail"
-msgstr ""
+msgstr "Https kapcsolat használata levél ellenőrzéshez"
 
 #. i18n: file netsettingswidget.ui line 73
 #: rc.cpp:88
@@ -614,7 +616,7 @@ msgstr ""
 msgid ""
 "<blockquote>Use secure connections when checking for new mail. Note that the "
 "login procedure uses https regardless of this setting.</blockquote>"
-msgstr ""
+msgstr "<blockquote>Biztonságos kapcsolatok használata új levelek keresésekor. Vegye figyelembe, hogy a bejelentkezési procedúra ettől függetlenül https-t használ.</blockquote>"
 
 #. i18n: file prefs.kcfg line 9
 #: rc.cpp:94
@@ -622,7 +624,7 @@ msgstr ""
 msgid ""
 "When checking for new email's this is the search query sent to Google Mail. "
 "Don't forget to add is:unread to improve the search."
-msgstr ""
+msgstr "Új email keresésekor ez lesz átadva a Google Mail-nak. Ne felejtse el hozzáadni ezt: unread, hogy pontosabb legyen a keresés."
 
 #. i18n: file prefs.kcfg line 14
 #: rc.cpp:100
@@ -630,25 +632,25 @@ msgstr ""
 msgid ""
 "This option lets you make KCheckGMail open Gmail using the simple interface "
 "(only HTML) or the full interface (unmarked)."
-msgstr ""
+msgstr "Ez az opció lehetővé teszi a KCheckGmail-nak, hogy az egyszerú interfészt használva nyissa meg a Gmail-t (csak HTML) vagy használja a teljes interfészt (jelöletlen)."
 
 #. i18n: file prefs.kcfg line 19
 #: rc.cpp:103
 #, no-c-format
 msgid "Polling interval"
-msgstr "Kérdezési időköz"
+msgstr "Ellenőrzési időköz"
 
 #. i18n: file prefs.kcfg line 23
 #: rc.cpp:106
 #, no-c-format
 msgid "How many seconds to wait before checking for new mail."
-msgstr "Hány másodpercet várjon mielőtt új emaileket keres."
+msgstr "Hány másodpercet várjon mielőtt új levelet keres."
 
 #. i18n: file prefs.kcfg line 26
 #: rc.cpp:109
 #, no-c-format
 msgid "Use https connections for checking mail"
-msgstr ""
+msgstr "Https kapcsolat használata levél ellenőrzéshez"
 
 #. i18n: file prefs.kcfg line 28
 #: rc.cpp:112
@@ -656,7 +658,7 @@ msgstr ""
 msgid ""
 "Use secure connections when checking for new mail. Note that the login "
 "procedure uses https regardless of this setting."
-msgstr ""
+msgstr "Biztonságos kapcsolatok használata új levelek keresésekor. Vegye figyelembe, hogy a bejelentkezési procedúra ettől függetlenül https-t használ."
 
 #. i18n: file prefs.kcfg line 34
 #: rc.cpp:115
@@ -668,7 +670,7 @@ msgstr "Felhasználóinév"
 #: rc.cpp:118
 #, no-c-format
 msgid "Your Gmail username or your Google Hosted Domain email address"
-msgstr ""
+msgstr "Az Ön Gmail felhasználóneve vagy az Ön Google Hosted Domain email címe"
 
 #. i18n: file prefs.kcfg line 38
 #: rc.cpp:121
@@ -686,7 +688,7 @@ msgstr "Jelszó a GMail fiók ellenőrzéséhez"
 #: rc.cpp:127
 #, no-c-format
 msgid "Use KDE Wallet to store password"
-msgstr "Használja a KWallet-et a jelszó tárolására"
+msgstr "Használja a KDE Wallet-et a jelszó tárolására"
 
 #. i18n: file prefs.kcfg line 44
 #: rc.cpp:130
@@ -743,8 +745,7 @@ msgstr "KDE alapértelmezett böngészőjének használata"
 #. i18n: file prefs.kcfg line 67
 #: rc.cpp:154
 #, no-c-format
-msgid ""
-"Use whatever browser is configured as the KDE default to check your Gmail"
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
 msgstr ""
 "Használja a KDE alapértelmezett böngészőjét GMail ellenőrzésre, bármi is "
 "legyen az"
@@ -767,30 +768,28 @@ msgstr ""
 #: rc.cpp:166
 #, no-c-format
 msgid "Display subject when only one new email arrives"
-msgstr ""
+msgstr "Tárgy mutatása, amikor csak egy új email érkezik"
 
 #. i18n: file prefs.kcfg line 81
 #: rc.cpp:169
 #, no-c-format
 msgid "Display message's subject when only one new email arrives"
-msgstr ""
+msgstr "Az üzenet tárgyának mutatása, amikor csak egy új email érkezik"
 
 #. new-gmail-arrived - Name new-gmail-arrived - Comment
 #: eventsrc:1 eventsrc:2
 msgid "New Gmail Arrived"
-msgstr ""
+msgstr "Új Gmail érkezett"
 
 #. gmail-login-yes - Name gmail-login-yes - Comment
 #: eventsrc:3 eventsrc:4
-#, fuzzy
 msgid "Logged in to Gmail"
-msgstr "Bejelentkezve a GMail-be!"
+msgstr "Bejelentkezve a GMail-be"
 
 #. gmail-login-no - Name gmail-login-no - Comment
 #: eventsrc:5 eventsrc:6
-#, fuzzy
 msgid "Failed to login to Gmail"
-msgstr "Bejelentkezve a GMail-be!"
+msgstr "Nem sikerült a bejelentkezés a Gmail-be"
 
 #. gmail-version-mismatch - Name gmail-version-mismatch - Comment
 #: eventsrc:7 eventsrc:8
@@ -801,69 +800,42 @@ msgstr "Verzió vátozás"
 #. gmail-session-changed - Name
 #: eventsrc:9
 msgid "New Gmail session is open"
-msgstr ""
+msgstr "Új Gmail munkamenet megnyitva"
 
 #. gmail-session-changed - Comment
 #: eventsrc:10
 msgid "An other session has been opened"
-msgstr ""
+msgstr "Egy másik munkamenet lett megnyitva"
 
 #. gmail-mail-snippet - Name
 #: eventsrc:11
 msgid "Mail Snippet"
-msgstr ""
+msgstr "Levél részlet"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
 msgid "eMail snippets when moving the mouse over a threads menu entry"
-msgstr ""
+msgstr "Email részlet mutatása, amikor a Szálak menü egy bejegyzése fölé húzza az egeret"
 
 #. no-unread-gmail - Name
 #: eventsrc:13
 msgid "No unread email"
-msgstr ""
+msgstr "Nincs olvasatlan levél"
 
 #. no-unread-gmail - Comment
 #: eventsrc:14
-#, fuzzy
 msgid "Dummy notification triggered when there are no unread messages"
-msgstr "<b>%1</b> új üzenet"
+msgstr "Vak figyelmeztetés amikor nincsenek olvasatlan üzenetek"
 
 #. GenericName
 #: kcheckgmail.desktop:2
 msgid "New email notifier"
-msgstr ""
+msgstr "Új email értesítő"
 
 #. Comment
 #: kcheckgmail.desktop:3
-#, fuzzy
 msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
 "account."
-msgstr ""
-"Tálcaikon, amely jelzi, hogy hány\n"
-"email érkezett GMail fiókjába."
+msgstr "Egy Kicker alkalmazás, amely jelzi, hogy hány email van a GMail fiókjában."
 
-#~ msgid "Please enter a password"
-#~ msgstr "Kérem írja be a jelszót"
-
-#~ msgid "There is <b>1</b> new message"
-#~ msgstr "<b>1</b> új üzenet"
-
-#~ msgid "Applet"
-#~ msgstr "Alkalmazás"
-
-#~ msgid "Application is being auto-started at KDE session start"
-#~ msgstr "A program automatikusan elindul a KDE-vel"
-
-#~ msgid "Primary author and maintainer"
-#~ msgstr "Elsődleges szerző és karbantartó"
-
-#~ msgid "Brazilian Portuguese Translation"
-#~ msgstr "Brazil portugál fordítás"
-
-#~ msgid "Italian Translation"
-#~ msgstr "Olasz fordítás"
-
-#~ msgid "Your Gmail username"
-#~ msgstr "Az Ön GMail felhasználóneve"
