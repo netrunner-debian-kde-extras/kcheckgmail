@@ -17,6 +17,7 @@ Comment[pl]=Aplet panelu do pokazywania zawartości Twojej skrzynki pocztowej Gm
 Comment[it]=Un'applet di Kicker per visualizzare quanti messaggi di posta elettronica sono presenti nel tuo account di Gmail.
 Comment[fr]=Un applet kicker qui affiche le nombre de nouveaux messages sur un compte Gmail.
 Comment[es]=Mini aplicación que muestra el número de mensajes sin leer en una cuenta de Gmail.
+Comment[el]=Μία εφαρμογή Kicker που σας εμφανίζει τα νέα μηνύματα του Gmail λογαριασμού σας
 Comment[ar]=بريمج يبين عدد الرسائل الإلكترونية في حساب GMail التي لديك.
 Exec=kcheckgmail
 Icon=kcheckgmail
