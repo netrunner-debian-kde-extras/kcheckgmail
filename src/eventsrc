@@ -4,6 +4,7 @@ Comment=KCheckGMail
 
 [new-gmail-arrived]
 Name=New Gmail Arrived
+Name[zh_CN]=收到新邮件
 Name[wa]=Gn a on novea Gmail d' arivé
 Name[tr]=Yeni Gmail Geldi
 Name[pt]=Nova Mensagem no Gmail
@@ -14,6 +15,7 @@ Name[es]=Nuevo Gmail ha arrivado
 Name[el]=Έχετε νέο μήνυμα.
 Name[ar]=وصلت رسالة جديدة
 Comment=New Gmail Arrived
+Comment[zh_CN]=收到新邮件
 Comment[wa]=Gn a on novea Gmail d' arivé
 Comment[tr]=Yeni Gmail Geldi
 Comment[pt]=Nova Mensagem no Gmail
@@ -27,6 +29,7 @@ default_presentation=16
 
 [gmail-login-yes]
 Name=Logged in to Gmail
+Name[zh_CN]=登录到Gmail
 Name[wa]=Elodjî dins Gmail
 Name[tr]=Gmail'e giriş yapıldı
 Name[pt_BR]=Você está logado no Gmail
@@ -40,6 +43,7 @@ Name[es]=Identificado en Gmail
 Name[el]=Σύνδεση στο Gmail : ΟΚ
 Name[ar]=والج بGmail
 Comment=Logged in to Gmail
+Comment[zh_CN]=登录到Gmail
 Comment[wa]=Elodjî dins Gmail
 Comment[tr]=Gmail'e giriş yapıldı
 Comment[pt_BR]=Você está logado no Gmail
@@ -56,6 +60,7 @@ default_presentation=16
 
 [gmail-login-no]
 Name=Failed to login to Gmail
+Name[zh_CN]=登录Gmail失败
 Name[wa]=Elodjaedje a Gmail a fwait berwete
 Name[tr]=Gmail'e giriş yapılamadı
 Name[pt_BR]=Falha ao logar no Gmail
@@ -63,12 +68,12 @@ Name[pt]=O acesso ao Gmail falhou
 Name[pl]=Nie udało się zalogować do Gmaila
 Name[lt]=Nepavyko prisijungti prie Gmail
 Name[it]=Fallito l'accesso in Gmail
-Name[fr]=L'authentification à failli
 Name[et]=Ei suutnud sisse logida Gmaili
 Name[es]=No se ha podido conectar a Gmail
 Name[el]=Σφάλμα κατά την σύνδεση με το Gmail
 Name[ar]=فشل الولوج إلى Gmail
 Comment=Failed to login to Gmail
+Comment[zh_CN]=登录Gmail失败
 Comment[wa]=Elodjaedje a Gmail a fwait berwete
 Comment[tr]=Gmail'e giriş yapılamadı
 Comment[pt_BR]=Falha ao logar no Gmail
@@ -76,7 +81,6 @@ Comment[pt]=O acesso ao Gmail falhou
 Comment[pl]=Nie udało się zalogować do Gmaila
 Comment[lt]=Nepavyko prisijungti prie Gmail
 Comment[it]=Fallito l'accesso in Gmail
-Comment[fr]=L'authentification à failli
 Comment[et]=Ei suutnud sisse logida Gmaili
 Comment[es]=No se ha podido conectar a Gmail
 Comment[el]=Σφάλμα κατά την σύνδεση με το Gmail
@@ -85,6 +89,7 @@ default_presentation=16
 
 [gmail-version-mismatch]
 Name=Gmail version has changed
+Name[zh_CN]=Gmail版本改变
 Name[wa]=Li modêye di Gmail a candjî
 Name[tr]=Gmail sürümü değişmiş
 Name[pt]=A versão do Gmail mudou
@@ -97,6 +102,7 @@ Name[es]=La versión de Gmail ha cambiado
 Name[el]=Η έκδοση του gmail έχει αλλάξει
 Name[ar]=تغيرت نسخة Gmail
 Comment=Gmail version has changed
+Comment[zh_CN]=Gmail版本改变
 Comment[wa]=Li modêye di Gmail a candjî
 Comment[tr]=Gmail sürümü değişmiş
 Comment[pt]=A versão do Gmail mudou
@@ -112,6 +118,7 @@ default_presentation=2
 
 [gmail-session-changed]
 Name=New Gmail session is open
+Name[zh_CN]=新的Gmail会话打开
 Name[wa]=Novele session di Gmail drovowe
 Name[tr]=Yeni Gmail oturumu açık
 Name[pt]=Uma nova sessão Gmail está aberta
@@ -122,6 +129,7 @@ Name[es]=Una nueva sesión en Gmail ha sido abierta
 Name[el]=Έχει ανοιχτεί νέα σύνδεση Gmail
 Name[ar]=فتحت جلسة Gmail جديدة
 Comment=An other session has been opened
+Comment[zh_CN]=另外一个会话已经打开
 Comment[wa]=Ene ôte session a droveye
 Comment[tr]=Başka bir oturum açıldı
 Comment[pt]=Uma outra sessão foi iniciada
@@ -135,16 +143,17 @@ default_presentation=0
 
 [gmail-mail-snippet]
 Name=Mail Snippet
+Name[zh_CN]=邮件摘录
 Name[wa]=Moncea d' emile
 Name[tr]=Posta Özetleri
 Name[pt]=Fragmento de mensagem
 Name[pl]=Fragment wiadomości
 Name[lt]=Pašto fragmentas
 Name[it]=Pezzetto di mail
-Name[fr]=Fragment de courriel
 Name[es]=Fragmentos de email
 Name[ar]=مقتطف من البريد
 Comment=eMail snippets when moving the mouse over a threads menu entry
+Comment[zh_CN]=当你把鼠标移到”邮件“子菜单时，显示邮件摘要
 Comment[tr]=Fareyi menüdeki bir konunun üzerine getirince görünen e-posta özetleri
 Comment[pt]=Pedaços de mensagens quando passar o rato por cima do menu Últimas Mensagens Não Lidas
 Comment[pl]=Fragmenty wiadomości kiedy myszka przesuwa się nad kolejnymi wątkami w menu
@@ -157,6 +166,7 @@ default_presentation=16
 
 [no-unread-gmail]
 Name=No unread email
+Name[zh_CN]=没有未读油价
 Name[wa]=Pont d' emile nén léjhou
 Name[pt]=Não existem mensagens por ler
 Name[pl]=Brak nieprzeczytanych wiadomości
@@ -165,6 +175,7 @@ Name[fr]=Aucun nouveau message
 Name[es]=No hay mensajes sin leer
 Name[el]=Κανένα μη αναγνωσμένο μήνυμα
 Comment=Dummy notification triggered when there are no unread messages
+Comment[zh_CN]=没有邮件是，切换到虚拟提示
 Comment[pt]=Notificação fictícia desencadeada quando não há mensagens por ler
 Comment[pl]=Puste powiadomienie wyzwalane kiedy nie ma nieprzeczytanych wiadomości
 Comment[it]=Avviso di sistema banale generato quando non si hanno messaggi da leggere
