@@ -39,6 +39,7 @@
 
 #include <kapp.h>
 #include <dcopclient.h>
+#include <dcopclient.h>
 #include <kcharsets.h>
 
 #ifdef DUMP_PAGES
@@ -632,6 +633,67 @@ void GMail::dump2File(const QString filename, const QString data)
 
 	f.close();
 #endif
+}
+
+bool GMail::setDomainAdvice(QString url, QString advice)
+{
+	QByteArray params;
+	QDataStream stream(params, IO_WriteOnly);
+	stream << url;
+	stream << advice;
+	
+	if (!kapp->dcopClient()->send("kcookiejar", "kcookiejar",
+	     "setDomainAdvice(QString,QString)", params))
+	{
+		kdWarning() << k_funcinfo << "There was some error using DCOP!" << endl;
+		return false;
+	}
+	
+	if (result.lower.compare(getDomainAdvice(url).lower()) == 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+QString GMail::getDomainAdvice(QString url)
+{
+	QCString replyType;
+	QByteArray params, reply;
+	QDataStream stream(params, IO_WriteOnly);
+	stream << url;
+	
+	if (!kapp->dcopClient()->call("kcookiejar", "kcookiejar",
+	     "getDomainAdvice(QString)", params, replyType, reply))
+	{
+		kdWarning() << k_funcinfo << "There was some error using DCOP!" << endl;
+		return QString::null;
+	}
+
+	QDataStream stream2(reply, IO_ReadOnly);
+	if(replyType != "QString")
+	{
+		kdWarning() << k_funcinfo << "DCOP function findCookies(...) return " << replyType.data() << ", expected QString" << endl;
+		return QString::null;
+	}
+
+	QString result;
+	stream2 >> result;
+	
+	return result;
+}
+
+bool GMail::areCookiesAllowed(QString url)
+{
+	QString advice;
+	
+	advice = getDomainAdvice(url);
+	
+	if (advice.compare("Accept") == 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 //From kcookiejartest.cpp

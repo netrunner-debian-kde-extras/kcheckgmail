@@ -65,8 +65,11 @@ protected:
 	
 	void dump2File(const QString filename,const QString data);
 	
-	bool cookieExists(QString cookieName, QString url);
-	bool cookieExists(QString cookieName);
+	bool cookieExists(QString, QString);
+	bool cookieExists(QString);
+	bool areCookiesAllowed(QString);
+	QString getDomainAdvice(QString);
+	bool setDomainAdvice(QString, QString);
 
 private:
 	unsigned int mInterval;
