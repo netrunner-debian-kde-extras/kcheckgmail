@@ -22,4 +22,4 @@ Exec=kcheckgmail
 Icon=kcheckgmail
 X-KDE-StartupNotify=true
 Type=Application
-Categories=Qt;KDE;Network
+Categories=Qt;KDE;Network;
