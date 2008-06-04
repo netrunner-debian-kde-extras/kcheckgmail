@@ -650,7 +650,7 @@ bool GMail::setDomainAdvice(QString url, QString advice)
 		return false;
 	}
 	
-	if (result.lower.compare(getDomainAdvice(url).lower()) == 0) {
+	if (advice.lower.compare(getDomainAdvice(url).lower()) == 0) {
 		return true;
 	} else {
 		return false;
