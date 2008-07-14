@@ -303,8 +303,8 @@ xdg_directorydir = @xdg_directorydir@
 xdg_menudir = @xdg_menudir@
 #>- POFILES = AUTO
 #>+ 2
-POFILES = es.po pt.po ru.po it.po et.po sv.po pl.po sk.po ko.po de.po hu.po ar.po tr.po pt_BR.po lt.po fr.po
-GMOFILES = es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo pl.gmo sk.gmo ko.gmo de.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo fr.gmo
+POFILES = es.po pt.po ru.po it.po et.po sv.po pl.po sk.po ko.po de.po hu.po ar.po tr.po pt_BR.po lt.po fr.po wa.po
+GMOFILES = es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo pl.gmo sk.gmo ko.gmo de.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo fr.gmo wa.gmo
 #>- all: all-am
 #>+ 1
 all: all-nls docs-am  all-am
@@ -497,7 +497,7 @@ uninstall-am: uninstall-info-am
 .NOEXPORT:
 
 #>+ 2
-KDE_DIST=tr.gmo sv.gmo pl.gmo kcheckgmail.pot pt.po ko.gmo ru.po ru.gmo ko.po ar.po de.po et.po fr.gmo fr.po et.gmo tr.po sk.gmo lt.gmo pt_BR.gmo ar.gmo Makefile.in pt_BR.po it.gmo sv.po hu.po de.gmo pl.po lt.po es.po pt.gmo es.gmo it.po sk.po hu.gmo Makefile.am 
+KDE_DIST=tr.gmo sv.gmo pl.gmo kcheckgmail.pot pt.po ko.gmo ru.po ru.gmo ko.po ar.po de.po et.po fr.gmo fr.po et.gmo tr.po sk.gmo lt.gmo pt_BR.gmo ar.gmo Makefile.in pt_BR.po it.gmo sv.po hu.po de.gmo pl.po lt.po es.po pt.gmo es.gmo it.po sk.po hu.gmo wa.po wa.gmo Makefile.am 
 
 #>+ 49
 es.gmo: es.po
@@ -548,10 +548,13 @@ lt.gmo: lt.po
 fr.gmo: fr.po
 	rm -f fr.gmo; $(GMSGFMT) -o fr.gmo $(srcdir)/fr.po
 	test ! -f fr.gmo || touch fr.gmo
+wa.gmo: wa.po
+	rm -f wa.gmo; $(GMSGFMT) -o wa.gmo $(srcdir)/wa.po
+	test ! -f wa.gmo || touch wa.gmo
 
 #>+ 3
 clean-nls:
-	-rm -f  es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo pl.gmo sk.gmo ko.gmo de.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo fr.gmo
+	-rm -f  es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo pl.gmo sk.gmo ko.gmo de.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo fr.gmo wa.gmo
 
 #>+ 10
 install-nls:
