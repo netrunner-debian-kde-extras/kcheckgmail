@@ -137,7 +137,6 @@ signals:
 	void checkDone(const QString &data);
 	
 	void sessionChanged();
-	void logingOut();
 };
 
 #endif

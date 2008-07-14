@@ -30,6 +30,7 @@
 
 #include <kio/job.h>
 #include <kio/global.h>
+#include <kio/netaccess.h>
 #include <klocale.h>
 #include <kdebug.h>
 
@@ -207,7 +208,6 @@ void GMail::slotGetWalletPassword(const QString& pass)
 
 void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 {
-	kdDebug() << k_funcinfo << endl;
 
 	if(job->error() != 0) {
 		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
@@ -356,7 +356,6 @@ void GMail::postLogin(QString url)
 
 void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 {
-	kdDebug() << k_funcinfo << endl;
 
 	if(job->error() != 0) {
 		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
@@ -598,19 +597,27 @@ QString GMail::getURLPart()
 
 void GMail::logOut(bool force)
 {
-	if(!isLoggedIn() && !force)
+	static bool alreadyRunning = false;
+	bool result;
+
+	if(alreadyRunning || (!force && !isLoggedIn()))
 		return;
-	
-	emit logingOut();
-	
+
+	alreadyRunning = true;
 	sessionCookie = QString::null;
+	mTimer->stop();
 	
 	QString logoutUrl = (!isGAP4D)? gGMailLogOut : QString(gGAP4DLogOut).arg(useDomain);
 	
-	KIO::TransferJob *job = KIO::get(logoutUrl, true, false);
+	KIO::Job *job = KIO::get(logoutUrl, true, false);
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
 	kdDebug() << "Loging out! " << logoutUrl << endl;
+
+	// we really don't want async jobs here
+	result= KIO::NetAccess::synchronousRun(job, 0);
+	kdDebug() << "Log out job done, with result: " << result << endl;
+	alreadyRunning = false;
 }
 
 void GMail::logOut()
@@ -620,6 +627,7 @@ void GMail::logOut()
 
 void GMail::slotLogOut()
 {
+	kdDebug() << k_funcinfo << endl;
 	logOut(true);
 }
 
