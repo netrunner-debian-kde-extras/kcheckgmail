@@ -558,7 +558,7 @@ clean-nls:
 
 #>+ 10
 install-nls:
-	@for base in es pt ru it et sv pl sk ko de hu ar tr pt_BR lt fr ; do \
+	@for base in es pt ru it et sv pl sk ko de hu ar tr pt_BR lt fr wa ; do \
 	  echo $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
 	  $(mkinstalldirs) $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES ; \
 	  if test -f $$base.gmo; then $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
@@ -585,6 +585,7 @@ uninstall-nls:
 	rm -f $(DESTDIR)$(kde_locale)/pt_BR/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/lt/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/fr/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/wa/LC_MESSAGES/$(PACKAGE).mo
 
 #>+ 2
 all-nls: $(GMOFILES)
