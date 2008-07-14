@@ -25,6 +25,7 @@
 #include "gmailwalletmanager.h"
 #include "prefs.h"
 
+#include <cstdlib>
 #include <kapp.h>
 #include <klocale.h>
 #include <kactioncollection.h>
