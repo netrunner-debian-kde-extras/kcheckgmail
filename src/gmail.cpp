@@ -38,7 +38,7 @@
 #include <qregexp.h>
 #include <qtimer.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <dcopclient.h>
 #include <dcopclient.h>
 #include <kcharsets.h>

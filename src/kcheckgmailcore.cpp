@@ -26,7 +26,7 @@
 #include "prefs.h"
 
 #include <cstdlib>
-#include <kapp.h>
+#include <kapplication.h>
 #include <klocale.h>
 #include <kactioncollection.h>
 #include <kpopupmenu.h>
