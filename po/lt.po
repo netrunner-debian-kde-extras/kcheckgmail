@@ -244,7 +244,7 @@ msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: kcheckgmailtray.cpp:145
-msgid "Configure &Notications..."
+msgid "Configure &Notifications..."
 msgstr "Konfigūruoti &pranešimus..."
 
 #: kcheckgmailtray.cpp:147
@@ -834,7 +834,7 @@ msgstr "Pašto fragmentas"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
-msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr "pašto fragmentai, kai pelė judinama virš gijų meniu įrašo"
 
 #. no-unread-gmail - Name

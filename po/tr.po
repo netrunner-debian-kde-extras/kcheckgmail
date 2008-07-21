@@ -244,7 +244,7 @@ msgid "KCheckGMail"
 msgstr "KCheckGmail"
 
 #: kcheckgmailtray.cpp:145
-msgid "Configure &Notications..."
+msgid "Configure &Notifications..."
 msgstr "&Bildirimleri Yapılandır"
 
 #: kcheckgmailtray.cpp:147
@@ -832,7 +832,7 @@ msgstr "Posta Özetleri"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
-msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr "Fareyi menüdeki bir konunun üzerine getirince görünen e-posta özetleri"
 
 #. no-unread-gmail - Name

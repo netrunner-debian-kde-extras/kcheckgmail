@@ -239,7 +239,7 @@ msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: kcheckgmailtray.cpp:145
-msgid "Configure &Notications..."
+msgid "Configure &Notifications..."
 msgstr "إعداد &الإعلامات..."
 
 #: kcheckgmailtray.cpp:147
@@ -829,7 +829,7 @@ msgstr "مقتطف من البريد"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
-msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr "أظهر مقتطفا من البريد إذا أمررت الفأرة على رسالة من القائمة"
 
 #. no-unread-gmail - Name

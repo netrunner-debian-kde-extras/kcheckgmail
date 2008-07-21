@@ -235,7 +235,7 @@ msgid "KCheckGMail"
 msgstr "KCheckGmail"
 
 #: kcheckgmailtray.cpp:145
-msgid "Configure &Notications..."
+msgid "Configure &Notifications..."
 msgstr "&N配置和提醒..."
 
 #: kcheckgmailtray.cpp:147
@@ -789,7 +789,7 @@ msgstr "邮件摘录"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
-msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr "当你把鼠标移到”邮件“子菜单时，显示邮件摘要"
 
 #. no-unread-gmail - Name

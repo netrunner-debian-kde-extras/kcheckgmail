@@ -240,7 +240,7 @@ msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: kcheckgmailtray.cpp:145
-msgid "Configure &Notications..."
+msgid "Configure &Notifications..."
 msgstr "Configura les &notificacions..."
 
 #: kcheckgmailtray.cpp:147
@@ -835,7 +835,7 @@ msgstr "Fragments de correu"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
-msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr "Fragment de correu al moure el cursor sobre una conversa"
 
 #. no-unread-gmail - Name

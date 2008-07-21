@@ -107,7 +107,7 @@ void KCheckGmailCore::initTray()
 
 void KCheckGmailCore::initActions()
 {
- 	d->actionShowKNotifyDialog = new KAction(i18n("Configure &Notications"), "knotify", "", this, SLOT(slotShowKNotifyDialog()), d->actions);
+	d->actionShowKNotifyDialog = new KAction(i18n("Configure &Notifications"), "knotify", "", this, SLOT(slotShowKNotifyDialog()), d->actions);
 
 	d->actionShowPrefsDialog = new KAction(i18n("&Configure KCheckGMail..."), "configure", "",
 		this, SLOT( slotShowPrefsDialog()), d->actions);

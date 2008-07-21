@@ -240,7 +240,7 @@ msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: kcheckgmailtray.cpp:145
-msgid "Configure &Notications..."
+msgid "Configure &Notifications..."
 msgstr "Ρυθμίσεις Ειδοποιήσεων"
 
 #: kcheckgmailtray.cpp:147
@@ -775,7 +775,7 @@ msgstr "Mail Snippet"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
-msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr "Εμφανίζει την επικεφαλίδα του μηνύματος όταν μετακινείτε το ποντίκι επάνω στο μήνυμα"
 
 #. no-unread-gmail - Name

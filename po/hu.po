@@ -246,7 +246,7 @@ msgid "KCheckGMail"
 msgstr "KCheckGmail"
 
 #: kcheckgmailtray.cpp:145
-msgid "Configure &Notications..."
+msgid "Configure &Notifications..."
 msgstr "&Figyelmeztetések beállítása..."
 
 #: kcheckgmailtray.cpp:147
@@ -814,7 +814,7 @@ msgstr "Levél részlet"
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
-msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr "Email részlet mutatása, amikor a Szálak menü egy bejegyzése fölé húzza az egeret"
 
 #. no-unread-gmail - Name
