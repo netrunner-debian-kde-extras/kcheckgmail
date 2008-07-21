@@ -366,7 +366,7 @@ msgid "There are no unread messages"
 msgstr "Δεν έχετε νέα μηνύματα"
 
 #: kcheckgmailtray.cpp:643
-msgid "An other account has been opened, logging out from it!"
+msgid "Another account has been opened, logging out from it!"
 msgstr "Είστε ήδη συνδεδεμένος σε άλλο λογαριασμό, αποσυνδεθείτε πρώτα από αυτόν."
 
 #: kcheckgmailtray.cpp:755
@@ -765,7 +765,7 @@ msgstr "Έχει ανοιχτεί νέα σύνδεση Gmail"
 
 #. gmail-session-changed - Comment
 #: eventsrc:10
-msgid "An other session has been opened"
+msgid "Another session has been opened"
 msgstr "Μια άλλη σύνδεση είναι ήδη ανοικτή"
 
 #. gmail-mail-snippet - Name

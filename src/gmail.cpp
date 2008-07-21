@@ -132,7 +132,7 @@ void GMail::checkLoginParams()
 	
 	if(!mLoginLock->locked()) {
 		
-		//Try to log out if a session already exists (because it might be from an other address)
+		//Try to log out if a session already exists (because it might be from another address)
 		if(isLoggedIn(false)) {
 			kdDebug() << k_funcinfo << "A gmail session was already open, logging out from it" << endl;
 			logOut(true);
@@ -393,7 +393,7 @@ void GMail::slotPostLoginResult(KIO::Job *job)
 				emit loginDone(false, mLoginFromTimer, 
 				       i18n("Unknown error retrieving cookies"));
 			} else {
-				kdDebug() << k_funcinfo << "Found an other redirect!: " << url << endl;
+				kdDebug() << k_funcinfo << "Found another redirect!: " << url << endl;
 				mLoginLock->tryLock();
 				postLogin(url);
 			}

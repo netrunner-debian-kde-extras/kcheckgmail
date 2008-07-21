@@ -380,7 +380,7 @@ msgid "There are no unread messages"
 msgstr "Postkastis on <b>%1</b> uut teadet"
 
 #: kcheckgmailtray.cpp:643
-msgid "An other account has been opened, logging out from it!"
+msgid "Another account has been opened, logging out from it!"
 msgstr ""
 
 #: kcheckgmailtray.cpp:755
@@ -805,7 +805,7 @@ msgstr ""
 
 #. gmail-session-changed - Comment
 #: eventsrc:10
-msgid "An other session has been opened"
+msgid "Another session has been opened"
 msgstr ""
 
 #. gmail-mail-snippet - Name

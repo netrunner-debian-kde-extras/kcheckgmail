@@ -382,7 +382,7 @@ msgid "There are no unread messages"
 msgstr "Nincsenek olvasatlan üzenetek"
 
 #: kcheckgmailtray.cpp:643
-msgid "An other account has been opened, logging out from it!"
+msgid "Another account has been opened, logging out from it!"
 msgstr "Egy másik azonosító meg lett nyitva, kijelentkezés belőle!"
 
 #: kcheckgmailtray.cpp:755
@@ -804,7 +804,7 @@ msgstr "Új Gmail munkamenet megnyitva"
 
 #. gmail-session-changed - Comment
 #: eventsrc:10
-msgid "An other session has been opened"
+msgid "Another session has been opened"
 msgstr "Egy másik munkamenet lett megnyitva"
 
 #. gmail-mail-snippet - Name

@@ -596,7 +596,7 @@ void KCheckGmailCore::slotCheckStart()
 
 void KCheckGmailCore::slotSessionChanged()
 {
-	KNotifyClient::event(d->mTray->winId(), "gmail-session-changed", i18n("An other account has been opened, logging out from it!"));
+	KNotifyClient::event(d->mTray->winId(), "gmail-session-changed", i18n("Another account has been opened, logging out from it!"));
 }
 
 

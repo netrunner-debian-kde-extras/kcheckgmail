@@ -393,7 +393,7 @@ msgid "There are no unread messages"
 msgstr "Yra neperskaitytų pranešimų"
 
 #: kcheckgmailtray.cpp:643
-msgid "An other account has been opened, logging out from it!"
+msgid "Another account has been opened, logging out from it!"
 msgstr "Buvo atverta kita paskyra, išsiregistruojama iš jos!"
 
 #: kcheckgmailtray.cpp:755
@@ -824,7 +824,7 @@ msgstr "Atverta nauja Gmail sesija"
 
 #. gmail-session-changed - Comment
 #: eventsrc:10
-msgid "An other session has been opened"
+msgid "Another session has been opened"
 msgstr "Buvo atverta kita sesija"
 
 #. gmail-mail-snippet - Name

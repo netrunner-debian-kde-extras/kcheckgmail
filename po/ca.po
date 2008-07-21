@@ -395,7 +395,7 @@ msgid "There are no unread messages"
 msgstr "No hi ha missatges sense llegir"
 
 #: kcheckgmailtray.cpp:643
-msgid "An other account has been opened, logging out from it!"
+msgid "Another account has been opened, logging out from it!"
 msgstr "Altre compte ha estat obert, desconnectant-se d'ell!"
 
 #: kcheckgmailtray.cpp:755
@@ -825,7 +825,7 @@ msgstr "Una nova sessió en Gmail ha estat oberta"
 
 #. gmail-session-changed - Comment
 #: eventsrc:10
-msgid "An other session has been opened"
+msgid "Another session has been opened"
 msgstr "S'ha obert altra sessió en Gmail"
 
 #. gmail-mail-snippet - Name

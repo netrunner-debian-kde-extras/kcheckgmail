@@ -399,7 +399,7 @@ msgid "There are no unread messages"
 msgstr "I gn a pont d' messaedjes nén léjhou"
 
 #: kcheckgmailtray.cpp:627
-msgid "An other account has been opened, logging out from it!"
+msgid "Another account has been opened, logging out from it!"
 msgstr "On ôte conte a stî drovi, dislodjîz vs di cit ci&nbsp;!"
 
 #: kcheckgmailtray.cpp:728
@@ -806,7 +806,7 @@ msgstr "Novele session di Gmail drovowe"
 
 #. gmail-session-changed - Comment
 #: eventsrc:10
-msgid "An other session has been opened"
+msgid "Another session has been opened"
 msgstr "Ene ôte session a droveye"
 
 #. gmail-mail-snippet - Name
