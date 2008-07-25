@@ -801,18 +801,20 @@ void GMail::slotSessionChanged()
 
 QString GMail::getRedirectURL(QString buffer)
 {	
-	static QRegExp metaRX("<meta[ ]+.*url='(http[s]?://[^']+)'.*>");
-	static QRegExp jsRX  ("location\\.replace[ ]*\\([ ]*['\"](http[s]?://[^'\"]+)['\"][ ]*\\)");
+	static QRegExp metaRX("<meta[ ]+.*url=('|\\\"|&#39;|&#34;)(http[s]?://.+)\\1.*>");
+	static QRegExp jsRX  ("location\\.replace[ ]*\\([ ]*(['\\\"])(http[s]?://.+)\\1[ ]*\\)");
 	int found;
 	QString url, jsurl;
 	
 	kdDebug() << k_funcinfo << endl;
 
+	metaRX.setMinimal(true);
 	if(!metaRX.isValid()) {
 		kdWarning() << k_funcinfo << "Invalid metaRX!\n"
 				<< metaRX.errorString() << endl;
 	}
 
+	jsRX.setMinimal(true);
 	if(!jsRX.isValid()) {
 		kdWarning() << k_funcinfo << "Invalid jsRX!\n"
 				<< jsRX.errorString() << endl;
@@ -824,7 +826,7 @@ QString GMail::getRedirectURL(QString buffer)
 		return QString::null;
 	}
 	
-	url = KCharsets::resolveEntities(metaRX.cap(1));
+	url = KCharsets::resolveEntities(metaRX.cap(2));
 	
 	// now let's check if there's a JS redirection (location.replace)
 	found = jsRX.search(buffer);
@@ -832,7 +834,7 @@ QString GMail::getRedirectURL(QString buffer)
 	if( found == -1 ) {
 		return url;
 	}
-	jsurl = GMailParser::cleanUpData(jsRX.cap(1));
+	jsurl = GMailParser::cleanUpData(jsRX.cap(2));
 	
 	// if both match it's ok
 	if (url.compare(jsurl) == 0) {
