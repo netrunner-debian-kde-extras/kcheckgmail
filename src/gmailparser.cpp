@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 // define this symbol if you want to try to detect the language of your account
-#define DETECT_GLANGUAGE
+#undef DETECT_GLANGUAGE
 
 #include "gmailparser.h"
 #include "gmail_constants.h"
@@ -56,6 +56,7 @@ GMailParser::GMailParser(QObject* parent, const char* name) :
 	gGMailVersion.append("1x4nkpwjfkc8x");
 	gGMailVersion.append("1ddh9n6glzd1c");
 	gGMailVersion.append("11qm1wldxu1ww");
+	gGMailVersion.append("5vnvxev1uvtq");
 
 	// TODO: read this from a file
 #ifdef DETECT_GLANGUAGE
