@@ -1,10 +1,13 @@
+
+GIT_DIR := .git
+
 all: 
-	@echo "This Makefile is only for the CVS repository"
-	@echo "This will be deleted before making the distribution"
-	@echo ""
 	$(MAKE) -f admin/Makefile.common cvs
 
 dist:
 	$(MAKE) -f admin/Makefile.common dist
+
+ChangeLog: $(GIT_DIR)
+	GIT_DIR="$(GIT_DIR)" git log --summary --name-status > ChangeLog
 
 .SILENT:
