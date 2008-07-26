@@ -806,8 +806,8 @@ QString GMailParser::stripTags(QString data)
 QString GMailParser::convertEntities(QString data)
 {
 	QChar c;
-	QString found;
-	static QRegExp format("\\\\u([0-9a-zA-Z]{4})");
+	QString found, id;
+	static QRegExp format("\\\\((u)([0-9a-zA-Z]{4})|(x)([0-9a-zA-Z]{2}))");
 	
 	if(!format.isValid()) {
 		kdWarning() << k_funcinfo << "Invalid RX!\n"
@@ -815,9 +815,14 @@ QString GMailParser::convertEntities(QString data)
 	}
 	
 	while(format.search(data) != -1) {
-		found = format.cap(1);
+		id = format.cap(2);
+		found = format.cap(3);
+		if (found.length() == 0) {
+			id = format.cap(4);
+			found = format.cap(5);
+		}
 		c = QChar(found.toUInt(0,16));
-		data.replace("\\u"+format.cap(1),c);
+		data.replace("\\"+id+found,c);
 	}
 	return data;
 }
