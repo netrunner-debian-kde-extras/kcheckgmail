@@ -66,7 +66,7 @@ public:
 		QString replyId;
 		bool isNew;
 		unsigned int unknown1;
-		QString date;
+		QString date_short;
 		QString senders;
 		QString chevron;
 		QString subject;
@@ -74,6 +74,8 @@ public:
 		QString labels;
 		QString attachments;
 		QString msgId;
+		unsigned int unknown2;
+		QString date_long;
 		unsigned int unknown3;
 		bool isNull; 
 	} Thread;
