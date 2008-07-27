@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,7 +25,7 @@
 #include <qstringlist.h>
 #include <qmap.h>
 #include <qvaluevector.h>
-#include <vector>
+//#include <vector>
 
 /**
 @author Matthew Wlazlo
@@ -51,13 +51,7 @@ public:
 // 		unsigned int all;
 		unsigned int spam;
 // 		unsigned int trash;
-	} DefaultSearchSummary;
-	
-	// "ct" : array
-	typedef struct {
-		QString name;
-		unsigned int count;
-	} Label;
+	} DefaultSearchSummary;	
 
 	// "t"
 	typedef struct {
@@ -71,7 +65,7 @@ public:
 		QString subject;
 		QString snippet;
 		QString labels;
-		QString attachments;
+		QStringList attachments;
 		QString msgId;
 		unsigned int unknown2;
 		QString date_long;
@@ -89,6 +83,21 @@ public:
 		unsigned int unknown3;
 		QString version;
 	} Version;
+	
+	// "ts"
+	/*typedef struct {
+		int fromPos;
+		int toPos;
+		int showing;
+		int pages; //?
+		QString humanQuery;
+		QString query;
+		QString searchId;
+		int unknown1;
+		QString unknown2; // sometimes empty, sometimes filled
+		QString dottedQuery; // ?
+		QString unknown3;
+	} ThreadSummary;*/
 public:
 	GMailParser();
 	virtual ~GMailParser();
@@ -101,26 +110,29 @@ public:
 
 // 	const QString &getVersion() const { return mVersion; }
 	unsigned int getInvites() const { return mInvites; }
+	const QString getGaiaName() const;
 
 	const DefaultSearchSummary &getSummary() const { return mSummary; }
 
 	const Quota& getQuota() const { return mQuota; }
-	const std::vector<Label>& getLabel() const { return mLabels; }
+	const QMap<QString, unsigned int> getLabels() const { return mLabels; }
 
 	// key = msgId, bool = isNew
 	QMap<QString,bool> *getThreadList() const;
 	const Thread &getThread(const QString &msgId) const;
 	const Thread &getThread(int id) const;
+	const Thread &getLastThread() const;
 	
-	QString stripTags(QString data);
-	QString convertEntities(QString data);
-	QString cleanUpData(QString data);
+	static QString stripTags(QString data);
+	static QString convertEntities(QString data);
+	static QString cleanUpData(QString data);
 
 signals:
 	void mailArrived(unsigned int count);
 	void mailCountChanged();
 	void versionMismatch();
-	void gNameChanged(QString name);
+	void noUnreadMail();
+	void gNameUpdate(QString name);
 
 protected:
 	void parseQuota(const QString&);
@@ -138,8 +150,9 @@ private:
 	unsigned int mCurMsgId;
 	Quota mQuota;
 	DefaultSearchSummary mSummary;
-	std::vector<Label> mLabels;
-	QMap<QString,Thread*> mThreads;
+	QMap<QString, unsigned int> mLabels; //<name, count>
+	QMap<QString, QString> eLabels; // <escaped name, name>
+	QMap<QString, Thread*> mThreads;
 	QValueVector<QString> gGMailVersion;
 #ifdef DETECT_GLANGUAGE
 	QMap<QString, QString> gGMailLanguageCode;

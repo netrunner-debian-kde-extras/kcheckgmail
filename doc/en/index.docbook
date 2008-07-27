@@ -1,185 +1,159 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kcheckgmail "<application>KCheckGmail 0.1</application>">
-  <!ENTITY kappname "&kcheckgmail;"><!-- Do *not* replace kappname-->
-  <!ENTITY package "kde-module"><!-- kdebase, kdeadmin, etc -->
+  <!ENTITY kcheckgmail "KCheckGMail">
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE"><!-- change language only here -->
-  
-  
-  <!-- Do not define any other entities; instead, use the entities
-       from kde-genent.entities and $LANG/user.entities. -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->   
 ]>
-<!-- kdoctemplate v0.8 October 1 1999 
-     Minor update to "Credits and Licenses" section on August 24, 2000
-     Removed "Revision history" section on 22 January 2001
-     Changed to Installation/Help menu entities 18 October 2001
-     Other minor cleanup and changes 18 October 2001 -->
-
-
-<!--
-This template was designed by: David Rugge davidrugge@mindspring.com
-with lots of help from: Eric Bischoff ebisch@cybercable.tm.fr
-and Frederik Fouvry fouvry@sfs.nphil.uni-tuebingen.de
-of the KDE DocBook team.
-
-You may freely use this template for writing any sort of KDE documentation.
-If you have any changes or improvements, please let us know.
-
-Remember:
-- in XML, the case of the <tags> and attributes is relevant ;
-- also, quote all attributes.
-
-Please don't forget to remove all these comments in your final documentation,
-thanks ;-).
--->
-
-<!-- ................................................................ -->
-
-<!-- The language must NOT be changed here. -->
-
 <book lang="&language;">
-
-<!-- This header contains all of the meta-information for the document such
-as Authors, publish date, the abstract, and Keywords -->
 
 <bookinfo>
 <title>The &kcheckgmail; Handbook</title>
-
 <authorgroup>
 <author>
-<firstname></firstname>
-<othername></othername>
-<surname>Matthew Wlazlo</surname>
+<firstname>Matthew</firstname>
+<surname>Wlazlo</surname>
 <affiliation>
 <address><email>mwlazlo@gmail.com</email></address>
 </affiliation>
 </author>
+<author>
+<firstname>Raphael</firstname>
+<surname>Geissert</surname>
+<affiliation><address><email>atomo64@gmail.com</email></address></affiliation>
+</author>
 </authorgroup>
-
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
-
-<copyright>
-<year>2004</year>
-<holder>Matthew Wlazlo</holder>
-</copyright>
-<!-- Translators: put here the copyright notice of the translation -->
-<!-- Put here the FDL notice.  Read the explanation in fdl-notice.docbook
-     and in the FDL itself on how to use it. -->
-<legalnotice>&FDLNotice;</legalnotice>
-
-<!-- Date and version information of the documentation
-Don't forget to include this last date and this last revision number, we
-need them for translation coordination !
-Please respect the format of the date (YYYY-MM-DD) and of the version
-(V.MM.LL), it could be used by automation scripts.
-Do NOT change these in the translation. -->
-
-<date>2004-08-27</date>
-<releaseinfo>0.3.0</releaseinfo>
-
-<!-- Abstract about this handbook -->
-
+<date>2007-07-18</date>
+<releaseinfo>0.5.7</releaseinfo>
 <abstract>
-<para>
-&kcheckgmail; 
-</para>
+<para>&kcheckgmail; is a simple KDE systray application that notifies when new email is received in a GMail account.</para>
 </abstract>
-
-<!-- This is a set of Keywords for indexing by search engines.
-Please at least include KDE, the KDE package it is in, the name
- of your application, and a few relevant keywords. -->
-
 <keywordset>
 <keyword>KDE</keyword>
-<keyword>KCheckGmail</keyword>
+<keyword>kcheckgmail</keyword>
 <keyword>Gmail notifier</keyword>
 </keywordset>
-
 </bookinfo>
 
-<!-- The contents of the documentation begin here.  Label
-each chapter so with the id attribute. This is necessary for two reasons: it
-allows you to easily reference the chapter from other chapters of your
-document, and if there is no ID, the name of the generated HTML files will vary
-from time to time making it hard to manage for maintainers and for the CVS
-system. Any chapter labelled (OPTIONAL) may be left out at the author's
-discretion. Other chapters should not be left out in order to maintain a
-consistent documentation style across all KDE apps. -->
+  <chapter id="introduction">
+    <title>Introduction</title>
 
-<chapter id="introduction">
-<title>Introduction</title>
+    <sect1 id="features">
+      <title>Features</title>
+      <itemizedlist>
+      <listitem><para>Available in multiple languages</para></listitem>
+      <!--<listitem><para>Google Applications for Domains Support! </para></listitem>-->
+      <listitem><para>eMail snippets</para></listitem>
+      <listitem><para>DCOP interface to Google Mail</para></listitem>
+      <listitem><para>Custom search</para></listitem>
+      <listitem><para>Store password safely, using the KDE Wallet</para></listitem>
+      <listitem><para>Customizable check interval</para></listitem>
+      <listitem><para>Secure login and data retrieval by using https</para></listitem>
+      </itemizedlist>
+    </sect1>
+  </chapter>
 
-<!-- The introduction chapter contains a brief introduction for the
-application that explains what it does and where to report
-problems. Basically a long version of the abstract.  Don't include a
-revision history. (see installation appendix comment) -->
+  <chapter id="installation">
+    <title>Installation</title>
 
-<para>
-&kcheckgmail; is a program without any documentation. I may even get around to
-doing it one day
+    <sect1 id="how-to-obtain-kcheckgmail">
+      <title>How to obtain &kcheckgmail;</title>
+      <para>Download the source package from <ulink url="http://kcheckgmail.sourceforge.net/">http://kcheckgmail.sourceforge.net/</ulink> and extract.</para>
+    </sect1>
 
-</para>
-</chapter>
+    <sect1 id="requirements">
+      <title>Requirements</title>
+      <para>&kcheckgmail; 0.5.7 has only been tested with KDE 3.5.x but it might also work with older versions.</para>
+      <para>Since version 0.5.7 &kcheckgmail; requires the usage of unsermake instead of make.</para>
+      <para>Check the <ulink url="http://wiki.kde.org/tiki-index.php?page=unsermake">unsermake wiki</ulink> for more information.</para>
+    </sect1>
 
+    <sect1 id="compilation-and-installation">
+      <title>Compilation and Installation</title>
 
+      <para>Compiling &kcheckgmail; is very easy. The following should do
+	it: <screen>
+<prompt>%</prompt> <userinput><command>./configure</command></userinput>
+<prompt>%</prompt> <userinput><command>unsermake</command></userinput>
+<prompt>%</prompt> <userinput><command>unsermake</command> install</userinput></screen>
+      </para>
 
+      <para>That should do it! Should you run into any problems,
+	please report them to the <ulink
+	url="mailto:kcheckgmail-development@lists.sourceforge.net">author</ulink></para>
+    </sect1>
+  </chapter>
 
-<chapter id="credits">
+  <chapter id="using-kcheckgmail">
+    <title>Using &kcheckgmail;</title>
+    <sect1 id="using-kcheckgmail-interface">
+      <title>Using &kcheckgmail;'s interface</title>
+    <para>&kcheckgmail; is an intuitive and simple to use application.</para>
+    <para>If you have any question check the <ulink
+	url="http://kcheckgmail.sourceforge.net/help.html">online FAQ</ulink>.</para>
+    </sect1>
 
-<!-- Include credits for the programmers, documentation writers, and
-contributors here. The license for your software should then be included below
-the credits with a reference to the appropriate license file included in the KDE
-distribution. -->
+    <sect1 id="dcop-interface">
+      <title>DCOP Interface</title>
 
-<title>Credits and License</title>
+      <para>Since version 0.5.7 &kcheckgmail; provides a more useful DCOP interface:
+	<screen>
+<prompt>%</prompt> <userinput><command>dcop kcheckgmail KCheckGmailIface</command></userinput>
+int mailCount()
+void checkMailNow()
+void whereAmI()
+void showIcon()
+void hideIcon()
+QStringList getThreads()
+QString getThreadSubject(QString msgId)
+QString getThreadSender(QString msgId)
+QString getThreadSnippet(QString msgId)
+QStringList getThreadAttachments(QString msgId)
+bool isNewThread(QString msgId)
+QMap&lt;QString,unsigned int&gt; getLabels()
+QString getGaiaName()
+</screen></para>
+      <itemizedlist>
+      <title>DCOP Interface methods</title>
+      <listitem><para>mailCount: The number of unread messages (depends on the search query being used).</para></listitem>
+      <listitem><para>checkMailNow: Makes &kcheckgmail; check for new emails.</para></listitem>
+      <listitem><para>whereAmI: Displays a window displaying &kcheckgmail;'s location.</para></listitem>
+      <listitem><para>showIcon: Show &kcheckgmail;'s icon.</para></listitem>
+      <listitem><para>hideIcon: Hide &kcheckgmail;'s icon.</para></listitem>
+      <listitem><para>getThreads: Returns a QStringList containing the msgId which &kcheckgmail; knows about.</para></listitem>
+      <listitem><para>getThreadSubject: Returns the subject of a message with the given msgId.</para></listitem>
+      <listitem><para>getThreadSender: Returns the sender of a message with the given msgId.</para></listitem>
+      <listitem><para>getThreadSnippet: Returns the snippet of a message with the given msgId.</para></listitem>
+      <listitem><para>getThreadAttachments: Returns a QStringList containing the attachment names of a message with the given msgId.</para></listitem>
+      <listitem><para>isNewThread: Returns whether the a message with the given msgId is unread or not.</para></listitem>
+      <listitem><para>getLabels: Returns a map with the keys being the label names and the values the number of unread messages.</para></listitem>
+      <listitem><para>getGaiaName: Returns the Gaia Name (name of the owner of the account).</para></listitem>
+      </itemizedlist>
+    </sect1>
+  </chapter>
+<!--
+  <chapter id="questionsanswersandtips">
+    <title>Questions, Answers, and Tips</title>
 
-<para>
-&kcheckgmail;
-</para>
-<para>
-Program copyright %{YEAR} Matthew Wlazlo <email>mwlazlo@gmail.com</email>
-</para>
-<para>
-Contributors:
-<itemizedlist>
-<listitem><para>Konqui the KDE Dragon <email>konqui@kde.org</email></para>
-</listitem>
-<listitem><para>Tux the Linux Penguin <email>tux@linux.org</email></para>
-</listitem>
-</itemizedlist>
-</para>
+    <qandaset id="faq">
+      <title>Frequently asked questions</title>
+      <qandaentry>
+	<question>
+	  <para>Question 1</para>
+	</question>
+	<answer>
+	  <para>The answer</para>
+	</answer>
+      </qandaentry>
+    </qandaset>
 
-<para>
-Documentation generated by kdevelop.
-</para>
-
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;               <!-- FDL: do not remove -->
-
-<!-- Determine which license your application is licensed under, 
-     and delete all the remaining licenses below:
-
-     (NOTE:  All documentation are licensed under the FDL, 
-     regardless of what license the application uses) -->
-
-&underGPL;        	 <!-- GPL License -->
-
-</chapter>
-
-&documentation.index;
+  </chapter>-->
+  &documentation.index;
 </book>
-
 <!--
 Local Variables:
 mode: sgml
-sgml-minimize-attributes:nil
-sgml-general-insert-case:lower
-sgml-indent-step:0
-sgml-indent-data:nil
+sgml-omittag: nil
+sgml-shorttag: t
+sgml-general-insert-case: lower
 End:
-
-vim:tabstop=2:shiftwidth=2:expandtab 
 -->
-

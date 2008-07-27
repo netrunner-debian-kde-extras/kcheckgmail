@@ -1,561 +1,873 @@
-# translation of kcheckgmail-pl.po to 
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Jarosław Kamper <jaroslawkamper@gmail.com>, 2005.
+# translation of kcheckgmail.po to Polish
 #
+# Łukasz Derkacz <lderkacz@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: kcheckgmail-pl\n"
+"Project-Id-Version: kcheckgmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-18 12:00+1100\n"
-"PO-Revision-Date: 2007-03-01 00:09+0100\n"
-"Last-Translator: Jarosław Kamper <jaroslawkamper@gmail.com>\n"
-"Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2007-07-11 18:53-0500\n"
+"PO-Revision-Date: 2007-05-11 10:38+0200\n"
+"Last-Translator: Łukasz Derkacz <lderkacz@gmail.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: _translatorinfo.cpp:1
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
-msgstr ""
-"Polish\n"
-"Jarosław Kamper"
+msgstr "Łukasz Derkacz, Jarosław Kamper (poprzedni tłumacz)"
 
 #: _translatorinfo.cpp:3
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr ""
-"translation-team-pl@lists.sourceforge.net\n"
-"jaroslawkamper@gmail.com"
+msgstr "lderkacz@gmail.com"
 
-#: gmail.cpp:174
+#: gmail.cpp:226
 msgid "Invalid username or password"
-msgstr "Nieprawidłowa nazwa użytkownika lub hasło"
+msgstr "Nieprawidłowa nazwa użytkownika lub hasło "
 
-#: gmail.cpp:236
+#: gmail.cpp:232
+msgid "GMail's login procedure has changed, check for new version"
+msgstr ""
+"Procedura logowania do Gmail uległa zmianie, proszę sprawdzić nową wersję "
+"KCheckGmaila"
+
+#: gmail.cpp:332
 msgid "Unknown error retrieving cookies"
 msgstr "Nieznany błąd podczas odbioru plików cookie"
 
-#: gmailparser.cpp:47
+#: gmailparser.cpp:59
 msgid "Spanish"
 msgstr "hiszpańskie"
 
-#: gmailparser.cpp:48
+#: gmailparser.cpp:60
 msgid "French"
 msgstr "francuskie"
 
-#: gmailparser.cpp:49
+#: gmailparser.cpp:61
 msgid "Italian"
-msgstr "włoskie"
+msgstr "włoskie "
 
-#: gmailparser.cpp:50
+#: gmailparser.cpp:62
 msgid "German"
 msgstr "niemieckie"
 
-#: gmailparser.cpp:51
+#: gmailparser.cpp:63
 msgid "English (US)"
-msgstr "brytyjskie"
-
-#: gmailparser.cpp:52
-msgid "English (UK)"
 msgstr "amerykańskie"
 
-#: gmailparser.cpp:53
+#: gmailparser.cpp:64
+msgid "English (UK)"
+msgstr "brytyjskie"
+
+#: gmailparser.cpp:65
 msgid "Portuguese"
 msgstr "portugalskie"
 
-#: gmailparser.cpp:54
+#: gmailparser.cpp:66
 msgid "Turkish"
 msgstr "tureckie"
 
-#: gmailparser.cpp:55
+#: gmailparser.cpp:67
 msgid "Polish"
 msgstr "polskie"
 
-#: gmailparser.cpp:56
+#: gmailparser.cpp:68
 msgid "Russian"
 msgstr "rosyjskie"
 
-#: gmailparser.cpp:57
-#: gmailparser.cpp:67
+#: gmailparser.cpp:69 gmailparser.cpp:80
 msgid "Croatian"
 msgstr "chorwackie"
 
-#: gmailparser.cpp:58
+#: gmailparser.cpp:70
 msgid "Dutch"
-msgstr "duńskie"
+msgstr "holenderskie"
 
-#: gmailparser.cpp:59
+#: gmailparser.cpp:71
 msgid "Hungarian"
-msgstr "włoskie"
+msgstr "węgierskie"
 
-#: gmailparser.cpp:60
+#: gmailparser.cpp:72
 msgid "Swedish"
 msgstr "szwedzkie"
 
-#: gmailparser.cpp:61
+#: gmailparser.cpp:73
 msgid "Norwegian"
 msgstr "norweskie"
 
-#: gmailparser.cpp:62
+#: gmailparser.cpp:74
 msgid "Lithuanian"
-msgstr "litewskie"
+msgstr "litweskie"
 
-#: gmailparser.cpp:63
+#: gmailparser.cpp:75
 msgid "Hebrew"
 msgstr "hebrajskie"
 
-#: gmailparser.cpp:64
+#: gmailparser.cpp:76
 msgid "Greek"
 msgstr "greckie"
 
-#: gmailparser.cpp:65
-msgid "Chinese Simplified"
-msgstr "chińskie"
+#: gmailparser.cpp:77
+msgid "Chinese (Simplified)"
+msgstr "chińskie (uproszczone)"
 
-#: gmailparser.cpp:66
+#: gmailparser.cpp:78
+msgid "Chinese (Traditional)"
+msgstr "chińskie (tradycyjne)"
+
+#: gmailparser.cpp:79
 msgid "Czech"
 msgstr "czeskie"
 
-#: gmailparser.cpp:68
+#: gmailparser.cpp:81
 msgid "Catalan"
-msgstr "katalońske"
+msgstr "katalońskie"
 
-#: gmailparser.cpp:69
+#: gmailparser.cpp:82
 msgid "Arabic"
 msgstr "arabskie"
 
-#: gmailwalletmanager.cpp:99
-msgid "KCheckGmail could not open the wallet. Please check your preferences."
-msgstr "KCheckGmail nie był w stanie otworzyć portfela. Sprawdź swoje ustawienia."
+#: gmailparser.cpp:83
+msgid "Indonesian"
+msgstr "indonezyjskie"
+
+#: gmailparser.cpp:84
+msgid "Japanese"
+msgstr "japońskie"
+
+#: gmailparser.cpp:85
+msgid "Korean"
+msgstr "koreańskie"
+
+#: gmailparser.cpp:86
+msgid "Hindi"
+msgstr "hindi"
+
+#: gmailparser.cpp:87
+msgid "Thai"
+msgstr "tajskie"
+
+#: gmailparser.cpp:88
+msgid "Danish"
+msgstr "duńskie"
+
+#: gmailparser.cpp:89
+msgid "Estonian"
+msgstr "estońskie"
+
+#: gmailparser.cpp:90
+msgid "Icelandic"
+msgstr "islandzkie"
+
+#: gmailparser.cpp:91
+msgid "Latvian"
+msgstr "łotewskie"
+
+#: gmailparser.cpp:92
+msgid "Romanian"
+msgstr "rumuńskie"
+
+#: gmailparser.cpp:93
+msgid "Slovak"
+msgstr "słowackie"
+
+#: gmailparser.cpp:94
+msgid "Slovenian"
+msgstr "słoweńskie"
+
+#: gmailparser.cpp:95
+msgid "Finnish"
+msgstr "fińskie"
+
+#: gmailparser.cpp:96
+msgid "Tagalog"
+msgstr "tagalog"
+
+#: gmailparser.cpp:97
+msgid "Vietnamese"
+msgstr "vietnamskie"
+
+#: gmailparser.cpp:98
+msgid "Ukrainian"
+msgstr "ukraińskie"
+
+#: gmailparser.cpp:99
+msgid "Bulgarian"
+msgstr "bułgarskie"
+
+#: gmailwalletmanager.cpp:101
+msgid "KCheckGMail could not open the wallet. Please check your preferences."
+msgstr ""
+"KCheckGmail nie był w stanie otworzyć Portfela KDE. Proszę, sprawdź swoje "
+"ustawienia."
+
+#: gmailwalletmanager.cpp:185
+msgid ""
+"KCheckGMail cannot store your password securely in your wallet. Do you want "
+"to save the password in the unsafe configuration file instead?"
+msgstr ""
+"KCheckGmail nie jest w stanie zapisać bezpiecznie Twojego hasła w Portfelu "
+"KDE. Czy chcesz zapisać hasło w sposób niezabezpieczony?"
 
 #: gmailwalletmanager.cpp:187
-msgid "KCheckGmail cannot store your password securely in your wallet. Do you want to save the password in the unsafe configuration file instead?"
-msgstr "KCheckGmail nie jest w stanie zapisać bezpiecznie Twojego hasła w KPortfel. Czy chcesz zapisać hasło w sposób niezabezpieczony?"
-
-#: gmailwalletmanager.cpp:189
 msgid "Unable to store secure password"
-msgstr "Nie można zapisać bezpiecznego hasła"
+msgstr "Nie można zapisać bezpiecznie hasła"
 
-#: gmailwalletmanager.cpp:190
-#: gmailwalletmanager.cpp:236
+#: gmailwalletmanager.cpp:188 gmailwalletmanager.cpp:234
 msgid "Store unsafe"
 msgstr "Zapisz niezabezpieczone"
 
+#: gmailwalletmanager.cpp:231
+msgid ""
+"KCheckGMail cannot retrieve your password from your wallet. Do you want to "
+"save the password in the unsafe configuration file instead?"
+msgstr ""
+"KCheckGmail nie jest w stanie odzyskać Twojego hasła z Portfela KDE. Czy "
+"chcesz zapisać hasło w sposób niezabezpieczony?"
+
 #: gmailwalletmanager.cpp:233
-msgid "KCheckGmail cannot retrieve your password from your wallet. Do you want to save the password in the unsafe configuration file instead?"
-msgstr "KCheckGmail nie jest w stanie odzyskać Twojego hasła z KPortfel. Czy chcesz zapisać hasło w sposób niezabezpieczony?"
-
-#: gmailwalletmanager.cpp:235
 msgid "Unable to retrieve secure password"
-msgstr "Nie mogę odzyskać bezpiecznego hasła"
+msgstr "Nie mogę uzyskać zabezpieczonego hasła"
 
-#: kcheckgmailtray.cpp:120
-#: main.cpp:45
-msgid "KCheckGmail"
-msgstr "KCheckGmail"
+#. Name
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:140 main.cpp:44
+#: kcheckgmail.desktop:1
+msgid "KCheckGMail"
+msgstr "KCheckGMail"
 
-#: kcheckgmailtray.cpp:122
+#: kcheckgmailtray.cpp:142
 msgid "Configure &Notications..."
-msgstr "Ustawienia &Powiadomień"
+msgstr "Ustawienia &Powiadomień..."
 
-#: kcheckgmailtray.cpp:124
-msgid "&Configure KCheckGmail..."
-msgstr "&Ustawienia KCheckGmaila"
+#: kcheckgmailtray.cpp:144
+msgid "&Configure KCheckGMail..."
+msgstr "&Ustawienia KCheckGmaila..."
 
-#: kcheckgmailtray.cpp:127
-#: kcheckgmailtray.cpp:398
+#: kcheckgmailtray.cpp:147 kcheckgmailtray.cpp:526
 msgid "Login and Chec&k Mail"
-msgstr "Zaloguj i Sprawd&ź pocztę"
+msgstr "Zaloguj i Spraw&dź pocztę"
 
-#: kcheckgmailtray.cpp:130
+#: kcheckgmailtray.cpp:150
 msgid "&Launch Browser"
-msgstr "&Uruchom przeglądarkę"
+msgstr "U&ruchom przeglądarkę"
 
-#: kcheckgmailtray.cpp:132
+#: kcheckgmailtray.cpp:152
 msgid "Co&mpose Mail"
-msgstr "Nowa wiadomość"
+msgstr "Na&pisz wiadomość"
 
-#: kcheckgmailtray.cpp:134
-msgid "Threads"
-msgstr "Wątki"
+#: kcheckgmailtray.cpp:154
+msgid "Th&reads"
+msgstr "&Wątki"
 
-#: kcheckgmailtray.cpp:245
-msgid "No account information has been entered. Do you want to quit?"
-msgstr "Nie wprowadzono informacji o koncie. Chcesz wyjść z programu?"
+#: kcheckgmailtray.cpp:192
+msgid ""
+"<p><center>Welcome to KCheckGMail!</center></p><p>You can locate KCheckGMail "
+"here: </p><p><center><img source=\"systray_shot\"></center></p>When you "
+"right-click on that icon you will see a menu, from which you can see the "
+"Threads menu containing the newest email of your account."
+msgstr ""
+"<p><center>Witamy w KCheckGMail!</center></p><p>KCheckGmail możesz odnaleźć "
+"tutaj: </p><p><center><img source=\"systray_shot\"></center></p>Kiedy "
+"klikniesz prawym klawiszem na tę ikonę zobaczysz menu, z którego możesz "
+"podejrzeć menu Wątki zawierające nową pocztę w twoim końcie."
 
-#: kcheckgmailtray.cpp:366
-msgid "There is <b>1</b> new message"
-msgstr "<b>1</b>nowa wiadomość"
+#: kcheckgmailtray.cpp:198
+msgid "Welcome"
+msgstr "Witamy"
 
-#: kcheckgmailtray.cpp:368
-msgid "There are <b>%1</b> new messages"
-msgstr "Masz <b>%1</b> nowych wiadomości"
+#: kcheckgmailtray.cpp:208
+msgid ""
+"Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
+"By using this application you may or may not be violating the Terms of Use "
+"and/or the Program Policies of Gmail or Google Mail.\n"
+"Are you sure you want to use KCheckGMail?"
+msgstr ""
+"Google, Gmail i Google Mail są zastrzeżonymi znakami handlowymi Google Inc.\n"
+"KCheckGmail ani jego autorzy nie są w żaden sposób powiązani z Google Inc.\n"
+"Uzywając tego programu możesz (bądź nie) naruszać Warunki uzytkowania Gmail "
+"lub Google Mail.\n"
+"Czy jesteś pewnien, że chcesz używać KCheckGmail?"
 
-#: kcheckgmailtray.cpp:392
-msgid "An error occurred logging in to Gmail<br><b>%1</b>"
-msgstr "Pojawił się błąd podczas logowania do Gmaila <b>%1</b>"
+#: kcheckgmailtray.cpp:214
+msgid "Legal Information"
+msgstr "Informacja o legalności"
+
+#: kcheckgmailtray.cpp:341
+msgid ""
+"_n: %1\n"
+"Attachment: %2\n"
+"%1\n"
+"Attachments: %2"
+msgstr ""
 
 #: kcheckgmailtray.cpp:402
-msgid "Now logged in to Gmail!"
-msgstr "Zalogowany do Gmaila!"
-
-#: kcheckgmailtray.cpp:403
-msgid "Chec&k Mail Now"
-msgstr "Sprawd&ź teraz pocztę"
-
-#: kcheckgmailtray.cpp:448
 msgid "Login"
-msgstr "Zaloguj"
+msgstr "Login"
 
-#: kcheckgmailtray.cpp:448
+#: kcheckgmailtray.cpp:402
 msgid "Login Settings"
-msgstr "Ustawienia logowania"
+msgstr "Ustawienia loginu"
 
-#: kcheckgmailtray.cpp:451
+#: kcheckgmailtray.cpp:405
 msgid "Network"
 msgstr "Sieć"
 
-#: kcheckgmailtray.cpp:451
+#: kcheckgmailtray.cpp:405
 msgid "Network Settings"
-msgstr "Ustawienia sieci"
+msgstr "Ustawienia sieciowe"
 
-#: kcheckgmailtray.cpp:454
+#: kcheckgmailtray.cpp:408
 msgid "Behavior"
 msgstr "Zachowanie"
 
-#: kcheckgmailtray.cpp:484
-msgid "Gmail has been upgraded since this version of KCheckGmail was released. This may cause all sort of strange errors. Please check for an upgrade to KCheckGmail soon."
-msgstr "Od czasu tej wersji KCheckGmail został uaktualniony. To może skutkować różnego rodzaju dziwnymi błędami. Proszę wkrótce sprawdzić dostępne aktualizacje KCheckGmaila."
+#: kcheckgmailtray.cpp:411
+msgid "Advanced"
+msgstr ""
 
-#: kcheckgmailtray.cpp:485
+#: kcheckgmailtray.cpp:411
+#, fuzzy
+msgid "Advanced Settings"
+msgstr "Ustawienia loginu"
+
+#: kcheckgmailtray.cpp:429
+msgid "No account information has been entered. Do you want to quit?"
+msgstr "Nie wprowadzono informacji o koncie. Chcesz wyjść z programu?"
+
+#: kcheckgmailtray.cpp:459
+msgid ""
+"<p>The search string you provided doesn't specify where to search for unread "
+"emails.</p><p>A search without an <i>in:</i> and <i>label:</i> will return "
+"all unread emails.</p><p>If what you want is to show the new emails in your "
+"inbox use <i>in:inbox</i> or leave empty.</p><p>Are you sure you want to "
+"proceed without specifying location?</p>"
+msgstr ""
+
+#: kcheckgmailtray.cpp:474
+msgid ""
+"<p>The search string you provided doesn't contain <i>is:unread</i>.</p><p>It "
+"should be set to ensure more unread messages are retrieved.</p><p>Are you "
+"sure you want to proceed?</p>"
+msgstr ""
+
+#: kcheckgmailtray.cpp:520
+msgid "An error occurred logging in to Gmail<br><b>%1</b>"
+msgstr "Pojawił się błąd podczas logowania do Gmaila <br><b>%1</b>"
+
+#: kcheckgmailtray.cpp:530
+msgid "Now logged in to Gmail!"
+msgstr "Zalogowany do Gmaila!"
+
+#: kcheckgmailtray.cpp:531
+msgid "Chec&k Mail Now"
+msgstr "Spraw&dź teraz pocztę"
+
+#: kcheckgmailtray.cpp:562
+#, c-format
+msgid ""
+"_n: There is <b>1</b> new message\n"
+"There are <b>%n</b> new messages"
+msgstr ""
+"Jest <b> 1 </b> nowa wiadomość\n"
+"Są <b> %n </b> nowe wiadomości\n"
+"Jest <b>%n</b> nowe wiadomości"
+
+#: kcheckgmailtray.cpp:572
+#, fuzzy
+msgid "New mail arrived: <i>%1</i>"
+msgstr "Nadeszła nowa poczta Gmail"
+
+#: kcheckgmailtray.cpp:580
+msgid "There are no unread messages"
+msgstr ""
+
+#: kcheckgmailtray.cpp:627
+msgid "An other account has been opened, logging out from it!"
+msgstr "Inne konto zostało otwarte, trwa wylogowyanie!"
+
+#: kcheckgmailtray.cpp:728
+msgid ""
+"Gmail has been upgraded since this version of KCheckGMail was released. This "
+"may cause all sort of strange errors. Please check for an upgrade to "
+"KCheckGMail soon."
+msgstr ""
+"Od czasu wydania tej wersji KCheckGmaila został on uaktualniony. To może "
+"skutkować różnego rodzaju dziwnymi błędami. Proszę wkrótce sprawdzić "
+"dostępne aktualizacje KCheckGmaila."
+
+#: kcheckgmailtray.cpp:729
 msgid "Version changed"
 msgstr "Wersja się zmieniła"
 
-#: main.cpp:36
-msgid "Application is being auto-started at KDE session start"
-msgstr "Aplikacja będzie automatycznie uruchamiana podczas startu sesji KDE"
+#: kcheckgmailtray.cpp:794
+msgid ""
+"<p>KCheckGMail is already running</p><p>You can find it here:</"
+"p><p><center><img source=\"systray_shot\"></center></p>"
+msgstr ""
+"<p>KCheckGMail już jest uruchomiony</p><p>Możesz znaleźć go tutaj:</"
+"p><p><center><img source=\"systray_shot\"></center></p>"
 
-#: main.cpp:48
+#: kcheckgmailtray.cpp:795
+msgid "Already Running"
+msgstr "Już uruchomiony"
+
+#: kcheckgmailtray.cpp:861
+#, c-format
+msgid "KCheckGMail - Notifying about new email for %1"
+msgstr "KCheckGMail - Powiadami o nowej poczcie dla %1"
+
+#: main.cpp:37
+msgid "Display legal information"
+msgstr "Pokaż informacje o legalności"
+
+#: main.cpp:47
 msgid ""
 "System tray application to display how many\n"
-" new email messages you have in your Gmail account."
+"new email messages you have in your Gmail account."
 msgstr ""
-"Aplikacja zasobnika systemowego służąca do wyświetlania\n"
-"ilości nowych wiadomości w Twoim koncie Gmaila"
+"Aplikacja tacki systemowej do pokazywania ile\n"
+"nowych wiadomości znajduje się w Twoim końcie Gmail."
 
 #: main.cpp:55
-msgid "Primary author and maintainer"
-msgstr "Główny autor i opiekun"
+msgid "Original author"
+msgstr "Oryginalny autor"
 
 #: main.cpp:56
 msgid "Maintainer"
-msgstr "Powiadomienie o nowej wiadomości"
-
-#: main.cpp:57
-msgid "Brazilian Portuguese Translation"
-msgstr "brazylijsko portugalskie tłumaczenie"
+msgstr "Opiekun"
 
 #: main.cpp:58
-msgid "Italian Translation"
-msgstr "włoskie tłumaczenie"
+msgid "Everybody who helped testing and translating KCheckGMail"
+msgstr "Wszyscy, którzy pomagali testować i tłumaczyć KCheckGmail"
 
-#: main.cpp:59
-msgid "Spanish Translation"
-msgstr "hiszpańskie tłumaczenie"
+#: main.cpp:70
+msgid ""
+"Legal Information:\n"
+"Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
+msgstr ""
+"Informacja o legalności\n"
+"Google, Gmail i Google Mail są zastrzeżonymi znakami handlowymi Google Inc.\n"
+"KCheckGmail ani jego autorzy nie są w żaden sposób powiązani z Google Inc."
 
-#: main.cpp:60
-msgid "German Translation"
-msgstr "niemieckie tłumaczenie"
+#: main.cpp:76
+msgid "KCheckGMail is already running!\n"
+msgstr "KCheckGMail jest już uruchomiony!\n"
 
-#: main.cpp:61
-msgid "Russian Translation"
-msgstr "rosyjskie tłumaczenie"
-
-#: main.cpp:62
-msgid "German Translation Updates"
-msgstr "Aktualizacja niemieckiego tłumaczenia"
-
-#: main.cpp:63
-msgid "French Translation"
-msgstr "francuskie tłumaczenie"
-
-#: main.cpp:64
-msgid "Polish Translation"
-msgstr "polskie tłumaczenie"
-
-#: main.cpp:65
-msgid "Turkish Translation"
-msgstr "tureckie tłumaczenie"
-
-#: main.cpp:66
-msgid "Hungarian Translation"
-msgstr "węgierskie tłumaczenie"
-
-#: main.cpp:67
-msgid "Swedish Translation"
-msgstr "szwedzkie tłumaczenie"
-
-#. i18n: file appletsettingswidget.ui line 16
+#. i18n: file advancedsettingswidget.ui line 16
 #: rc.cpp:3
+#, fuzzy, no-c-format
+msgid "AdvancedSettingsWidget"
+msgstr "WidżetApletuUstawień"
+
+#. i18n: file advancedsettingswidget.ui line 61
+#: rc.cpp:6 rc.cpp:94
 #, no-c-format
-msgid "AppletSettingsWidget"
+msgid "Open Gmail in simple interface"
 msgstr ""
 
-#. i18n: file appletsettingswidget.ui line 33
-#: rc.cpp:6
+#. i18n: file advancedsettingswidget.ui line 72
+#: rc.cpp:10 rc.cpp:88
 #, no-c-format
-msgid "Tray Icon"
-msgstr "Zasobnik systemowy"
+msgid "Search For:"
+msgstr ""
 
-#. i18n: file appletsettingswidget.ui line 44
-#. i18n: file prefs.kcfg line 48
-#: rc.cpp:9
-#: rc.cpp:118
+#. i18n: file appletsettingswidget.ui line 16
+#: rc.cpp:13
 #, no-c-format
-msgid "Open browser to Gmail on left click"
-msgstr "Otwórz przeglądarkę do Gmaila lewym klikiem"
+msgid "AppletSettingsWidget"
+msgstr "WidżetApletuUstawień"
 
-#. i18n: file appletsettingswidget.ui line 52
-#. i18n: file prefs.kcfg line 53
-#: rc.cpp:12
-#: rc.cpp:124
-#, no-c-format
-msgid "Catch accidental left clicks when launching the browser"
-msgstr "Odnotowuj przypadkowe lewokliknięcia podczas uruchamiania przeglądarki"
-
-#. i18n: file appletsettingswidget.ui line 62
-#: rc.cpp:15
-#, no-c-format
-msgid "Browser"
-msgstr "Przeglądarka"
-
-#. i18n: file appletsettingswidget.ui line 102
-#: rc.cpp:18
-#, no-c-format
-msgid "Use the default KDE browser"
-msgstr "Użyj domyślnej przeglądarki KDE"
-
-#. i18n: file appletsettingswidget.ui line 140
-#: rc.cpp:21
-#, no-c-format
-msgid "Use an alternative browser"
-msgstr "Użyj alternatywnej przeglądarki"
-
-#. i18n: file appletsettingswidget.ui line 149
-#: rc.cpp:24
+#. i18n: file appletsettingswidget.ui line 39
+#: rc.cpp:16
 #, no-c-format
 msgid "Debug"
 msgstr "Debug"
 
-#. i18n: file appletsettingswidget.ui line 164
-#. i18n: file prefs.kcfg line 40
-#: rc.cpp:27
-#: rc.cpp:112
+#. i18n: file appletsettingswidget.ui line 54
+#: rc.cpp:19 rc.cpp:130
 #, no-c-format
 msgid "Display an alert if GMail version changes"
 msgstr "Wyświetl ostrzeżenie przy zmianie wersji Gmaila"
 
-#. i18n: file loginsettingswidget.ui line 16
-#: rc.cpp:30
+#. i18n: file appletsettingswidget.ui line 63
+#: rc.cpp:22
 #, no-c-format
-msgid "LoginSettingsWidget"
+msgid "Other"
 msgstr ""
 
+#. i18n: file appletsettingswidget.ui line 78
+#: rc.cpp:25
+#, no-c-format
+msgid "Display sub&ject when only one new email arrives"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 81
+#: rc.cpp:28
+#, fuzzy, no-c-format
+msgid "Alt+J"
+msgstr "Alt+U"
+
+#. i18n: file appletsettingswidget.ui line 96
+#: rc.cpp:31
+#, no-c-format
+msgid "Browser"
+msgstr "Przeglądarka"
+
+#. i18n: file appletsettingswidget.ui line 155
+#: rc.cpp:34
+#, no-c-format
+msgid "Use an alternative browser"
+msgstr "Użyj alternatywnej przeglądarki"
+
+#. i18n: file appletsettingswidget.ui line 171
+#: rc.cpp:37
+#, fuzzy, no-c-format
+msgid "&Use the default KDE browser"
+msgstr "Użyj domyślnej przeglądarki KDE"
+
+#. i18n: file appletsettingswidget.ui line 174
+#: rc.cpp:40 rc.cpp:67 rc.cpp:82
+#, no-c-format
+msgid "Alt+U"
+msgstr "Alt+U"
+
+#. i18n: file appletsettingswidget.ui line 228
+#: rc.cpp:43
+#, no-c-format
+msgid "Tray Icon"
+msgstr "Ikona tacki systemowej"
+
+#. i18n: file appletsettingswidget.ui line 239
+#: rc.cpp:46
+#, fuzzy, no-c-format
+msgid "Open &browser to Gmail on left click"
+msgstr "Otwórz przeglądarke w Gmailu za pomocą lewego kliknięcia"
+
+#. i18n: file appletsettingswidget.ui line 242
+#: rc.cpp:49
+#, fuzzy, no-c-format
+msgid "Alt+B"
+msgstr "Alt+U"
+
+#. i18n: file appletsettingswidget.ui line 250
+#: rc.cpp:52 rc.cpp:142
+#, no-c-format
+msgid "Catch accidental left clicks when launching the browser"
+msgstr ""
+"Odnotowuj przypadkowe kliknięcia lewym klawiszem podczas uruchamiania "
+"przeglądarki"
+
+#. i18n: file loginsettingswidget.ui line 16
+#: rc.cpp:55
+#, no-c-format
+msgid "LoginSettingsWidget"
+msgstr "Widżet Ustawień Logowania"
+
 #. i18n: file loginsettingswidget.ui line 35
-#: rc.cpp:33
+#: rc.cpp:58
 #, no-c-format
 msgid "Username:"
 msgstr "Nazwa użytkownika:"
 
 #. i18n: file loginsettingswidget.ui line 46
-#: rc.cpp:36
+#: rc.cpp:61
 #, no-c-format
 msgid "Password:"
 msgstr "Hasło:"
 
 #. i18n: file loginsettingswidget.ui line 57
-#: rc.cpp:39
+#: rc.cpp:64
 #, no-c-format
 msgid "&Use KDE Wallet to store password"
-msgstr "&Użyj KPortfel do przechowywania hasła"
-
-#. i18n: file loginsettingswidget.ui line 60
-#. i18n: file netsettingswidget.ui line 67
-#: rc.cpp:42
-#: rc.cpp:57
-#, no-c-format
-msgid "Alt+U"
-msgstr "Alt+U"
+msgstr "&Użyj Portfela KDE do przechowywania hasła"
 
 #. i18n: file netsettingswidget.ui line 16
-#: rc.cpp:45
+#: rc.cpp:70
 #, no-c-format
 msgid "NetworkSettingsWidget"
-msgstr ""
+msgstr "Widżet Ustawień Sieciowych"
 
-#. i18n: file netsettingswidget.ui line 27
-#: rc.cpp:48
-#, fuzzy, no-c-format
+#. i18n: file netsettingswidget.ui line 44
+#: rc.cpp:73
+#, no-c-format
 msgid "Chec&king Interval"
-msgstr "Czas między sprawdzeniami"
+msgstr "Cza&s między sprawdzeniami"
 
-#. i18n: file netsettingswidget.ui line 39
-#: rc.cpp:51
+#. i18n: file netsettingswidget.ui line 56
+#: rc.cpp:76
 #, no-c-format
 msgid " seconds"
 msgstr " sekund"
 
 #. i18n: file netsettingswidget.ui line 64
-#: rc.cpp:54
+#: rc.cpp:79
 #, no-c-format
 msgid "&Use https connections for checking mail"
-msgstr "&Użyj połączenia https do sprawdzania wiadomości"
+msgstr "Uży&j połączenia https do sprawdzania wiadomości"
 
 #. i18n: file netsettingswidget.ui line 73
-#: rc.cpp:60
+#: rc.cpp:85
 #, no-c-format
-msgid "<blockquote>Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting.</blockquote>"
-msgstr "<blockquote>Użyj bezpiecznych połączeń do sprawdzania poczty. Zwróć uwagę, że procedura logowania używa https niezależnie od ustawień.</blockquote>"
+msgid ""
+"<blockquote>Use secure connections when checking for new mail. Note that the "
+"login procedure uses https regardless of this setting.</blockquote>"
+msgstr ""
+"<blockquote>Użyj bezpiecznych połączeń do sprawdzania poczty. Zwróć uwagę, "
+"że procedura logowania używa https niezależnie od ustawień.</blockquote>"
 
-#. i18n: file popup.ui line 16
-#: rc.cpp:63
+#. i18n: file prefs.kcfg line 9
+#: rc.cpp:91
 #, no-c-format
-msgid "New eMail Notification"
+msgid ""
+"When checking for new email's this is the search query sent to Google Mail. "
+"Don't forget to add is:unread to improve the search."
 msgstr ""
 
-#. i18n: file popup.ui line 31
-#: rc.cpp:66
+#. i18n: file prefs.kcfg line 14
+#: rc.cpp:97
 #, no-c-format
-msgid "<b>Subject:</b>"
-msgstr "<b>Temat:</b>"
+msgid ""
+"This option lets you make KCheckGMail open Gmail using the simple interface "
+"(only HTML) or the full interface (unmarked)."
+msgstr ""
 
-#. i18n: file popup.ui line 47
-#: rc.cpp:69
-#, no-c-format
-msgid "<b>From:</b>"
-msgstr "<b>Od:</b>"
-
-#. i18n: file prefs.kcfg line 7
-#: rc.cpp:76
+#. i18n: file prefs.kcfg line 19
+#: rc.cpp:100
 #, no-c-format
 msgid "Polling interval"
-msgstr "Interwał pobierania"
+msgstr "Czas pomiędzy pobraniami"
 
-#. i18n: file prefs.kcfg line 11
-#: rc.cpp:79
+#. i18n: file prefs.kcfg line 23
+#: rc.cpp:103
 #, no-c-format
 msgid "How many seconds to wait before checking for new mail."
 msgstr "Ile sekund czekać przed ponownym sprawdzeniem nowych wiadomości"
 
-#. i18n: file prefs.kcfg line 14
-#: rc.cpp:82
+#. i18n: file prefs.kcfg line 26
+#: rc.cpp:106
 #, no-c-format
 msgid "Use https connections for checking mail"
 msgstr "Użyj połączenia https do sprawdzania wiadomości"
 
-#. i18n: file prefs.kcfg line 16
-#: rc.cpp:85
+#. i18n: file prefs.kcfg line 28
+#: rc.cpp:109
 #, no-c-format
-msgid "Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting."
-msgstr "Użyj bezpiecznych połączeń do sprawdzania poczty. Zwróć uwagę, że procedura logowania używa https niezależnie od ustawień."
+msgid ""
+"Use secure connections when checking for new mail. Note that the login "
+"procedure uses https regardless of this setting."
+msgstr ""
+"Użyj bezpiecznych połączeń do sprawdzania poczty. Zwróć uwagę, że procedura "
+"logowania używa https niezależnie od ustawień."
 
-#. i18n: file prefs.kcfg line 22
-#: rc.cpp:88
+#. i18n: file prefs.kcfg line 34
+#: rc.cpp:112
 #, no-c-format
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#. i18n: file prefs.kcfg line 23
-#: rc.cpp:91
+#. i18n: file prefs.kcfg line 35
+#: rc.cpp:115
 #, no-c-format
-msgid "Your Gmail username"
-msgstr "Nazwa użytkownika Gmail"
+msgid "Your Gmail username or your Google Hosted Domain email address"
+msgstr ""
+"Twoja nazwa użytkownika Gmail lub adres e-mail Domeny utrzymywanej przez "
+"Google."
 
-#. i18n: file prefs.kcfg line 26
-#: rc.cpp:94
+#. i18n: file prefs.kcfg line 38
+#: rc.cpp:118
 #, no-c-format
 msgid "Password"
 msgstr "Hasło"
 
-#. i18n: file prefs.kcfg line 27
-#: rc.cpp:97
-#, no-c-format
-msgid "Password for checking your Gmail account"
-msgstr "Hasło do sprawdzania Twojego konta Gmailowego"
-
-#. i18n: file prefs.kcfg line 30
-#: rc.cpp:100
-#, no-c-format
-msgid "Use KDE Wallet to store password"
-msgstr "Użyj KPortfel do przechowywania hasła"
-
-#. i18n: file prefs.kcfg line 32
-#: rc.cpp:103
-#, no-c-format
-msgid "Use the KDE Wallet system to store your Gmail password."
-msgstr "Użyj KPortfel do przechowywania Twojego hasła GMail."
-
-#. i18n: file prefs.kcfg line 35
-#: rc.cpp:106
-#, no-c-format
-msgid "Only search for new messages in inbox"
-msgstr "Wyszukuj nowych wiadomości jedynie w Otrzymanych"
-
-#. i18n: file prefs.kcfg line 37
-#: rc.cpp:109
-#, no-c-format
-msgid "By disabling this option new messages are searched in anywhere (this includes spam, trash, etc)."
-msgstr "Deaktywując tę opcję nowe wiadomości będą wyszukiwane wszędzie (włącznie ze spamem, śmietnikiem, itp.)"
-
-#. i18n: file prefs.kcfg line 42
-#: rc.cpp:115
-#, no-c-format
-msgid "If Google update the GMail code, display an alert"
-msgstr "Gdy Google zaktualizuje Gmaila wyświetl ostrzeżenie"
-
-#. i18n: file prefs.kcfg line 50
+#. i18n: file prefs.kcfg line 39
 #: rc.cpp:121
 #, no-c-format
-msgid "If enabled, launch the default KDE web browser when the KCheckGmail icon is clicked."
-msgstr "Gdy aktywne, uruchom domyślną przeglądarkę KDE po kliknięciu ikony KCheckGmail"
+msgid "Password for checking your Gmail account"
+msgstr "Hasło do sprawdzania Twojego konta Gmail"
 
-#. i18n: file prefs.kcfg line 55
+#. i18n: file prefs.kcfg line 42
+#: rc.cpp:124
+#, no-c-format
+msgid "Use KDE Wallet to store password"
+msgstr "Użyj Portfela KDE do przechowywania hasła"
+
+#. i18n: file prefs.kcfg line 44
 #: rc.cpp:127
 #, no-c-format
-msgid "If enabled, every time you click on the KCheckGmail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window"
-msgstr "Gdy aktywne, każde kliknięcie w ikonę KCheckGmaila będzie ją deaktywowało na kilka sekund, żeby zapobiec przypadkowemu otwieraniu więcej niż jednego okna przeglądarki"
+msgid "Use the KDE Wallet system to store your Gmail password."
+msgstr "Użyj Portfela KDE do przechowywania Twojego hasła GMail."
 
-#. i18n: file prefs.kcfg line 58
-#: rc.cpp:130
+#. i18n: file prefs.kcfg line 49
+#: rc.cpp:133
+#, no-c-format
+msgid "If Google update the GMail code, display an alert"
+msgstr "Gdy Google zaktualizuje oprogramowanie Gmaila wyświetl ostrzeżenie"
+
+#. i18n: file prefs.kcfg line 55
+#: rc.cpp:136
+#, no-c-format
+msgid "Open browser to Gmail on left click"
+msgstr "Otwórz przeglądarke w Gmailu za pomocą lewego kliknięcia"
+
+#. i18n: file prefs.kcfg line 57
+#: rc.cpp:139
+#, fuzzy, no-c-format
+msgid ""
+"If enabled, launch the default KDE web browser when the KCheckGMail icon is "
+"clicked."
+msgstr ""
+"Jeśli włączone, uruchomi domyślną przeglądarkę KDE po kliknięciu ikony "
+"KCheckGmail"
+
+#. i18n: file prefs.kcfg line 62
+#: rc.cpp:145
+#, fuzzy, no-c-format
+msgid ""
+"If enabled, every time you click on the KCheckGMail icon will disable it for "
+"a few seconds, thus preventing you from accidentaly opening more than one "
+"window"
+msgstr ""
+"Jeśli włączone, każde kliknięcie w ikonę KCheckGmaila będzie ją deaktywowało "
+"na kilka sekund, żeby zapobiec przypadkowemu otwieraniu więcej niż jednego "
+"okna przeglądarki"
+
+#. i18n: file prefs.kcfg line 65
+#: rc.cpp:148
 #, no-c-format
 msgid "Use the KDE default browser"
 msgstr "Użyj domyślnej przeglądarki KDE"
 
-#. i18n: file prefs.kcfg line 60
-#: rc.cpp:133
-#, no-c-format
-msgid "Use whatever browser is configured as the KDE default to check your Gmail"
-msgstr "Użyj jakiejkolwiek przeglądarki ustawionej domyślnie w KDE do sprawdzenia Twojego Gmaila"
-
-#. i18n: file prefs.kcfg line 63
 #. i18n: file prefs.kcfg line 67
-#: rc.cpp:136
-#: rc.cpp:139
+#: rc.cpp:151
+#, no-c-format
+msgid ""
+"Use whatever browser is configured as the KDE default to check your Gmail"
+msgstr ""
+"Użyj jakiejkolwiek przeglądarki ustawionej domyślnie w KDE do sprawdzenia "
+"Twojego Gmaila"
+
+#. i18n: file prefs.kcfg line 70
+#: rc.cpp:154 rc.cpp:157
 #, no-c-format
 msgid "Use a custom browser"
-msgstr "Użyj domyślnej przeglądarki"
+msgstr "Użyj własnej przeglądarki"
 
-#. i18n: file prefs.kcfg line 69
-#: rc.cpp:142
+#. i18n: file prefs.kcfg line 76
+#: rc.cpp:160
 #, no-c-format
 msgid "Use a custom browser other than the KDE default to check your Gmail"
-msgstr "Użyj domyślnej przeglądarki innej niż domyślna w KDE do sprawdzania gmaila"
+msgstr ""
+"Użyj własnej przeglądarki innej niż domyślna w KDE do sprawdzania Gmaila"
 
+#. i18n: file prefs.kcfg line 79
+#: rc.cpp:163
+#, no-c-format
+msgid "Display subject when only one new email arrives"
+msgstr ""
+
+#. i18n: file prefs.kcfg line 81
+#: rc.cpp:166
+#, no-c-format
+msgid "Display message's subject when only one new email arrives"
+msgstr ""
+
+#. new-gmail-arrived - Name new-gmail-arrived - Comment
+#: eventsrc:1 eventsrc:2
+msgid "New Gmail Arrived"
+msgstr "Nadeszła nowa poczta Gmail"
+
+#. gmail-login-yes - Name gmail-login-yes - Comment
+#: eventsrc:3 eventsrc:4
+msgid "Logged in to Gmail"
+msgstr "Zalogowany do Gmaila"
+
+#. gmail-login-no - Name gmail-login-no - Comment
+#: eventsrc:5 eventsrc:6
+msgid "Failed to login to Gmail"
+msgstr "Nie udało się zalogować do Gmaila"
+
+#. gmail-version-mismatch - Name gmail-version-mismatch - Comment
+#: eventsrc:7 eventsrc:8
+msgid "Gmail version has changed"
+msgstr "Zmieniła się wersja Gmaila"
+
+#. gmail-session-changed - Name
+#: eventsrc:9
+msgid "New Gmail session is open"
+msgstr "Nowa sesja Gmaila jest otwarta"
+
+#. gmail-session-changed - Comment
+#: eventsrc:10
+msgid "An other session has been opened"
+msgstr "Inna sesja została otwarta"
+
+#. gmail-mail-snippet - Name
+#: eventsrc:11
+msgid "Mail Snippet"
+msgstr "Fragment wiadomości"
+
+#. gmail-mail-snippet - Comment
+#: eventsrc:12
+msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgstr ""
+"Fragmenty wiadomości kiedy myszka przesuwa się nad kolejnymi wątkami w menu"
+
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr ""
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr ""
+
+#. GenericName
+#: kcheckgmail.desktop:2
+msgid "New email notifier"
+msgstr "Powiadomienia o nowej poczcie"
+
+#. Comment
+#: kcheckgmail.desktop:3
+msgid ""
+"A Kicker applet to display how many email messages you have in your Gmail "
+"account."
+msgstr "Aplet panelu do pokazywania zawartości Twojej skrzynki pocztowej Gmail"
+
+#~ msgid "&Snooze"
+#~ msgstr "Uśpi&j"
+
+#~ msgid "KCheckGMail - Snoozing"
+#~ msgstr "KCheckGMail - Usypianie"
+
+#~ msgid "Snoo&ze Period"
+#~ msgstr "Czas uś&pienia"
+
+#~ msgid " minutes"
+#~ msgstr " minut"
+
+#~ msgid "Snooze period"
+#~ msgstr "Długość uśpienia"
+
+#~ msgid "How many minutes to snooze."
+#~ msgstr "Na ile minut uśpić."
+
+#~ msgid "Only search for new messages in inbox"
+#~ msgstr "Wyszukuj nowych wiadomości jedynie w Otrzymanych"
+
+#~ msgid ""
+#~ "By disabling this option new messages are searched in anywhere (this "
+#~ "includes spam, trash, etc)."
+#~ msgstr ""
+#~ "Deaktywując tę opcję nowe wiadomości będą wyszukiwane wszędzie (włącznie "
+#~ "ze spamem, śmietnikiem, itp.)"

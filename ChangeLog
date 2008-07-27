@@ -1,3 +1,120 @@
+2007-07-23 17:16  atomo64
+
+	* configure, admin/am_edit, Makefile.am, Makefile.cvs,
+	  configure.in, configure.in.in, kcheckgmail.1,
+	  kcheckgmail.kdevelop, icons/Makefile.in, src/gmail.cpp: Release
+	  0.5.7 prepared
+
+2007-07-23 17:15  atomo64
+
+	* po/: fr.po, lt.po, pl.po, tr.po: Updated translations
+
+2007-07-23 17:14  atomo64
+
+	* icons/: cr128-app-kcheckgmail.png, cr16-app-kcheckgmail.png,
+	  cr22-app-kcheckgmail.png, cr32-app-kcheckgmail.png,
+	  cr48-app-kcheckgmail.png, cr64-app-kcheckgmail.png,
+	  svg/convert-all.sh, svg/kcheckgmail.svg: Updated default icon
+
+2007-07-20 21:48  atomo64
+
+	* src/: Makefile.in, appletsettingswidget.ui, eventsrc, gmail.cpp,
+	  gmail.h, gmailparser.cpp, gmailparser.h, kcheckgmail.desktop,
+	  kcheckgmailiface.h, kcheckgmailtray.cpp, kcheckgmailtray.h,
+	  main.cpp: Added a layout manager to the applet settings widget
+	  (thanks to Luis Pereira) Fixed an error where old emails are
+	  reported as new Made other several changes
+
+2007-07-20 21:37  atomo64
+
+	* po/: ar.po, de.po, es.po, et.po, fr.po, hu.po, it.po,
+	  kcheckgmail.pot, ko.po, lt.po, pl.po, pt.po, pt_BR.po, ru.po,
+	  sk.po, sv.po, tr.po: Updated translations and catalogue
+
+2007-07-20 21:36  atomo64
+
+	* doc/en/: Makefile.in, index.docbook: Updated docbook
+
+2007-07-08 19:37  atomo64
+
+	* src/gmail.cpp: Added detection of gmail_error's
+
+2007-07-08 19:36  atomo64
+
+	* po/: ar.po, de.po, es.po, et.po, fr.po, hu.po, it.po, ko.po,
+	  lt.po, pl.po, pt.po, pt_BR.po, ru.po, sk.po, sv.po, tr.po:
+	  Updated po files to latest pot
+
+2007-07-06 19:35  atomo64
+
+	* po/: es.po, it.po, kcheckgmail.pot, lt.po, pl.po, pt.po, tr.po:
+	  Updated language files
+
+2007-07-06 16:34  atomo64
+
+	* icons/Makefile.in: Cleaned up
+
+2007-07-06 16:11  atomo64
+
+	* src/advancedsettingswidget.ui: Adding missing file
+
+2007-07-05 22:29  atomo64
+
+	* acinclude.m4, Makefile.in, aclocal.m4, config.h.in, configure,
+	  configure.in, doc/Makefile.in, doc/en/Makefile.in,
+	  doc/en/index.docbook, icons/Makefile.in,
+	  icons/cr128-app-kcheckgmail.png, icons/cr16-app-kcheckgmail.png,
+	  icons/cr22-app-kcheckgmail.png, icons/cr32-app-kcheckgmail.png,
+	  icons/cr48-app-kcheckgmail.png, icons/cr64-app-kcheckgmail.png,
+	  po/Makefile.in, po/es.po, po/kcheckgmail.pot, po/pl.po, po/pt.po,
+	  src/Makefile.am, src/Makefile.in, src/appletsettingswidget.ui,
+	  src/eventsrc, src/gmail.cpp, src/gmail.h, src/gmail_constants.h,
+	  src/gmailparser.cpp, src/gmailparser.h,
+	  src/gmailwalletmanager.cpp, src/kcheckgmail.desktop,
+	  src/kcheckgmailapp.cpp, src/kcheckgmailiface.h,
+	  src/kcheckgmailtray.cpp, src/kcheckgmailtray.h,
+	  src/loginsettingswidget.ui, src/main.cpp,
+	  src/netsettingswidget.ui, src/prefs.kcfg: Added portuguese
+	  translation Labels can now be counted as boxes Notification
+	  displays total number of unread messages Added dummy notification
+	  when there are no new emails Message subject is now displayed (by
+	  default) when there is only one new email Gmail search query can
+	  now be edited Login username and password are now encoded
+	  Passwords aren't echoed via kdDebug anymore Added option to open
+	  Gmail in simple interface when launching browser Improved DCOP
+	  interface Removed snooze menu option gmail-mail-snippet
+	  notification now also shows attachments Icon can now be
+	  hidden/shown via DCOP Updated docbook
+
+2007-05-13 13:32  atomo64
+
+	* src/gmailparser.cpp: Ignore extra unknown quota values
+
+2007-05-12 12:44  atomo64
+
+	* admin/: ChangeLog, Doxyfile.am, Doxyfile.global, Makefile.common,
+	  acinclude.m4.in, am_edit, bcheck.pl, compile, conf.change.pl,
+	  config.guess, config.pl, config.sub, configure.in.bot.end,
+	  configure.in.min, cvs-clean.pl, cvs.sh, depcomp, deps.am,
+	  detect-autoconf.pl, detect-autoconf.sh, doxygen.sh, install-sh,
+	  libtool.m4.in, ltmain.sh, missing, mkinstalldirs,
+	  oldinclude.m4.in, pkg.m4.in, ylwrap: Updated admin scripts
+
+2007-05-12 12:43  atomo64
+
+	* src/: eventsrc, kcheckgmail.desktop: Adding missing Italian
+	  translation
+
+2007-05-11 19:56  atomo64
+
+	* po/es.po, po/it.po, po/pl.po, src/eventsrc,
+	  src/kcheckgmail.desktop: Updated Spanish, Italian and Polish
+	  translations
+
+2007-04-07 03:36  atomo64
+
+	* ChangeLog: Updated changelog
+
 2007-04-07 02:59  atomo64
 
 	* src/: gmailwalletmanager.cpp, kcheckgmailtray.cpp, main.cpp:

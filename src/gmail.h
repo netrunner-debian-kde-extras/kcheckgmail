@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,6 +22,7 @@
 
 #include <qobject.h>
 #include <qstring.h>
+#include <kurl.h>
 
 #include "gmailwalletmanager.h"
 
@@ -49,7 +50,6 @@ public:
 	bool isLoggedIn();
 	bool isChecking();
 	
-	QString getURLPart(bool refresh);
 	QString getURLPart();
 	
 	void gotWalletPassword(QString str);
@@ -60,6 +60,7 @@ protected:
 	void postLogin();
 	void checkGMail();
 	QString getRedirectURL(QString buffer);
+	void logOut(bool force);
 	void logOut();
 	
 	void dump2File(const QString filename,const QString data);
@@ -101,6 +102,8 @@ private:
 	//GAP4D: Google Applications for Domains
 	QString gGAP4DLoginURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
 
+	KURL loginRedirection;
+	
 public slots:
 	void slotCheckGmail();
 	void slotGetWalletPassword(const QString&);
@@ -110,6 +113,7 @@ public slots:
 protected slots:
 	void slotLoginResult(KIO::Job*);
 	void slotLoginData(KIO::Job*, const QByteArray&);
+	void slotLoginRedirection(KIO::Job *job, const KURL &url);
 
 	void slotPostLoginResult(KIO::Job*);
 	void slotPostLoginData(KIO::Job*, const QByteArray&);
@@ -130,6 +134,7 @@ signals:
 	void checkDone(const QString &data);
 	
 	void sessionChanged();
+	void logingOut();
 };
 
 #endif

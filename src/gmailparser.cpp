@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                     *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,10 +19,11 @@
  ***************************************************************************/
 
 // define this symbol if you want to try to detect the language of your account
-#undef DETECT_GLANGUAGE
+#define DETECT_GLANGUAGE
 
 #include "gmailparser.h"
 #include "gmail_constants.h"
+#include "prefs.h"
 
 #include <kdebug.h>
 #include <qregexp.h>
@@ -36,7 +37,8 @@
  * Gmail's JavaScript interface.
 */
 GMailParser::GMailParser() :
-	mInvites(0)
+		QObject(0, "GMailParser"),
+		mInvites(0)
 {
 	mSummary.inbox = 0;
 // 	mSummary.starred = 0;
@@ -46,14 +48,13 @@ GMailParser::GMailParser() :
 	mSummary.spam = 0;
 // 	mSummary.trash = 0;
 	
-	// NOTE: when adding more supported gmail versions resize()'s value MUST be changed
-	gGMailVersion.resize(4);
 	//Gmail versions kcheckgmail works with.
-	gGMailVersion[0] = "1exl39kx7mipo";
-	gGMailVersion[1] = "1x4nkpwjfkc8x";
-	gGMailVersion[2] = "1ddh9n6glzd1c";
-	gGMailVersion[3] = "11qm1wldxu1ww";
+	gGMailVersion.append("1exl39kx7mipo");
+	gGMailVersion.append("1x4nkpwjfkc8x");
+	gGMailVersion.append("1ddh9n6glzd1c");
+	gGMailVersion.append("11qm1wldxu1ww");
 
+	// TODO: read this from a file
 #ifdef DETECT_GLANGUAGE
 	// Gmail language identifiers:
 	gGMailLanguageCode.insert("7fba835ed0312d54",i18n("Spanish"));
@@ -61,7 +62,7 @@ GMailParser::GMailParser() :
 	gGMailLanguageCode.insert("21208aa200ae6920",i18n("Italian"));
 	gGMailLanguageCode.insert("cd21242a38a63f0",i18n("German"));
 	gGMailLanguageCode.insert("9930dc54804b344a",i18n("English (US)"));
-	gGMailLanguageCode.insert("93a8e3f857e8a529",i18n("English (UK)"));
+	gGMailLanguageCode.insert("f59adb920ee42615",i18n("English (UK)"));
 	gGMailLanguageCode.insert("d414bf5ecc193e94",i18n("Portuguese"));
 	gGMailLanguageCode.insert("421a229c26e5115",i18n("Turkish"));
 	gGMailLanguageCode.insert("f8c7fb73ac445a2f",i18n("Polish"));
@@ -120,6 +121,7 @@ void GMailParser::parse(const QString &_data)
 {
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
+	unsigned int oldNewCount, NewCount = 0;
 
 	rx.setMinimal(true);
 
@@ -129,11 +131,9 @@ void GMailParser::parse(const QString &_data)
 	} 
 
 	mCurMsgId = 0;
-	unsigned int oldNewCount = getNewCount(), NewCount = 0;
+	oldNewCount = getNewCount();
 	QMap<QString,bool> *oldMap = getThreadList();
 	freeThreadList();
-
-	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
 
 	QString data = QString::fromUtf8(_data);
 
@@ -155,7 +155,7 @@ void GMailParser::parse(const QString &_data)
 				parseVersion(str);
 			} else if(tok == D_QUOTA) {
 				parseQuota(str);
-			} else if(tok == D_DEFAULTSEARCH_SUMMARY) {
+			} else if(tok == D_DEFAULT_SUMMARY) {
 				parseDefaultSummary(str);
 			} else if(tok == D_CATEGORIES) {
 				parseLabel(str);
@@ -163,7 +163,9 @@ void GMailParser::parse(const QString &_data)
 				parseInvite(str);
 			} else if(tok == D_GAIA_NAME) {
 				parseGName(str);
-			}
+			}/* else if(tok == D_THREADLIST_SUMMARY) {
+				parseThreadSummary(str);
+			}*///D(["ts",0,20/*max shown*/,4/*total results*/,0,"Search results for: in:inbox is:unread","in:inbox is:unread","113e12c0cc4"/*search id?*/,9,,"",""]
 
 		}
 
@@ -176,11 +178,16 @@ void GMailParser::parse(const QString &_data)
 	kdDebug() << k_funcinfo << "NewCount=" << NewCount << endl;
 	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
 	
-	//TODO: make sure to display the real number of new emails when we just logged in (hint?: check oldNewCount to see if it was 0)
+	int realCount = getNewCount(true);
+	if (oldNewCount == 0 && realCount != 0)
+		NewCount = realCount;
+	
 	if(NewCount > 0)
 		emit mailArrived(NewCount);
 	if(oldNewCount != NewCount)
 		emit mailCountChanged();
+	if(realCount == 0)
+		emit noUnreadMail();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -263,11 +270,15 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	*/
 
 	unsigned int newMsgCount = 0;
-
-	if(oldMap)
+	QString oldLatestThread;
+	
+	if(oldMap) {
 		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
-	else
+		oldLatestThread = oldMap->begin().key();
+	} else {
 		kdDebug() << k_funcinfo << "no oldmap" << endl;
+	}
+	kdDebug() << k_funcinfo << "oldLatestThread=" << oldLatestThread << endl;
 
 	while((pos = rx.search(data, pos)) != -1) {
 		Thread *t = new Thread;
@@ -281,7 +292,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->subject = cleanUpData(rx.cap(7));
 		t->snippet = cleanUpData(rx.cap(8));
 		t->labels = rx.cap(9);
-		t->attachments = rx.cap(10);
+		t->attachments = QStringList::split(",", rx.cap(10));
 		t->msgId = rx.cap(11);
 		t->unknown2 = rx.cap(12).toUInt();
 		t->date_long = rx.cap(13);
@@ -289,7 +300,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->isNull = false;
 
 		if(t->isNew && (!oldMap || 
-				 (oldMap->find(t->msgId) == oldMap->end()))) {
+				 (oldMap->find(t->msgId) == oldMap->end() && (t->msgId > oldLatestThread || t->replyId > oldLatestThread)))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
 		} else
@@ -315,7 +326,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->subject = cleanUpData(rx2.cap(7));
 		t->snippet = cleanUpData(rx2.cap(8));
 		t->labels = rx2.cap(9);
-		t->attachments = rx2.cap(10);
+		t->attachments = QStringList::split(",", rx.cap(10));
 		t->msgId = rx2.cap(11);
 		t->unknown2 = rx2.cap(12).toUInt();
 		t->date_long = rx2.cap(13);
@@ -323,7 +334,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->isNull = false;
 
 		if(t->isNew && (!oldMap || 
-				 (oldMap->find(t->msgId) == oldMap->end()))) {
+				 (oldMap->find(t->msgId) == oldMap->end() && (t->msgId > oldLatestThread || t->replyId > oldLatestThread)))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
 			newMsgCount ++;
 		} else
@@ -404,8 +415,7 @@ void GMailParser::parseVersion(const QString &_data)
 		kdWarning() << k_funcinfo << "Unknown language code: " << mVersion.language << endl;
 #endif
 	
-	if(!ok)
-	{
+	if(!ok) {
 		kdWarning() << k_funcinfo << "GMail version " << mVersion.version << " is not supported, check for updates!" << endl;
 		emit versionMismatch();
 	}
@@ -422,7 +432,7 @@ void GMailParser::parseVersion(const QString &_data)
 void GMailParser::parseQuota(const QString &data)
 {	
 	QStringList list = QStringList::split(",",data);
-	if(list.size() == 4) {
+	if(list.size() == 4 || list.size() == 9) {
 		QStringList::Iterator iter = list.begin();
 		unsigned int i = 0;
 		while(iter != list.end()) {
@@ -449,7 +459,7 @@ void GMailParser::parseQuota(const QString &data)
 		}
 	} else
 		kdWarning() << k_funcinfo << "Wrong number of elements in qu: "
-			<< list.size() << ", should be: 4." << endl;
+			<< list.size() << ", should be 4 or 9." << endl;
 }
 
 /**
@@ -502,7 +512,7 @@ void GMailParser::parseLabel(const QString &data)
 {
 	static QRegExp rx(
 		"\\[\"([^\"]+)\""	// label name
-		",([0-9]+)\\]"		// unread
+		",([0-9]+)\\]"		// unread count
 		);
 
 	if(!rx.isValid()) {
@@ -511,9 +521,18 @@ void GMailParser::parseLabel(const QString &data)
 	}
 	int pos = 0;
 	
+	mLabels.clear();
+	eLabels.clear();
+	
 	kdDebug() << k_funcinfo << endl;
 
 	while((pos = rx.search(data, pos)) != -1) {
+		mLabels.insert(rx.cap(1), rx.cap(2).toUInt());
+		
+		QString k = rx.cap(1);
+		k.replace(" ", "-");
+		eLabels.insert(k, rx.cap(1));
+		
 		kdDebug() << rx.cap(1) << " has " << rx.cap(2) << " unread messages" << endl;
 		pos += rx.matchedLength();
 	}
@@ -552,7 +571,7 @@ void GMailParser::parseGName(const QString &data)
 	if(newName != gName) {
 		gName = newName;
 		kdDebug() << "Gaia name: " << gName << endl;
-		emit gNameChanged(gName);
+		emit gNameUpdate(gName);
 	}
 }
 
@@ -629,6 +648,31 @@ const GMailParser::Thread& GMailParser::getThread(int id) const
 }
 
 /**
+ * Return the thread information of last thread in the map
+ *
+ * @return A copy of the Thread
+ */
+const GMailParser::Thread& GMailParser::getLastThread() const
+{
+	static Thread nullThread;
+
+	QMap<QString, Thread*>::const_iterator iter = mThreads.constEnd();
+	
+	iter--;
+	
+	if(iter == mThreads.end()) {
+		nullThread.isNull = true;
+		return nullThread;
+	} else
+		return *(*iter);
+}
+
+const QString GMailParser::getGaiaName() const
+{	
+	return gName;
+}
+
+/**
  * Retrieve the number of unread messages.
  *
  * If realCount is false the box parameter is ignored.
@@ -637,19 +681,23 @@ const GMailParser::Thread& GMailParser::getThread(int id) const
  * @param box The name of the box (inbox, drafts, spam; or in the future: label) from where the real number of unread messages should be taken from
  * @return The number of unread messages
  * @example getNewCount(true,"inbox") Get the real number of unread messages in the inbox
- * @todo Check if box is the name of a label
 */
 unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 {
 	unsigned int ret = 0;
-	if(realCount == true)
-	{
+	
+	if(realCount == true) {
 		if(box.compare("inbox") == 0)
 			return mSummary.inbox;
 		else if(box.compare("drafts") == 0)
 			return mSummary.drafts;
 		else if(box.compare("spam") == 0)
 			return mSummary.spam;
+		else {
+			if (mLabels.contains(box))
+				return mLabels[box];
+		}
+		kdWarning() << k_funcinfo << "The box " << box << " doesn't exist! returning value as if realCount=false" << endl;
 	}
 	
 	QMap<QString, bool> *lst = getThreadList();
@@ -672,11 +720,34 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
  *
  * @param realCount If the number of unread messages should be taken from the totals or only from the parsed messages
  * @return The number of unread messages
- * @todo Replace the default box "inbox" with the box where the new emails are being searched from
 */
 unsigned int GMailParser::getNewCount(bool realCount) const
 {
-	return getNewCount(realCount,"inbox");
+	QRegExp rx ("in:([^ ]+)");
+	QRegExp rx2("label:([^ ]+)");
+	QString box;
+	
+	if (realCount) {
+		if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
+			// If none are specified gmail will return any unread mail (except spam and drafts)
+			// TODO: to fix this we need to count all messages (!drafts,!spam, inbox + labels)
+			realCount = false;
+			//box = "inbox";
+		} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
+			//there's no other way to know how many emails are in:inbox and in specified label:LABEL
+			realCount = false;
+		} else if (rx.search(Prefs::searchFor()) != -1) {
+			box = rx.cap(1);
+		} else if (rx2.search(Prefs::searchFor()) != -1) {
+			box = rx2.cap(1);
+			
+			if (eLabels.contains(box)) {
+				box = eLabels[box];
+			}
+		}
+	}
+	
+	return getNewCount(realCount, box);
 }
 
 /**
