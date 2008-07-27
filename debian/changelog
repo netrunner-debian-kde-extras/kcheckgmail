@@ -17,6 +17,7 @@ kcheckgmail (0.5.7.5-1) unstable; urgency=high
     + Remove useless dependency on kdebase-bin (Closes: #460478)
     + Bump standards version to 3.8.0, no changes needed
   * debian/docs: don't install the useless TODO file
+  * debian/dirs: useless file gone
   * debian/compat: bump to 5
   * debian/rules: rewritten, using cdbs now
 
