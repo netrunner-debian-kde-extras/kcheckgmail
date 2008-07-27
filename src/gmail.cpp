@@ -30,6 +30,7 @@
 
 #include <kio/job.h>
 #include <kio/global.h>
+#include <kio/netaccess.h>
 #include <klocale.h>
 #include <kdebug.h>
 
@@ -66,8 +67,9 @@ GMail::GMail() : QObject(0, "GMailNetwork")
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
 	
 	gGAP4DLoginURL = "https://www.google.com/a/%1/LoginAction";
-	gGAP4DLoginPOSTFormat = "userName=%1&password=%2&at=null&service=mail"
-			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%3";
+	gGAP4DLoginPOSTFormat = "Email=%1&Passwd=%2&signIn=Sign+in&service=mail"
+			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%3"
+			"&ltmpl=default&ltmplcache=2&rm=false&rmShown=1";
 	gGAP4DCheckURL = "%1://mail.google.com/a/%2/?search=query"
 			"&q=%3&as_subset=unread&view=tl&start=0&init=1&ui=1";
 	gGAP4DLogOut = "https://mail.google.com/a/%1/?logout";
@@ -589,19 +591,27 @@ QString GMail::getURLPart()
 
 void GMail::logOut(bool force)
 {
-	if(!isLoggedIn() && !force)
+	static bool alreadyRunning = false;
+	bool result;
+
+	if(alreadyRunning || (!force && !isLoggedIn()))
 		return;
-	
-	emit logingOut();
-	
+
+	alreadyRunning = true;
 	sessionCookie = QString::null;
+	mTimer->stop();
 	
 	QString logoutUrl = (!isGAP4D)? gGMailLogOut : QString(gGAP4DLogOut).arg(useDomain);
 	
-	KIO::TransferJob *job = KIO::get(logoutUrl, true, false);
+	KIO::Job *job = KIO::get(logoutUrl, true, false);
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
 	kdDebug() << "Loging out! " << logoutUrl << endl;
+
+	// we really don't want async jobs here
+	result= KIO::NetAccess::synchronousRun(job, 0);
+	kdDebug() << "Log out job done, with result: " << result << endl;
+	alreadyRunning = false;
 }
 
 void GMail::logOut()
@@ -723,18 +733,20 @@ void GMail::slotSessionChanged()
 
 QString GMail::getRedirectURL(QString buffer)
 {	
-	static QRegExp metaRX("<meta[ ]+.*url='(http[s]?://[^']+)'.*>");
-	static QRegExp jsRX  ("location\\.replace[ ]*\\([ ]*['\"](http[s]?://[^'\"]+)['\"][ ]*\\)");
+	static QRegExp metaRX("<meta[ ]+.*url=('|\\\"|&#39;|&#34;)(http[s]?://.+)\\1.*>");
+	static QRegExp jsRX  ("location\\.replace[ ]*\\([ ]*(['\\\"])(http[s]?://.+)\\1[ ]*\\)");
 	int found;
 	QString url, jsurl;
 	
 	kdDebug() << k_funcinfo << endl;
 
+	metaRX.setMinimal(true);
 	if(!metaRX.isValid()) {
 		kdWarning() << k_funcinfo << "Invalid metaRX!\n"
 				<< metaRX.errorString() << endl;
 	}
 
+	jsRX.setMinimal(true);
 	if(!jsRX.isValid()) {
 		kdWarning() << k_funcinfo << "Invalid jsRX!\n"
 				<< jsRX.errorString() << endl;
@@ -746,7 +758,7 @@ QString GMail::getRedirectURL(QString buffer)
 		return QString::null;
 	}
 	
-	url = KCharsets::resolveEntities(metaRX.cap(1));
+	url = KCharsets::resolveEntities(metaRX.cap(2));
 	
 	// now let's check if there's a JS redirection (location.replace)
 	found = jsRX.search(buffer);
@@ -754,7 +766,7 @@ QString GMail::getRedirectURL(QString buffer)
 	if( found == -1 ) {
 		return url;
 	}
-	jsurl = GMailParser::cleanUpData(jsRX.cap(1));
+	jsurl = GMailParser::cleanUpData(jsRX.cap(2));
 	
 	// if both match it's ok
 	if (url.compare(jsurl) == 0) {

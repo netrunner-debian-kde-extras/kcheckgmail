@@ -1,0 +1,827 @@
+# translation of cs.po to czech
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Jirka Vilim <web@tets.cz>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: cs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-09-23 20:17-0500\n"
+"PO-Revision-Date: 2008-07-25 17:11+0200\n"
+"Last-Translator: Jirka Vilim <web@tets.cz>\n"
+"Language-Team: czech\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Jirka Vilim"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "web@tets.cz"
+
+#: gmail.cpp:243
+msgid "Invalid username or password"
+msgstr "Nesprávné jméno nebo heslo"
+
+#: gmail.cpp:249 gmail.cpp:260 gmail.cpp:275
+msgid "GMail's login procedure has changed, check for new version"
+msgstr "Způsob přihlašování do GMailu se změnil, nainstalujte novou verzi KCheckGMail (je-li k dispozici)"
+
+#: gmail.cpp:386
+msgid "Unknown error retrieving cookies"
+msgstr "Neznámá chyba při přijímání cookies"
+
+#: gmailparser.cpp:62
+msgid "Spanish"
+msgstr "Španělsky"
+
+#: gmailparser.cpp:63
+msgid "French"
+msgstr "Francouzsky"
+
+#: gmailparser.cpp:64
+msgid "Italian"
+msgstr "Italsky"
+
+#: gmailparser.cpp:65
+msgid "German"
+msgstr "Německy"
+
+#: gmailparser.cpp:66
+msgid "English (US)"
+msgstr "Anglicky (US)"
+
+#: gmailparser.cpp:67
+msgid "English (UK)"
+msgstr "Anglicky (UK)"
+
+#: gmailparser.cpp:68
+msgid "Portuguese"
+msgstr "Potrugalsky"
+
+#: gmailparser.cpp:69
+msgid "Turkish"
+msgstr "Turecky"
+
+#: gmailparser.cpp:70
+msgid "Polish"
+msgstr "Polsky"
+
+#: gmailparser.cpp:71
+msgid "Russian"
+msgstr "Rusky"
+
+#: gmailparser.cpp:72 gmailparser.cpp:83
+msgid "Croatian"
+msgstr "Chorvatsky"
+
+#: gmailparser.cpp:73
+msgid "Dutch"
+msgstr "Holandsky"
+
+#: gmailparser.cpp:74
+msgid "Hungarian"
+msgstr "Maďarsky"
+
+#: gmailparser.cpp:75
+msgid "Swedish"
+msgstr "Švédsky"
+
+#: gmailparser.cpp:76
+msgid "Norwegian"
+msgstr "Norsky"
+
+#: gmailparser.cpp:77
+msgid "Lithuanian"
+msgstr "Litevsky"
+
+#: gmailparser.cpp:78
+msgid "Hebrew"
+msgstr "Hebrejsky"
+
+#: gmailparser.cpp:79
+msgid "Greek"
+msgstr "Řecky"
+
+#: gmailparser.cpp:80
+msgid "Chinese (Simplified)"
+msgstr "Čínsky (zjednodušená) "
+
+#: gmailparser.cpp:81
+msgid "Chinese (Traditional)"
+msgstr "Čínsky (tradiční)"
+
+#: gmailparser.cpp:82
+msgid "Czech"
+msgstr "Česky"
+
+#: gmailparser.cpp:84
+msgid "Catalan"
+msgstr "Katalánsky"
+
+#: gmailparser.cpp:85
+msgid "Arabic"
+msgstr "Arabsky"
+
+#: gmailparser.cpp:86
+msgid "Indonesian"
+msgstr "Indonésky"
+
+#: gmailparser.cpp:87
+msgid "Japanese"
+msgstr "Japonsky"
+
+#: gmailparser.cpp:88
+msgid "Korean"
+msgstr "Korejsky"
+
+#: gmailparser.cpp:89
+msgid "Hindi"
+msgstr "Hindsky"
+
+#: gmailparser.cpp:90
+msgid "Thai"
+msgstr "Thajsky"
+
+#: gmailparser.cpp:91
+msgid "Danish"
+msgstr "Dánsky"
+
+#: gmailparser.cpp:92
+msgid "Estonian"
+msgstr "Estonsky"
+
+#: gmailparser.cpp:93
+msgid "Icelandic"
+msgstr "Islandsky"
+
+#: gmailparser.cpp:94
+msgid "Latvian"
+msgstr "Lotyšsky"
+
+#: gmailparser.cpp:95
+msgid "Romanian"
+msgstr "Rumunsky"
+
+#: gmailparser.cpp:96
+msgid "Slovak"
+msgstr "Slovensky"
+
+#: gmailparser.cpp:97
+msgid "Slovenian"
+msgstr "Slovinsky"
+
+#: gmailparser.cpp:98
+msgid "Finnish"
+msgstr "Finsky"
+
+#: gmailparser.cpp:99
+msgid "Tagalog"
+msgstr "Tagalog (Filipínsky)"
+
+#: gmailparser.cpp:100
+msgid "Vietnamese"
+msgstr "Vietnamsky"
+
+#: gmailparser.cpp:101
+msgid "Ukrainian"
+msgstr "Ukrajinsky"
+
+#: gmailparser.cpp:102
+msgid "Bulgarian"
+msgstr "Bulharsky"
+
+#: gmailwalletmanager.cpp:101
+msgid "KCheckGMail could not open the wallet. Please check your preferences."
+msgstr "KCheckGMail nemůže otevřít KWallet. Zkontrolujte prosím nastavení."
+
+#: gmailwalletmanager.cpp:185
+msgid ""
+"KCheckGMail cannot store your password securely in your wallet. Do you want "
+"to save the password in the unsafe configuration file instead?"
+msgstr "KCheckGMail nemůže bezpečně uložit heslo v aplikaci KWallet. Chcete uložit heslo do nezabezpečeného konfiguračního souboru?"
+
+#: gmailwalletmanager.cpp:187
+msgid "Unable to store secure password"
+msgstr "Nelze uložit zabezpečené heslo"
+
+#: gmailwalletmanager.cpp:188 gmailwalletmanager.cpp:234
+msgid "Store unsafe"
+msgstr "Uložit nezabezpečeně"
+
+#: gmailwalletmanager.cpp:231
+msgid ""
+"KCheckGMail cannot retrieve your password from your wallet. Do you want to "
+"save the password in the unsafe configuration file instead?"
+msgstr "KCheckGMail nemůže získat heslo z aplikace KWallet. Chcete uložit heslo do nezabezpečeného konfiguračního souboru?"
+
+#: gmailwalletmanager.cpp:233
+msgid "Unable to retrieve secure password"
+msgstr "Nemohu získat heslo"
+
+#. Name
+#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:143 kcheckgmailtray.cpp:536
+#: main.cpp:44 kcheckgmail.desktop:1
+msgid "KCheckGMail"
+msgstr "KCheckGMail"
+
+#: kcheckgmailtray.cpp:145
+msgid "Configure &Notications..."
+msgstr "&Nastavení notifikací"
+
+#: kcheckgmailtray.cpp:147
+msgid "&Configure KCheckGMail..."
+msgstr "Nastavení K&CheckGMail..."
+
+#: kcheckgmailtray.cpp:150 kcheckgmailtray.cpp:534
+msgid "Login and Chec&k Mail"
+msgstr "Přihlaš se a z&kontroluj poštu"
+
+#: kcheckgmailtray.cpp:153
+msgid "&Launch Browser"
+msgstr "Spusť proh&lížeč"
+
+#: kcheckgmailtray.cpp:155
+msgid "Co&mpose Mail"
+msgstr "Napiš &zprávu"
+
+#: kcheckgmailtray.cpp:157
+msgid "Th&reads"
+msgstr "&Vlákna"
+
+#: kcheckgmailtray.cpp:201
+msgid ""
+"<p><center>Welcome to KCheckGMail!</center></p><p>You can locate KCheckGMail "
+"here: </p><p><center><img source=\"systray_shot\"></center></p>When you "
+"right-click on that icon you will see a menu, from which you can see the "
+"Threads menu containing the newest email of your account."
+msgstr ""
+"<p><center>Vítej v aplikaci KCheckGMail!</center></p><p>KCheckGMail najdeš"
+"zde: </p><p><center><img source=\"systray_shot\"></center></p>Pravé tlačítko myši otevře menu, ve kterém je položka"
+"Vlákna obsahující nejnovější emaily."
+
+#: kcheckgmailtray.cpp:207
+msgid "Welcome"
+msgstr "Vítej"
+
+#: kcheckgmailtray.cpp:217
+msgid ""
+"Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc.\n"
+"By using this application you may or may not be violating the Terms of Use "
+"and/or the Program Policies of Gmail or Google Mail.\n"
+"Are you sure you want to use KCheckGMail?"
+msgstr ""
+"Google, Gmail a Google Mail jsou registrované obchodní známky společnosti Google Inc.\n"
+"KCheckGMail ani jeho autoři nejsou v žádném směru spojeni nebo podporováni společností Google "
+"Inc.\n"
+"Používání této aplikace může (ale nemusí) porušovat Terms of Use a/nebo Program Policies Gmailu nebo Google Mailu.\n"
+"Jsi si jist, že chceš používat KCheckGMail?"
+
+#: kcheckgmailtray.cpp:223
+msgid "Legal Information"
+msgstr "Právní informace"
+
+#: kcheckgmailtray.cpp:349
+msgid ""
+"_n: Attachment: %1\n"
+"Attachments: %1"
+msgstr ""
+"_n: Příloha: %1\n"
+"Přílohy: %1"
+
+#: kcheckgmailtray.cpp:410
+msgid "Login"
+msgstr "Přihlášení"
+
+#: kcheckgmailtray.cpp:410
+msgid "Login Settings"
+msgstr "Nastavení přihlášení"
+
+#: kcheckgmailtray.cpp:413
+msgid "Network"
+msgstr "Síť"
+
+#: kcheckgmailtray.cpp:413
+msgid "Network Settings"
+msgstr "Nastavení sítě"
+
+#: kcheckgmailtray.cpp:416
+msgid "Behavior"
+msgstr "Různé"
+
+#: kcheckgmailtray.cpp:419
+msgid "Advanced"
+msgstr "Pokročilé"
+
+#: kcheckgmailtray.cpp:419
+msgid "Advanced Settings"
+msgstr "Pokročilá nastavení"
+
+#: kcheckgmailtray.cpp:437
+msgid "No account information has been entered. Do you want to quit?"
+msgstr "Nebyly zadány údaje o účtu. Chceš ukončit program?"
+
+#: kcheckgmailtray.cpp:467
+msgid ""
+"<p>The search string you provided doesn't specify where to search for unread "
+"emails.</p><p>A search without an <i>in:</i> and <i>label:</i> will return "
+"all unread emails.</p><p>If what you want is to show the new emails in your "
+"inbox use <i>in:inbox</i> or leave empty.</p><p>Are you sure you want to "
+"proceed without specifying location?</p>"
+msgstr "<p>Zadaná fráze neupřesňuje, kde chceš hledat nepřečtené emaily..</p><p>Hledání bez tagů<i>in:</i> a <i>label:</i> zobrazí všechny nepřečtené emaily.</p><p>Pokud chceš zobrazit pouze nové emaily, použij <i>in:inbox</i> nebo nech nevyplňuj nic.</p><p>Jsi si jist, že chceš pokračovat bez upřesnění lokace?</p>"
+
+#: kcheckgmailtray.cpp:482
+msgid ""
+"<p>The search string you provided doesn't contain <i>is:unread</i>.</p><p>It "
+"should be set to ensure more unread messages are retrieved.</p><p>Are you "
+"sure you want to proceed?</p>"
+msgstr "<p>Zadaná fráze neobsahuje tag <i>is:unread</i>.</p><p>Je lepší tento tag použít, aby bylo jisté, že se stáhne více nepřečtených zpráv.</p><p>Chceš opravdu pokračovat?</p>"
+
+#: kcheckgmailtray.cpp:528
+msgid "An error occurred logging in to Gmail<br><b>%1</b>"
+msgstr "Nastala chyba při přihlašování do GMailu<br><b>%1</b>"
+
+#: kcheckgmailtray.cpp:540
+msgid "Now logged in to Gmail!"
+msgstr "Nyní jsi přihlášen do GMailu!"
+
+#: kcheckgmailtray.cpp:541
+msgid "Chec&k Mail Now"
+msgstr "Z&kontroluj poštu"
+
+#: kcheckgmailtray.cpp:578
+#, c-format
+msgid ""
+"_n: There is <b>1</b> new message\n"
+"There are <b>%n</b> new messages"
+msgstr ""
+"_n: Máš <b>1</b> nový email\n"
+"Máš <b>%n</b> nových emailů"
+
+#: kcheckgmailtray.cpp:588
+msgid "New mail arrived: <i>%1</i>"
+msgstr "Přišel nový email: <i>%1</i>"
+
+#: kcheckgmailtray.cpp:596
+msgid "There are no unread messages"
+msgstr "Nemáš žádné nepřečtené emaily"
+
+#: kcheckgmailtray.cpp:643
+msgid "An other account has been opened, logging out from it!"
+msgstr "Byl otevřen další účet, odhlašuji se od něj!"
+
+#: kcheckgmailtray.cpp:755
+msgid ""
+"Gmail has been upgraded since this version of KCheckGMail was released. This "
+"may cause all sort of strange errors. Please check for an upgrade to "
+"KCheckGMail soon."
+msgstr "Od té doby co vyšla tato verze KCheckGMail byl proveden upgrade GMailu. To může způsobovat spoustu podivných chyb. Zkontroluj prosím co nejdříve neexistuje-li novejší verze KCheckGMail."
+
+#: kcheckgmailtray.cpp:756
+msgid "Version changed"
+msgstr "Změna verze"
+
+#: kcheckgmailtray.cpp:817
+msgid ""
+"<p>KCheckGMail is already running</p><p>You can find it here:</"
+"p><p><center><img source=\"systray_shot\"></center></p>"
+msgstr ""
+"<p>KCheckGMail je již spuštěn</p><p>Najdeš ho"
+"zde:</"
+"p><p><center><img source=\"systray_shot\"></center></p>"
+
+#: kcheckgmailtray.cpp:818
+msgid "Already Running"
+msgstr "Již spuštěn"
+
+#: kcheckgmailtray.cpp:896
+#, c-format
+msgid "KCheckGMail - Notifying about new email for %1"
+msgstr "KCheckGMail - Upozorňuji na nové emaily pro %1"
+
+#: main.cpp:37
+msgid "Display legal information"
+msgstr "Zobraz právní informace"
+
+#: main.cpp:47
+msgid ""
+"System tray application to display how many\n"
+"new email messages you have in your Gmail account."
+msgstr "Aplikace v tray panelu zobrazujicí počet nových emailů v GMail účtu."
+
+#: main.cpp:55
+msgid "Original author"
+msgstr "Původní autor"
+
+#: main.cpp:56
+msgid "Maintainer"
+msgstr "Správce"
+
+#: main.cpp:58
+msgid "Everybody who helped testing and translating KCheckGMail"
+msgstr "Všichni, kteří pomáhali testovat a překládat KCheckGMail"
+
+#: main.cpp:70
+msgid ""
+"Legal Information:\n"
+"Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
+"KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
+"Inc."
+msgstr ""
+"Google, Gmail a Google Mail jsou registrované obchodní známky společnosti Google Inc.\n"
+"KCheckGMail ani jeho autoři nejsou v žádném směru spojeni nebo podporováni společností Google "
+"Inc."
+
+#: main.cpp:76
+msgid "KCheckGMail is already running!\n"
+msgstr "KCheckGMail je již spuštěn!\n"
+
+#. i18n: file advancedsettingswidget.ui line 16
+#: rc.cpp:3
+#, no-c-format
+msgid "AdvancedSettingsWidget"
+msgstr ""
+
+#. i18n: file advancedsettingswidget.ui line 61
+#: rc.cpp:6 rc.cpp:97
+#, no-c-format
+msgid "Open Gmail in simple interface"
+msgstr "Otevřít GMail s základním rozhraním"
+
+#. i18n: file advancedsettingswidget.ui line 72
+#: rc.cpp:10 rc.cpp:91
+#, no-c-format
+msgid "Search For:"
+msgstr "Hledej:"
+
+#. i18n: file appletsettingswidget.ui line 16
+#: rc.cpp:13
+#, no-c-format
+msgid "AppletSettingsWidget"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 35
+#: rc.cpp:16
+#, no-c-format
+msgid "Debug"
+msgstr "Debug"
+
+#. i18n: file appletsettingswidget.ui line 46
+#: rc.cpp:19
+#, no-c-format
+msgid "Displa&y an alert if GMail version changes"
+msgstr "Zobraz upozornění pokud se změní verze GMailu"
+
+#. i18n: file appletsettingswidget.ui line 49
+#: rc.cpp:22
+#, no-c-format
+msgid "Alt+Y"
+msgstr "Alt+Y"
+
+#. i18n: file appletsettingswidget.ui line 59
+#: rc.cpp:25
+#, no-c-format
+msgid "Other"
+msgstr "Ostatní"
+
+#. i18n: file appletsettingswidget.ui line 70
+#: rc.cpp:28
+#, no-c-format
+msgid "Display sub&ject when only one new email arrives"
+msgstr "Zobraz předmět pokud přijde jen jeden email"
+
+#. i18n: file appletsettingswidget.ui line 73
+#: rc.cpp:31
+#, no-c-format
+msgid "Alt+J"
+msgstr "Alt+J"
+
+#. i18n: file appletsettingswidget.ui line 89
+#: rc.cpp:34
+#, no-c-format
+msgid "Browser"
+msgstr "Prohlížeč"
+
+#. i18n: file appletsettingswidget.ui line 140
+#: rc.cpp:37
+#, no-c-format
+msgid "&Use the default KDE browser"
+msgstr "Použij výchozí KDE prohlížeč"
+
+#. i18n: file appletsettingswidget.ui line 143
+#: rc.cpp:40 rc.cpp:70 rc.cpp:85
+#, no-c-format
+msgid "Alt+U"
+msgstr "Alt+U"
+
+#. i18n: file appletsettingswidget.ui line 154
+#: rc.cpp:43
+#, no-c-format
+msgid "Use an alternative browser"
+msgstr "Použij alternativní prohlížeč"
+
+#. i18n: file appletsettingswidget.ui line 182
+#: rc.cpp:46
+#, no-c-format
+msgid "Tray Icon"
+msgstr "Tray ikona"
+
+#. i18n: file appletsettingswidget.ui line 193
+#: rc.cpp:49
+#, no-c-format
+msgid "Open &browser to Gmail on left click"
+msgstr "Otevři prohlížeč s GMailem kliknutím levým tlačítkem myši"
+
+#. i18n: file appletsettingswidget.ui line 196
+#: rc.cpp:52
+#, no-c-format
+msgid "Alt+B"
+msgstr "Alt+B"
+
+#. i18n: file appletsettingswidget.ui line 204
+#: rc.cpp:55 rc.cpp:145
+#, no-c-format
+msgid "Catch accidental left clicks when launching the browser"
+msgstr "Zachytávat náhodná kliknutí levým tlačítkem při spouštění prohlížeče"
+
+#. i18n: file loginsettingswidget.ui line 16
+#: rc.cpp:58
+#, no-c-format
+msgid "LoginSettingsWidget"
+msgstr ""
+
+#. i18n: file loginsettingswidget.ui line 35
+#: rc.cpp:61
+#, no-c-format
+msgid "Username:"
+msgstr "Uživatelské jméno:"
+
+#. i18n: file loginsettingswidget.ui line 46
+#: rc.cpp:64
+#, no-c-format
+msgid "Password:"
+msgstr "Heslo:"
+
+#. i18n: file loginsettingswidget.ui line 57
+#: rc.cpp:67
+#, no-c-format
+msgid "&Use KDE Wallet to store password"
+msgstr "Použij Kwallet k uložení hesla"
+
+#. i18n: file netsettingswidget.ui line 16
+#: rc.cpp:73
+#, no-c-format
+msgid "NetworkSettingsWidget"
+msgstr ""
+
+#. i18n: file netsettingswidget.ui line 44
+#: rc.cpp:76
+#, no-c-format
+msgid "Chec&king Interval"
+msgstr "Interval kontroly"
+
+#. i18n: file netsettingswidget.ui line 56
+#: rc.cpp:79
+#, no-c-format
+msgid " seconds"
+msgstr " sekund"
+
+#. i18n: file netsettingswidget.ui line 64
+#: rc.cpp:82
+#, no-c-format
+msgid "&Use https connections for checking mail"
+msgstr "Použij pro připojení k GMailu spojení https"
+
+#. i18n: file netsettingswidget.ui line 73
+#: rc.cpp:88
+#, no-c-format
+msgid ""
+"<blockquote>Use secure connections when checking for new mail. Note that the "
+"login procedure uses https regardless of this setting.</blockquote>"
+msgstr "<blockquote>Použije zabezpečené připojení při kontrole nových emailů. Přihlašovací proces je zabezpečen přes https vždy, bez ohledu na toto nastavení.</blockquote>"
+
+#. i18n: file prefs.kcfg line 9
+#: rc.cpp:94
+#, no-c-format
+msgid ""
+"When checking for new email's this is the search query sent to Google Mail. "
+"Don't forget to add is:unread to improve the search."
+msgstr ""
+"Toto je hledaná fráze zasílaná Google Mailu při kontrole nové pošty. "
+"Nezapomeň na is:unread, kvůli zlepšení vyhledávání."
+
+#. i18n: file prefs.kcfg line 14
+#: rc.cpp:100
+#, no-c-format
+msgid ""
+"This option lets you make KCheckGMail open Gmail using the simple interface "
+"(only HTML) or the full interface (unmarked)."
+msgstr "Otevře GMail v základním rozhraní (jen HTML) nebo ve standardním rozhraní (nezaškrtnuto)"
+
+#. i18n: file prefs.kcfg line 19
+#: rc.cpp:103
+#, no-c-format
+msgid "Polling interval"
+msgstr "Interval kontroly"
+
+#. i18n: file prefs.kcfg line 23
+#: rc.cpp:106
+#, no-c-format
+msgid "How many seconds to wait before checking for new mail."
+msgstr "Interval kontroly pošty v sekundách."
+
+#. i18n: file prefs.kcfg line 26
+#: rc.cpp:109
+#, no-c-format
+msgid "Use https connections for checking mail"
+msgstr "Použij pro připojení k GMailu spojení https"
+
+#. i18n: file prefs.kcfg line 28
+#: rc.cpp:112
+#, no-c-format
+msgid ""
+"Use secure connections when checking for new mail. Note that the login "
+"procedure uses https regardless of this setting."
+msgstr "Použije zabezpečené připojení při kontrole nových emailů. Přihlašovací proces je zabezpečen přes https vždy, bez ohledu na toto nastavení."
+
+#. i18n: file prefs.kcfg line 34
+#: rc.cpp:115
+#, no-c-format
+msgid "Username"
+msgstr "Přihlašovací jméno"
+
+#. i18n: file prefs.kcfg line 35
+#: rc.cpp:118
+#, no-c-format
+msgid "Your Gmail username or your Google Hosted Domain email address"
+msgstr "Přihlašovací jméno do GMailu nebo emailová adresa Googlem hostované domény "
+
+#. i18n: file prefs.kcfg line 38
+#: rc.cpp:121
+#, no-c-format
+msgid "Password"
+msgstr "Heslo"
+
+#. i18n: file prefs.kcfg line 39
+#: rc.cpp:124
+#, no-c-format
+msgid "Password for checking your Gmail account"
+msgstr "Heslo do GMailu"
+
+#. i18n: file prefs.kcfg line 42
+#: rc.cpp:127
+#, no-c-format
+msgid "Use KDE Wallet to store password"
+msgstr "Použij Kwallet k uložení hesla"
+
+#. i18n: file prefs.kcfg line 44
+#: rc.cpp:130
+#, no-c-format
+msgid "Use the KDE Wallet system to store your Gmail password."
+msgstr "Použije Kwallet k uložení hesla do GMailu."
+
+#. i18n: file prefs.kcfg line 47
+#: rc.cpp:133
+#, no-c-format
+msgid "Display an alert if GMail version changes"
+msgstr "Zobrazí upozornění pokud se změní verze GMailu"
+
+#. i18n: file prefs.kcfg line 49
+#: rc.cpp:136
+#, no-c-format
+msgid "If Google update the GMail code, display an alert"
+msgstr "Zobrazí upozornění pokud Google změní kód GMailu"
+
+#. i18n: file prefs.kcfg line 55
+#: rc.cpp:139
+#, no-c-format
+msgid "Open browser to Gmail on left click"
+msgstr "Otevři prohlížeč s GMailem kliknutím levým tlačítkem myši"
+
+#. i18n: file prefs.kcfg line 57
+#: rc.cpp:142
+#, no-c-format
+msgid ""
+"If enabled, launch the default KDE web browser when the KCheckGMail icon is "
+"clicked."
+msgstr "Je-li zapnuto, kliknutí na ikonu KCheckGMail spustí výchozí KDE prohlížeč."
+
+#. i18n: file prefs.kcfg line 62
+#: rc.cpp:148
+#, no-c-format
+msgid ""
+"If enabled, every time you click on the KCheckGMail icon will disable it for "
+"a few seconds, thus preventing you from accidentaly opening more than one "
+"window"
+msgstr "Je-li zapnuto, po každém kliknutí na ikonu KCheckGMail  je tato možnost na několik sekund zablokována. To zabraňuje náhodnému otevření více oken prohlížeče"
+
+#. i18n: file prefs.kcfg line 65
+#: rc.cpp:151
+#, no-c-format
+msgid "Use the KDE default browser"
+msgstr "Použij výchozí KDE prohlížeč"
+
+#. i18n: file prefs.kcfg line 67
+#: rc.cpp:154
+#, no-c-format
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
+msgstr "Použije výchozí KDE prohlížeč k otevření GMail rozhraní"
+
+#. i18n: file prefs.kcfg line 70
+#: rc.cpp:157 rc.cpp:160
+#, no-c-format
+msgid "Use a custom browser"
+msgstr "Použij vlastní prohlížeč"
+
+#. i18n: file prefs.kcfg line 76
+#: rc.cpp:163
+#, no-c-format
+msgid "Use a custom browser other than the KDE default to check your Gmail"
+msgstr "Použije vlastní prohlížeč k otevření GMail rozhraní"
+
+#. i18n: file prefs.kcfg line 79
+#: rc.cpp:166
+#, no-c-format
+msgid "Display subject when only one new email arrives"
+msgstr "Zobraz předmět pokud přijde jen jeden email"
+
+#. i18n: file prefs.kcfg line 81
+#: rc.cpp:169
+#, no-c-format
+msgid "Display message's subject when only one new email arrives"
+msgstr "Zobrazí předmět zprávy pokud přijde jen jeden email"
+
+#. new-gmail-arrived - Name new-gmail-arrived - Comment
+#: eventsrc:1 eventsrc:2
+msgid "New Gmail Arrived"
+msgstr "Přišel nový Gmail"
+
+#. gmail-login-yes - Name gmail-login-yes - Comment
+#: eventsrc:3 eventsrc:4
+msgid "Logged in to Gmail"
+msgstr "Přihlášen do GMailu"
+
+#. gmail-login-no - Name gmail-login-no - Comment
+#: eventsrc:5 eventsrc:6
+msgid "Failed to login to Gmail"
+msgstr "Nepodařilo se přihlásit do GMailu"
+
+#. gmail-version-mismatch - Name gmail-version-mismatch - Comment
+#: eventsrc:7 eventsrc:8
+msgid "Gmail version has changed"
+msgstr "Verze GMailu se změnila"
+
+#. gmail-session-changed - Name
+#: eventsrc:9
+msgid "New Gmail session is open"
+msgstr ""
+
+#. gmail-session-changed - Comment
+#: eventsrc:10
+msgid "An other session has been opened"
+msgstr ""
+
+#. gmail-mail-snippet - Name
+#: eventsrc:11
+msgid "Mail Snippet"
+msgstr ""
+
+#. gmail-mail-snippet - Comment
+#: eventsrc:12
+msgid "eMail snippets when moving the mouse over a threads menu entry"
+msgstr ""
+
+#. no-unread-gmail - Name
+#: eventsrc:13
+msgid "No unread email"
+msgstr "Žádné nové emaily"
+
+#. no-unread-gmail - Comment
+#: eventsrc:14
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Fiktivní notifikace zobrazená v případě, že neexistují nepřečtené emaily"
+
+#. GenericName
+#: kcheckgmail.desktop:2
+msgid "New email notifier"
+msgstr "Hlídač nových emailů"
+
+#. Comment
+#: kcheckgmail.desktop:3
+msgid ""
+"A Kicker applet to display how many email messages you have in your Gmail "
+"account."
+msgstr "Kicker aplet zobrazujicí počet nových emailů v GMail účtu."
+
