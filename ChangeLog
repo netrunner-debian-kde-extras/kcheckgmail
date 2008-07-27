@@ -1,17 +1,43 @@
-2007-11-15 14:04  luispereira
+2007-12-13 21:43  atomo64
 
-        * AUTHORS, src/main.cpp: Add myself to the authors list.
+	* po/wa.po, src/eventsrc, src/kcheckgmail.desktop: Added Walloon
+	  translation, thanks to Jean Cayron <jean.cayron@gmail.com>
 
-2007-11-15 13:03  luispereira
+2007-12-13 21:32  atomo64
 
-        * src/: gmail.cpp, gmailparser.cpp: Updated version string.
-          Updated GAP4D (although currently disabled) to work with new
-          Gmail version.
+	* po/pl.po: Updated Polish translation, thanks to Jakub Bogusz
+	  <qboosh@pld-linux.org>
 
-2007-11-09 14:59  luispereira
+2007-12-13 21:28  atomo64
 
-        * src/gmail.cpp: Update to work with new Gmail (bug #1826046),
-          temporary workaround.
+	* src/gmail.cpp: Don't prefer the js redirection (Closes
+	  SF#1850415)
+
+2007-12-13 21:13  atomo64
+
+	* src/: kcheckgmailtray.cpp, main.cpp: Adding missing #include
+	  <cstdlib>, fixing a FTBFS with GCC 4.3 (Closes #456050 in DebBTS)
+
+2007-11-15 09:45  luispereira
+
+	* AUTHORS, ChangeLog, configure, configure.in, configure.in.in,
+	  doc/en/index.docbook, src/gmail.cpp, src/gmailparser.cpp,
+	  src/main.cpp: Release 0.5.7.3 prepared.
+
+2007-11-15 07:04  luispereira
+
+	* AUTHORS, src/main.cpp: Add myself to the authors list.
+
+2007-11-15 06:03  luispereira
+
+	* src/: gmail.cpp, gmailparser.cpp: Updated version string.
+	  Updated GAP4D (although currently disabled) to work with new
+	  Gmail version.
+
+2007-11-09 07:59  luispereira
+
+	* src/gmail.cpp: Update to work with new Gmail (bug #1826046),
+	  temporary workaround.
 
 2007-09-23 20:38  atomo64
 

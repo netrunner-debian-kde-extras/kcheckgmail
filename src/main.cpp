@@ -27,6 +27,7 @@
 #include <kiconloader.h>
 #include <kstartupinfo.h>
 
+#include <cstdlib>
 #include <iostream>
 
 #include "config.h"
