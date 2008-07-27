@@ -14,6 +14,7 @@ kcheckgmail (0.5.7.5-1) unstable; urgency=high
     + Update the Vcs- headers to reflect new location
     + Change maintainer to Debian KDE Extras Team and add myself as uploader
     + Remove Jose Luis Tallon from uploaders: thanks for all your work!
+    + Remove useless dependency on kdebase-bin (Closes: #460478)
   * debian/docs: don't install the useless TODO file
   * debian/compat: bump to 5
 

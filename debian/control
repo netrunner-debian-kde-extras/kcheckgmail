@@ -11,7 +11,7 @@ Vcs-Browser: http://git.debian.org/?p=pkg-kde/kde-extras/kcheckgmail.git;a=summa
 
 Package: kcheckgmail
 Architecture: any
-Depends: kdebase-bin (>= 3.4), ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: A Gmail notifier-like notifier for KDE
  KCheckGMail is a KDE systray application which checks Gmail accounts for
  new mail.
