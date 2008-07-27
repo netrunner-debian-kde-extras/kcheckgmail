@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 DEB_INSTALL_DOCS_kcheckgmail += -XTODO
-DEB_CONFIGURE_SCRIPT_ENV += LDFLAGS=" -Wl,-z,defs,--as-needed"
+LDFLAGS += " -Wl,-z,defs,--as-needed"
 
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/kde.mk
