@@ -52,7 +52,7 @@ msgstr "Browser"
 
 #: appletsettingswidget.cpp:99
 msgid "Use the default KDE browser"
-msgstr "Den KDE standart Browser benutzen"
+msgstr "Den KDE-Standard-Browser benutzen"
 
 #: appletsettingswidget.cpp:100
 msgid "Use an alternative browser"
@@ -76,7 +76,7 @@ msgstr "Unbekannter Fehler beim empfangen der Cookies"
 
 #: gmailwalletmanager.cpp:99
 msgid "KCheckGmail could not open the wallet. Please check your preferences."
-msgstr "KCheckGmail konnte Kwallet nich öffnen. Bitte die Einstellungen überprüfen"
+msgstr "KCheckGmail konnte Kwallet nicht öffnen. Bitte die Einstellungen überprüfen"
 
 #: gmailwalletmanager.cpp:189
 msgid ""
@@ -164,7 +164,7 @@ msgstr "Netzwerk"
 
 #: kcheckgmailtray.cpp:415
 msgid "Network Settings"
-msgstr "Netwerkeinstellungen"
+msgstr "Netzwerkeinstellungen"
 
 #: kcheckgmailtray.cpp:418
 msgid "Applet"
@@ -237,7 +237,7 @@ msgstr " Sekunden"
 
 #: prefs.cpp:32
 msgid "Polling interval"
-msgstr "Abfrageinterval"
+msgstr "Abfrageintervall"
 
 #: prefs.cpp:33
 msgid "How many seconds to wait before checking for new mail."
@@ -271,7 +271,7 @@ msgstr "Eine Nachricht anzeigen wenn Google das GMail System überarbeitet hat."
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGmail icon is "
 "clicked."
-msgstr "Wenn ausgewählt, wird der standart KDE Browser gestartet wenn das KCheckGmail Icon angeklickt wird."
+msgstr "Wenn ausgewählt, wird der KDE-Standard-Browser gestartet wenn das KCheckGmail Icon angeklickt wird."
 
 #: prefs.cpp:63
 msgid ""
@@ -282,11 +282,11 @@ msgstr "Wenn ausgewählt, wird das KCheckGmail Icon für ein paar Sekunden deakt
 
 #: prefs.cpp:66
 msgid "Use the KDE default browser"
-msgstr "Den KDE standart Browser verwenden"
+msgstr "Den KDE-Standard-Browser verwenden"
 
 #: prefs.cpp:67
 msgid "Use whatever browser is configured as the KDE default to check your Gmail"
-msgstr "Benutze den Browser der als standart Browser in KDE eingerichtet ist um die Nachrichten anzuzeigen"
+msgstr "Benutze den Browser der als Standard-Browser in KDE eingerichtet ist um die Nachrichten anzuzeigen"
 
 #: prefs.cpp:70 prefs.cpp:73
 msgid "Use a custom browser"

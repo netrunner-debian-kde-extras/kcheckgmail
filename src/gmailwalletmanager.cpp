@@ -96,7 +96,7 @@ void GMailWalletManager::openWallet()
 		mWallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(),
 		                    0, KWallet::Wallet::Asynchronous);
 		if(!mWallet)
-			KMessageBox::error(0, i18n("KCheckGmail could not open "
+			KMessageBox::error(0, i18n("KCheckGMail could not open "
 				"the wallet. Please check your preferences."));
 		else {
 			kdDebug() << k_funcinfo << "connecting wallet" << endl;
@@ -108,8 +108,6 @@ void GMailWalletManager::openWallet()
 // Kopete is a strong influence here. Cheers to those guys!
 void GMailWalletManager::slotWalletChangedStatus()
 {
-	kdDebug() << k_funcinfo << endl;
-
 	kdDebug() << k_funcinfo << endl;
 
 	if(!mWallet)
@@ -180,13 +178,14 @@ bool GMailWalletManager::storeWallet()
 			kdDebug() << k_funcinfo << mPassword << endl;
 			mWallet->writePassword("gmailPassword", mPassword);
 			clearPassword();
+			emit setWalletPassword(true);
 		} else {
 			kdDebug() << k_funcinfo << "Wallet Not Open.." << endl;
 			openWallet();
 		}
 	} else {
 		if(KMessageBox::warningContinueCancel(0, 
-			i18n("KCheckGmail cannot store your password securely in your wallet. "
+			i18n("KCheckGMail cannot store your password securely in your wallet. "
 			"Do you want to save the password in the unsafe configuration file instead?"),
 			i18n("Unable to store secure password"),
 			KGuiItem(i18n("Store unsafe"), "unlock"),
@@ -232,7 +231,7 @@ bool GMailWalletManager::getWallet()
 			openWallet();
 	} else {
 		if(KMessageBox::warningContinueCancel(0, 
-			i18n("KCheckGmail cannot retrieve your password from your wallet. "
+			i18n("KCheckGMail cannot retrieve your password from your wallet. "
 			"Do you want to save the password in the unsafe configuration file instead?"),
 			i18n("Unable to retrieve secure password"),
 			KGuiItem(i18n("Store unsafe"), "unlock"),
@@ -262,6 +261,7 @@ bool GMailWalletManager::getKConfig()
 void GMailWalletManager::clearPassword()
 {
 	kdDebug() << k_funcinfo << endl;
+
 	mPassword.fill('0');
 	mPassword = "";
 }

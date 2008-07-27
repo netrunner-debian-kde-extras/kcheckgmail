@@ -24,10 +24,8 @@
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qmap.h>
+#include <qvaluevector.h>
 #include <vector>
-
-// version of Gmail KCheckGmail works with
-static const QString gGMailVersion = "51a4dc5081b98a29,cb6e092c102a1489,7";
 
 /**
 @author Matthew Wlazlo
@@ -47,11 +45,12 @@ public:
 	// "ds"
 	typedef struct {
 		unsigned int inbox;
-		unsigned int starred;
-		unsigned int sent;
-		unsigned int all;
+// 		unsigned int starred;
+		unsigned int drafts;
+// 		unsigned int sent;
+// 		unsigned int all;
 		unsigned int spam;
-		unsigned int trash;
+// 		unsigned int trash;
 	} DefaultSearchSummary;
 	
 	// "ct" : array
@@ -77,8 +76,19 @@ public:
 		unsigned int unknown2;
 		QString date_long;
 		unsigned int unknown3;
+		QString unknown4;
+		unsigned int unknown5;
 		bool isNull; 
 	} Thread;
+	
+	// "v"
+	typedef struct {
+		QString unknown1;
+		QString language;
+		unsigned int unknown2;
+		unsigned int unknown3;
+		QString version;
+	} Version;
 public:
 	GMailParser();
 	virtual ~GMailParser();
@@ -86,8 +96,10 @@ public:
 	void parse(const QString &data);
 	
 	unsigned int getNewCount() const;
+	unsigned int getNewCount(bool realCount) const;
+	unsigned int getNewCount(bool realCount, QString box) const;
 
-	const QString &getVersion() const { return mVersion; }
+// 	const QString &getVersion() const { return mVersion; }
 	unsigned int getInvites() const { return mInvites; }
 
 	const DefaultSearchSummary &getSummary() const { return mSummary; }
@@ -99,28 +111,39 @@ public:
 	QMap<QString,bool> *getThreadList() const;
 	const Thread &getThread(const QString &msgId) const;
 	const Thread &getThread(int id) const;
+	
+	QString stripTags(QString data);
+	QString convertEntities(QString data);
+	QString cleanUpData(QString data);
 
 signals:
 	void mailArrived(unsigned int count);
 	void mailCountChanged();
 	void versionMismatch();
+	void gNameChanged(QString name);
 
 protected:
 	void parseQuota(const QString&);
 	void parseDefaultSummary(const QString&);
 	void parseLabel(const QString&);
-	void parseThread(const QString&, const QMap<QString,bool>*);
+	uint parseThread(const QString&, const QMap<QString,bool>*);
 	void parseVersion(const QString&);
 	void parseInvite(const QString&);
+	void parseGName(const QString&);
 	void freeThreadList();
 
 private:
-	QString mVersion;
+	Version mVersion;
 	unsigned int mInvites;
 	unsigned int mCurMsgId;
 	Quota mQuota;
 	DefaultSearchSummary mSummary;
 	std::vector<Label> mLabels;
 	QMap<QString,Thread*> mThreads;
+	QValueVector<QString> gGMailVersion;
+#ifdef DETECT_GLANGUAGE
+	QMap<QString, QString> gGMailLanguageCode;
+#endif
+	QString gName;
 };
 #endif

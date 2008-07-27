@@ -6,9 +6,16 @@
 		<entry name="Interval" type="UInt">
 			<label>Polling interval</label>
 			<default>60</default>
-			<min>10</min>
+			<min>15</min>
 			<max>86400</max>
 			<whatsthis>How many seconds to wait before checking for new mail.</whatsthis>
+		</entry>
+		<entry name="Snooze" type="UInt">
+			<label>Snooze period</label>
+			<default>5</default>
+			<min>1</min>
+			<max>1440</max>
+			<whatsthis>How many minutes to snooze.</whatsthis>
 		</entry>
 		<entry name="UseHTTPS" type="Bool">
 			<label>Use https connections for checking mail</label>
@@ -20,7 +27,7 @@
 	<group name="Gmail Settings">
 		<entry name="GmailUsername" type="String">
 			<label>Username</label>
-			<whatsthis>Your Gmail username</whatsthis>
+			<whatsthis>Your Gmail username or your Google Hosted Domain email address</whatsthis>
 		</entry>
 		<entry name="GmailPassword" type="Password">
 			<label>Password</label>
@@ -31,7 +38,11 @@
 			<default>true</default>
 			<whatsthis>Use the KDE Wallet system to store your Gmail password.</whatsthis>
 		</entry>
-
+		<!--<entry name="SearchOnlyInInbox" type="Bool">
+			<label>Only search for new messages in inbox</label>
+			<default>true</default>
+			<whatsthis>By disabling this option new messages are searched in anywhere (this includes spam, trash, etc).</whatsthis>
+		</entry>-->
 		<entry name="AlertVersionChange" type="Bool">
 			<label>Display an alert if GMail version changes</label>
 			<default>false</default>

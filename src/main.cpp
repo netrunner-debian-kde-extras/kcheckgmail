@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2004 by Matthew Wlazlo                                  *
- *   mwlazlo@gmail.com                                                          *
+ *   mwlazlo@gmail.com                                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,6 +25,7 @@
 #include <kaboutdata.h>
 #include <kglobal.h>
 #include <kiconloader.h>
+#include <kstartupinfo.h>
 
 #include <stdlib.h>
 
@@ -33,46 +34,50 @@
 static const char kcheckgmailVersion[] = VERSION;
 static const KCmdLineOptions gOptions[] =
 {
-	{ "login", I18N_NOOP("Application is being auto-started at KDE session start"), 0L },
+	{ "legal", I18N_NOOP("Display legal information"), 0 },
 	KCmdLineLastOption
 };
-
- 
 
 int main(int argc, char **argv)
 {
 	KAboutData about("kcheckgmail",
-		I18N_NOOP("KCheckGmail"), 
+		I18N_NOOP("KCheckGMail"), 
 		kcheckgmailVersion, 
 		I18N_NOOP(
-		"System tray application to display how many\nemail "
+		"System tray application to display how many\nnew email "
 		"messages you have in your Gmail account."),
 		KAboutData::License_GPL, 
 		"(C) 2004 Matthew Wlazlo", 
 		0, // text
-		"http://sf.net/projects/kcheckgmail", // homePageAddress
-		"mwlazlo@gmail.com");
-	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Primary author and maintainer"), "mwlazlo@gmail.com");
-	about.addCredit("Rogério Pereira Araújo", I18N_NOOP("Brazilian Portuguese Translation"), "rogerio.araujo@gmail.com");
-	about.addCredit("Samuele Kaplun", I18N_NOOP("Italian Translation"), "kaplun@aliceposta.it");
-	about.addCredit("Felipe Morales", I18N_NOOP("Spanish Translation"), "felipe.morales@wanadoo.es");
-	about.addCredit("Marcus Thiesen", I18N_NOOP("German Translation"), "marcus@thiesen.org");
-	about.addCredit("Dudalev Michael", I18N_NOOP("Russian Translation"), "dudalev@gmail.com");
-	about.addCredit("Patrick Trettenbrein", I18N_NOOP("German Translation Updates"), "patrick.trettenbrein@gmx.net");
-	about.addCredit("Alexis Bunel", I18N_NOOP("French Translation"), "alexisbunel@gmail.com");
-	about.addCredit("Jarosław Kamper", I18N_NOOP("Polish Translation"), "jaroslawkamper@gmail.com");
+		"http://kcheckgmail.sf.net",
+		"kcheckgmail-development@lists.sourceforge.net");
+	
+	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Original author"), "mwlazlo@gmail.com");
+	about.addAuthor("Raphael Geissert", I18N_NOOP("Maintainer"), "atomo64@gmail.com");
+	
+	about.addCredit(I18N_NOOP("Everybody who helped testing and translating KCheckGMail"), 0, 0, 0);
 
 
         KGlobal::locale()->setMainCatalogue("kcheckgmail");
 
         KCmdLineArgs::init(argc, argv, &about);
         KCmdLineArgs::addCmdLineOptions(gOptions);
-        KApplication::addCmdLineOptions();
-
-        KCheckGmailApp app;
+        KUniqueApplication::addCmdLineOptions();
+	
+	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+	
+	if(args->isSet("legal")) {
+		printf (i18n("Legal Information:\nGoogle, Gmail and Google Mail are registered trademarks of Google Inc.\nKCheckGMail nor it's authors are in any way affiliated nor endorsed by Google Inc.") + "\n");
+		return EXIT_SUCCESS;
+	}
+	
+	if (!KUniqueApplication::start()) {
+		KStartupInfo::handleAutoAppStartedSending();
+		fprintf(stderr, i18n("KCheckGMail is already running!\n"));
+		return EXIT_SUCCESS;
+	}
+	
+	KCheckGmailApp app;
 
         return app.exec();
-
-
-	return EXIT_SUCCESS;
 }

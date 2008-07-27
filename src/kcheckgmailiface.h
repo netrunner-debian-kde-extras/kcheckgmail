@@ -27,5 +27,7 @@ class KCheckGmailIface : virtual public DCOPObject
 	
 	virtual int mailCount() const = 0;
 	virtual void checkMailNow() = 0;
+	virtual void snooze() = 0;
+	virtual void whereAmI() = 0;
 };
 

@@ -43,21 +43,29 @@ public:
 
 	void checkLoginParams();
 	void setInterval(unsigned int i);
+	void setInterval(unsigned int i, bool forceStart);
 
+	bool isLoggedIn(bool lockCheck);
 	bool isLoggedIn();
 	bool isChecking();
-
+	
+	QString getURLPart(bool refresh);
+	QString getURLPart();
+	
 	void gotWalletPassword(QString str);
 
 protected:
 	void login();
+	void postLogin(QString url);
 	void postLogin();
 	void checkGMail();
-
-	void parseCookies(const QString &str);
-
-	// generate Cookie: string from mCookie
-	QString cookieString();
+	QString getRedirectURL(QString buffer);
+	void logOut();
+	
+	void dump2File(const QString filename,const QString data);
+	
+	bool cookieExists(QString cookieName, QString url);
+	bool cookieExists(QString cookieName);
 
 private:
 	unsigned int mInterval;
@@ -70,18 +78,34 @@ private:
 	bool mLoginFromTimer;
 	bool mCheckFromTimer;
 	
+	QString useDomain;
+	QString useUsername;
+	bool isGAP4D;
+	
+	QString sessionCookie;
+	
 	QString mUsername;
 	QString mPasswordHash;
-	QMap<QString,QString> *mCookieMap;
-	unsigned int mLoginToken;
 	QString mPageBuffer;
+	QString mLoginBuffer;
+	QString mPostLoginBuffer;
+	
+	QString findCookies(QString url);
+	QString mCookiesCache;
 	
 	QTimer *mTimer;
+	
+	//Normal GMail
+	QString gGMailLoginURL, gGMailLoginPOSTFormat, gGMailCheckURL, gGMailLogOut;
+
+	//GAP4D: Google Applications for Domains
+	QString gGAP4DLoginURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
 
 public slots:
 	void slotCheckGmail();
 	void slotGetWalletPassword(const QString&);
 	void slotSetWalletPassword(bool);
+	void slotLogOut();
 
 protected slots:
 	void slotLoginResult(KIO::Job*);
@@ -94,6 +118,9 @@ protected slots:
 
 	void slotCheckResult(KIO::Job*);
 	void slotCheckData(KIO::Job*, const QByteArray&);
+	
+private slots:
+	void slotSessionChanged();
 
 signals:
 	void loginStart();
@@ -101,6 +128,8 @@ signals:
 
 	void checkStart();
 	void checkDone(const QString &data);
+	
+	void sessionChanged();
 };
 
 #endif

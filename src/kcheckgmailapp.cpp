@@ -20,11 +20,24 @@
 
 #include "kcheckgmailapp.h"
 #include "kcheckgmailtray.h"
-
+#include <dcopref.h>
 
 KCheckGmailApp::KCheckGmailApp()
 	: mTray(new KCheckGmailTray(0, "KCheckGmailTray"))
 {
 	mTray->show();
+	mTray->start();
+}
+
+int KCheckGmailApp::newInstance()
+{
+	static bool secondMe=false;
+	if (secondMe) {
+		DCOPRef execute( "kcheckgmail", "KCheckGmailIface" );
+		DCOPReply reply = execute.call( "whereAmI" );
+	} else {
+		secondMe = true;
+	}
+	return 0;
 }
 

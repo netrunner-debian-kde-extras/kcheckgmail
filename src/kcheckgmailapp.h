@@ -22,13 +22,13 @@
 
 class KCheckGmailTray;
 
-class KCheckGmailApp : public KUniqueApplication
-{
+class KCheckGmailApp : public KUniqueApplication {
 	Q_OBJECT
 
-public:
-	KCheckGmailApp();
+	public:
+		KCheckGmailApp();
+		int newInstance();
 
-private:
-	KCheckGmailTray *mTray;
+	private:
+		KCheckGmailTray *mTray;
 };
