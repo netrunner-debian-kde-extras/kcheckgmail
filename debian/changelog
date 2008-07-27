@@ -17,6 +17,7 @@ kcheckgmail (0.5.7.5-1) unstable; urgency=high
     + Remove useless dependency on kdebase-bin (Closes: #460478)
   * debian/docs: don't install the useless TODO file
   * debian/compat: bump to 5
+  * debian/rules: rewritten, using cdbs now
 
  -- Raphael Geissert <atomo64@gmail.com>  Sat, 26 Jul 2008 19:25:51 -0500
 
