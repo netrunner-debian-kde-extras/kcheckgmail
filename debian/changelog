@@ -1,3 +1,24 @@
+kcheckgmail (0.5.7.5-1) unstable; urgency=high
+
+  * New upstream release
+    - Fix the redirection detection routine to fix issues at log in time
+      hence the urgency
+    - Add support for \xXX in convertEntities
+    - Backport minimised memory leak fix
+    - Backport fix for GAP4D login
+    - French translation bug fixed (MailArrived notification)
+    - Really build and install the Walloon translation
+    - Added Czech translation, thanks to Jirka Vilim
+  * debian/README.Debian: useless file gone
+  * debian/control:
+    + Update the Vcs- headers to reflect new location
+    + Change maintainer to Debian KDE Extras Team and add myself as uploader
+    + Remove Jose Luis Tallon from uploaders: thanks for all your work!
+  * debian/docs: don't install the useless TODO file
+  * debian/compat: bump to 5
+
+ -- Raphael Geissert <atomo64@gmail.com>  Sat, 26 Jul 2008 19:25:51 -0500
+
 kcheckgmail (0.5.7.4-1) unstable; urgency=medium
 
   * New upstream release
