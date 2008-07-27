@@ -25,7 +25,7 @@ msgstr "Daniel Nylander"
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "<po@danielnylander.se>"
+msgstr "po@danielnylander.se"
 
 #: appletsettingswidget.cpp:94
 #: rc.cpp:1

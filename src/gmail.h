@@ -73,7 +73,7 @@ private:
 	QString mUsername;
 	QString mPasswordHash;
 	QMap<QString,QString> *mCookieMap;
-	QString *mLoginToken;
+	unsigned int mLoginToken;
 	QString mPageBuffer;
 	
 	QTimer *mTimer;
