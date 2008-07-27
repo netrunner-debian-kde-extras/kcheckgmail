@@ -27,7 +27,7 @@
 #include <kiconloader.h>
 #include <kstartupinfo.h>
 
-#include <stdlib.h>
+#include <iostream>
 
 #include "config.h"
 
@@ -67,13 +67,13 @@ int main(int argc, char **argv)
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 	
 	if(args->isSet("legal")) {
-		printf (i18n("Legal Information:\nGoogle, Gmail and Google Mail are registered trademarks of Google Inc.\nKCheckGMail nor its authors are in any way affiliated nor endorsed by Google Inc.") + "\n");
+		std::cout << (i18n("Legal Information:\nGoogle, Gmail and Google Mail are registered trademarks of Google Inc.\nKCheckGMail nor its authors are in any way affiliated nor endorsed by Google Inc.") + "\n");
 		return EXIT_SUCCESS;
 	}
 	
 	if (!KUniqueApplication::start()) {
 		KStartupInfo::handleAutoAppStartedSending();
-		fprintf(stderr, i18n("KCheckGMail is already running!\n"));
+		std::cerr << i18n("KCheckGMail is already running!\n");
 		return EXIT_SUCCESS;
 	}
 	

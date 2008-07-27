@@ -158,5 +158,6 @@ private:
 	QMap<QString, QString> gGMailLanguageCode;
 #endif
 	QString gName;
+	QString previousLatestThread;
 };
 #endif

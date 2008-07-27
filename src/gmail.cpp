@@ -304,7 +304,7 @@ void GMail::postLogin(QString url)
 	// this is expected to be locked.
 	if(mLoginLock->locked()) {
 		
-		QRegExp rx("^(http[s]?://)(.*)$");
+		static QRegExp rx("^(http[s]?://)(.*)$");
 		int found;
 		
 		if(!rx.isValid()) {
@@ -602,7 +602,6 @@ void GMail::logOut(bool force)
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
 	kdDebug() << "Loging out! " << logoutUrl << endl;
-	sleep(1);
 }
 
 void GMail::logOut()

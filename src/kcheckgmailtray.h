@@ -41,13 +41,13 @@ class KCheckGmailTray : public KSystemTray, virtual public KCheckGmailIface
 	Q_OBJECT
 public:
 	KCheckGmailTray(QWidget *parent = 0, const char *name = 0);
+	virtual ~KCheckGmailTray();
 	void start();
 
 protected:
 	void mousePressEvent(QMouseEvent*);
 
 	void setPixmapAuth();
-	void setPixmapSnooze();
 	void setPixmapEmpty();
 	
 	void toggleAnim(bool restoreToState);
