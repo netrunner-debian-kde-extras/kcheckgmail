@@ -5,6 +5,7 @@ Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Raphael Geissert <atomo64@gmail.com>
 Build-Depends: cdbs, debhelper (>= 5), autotools-dev, kdelibs4-dev, libqt3-mt-dev, autoconf
 Standards-Version: 3.8.0
+XS-DM-Upload-Allowed: yes
 Homepage: http://kcheckgmail.sourceforge.net/
 Vcs-Git:    git://git.debian.org/git/pkg-kde/kde-extras/kcheckgmail.git
 Vcs-Browser: http://git.debian.org/?p=pkg-kde/kde-extras/kcheckgmail.git;a=summary
