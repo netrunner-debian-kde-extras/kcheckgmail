@@ -303,8 +303,8 @@ xdg_directorydir = @xdg_directorydir@
 xdg_menudir = @xdg_menudir@
 #>- POFILES = AUTO
 #>+ 2
-POFILES = es.po pt.po ru.po it.po et.po sv.po pl.po sk.po ko.po de.po hu.po ar.po tr.po pt_BR.po lt.po fr.po wa.po cs.po
-GMOFILES = es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo pl.gmo sk.gmo ko.gmo de.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo fr.gmo wa.gmo cs.gmo
+POFILES = es.po pt.po ru.po it.po et.po sv.po el.po pl.po sk.po ko.po de.po cs.po zh_CN.po hu.po ar.po tr.po pt_BR.po lt.po ca.po fr.po wa.po
+GMOFILES = es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo el.gmo pl.gmo sk.gmo ko.gmo de.gmo cs.gmo zh_CN.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo ca.gmo fr.gmo wa.gmo
 #>- all: all-am
 #>+ 1
 all: all-nls docs-am  all-am
@@ -319,9 +319,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 #>- 	      exit 1;; \
 #>- 	  esac; \
 #>- 	done; \
-#>- 	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  po/Makefile'; \
+#>- 	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  po/Makefile'; \
 #>- 	cd $(top_srcdir) && \
-#>- 	  $(AUTOMAKE) --gnu  po/Makefile
+#>- 	  $(AUTOMAKE) --foreign  po/Makefile
 #>+ 12
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -331,9 +331,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  po/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  po/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  po/Makefile
+	  $(AUTOMAKE) --foreign  po/Makefile
 	cd $(top_srcdir) && perl admin/am_edit po/Makefile.in
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
@@ -496,10 +496,11 @@ uninstall-am: uninstall-info-am
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
 
-#>+ 2
-KDE_DIST=tr.gmo sv.gmo pl.gmo kcheckgmail.pot pt.po ko.gmo ru.po ru.gmo ko.po ar.po de.po et.po fr.gmo fr.po et.gmo tr.po sk.gmo lt.gmo pt_BR.gmo ar.gmo Makefile.in pt_BR.po it.gmo sv.po hu.po de.gmo pl.po lt.po es.po pt.gmo es.gmo it.po sk.po hu.gmo wa.po wa.gmo cs.po cs.gmo Makefile.am 
 
-#>+ 49
+#>+ 2
+KDE_DIST=tr.gmo zh_CN.po sv.gmo pl.gmo kcheckgmail.pot pt.po ko.gmo ru.po ru.gmo ko.po el.gmo ar.po de.po et.po fr.gmo fr.po ca.po et.gmo el.po cs.po tr.po zh_CN.gmo sk.gmo cs.gmo lt.gmo pt_BR.gmo ar.gmo Makefile.in wa.po pt_BR.po it.gmo sv.po wa.gmo hu.po de.gmo lt.po pl.po es.po pt.gmo es.gmo it.po sk.po hu.gmo Makefile.am ca.gmo 
+
+#>+ 64
 es.gmo: es.po
 	rm -f es.gmo; $(GMSGFMT) -o es.gmo $(srcdir)/es.po
 	test ! -f es.gmo || touch es.gmo
@@ -518,6 +519,9 @@ et.gmo: et.po
 sv.gmo: sv.po
 	rm -f sv.gmo; $(GMSGFMT) -o sv.gmo $(srcdir)/sv.po
 	test ! -f sv.gmo || touch sv.gmo
+el.gmo: el.po
+	rm -f el.gmo; $(GMSGFMT) -o el.gmo $(srcdir)/el.po
+	test ! -f el.gmo || touch el.gmo
 pl.gmo: pl.po
 	rm -f pl.gmo; $(GMSGFMT) -o pl.gmo $(srcdir)/pl.po
 	test ! -f pl.gmo || touch pl.gmo
@@ -530,6 +534,12 @@ ko.gmo: ko.po
 de.gmo: de.po
 	rm -f de.gmo; $(GMSGFMT) -o de.gmo $(srcdir)/de.po
 	test ! -f de.gmo || touch de.gmo
+cs.gmo: cs.po
+	rm -f cs.gmo; $(GMSGFMT) -o cs.gmo $(srcdir)/cs.po
+	test ! -f cs.gmo || touch cs.gmo
+zh_CN.gmo: zh_CN.po
+	rm -f zh_CN.gmo; $(GMSGFMT) -o zh_CN.gmo $(srcdir)/zh_CN.po
+	test ! -f zh_CN.gmo || touch zh_CN.gmo
 hu.gmo: hu.po
 	rm -f hu.gmo; $(GMSGFMT) -o hu.gmo $(srcdir)/hu.po
 	test ! -f hu.gmo || touch hu.gmo
@@ -545,23 +555,23 @@ pt_BR.gmo: pt_BR.po
 lt.gmo: lt.po
 	rm -f lt.gmo; $(GMSGFMT) -o lt.gmo $(srcdir)/lt.po
 	test ! -f lt.gmo || touch lt.gmo
+ca.gmo: ca.po
+	rm -f ca.gmo; $(GMSGFMT) -o ca.gmo $(srcdir)/ca.po
+	test ! -f ca.gmo || touch ca.gmo
 fr.gmo: fr.po
 	rm -f fr.gmo; $(GMSGFMT) -o fr.gmo $(srcdir)/fr.po
 	test ! -f fr.gmo || touch fr.gmo
 wa.gmo: wa.po
 	rm -f wa.gmo; $(GMSGFMT) -o wa.gmo $(srcdir)/wa.po
 	test ! -f wa.gmo || touch wa.gmo
-cs.gmo: cs.po
-	rm -f cs.gmo; $(GMSGFMT) -o cs.gmo $(srcdir)/cs.po
-	test ! -f cs.gmo || touch cs.gmo
 
 #>+ 3
 clean-nls:
-	-rm -f  es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo pl.gmo sk.gmo ko.gmo de.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo fr.gmo wa.gmo cs.gmo
+	-rm -f  es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo el.gmo pl.gmo sk.gmo ko.gmo de.gmo cs.gmo zh_CN.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo ca.gmo fr.gmo wa.gmo
 
 #>+ 10
 install-nls:
-	@for base in es pt ru it et sv pl sk ko de hu ar tr pt_BR lt fr wa cs ; do \
+	@for base in es pt ru it et sv el pl sk ko de cs zh_CN hu ar tr pt_BR lt ca fr wa ; do \
 	  echo $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
 	  $(mkinstalldirs) $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES ; \
 	  if test -f $$base.gmo; then $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
@@ -570,7 +580,7 @@ install-nls:
 	done
 
 
-#>+ 18
+#>+ 23
 uninstall-nls:
 	rm -f $(DESTDIR)$(kde_locale)/es/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/pt/LC_MESSAGES/$(PACKAGE).mo
@@ -578,18 +588,21 @@ uninstall-nls:
 	rm -f $(DESTDIR)$(kde_locale)/it/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/et/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/sv/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/el/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/pl/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/sk/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/ko/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/de/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/cs/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/zh_CN/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/hu/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/ar/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/tr/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/pt_BR/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/lt/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/ca/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/fr/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/wa/LC_MESSAGES/$(PACKAGE).mo
-	rm -f $(DESTDIR)$(kde_locale)/cs/LC_MESSAGES/$(PACKAGE).mo
 
 #>+ 2
 all-nls: $(GMOFILES)
@@ -621,9 +634,9 @@ force-reedit:
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  po/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  po/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  po/Makefile
+	  $(AUTOMAKE) --foreign  po/Makefile
 	cd $(top_srcdir) && perl admin/am_edit po/Makefile.in
 
 
