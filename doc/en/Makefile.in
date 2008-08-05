@@ -315,9 +315,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 #>- 	      exit 1;; \
 #>- 	  esac; \
 #>- 	done; \
-#>- 	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  doc/en/Makefile'; \
+#>- 	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  doc/en/Makefile'; \
 #>- 	cd $(top_srcdir) && \
-#>- 	  $(AUTOMAKE) --gnu  doc/en/Makefile
+#>- 	  $(AUTOMAKE) --foreign  doc/en/Makefile
 #>+ 12
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -327,9 +327,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  doc/en/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  doc/en/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  doc/en/Makefile
+	  $(AUTOMAKE) --foreign  doc/en/Makefile
 	cd $(top_srcdir) && perl admin/am_edit doc/en/Makefile.in
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
@@ -490,6 +490,7 @@ uninstall-am: uninstall-info-am
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
 
+
 #>+ 2
 KDE_DIST=Makefile.in index.docbook Makefile.am 
 
@@ -548,9 +549,9 @@ force-reedit:
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu  doc/en/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  doc/en/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  doc/en/Makefile
+	  $(AUTOMAKE) --foreign  doc/en/Makefile
 	cd $(top_srcdir) && perl admin/am_edit doc/en/Makefile.in
 
 
