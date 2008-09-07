@@ -126,7 +126,7 @@ public:
 	QMap<QString,bool> *getThreadList() const;
 	const Thread &getThread(const QString &msgId) const;
 	const Thread &getThread(int id) const;
-	const Thread &getLastThread() const;
+	const Thread &getLastArrivedThread() const;
 	
 	static QString stripTags(QString data);
 	static QString convertEntities(QString data);

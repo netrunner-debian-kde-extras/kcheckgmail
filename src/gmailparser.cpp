@@ -299,10 +299,13 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		if(t->isNew && (t->msgId > previousLatestThread || t->replyId > previousLatestThread) && (!oldMap || 
 				 (oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
+			t->isNew = true;
 			newMsgCount ++;
-		} else
+		} else {
+			t->isNew = false;
 			kdDebug() << "Message [" << t->msgId << "] is NOT new." << endl;
-		
+		}
+
 		// (re-)insert
 		mThreads.insert(t->msgId, t);
 
@@ -333,10 +336,13 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		if(t->isNew && (t->msgId > previousLatestThread || t->replyId > previousLatestThread) && (!oldMap || 
 				 (oldMap->find(t->msgId) == oldMap->end()))) {
 			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
+			t->isNew = true;
 			newMsgCount ++;
-		} else
+		} else {
 			kdDebug() << "Message [" << t->msgId << "] is NOT new." << endl;
-		
+			t->isNew = false;
+		}
+
 		// (re-)insert
 		mThreads.insert(t->msgId, t);
 
@@ -645,23 +651,25 @@ const GMailParser::Thread& GMailParser::getThread(int id) const
 }
 
 /**
- * Return the thread information of last thread in the map
+ * Return the thread information of last arrived thread in the map
  *
  * @return A copy of the Thread
  */
-const GMailParser::Thread& GMailParser::getLastThread() const
+const GMailParser::Thread& GMailParser::getLastArrivedThread() const
 {
 	static Thread nullThread;
 
 	QMap<QString, Thread*>::const_iterator iter = mThreads.constEnd();
-	
-	iter--;
-	
-	if(iter == mThreads.end()) {
-		nullThread.isNull = true;
-		return nullThread;
-	} else
-		return *(*iter);
+	QMap<QString, Thread*>::const_iterator begin = mThreads.constBegin();
+
+	while (iter != begin) {
+		--iter;
+		if ((*iter)->isNew)
+			return *(*iter);
+	}
+
+	nullThread.isNull = true;
+	return nullThread;
 }
 
 const QString GMailParser::getGaiaName() const

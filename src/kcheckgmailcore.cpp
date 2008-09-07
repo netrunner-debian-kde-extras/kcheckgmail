@@ -323,7 +323,7 @@ QString KCheckGmailCore::newEmailNotifyMessage(unsigned int n, bool showSender, 
 
 	if  ( (n == 1) && (showSender || showSubject || showSnippet) ) {
 		GMailParser::Thread t;
-		t = d->mJSP->parser()->getLastThread();
+		t = d->mJSP->parser()->getLastArrivedThread();
 		if (!t.isNull) {
 			QString str;
 			str = i18n("<center><b>New mail arrived</b></center>");
