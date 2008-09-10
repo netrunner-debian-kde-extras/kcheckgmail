@@ -63,8 +63,8 @@ kcheckgmail_OBJECTS = configdialog.$(OBJEXT) gmail.$(OBJEXT) \
 	gmailparser.$(OBJEXT) gmailwalletmanager.$(OBJEXT) \
 	jsprotocol.$(OBJEXT) kcheckgmailapp.$(OBJEXT) \
 	kcheckgmailcore.$(OBJEXT) kcheckgmailtray.$(OBJEXT) \
-	mailcounter.$(OBJEXT) main.$(OBJEXT) kcheckgmailiface_skel.$(OBJEXT) advancedsettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) netsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
-kcheckgmailapp.moc.o gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailtray.moc.o 
+	mailcounter.$(OBJEXT) main.$(OBJEXT) kcheckgmailiface_skel.$(OBJEXT) advancedsettingswidget.$(OBJEXT) appearancesettingswidget.$(OBJEXT) appletsettingswidget.$(OBJEXT) loginsettingswidget.$(OBJEXT) netsettingswidget.$(OBJEXT) prefs.$(OBJEXT)\
+gmailparser.moc.o gmailwalletmanager.moc.o kcheckgmailtray.moc.o kcheckgmailapp.moc.o
 am__DEPENDENCIES_1 =
 kcheckgmail_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 #>- kcheckgmail_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -358,15 +358,17 @@ xdg_appsdir = @xdg_appsdir@
 xdg_directorydir = @xdg_directorydir@
 xdg_menudir = @xdg_menudir@
 INCLUDES = $(all_includes)
-#>- kcheckgmail_SOURCES = advancedsettingswidget.ui appletsettingswidget.ui \
-#>- 	configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp jsprotocol.cpp \
-#>- 	kcheckgmailapp.cpp kcheckgmailcore.cpp kcheckgmailiface.skel kcheckgmailtray.cpp \
-#>- 	loginsettingswidget.ui mailcounter.cpp main.cpp netsettingswidget.ui prefs.kcfgc
-#>+ 4
+#>- kcheckgmail_SOURCES = advancedsettingswidget.ui appearancesettingswidget.ui \
+#>- 	appletsettingswidget.ui configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp \
+#>- 	jsprotocol.cpp kcheckgmailapp.cpp kcheckgmailcore.cpp kcheckgmailiface.skel \
+#>- 	kcheckgmailtray.cpp loginsettingswidget.ui mailcounter.cpp main.cpp netsettingswidget.ui \
+#>- 	prefs.kcfgc
+#>+ 5
 kcheckgmail_SOURCES=  \
-	configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp jsprotocol.cpp \
-	kcheckgmailapp.cpp kcheckgmailcore.cpp  kcheckgmailtray.cpp \
-	 mailcounter.cpp main.cpp   kcheckgmailiface_skel.cpp advancedsettingswidget.cpp appletsettingswidget.cpp loginsettingswidget.cpp netsettingswidget.cpp prefs.cpp
+	 configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp \
+	jsprotocol.cpp kcheckgmailapp.cpp kcheckgmailcore.cpp  \
+	kcheckgmailtray.cpp  mailcounter.cpp main.cpp  \
+	 kcheckgmailiface_skel.cpp advancedsettingswidget.cpp appearancesettingswidget.cpp appletsettingswidget.cpp loginsettingswidget.cpp netsettingswidget.cpp prefs.cpp
 
 kcheckgmail_LDFLAGS = $(KDE_PLUGIN) $(all_libraries)
 kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
@@ -796,20 +798,21 @@ mocs: jsprotocol.moc
 
 #>+ 3
 clean-metasources:
-	-rm -f  kcheckgmailcore.moc configdialog.moc kcheckgmailapp.moc.cpp gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp gmail.moc jsprotocol.moc
+	-rm -f  kcheckgmailcore.moc configdialog.moc gmailparser.moc.cpp gmailwalletmanager.moc.cpp kcheckgmailtray.moc.cpp kcheckgmailapp.moc.cpp gmail.moc jsprotocol.moc
 
 #>+ 2
-KDE_DIST=Makefile.in kcheckgmail.lsm advancedsettingswidget.ui appletsettingswidget.ui prefs.kcfgc eventsrc netsettingswidget.ui prefs.kcfg kcheckgmail.desktop loginsettingswidget.ui Makefile.am
+KDE_DIST=appearancesettingswidget.ui prefs.kcfgc eventsrc prefs.kcfg kcheckgmail.desktop loginsettingswidget.ui Makefile.in kcheckgmail.lsm advancedsettingswidget.ui appletsettingswidget.ui netsettingswidget.ui Makefile.am
 
 #>+ 4
 clean-idl:
 	-rm -f \
 	kcheckgmailiface_skel.cpp kcheckgmailiface_skel.h kcheckgmailiface.kidl 
 
-#>+ 7
+#>+ 8
 clean-ui:
 	-rm -f \
 	advancedsettingswidget.cpp advancedsettingswidget.h advancedsettingswidget.moc \
+	appearancesettingswidget.cpp appearancesettingswidget.h appearancesettingswidget.moc \
 	appletsettingswidget.cpp appletsettingswidget.h appletsettingswidget.moc \
 	loginsettingswidget.cpp loginsettingswidget.h loginsettingswidget.moc \
 	netsettingswidget.cpp netsettingswidget.h netsettingswidget.moc 
@@ -881,28 +884,28 @@ kde-rpo-clean:
 	-rm -f *.rpo
 
 #>+ 21
-$(srcdir)/configdialog.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
-$(srcdir)/main.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
-$(srcdir)/gmailwalletmanager.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/configdialog.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
+$(srcdir)/main.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
+$(srcdir)/gmailwalletmanager.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 jsprotocol.lo: jsprotocol.moc 
-$(srcdir)/kcheckgmailcore.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/kcheckgmailcore.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 configdialog.o: configdialog.moc 
-$(srcdir)/mailcounter.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/mailcounter.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 nmcheck: 
 kcheckgmailcore.o: kcheckgmailcore.moc 
-$(srcdir)/gmailparser.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/gmailparser.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 kcheckgmailcore.lo: kcheckgmailcore.moc 
-$(srcdir)/kcheckgmailtray.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/kcheckgmailtray.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 gmail.o: gmail.moc 
 nmcheck-am: nmcheck
-$(srcdir)/jsprotocol.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/jsprotocol.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 configdialog.lo: configdialog.moc 
 gmail.lo: gmail.moc 
-$(srcdir)/kcheckgmailapp.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/kcheckgmailapp.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 jsprotocol.o: jsprotocol.moc 
-$(srcdir)/gmail.cpp: advancedsettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h 
+$(srcdir)/gmail.cpp: advancedsettingswidget.h appearancesettingswidget.h appletsettingswidget.h loginsettingswidget.h netsettingswidget.h prefs.h
 
-#>+ 66
+#>+ 81
 prefs.cpp: prefs.h
 prefs.h: $(srcdir)/prefs.kcfg $(srcdir)/prefs.kcfgc $(KCFG_DEPENDENCIES)
 	$(KCONFIG_COMPILER) $(srcdir)/prefs.kcfg $(srcdir)/prefs.kcfgc; ret=$$?; \
@@ -968,3 +971,18 @@ netsettingswidget.h: $(srcdir)/netsettingswidget.ui
 	$(UIC) $(srcdir)/netsettingswidget.ui | $(PERL) -pi -e "s,public QWizard,public KWizard,g; s,#include <qwizard.h>,#include <kwizard.h>,g" >> netsettingswidget.h ;
 netsettingswidget.moc: netsettingswidget.h
 	$(MOC) netsettingswidget.h -o netsettingswidget.moc
+
+appearancesettingswidget.cpp: $(srcdir)/appearancesettingswidget.ui appearancesettingswidget.h appearancesettingswidget.moc
+	rm -f appearancesettingswidget.cpp
+	echo '#include <kdialog.h>' > appearancesettingswidget.cpp
+	echo '#include <klocale.h>' >> appearancesettingswidget.cpp
+	$(UIC) -tr ${UIC_TR} -i appearancesettingswidget.h $(srcdir)/appearancesettingswidget.ui > appearancesettingswidget.cpp.temp ; ret=$$?; \
+	$(PERL) -pe "s,${UIC_TR}( \"\" ),QString::null,g" appearancesettingswidget.cpp.temp | $(PERL) -pe "s,${UIC_TR}( \"\"\, \"\" ),QString::null,g" | $(PERL) -pe "s,image([0-9][0-9]*)_data,img\$$1_appearancesettingswidget,g" | $(PERL) -pe "s,: QWizard\(,: KWizard(,g" >> appearancesettingswidget.cpp ;\
+	rm -f appearancesettingswidget.cpp.temp ;\
+	if test "$$ret" = 0; then echo '#include "appearancesettingswidget.moc"' >> appearancesettingswidget.cpp; else rm -f appearancesettingswidget.cpp ; exit $$ret ; fi
+
+appearancesettingswidget.h: $(srcdir)/appearancesettingswidget.ui
+	rm -rf appearancesettingswidget.h;
+	$(UIC) $(srcdir)/appearancesettingswidget.ui | $(PERL) -pi -e "s,public QWizard,public KWizard,g; s,#include <qwizard.h>,#include <kwizard.h>,g" >> appearancesettingswidget.h ;
+appearancesettingswidget.moc: appearancesettingswidget.h
+	$(MOC) appearancesettingswidget.h -o appearancesettingswidget.moc

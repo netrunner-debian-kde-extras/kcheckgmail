@@ -246,6 +246,8 @@ void KCheckGmailCore::start()
 					 i18n("Welcome"));
 
 		KMessageBox::saveDontShowAgainContinue("welcome_to_kcheckgmail");
+
+		Prefs::self()->setTrayIconUnreadMessagesColor(QColor("blue"));
 	}
 	
 	if(KMessageBox::shouldBeShownContinue("kcheckgmail_continue_legal")) {

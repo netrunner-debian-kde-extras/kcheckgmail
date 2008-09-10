@@ -91,4 +91,12 @@
 			<default>false</default>
 		</entry>
 	</group>
+
+	<group name="Appearance Settings">
+		<entry name="TrayIconUnreadMessagesColor" type="Color">
+			<label>Color used to display  the number of unread messages</label>
+			<whatsthis>Tray icon number of unread messages color selector</whatsthis>
+			<default code="true">QColor(0,0,0)</default>
+		</entry>
+	</group>
 </kcfg>

@@ -22,6 +22,7 @@
 #include "appletsettingswidget.h"
 #include "loginsettingswidget.h"
 #include "netsettingswidget.h"
+#include "appearancesettingswidget.h"
 #include "advancedsettingswidget.h"
 
 #include <kpassdlg.h>
@@ -43,6 +44,9 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 
 	AppletSettingsWidget *awid = new AppletSettingsWidget(this, "AppletSettings");
 	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior"));
+
+	AppearanceSettingsWidget *apw = new AppearanceSettingsWidget(this, "AppearanceSettings");
+	addPage(apw, i18n("Appearance"), "fonts", i18n("Appearance"));
 
 	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(this, "AdvancedSettings");
 	addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
