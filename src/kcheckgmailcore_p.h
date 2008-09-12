@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Luis Pereira <luis.artur.pereira@gmail.com>     *
+ *   Copyright (C) 2008 by Luís Pereira <luis.artur.pereira@gmail.com>     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -48,7 +48,7 @@ class KIconloader;
  * This class cointains code copied and/or moved from several locations
  * within the KCheckGmail project.
  *
- * @author Luis Pereira <luis.artur.pereira@gmail.com>
+ * @author Luís Pereira <luis.artur.pereira@gmail.com>
  */
 class KCheckGmailCore::Private {
 
