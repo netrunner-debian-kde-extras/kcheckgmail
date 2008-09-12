@@ -500,7 +500,7 @@ void KCheckGmailCore::slotSettingsChanged()
 				emit quitSelected();
 				kapp->quit();
 			} else {
-				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				QTimer::singleShot(100, this, SLOT(slotShowPrefsDialog()));
 			}
 		}
 	} else {
@@ -534,7 +534,7 @@ void KCheckGmailCore::slotSettingsChanged()
 					"no_location_check");
 
 			if( res == KMessageBox::No ) {
-				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				QTimer::singleShot(100, this, SLOT(slotShowPrefsDialog()));
 			}
 		}
 		if (Prefs::searchFor().contains("is:unread") == 0) {
@@ -549,7 +549,7 @@ void KCheckGmailCore::slotSettingsChanged()
 					"is_unread_check");
 
 			if( res == KMessageBox::No ) {
-				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				QTimer::singleShot(100, this, SLOT(slotShowPrefsDialog()));
 			}
 		}
 	}
