@@ -41,7 +41,7 @@
 
 KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	: KSystemTray(parent, name),
-	mMailCount(-1)
+	mMailCount(0)
 {
 	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
 	mLightIconImage = mIconEffect.apply(mPixGmail,
