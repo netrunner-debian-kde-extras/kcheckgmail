@@ -91,7 +91,7 @@ void KCheckGmailTray::slotNoUnreadMail()
 void KCheckGmailTray::slotMailCountChanged(int n)
 {
 	mMailCount = n;
-	updateCountImage();
+	updateCountImage(Prefs::trayIconUnreadMessagesColor());
 }
 
 void KCheckGmailTray::showIcon()
@@ -127,7 +127,7 @@ void KCheckGmailTray::slotVersionMismatch()
 /**
  * Update the number of unread messages in the tray icon
  */
-void KCheckGmailTray::updateCountImage()
+void KCheckGmailTray::updateCountImage(QColor color)
 {
 	kdDebug() << k_funcinfo << "Count=" << mMailCount << endl;
 
@@ -157,7 +157,7 @@ void KCheckGmailTray::updateCountImage()
 		numberPixmap.fill(Qt::lightGray);
 		QPainter p(&numberPixmap);
 		p.setFont(countFont);
-		p.setPen(Qt::blue);
+		p.setPen(color);
 		p.drawText(numberPixmap.rect(), Qt::AlignCenter, countString);
 		numberPixmap.setMask(numberPixmap.createHeuristicMask());
 		QImage numberImage = numberPixmap.convertToImage();
@@ -293,6 +293,12 @@ void KCheckGmailTray::toggleAnim(bool restoreToState)
 void KCheckGmailTray::slotToggleLoginAnim()
 {
 	toggleAnim(false);
+}
+
+
+void KCheckGmailTray::changeCountColor(QColor color)
+{
+	updateCountImage(color);
 }
 
 

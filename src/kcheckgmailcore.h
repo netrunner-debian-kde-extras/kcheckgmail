@@ -54,6 +54,7 @@ public:
 
 signals:
 	void quitSelected();
+	void countColorChanged(QColor color);
 
 private slots:
 	void slotShowKNotifyDialog();

@@ -102,6 +102,9 @@ void KCheckGmailCore::initTray()
 
 	connect(d->mTray, SIGNAL(leftButtonClicked()),
 		this, SLOT(slotLeftButtonClicked()));
+
+	connect(this, SIGNAL(countColorChanged(QColor)),
+		d->mTray, SLOT(changeCountColor(QColor)));
 }
 
 
@@ -553,6 +556,8 @@ void KCheckGmailCore::slotSettingsChanged()
 			}
 		}
 	}
+
+	emit countColorChanged(Prefs::trayIconUnreadMessagesColor());
 }
 
 

@@ -73,8 +73,10 @@ public slots:
 	// login "animation"
 	void slotToggleLoginAnim();
 
+	void changeCountColor(QColor color);
+
 private:
-	void updateCountImage();
+	void updateCountImage(QColor color);
 
 	QPixmap		mPixGmail;
 	QImage		mLightIconImage;
