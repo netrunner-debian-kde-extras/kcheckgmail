@@ -59,7 +59,7 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	QToolTip::add(this, i18n("KCheckGMail"));
 	
-	iconDisplayed = true;
+	iconDisplayed = false;
 }
 
 
