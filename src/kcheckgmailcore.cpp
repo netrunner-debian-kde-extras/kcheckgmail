@@ -71,8 +71,8 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
 	}
 	kapp->dcopClient()->setDefaultObject(objId());
 
-	start();
 	d->mTray->showIcon();
+	start();
 }
 
 KCheckGmailCore::~KCheckGmailCore()
