@@ -51,6 +51,7 @@ GMailParser::GMailParser(QObject* parent, const char* name) :
 	previousLatestThread = "0";
 	
 	//Gmail versions kcheckgmail works with.
+	gGMailVersion.append("7sck6ul8cinq");
 	gGMailVersion.append("zu7a2n462w17"); // new Gmail version, ui=1
 	gGMailVersion.append("1exl39kx7mipo");
 	gGMailVersion.append("1x4nkpwjfkc8x");
