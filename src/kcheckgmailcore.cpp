@@ -80,8 +80,8 @@ KCheckGmailCore::~KCheckGmailCore()
 	if (d->mConfigDialog)
 		d->mConfigDialog->deleteLater();
 
-	delete d->mTray;
-	d->mTray = 0;
+	if (d->mTray)
+		d->mTray->deleteLater();
 
 	delete d;
 	d = 0;
