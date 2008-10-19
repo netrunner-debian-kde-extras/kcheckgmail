@@ -58,7 +58,7 @@ public:
 		int id;
 		QString replyId;
 		bool isNew;
-		unsigned int unknown1;
+		bool isStarred;
 		QString date_short;
 		QString senders;
 		QString chevron;

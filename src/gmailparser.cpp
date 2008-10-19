@@ -217,7 +217,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	static QRegExp rx(
 			"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyID
 			"\\s*([0-9]+)\\s*,"		// isNew
-			"\\s*([0-9]+)\\s*,"		// unknown1
+			"\\s*([0-9]+)\\s*,"		// isStarred
 			"\\s*\"([^\"]*)\"\\s*,"		// date_short
 			"\\s*\"([^\"]*)\"\\s*,"		// senders
 			"\\s*\"([^\"]*)\"\\s*,"		// chevron
@@ -237,7 +237,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	static QRegExp rx2(
 			"\\[\"([a-fA-F0-9]+)\"\\s*,"	// replyID
 			"\\s*([0-9]+)\\s*,"		// isNew
-			"\\s*([0-9]+)\\s*,"		// unknown1
+			"\\s*([0-9]+)\\s*,"		// isStarred
 			"\\s*\"([^\"]*)\"\\s*,"		// date_short
 			"\\s*\"([^\"]*)\"\\s*,"		// senders
 			"\\s*\"([^\"]*)\"\\s*,"		// chevron
@@ -283,7 +283,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->id = mCurMsgId ++;
 		t->replyId = rx.cap(1);
 		t->isNew = rx.cap(2).toInt();
-		t->unknown1 = rx.cap(3).toUInt();
+		t->isStarred = rx.cap(3).toInt();
 		t->date_short = rx.cap(4);
 		t->senders = cleanUpData(rx.cap(5));
 		t->chevron = rx.cap(6);
@@ -320,7 +320,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->id = mCurMsgId ++;
 		t->replyId = rx2.cap(1);
 		t->isNew = rx2.cap(2).toInt();
-		t->unknown1 = rx2.cap(3).toUInt();
+		t->isStarred = rx2.cap(3).toInt();
 		t->date_short = rx2.cap(4);
 		t->senders = cleanUpData(rx2.cap(5));
 		t->chevron = rx2.cap(6);
