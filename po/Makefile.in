@@ -303,8 +303,8 @@ xdg_directorydir = @xdg_directorydir@
 xdg_menudir = @xdg_menudir@
 #>- POFILES = AUTO
 #>+ 2
-POFILES = es.po pt.po ru.po it.po et.po sv.po el.po pl.po sk.po ko.po de.po cs.po zh_CN.po hu.po ar.po tr.po pt_BR.po lt.po ca.po fr.po wa.po
-GMOFILES = es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo el.gmo pl.gmo sk.gmo ko.gmo de.gmo cs.gmo zh_CN.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo ca.gmo fr.gmo wa.gmo
+POFILES = es.po pt.po ru.po it.po et.po sv.po el.po pl.po sk.po ko.po de.po cs.po zh_CN.po hu.po ar.po tr.po pt_BR.po lt.po ca.po fr.po wa.po da.po
+GMOFILES = es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo el.gmo pl.gmo sk.gmo ko.gmo de.gmo cs.gmo zh_CN.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo ca.gmo fr.gmo wa.gmo da.gmo
 #>- all: all-am
 #>+ 1
 all: all-nls docs-am  all-am
@@ -498,7 +498,7 @@ uninstall-am: uninstall-info-am
 
 
 #>+ 2
-KDE_DIST=tr.gmo zh_CN.po sv.gmo pl.gmo kcheckgmail.pot pt.po ko.gmo ru.po ru.gmo ko.po el.gmo ar.po de.po et.po fr.gmo fr.po ca.po et.gmo el.po cs.po tr.po zh_CN.gmo sk.gmo cs.gmo lt.gmo pt_BR.gmo ar.gmo Makefile.in wa.po pt_BR.po it.gmo sv.po wa.gmo hu.po de.gmo lt.po pl.po es.po pt.gmo es.gmo it.po sk.po hu.gmo Makefile.am ca.gmo 
+KDE_DIST=tr.gmo zh_CN.po sv.gmo pl.gmo kcheckgmail.pot pt.po ko.gmo ru.po ru.gmo ko.po el.gmo ar.po de.po et.po fr.gmo fr.po ca.po et.gmo el.po cs.po tr.po zh_CN.gmo sk.gmo cs.gmo lt.gmo pt_BR.gmo ar.gmo Makefile.in wa.po pt_BR.po it.gmo sv.po wa.gmo hu.po de.gmo lt.po pl.po es.po pt.gmo es.gmo it.po sk.po hu.gmo Makefile.am ca.gmo da.gmo da.po
 
 #>+ 64
 es.gmo: es.po
@@ -564,14 +564,17 @@ fr.gmo: fr.po
 wa.gmo: wa.po
 	rm -f wa.gmo; $(GMSGFMT) -o wa.gmo $(srcdir)/wa.po
 	test ! -f wa.gmo || touch wa.gmo
+da.gmo: da.po
+	rm -f da.gmo; $(GMSGFMT) -o da.gmo $(srcdir)/da.po
+	test ! -f da.gmo || touch da.gmo
 
 #>+ 3
 clean-nls:
-	-rm -f  es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo el.gmo pl.gmo sk.gmo ko.gmo de.gmo cs.gmo zh_CN.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo ca.gmo fr.gmo wa.gmo
+	-rm -f  es.gmo pt.gmo ru.gmo it.gmo et.gmo sv.gmo el.gmo pl.gmo sk.gmo ko.gmo de.gmo cs.gmo zh_CN.gmo hu.gmo ar.gmo tr.gmo pt_BR.gmo lt.gmo ca.gmo fr.gmo wa.gmo da.gmo
 
 #>+ 10
 install-nls:
-	@for base in es pt ru it et sv el pl sk ko de cs zh_CN hu ar tr pt_BR lt ca fr wa ; do \
+	@for base in es pt ru it et sv el pl sk ko de cs zh_CN hu ar tr pt_BR lt ca fr wa da ; do \
 	  echo $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
 	  $(mkinstalldirs) $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES ; \
 	  if test -f $$base.gmo; then $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
@@ -603,6 +606,7 @@ uninstall-nls:
 	rm -f $(DESTDIR)$(kde_locale)/ca/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/fr/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/wa/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/da/LC_MESSAGES/$(PACKAGE).mo
 
 #>+ 2
 all-nls: $(GMOFILES)
