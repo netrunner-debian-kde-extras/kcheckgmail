@@ -134,20 +134,17 @@ QMap<QString, int> JSProtocol::threadMenuEntries()
 		kdDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
 
 		while(iter != klist.end()) {
-			bool isNew = (*threads)[*iter];
-			if(isNew) {
-				const GMailParser::Thread &t = mParser->getThread(*iter);
-				if(!t.isNull) {
-					QString str = t.senders;
-					str += " - ";
-					str += t.subject;
-					str.replace("&","&&");
+			const GMailParser::Thread &t = mParser->getThread(*iter);
+			if(!t.isNull) {
+				QString str = t.senders;
+				str += " - ";
+				str += t.subject;
+				str.replace("&","&&");
 
-					entries.insert(str, t.id);
-					numItems ++;
-				}
+				entries.insert(str, t.id);
+				numItems ++;
 			}
-			iter ++;
+		iter ++;
 		}
 		delete threads;
 		threads = 0;
