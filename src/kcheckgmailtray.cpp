@@ -79,6 +79,7 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 {
 	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
 	mPixCount = KSystemTray::loadIcon("kcheckgmail");
+	setPixmap(mPixGmail);
 
 	mLoginAnim = new QTimer(this, "KCheckGmail::login");
 	connect(mLoginAnim, SIGNAL(timeout()), 
