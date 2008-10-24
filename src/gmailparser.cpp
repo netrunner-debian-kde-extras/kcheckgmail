@@ -716,6 +716,8 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 			iter ++;
 		}
 	}
+
+	delete lst;
 	
 	return ret;
 }
