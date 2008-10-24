@@ -22,15 +22,17 @@ msgstr ""
 msgid ""
 "_: NAME OF TRANSLATORS\n"
 "Your names"
-msgstr "Дудалев Михаил,"
-msgstr "Шильдяков Алексей"
+msgstr ""
+"Дудалев Михаил,"
+"Шильдяков Алексей"
 
 #: _translatorinfo.cpp:3
 msgid ""
 "_: EMAIL OF TRANSLATORS\n"
 "Your emails"
-msgstr "dudalev@gmail.com,"
-msgstr "ashl1future@gmail.com"
+msgstr ""
+"dudalev@gmail.com,"
+"ashl1future@gmail.com"
 
 #: gmail.cpp:243
 msgid "Invalid username or password"
@@ -38,8 +40,9 @@ msgstr "Неправильный логин или пароль"
 
 #: gmail.cpp:249 gmail.cpp:260 gmail.cpp:275
 msgid "GMail's login procedure has changed, check for new version"
-msgstr "Процедура аутентификации GMail изменена, проверьте"
-msgstr "новой версии"
+msgstr ""
+"Процедура аутентификации GMail изменена, проверьте"
+"новой версии"
 
 #: gmail.cpp:386
 msgid "Unknown error retrieving cookies"
