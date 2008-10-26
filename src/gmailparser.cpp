@@ -736,6 +736,7 @@ unsigned int GMailParser::unread(CountMode mode) const
 	static QRegExp rx2("label:([^ ]+)");
 	QString box;
 	
+	int pos;
 	if (mode == TotalCount) {
 		if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
 			// If none are specified gmail will return any unread mail (except spam and drafts)
@@ -745,12 +746,22 @@ unsigned int GMailParser::unread(CountMode mode) const
 		} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
 			//there's no other way to know how many emails are in:inbox and in specified label:LABEL
 			mode = ParsedOnlyCount;
-		} else if (rx.search(Prefs::searchFor()) != -1) {
+		} else if ((pos = rx.search(Prefs::searchFor())) != -1) {
 			box = rx.cap(1);
-		} else if (rx2.search(Prefs::searchFor()) != -1) {
+
+			pos += rx.matchedLength();
+			// make sure there is only one in: in the search string
+			if (rx.search(Prefs::searchFor(), pos) != -1) {
+				mode = ParsedOnlyCount;
+			}
+		} else if ((pos = rx2.search(Prefs::searchFor())) != -1) {
 			box = rx2.cap(1);
-			
-			if (eLabels.contains(box)) {
+
+			pos += rx2.matchedLength();
+			// make sure there is only one label: in the search string
+			if (rx2.search(Prefs::searchFor(), pos) != -1) {
+				mode = ParsedOnlyCount;
+			} else if (eLabels.contains(box)) {
 				box = eLabels[box];
 			}
 		}
