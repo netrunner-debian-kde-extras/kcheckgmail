@@ -653,7 +653,6 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 		d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 	}
 	d->mLoginCheckMailAction->setEnabled(true);
-	d->mTray->slotMailCountChanged(0);
 }
 
 
