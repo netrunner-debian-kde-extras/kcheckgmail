@@ -544,8 +544,6 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 		contextMenu()->changeItem(mCheckNowId, i18n("Chec&k Mail Now"));
 	}
 	contextMenu()->setItemEnabled(mCheckNowId, true);
-
-	slotMailCountChanged();
 }
 
 void KCheckGmailTray::slotLogingOut()
