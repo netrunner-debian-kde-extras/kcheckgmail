@@ -43,10 +43,10 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 	addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
 
 	AppletSettingsWidget *awid = new AppletSettingsWidget(this, "AppletSettings");
-	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior"));
+	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior Settings"));
 
 	AppearanceSettingsWidget *apw = new AppearanceSettingsWidget(this, "AppearanceSettings");
-	addPage(apw, i18n("Appearance"), "fonts", i18n("Appearance"));
+	addPage(apw, i18n("Appearance"), "fonts", i18n("Appearance Settings"));
 
 	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(this, "AdvancedSettings");
 	addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
