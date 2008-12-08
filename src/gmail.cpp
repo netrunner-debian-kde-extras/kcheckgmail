@@ -305,35 +305,29 @@ void GMail::postLogin(QString url)
 {
 	// this is expected to be locked.
 	if(mLoginLock->locked()) {
+
+		KURL _url(url);
+		QRegExp rx("google\\..+");
+		QString host;
 		
-		static QRegExp rx("^(http[s]?://)(.*)$");
-		int found;
-		
-		if(!rx.isValid()) {
-			kdWarning() << k_funcinfo << "Invalid RX!\n"
-					<< rx.errorString() << endl;
+		if (!_url.isValid()) {
+			kdError() <<  "Tried to go to an invalid URL!: " << url << endl;
 		}
-		
-		found = rx.search(url);
-		
-		if(found == -1) {
-			kdWarning() <<  "This can't be a valid url!: " << url << endl;
-			if (!KURL(url).isValid()) {
-				kdError() <<  "This is absolutely a non-valid URL!: " << url << endl;
-			}
-		}
-		
-		if(rx.cap(1).compare("https://") != 0) {
-			url = (Prefs::useHTTPS()? "https" : "http" );
-			url.append("://");
-			url.append(rx.cap(2));
+
+		if(_url.protocol().compare("https://") != 0 && Prefs::useHTTPS()) {
+			kdDebug() << k_funcinfo << "Forcing https on " << _url << endl;
+			_url.setProtocol("https");
+			host = _url.host();
+			// avoid SSL cert errors by forcing the .com domain
+			host.replace(rx, "google.com");
+			_url.setHost(host);
 		}
 		
 		mPostLoginBuffer = "";
 		
-		kdDebug() << k_funcinfo << "Starting job to " << url << endl;
+		kdDebug() << k_funcinfo << "Starting job to " << _url << endl;
 
-		KIO::TransferJob *job = KIO::get(url, true, false);
+		KIO::TransferJob *job = KIO::get(_url, true, false);
 		job->addMetaData("cookies", "auto");
 		job->addMetaData("cache", "reload");
 
