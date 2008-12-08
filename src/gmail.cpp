@@ -376,27 +376,21 @@ void GMail::postLogin(QString url)
 	// this is expected to be locked.
 	if(isLocked) {
 		
-		static QRegExp rx("^(http[s]?://)(.*)$");
-		int found;
-		
-		if(!rx.isValid()) {
-			kWarning() << k_funcinfo << "Invalid RX!\n"
-					<< rx.errorString() << endl;
+		KUrl _url(url);
+		QRegExp rx("google\\..+");
+		QString host;
+
+		if (!_url.isValid()) {
+			kError() <<  "tried to go to an invalid url!: " << url << endl;
 		}
-		
-		found = rx.indexIn(url);
-		
-		if(found == -1) {
-			kWarning() <<  "This can't be a valid url!: " << url;
-			if (!KUrl(url).isValid()) {
-				kError() <<  "This is absolutely a non-valid URL!: " << url << endl;
-			}
-		}
-		
-		if(rx.cap(1).compare("https://") != 0) {
-			url = (Prefs::useHTTPS()? "https" : "http" );
-			url.append("://");
-			url.append(rx.cap(2));
+
+		if(_url.protocol().compare("https://") != 0 && Prefs::useHTTPS()) {
+			kDebug() << k_funcinfo << "Forcing https on " << _url << endl;
+			_url.setProtocol("https");
+			host = _url.host();
+			// avoid SSL cert errors by forcing the .com domain
+			host.replace(rx, "google.com");
+			_url.setHost(host);
 		}
 		
 		mPostLoginBuffer = "";
@@ -409,9 +403,10 @@ void GMail::postLogin(QString url)
 		d->buffer = new QBuffer;
 		d->buffer->open(QIODevice::WriteOnly);
 
-		kDebug() << k_funcinfo << "Starting job to " << url;
+		kDebug() << k_funcinfo << "Starting job to " << _url;
 
-		KIO::TransferJob *job = KIO::get(url, KIO::Reload, KIO::HideProgressInfo);
+
+		KIO::TransferJob *job = KIO::get(_url, KIO::Reload, KIO::HideProgressInfo);
 		job->addMetaData("cookies", "auto");
 		job->addMetaData("cache", "reload");
 
