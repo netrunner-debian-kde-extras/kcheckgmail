@@ -444,6 +444,7 @@ void KCheckGmailTray::slotSettingsChanged()
 				kapp->quit();
 			} else {
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				return;
 			}
 		}
 	} else {
@@ -480,6 +481,7 @@ void KCheckGmailTray::slotSettingsChanged()
 
 			if( res == KMessageBox::No ) {
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				return;
 			}
 		}
 		if (Prefs::searchFor().contains("is:unread") == 0) {
@@ -495,6 +497,7 @@ void KCheckGmailTray::slotSettingsChanged()
 
 			if( res == KMessageBox::No ) {
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				return;
 			}
 		}
 
