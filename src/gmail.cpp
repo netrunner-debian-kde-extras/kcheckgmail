@@ -522,6 +522,7 @@ void GMail::slotCheckResult(KIO::Job *job)
 void GMail::slotTimeout()
 {
 	if(!isLoggedIn() || mLoginParamsChanged) {
+		mLoginParamsChanged = false;
 		mLoginFromTimer = true;
 		login();
 	} else {
