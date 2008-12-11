@@ -201,6 +201,7 @@ bool GMailWalletManager::storeKConfig()
 	Prefs::setGmailPassword(mPassword);
 	Prefs::self()->writeConfig();
 	clearPassword();
+	emit setWalletPassword(true);
 	return ret;
 }
 
