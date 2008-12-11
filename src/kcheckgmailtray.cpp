@@ -416,7 +416,7 @@ void KCheckGmailTray::initConfigDialog()
 	mConfigDialog->addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
 
 	AppletSettingsWidget *awid = new AppletSettingsWidget(0, "AppletSettings");
-	mConfigDialog->addPage(awid, i18n("Behavior"), "configure", i18n("Behavior Settings"));
+	mConfigDialog->addPage(awid, i18n("Behavior"), "configure", i18n("Behavior"));
 
 	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(0, "AdvancedSettings");
 	mConfigDialog->addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
