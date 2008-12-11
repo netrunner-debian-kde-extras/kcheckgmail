@@ -569,6 +569,7 @@ void KCheckGmailCore::slotSettingsChanged()
 				kapp->quit();
 			} else {
 				QTimer::singleShot(100, this, SLOT(slotShowPrefsDialog()));
+				return;
 			}
 		}
 	} else {
@@ -605,6 +606,7 @@ void KCheckGmailCore::slotSettingsChanged()
 
 			if( res == KMessageBox::No ) {
 				QTimer::singleShot(100, this, SLOT(slotShowPrefsDialog()));
+				return;
 			}
 		}
 		if (Prefs::searchFor().contains("is:unread") == 0) {
@@ -620,6 +622,7 @@ void KCheckGmailCore::slotSettingsChanged()
 
 			if( res == KMessageBox::No ) {
 				QTimer::singleShot(100, this, SLOT(slotShowPrefsDialog()));
+				return;
 			}
 		}
 		d->mJSP->retriever()->setInterval(Prefs::interval());
