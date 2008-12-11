@@ -462,8 +462,6 @@ void KCheckGmailTray::slotSettingsChanged()
 			mGmail->checkLoginParams();
 		}
 		
-		mGmail->setInterval(Prefs::interval());
-		
 		if (Prefs::searchFor().length() == 0) {
 			Prefs::setSearchFor("in:inbox is:unread");
 			Prefs::writeConfig();
@@ -499,6 +497,8 @@ void KCheckGmailTray::slotSettingsChanged()
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
 			}
 		}
+
+		mGmail->setInterval(Prefs::interval());
 	}
 }
 
