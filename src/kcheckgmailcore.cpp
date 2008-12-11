@@ -556,8 +556,6 @@ void KCheckGmailCore::slotSettingsChanged()
 			d->mJSP->retriever()->checkLoginParams();
 		}
 		
-		d->mJSP->retriever()->setInterval(Prefs::interval());
-		
 		if (Prefs::searchFor().length() == 0) {
 			Prefs::setSearchFor("in:inbox is:unread");
 			Prefs::writeConfig();
@@ -593,6 +591,7 @@ void KCheckGmailCore::slotSettingsChanged()
 				QTimer::singleShot(100, this, SLOT(slotShowPrefsDialog()));
 			}
 		}
+		d->mJSP->retriever()->setInterval(Prefs::interval());
 	}
 
 	emit countColorChanged(Prefs::trayIconUnreadMessagesColor());
