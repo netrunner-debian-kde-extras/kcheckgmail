@@ -549,8 +549,12 @@ void KCheckGmailCore::slotSettingsChanged()
 			loginOk = GMailWalletManager::instance()->set(d->mConfigDialog->password());
 			d->mConfigDialog->erasePassword();
 			d->mConfigDialog->insertPassword("\007\007\007");
-		} else
+		} else {
 			kdDebug() << k_funcinfo << "passwd unchanged: " << passwd << endl;
+			// force a params check only if password was not changed as
+			// GMailWalletManager will take care of triggering the check if it was changed
+			d->mJSP->retriever()->checkLoginParams();
+		}
 		
 		d->mJSP->retriever()->setInterval(Prefs::interval());
 		
