@@ -89,8 +89,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	connect(this, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 	
 	QToolTip::add(this, i18n("KCheckGMail"));
-	
-	iconDisplayed = true;
 
 	// initialise and hook up the parser
 	mParser = new GMailParser();
@@ -661,13 +659,11 @@ void KCheckGmailTray::slotSessionChanged()
 //Used by the DCOP interface
 void KCheckGmailTray::showIcon()
 {
-	iconDisplayed = true;
 	show();
 }
 
 void KCheckGmailTray::hideIcon()
 {
-	iconDisplayed = false;
 	hide();
 }
 
@@ -823,7 +819,7 @@ void KCheckGmailTray::updateCountImage()
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::whereAmI()
 {
-	if (!iconDisplayed)
+	if (!isShown())
 		showIcon();
 	
 	takeScreenshotOfTrayIcon();
@@ -836,7 +832,6 @@ void KCheckGmailTray::whereAmI()
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::takeScreenshotOfTrayIcon()
 {
-	
         // Process the events else the icon will not be there and the screenie will fail!
 	kapp->processEvents();
 
