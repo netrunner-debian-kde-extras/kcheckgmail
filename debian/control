@@ -7,7 +7,7 @@ Build-Depends: cdbs, debhelper (>= 5), autotools-dev, kdelibs4-dev, libqt3-mt-de
 Standards-Version: 3.8.0
 XS-DM-Upload-Allowed: yes
 Homepage: http://kcheckgmail.sourceforge.net/
-Vcs-Git:    git://git.debian.org/git/pkg-kde/kde-extras/kcheckgmail.git
+Vcs-Git: git://git.debian.org/git/pkg-kde/kde-extras/kcheckgmail.git
 Vcs-Browser: http://git.debian.org/?p=pkg-kde/kde-extras/kcheckgmail.git;a=summary
 
 Package: kcheckgmail
@@ -20,6 +20,6 @@ Description: A Gmail notifier-like notifier for KDE
  Some features include:
   * New email notifications displaying message subject.
   * Customisable check interval, web browser and more.
-  * Support for gmail's simple (pure HTML) and full interfaces.
+  * Support for Gmail's simple (pure HTML) and full interfaces.
   * Customisable search.
   * KWallet support.
