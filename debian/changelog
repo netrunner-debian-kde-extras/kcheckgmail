@@ -1,3 +1,20 @@
+kcheckgmail (0.5.7.7-1) unstable; urgency=low
+
+  * New upstream release
+    - Fixed a bug where the icon was missing (Closes: #447684)
+    - Updated Czech, Swedish, and Russian translations
+    - Added Danish translation
+    - Fixed several, minor, memory leaks
+    - Fixed a bug when counting new emails with multiple selectors
+    - Fixed a bug where changing the username only would not cause a re-login
+    - When forcing https on redirections force the .com domain as well
+    - Fixed a login failure when not using kwallet (Closes: #435758)
+    - Fixed a some, minor, login-time bugs
+    - Minor configuration widgets fixes
+    - Fixed an error where threads with a label with braces would not show up
+
+ -- Raphael Geissert <atomo64@gmail.com>  Sun, 14 Dec 2008 00:55:36 -0600
+
 kcheckgmail (0.5.7.6-1) unstable; urgency=low
 
   * New upstream release
