@@ -124,6 +124,4 @@ private:
 
 	// mail count for dcop interface
 	int	mMailCount;
-	
-	bool iconDisplayed;
 };

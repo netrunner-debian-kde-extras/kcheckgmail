@@ -89,8 +89,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	connect(this, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 	
 	QToolTip::add(this, i18n("KCheckGMail"));
-	
-	iconDisplayed = true;
 
 	// initialise and hook up the parser
 	mParser = new GMailParser();
@@ -444,6 +442,7 @@ void KCheckGmailTray::slotSettingsChanged()
 				kapp->quit();
 			} else {
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				return;
 			}
 		}
 	} else {
@@ -455,10 +454,12 @@ void KCheckGmailTray::slotSettingsChanged()
 			loginOk = GMailWalletManager::instance()->set(mLoginSettings->gmailPassword->password());
 			mLoginSettings->gmailPassword->erase();
 			mLoginSettings->gmailPassword->insert("\007\007\007");
-		} else
+		} else {
 			kdDebug() << k_funcinfo << "passwd unchanged: " << passwd << endl;
-		
-		mGmail->setInterval(Prefs::interval());
+			// force a params check only if password was not changed as
+			// GMailWalletManager will take care of triggering the check if it was changed
+			mGmail->checkLoginParams();
+		}
 		
 		if (Prefs::searchFor().length() == 0) {
 			Prefs::setSearchFor("in:inbox is:unread");
@@ -478,6 +479,7 @@ void KCheckGmailTray::slotSettingsChanged()
 
 			if( res == KMessageBox::No ) {
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				return;
 			}
 		}
 		if (Prefs::searchFor().contains("is:unread") == 0) {
@@ -493,8 +495,11 @@ void KCheckGmailTray::slotSettingsChanged()
 
 			if( res == KMessageBox::No ) {
 				QTimer::singleShot(100, this, SLOT(showPrefsDialog()));
+				return;
 			}
 		}
+
+		mGmail->setInterval(Prefs::interval());
 	}
 }
 
@@ -544,8 +549,6 @@ void KCheckGmailTray::slotLoginDone(bool ok, bool evtFromTimer, const QString &w
 		contextMenu()->changeItem(mCheckNowId, i18n("Chec&k Mail Now"));
 	}
 	contextMenu()->setItemEnabled(mCheckNowId, true);
-
-	slotMailCountChanged();
 }
 
 void KCheckGmailTray::slotLogingOut()
@@ -638,6 +641,9 @@ void KCheckGmailTray::updateThreadMenu()
 		}
 	}
 
+	delete threads;
+	threads = 0;
+
 	contextMenu()->setItemEnabled(mThreadsMenuId, (numItems > 0));
 }
 
@@ -653,13 +659,11 @@ void KCheckGmailTray::slotSessionChanged()
 //Used by the DCOP interface
 void KCheckGmailTray::showIcon()
 {
-	iconDisplayed = true;
 	show();
 }
 
 void KCheckGmailTray::hideIcon()
 {
-	iconDisplayed = false;
 	hide();
 }
 
@@ -681,6 +685,10 @@ QStringList KCheckGmailTray::getThreads()
 			iter ++;
 		}
 	}
+
+	delete threads;
+	threads = 0;
+
 	return out;
 }
 
@@ -811,7 +819,7 @@ void KCheckGmailTray::updateCountImage()
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::whereAmI()
 {
-	if (!iconDisplayed)
+	if (!isShown())
 		showIcon();
 	
 	takeScreenshotOfTrayIcon();
@@ -824,7 +832,6 @@ void KCheckGmailTray::whereAmI()
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::takeScreenshotOfTrayIcon()
 {
-	
         // Process the events else the icon will not be there and the screenie will fail!
 	kapp->processEvents();
 

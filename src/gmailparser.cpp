@@ -51,6 +51,7 @@ GMailParser::GMailParser() :
 	previousLatestThread = "0";
 	
 	//Gmail versions kcheckgmail works with.
+	gGMailVersion.append("7sck6ul8cinq");
 	gGMailVersion.append("zu7a2n462w17"); // new Gmail version, ui=1
 	gGMailVersion.append("1exl39kx7mipo");
 	gGMailVersion.append("1x4nkpwjfkc8x");
@@ -186,8 +187,8 @@ void GMailParser::parse(const QString &_data)
 		pos += rx.matchedLength();
 	}
 
-	if(oldMap)
-		delete oldMap;
+	delete oldMap;
+	oldMap = 0;
 
 	kdDebug() << k_funcinfo << "NewCount=" << NewCount << endl;
 	kdDebug() << k_funcinfo << "oldNewCount=" << oldNewCount << endl;
@@ -230,7 +231,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 			"\\s*\"([^\"]*)\"\\s*,"		// chevron
 			"\\s*\"([^\"]*)\"\\s*,"		// subject
 			"\\s*\"([^\"]*)\"\\s*,"		// snippet
-			"\\s*\\[([^\\]]*)\\]\\s*,"	// labels
+			"\\s*\\[((?:\\s*\"[^\"]+\")?(?:,\\s*\"[^\"]+\")*)\\]\\s*,"	// labels
 			"\\s*\"([^\"]*)\"\\s*,"		// attachments
 			"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
 			"\\s*([0-9]+)\\s*,"		// unknown2
@@ -250,7 +251,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 			"\\s*\"([^\"]*)\"\\s*,"		// chevron
 			"\\s*\"([^\"]*)\"\\s*,"		// subject
 			"(\\s*),"			// snippet
-			"\\s*\\[([^\\]]*)\\]\\s*,"	// labels
+			"\\s*\\[((?:\\s*\"[^\"]+\")?(?:,\\s*\"[^\"]+\")*)\\]\\s*,"	// labels
 			"\\s*\"([^\"]*)\"\\s*,"		// attachments
 			"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
 			"\\s*([0-9]+)\\s*,"		// unknown2
@@ -716,6 +717,9 @@ unsigned int GMailParser::getNewCount(bool realCount, QString box) const
 			iter ++;
 		}
 	}
+
+	delete lst;
+	lst = 0;
 	
 	return ret;
 }
@@ -731,7 +735,8 @@ unsigned int GMailParser::getNewCount(bool realCount) const
 	static QRegExp rx ("in:([^ ]+)");
 	static QRegExp rx2("label:([^ ]+)");
 	QString box;
-	
+	int pos;
+
 	if (realCount) {
 		if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
 			// If none are specified gmail will return any unread mail (except spam and drafts)
@@ -741,12 +746,22 @@ unsigned int GMailParser::getNewCount(bool realCount) const
 		} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
 			//there's no other way to know how many emails are in:inbox and in specified label:LABEL
 			realCount = false;
-		} else if (rx.search(Prefs::searchFor()) != -1) {
+		} else if ((pos = rx.search(Prefs::searchFor())) != -1) {
 			box = rx.cap(1);
-		} else if (rx2.search(Prefs::searchFor()) != -1) {
+
+			pos += rx.matchedLength();
+			// make sure there is only one in: in the search string
+			if (rx.search(Prefs::searchFor(), pos) != -1) {
+				realCount = false;
+			}
+		} else if ((pos = rx2.search(Prefs::searchFor())) != -1) {
 			box = rx2.cap(1);
-			
-			if (eLabels.contains(box)) {
+
+			pos += rx2.matchedLength();
+			// make sure there is only one label: in the search string
+			if (rx2.search(Prefs::searchFor(), pos) != -1) {
+				realCount = false;
+			} else if (eLabels.contains(box)) {
 				box = eLabels[box];
 			}
 		}
@@ -779,6 +794,7 @@ void GMailParser::freeThreadList()
 		while(iter != klist.end()) {
 			Thread *t = mThreads[*iter];
 			delete t;
+			t = 0;
 			iter ++;
 		}
 	}
