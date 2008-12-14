@@ -231,7 +231,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 			"\\s*\"([^\"]*)\"\\s*,"		// chevron
 			"\\s*\"([^\"]*)\"\\s*,"		// subject
 			"\\s*\"([^\"]*)\"\\s*,"		// snippet
-			"\\s*\\[([^\\]]*)\\]\\s*,"	// labels
+			"\\s*\\[((?:\\s*\"[^\"]+\")?(?:,\\s*\"[^\"]+\")*)\\]\\s*,"	// labels
 			"\\s*\"([^\"]*)\"\\s*,"		// attachments
 			"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
 			"\\s*([0-9]+)\\s*,"		// unknown2
@@ -251,7 +251,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 			"\\s*\"([^\"]*)\"\\s*,"		// chevron
 			"\\s*\"([^\"]*)\"\\s*,"		// subject
 			"(\\s*),"			// snippet
-			"\\s*\\[([^\\]]*)\\]\\s*,"	// labels
+			"\\s*\\[((?:\\s*\"[^\"]+\")?(?:,\\s*\"[^\"]+\")*)\\]\\s*,"	// labels
 			"\\s*\"([^\"]*)\"\\s*,"		// attachments
 			"\\s*\"([a-fA-F0-9]+)\"\\s*,"	// msgID
 			"\\s*([0-9]+)\\s*,"		// unknown2
