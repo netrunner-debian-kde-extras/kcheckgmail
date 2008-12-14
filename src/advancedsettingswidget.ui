@@ -15,66 +15,68 @@
     <property name="caption">
         <string>AdvancedSettingsWidget</string>
     </property>
-    <widget class="QLayoutWidget">
+    <grid>
         <property name="name">
-            <cstring>layout2</cstring>
+            <cstring>unnamed</cstring>
         </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>13</y>
-                <width>310</width>
-                <height>170</height>
-            </rect>
+        <property name="margin">
+            <number>0</number>
         </property>
-        <grid>
+        <widget class="QLayoutWidget" row="0" column="0">
             <property name="name">
-                <cstring>unnamed</cstring>
+                <cstring>layout2</cstring>
             </property>
-            <widget class="KLineEdit" row="1" column="0" rowspan="1" colspan="2">
+            <grid>
                 <property name="name">
-                    <cstring>kcfg_searchFor</cstring>
+                    <cstring>unnamed</cstring>
                 </property>
-            </widget>
-            <spacer row="3" column="1">
-                <property name="name">
-                    <cstring>spacer1</cstring>
-                </property>
-                <property name="orientation">
-                    <enum>Vertical</enum>
-                </property>
-                <property name="sizeType">
-                    <enum>Expanding</enum>
-                </property>
-                <property name="sizeHint">
-                    <size>
-                        <width>20</width>
-                        <height>80</height>
-                    </size>
-                </property>
-            </spacer>
-            <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
-                <property name="name">
-                    <cstring>kcfg_gMailSimpleInterface</cstring>
-                </property>
-                <property name="text">
-                    <string>Open Gmail in simple interface</string>
-                </property>
-                <property name="accel">
-                    <string></string>
-                </property>
-            </widget>
-            <widget class="QLabel" row="0" column="0">
-                <property name="name">
-                    <cstring>searchLabel</cstring>
-                </property>
-                <property name="text">
-                    <string>Search For:</string>
-                </property>
-            </widget>
-        </grid>
-    </widget>
+                <widget class="KLineEdit" row="1" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>kcfg_searchFor</cstring>
+                    </property>
+                </widget>
+                <spacer row="3" column="1">
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>80</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>kcfg_gMailSimpleInterface</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Open Gmail in simple interface</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>searchLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Search For:</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+    </grid>
 </widget>
+<customwidgets>
+</customwidgets>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klineedit.h</includehint>
