@@ -94,7 +94,6 @@ void JSProtocol::slotCountUpdate(unsigned int currentParsed)
 	kdDebug() << "previousTotal: " << mCount.previousTotal() << endl;
 	kdDebug() << "currentTotal: " << currentTotal << endl;
 
-	QMap <QString, int> threads = threadMenuEntries();
 	if (firstTime) {
 		firstTime = false;
 		if (currentTotal != 0) {
@@ -112,44 +111,12 @@ void JSProtocol::slotCountUpdate(unsigned int currentParsed)
 	if (currentTotal == 0) {
 		emit noUnreadMail();
 	}
-	emit threadsChanged(threads);
+	emit threadsChanged();
 }
 
 int JSProtocol::unread() const
 {
 	return mCount.currentTotal();
-}
-
-QMap<QString, int> JSProtocol::threadMenuEntries()
-{
-	QMap<QString, int> entries;
-	QMap<QString,bool> *threads = mParser->getThreadList();
-	int numItems = 0;
-
-	if(threads) {
-
-		QValueList<QString> klist = threads->keys();
-		QValueList<QString>::iterator iter = klist.begin();
-
-		kdDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
-
-		while(iter != klist.end()) {
-			const GMailParser::Thread &t = mParser->getThread(*iter);
-			if(!t.isNull) {
-				QString str = t.senders;
-				str += " - ";
-				str += t.subject;
-				str.replace("&","&&");
-
-				entries.insert(str, t.id);
-				numItems ++;
-			}
-		iter ++;
-		}
-		delete threads;
-		threads = 0;
-	}
-	return entries;
 }
 
 } // namespace KCheckGmail

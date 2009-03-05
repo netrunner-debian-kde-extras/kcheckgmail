@@ -51,11 +51,10 @@ public:
 	GMailParser* parser();
 	GMail* retriever();
     int unread() const;
-    QMap<QString, int> threadMenuEntries();
 
 signals:
 	void mailArrived(unsigned int count);
-	void threadsChanged(QMap<QString, int> menuEntries);
+	void threadsChanged();
 	void mailCountChanged(int count);
 	void noUnreadMail();
 	void checkDone();

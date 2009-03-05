@@ -67,7 +67,7 @@ private slots:
 
 	void slotThreadsMenuActivated(int);
 	void slotThreadsItemHighlighted(int);
-	void updateThreadMenu(QMap<QString, int> entries);
+	void updateThreadMenu();
 
 	void slotMailArrived(unsigned int);
 
