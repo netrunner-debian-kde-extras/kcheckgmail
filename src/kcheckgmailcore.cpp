@@ -305,7 +305,6 @@ void KCheckGmailCore::updateThreadMenu()
 
 	d->mThreadsMenu->clear();
         if(threads) {
-
                 QValueList<QString> klist = threads->keys();
                 QValueList<QString>::iterator iter = klist.begin();
 
@@ -322,7 +321,7 @@ void KCheckGmailCore::updateThreadMenu()
 				id = d->mThreadsMenu->insertItem(str, t.id);
 				numItems ++;
                         }
-                iter ++;
+			iter ++;
                 }
                 delete threads;
                 threads = 0;
