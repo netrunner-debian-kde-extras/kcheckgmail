@@ -318,7 +318,11 @@ void KCheckGmailCore::updateThreadMenu()
                                 str += t.subject;
                                 str.replace("&","&&");
 
-				id = d->mThreadsMenu->insertItem(str, t.id);
+				// TODO: Add an hasAttach method
+				if (t.attachments.isEmpty())
+					id = d->mThreadsMenu->insertItem(str, t.id);
+				else
+					id = d->mThreadsMenu->insertItem(SmallIcon("attach"), str, t.id);
 				numItems ++;
                         }
 			iter ++;
