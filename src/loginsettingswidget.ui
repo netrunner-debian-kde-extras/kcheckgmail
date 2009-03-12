@@ -1,103 +1,96 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>LoginSettingsWidget</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>LoginSettingsWidget</cstring>
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>LoginSettingsWidget</class>
+  <widget class="QWidget" name="LoginSettingsWidget" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>405</width>
+        <height>383</height>
+      </rect>
     </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>405</width>
-            <height>383</height>
-        </rect>
+    <property name="windowTitle" >
+      <string>LoginSettingsWidget</string>
     </property>
-    <property name="caption">
-        <string>LoginSettingsWidget</string>
-    </property>
-    <grid>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <property name="margin">
-            <number>0</number>
-        </property>
-        <widget class="KLineEdit" row="0" column="1">
-            <property name="name">
-                <cstring>kcfg_GmailUsername</cstring>
-            </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>0</number>
+      </property>
+      <item row="0" column="1" >
+        <widget class="KLineEdit" name="kcfg_GmailUsername" />
+      </item>
+      <item row="0" column="0" >
+        <widget class="QLabel" name="usernameLabel" >
+          <property name="text" >
+            <string>Username:</string>
+          </property>
+          <property name="buddy" stdset="0" >
+            <cstring>usernameTxt</cstring>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
         </widget>
-        <widget class="QLabel" row="0" column="0">
-            <property name="name">
-                <cstring>usernameLabel</cstring>
-            </property>
-            <property name="text">
-                <string>Username:</string>
-            </property>
-            <property name="buddy" stdset="0">
-                <cstring>usernameTxt</cstring>
-            </property>
+      </item>
+      <item row="1" column="0" >
+        <widget class="QLabel" name="passwordLabel" >
+          <property name="text" >
+            <string>Password:</string>
+          </property>
+          <property name="buddy" stdset="0" >
+            <cstring>passwordTxt</cstring>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
         </widget>
-        <widget class="QLabel" row="1" column="0">
-            <property name="name">
-                <cstring>passwordLabel</cstring>
-            </property>
-            <property name="text">
-                <string>Password:</string>
-            </property>
-            <property name="buddy" stdset="0">
-                <cstring>passwordTxt</cstring>
-            </property>
+      </item>
+      <item rowspan="1" row="2" column="0" colspan="2" >
+        <widget class="QCheckBox" name="kcfg_PasswordFromWallet" >
+          <property name="text" >
+            <string>&amp;Use KDE Wallet to store password</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+U</string>
+          </property>
+          <property name="checked" >
+            <bool>true</bool>
+          </property>
         </widget>
-        <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>kcfg_PasswordFromWallet</cstring>
-            </property>
-            <property name="text">
-                <string>&amp;Use KDE Wallet to store password</string>
-            </property>
-            <property name="accel">
-                <string>Alt+U</string>
-            </property>
-            <property name="checked">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <spacer row="3" column="1">
-            <property name="name">
-                <cstring>spacer1</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>120</height>
-                </size>
-            </property>
+      </item>
+      <item row="3" column="1" >
+        <spacer name="spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>120</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+          </property>
         </spacer>
-        <widget class="KPasswordEdit" row="1" column="1">
-            <property name="name">
-                <cstring>gmailPassword</cstring>
-            </property>
-        </widget>
-    </grid>
-</widget>
-<tabstops>
+      </item>
+      <item row="1" column="1" >
+        <widget class="KPasswordEdit" name="gmailPassword" />
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
     <tabstop>kcfg_GmailUsername</tabstop>
     <tabstop>gmailPassword</tabstop>
     <tabstop>kcfg_PasswordFromWallet</tabstop>
-</tabstops>
-<variables>
-    <variable access="public">bool passwdUnchanged;</variable>
-</variables>
-<layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>klineedit.h</includehint>
-    <includehint>kpassdlg.h</includehint>
-</includehints>
-</UI>
+  </tabstops>
+  <includes>
+    <include location="local" >klineedit.h</include>
+    <include location="local" >kpassdlg.h</include>
+  </includes>
+</ui>

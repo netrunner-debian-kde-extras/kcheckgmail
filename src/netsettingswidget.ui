@@ -1,87 +1,80 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>NetworkSettingsWidget</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>NetworkSettingsWidget</cstring>
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>NetworkSettingsWidget</class>
+  <widget class="QWidget" name="NetworkSettingsWidget" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>436</width>
+        <height>240</height>
+      </rect>
     </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>436</width>
-            <height>240</height>
-        </rect>
+    <property name="windowTitle" >
+      <string>NetworkSettingsWidget</string>
     </property>
-    <property name="caption">
-        <string>NetworkSettingsWidget</string>
-    </property>
-    <grid>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <property name="margin">
-            <number>0</number>
-        </property>
-        <spacer row="3" column="0">
-            <property name="name">
-                <cstring>spacer1</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>40</height>
-                </size>
-            </property>
+    <layout class="QGridLayout" >
+      <property name="margin" >
+        <number>0</number>
+      </property>
+      <item row="3" column="0" >
+        <spacer name="spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>40</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+          </property>
         </spacer>
-        <widget class="KIntNumInput" row="0" column="0">
-            <property name="name">
-                <cstring>kcfg_Interval</cstring>
-            </property>
-            <property name="label">
-                <string>Chec&amp;king Interval</string>
-            </property>
-            <property name="value">
-                <number>60</number>
-            </property>
-            <property name="minValue">
-                <number>10</number>
-            </property>
-            <property name="maxValue">
-                <number>86400</number>
-            </property>
-            <property name="suffix">
-                <string> seconds</string>
-            </property>
+      </item>
+      <item row="0" column="0" >
+        <widget class="KIntNumInput" name="kcfg_Interval" >
+          <property name="label" >
+            <string>Chec&amp;king Interval</string>
+          </property>
+          <property name="value" >
+            <number>60</number>
+          </property>
+          <property name="minValue" >
+            <number>10</number>
+          </property>
+          <property name="maxValue" >
+            <number>86400</number>
+          </property>
+          <property name="suffix" >
+            <string> seconds</string>
+          </property>
         </widget>
-        <widget class="QCheckBox" row="2" column="0">
-            <property name="name">
-                <cstring>kcfg_UseHTTPS</cstring>
-            </property>
-            <property name="text">
-                <string>&amp;Use https connections for checking mail</string>
-            </property>
-            <property name="accel">
-                <string>Alt+U</string>
-            </property>
-            <property name="checked">
-                <bool>true</bool>
-            </property>
-            <property name="whatsThis" stdset="0">
-                <string>&lt;blockquote&gt;Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting.&lt;/blockquote&gt;</string>
-            </property>
+      </item>
+      <item row="2" column="0" >
+        <widget class="QCheckBox" name="kcfg_UseHTTPS" >
+          <property name="text" >
+            <string>&amp;Use https connections for checking mail</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+U</string>
+          </property>
+          <property name="checked" >
+            <bool>true</bool>
+          </property>
+          <property name="whatsThis" stdset="0" >
+            <string>&lt;blockquote>Use secure connections when checking for new mail. Note that the login procedure uses https regardless of this setting.&lt;/blockquote></string>
+          </property>
         </widget>
-    </grid>
-</widget>
-<customwidgets>
-</customwidgets>
-<layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>knuminput.h</includehint>
-</includehints>
-</UI>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <includes>
+    <include location="local" >knuminput.h</include>
+  </includes>
+</ui>
