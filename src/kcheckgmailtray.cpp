@@ -44,10 +44,10 @@
 
 
 KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
-	: KSystemTray(parent, name),
+	: KSystemTrayIcon(parent),
 	mMailCount(0)
 {
-	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
+	mPixGmail = KSystemTrayIcon::loadIcon("kcheckgmail");
 	mLightIconImage = mIconEffect.apply(mPixGmail,
 						KIconEffect::ToGamma,
 						0.90,

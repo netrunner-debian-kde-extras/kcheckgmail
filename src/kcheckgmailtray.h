@@ -21,7 +21,7 @@
 #ifndef KCHECKGMAIL_TRAY_H
 #define KCHECKGMAIL_TRAY_H
 
-#include <ksystemtray.h>
+#include <ksystemtrayicon.h>
 #include <kiconeffect.h>
 #include <qpixmap.h>
 #include <qstring.h>
@@ -43,7 +43,7 @@ class LoginSettingsWidget;
 class QTimer;
 class KAction;
 
-class KCheckGmailTray : public KSystemTray
+class KCheckGmailTray : public KSystemTrayIcon
 {
 	Q_OBJECT
 public:
