@@ -1,7 +1,4 @@
-<ui version="4.0" stdsetdef="1" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
+<ui version="4.0" >
  <class>AppletSettingsWidget</class>
  <widget class="QWidget" name="AppletSettingsWidget" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>397</width>
-    <height>408</height>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -79,17 +76,17 @@
    </item>
    <item row="4" column="0" >
     <spacer name="spacer3" >
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>16</height>
-      </size>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>20</width>
+       <height>16</height>
+      </size>
      </property>
     </spacer>
    </item>
@@ -123,17 +120,17 @@
        <layout class="QHBoxLayout" >
         <item>
          <spacer name="spacer9" >
-          <property name="sizeHint" >
-           <size>
-            <width>22</width>
-            <height>26</height>
-           </size>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
            <enum>QSizePolicy::Fixed</enum>
           </property>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>22</width>
+            <height>26</height>
+           </size>
           </property>
          </spacer>
         </item>
@@ -142,7 +139,7 @@
           <property name="enabled" >
            <bool>false</bool>
           </property>
-          <property name="showLocalProtocol" >
+          <property name="showLocalProtocol" stdset="0" >
            <bool>true</bool>
           </property>
          </widget>
@@ -182,16 +179,46 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KUrlRequester</class>
+   <extends>QFrame</extends>
+   <header>kurlrequester.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3ButtonGroup</class>
+   <extends>Q3GroupBox</extends>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <includes>
   <include location="local" >kurlrequester.h</include>
   <include location="local" >klineedit.h</include>
  </includes>
+ <resources/>
  <connections>
   <connection>
    <sender>kcfg_UseAltBrowser</sender>
    <signal>toggled(bool)</signal>
    <receiver>kcfg_CustomBrowser</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
  </connections>
 </ui>

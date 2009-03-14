@@ -1,7 +1,4 @@
-<ui version="4.0" stdsetdef="1" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
+<ui version="4.0" >
  <class>AdvancedSettingsWidget</class>
  <widget class="QWidget" name="AdvancedSettingsWidget" >
   <property name="geometry" >
@@ -21,26 +18,26 @@
    </property>
    <item row="0" column="0" >
     <layout class="QGridLayout" >
-     <item rowspan="1" row="1" column="0" colspan="2" >
+     <item row="1" column="0" colspan="2" >
       <widget class="KLineEdit" name="kcfg_searchFor" />
      </item>
      <item row="3" column="1" >
       <spacer name="spacer1" >
-       <property name="sizeHint" >
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>20</width>
          <height>80</height>
         </size>
        </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="orientation" >
-        <enum>Qt::Vertical</enum>
-       </property>
       </spacer>
      </item>
-     <item rowspan="1" row="2" column="0" colspan="2" >
+     <item row="2" column="0" colspan="2" >
       <widget class="QCheckBox" name="kcfg_gMailSimpleInterface" >
        <property name="text" >
         <string>Open Gmail in simple interface</string>
@@ -66,7 +63,16 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
+  </customwidget>
+ </customwidgets>
  <includes>
   <include location="local" >klineedit.h</include>
  </includes>
+ <resources/>
+ <connections/>
 </ui>

@@ -1,7 +1,4 @@
-<ui version="4.0" stdsetdef="1" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
+<ui version="4.0" >
  <class>LoginSettingsWidget</class>
  <widget class="QWidget" name="LoginSettingsWidget" >
   <property name="geometry" >
@@ -27,11 +24,11 @@
      <property name="text" >
       <string>Username:</string>
      </property>
-     <property name="buddy" stdset="0" >
-      <cstring>usernameTxt</cstring>
-     </property>
      <property name="wordWrap" >
       <bool>false</bool>
+     </property>
+     <property name="buddy" >
+      <cstring>usernameTxt</cstring>
      </property>
     </widget>
    </item>
@@ -40,15 +37,15 @@
      <property name="text" >
       <string>Password:</string>
      </property>
-     <property name="buddy" stdset="0" >
-      <cstring>passwordTxt</cstring>
-     </property>
      <property name="wordWrap" >
       <bool>false</bool>
      </property>
+     <property name="buddy" >
+      <cstring>passwordTxt</cstring>
+     </property>
     </widget>
    </item>
-   <item rowspan="1" row="2" column="0" colspan="2" >
+   <item row="2" column="0" colspan="2" >
     <widget class="QCheckBox" name="kcfg_PasswordFromWallet" >
      <property name="text" >
       <string>&amp;Use KDE Wallet to store password</string>
@@ -63,27 +60,39 @@
    </item>
    <item row="3" column="1" >
     <spacer name="spacer1" >
-     <property name="sizeHint" >
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>20</width>
        <height>120</height>
       </size>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
     </spacer>
    </item>
    <item row="1" column="1" >
-    <widget class="KPasswordEdit" name="gmailPassword" />
+    <widget class="KPasswordEdit" native="1" name="gmailPassword" />
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>klineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KPasswordEdit</class>
+   <extends>QWidget</extends>
+   <header>kpasswordedit.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>kcfg_GmailUsername</tabstop>
   <tabstop>gmailPassword</tabstop>
@@ -93,4 +102,6 @@
   <include location="local" >klineedit.h</include>
   <include location="local" >kpassdlg.h</include>
  </includes>
+ <resources/>
+ <connections/>
 </ui>
