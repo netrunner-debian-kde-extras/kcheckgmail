@@ -25,10 +25,9 @@ kde4_add_ui_files(kcheckgmail_SRCS
     netsettingswidget.ui)
 
 message(STATUS "DCOP has been removed in KDE 4; port code to D-Bus. kde4_add_dcop_skels macro does not exist anymore. We keep it just to remember to port to D-Bus.")
-#kde4_add_dcop_skels(kcheckgmail_SRCS
-kcheckgmailiface.h )
+#kde4_add_dcop_skels(kcheckgmail_SRCS kcheckgmailiface.h )
 
-kde4_add_kcfg_files(kcheckgmail_SRCS) prefs.kcfgc)
+kde4_add_kcfg_files(kcheckgmail_SRCS prefs.kcfgc)
 
 kde4_add_executable(kcheckgmail ${kcheckgmail_SRCS})
 
