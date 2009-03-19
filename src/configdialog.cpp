@@ -19,11 +19,11 @@
 #include "configdialog.h"
 #include "prefs.h"
 
-#include "appletsettingsbase.h"
-#include "loginsettingsbase.h"
-#include "netsettingsbase.h"
-#include "appearancesettingsbase.h"
-#include "advancedsettingsbase.h"
+#include "ui_appletsettingsbase.h"
+#include "ui_loginsettingsbase.h"
+#include "ui_netsettingsbase.h"
+#include "ui_appearancesettingsbase.h"
+#include "ui_advancedsettingsbase.h"
 
 #include <kpassworddialog.h>
 #include <klocale.h>
