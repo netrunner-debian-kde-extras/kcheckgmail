@@ -33,23 +33,28 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 	setFaceType(KPageDialog::List);
 	setButtons(Ok | Cancel);
 
-	mLoginSettings = new Ui::LoginSettingsBase(this, "LoginSettings");
-	addPage(mLoginSettings, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
+	QWidget* lwid = new QWidget();
+	mLoginSettings.setupUi(lwid);
+	addPage(lwid, i18n("Login"), "kcheckgmail", i18n("Login Settings"), true);
 
-	NetworkSettingsBase *nwid = new Ui::NetworkSettingsBase(this, "NetworkSettings");
-	addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
+	QWidget* nwid = new QWidget();
+	mNetworkSettings.setupUi(nwid);
+	addPage(nwid, i18n("Network"), "www", i18n("Network Settings"), true);
 
-	AppletSettingsBase *awid = new Ui::AppletSettingsBase(this, "AppletSettings");
-	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior Settings"));
+	QWidget* awid = new QWidget();
+	mAppletSettings.setupUi(awid);
+	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior Settings"), true);
 
-	AppearanceSettingsBase *apw = new Ui::AppearanceSettingsBase(this, "AppearanceSettings");
-	addPage(apw, i18n("Appearance"), "fonts", i18n("Appearance Settings"));
+	QWidget* apwid = new QWidget();
+	mAppearanceSettings.setupUi(apwid);
+	addPage(apwid, i18n("Appearance"), "fonts", i18n("Appearance Settings"), true);
 
-	AdvancedSettingsBase *cwid = new Ui::AdvancedSettingsBase(this, "AdvancedSettings");
-	addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
+	QWidget* adwid = new QWidget();
+	mAdvancedSettings.setupUi(adwid);
+	addPage(adwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"), true);
 
-	mLoginSettings->gmailPassword->erase();
-	mLoginSettings->gmailPassword->insert("\007\007\007");
+	mLoginSettings.gmailPassword->erase();
+	mLoginSettings.gmailPassword->insert("\007\007\007");
 }
 
 
@@ -59,22 +64,22 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::erasePassword()
 {
-	mLoginSettings->gmailPassword->erase();
+	mLoginSettings.gmailPassword->erase();
 }
 
 void ConfigDialog::insertPassword(const char* passwd)
 {
-	mLoginSettings->gmailPassword->insert(passwd);
+	mLoginSettings.gmailPassword->insert(passwd);
 }
 
 const char* ConfigDialog::password() const
 {
-	return mLoginSettings->gmailPassword->password();
+	return mLoginSettings.gmailPassword->password();
 }
 
 QString ConfigDialog::username() const
 {
-	return mLoginSettings->kcfg_GmailUsername->originalText();
+	return mLoginSettings.kcfg_GmailUsername->originalText();
 }
 
 } // namespace KCheckGmail

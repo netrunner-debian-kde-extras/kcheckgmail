@@ -43,7 +43,11 @@ public:
 	QString username() const;
 
 private:
-	Ui::LoginSettingsBase* mLoginSettings;
+	Ui::LoginSettingsBase mLoginSettings;
+	Ui::NetworkSettingsBase mNetworkSettings;
+	Ui::AppletSettingsBase mAppletSettings;
+	Ui::AppearanceSettingsBase mAppearanceSettings;
+	Ui::AdvancedSettingsBase mAdvancedSettings;
 };
 
 } // namespace KCheckGmail
