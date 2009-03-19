@@ -172,9 +172,7 @@ void KCheckGmailCore::initConfigDialog()
 {
 	d->mConfigDialog = new ConfigDialog(0,
 					  "KCheckGmailSettingsDialog",
-					  Prefs::self(),
-					  KDialogBase::IconList,
-					  KDialogBase::Ok | KDialogBase::Cancel);
+					  Prefs::self());
 
 	connect(d->mConfigDialog, SIGNAL(finished()),
 		this, SLOT(slotSettingsChanged()));

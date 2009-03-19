@@ -24,11 +24,14 @@
 
 namespace KCheckGmail {
 
-ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* config, DialogType dialogType, int dialogButtons)
- : KConfigDialog(parent, name, config, dialogType, dialogButtons)
+ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* config)
+ : KConfigDialog(parent, name, config)
 {
 
 	// Copied from KCheckGmailTray::initConfigDialog();
+
+	setFaceType(KPageDialog::List);
+	setButtons(Ok | Cancel);
 
 	mLoginSettings = new Ui::LoginSettingsBase(this, "LoginSettings");
 	addPage(mLoginSettings, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
