@@ -23,10 +23,10 @@
 #include <kconfigdialog.h>
 #include <klineedit.h>
 
-class LoginSettingsWidget;
-class NetworkSettingsWidget;
-class AppletSettingsWidget;
-class AdvancedSettingsWidget;
+class LoginSettingsBase;
+class NetworkSettingsBase;
+class AppletSettingsBase;
+class AdvancedSettingsBase;
 
 namespace KCheckGmail {
 
@@ -42,7 +42,7 @@ public:
 	QString username() const;
 
 private:
-	LoginSettingsWidget* mLoginSettings;
+	LoginSettingsBase* mLoginSettings;
 };
 
 } // namespace KCheckGmail

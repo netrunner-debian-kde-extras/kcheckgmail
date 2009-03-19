@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>AdvancedSettingsWidget</class>
- <widget class="QWidget" name="AdvancedSettingsWidget" >
+ <class>AdvancedSettingsBase</class>
+ <widget class="QWidget" name="AdvancedSettingsBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

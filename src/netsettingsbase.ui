@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>NetworkSettingsWidget</class>
- <widget class="QWidget" name="NetworkSettingsWidget" >
+ <class>NetworkSettingsBase</class>
+ <widget class="QWidget" name="NetworkSettingsBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>LoginSettingsWidget</class>
- <widget class="QWidget" name="LoginSettingsWidget" >
+ <class>LoginSettingsBase</class>
+ <widget class="QWidget" name="LoginSettingsBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

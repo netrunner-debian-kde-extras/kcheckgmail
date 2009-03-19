@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Luis Pereira &lt;luis.artur.pereira@gmail.com></author>
- <class>AppearanceSettingsWidget</class>
- <widget class="QWidget" name="AppearanceSettingsWidget" >
+ <class>AppearanceSettingsBase</class>
+ <widget class="QWidget" name="AppearanceSettingsBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

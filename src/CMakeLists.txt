@@ -18,11 +18,11 @@ set(kcheckgmail_SRCS
     main.cpp)
 
 kde4_add_ui_files(kcheckgmail_SRCS
-    advancedsettingswidget.ui
-    appearancesettingswidget.ui
-    appletsettingswidget.ui
-    loginsettingswidget.ui
-    netsettingswidget.ui)
+    advancedsettingsbase.ui
+    appearancesettingsbase.ui
+    appletsettingsbase.ui
+    loginsettingsbase.ui
+    netsettingsbase.ui)
 
 message(STATUS "DCOP has been removed in KDE 4; port code to D-Bus. kde4_add_dcop_skels macro does not exist anymore. We keep it just to remember to port to D-Bus.")
 #kde4_add_dcop_skels(kcheckgmail_SRCS kcheckgmailiface.h )

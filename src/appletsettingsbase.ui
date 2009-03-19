@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>AppletSettingsWidget</class>
- <widget class="QWidget" name="AppletSettingsWidget" >
+ <class>AppletSettingsBase</class>
+ <widget class="QWidget" name="AppletSettingsBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

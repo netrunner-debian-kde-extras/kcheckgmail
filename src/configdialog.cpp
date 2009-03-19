@@ -19,11 +19,11 @@
 #include "configdialog.h"
 #include "prefs.h"
 
-#include "appletsettingswidget.h"
-#include "loginsettingswidget.h"
-#include "netsettingswidget.h"
-#include "appearancesettingswidget.h"
-#include "advancedsettingswidget.h"
+#include "appletsettingsbase.h"
+#include "loginsettingsbase.h"
+#include "netsettingsbase.h"
+#include "appearancesettingsbase.h"
+#include "advancedsettingsbase.h"
 
 #include <kpassworddialog.h>
 #include <klocale.h>
@@ -36,19 +36,19 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 
 	// Copied from KCheckGmailTray::initConfigDialog();
 
-	mLoginSettings = new LoginSettingsWidget(this, "LoginSettings");
+	mLoginSettings = new LoginSettingsBase(this, "LoginSettings");
 	addPage(mLoginSettings, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
 
-	NetworkSettingsWidget *nwid = new NetworkSettingsWidget(this, "NetworkSettings");
+	NetworkSettingsBase *nwid = new NetworkSettingsBase(this, "NetworkSettings");
 	addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
 
-	AppletSettingsWidget *awid = new AppletSettingsWidget(this, "AppletSettings");
+	AppletSettingsBase *awid = new AppletSettingsBase(this, "AppletSettings");
 	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior Settings"));
 
-	AppearanceSettingsWidget *apw = new AppearanceSettingsWidget(this, "AppearanceSettings");
+	AppearanceSettingsBase *apw = new AppearanceSettingsBase(this, "AppearanceSettings");
 	addPage(apw, i18n("Appearance"), "fonts", i18n("Appearance Settings"));
 
-	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(this, "AdvancedSettings");
+	AdvancedSettingsBase *cwid = new AdvancedSettingsBase(this, "AdvancedSettings");
 	addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
 
 	mLoginSettings->gmailPassword->erase();
