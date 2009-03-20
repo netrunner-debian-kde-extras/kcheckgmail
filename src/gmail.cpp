@@ -665,7 +665,7 @@ void GMail::dump2File(const QString filename, const QString data)
 bool GMail::setDomainAdvice(QString url, QString advice)
 {
 	QByteArray params;
-	QDataStream stream(params, QIODevice::WriteOnly);
+	QDataStream stream(&params, QIODevice::WriteOnly);
 	stream << url;
 	stream << advice;
 	
@@ -687,7 +687,7 @@ QString GMail::getDomainAdvice(QString url)
 {
 	Q3CString replyType;
 	QByteArray params, reply;
-	QDataStream stream(params, QIODevice::WriteOnly);
+	QDataStream stream(&params, QIODevice::WriteOnly);
 	stream << url;
 	
 	if (!kapp->dcopClient()->call("kcookiejar", "kcookiejar",
@@ -697,7 +697,7 @@ QString GMail::getDomainAdvice(QString url)
 		return QString::null;
 	}
 
-	QDataStream stream2(reply, QIODevice::ReadOnly);
+	QDataStream stream2(&reply, QIODevice::ReadOnly);
 	if(replyType != "QString")
 	{
 		kWarning() << k_funcinfo << "DCOP function findCookies(...) return " << replyType.data() << ", expected QString" << endl;
@@ -728,7 +728,7 @@ QString GMail::findCookies(QString url)
 {
 	Q3CString replyType;
 	QByteArray params, reply;
-	QDataStream stream(params, QIODevice::WriteOnly);
+	QDataStream stream(&params, QIODevice::WriteOnly);
 	stream << url;
 	if (!kapp->dcopClient()->call("kcookiejar", "kcookiejar",
 	     "findCookies(QString)", params, replyType, reply))
@@ -737,7 +737,7 @@ QString GMail::findCookies(QString url)
 		return QString::null;
 	}
 
-	QDataStream stream2(reply, QIODevice::ReadOnly);
+	QDataStream stream2(&reply, QIODevice::ReadOnly);
 	if(replyType != "QString")
 	{
 		kWarning() << k_funcinfo << "DCOP function findCookies(...) return " << replyType.data() << ", expected QString" << endl;
