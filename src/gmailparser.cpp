@@ -39,7 +39,7 @@
  * Gmail's JavaScript interface.
 */
 GMailParser::GMailParser(QObject* parent, const char* name) :
-		QObject(parent, name),
+		QObject(parent),
 		mInvites(0)
 {
 	mSummary.inbox = 0;

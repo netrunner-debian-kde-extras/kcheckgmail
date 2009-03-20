@@ -24,7 +24,7 @@
 namespace KCheckGmail {
 
 JSProtocol::JSProtocol(QObject* parent, const char* name)
-	: QObject(parent, name),
+	: QObject(parent),
 	  mParser(new GMailParser(this, "JS_GMailParser")),
 	  mGmail(new GMail(this, "JS_GMailNetwork")),
 	  firstTime(true)
