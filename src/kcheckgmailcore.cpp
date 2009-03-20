@@ -524,13 +524,13 @@ void KCheckGmailCore::slotMailArrived(unsigned int n)
 void KCheckGmailCore::slotSettingsChanged()
 {
 	bool loginOk = true;
-	const char *passwd = d->mConfigDialog->password();
+	QString passwd = d->mConfigDialog->password();
 	const QString user = d->mConfigDialog->username();
 	int res;
 
 	kDebug() << k_funcinfo << passwd << endl;
 	
-	if(strlen(passwd) == 0 ) {
+	if(passwd.length() == 0 ) {
 		kDebug() << k_funcinfo << "user: " << user << endl;
 		if(user.length() == 0) {
 			res = KMessageBox::warningYesNo(0, i18n("No account information has been entered. Do you want to quit?"));
@@ -544,9 +544,9 @@ void KCheckGmailCore::slotSettingsChanged()
 		}
 	} else {
 		
-		kDebug() << k_funcinfo << " strncmp: " << strncmp(passwd, "\007\007\007", 3) << endl;
+		kDebug() << k_funcinfo << " strncmp: " << (passwd == QString("\007\007\007"))  << endl;
 
-		if( strncmp(passwd, "\007\007\007", 3) != 0) {
+		if(passwd != QString("\007\007\007")) {
 			kDebug() << k_funcinfo << "setting wallet" << endl;
 			loginOk = GMailWalletManager::instance()->set(d->mConfigDialog->password());
 			d->mConfigDialog->erasePassword();

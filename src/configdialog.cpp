@@ -53,8 +53,8 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 	mAdvancedSettings.setupUi(adwid);
 	addPage(adwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"), true);
 
-	mLoginSettings.gmailPassword->erase();
-	mLoginSettings.gmailPassword->insert("\007\007\007");
+	mLoginSettings.gmailPassword->clear();
+	mLoginSettings.gmailPassword->setText("\007\007\007");
 }
 
 
@@ -64,7 +64,7 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::erasePassword()
 {
-	mLoginSettings.gmailPassword->erase();
+	mLoginSettings.gmailPassword->clear();
 }
 
 void ConfigDialog::insertPassword(const char* passwd)
@@ -72,9 +72,9 @@ void ConfigDialog::insertPassword(const char* passwd)
 	mLoginSettings.gmailPassword->insert(passwd);
 }
 
-const char* ConfigDialog::password() const
+QString ConfigDialog::password() const
 {
-	return mLoginSettings.gmailPassword->password();
+	return mLoginSettings.gmailPassword->text();
 }
 
 QString ConfigDialog::username() const

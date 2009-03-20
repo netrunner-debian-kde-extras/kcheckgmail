@@ -39,7 +39,7 @@ public:
 
 	void erasePassword();
 	void insertPassword(const char* passw);
-	const char* password() const;
+	QString password() const;
 	QString username() const;
 
 private:
