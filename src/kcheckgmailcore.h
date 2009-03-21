@@ -51,6 +51,7 @@ using KCheckGmail::JSProtocol;
  */
 class KCheckGmailCore : public QObject {
 	Q_OBJECT
+        Q_CLASSINFO("D-Bus Interface", "org.kcheckgmail.kcheckgmail")
 
 public:
 	static KCheckGmailCore& instance();
