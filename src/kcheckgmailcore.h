@@ -101,20 +101,21 @@ private:
 
 	QString newEmailNotifyMessage(unsigned int n, bool showSender, bool showSubject, bool showSnippet);
 
-	// dcop call implementations
-	int mailCount() const;
-	void checkMailNow();
-	void showIcon();
-	void hideIcon();
-	void whereAmI();
-	QStringList getThreads();
-	QString getThreadSubject(QString msgId);
-	QString getThreadSender(QString msgId);
-	QString getThreadSnippet(QString msgId);
-	QStringList getThreadAttachments(QString msgId);
-	bool isNewThread(QString msgId);
-	QMap<QString, unsigned int> getLabels();
-	QString getGaiaName();
+public Q_SLOTS:
+	// D-Bus callable implementations
+	Q_SCRIPTABLE int mailCount() const;
+	Q_SCRIPTABLE void checkMailNow();
+	Q_SCRIPTABLE void showIcon();
+	Q_SCRIPTABLE void hideIcon();
+	Q_SCRIPTABLE void whereAmI();
+	Q_SCRIPTABLE QStringList getThreads();
+	Q_SCRIPTABLE QString getThreadSubject(QString msgId);
+	Q_SCRIPTABLE QString getThreadSender(QString msgId);
+	Q_SCRIPTABLE QString getThreadSnippet(QString msgId);
+	Q_SCRIPTABLE QStringList getThreadAttachments(QString msgId);
+	Q_SCRIPTABLE bool isNewThread(QString msgId);
+	Q_SCRIPTABLE QMap<QString, unsigned int> getLabels();
+	Q_SCRIPTABLE QString getGaiaName();
 
 private:
 	class Private;
