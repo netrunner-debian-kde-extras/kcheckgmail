@@ -25,6 +25,7 @@
 #include "configdialog.h"
 #include "gmailwalletmanager.h"
 #include "prefs.h"
+#include "kcheckgmailadaptor.h"
 
 #include <cstdlib>
 #include <kapplication.h>
@@ -69,11 +70,10 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
 	initConfigDialog();
 	makeConnections(d->mJSP, d->mTray);
 
-	// register with dcop
-	if(!kapp->dcopClient()->isRegistered()) {
-		kapp->dcopClient()->registerAs(kapp->name());
-	}
-	kapp->dcopClient()->setDefaultObject(objId());
+	// D-Bus
+	(void) new KcheckgmailAdaptor(this);
+	QDBusConnection dbus = QDBusConnection::sessionBus();
+	dbus.registerObject("/kcheckgmail", this, QDBusConnection::ExportScriptableSlots);
 
 	d->mTray->showIcon();
 	start();
