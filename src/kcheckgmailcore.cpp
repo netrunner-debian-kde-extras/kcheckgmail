@@ -47,7 +47,7 @@
 #include <kdialog.h>
 #include <kdialogbase.h>
 #include <knotification.h>
-#include <dcopclient.h>
+#include <QDBusConnection>
 
 #include <qfile.h>
 #include <qtooltip.h>

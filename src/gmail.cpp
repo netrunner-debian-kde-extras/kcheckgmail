@@ -37,13 +37,13 @@
 #include <qmutex.h>
 #include <qregexp.h>
 #include <qtimer.h>
+#include <QtDBus/QtDBus>
+#include <QtDBus/QDBusError>
 //Added by qt3to4:
 #include <Q3TextStream>
 #include <Q3CString>
 
 #include <kapplication.h>
-#include <dcopclient.h>
-#include <dcopclient.h>
 #include <kcharsets.h>
 
 #ifdef DUMP_PAGES
@@ -664,15 +664,12 @@ void GMail::dump2File(const QString filename, const QString data)
 
 bool GMail::setDomainAdvice(QString url, QString advice)
 {
-	QByteArray params;
-	QDataStream stream(&params, QIODevice::WriteOnly);
-	stream << url;
-	stream << advice;
-	
-	if (!kapp->dcopClient()->send("kcookiejar", "kcookiejar",
-	     "setDomainAdvice(QString,QString)", params))
-	{
-		kWarning() << k_funcinfo << "There was some error using DCOP!" << endl;
+	QDBusInterface kded("org.kde.kded", "/modules/kcookiejar", "org.kde.KCookieServer", QDBusConnection::sessionBus());
+	QDBusReply<void> reply = kded.call("setDomainAdvice", url, advice);
+	if (!reply.isValid()) {
+		QDBusError error = reply.error();
+		kWarning() << k_funcinfo << "D-BUS error while calling setDomainAdvice" << endl;
+		kDebug() << "Error description:" << error.message() << endl;
 		return false;
 	}
 	
@@ -685,29 +682,18 @@ bool GMail::setDomainAdvice(QString url, QString advice)
 
 QString GMail::getDomainAdvice(QString url)
 {
-	Q3CString replyType;
-	QByteArray params, reply;
-	QDataStream stream(&params, QIODevice::WriteOnly);
-	stream << url;
+	QDBusInterface kded("org.kde.kded", "/modules/kcookiejar", "org.kde.KCookieServer", QDBusConnection::sessionBus());
+	QDBusReply<QString> reply = kded.call("getDomainAdvice", url);
 	
-	if (!kapp->dcopClient()->call("kcookiejar", "kcookiejar",
-	     "getDomainAdvice(QString)", params, replyType, reply))
+	if (!reply.isValid())
 	{
-		kWarning() << k_funcinfo << "There was some error using DCOP!" << endl;
+		QDBusError error = reply.error();
+		kWarning() << k_funcinfo << "D-BUS error while calling getDomainAdvice" << endl;
+		kDebug() << "Error description:" << error.message() << endl;
 		return QString::null;
 	}
 
-	QDataStream stream2(&reply, QIODevice::ReadOnly);
-	if(replyType != "QString")
-	{
-		kWarning() << k_funcinfo << "DCOP function findCookies(...) return " << replyType.data() << ", expected QString" << endl;
-		return QString::null;
-	}
-
-	QString result;
-	stream2 >> result;
-	
-	return result;
+	return reply.value();
 }
 
 bool GMail::areCookiesAllowed(QString url)
@@ -726,27 +712,16 @@ bool GMail::areCookiesAllowed(QString url)
 //From kcookiejartest.cpp
 QString GMail::findCookies(QString url)
 {
-	Q3CString replyType;
-	QByteArray params, reply;
-	QDataStream stream(&params, QIODevice::WriteOnly);
-	stream << url;
-	if (!kapp->dcopClient()->call("kcookiejar", "kcookiejar",
-	     "findCookies(QString)", params, replyType, reply))
+	QDBusInterface kded("org.kde.kded", "/modules/kcookiejar", "org.kde.KCookieServer", QDBusConnection::sessionBus());
+	QDBusReply<QString> reply = kded.call("findCookies", url, qlonglong(0));
+	if (!reply.isValid())
 	{
-		kWarning() << k_funcinfo << "There was some error using DCOP!" << endl;
+		QDBusError error = reply.error();
+		kWarning() << k_funcinfo << "D-BUS error while calling findCookies" << endl;
+		kWarning() << "Error description:" << error.message() << endl;
 		return QString::null;
 	}
-
-	QDataStream stream2(&reply, QIODevice::ReadOnly);
-	if(replyType != "QString")
-	{
-		kWarning() << k_funcinfo << "DCOP function findCookies(...) return " << replyType.data() << ", expected QString" << endl;
-		return QString::null;
-	}
-
-	QString result;
-	stream2 >> result;
-	return result;
+	return reply.value();
 }
 
 bool GMail::cookieExists(QString cookieName,QString url)
