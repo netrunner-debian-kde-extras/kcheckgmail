@@ -1,0 +1,42 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.kcheckgmail.kcheckgmail">
+    <method name="mailCount">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="checkMailNow">
+    </method>
+    <method name="showIcon">
+    </method>
+    <method name="hideIcon">
+    </method>
+    <method name="whereAmI">
+    </method>
+    <method name="getThreads">
+      <arg type="as" direction="out"/>
+    </method>
+    <method name="getThreadSubject">
+      <arg type="s" direction="out"/>
+      <arg name="msgId" type="s" direction="in"/>
+    </method>
+    <method name="getThreadSender">
+      <arg type="s" direction="out"/>
+      <arg name="msgId" type="s" direction="in"/>
+    </method>
+    <method name="getThreadSnippet">
+      <arg type="s" direction="out"/>
+      <arg name="msgId" type="s" direction="in"/>
+    </method>
+    <method name="getThreadAttachments">
+      <arg type="as" direction="out"/>
+      <arg name="msgId" type="s" direction="in"/>
+    </method>
+    <method name="isNewThread">
+      <arg type="b" direction="out"/>
+      <arg name="msgId" type="s" direction="in"/>
+    </method>
+    <method name="getGaiaName">
+      <arg type="s" direction="out"/>
+    </method>
+  </interface>
+</node>

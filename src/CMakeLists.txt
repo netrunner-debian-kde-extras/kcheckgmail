@@ -24,8 +24,7 @@ kde4_add_ui_files(kcheckgmail_SRCS
     loginsettingsbase.ui
     netsettingsbase.ui)
 
-message(STATUS "DCOP has been removed in KDE 4; port code to D-Bus. kde4_add_dcop_skels macro does not exist anymore. We keep it just to remember to port to D-Bus.")
-#kde4_add_dcop_skels(kcheckgmail_SRCS kcheckgmailiface.h )
+qt4_add_dbus_adaptor(kcheckgmail_SRCS org.kcheckgmail.kcheckgmail.xml kcheckgmailcore.h KCheckGmailCore)
 
 kde4_add_kcfg_files(kcheckgmail_SRCS prefs.kcfgc)
 
@@ -40,6 +39,7 @@ install(TARGETS kcheckgmail ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES  kcheckgmail.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES  eventsrc DESTINATION ${DATA_INSTALL_DIR}/kcheckgmail)
+install(FILES  org.kcheckgmail.kcheckgmail.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
 
 
 
