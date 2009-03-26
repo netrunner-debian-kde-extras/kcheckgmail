@@ -21,7 +21,6 @@
 #define KCHECKGMAIL_CORE_H
 
 #include <qobject.h>
-#include "kcheckgmailiface.h"
 
 #include <kdebug.h>
 
@@ -45,8 +44,12 @@ using KCheckGmail::JSProtocol;
  * KCheckGmailTray
  *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>
  *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>
+ *
+ * KCheckGmailIface
+ *   Copyright (C) 2005 by James Stembridge <jstembridge@gmail.com>
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>
  */
-class KCheckGmailCore : public QObject, virtual public KCheckGmailIface {
+class KCheckGmailCore : public QObject {
 	Q_OBJECT
 
 public:

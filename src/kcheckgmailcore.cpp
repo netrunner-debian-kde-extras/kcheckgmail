@@ -57,8 +57,7 @@
 
 
 KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
-	: DCOPObject("KCheckGmailIface"),
-	  QObject(parent),
+	: QObject(parent),
 	  d(new Private)
 {
 	d->mJSP = new JSProtocol(this, "JSProtocol");
