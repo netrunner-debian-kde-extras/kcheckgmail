@@ -52,8 +52,26 @@
 
 #define MILLISECS(x) (x * 1000)
 
+class GMail::Private {
+public:
+	Private()
+	  : buffer(0)
+	{
+	}
 
-GMail::GMail(QObject* parent, const char* name) : QObject(parent)
+	~Private()
+	{
+		delete buffer;
+		buffer = 0;
+	}
+
+	QBuffer *buffer;
+};
+
+
+GMail::GMail(QObject* parent, const char* name)
+	: QObject(parent),
+	  d(new Private())
 {
 	mInterval = Prefs::interval();
 	mCheckLock = new QMutex();
@@ -95,6 +113,9 @@ GMail::~GMail()
 		mLoginLock->unlock();
 	delete mLoginLock;
 	mLoginLock = 0;
+
+	delete d;
+	d = 0;
 }
 
 void GMail::slotSetWalletPassword(bool)
@@ -434,6 +455,13 @@ void GMail::checkGMail()
 				KUrl::encode_string(Prefs::searchFor())
 							 ).replace('@','%');
 
+		if (d->buffer) {
+			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
+			return;
+		}
+		d->buffer = new QBuffer;
+		d->buffer->open(QIODevice::WriteOnly);
+
 		kDebug() << k_funcinfo << "GET: " << url << endl;
 
 		KIO::TransferJob *job = KIO::get(url, KIO::Reload, KIO::HideProgressInfo);
@@ -453,8 +481,7 @@ void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 	if(job->error() != 0) {
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
-		Q3CString str(data, data.size() + 1);
-		mPageBuffer.append(str);
+		d->buffer->write(data.data(), data.size());
 	}
 }
 
@@ -464,11 +491,19 @@ void GMail::slotCheckResult(KIO::Job *job)
 	if(job->error() != 0) {
 		// TODO: We should notify the user
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
-		mPageBuffer = "";
+
+		delete d->buffer;
+		d->buffer = 0;
 		mCheckLock->unlock();
+
 		// let's try again in 60 seconds
 		setInterval(60, true);
 	} else {
+		mPageBuffer = QString::fromUtf8(d->buffer->data());
+		mPageBuffer.detach();
+
+		delete d->buffer;
+		d->buffer = 0;
 
 		kDebug() << k_funcinfo << "Check finished." << endl;
 

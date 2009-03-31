@@ -106,6 +106,9 @@ private:
 	QString gGAP4DLoginURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
 
 	KUrl loginRedirection;
+
+	class Private;
+	Private* d;
 	
 public slots:
 	void slotCheckGmail();

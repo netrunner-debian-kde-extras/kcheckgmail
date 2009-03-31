@@ -124,7 +124,7 @@ GMailParser::~GMailParser()
  *
  * @param _data Gmail's JavaScript response
 */
-void GMailParser::parse(const QString &_data)
+void GMailParser::parse(const QString &data)
 {
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
@@ -152,7 +152,6 @@ void GMailParser::parse(const QString &_data)
 	
 	kDebug() << k_funcinfo << "previousLatestThread=" << previousLatestThread << endl;
 
-	QString data = QString::fromUtf8(_data);
 
 	/*
 	 * mailsArrived refers to new messages in the parsed threads
