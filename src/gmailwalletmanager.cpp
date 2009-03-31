@@ -31,7 +31,7 @@ GMailWalletManager *GMailWalletManager::instance()
 bool GMailWalletManager::set(const QString &p)
 {
 	bool ret = true;
-	KMD5 md5(p);
+	KMD5 md5(p.toUtf8());
 		
 	kDebug() << k_funcinfo << "Password=" << p.length()
 			 << " hash=" << md5.hexDigest() << endl;
@@ -71,7 +71,7 @@ bool GMailWalletManager::get()
 				QString ret;
 				mWallet->readPassword("gmailPassword", ret);
 				kDebug() << k_funcinfo << "Got password" << endl;
-				KMD5 md5(ret);
+				KMD5 md5(ret.toUtf8());
 				mHash = md5.hexDigest();
 				emit getWalletPassword(ret);
 			}
@@ -137,7 +137,7 @@ void GMailWalletManager::slotWalletChangedStatus()
 			QString ret;
 			mWallet->readPassword("gmailPassword", ret);
 			kDebug() << k_funcinfo << "Got pass: " << ret << endl;
-			KMD5 md5(ret);
+			KMD5 md5(ret.toUtf8());
 			mHash = md5.hexDigest();
 			emit getWalletPassword(ret);
 			clearPassword();
@@ -220,7 +220,7 @@ bool GMailWalletManager::getWallet()
 			QString p;
 			mWallet->readPassword("gmailPassword", p);
 			kDebug() << k_funcinfo << "p=" << p << endl;
-			KMD5 md5(p);
+			KMD5 md5(p.toUtf8());
 			mHash = md5.hexDigest();
 			emit getWalletPassword(p);
 		} else
@@ -247,7 +247,7 @@ bool GMailWalletManager::getKConfig()
 	bool ret = true;
 	kDebug() << k_funcinfo << endl;
 
-	KMD5 md5(Prefs::gmailPassword());
+	KMD5 md5(Prefs::gmailPassword().toUtf8());
 	mHash = md5.hexDigest();
 	emit getWalletPassword(Prefs::gmailPassword());
 
