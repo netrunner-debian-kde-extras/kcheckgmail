@@ -184,6 +184,7 @@ bool GMailWalletManager::storeWallet()
 			"Do you want to save the password in the unsafe configuration file instead?"),
 			i18n("Unable to store secure password"),
 			KGuiItem(i18n("Store unsafe"), "unlock"),
+			KStandardGuiItem::cancel(),
 			"FallbackToKConfig") != KMessageBox::Continue) {
 			ret = false;
 		} else {
@@ -231,6 +232,7 @@ bool GMailWalletManager::getWallet()
 			"Do you want to save the password in the unsafe configuration file instead?"),
 			i18n("Unable to retrieve secure password"),
 			KGuiItem(i18n("Store unsafe"), "unlock"),
+			KStandardGuiItem::cancel(),
 			"FallbackToKConfig") != KMessageBox::Continue) {
 			ret = false;
 		} else
