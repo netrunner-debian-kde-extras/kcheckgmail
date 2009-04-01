@@ -34,6 +34,7 @@ namespace KCheckGmail {
 
 class KMenu;
 class KActionCollection;
+class QColor;
 using KCheckGmail::JSProtocol;
 
 
