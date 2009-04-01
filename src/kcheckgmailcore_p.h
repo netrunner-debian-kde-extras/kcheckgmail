@@ -39,7 +39,6 @@ class KPopupmenu;
 class KConfig;
 class KIconeffect;
 class KMimetype;
-class KGlobal;
 class KHelpMenu;
 class KIconloader;
 
