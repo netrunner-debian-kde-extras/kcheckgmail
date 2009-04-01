@@ -31,6 +31,7 @@
 #include <kapplication.h>
 #include <klocale.h>
 #include <kactioncollection.h>
+#include <kaction.h>
 #include <kmenu.h>
 #include <kconfigdialog.h>
 #include <kconfig.h>
@@ -113,19 +114,30 @@ void KCheckGmailCore::initTray()
 
 void KCheckGmailCore::initActions()
 {
-	d->actionShowKNotifyDialog = new KAction(i18n("Configure &Notifications"), "knotify", "", this, SLOT(slotShowKNotifyDialog()), d->actions);
+	d->actionShowKNotifyDialog = new KAction(KIcon("preferences-desktop-notification"), i18n("Configure &Notifications"), this);
+	d->actions->addAction("configure-notifications", d->actionShowKNotifyDialog);
+	connect(d->actionShowKNotifyDialog, SIGNAL(triggered(bool)),
+		this, SLOT(slotShowKNotifyDialog()));
 
-	d->actionShowPrefsDialog = new KAction(i18n("&Configure KCheckGMail..."), "configure", "",
-		this, SLOT( slotShowPrefsDialog()), d->actions);
+	d->actionShowPrefsDialog = new KAction(KIcon("configure"), i18n("&Configure KCheckGMail..."), this);
+	d->actions->addAction("configure", d->actionShowPrefsDialog);
+	connect(d->actionShowPrefsDialog, SIGNAL(triggered(bool)),
+		this, SLOT(slotShowPrefsDialog()));
 
-	d->mLoginCheckMailAction = new KAction(i18n("Login and Chec&k Mail"), "launch", "",
-		d->mJSP->retriever(), SLOT(slotCheckGmail()), d->actions);
+	d->mLoginCheckMailAction = new KAction(KIcon("launch"), i18n("Login and Chec&k Mail"), this);
+	d->actions->addAction("login-and-check-mail", d->mLoginCheckMailAction);
+	connect(d->mLoginCheckMailAction, SIGNAL(triggered(bool)),
+		d->mJSP->retriever(), SLOT(slotCheckGmail()));
 
-	d->actionLaunchBrowser = new KAction(i18n("&Launch Browser"), "konqueror", "",
-		this, SLOT(slotLaunchBrowser()), d->actions);
+	d->actionLaunchBrowser = new KAction(KIcon("konqueror"), i18n("&Launch Browser"), this);
+	d->actions->addAction("launch-browser", d->actionLaunchBrowser);
+	connect(d->actionLaunchBrowser, SIGNAL(triggered(bool)),
+		this, SLOT(slotLaunchBrowser()));
 
-	d->actionComposeMail = new KAction(i18n("Co&mpose Mail"), "email", "",
-		this, SLOT(slotComposeMail()), d->actions );
+	d->actionComposeMail = new KAction(KIcon("email"), i18n("Co&mpose Mail"), this);
+	d->actions->addAction("compose-mail", d->actionComposeMail);
+	connect(d->actionComposeMail, SIGNAL(triggered(bool)),
+		this, SLOT(slotComposeMail()));
 }
 
 
@@ -144,16 +156,16 @@ void KCheckGmailCore::buidTrayPopupMenu()
 
 	d->menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
 
-	d->actionShowKNotifyDialog->plug( d->menu );
-	d->actionShowPrefsDialog->plug(d->menu);
+	d->menu->addAction(d->actionShowKNotifyDialog);
+	d->menu->addAction(d->actionShowPrefsDialog);
 
 	d->menu->insertSeparator();
 
-	d->mLoginCheckMailAction->plug(d->menu);
+	d->menu->addAction(d->mLoginCheckMailAction);
 	d->mLoginCheckMailAction->setEnabled(false);
 
-	d->actionLaunchBrowser->plug(d->menu);
-	d->actionComposeMail->plug(d->menu);
+	d->menu->addAction(d->actionLaunchBrowser);
+	d->menu->addAction(d->actionComposeMail);
 
 	d->mThreadsMenuId = d->menu->insertItem(SmallIcon("kcheckgmail"),
 		i18n("Th&reads"), d->mThreadsMenu);
