@@ -45,7 +45,6 @@
 #include <knotifyconfigwidget.h>
 #include <kmessagebox.h>
 #include <kdialog.h>
-#include <kdialogbase.h>
 #include <knotification.h>
 #include <QDBusConnection>
 
