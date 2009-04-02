@@ -51,6 +51,7 @@
 
 #include <qfile.h>
 #include <qtooltip.h>
+#include <QHash>
 //Added by qt3to4:
 #include <Q3ValueList>
 #include <QPixmap>
@@ -420,9 +421,9 @@ void KCheckGmailCore::slotLaunchBrowser(const QString &url)
 		KToolInvocation::invokeBrowser(loadURL);
 	else {
 		QString s = Prefs::customBrowser();
-		QMap<QChar,QString> map;
-		map.insert('u', loadURL);
-		s = KMacroExpander::expandMacrosShellQuote(s, map);
+		QHash<QChar,QString> hash;
+		hash.insert('u', loadURL);
+		s = KMacroExpander::expandMacrosShellQuote(s, hash);
 		KRun::runCommand(QFile::encodeName(s));
 	}
 }
