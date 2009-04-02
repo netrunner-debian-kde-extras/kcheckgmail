@@ -424,7 +424,7 @@ void KCheckGmailCore::slotLaunchBrowser(const QString &url)
 		QHash<QChar,QString> hash;
 		hash.insert('u', loadURL);
 		s = KMacroExpander::expandMacrosShellQuote(s, hash);
-		KRun::runCommand(QFile::encodeName(s));
+		KRun::runCommand(QFile::encodeName(s), 0);
 	}
 }
 
