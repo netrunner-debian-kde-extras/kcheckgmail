@@ -143,18 +143,17 @@ void KCheckGmailCore::initActions()
 
 void KCheckGmailCore::buidTrayPopupMenu()
 {
-	d->mThreadsMenu = new KMenu(d->mTray, "KCheckGmail Threads menu");
+	d->menu = qobject_cast<KMenu *>(d->mTray->contextMenu());
+	d->menu->clear();
+
+	d->mThreadsMenu = new KMenu(d->menu);
 
 	connect(d->mThreadsMenu, SIGNAL(activated(int)),
 		SLOT(slotThreadActivated(int)));
 
 	connect(d->mThreadsMenu, SIGNAL(highlighted(int)),
 		SLOT(slotThreadsItemHighlighted(int)));
-
-	d->menu = d->mTray->contextMenu();
-	d->menu->clear();
-
-	d->menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
+	d->menu->addTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
 
 	d->menu->addAction(d->actionShowKNotifyDialog);
 	d->menu->addAction(d->actionShowPrefsDialog);
