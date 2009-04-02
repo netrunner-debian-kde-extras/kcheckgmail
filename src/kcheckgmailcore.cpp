@@ -499,7 +499,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 		fileName = *it; // attachment filename
 
 		mimetype = KMimeType::findByPath(fileName, 0, true); // no disk access
-		iconType = mimetype->icon(QString::null, false);
+		iconType = mimetype->mimeType(QString::null, KMimeType::ResolveAliases);
 		iconFileName = KIconLoader::global()->iconPath(iconType, KIcon::Small);
 		kDebug() << "Attachment name: " << fileName << ", iconType: " << iconType << endl;
 		attachments.append(format.arg(iconFileName, fileName));
