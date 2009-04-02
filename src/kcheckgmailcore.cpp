@@ -393,7 +393,7 @@ QString KCheckGmailCore::newEmailNotifyMessage(unsigned int n, bool showSender, 
 
 void KCheckGmailCore::slotShowKNotifyDialog()
 {
-	KNotifyConfigWidget::configure(d->mTray);
+	KNotifyConfigWidget::configure(0);
 }
 
 
