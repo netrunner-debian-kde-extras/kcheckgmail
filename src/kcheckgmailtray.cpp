@@ -61,7 +61,7 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
-	QToolTip::add(this, i18n("KCheckGMail"));
+	setToolTip(i18n("KCheckGMail"));
 	
 	iconDisplayed = false;
 }
@@ -69,7 +69,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 
 KCheckGmailTray::~KCheckGmailTray()
 {
-    QToolTip::remove(this);
 }
 
 
@@ -265,8 +264,7 @@ void KCheckGmailTray::slotgNameUpdate(QString name)
 	else
 		sname = name;
 	
-	QToolTip::remove( this );
-	QToolTip::add(this, i18n("KCheckGMail - Notifying about new email for %1").arg(name));
+	setToolTip(i18n("KCheckGMail - Notifying about new email for %1").arg(name));
 }
 
 void KCheckGmailTray::setPixmapAuth()

@@ -624,8 +624,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 
 		d->mTray->setPixmapAuth();
 		d->mLoginCheckMailAction->setText(i18n("Login and Chec&k Mail"));
-		QToolTip::remove( d->mTray );
-		QToolTip::add(d->mTray, i18n("KCheckGMail"));
+		d->mTray->setToolTip(i18n("KCheckGMail"));
 		
 	} else {
 		d->mTray->setPixmapEmpty();
