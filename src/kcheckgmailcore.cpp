@@ -569,7 +569,7 @@ void KCheckGmailCore::slotSettingsChanged()
 		
 		if (Prefs::searchFor().length() == 0) {
 			Prefs::setSearchFor("in:inbox is:unread");
-			Prefs::writeConfig();
+			Prefs::self()->writeConfig();
 		}
 		
 		if (Prefs::searchFor().contains("in:") == 0 && Prefs::searchFor().contains("label:") == 0) {
