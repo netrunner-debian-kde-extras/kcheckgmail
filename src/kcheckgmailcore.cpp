@@ -367,14 +367,14 @@ QString KCheckGmailCore::newEmailNotifyMessage(unsigned int n, bool showSender, 
 			QString str;
 			str = i18n("<center><b>New mail arrived</b></center>");
 			if (showSender) {
-				str.append(i18n("<b>Sender:</b> <i>%1</i>").arg(t.senders));
+				str.append(i18n("<b>Sender:</b> <i>%1</i>", t.senders));
 				newLine = true;
 			}
 			if (showSubject) {
 				if (newLine) {
 					str.append("<br>");
 				}
-				str.append( i18n("<b>Subject:</b> <i>%1</i>").arg(t.subject));
+				str.append( i18n("<b>Subject:</b> <i>%1</i>", t.subject));
 				newLine = true;
 			}
 			if (showSnippet) {
@@ -386,8 +386,8 @@ QString KCheckGmailCore::newEmailNotifyMessage(unsigned int n, bool showSender, 
 			return str;
 		}
 	}
-	return i18n("There is <b>1</b> new mail message",
-		   "There are <b>%n</b> new mail messages", n);
+	return i18np("There is <b>1</b> new mail message",
+		   "There are <b>%1</b> new mail messages", n);
 }
 
 
@@ -491,7 +491,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 	unsigned int attachmentsCount = 0;
 	KMimeType::Ptr mimetype;
 
-	format = i18n("format used to display the attachments (%1 is the icon, %2 is the file name)", "<img src=\"%1\"> %2");
+	format = i18nc("format used to display the attachments (%1 is the icon, %2 is the file name)", "<img src=\"%1\"> %2");
 
 	for (; it != t.attachments.end(); ++it ) {
 		attachmentsCount++;
@@ -505,8 +505,8 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 	}
 
 	if (attachmentsCount > 0) {
-		message.append("<br>" + i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
-				.arg(attachments.join(", ")));
+		message.append("<br>" + i18np("Attachment: %2", "Attachments: %2", attachmentsCount,
+				 attachments.join(", ")));
 	}
 
 	KNotification::event(QString::fromLatin1("gmail-mail-snippet"), message, QPixmap(), d->mThreadsMenu);
@@ -615,8 +615,8 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 	if (!ok) {
 		if (isExcuseNeeded) {
 			KNotification::event(QString::fromLatin1("gmail-login-no"),
-					i18n("An error occurred logging in to Gmail<br><b>%1</b>")
-						.arg(message));
+					i18n("An error occurred logging in to Gmail<br><b>%1</b>",
+						 message));
 
 			kDebug() << k_funcinfo << "Notification: gmail-login-no" \
 						<< " error message:" << message << endl;

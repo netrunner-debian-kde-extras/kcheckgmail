@@ -264,7 +264,7 @@ void KCheckGmailTray::slotgNameUpdate(QString name)
 	else
 		sname = name;
 	
-	setToolTip(i18n("KCheckGMail - Notifying about new email for %1").arg(name));
+	setToolTip(i18n("KCheckGMail - Notifying about new email for %1", name));
 }
 
 void KCheckGmailTray::setPixmapAuth()
