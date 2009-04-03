@@ -5,7 +5,6 @@ include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
 ########### next target ###############
 
 set(kcheckgmail_SRCS
-    knotification.cpp
     configdialog.cpp
     gmail.cpp
     gmailparser.cpp
@@ -38,7 +37,7 @@ install(TARGETS kcheckgmail ${INSTALL_TARGETS_DEFAULT_ARGS})
 ########### install files ###############
 
 install(FILES  kcheckgmail.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
-install(FILES  eventsrc DESTINATION ${DATA_INSTALL_DIR}/kcheckgmail)
+install(FILES  kcheckgmail.notifyrc DESTINATION ${DATA_INSTALL_DIR}/kcheckgmail )
 install(FILES  org.kcheckgmail.kcheckgmail.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
 
 

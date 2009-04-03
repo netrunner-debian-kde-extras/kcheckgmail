@@ -1,8 +1,8 @@
-[!Global!]
+[Global]
 IconName=kcheckgmail
 Comment=KCheckGMail
 
-[new-gmail-arrived]
+[Event/new-gmail-arrived]
 Name=New Gmail Arrived
 Name[zh_CN]=收到新邮件
 Name[wa]=Gn a on novea Gmail d' arivé
@@ -31,9 +31,9 @@ Comment[el]=Έχετε νέο μήνυμα.
 Comment[cs]=Přišel nový Gmail
 Comment[ca]=Ha arribat nou Gmail
 Comment[ar]=وصلت رسالة جديدة
-default_presentation=16
+Action=Popup
 
-[gmail-login-yes]
+[Event/gmail-login-yes]
 Name=Logged in to Gmail
 Name[zh_CN]=登录到Gmail
 Name[wa]=Elodjî dins Gmail
@@ -68,9 +68,9 @@ Comment[el]=Σύνδεση στο Gmail : ΟΚ
 Comment[cs]=Přihlášen do GMailu
 Comment[ca]=Connectat a Gmail
 Comment[ar]=والج بGmail
-default_presentation=16
+Action=Popup
 
-[gmail-login-no]
+[Event/gmail-login-no]
 Name=Failed to login to Gmail
 Name[zh_CN]=登录Gmail失败
 Name[wa]=Elodjaedje a Gmail a fwait berwete
@@ -105,9 +105,9 @@ Comment[el]=Σφάλμα κατά την σύνδεση με το Gmail
 Comment[cs]=Nepodařilo se přihlásit do GMailu
 Comment[ca]=Fallada al connectar a Gmail
 Comment[ar]=فشل الولوج إلى Gmail
-default_presentation=16
+Action=Popup
 
-[gmail-version-mismatch]
+[Event/gmail-version-mismatch]
 Name=Gmail version has changed
 Name[zh_CN]=Gmail版本改变
 Name[wa]=Li modêye di Gmail a candjî
@@ -138,9 +138,9 @@ Comment[el]=Η έκδοση του gmail έχει αλλάξει
 Comment[cs]=Verze GMailu se změnila
 Comment[ca]=La versió de Gmail ha canviat
 Comment[ar]=تغيرت نسخة Gmail
-default_presentation=2
+Action=Popup
 
-[gmail-session-changed]
+[Event/gmail-session-changed]
 Name=New Gmail session is open
 Name[zh_CN]=新的Gmail会话打开
 Name[wa]=Novele session di Gmail drovowe
@@ -167,9 +167,9 @@ Comment[es]=Se ha abierto otra sesión en Gmail
 Comment[el]=Μια άλλη σύνδεση είναι ήδη ανοικτή
 Comment[ca]=S'ha obert altra sessió en Gmail
 Comment[ar]=فتحت جلسة أخرى
-default_presentation=0
+Action=None
 
-[gmail-mail-snippet]
+[Event/gmail-mail-snippet]
 Name=Mail Snippet
 Name[zh_CN]=邮件摘录
 Name[wa]=Moncea d' emile
@@ -195,9 +195,9 @@ Comment[es]=Fragmento de email al mover el cursor sobre una conversación
 Comment[el]=Εμφανίζει την επικεφαλίδα του μηνύματος όταν μετακινείτε το ποντίκι επάνω στο μήνυμα
 Comment[ca]=Fragment de correu al moure el cursor sobre una conversa
 Comment[ar]=أظهر مقتطفا من البريد إذا أمررت الفأرة على رسالة من القائمة
-default_presentation=16
+Action=Popup
 
-[no-unread-gmail]
+[Event/no-unread-gmail]
 Name=No unread email
 Name[zh_CN]=没有未读油价
 Name[wa]=Pont d' emile nén léjhou
@@ -219,6 +219,6 @@ Comment[hu]=Vak figyelmeztetés amikor nincsenek olvasatlan üzenetek
 Comment[es]=Simple notificación ejecutada cuando no hay mensajes sin leer
 Comment[cs]=Fiktivní notifikace zobrazená v případě, že neexistují nepřečtené emaily
 Comment[ca]=Notificació simple quan no hi ha missatges sense llegir
-default_presentation=0
+Action=None
 
 # None = 0, Sound = 1, Messagebox = 2, Logfile = 4, Stderr = 8, PassivePopup = 16, Execute = 32

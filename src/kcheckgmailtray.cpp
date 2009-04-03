@@ -90,7 +90,7 @@ void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
 
 void KCheckGmailTray::slotNoUnreadMail()
 {
-	KNotification::event(QString::fromLatin1("no-unread-gmail"), i18n("There are no unread messages"), QPixmap(), this);
+	KNotification::event(QString::fromLatin1("no-unread-gmail"), i18n("There are no unread messages"));
 }
 
 void KCheckGmailTray::slotMailCountChanged(int n)
