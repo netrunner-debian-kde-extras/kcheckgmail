@@ -32,6 +32,7 @@
 #include <qtimer.h>
 #include <qtooltip.h>
 #include <qbitmap.h>
+#include <Q3MimeSourceFactory>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QMouseEvent>
