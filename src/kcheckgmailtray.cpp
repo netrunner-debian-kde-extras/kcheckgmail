@@ -65,6 +65,8 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	setToolTip(i18n("KCheckGMail"));
 	
 	iconDisplayed = false;
+	connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+		this, SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
 }
 
 
@@ -72,14 +74,10 @@ KCheckGmailTray::~KCheckGmailTray()
 {
 }
 
-
-void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
+void KCheckGmailTray::slotActivated(QSystemTrayIcon::ActivationReason reason)
 {
-	if(ev->button() == Qt::LeftButton) {
+	if (reason == QSystemTrayIcon::Trigger)
 		emit leftButtonClicked();
-	} else
-		KSystemTray::mousePressEvent(ev);
-
 }
 
 

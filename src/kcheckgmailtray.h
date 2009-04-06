@@ -80,6 +80,9 @@ public slots:
 
 	void changeCountColor(QColor color);
 
+private slots:
+	void slotActivated(QSystemTrayIcon::ActivationReason reason);
+
 private:
 	void updateCountImage(QColor color);
 
