@@ -47,13 +47,13 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	: KSystemTrayIcon(parent),
 	mMailCount(0)
 {
-	mPixGmail = KSystemTrayIcon::loadIcon("kcheckgmail");
+	mPixGmail = KSystemTrayIcon::loadIcon("kcheckgmail").pixmap(KIconLoader::SizeSmallMedium);
 	mLightIconImage = mIconEffect.apply(mPixGmail,
 						KIconEffect::ToGamma,
 						0.90,
 						Qt::red,
-						false);
-	setPixmap(mPixGmail);
+						false).toImage();
+	setIcon(mPixGmail);
 
 	mLoginAnim = new QTimer(this, "KCheckGmail::login");
 	connect(mLoginAnim, SIGNAL(timeout()), 
@@ -173,7 +173,7 @@ void KCheckGmailTray::updateCountImage(QColor color)
 		// convert from QImage to QPixmap
 		QPixmap iconWithNumber;
 		iconWithNumber.convertFromImage(iconWithNumberImage);
-		setPixmap(iconWithNumber);
+		setIcon(iconWithNumber);
 	}
 }
 
@@ -269,7 +269,7 @@ void KCheckGmailTray::slotgNameUpdate(QString name)
 
 void KCheckGmailTray::setPixmapAuth()
 {
-	setPixmap(mIconEffect.apply(mPixGmail, 
+	setIcon(mIconEffect.apply(mPixGmail,
 		  KIconEffect::Colorize,
 		  0.60,
 		  Qt::lightGray,
@@ -278,7 +278,7 @@ void KCheckGmailTray::setPixmapAuth()
 
 void KCheckGmailTray::setPixmapEmpty()
 {
-	setPixmap(mPixGmail);
+	setIcon(mPixGmail);
 }
 
 void KCheckGmailTray::toggleAnim(bool restoreToState)
