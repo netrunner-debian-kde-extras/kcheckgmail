@@ -33,11 +33,6 @@
 #include "config.h"
 
 static const char kcheckgmailVersion[] = VERSION;
-static const KCmdLineOptions gOptions[] =
-{
-	{ "legal", I18N_NOOP("Display legal information"), 0 },
-	KCmdLineLastOption
-};
 
 int main(int argc, char **argv)
 {
@@ -66,7 +61,10 @@ int main(int argc, char **argv)
 	KGlobal::locale()->setMainCatalog("kcheckgmail");
 
 	KCmdLineArgs::init(argc, argv, &about);
-	KCmdLineArgs::addCmdLineOptions(gOptions);
+	KCmdLineOptions options;
+
+	options.add("legal", ki18n("Display legal information"));
+	KCmdLineArgs::addCmdLineOptions(options);
 	KUniqueApplication::addCmdLineOptions();
 	
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
