@@ -42,21 +42,25 @@ static const KCmdLineOptions gOptions[] =
 int main(int argc, char **argv)
 {
 	KAboutData about("kcheckgmail",
-		I18N_NOOP("KCheckGMail"), 
+		0,
+		ki18n("KCheckGMail"),
 		kcheckgmailVersion, 
-		I18N_NOOP(
+		ki18n(
 		"System tray application to display how many\nnew email "
 		"messages you have in your Gmail account."),
 		KAboutData::License_GPL, 
-		"(C) 2004 Matthew Wlazlo\n(C) 2007 Raphael Geissert\n(C) 2007 Luís Pereira",
-		0, // text
+		ki18n("(C) 2004 Matthew Wlazlo\n(C) 2007 Raphael Geissert\n(C) 2007 Luís Pereira"),
+		KLocalizedString(), // text
 		"http://kcheckgmail.sf.net",
 		"kcheckgmail-development@lists.sourceforge.net");
+
+	// needed to get org.kcheckgmail.kcheckgmail used for D-BUS
+	about.setOrganizationDomain("kcheckgmail.org");
 	
-	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Original author"), "mwlazlo@gmail.com");
-	about.addAuthor("Raphael Geissert", I18N_NOOP("Maintainer"), "atomo64@gmail.com");
-	about.addAuthor("Luís Pereira", I18N_NOOP("Developer"), "luis.artur.pereira@gmail.com", "http://kcheckgmail-lpereira.blogspot.com");
-	about.addCredit(I18N_NOOP("Everybody who helped testing and translating KCheckGMail"), 0, 0, 0);
+	about.addAuthor(ki18n("Matthew Wlazlo"), ki18n("Original author"), "mwlazlo@gmail.com");
+	about.addAuthor(ki18n("Raphael Geissert"), ki18n("Maintainer"), "atomo64@gmail.com");
+	about.addAuthor(ki18n("Luís Pereira"), ki18n("Developer"), "luis.artur.pereira@gmail.com", "http://kcheckgmail-lpereira.blogspot.com");
+	about.addCredit(ki18n("Everybody who helped testing and translating KCheckGMail"));
 
 
 	KGlobal::locale()->setMainCatalog("kcheckgmail");
