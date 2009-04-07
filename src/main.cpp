@@ -70,13 +70,13 @@ int main(int argc, char **argv)
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 	
 	if(args->isSet("legal")) {
-		std::cout << (i18n("Legal Information:\nGoogle, Gmail and Google Mail are registered trademarks of Google Inc.\nKCheckGMail nor its authors are in any way affiliated nor endorsed by Google Inc.") + "\n");
+		std::cout << i18n("Legal Information:\nGoogle, Gmail and Google Mail are registered trademarks of Google Inc.\nKCheckGMail nor its authors are in any way affiliated nor endorsed by Google Inc.").toLocal8Bit().data() << std::endl;
 		return EXIT_SUCCESS;
 	}
 	
 	if (!KUniqueApplication::start()) {
 		KStartupInfo::handleAutoAppStartedSending();
-		std::cerr << i18n("KCheckGMail is already running!\n");
+		std::cerr << i18n("KCheckGMail is already running!\n").toLocal8Bit().data() << std::endl;
 		return EXIT_SUCCESS;
 	}
 	
