@@ -173,7 +173,7 @@ void KCheckGmailCore::buidTrayPopupMenu()
 	d->menu->insertSeparator();
 
 	d->mHelpMenu = new KHelpMenu(d->menu, KGlobal::mainComponent().aboutData(), false, d->actions);
-	d->menu->insertItem(SmallIcon("help"), KStandardGuiItem::help().text(), d->mHelpMenu->menu());
+	d->menu->insertItem(SmallIcon("help-contents"), KStandardGuiItem::help().text(), d->mHelpMenu->menu());
 }
 
 
