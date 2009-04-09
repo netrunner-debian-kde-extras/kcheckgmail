@@ -215,7 +215,7 @@ void GMail::slotGetWalletPassword(const QString& pass)
 	KIO::TransferJob *job = KIO::http_post(
 			LoginURL,
 			postData,
-   			false);
+			KIO::HideProgressInfo);
 	job->addMetaData("content-type", "Content-Type: application/x-www-form-urlencoded");
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
