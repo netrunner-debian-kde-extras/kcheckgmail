@@ -1,4 +1,4 @@
-
+add_definitions(-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
 
 
