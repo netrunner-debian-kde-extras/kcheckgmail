@@ -27,6 +27,7 @@
 #include "gmailwalletmanager.h"
 
 namespace KIO { class Job; }
+class KJob;
 
 class QTimer;
 class QMutex;
@@ -117,16 +118,16 @@ public slots:
 	void slotLogOut();
 
 protected slots:
-	void slotLoginResult(KIO::Job*);
+	void slotLoginResult(KJob*);
 	void slotLoginData(KIO::Job*, const QByteArray&);
 	void slotLoginRedirection(KIO::Job *job, const KUrl &url);
 
-	void slotPostLoginResult(KIO::Job*);
+	void slotPostLoginResult(KJob*);
 	void slotPostLoginData(KIO::Job*, const QByteArray&);
 
 	void slotTimeout();
 
-	void slotCheckResult(KIO::Job*);
+	void slotCheckResult(KJob*);
 	void slotCheckData(KIO::Job*, const QByteArray&);
 	
 private slots:

@@ -220,8 +220,8 @@ void GMail::slotGetWalletPassword(const QString& pass)
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
 	
-	connect(job, SIGNAL(result(KIO::Job*)),
-		SLOT(slotLoginResult(KIO::Job*)));
+	connect(job, SIGNAL(result(KJob*)),
+		SLOT(slotLoginResult(KJob*)));
 	
 	connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
 		SLOT(slotLoginData(KIO::Job*, const QByteArray&)));
@@ -252,7 +252,7 @@ void GMail::slotLoginRedirection(KIO::Job *job, const KUrl &url)
 	}
 }
 
-void GMail::slotLoginResult(KIO::Job *job)
+void GMail::slotLoginResult(KJob *job)
 {	
 	if(job->error() != 0) {
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
@@ -368,8 +368,8 @@ void GMail::postLogin(QString url)
 		job->addMetaData("cookies", "auto");
 		job->addMetaData("cache", "reload");
 
-		connect(job, SIGNAL(result(KIO::Job*)),
-			SLOT(slotPostLoginResult(KIO::Job*)));
+		connect(job, SIGNAL(result(KJob*)),
+			SLOT(slotPostLoginResult(KJob*)));
 
 		connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
 			SLOT(slotPostLoginData(KIO::Job*, const QByteArray&)));
@@ -389,7 +389,7 @@ void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 	}
 }
 
-void GMail::slotPostLoginResult(KIO::Job *job)
+void GMail::slotPostLoginResult(KJob *job)
 {
 	if(job->error() != 0) {
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
@@ -468,8 +468,8 @@ void GMail::checkGMail()
 		job->addMetaData("cookies", "auto");
 		job->addMetaData("cache", "reload");
 
-		connect(job, SIGNAL(result(KIO::Job*)),
-			SLOT(slotCheckResult(KIO::Job*)));
+		connect(job, SIGNAL(result(KJob*)),
+			SLOT(slotCheckResult(KJob*)));
 
 		connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
 			SLOT(slotCheckData(KIO::Job*, const QByteArray&)));
@@ -486,7 +486,7 @@ void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 }
 
 // TODO: Refactor
-void GMail::slotCheckResult(KIO::Job *job)
+void GMail::slotCheckResult(KJob *job)
 {
 	if(job->error() != 0) {
 		// TODO: We should notify the user
