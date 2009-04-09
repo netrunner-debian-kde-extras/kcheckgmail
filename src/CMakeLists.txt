@@ -31,7 +31,7 @@ kde4_add_kcfg_files(kcheckgmail_SRCS prefs.kcfgc)
 
 kde4_add_executable(kcheckgmail ${kcheckgmail_SRCS})
 
-target_link_libraries(kcheckgmail ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} kwalletclient)
+target_link_libraries(kcheckgmail ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} ${KDE4_KDE3SUPPORT_LIBS})
 
 install(TARGETS kcheckgmail ${INSTALL_TARGETS_DEFAULT_ARGS})
 
