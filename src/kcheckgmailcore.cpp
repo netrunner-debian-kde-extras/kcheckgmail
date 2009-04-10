@@ -124,8 +124,8 @@ void KCheckGmailCore::initActions()
 	connect(d->actionShowPrefsDialog, SIGNAL(triggered(bool)),
 		this, SLOT(slotShowPrefsDialog()));
 
-	d->mLoginCheckMailAction = new KAction(KIcon("launch"), i18n("Login and Chec&k Mail"), this);
-	d->actions->addAction("login-and-check-mail", d->mLoginCheckMailAction);
+	d->mLoginCheckMailAction = new KAction(KIcon("mail-receive"), i18n("Login and Chec&k Mail"), this);
+	d->actions->addAction("check-mail", d->mLoginCheckMailAction);
 	connect(d->mLoginCheckMailAction, SIGNAL(triggered(bool)),
 		d->mJSP->retriever(), SLOT(slotCheckGmail()));
 
@@ -336,7 +336,7 @@ void KCheckGmailCore::updateThreadMenu()
 				if (t.attachments.isEmpty())
 					id = d->mThreadsMenu->insertItem(str, t.id);
 				else
-					id = d->mThreadsMenu->insertItem(SmallIcon("attach"), str, t.id);
+					id = d->mThreadsMenu->insertItem(SmallIcon("mail-attachment"), str, t.id);
 				numItems ++;
                         }
 			iter ++;

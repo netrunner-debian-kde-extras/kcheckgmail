@@ -35,11 +35,11 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 
 	QWidget* lwid = new QWidget();
 	mLoginSettings.setupUi(lwid);
-	addPage(lwid, i18n("Login"), "kcheckgmail", i18n("Login Settings"), true);
+	addPage(lwid, i18n("Login"), "user-properties", i18n("Login Settings"), true);
 
 	QWidget* nwid = new QWidget();
 	mNetworkSettings.setupUi(nwid);
-	addPage(nwid, i18n("Network"), "www", i18n("Network Settings"), true);
+	addPage(nwid, i18n("Network"), "preferences-system-network", i18n("Network Settings"), true);
 
 	QWidget* awid = new QWidget();
 	mAppletSettings.setupUi(awid);
@@ -47,11 +47,11 @@ ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* 
 
 	QWidget* apwid = new QWidget();
 	mAppearanceSettings.setupUi(apwid);
-	addPage(apwid, i18n("Appearance"), "fonts", i18n("Appearance Settings"), true);
+	addPage(apwid, i18n("Appearance"), "preferences-desktop-theme", i18n("Appearance Settings"), true);
 
 	QWidget* adwid = new QWidget();
 	mAdvancedSettings.setupUi(adwid);
-	addPage(adwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"), true);
+	addPage(adwid, i18n("Advanced"), "preferences-system-settings", i18n("Advanced Settings"), true);
 
 	mLoginSettings.gmailPassword->clear();
 	mLoginSettings.gmailPassword->setText("\007\007\007");
