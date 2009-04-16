@@ -26,13 +26,16 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <knotification.h>
+#include <kcolorscheme.h>
 #include <kiconeffect.h>
+#include <kglobalsettings.h>
 
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qtooltip.h>
 #include <qbitmap.h>
 #include <Q3MimeSourceFactory>
+#include <QDesktopWidget>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QMouseEvent>
@@ -135,42 +138,49 @@ void KCheckGmailTray::updateCountImage(QColor color)
 	if(mMailCount == 0)
 		setPixmapEmpty();
 	else {
-		// based on code from kmail
-		int w = mPixGmail.width();
-		int h = mPixGmail.height();
+		// adapted from KMSystemTray::updateCount()
 
-		QString countString = QString::number(mMailCount);
+		int oldPixmapWidth = mPixGmail.size().width();
+
+		QString countString = QString::number( mMailCount );
 		QFont countFont = KGlobalSettings::generalFont();
 		countFont.setBold(true);
 
 		// decrease the size of the font for the number of unread messages if the
 		// number doesn't fit into the available space
-		float countFontSize = countFont.pointSizeFloat();
-		QFontMetrics qfm(countFont);
-		int width = qfm.width(countString);
-
-		if(width > w) {
-			countFontSize *= float(w) / float(width);
-			countFont.setPointSizeFloat( countFontSize );
+		float countFontSize = countFont.pointSizeF();
+		QFontMetrics qfm( countFont );
+		int width = qfm.width( countString );
+		if( width > (oldPixmapWidth - 2) )
+		{
+		  countFontSize *= float( oldPixmapWidth - 2 ) / float( width );
+		  countFont.setPointSizeF( countFontSize );
 		}
 
-		QPixmap numberPixmap(w, h);
-		numberPixmap.fill(Qt::lightGray);
-		QPainter p(&numberPixmap);
-		p.setFont(countFont);
-		p.setPen(color);
-		p.drawText(numberPixmap.rect(), Qt::AlignCenter, countString);
-		numberPixmap.setMask(numberPixmap.createHeuristicMask());
-		QImage numberImage = numberPixmap.convertToImage();
-
-		// do the overlay
+		// Overlay the light KCheckGmail image with the number image
 		QImage iconWithNumberImage = mLightIconImage.copy();
-		KIconEffect::overlay(iconWithNumberImage, numberImage);
+		QPainter p( &iconWithNumberImage );
+		p.setFont( countFont );
+		KColorScheme scheme( QPalette::Active, KColorScheme::View );
 
-		// convert from QImage to QPixmap
-		QPixmap iconWithNumber;
-		iconWithNumber.convertFromImage(iconWithNumberImage);
-		setIcon(iconWithNumber);
+		qfm = QFontMetrics( countFont );
+		QRect boundingRect = qfm.tightBoundingRect( countString );
+		boundingRect.adjust( 0, 0, 0, 2 );
+		boundingRect.setHeight( qMin( boundingRect.height(), oldPixmapWidth ) );
+		boundingRect.moveTo( (oldPixmapWidth - boundingRect.width()) / 2,
+				    ((oldPixmapWidth - boundingRect.height()) / 2) - 1 );
+		p.setOpacity( 0.7 );
+		p.setBrush( scheme.background( KColorScheme::LinkBackground ) );
+		p.setPen( scheme.background( KColorScheme::LinkBackground ).color() );
+		p.drawRoundedRect( boundingRect, 2.0, 2.0 );
+
+		p.setBrush( Qt::NoBrush );
+//		p.setPen( scheme.foreground( KColorScheme::LinkText ).color() );
+		p.setPen(color);
+		p.setOpacity( 1.0 );
+		p.drawText( iconWithNumberImage.rect(), Qt::AlignCenter, countString );
+
+		setIcon( QPixmap::fromImage( iconWithNumberImage ) );
 	}
 }
 
