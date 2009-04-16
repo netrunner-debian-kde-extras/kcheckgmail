@@ -81,6 +81,7 @@ int main(int argc, char **argv)
 	}
 	
 	KCheckGmailApp app;
+	app.setQuitOnLastWindowClosed(false);
 
 	return app.exec();
 }
