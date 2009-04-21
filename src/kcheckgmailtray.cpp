@@ -179,6 +179,7 @@ void KCheckGmailTray::updateCountImage(QColor color)
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::whereAmI()
 {
+#if 0
 	if (!iconDisplayed)
 		showIcon();
 	
@@ -187,12 +188,13 @@ void KCheckGmailTray::whereAmI()
 	KMessageBox::information(0,
 				 i18n("<p>KCheckGMail is already running</p><p>You can find it here:</p><p><center><img source=\"systray_shot\"></center></p>"),
 				 i18n("Already Running"));
+#endif
 }
 
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::takeScreenshotOfTrayIcon()
 {
-	
+#if 0
         // Process the events else the icon will not be there and the screenie will fail!
 	kapp->processEvents();
 
@@ -201,7 +203,7 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
         // The part about the border is copied from  KSystemTray::displayCloseMessage()
 	//
         // Compute size and position of the pixmap to be grabbed:
-	QPoint g = this-> pos();
+	QPoint g = this->geometry().topLeft();
 
         //Catch invalid positions (2007 - Raphael Geissert)
         if (g.x() < 0) {
@@ -214,8 +216,8 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 
 	int desktopWidth  = kapp->desktop()->width();
 	int desktopHeight = kapp->desktop()->height();
-	int tw = this->width();
-	int th = this->height();
+	int tw = this->geometry().width();
+	int th = this->geometry().height();
 	int w = desktopWidth / 4;
 	int h = desktopHeight / 9;
 	
@@ -249,6 +251,7 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 
         // End copied block
         // ********************************************************************************
+#endif
 }
 
 

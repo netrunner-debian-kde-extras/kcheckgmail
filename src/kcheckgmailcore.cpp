@@ -250,6 +250,7 @@ void KCheckGmailCore::start()
 	
 	//From RSIBreak
 	if(KMessageBox::shouldBeShownContinue("welcome_to_kcheckgmail")) {
+#if 0
 		d->mTray->takeScreenshotOfTrayIcon();
 		KMessageBox::information(0,
 					 i18n("<p><center>Welcome to KCheckGMail!</center></p>"
@@ -263,6 +264,7 @@ void KCheckGmailCore::start()
 		KMessageBox::saveDontShowAgainContinue("welcome_to_kcheckgmail");
 
 		Prefs::self()->setTrayIconUnreadMessagesColor(QColor("blue"));
+#endif
 	}
 	
 	if(KMessageBox::shouldBeShownContinue("kcheckgmail_continue_legal")) {
