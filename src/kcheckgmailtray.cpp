@@ -60,8 +60,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	connect(mLoginAnim, SIGNAL(timeout()), 
 		this, SLOT(slotToggleLoginAnim()));
 
-	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-
 	setToolTip(i18n("KCheckGMail"));
 	
 	iconDisplayed = false;
