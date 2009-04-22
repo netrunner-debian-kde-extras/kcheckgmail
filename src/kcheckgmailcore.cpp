@@ -150,9 +150,10 @@ void KCheckGmailCore::buidTrayPopupMenu()
 
 	connect(d->mThreadsMenu, SIGNAL(activated(int)),
 		SLOT(slotThreadActivated(int)));
-
+#if 0
 	connect(d->mThreadsMenu, SIGNAL(highlighted(int)),
 		SLOT(slotThreadsItemHighlighted(int)));
+#endif
 	d->menu->addTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
 
 	d->menu->addAction(d->actionShowKNotifyDialog);
