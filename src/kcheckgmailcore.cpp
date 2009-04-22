@@ -489,7 +489,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 
 	QStringList::ConstIterator it = t.attachments.begin();
 	QStringList attachments;
-	QString message = t.snippet, iconType, iconFileName, format, fileName;
+	QString message = t.snippet, iconFileName, format, fileName;
 	unsigned int attachmentsCount = 0;
 	KMimeType::Ptr mimetype;
 
@@ -499,10 +499,10 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 		attachmentsCount++;
 		fileName = *it; // attachment filename
 
+		//TODO check mimetype return value
 		mimetype = KMimeType::findByPath(fileName, 0, true); // no disk access
-		iconType = mimetype->mimeType(QString::null, KMimeType::ResolveAliases);
-		iconFileName = KIconLoader::global()->iconPath(iconType, KIcon::Small);
-		kDebug() << "Attachment name: " << fileName << ", iconType: " << iconType << endl;
+		iconFileName = KIconLoader::global()->iconPath(mimetype->iconName(), KIconLoader::Small);
+		kDebug() << "Attachment name: " << fileName << ", iconFileName: " << iconFileName << endl;
 		attachments.append(format.arg(iconFileName, fileName));
 	}
 
