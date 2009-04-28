@@ -1,5 +1,7 @@
 project(kcheckgmail)
 
+set(KCHECKGMAIL_VERSION "0.5.8-dev")
+
 find_package(KDE4 REQUIRED)
 
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
