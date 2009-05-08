@@ -470,54 +470,54 @@ void GMail::slotCheckResult(KIO::Job *job)
 		kdDebug() << k_funcinfo << "Check finished." << endl;
 
 		dump2File("gmail_data.html", mPageBuffer);
-	
+
 		static QRegExp rx("top\\.location=[\"\']http[s]?://www\\.google\\.com/accounts/ServiceLogin");
 		static QRegExp rx2("gmail_error=[0-9]*;");
 		int found;
-	
+
 		if(!rx.isValid()) {
 			kdWarning() << k_funcinfo << "Invalid RX!\n"
 					<< rx.errorString() << endl;
 		}
-	
+
 		if(!rx2.isValid()) {
 			kdWarning() << k_funcinfo << "Invalid RX2!\n"
 					<< rx2.errorString() << endl;
 		}
-	
+
 		found = rx.search(mPageBuffer);
-			
+
 		if( found != -1 || !isLoggedIn() ) {
 			kdWarning() << k_funcinfo << "User is not logged in!" << endl;
-		
+
 			mPageBuffer = "";
 			mCheckLock->unlock();
-		
+
 			//Clearing values will force login
 			mUsername = "";
 			mPasswordHash = "";
 			checkLoginParams();
-		
+
 			return;
 		}
-			
+
 		found = rx2.search(mPageBuffer);
-	
+
 		if( found != -1 ) {
 			kdWarning() << k_funcinfo << "Gmail is unavailable because of server-side errors!" << endl;
-		
+
 			mPageBuffer = "";
 			mCheckLock->unlock();
-		
+
 			// let's try again in 60 seconds
 			setInterval(60, true);
 			return;
 		}
-	
+
 		setInterval(mInterval, true);
 		emit checkDone(mPageBuffer);
 		mPageBuffer = "";
-	
+
 		mCheckLock->unlock();
 	}
 }
