@@ -498,6 +498,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 	}
 
 	KNotifyClient::event(d->mThreadsMenu->winId(), "gmail-mail-snippet", message);
+	kdDebug() << k_funcinfo << "Notification:" << "gmail-mail-snippet" << endl;
 }
 
 
@@ -506,6 +507,8 @@ void KCheckGmailCore::slotMailArrived(unsigned int n)
 	QString str = newEmailNotifyMessage(n, Prefs::displaySenderOnSingleMail(), Prefs::displaySubjectOnSingleMail(), Prefs::displaySnippetOnSingleMail());
 
 	KNotifyClient::event(d->mTray->winId(), "new-gmail-arrived", str);
+	kdDebug() << k_funcinfo << "Notification: new-gmail-arrived" \
+				<< " number of emails:" << n << endl;
 }
 
 
@@ -590,10 +593,14 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 	d->mTray->stopAnim();
 
 	if (!ok) {
-		if (isExcuseNeeded)
+		if (isExcuseNeeded) {
 			KNotifyClient::event(d->mTray->winId(), "gmail-login-no",
 					i18n("An error occurred logging in to Gmail<br><b>%1</b>")
 						.arg(message));
+
+			kdDebug() << k_funcinfo << "Notification: gmail-login-no" \
+						<< " error message:" << message << endl;
+		}
 
 		d->mTray->setPixmapAuth();
 		d->mLoginCheckMailAction->setText(i18n("Login and Chec&k Mail"));
@@ -603,6 +610,9 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 	} else {
 		d->mTray->setPixmapEmpty();
 		KNotifyClient::event(d->mTray->winId(), "gmail-login-yes", i18n("Now logged in to Gmail!"));
+
+		kdDebug() << k_funcinfo << "Notification: gmail-login-yes" << endl;
+
 		d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 	}
 	d->mLoginCheckMailAction->setEnabled(true);
@@ -628,6 +638,7 @@ void KCheckGmailCore::slotCheckStart()
 void KCheckGmailCore::slotSessionChanged()
 {
 	KNotifyClient::event(d->mTray->winId(), "gmail-session-changed", i18n("Another account has been opened, logging out from it!"));
+	kdDebug() << k_funcinfo << "Notification: gmail-session-changed" << endl;
 }
 
 
@@ -641,6 +652,8 @@ void KCheckGmailCore::slotLogingOut()
 {
 	d->mTray->setPixmapEmpty();
 	KNotifyClient::event(d->mTray->winId(), "gmail-login-yes", i18n("Now logged in to Gmail!"));
+	kdDebug() << k_funcinfo << "Notification: gmail-login-yes" << endl;
+
 	d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 
 	d->mLoginCheckMailAction->setEnabled(true);
