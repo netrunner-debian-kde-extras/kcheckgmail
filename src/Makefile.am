@@ -4,6 +4,7 @@ bin_PROGRAMS = kcheckgmail
 
 kcheckgmail_SOURCES = advancedsettingswidget.ui appearancesettingswidget.ui \
 	appletsettingswidget.ui configdialog.cpp gmail.cpp gmailparser.cpp gmailwalletmanager.cpp \
+	knotification.cpp \
 	jsprotocol.cpp kcheckgmailapp.cpp kcheckgmailcore.cpp kcheckgmailiface.skel \
 	kcheckgmailtray.cpp loginsettingswidget.ui mailcounter.cpp main.cpp netsettingswidget.ui \
 	prefs.kcfgc
@@ -14,6 +15,7 @@ METASOURCES = AUTO
 
 noinst_HEADERS = advancedsettingswidget.h appletsettingswidget.h configdialog.h \
 	gmail.h gmail_constants.h gmailparser.h gmailwalletmanager.h jsprotocol.h \
+	knotification.h \
 	kcheckgmailapp.h kcheckgmailcore.h kcheckgmailcore_p.h kcheckgmailiface.h \
 	kcheckgmailtray.h loginsettingswidget.h mailcounter.h netsettingswidget.h prefs.h
 
