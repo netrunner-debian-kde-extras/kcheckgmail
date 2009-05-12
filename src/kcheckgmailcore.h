@@ -78,6 +78,7 @@ private slots:
 	void slotSessionChanged();
 	void slotCheckDone();
 	void slotLogingOut();
+	void slotOpenButtonClicked();
 
 private:
 	KCheckGmailCore(QObject* parent = 0, const char* name = 0);

@@ -20,6 +20,7 @@
 #include "kcheckgmailcore.h"
 #include "kcheckgmailcore_p.h"
 #include "kcheckgmailtray.h"
+#include "knotification.h"
 #include "jsprotocol.h"
 #include "configdialog.h"
 #include "gmailwalletmanager.h"
@@ -506,7 +507,13 @@ void KCheckGmailCore::slotMailArrived(unsigned int n)
 {
 	QString str = newEmailNotifyMessage(n, Prefs::displaySenderOnSingleMail(), Prefs::displaySubjectOnSingleMail(), Prefs::displaySnippetOnSingleMail());
 
-	KNotifyClient::event(d->mTray->winId(), "new-gmail-arrived", str);
+	if (n == 1) {
+		connect(KNotification::event("new-gmail-arrived", str, QPixmap(), 
+					d->mTray, i18n("Open")), SIGNAL(activated(unsigned int )),
+					SLOT(slotOpenButtonClicked()));
+	} else {
+		KNotification::event("new-gmail-arrived", str, QPixmap(), d->mTray);
+	}
 	kdDebug() << k_funcinfo << "Notification: new-gmail-arrived" \
 				<< " number of emails:" << n << endl;
 }
@@ -657,6 +664,15 @@ void KCheckGmailCore::slotLogingOut()
 	d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 
 	d->mLoginCheckMailAction->setEnabled(true);
+}
+
+
+void KCheckGmailCore::slotOpenButtonClicked()
+{
+	GMailParser::Thread t = d->mJSP->parser()->getLastArrivedThread();
+	if(!t.isNull) {
+		slotThreadsMenuActivated(t.id);
+	}
 }
 
 
