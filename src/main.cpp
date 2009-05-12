@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 	
 	about.addAuthor("Matthew Wlazlo", I18N_NOOP("Original author"), "mwlazlo@gmail.com");
 	about.addAuthor("Raphael Geissert", I18N_NOOP("Maintainer"), "atomo64@gmail.com");
-	about.addAuthor("Luís Pereira", I18N_NOOP("Developer"), "luis.artur.pereira@gmail.com");
+	about.addAuthor("Luís Pereira", I18N_NOOP("Developer"), "luis.artur.pereira@gmail.com", "http://kcheckgmail-lpereira.blogspot.com");
 	about.addCredit(I18N_NOOP("Everybody who helped testing and translating KCheckGMail"), 0, 0, 0);
 
 
