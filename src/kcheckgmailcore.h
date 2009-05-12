@@ -65,7 +65,7 @@ private slots:
 
 	void slotLeftButtonClicked();
 
-	void slotThreadsMenuActivated(int);
+	void slotThreadActivated(int);
 	void slotThreadsItemHighlighted(int);
 	void updateThreadMenu();
 

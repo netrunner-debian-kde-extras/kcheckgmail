@@ -132,7 +132,7 @@ void KCheckGmailCore::buidTrayPopupMenu()
 	d->mThreadsMenu = new KPopupMenu(d->mTray, "KCheckGmail Threads menu");
 
 	connect(d->mThreadsMenu, SIGNAL(activated(int)),
-		SLOT(slotThreadsMenuActivated(int)));
+		SLOT(slotThreadActivated(int)));
 
 	connect(d->mThreadsMenu, SIGNAL(highlighted(int)),
 		SLOT(slotThreadsItemHighlighted(int)));
@@ -445,7 +445,7 @@ void KCheckGmailCore::slotLeftButtonClicked()
 }
 
 
-void KCheckGmailCore::slotThreadsMenuActivated(int n)
+void KCheckGmailCore::slotThreadActivated(int n)
 {
 	const GMailParser::Thread &t = d->mJSP->parser()->getThread(n);
 
@@ -671,7 +671,7 @@ void KCheckGmailCore::slotOpenButtonClicked()
 {
 	GMailParser::Thread t = d->mJSP->parser()->getLastArrivedThread();
 	if(!t.isNull) {
-		slotThreadsMenuActivated(t.id);
+		slotThreadActivated(t.id);
 	}
 }
 
