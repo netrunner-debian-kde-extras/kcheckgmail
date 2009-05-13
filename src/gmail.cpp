@@ -37,6 +37,9 @@
 #include <qmutex.h>
 #include <qregexp.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <Q3TextStream>
+#include <Q3CString>
 
 #include <kapplication.h>
 #include <dcopclient.h>
@@ -182,7 +185,7 @@ void GMail::slotGetWalletPassword(const QString& pass)
 
 	loginRedirection = "";
 	
-	QCString b(str.utf8());
+	Q3CString b(str.utf8());
 	QByteArray postData(b);
 
 	// get rid of terminating 0x0
@@ -212,7 +215,7 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 	if(job->error() != 0) {
 		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
-		QCString str(data, data.size() + 1);
+		Q3CString str(data, data.size() + 1);
 		mLoginBuffer.append(str);
 	}
 }
@@ -360,7 +363,7 @@ void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 	if(job->error() != 0) {
 		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
-		QCString str(data, data.size() + 1);
+		Q3CString str(data, data.size() + 1);
 		mPostLoginBuffer.append(str);
 	}
 }
@@ -450,7 +453,7 @@ void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 	if(job->error() != 0) {
 		kdWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
-		QCString str(data, data.size() + 1);
+		Q3CString str(data, data.size() + 1);
 		mPageBuffer.append(str);
 	}
 }
@@ -650,9 +653,9 @@ void GMail::dump2File(const QString filename, const QString data)
 		
 	QFile f(dump_dir);
 		
-	f.open( IO_WriteOnly );
+	f.open( QIODevice::WriteOnly );
 		
-	QTextStream stream(&f);
+	Q3TextStream stream(&f);
 	stream << data;
 
 	f.close();
@@ -662,7 +665,7 @@ void GMail::dump2File(const QString filename, const QString data)
 bool GMail::setDomainAdvice(QString url, QString advice)
 {
 	QByteArray params;
-	QDataStream stream(params, IO_WriteOnly);
+	QDataStream stream(params, QIODevice::WriteOnly);
 	stream << url;
 	stream << advice;
 	
@@ -682,9 +685,9 @@ bool GMail::setDomainAdvice(QString url, QString advice)
 
 QString GMail::getDomainAdvice(QString url)
 {
-	QCString replyType;
+	Q3CString replyType;
 	QByteArray params, reply;
-	QDataStream stream(params, IO_WriteOnly);
+	QDataStream stream(params, QIODevice::WriteOnly);
 	stream << url;
 	
 	if (!kapp->dcopClient()->call("kcookiejar", "kcookiejar",
@@ -694,7 +697,7 @@ QString GMail::getDomainAdvice(QString url)
 		return QString::null;
 	}
 
-	QDataStream stream2(reply, IO_ReadOnly);
+	QDataStream stream2(reply, QIODevice::ReadOnly);
 	if(replyType != "QString")
 	{
 		kdWarning() << k_funcinfo << "DCOP function findCookies(...) return " << replyType.data() << ", expected QString" << endl;
@@ -723,9 +726,9 @@ bool GMail::areCookiesAllowed(QString url)
 //From kcookiejartest.cpp
 QString GMail::findCookies(QString url)
 {
-	QCString replyType;
+	Q3CString replyType;
 	QByteArray params, reply;
-	QDataStream stream(params, IO_WriteOnly);
+	QDataStream stream(params, QIODevice::WriteOnly);
 	stream << url;
 	if (!kapp->dcopClient()->call("kcookiejar", "kcookiejar",
 	     "findCookies(QString)", params, replyType, reply))
@@ -734,7 +737,7 @@ QString GMail::findCookies(QString url)
 		return QString::null;
 	}
 
-	QDataStream stream2(reply, IO_ReadOnly);
+	QDataStream stream2(reply, QIODevice::ReadOnly);
 	if(replyType != "QString")
 	{
 		kdWarning() << k_funcinfo << "DCOP function findCookies(...) return " << replyType.data() << ", expected QString" << endl;

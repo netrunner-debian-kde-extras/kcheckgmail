@@ -32,6 +32,9 @@
 #include <qtimer.h>
 #include <qtooltip.h>
 #include <qbitmap.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QMouseEvent>
 
 #include "kcheckgmailtray.h"
 #include "prefs.h"
@@ -243,7 +246,7 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 	painter.end();
 
         // Associate source to image and show the dialog:
-	QMimeSourceFactory::defaultFactory()->setPixmap( "systray_shot", finalShot );
+	Q3MimeSourceFactory::defaultFactory()->setPixmap( "systray_shot", finalShot );
 
         // End copied block
         // ********************************************************************************

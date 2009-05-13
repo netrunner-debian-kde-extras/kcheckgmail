@@ -27,6 +27,8 @@
 
 #include <kdebug.h>
 #include <qregexp.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 #include <klocale.h>
 #include <kcharsets.h>
 
@@ -595,8 +597,8 @@ QMap<QString, bool> *GMailParser::getThreadList() const
 	if(!mThreads.isEmpty()) {
 		ret = new QMap<QString, bool>();
 
-		QValueList<QString> klist = mThreads.keys();
-		QValueList<QString>::iterator iter = klist.begin();
+		Q3ValueList<QString> klist = mThreads.keys();
+		Q3ValueList<QString>::iterator iter = klist.begin();
 
 		while(iter != klist.end()) {
 			Thread *t = mThreads[*iter];
@@ -768,8 +770,8 @@ void GMailParser::freeThreadList()
 {
 	if(!mThreads.isEmpty()) {
 
-		QValueList<QString> klist = mThreads.keys();
-		QValueList<QString>::iterator iter = klist.begin();
+		Q3ValueList<QString> klist = mThreads.keys();
+		Q3ValueList<QString>::iterator iter = klist.begin();
 
 		while(iter != klist.end()) {
 			Thread *t = mThreads[*iter];
