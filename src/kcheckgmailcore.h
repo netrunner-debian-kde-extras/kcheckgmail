@@ -33,7 +33,7 @@ namespace KCheckGmail {
 	class JSProtocol;
 };
 
-class KPopupMenu;
+class KMenu;
 class KActionCollection;
 using KCheckGmail::JSProtocol;
 

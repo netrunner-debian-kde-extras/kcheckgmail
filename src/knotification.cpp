@@ -20,17 +20,17 @@
 
 #include <kdebug.h>
 #include <kapplication.h>
-#include <knotifyclient.h>
+#include <knotification.h>
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kconfig.h>
 #include <kpassivepopup.h>
-#include <kactivelabel.h>
-#include <kprocess.h>
+#include <k3activelabel.h>
+#include <k3process.h>
 #include <kdialog.h>
 #include <kmacroexpander.h>
-#include <kwin.h>
+#include <kwindowsystem.h>
 
 
 #include <q3vbox.h>
@@ -85,7 +85,7 @@ void KNotification::notifyByExecute(const QString &command, const QString& event
 {
 	if (!command.isEmpty())
 	{
-	// kdDebug() << "executing command '" << command << "'" << endl;
+	// kDebug() << "executing command '" << command << "'" << endl;
 		QMap<QChar,QString> subst;
 		subst.insert( 'e', event );
 		subst.insert( 'a', fromApp );
@@ -96,10 +96,10 @@ void KNotification::notifyByExecute(const QString &command, const QString& event
 		if ( execLine.isEmpty() )
 			execLine = command; // fallback
 
-		KProcess p;
+		K3Process p;
 		p.setUseShell(true);
 		p << execLine;
-		p.start(KProcess::DontCare);
+		p.start(K3Process::DontCare);
 //		return true;
 	}
 	//return false;
@@ -143,16 +143,16 @@ void KNotification::notifyByMessagebox()
 		{
 			default:
 			case KNotifyClient::Notification:
-				result = KMessageBox::questionYesNo(d->widget, d->text, i18n( "Notification" ), action, KStdGuiItem::cancel(), QString::null, false );
+				result = KMessageBox::questionYesNo(d->widget, d->text, i18n( "Notification" ), action, KStandardGuiItem::cancel(), QString::null, false );
 				break;
 			case KNotifyClient::Warning:
-				result = KMessageBox::warningYesNo( d->widget, d->text, i18n( "Warning" ), action, KStdGuiItem::cancel(), QString::null, false );
+				result = KMessageBox::warningYesNo( d->widget, d->text, i18n( "Warning" ), action, KStandardGuiItem::cancel(), QString::null, false );
 				break;
 			case KNotifyClient::Error:
-				result = KMessageBox::warningYesNo( d->widget, d->text, i18n( "Error" ), action, KStdGuiItem::cancel(), QString::null, false );
+				result = KMessageBox::warningYesNo( d->widget, d->text, i18n( "Error" ), action, KStandardGuiItem::cancel(), QString::null, false );
 				break;
 			case KNotifyClient::Catastrophe:
-				result = KMessageBox::warningYesNo( d->widget, d->text, i18n( "Fatal" ), action, KStdGuiItem::cancel(), QString::null, false );
+				result = KMessageBox::warningYesNo( d->widget, d->text, i18n( "Fatal" ), action, KStandardGuiItem::cancel(), QString::null, false );
 				break;
 		}
 		if(result==KMessageBox::Yes && _this)
@@ -216,7 +216,7 @@ void KNotification::notifyByPassivePopup(const QPixmap &pix )
 			linkCode+=QString::fromLatin1("&nbsp;<a href=\"%1\">%2</a> ").arg( QString::number(i) , Qt::escape(*it)  );
 		}
 		linkCode+=QString::fromLatin1("</p>");
-		KActiveLabel *link = new KActiveLabel(linkCode , vb );
+		K3ActiveLabel *link = new K3ActiveLabel(linkCode , vb );
 		//link->setAlignment( Qt::AlignRight );
 		QObject::disconnect(link, SIGNAL(linkClicked(const QString &)), link, SLOT(openLink(const QString &)));
 		QObject::connect(link, SIGNAL(linkClicked(const QString &)), this, SLOT(slotPopupLinkClicked(const QString &)));
@@ -284,7 +284,7 @@ void KNotification::raiseWidget(QWidget *w)
 	if(w->isTopLevel())
 	{
 		w->raise();
-		KWin::activateWindow( w->winId() );
+		KWindowSystem::activateWindow( w->winId() );
 	}
 	else
 	{
@@ -331,18 +331,18 @@ KNotification *KNotification::event( const QString& message , const QString& tex
 
 	// get sound file name
 	if( present & KNotifyClient::Sound ) {
-		QString theSound = configFile.readPathEntry( "soundfile" );
+		QString theSound = configFile.readPathEntry( "soundfile", QString() );
 		if ( theSound.isEmpty() )
-			theSound = eventsFile.readPathEntry( "default_sound" );
+			theSound = eventsFile.readPathEntry( "default_sound", QString() );
 		if ( !theSound.isEmpty() )
 			sound = theSound;
 	}
 
 	// get log file name
 	if( present & KNotifyClient::Logfile ) {
-		QString theFile = configFile.readPathEntry( "logfile" );
+		QString theFile = configFile.readPathEntry( "logfile", QString() );
 		if ( theFile.isEmpty() )
-			theFile = eventsFile.readPathEntry( "default_logfile" );
+			theFile = eventsFile.readPathEntry( "default_logfile", QString() );
 		if ( !theFile.isEmpty() )
 			file = theFile;
 	}
@@ -353,9 +353,9 @@ KNotification *KNotification::event( const QString& message , const QString& tex
 
 	// get command line
 	if (present & KNotifyClient::Execute ) {
-		commandline = configFile.readPathEntry( "commandline" );
+		commandline = configFile.readPathEntry( "commandline", QString() );
 		if ( commandline.isEmpty() )
-			commandline = eventsFile.readPathEntry( "default_commandline" );
+			commandline = eventsFile.readPathEntry( "default_commandline", QString() );
 	}
 
 	return userEvent( text, pixmap, widget, actions,  present , level, sound, file, commandline, flags );
@@ -436,7 +436,7 @@ KNotification *KNotification::userEvent( const QString& text, const QPixmap& pix
 static KNotification *performCustomNotifications( QWidget *widget, Kopete::MetaContact * mc, const QString &message, bool& suppress)
 {
 	KNotification *n=0L;
-	//kdDebug( 14010 ) << k_funcinfo << endl;
+	//kDebug( 14010 ) << k_funcinfo << endl;
 	if ( suppress )
 		return n;
 	
@@ -521,12 +521,12 @@ KNotification *KNotification::event( Kopete::MetaContact *mc, const QString& mes
 		 
 	if ( suppress )
 	{
-		//kdDebug( 14000 ) << "suppressing common notifications" << endl;
+		//kDebug( 14000 ) << "suppressing common notifications" << endl;
 		return n; // custom notifications don't create a single unique id
 	}
 	else
 	{
-		//kdDebug( 14000 ) << "carrying out common notifications" << endl;
+		//kDebug( 14000 ) << "carrying out common notifications" << endl;
 		return event(  message, text, pixmap, widget , actions, flags);
 	}
 }

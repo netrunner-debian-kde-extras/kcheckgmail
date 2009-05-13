@@ -61,8 +61,8 @@ public:
 	KAction* actionLaunchBrowser;
 	KAction* actionComposeMail;
 
-	KPopupMenu* menu;
-	KPopupMenu* mThreadsMenu;
+	KMenu* menu;
+	KMenu* mThreadsMenu;
 	int mThreadsMenuId;
 	KHelpMenu* mHelpMenu;
 

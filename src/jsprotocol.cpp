@@ -67,7 +67,7 @@ void JSProtocol::slotLoginDone(bool ok, bool evtFromTimer, const QString &why)
 	static QString lastExcuse = "";
 	bool excuseNeeded = false;
 
-	kdDebug() << k_funcinfo << endl << "ok=" << ok << " evtFromTimer=" <<
+	kDebug() << k_funcinfo << endl << "ok=" << ok << " evtFromTimer=" <<
 			evtFromTimer << " why=" << why << endl << endl;
 
 	if(!ok) {
@@ -87,12 +87,12 @@ void JSProtocol::slotCountUpdate(unsigned int currentParsed)
 	int currentTotal = mParser->unread(GMailParser::TotalCount);
 	mCount.setCount(currentTotal, currentParsed);
 
-	kdDebug() << k_funcinfo << endl;
-	kdDebug() << "firstTime: " << firstTime << endl;
-	kdDebug() << "previousParsed: " << mCount.previousParsed() << endl;
-	kdDebug() << "currentParsed: " << currentParsed << endl;
-	kdDebug() << "previousTotal: " << mCount.previousTotal() << endl;
-	kdDebug() << "currentTotal: " << currentTotal << endl;
+	kDebug() << k_funcinfo << endl;
+	kDebug() << "firstTime: " << firstTime << endl;
+	kDebug() << "previousParsed: " << mCount.previousParsed() << endl;
+	kDebug() << "currentParsed: " << currentParsed << endl;
+	kDebug() << "previousTotal: " << mCount.previousTotal() << endl;
+	kDebug() << "currentTotal: " << currentTotal << endl;
 
 	if (firstTime) {
 		firstTime = false;

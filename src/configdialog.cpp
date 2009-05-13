@@ -25,7 +25,7 @@
 #include "appearancesettingswidget.h"
 #include "advancedsettingswidget.h"
 
-#include <kpassdlg.h>
+#include <kpassworddialog.h>
 #include <klocale.h>
 
 namespace KCheckGmail {

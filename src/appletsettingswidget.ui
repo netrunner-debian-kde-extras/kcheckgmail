@@ -167,7 +167,7 @@
                                 </size>
                             </property>
                         </spacer>
-                        <widget class="KURLRequester">
+                        <widget class="KUrlRequester">
                             <property name="name">
                                 <cstring>kcfg_CustomBrowser</cstring>
                             </property>

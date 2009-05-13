@@ -25,7 +25,7 @@
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <knotifyclient.h>
+#include <knotification.h>
 #include <kiconeffect.h>
 
 #include <qpainter.h>
@@ -90,7 +90,7 @@ void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
 
 void KCheckGmailTray::slotNoUnreadMail()
 {
-	KNotifyClient::event(winId(), "no-unread-gmail", i18n("There are no unread messages"));
+	KNotification::event(QString::fromLatin1("no-unread-gmail"), i18n("There are no unread messages"), QPixmap(), this);
 }
 
 void KCheckGmailTray::slotMailCountChanged(int n)
@@ -134,7 +134,7 @@ void KCheckGmailTray::slotVersionMismatch()
  */
 void KCheckGmailTray::updateCountImage(QColor color)
 {
-	kdDebug() << k_funcinfo << "Count=" << mMailCount << endl;
+	kDebug() << k_funcinfo << "Count=" << mMailCount << endl;
 
 	if(mMailCount == 0)
 		setPixmapEmpty();
@@ -257,7 +257,7 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 void KCheckGmailTray::slotgNameUpdate(QString name)
 {
 	static QString sname;
-	kdDebug() << k_funcinfo << "Updating tooltip" << endl;
+	kDebug() << k_funcinfo << "Updating tooltip" << endl;
 	
 	//Trick to restore the tooltip
 	if(name == QString::null)

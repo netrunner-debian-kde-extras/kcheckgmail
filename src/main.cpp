@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 	about.addCredit(I18N_NOOP("Everybody who helped testing and translating KCheckGMail"), 0, 0, 0);
 
 
-	KGlobal::locale()->setMainCatalogue("kcheckgmail");
+	KGlobal::locale()->setMainCatalog("kcheckgmail");
 
 	KCmdLineArgs::init(argc, argv, &about);
 	KCmdLineArgs::addCmdLineOptions(gOptions);

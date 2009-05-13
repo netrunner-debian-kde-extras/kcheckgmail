@@ -105,7 +105,7 @@ private:
 	//GAP4D: Google Applications for Domains
 	QString gGAP4DLoginURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
 
-	KURL loginRedirection;
+	KUrl loginRedirection;
 	
 public slots:
 	void slotCheckGmail();
@@ -116,7 +116,7 @@ public slots:
 protected slots:
 	void slotLoginResult(KIO::Job*);
 	void slotLoginData(KIO::Job*, const QByteArray&);
-	void slotLoginRedirection(KIO::Job *job, const KURL &url);
+	void slotLoginRedirection(KIO::Job *job, const KUrl &url);
 
 	void slotPostLoginResult(KIO::Job*);
 	void slotPostLoginData(KIO::Job*, const QByteArray&);
