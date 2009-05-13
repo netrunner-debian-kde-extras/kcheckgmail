@@ -63,7 +63,7 @@ private slots:
 	void slotLaunchBrowser(const QString &url = QString::null);
 	void slotComposeMail();
 
-	void slotLeftButtonClicked();
+	void slotQt::LeftButtonClicked();
 
 	void slotThreadActivated(int);
 	void slotThreadsItemHighlighted(int);

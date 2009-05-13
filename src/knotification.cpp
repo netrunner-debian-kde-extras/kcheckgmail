@@ -202,7 +202,7 @@ void KNotification::notifyByPassivePopup(const QPixmap &pix )
 		}
 		vb=new Q3VBox(hb);
 		QLabel *msg = new QLabel( d->text, vb, "msg_label" );
-		msg->setAlignment( AlignLeft );
+		msg->setAlignment( Qt::AlignLeft );
 	}
 
 
@@ -213,11 +213,11 @@ void KNotification::notifyByPassivePopup(const QPixmap &pix )
 		for ( QStringList::ConstIterator it = d->actions.begin() ; it != d->actions.end(); ++it )
 		{
 			i++;
-			linkCode+=QString::fromLatin1("&nbsp;<a href=\"%1\">%2</a> ").arg( QString::number(i) , Q3StyleSheet::escape(*it)  );
+			linkCode+=QString::fromLatin1("&nbsp;<a href=\"%1\">%2</a> ").arg( QString::number(i) , Qt::escape(*it)  );
 		}
 		linkCode+=QString::fromLatin1("</p>");
 		KActiveLabel *link = new KActiveLabel(linkCode , vb );
-		//link->setAlignment( AlignRight );
+		//link->setAlignment( Qt::AlignRight );
 		QObject::disconnect(link, SIGNAL(linkClicked(const QString &)), link, SLOT(openLink(const QString &)));
 		QObject::connect(link, SIGNAL(linkClicked(const QString &)), this, SLOT(slotPopupLinkClicked(const QString &)));
 		QObject::connect(link, SIGNAL(linkClicked(const QString &)), pop, SLOT(hide()));
@@ -430,6 +430,7 @@ KNotification *KNotification::userEvent( const QString& text, const QPixmap& pix
 #include "kopetemetacontact.h"
 #include "kopeteuiglobal.h"
 #include <qimage.h>
+#include <QTextDocument>
 
 
 static KNotification *performCustomNotifications( QWidget *widget, Kopete::MetaContact * mc, const QString &message, bool& suppress)

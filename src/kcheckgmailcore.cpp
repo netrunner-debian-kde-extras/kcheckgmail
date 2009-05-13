@@ -105,7 +105,7 @@ void KCheckGmailCore::initTray()
 	connect(d->mTray, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 
 	connect(d->mTray, SIGNAL(leftButtonClicked()),
-		this, SLOT(slotLeftButtonClicked()));
+		this, SLOT(slotQt::LeftButtonClicked()));
 
 	connect(this, SIGNAL(countColorChanged(QColor)),
 		d->mTray, SLOT(changeCountColor(QColor)));
@@ -433,7 +433,7 @@ void KCheckGmailCore::slotComposeMail()
 }
 
 
-void KCheckGmailCore::slotLeftButtonClicked()
+void KCheckGmailCore::slotQt::LeftButtonClicked()
 {
 	if(Prefs::allowLeftClickOpen()) {
 		if(Prefs::catchAccidentalClick()) {

@@ -35,6 +35,7 @@
 //Added by qt3to4:
 #include <QPixmap>
 #include <QMouseEvent>
+#include <QX11Info>
 
 #include "kcheckgmailtray.h"
 #include "prefs.h"
@@ -74,7 +75,7 @@ KCheckGmailTray::~KCheckGmailTray()
 
 void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
 {
-	if(ev->button() == QMouseEvent::LeftButton) {
+	if(ev->button() == Qt::LeftButton) {
 		emit leftButtonClicked();
 	} else
 		KSystemTray::mousePressEvent(ev);
@@ -228,7 +229,7 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 	if ( y + h > desktopHeight ) y = desktopHeight - h;
 
         // Grab the desktop and draw a circle around the icon:
-	QPixmap shot = QPixmap::grabWindow( qt_xrootwin(),  x,  y,  w,  h );
+	QPixmap shot = QPixmap::grabWindow( QX11Info::appRootWindow(),  x,  y,  w,  h );
 	QPainter painter( &shot );
 	const int MARGINS = 6;
 	const int WIDTH   = 3;
