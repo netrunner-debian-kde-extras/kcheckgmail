@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef KCHECKGMAIL_TRAY_H
+#define KCHECKGMAIL_TRAY_H
+
 #include <ksystemtray.h>
 #include <kiconeffect.h>
 #include <qpixmap.h>
@@ -88,3 +91,5 @@ private:
 	
 	bool iconDisplayed;
 };
+
+#endif // KCHECKGMAIL_TRAY_H

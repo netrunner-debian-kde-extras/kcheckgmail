@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef KCHECKGMAIL_IFACE_H
+#define KCHECKGMAIL_IFACE_H
+
 #include "dcopobject.h"
 #include <qstringlist.h>
 #include <qmap.h>
@@ -42,3 +45,4 @@ class KCheckGmailIface : virtual public DCOPObject
 	virtual QString getGaiaName() = 0;
 };
 
+#endif // KCHECKGMAIL_IFACE_H

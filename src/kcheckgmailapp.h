@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef KCHECKGMAIL_APP_H
+#define KCHECKGMAIL_APP_H
+
 #include <kuniqueapplication.h>
 
 
@@ -30,3 +33,5 @@ public:
 
 private:
 };
+
+#endif // KCHECKGMAIL_APP_H
