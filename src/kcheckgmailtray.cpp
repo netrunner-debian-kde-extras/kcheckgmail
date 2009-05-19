@@ -313,3 +313,5 @@ void KCheckGmailTray::startAnim(unsigned int t)
 {
     mLoginAnim->start(t);
 }
+
+#include "kcheckgmailtray.moc"

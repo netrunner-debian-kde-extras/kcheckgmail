@@ -39,3 +39,5 @@ int KCheckGmailApp::newInstance()
 	}
 	return 0;
 }
+
+#include "kcheckgmailapp.moc"

@@ -261,3 +261,5 @@ void GMailWalletManager::clearPassword()
 	mPassword.fill('0');
 	mPassword = "";
 }
+
+#include "gmailwalletmanager.moc"

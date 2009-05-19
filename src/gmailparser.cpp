@@ -855,3 +855,4 @@ QString GMailParser::cleanUpData(QString data)
 	return data;
 }
 
+#include "gmailparser.moc"
