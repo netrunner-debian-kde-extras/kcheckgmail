@@ -28,6 +28,7 @@ message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}: skipped subdir $(TOPSUBDIRS)")
 add_subdirectory( src )
 add_subdirectory( icons )
 add_subdirectory( po )
+add_subdirectory( doc )
 
 ########### install files ###############
 
