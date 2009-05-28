@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Adapted from KMess
+# http://trac.kmess.org/browser/trunk/kmess/po/mergetrans
+# Revision 4216
+
+# List all the languages
+#langs="`find . -name '*.po' -printf '%P ' `"
+langs="`find . -name '*.po' | sort | xargs `"
+
+# Merge kcheckgmail.pot messages for each language
+# (same as "cd po; make merge" if you have the Makefiles
+#  generated in the same folder Makefile.in lives)
+for lang in $langs
+do
+	lang=`basename $lang .po`
+	echo $lang
+	mv "$lang.po" "$lang.po.bak"
+	msgmerge -o "$lang.po" "$lang.po.bak" "kcheckgmail.pot" && rm "$lang.po.bak"
+done
