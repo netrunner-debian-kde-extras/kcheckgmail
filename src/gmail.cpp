@@ -199,9 +199,10 @@ void GMail::slotGetWalletPassword(const QString& pass)
 	}
 	
 	str = QString(LoginPOSTFormat).arg(
-			KUrl::encode_string(useUsername),
-			KUrl::encode_string(pass)
-					  ).replace('@','%');
+			QLatin1String(QUrl::toPercentEncoding(useUsername)),
+			QLatin1String(QUrl::toPercentEncoding(pass)));
+	str.replace('@','%');
+
 	kDebug() << k_funcinfo << "Requesting login URL" << endl;
 
 	loginRedirection = "";
@@ -439,21 +440,24 @@ void GMail::checkGMail()
 
 		QString url;
 
-		if(!isGAP4D)
+		if(!isGAP4D) {
 			url = QString(gGMailCheckURL).arg(
 				(Prefs::useHTTPS()
 					? "https" 
 					: "http" ),
-				KUrl::encode_string(Prefs::searchFor())
-							 ).replace('@','%');
-		else
+				QLatin1String(QUrl::toPercentEncoding(Prefs::searchFor())));
+
+			url.replace('@','%');
+		} else {
 			url = QString(gGAP4DCheckURL).arg(
 				(Prefs::useHTTPS()
 					? "https" 
 					: "http" ),
 				useDomain,
-				KUrl::encode_string(Prefs::searchFor())
-							 ).replace('@','%');
+				QLatin1String(QUrl::toPercentEncoding(Prefs::searchFor())));
+
+			url.replace('@','%');
+		}
 
 		if (d->buffer) {
 			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
