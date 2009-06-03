@@ -141,7 +141,7 @@ void GMail::checkLoginParams()
 	useDomain = "";
 	isGAP4D = false;
 	
-	if( mUsername.find("@") != -1 ) {
+	if( mUsername.contains("@") ) {
 		
 		if ( QString::compare(mUsername.section("@",1),"gmail.com") != 0 &&
 			QString::compare(mUsername.section("@",1),"googlemail.com") != 0) {
@@ -268,9 +268,9 @@ void GMail::slotLoginResult(KJob *job)
 		if( redirection == QString::null ) {
 			
 			if(!isLoggedIn(false)) {
-				if(mLoginBuffer.find("onload") != -1 && (
-						mLoginBuffer.find("FixForm") != -1 ||
-						mLoginBuffer.find("start_time") != -1)) {
+				if(mLoginBuffer.contains("onload") && (
+						mLoginBuffer.contains("FixForm") ||
+						mLoginBuffer.contains("start_time") )) {
 				
 					mLoginLock->unlock();
 					emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
@@ -282,9 +282,9 @@ void GMail::slotLoginResult(KJob *job)
 					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
 					return;
 				}
-			} else if (mLoginBuffer.find("?ui=html") != -1 && (
-				   		mLoginBuffer.find("nocheckbrowser") != -1 || 
-						mLoginBuffer.find("noscript") != -1 )) { 
+			} else if (mLoginBuffer.contains("?ui=html") && (
+						mLoginBuffer.contains("nocheckbrowser") ||
+						mLoginBuffer.contains("noscript") )) {
 				kDebug() << k_funcinfo << "Google is performing dirty JS check, bypassing it" << endl;
 				
 				if (loginRedirection.isEmpty()) {
