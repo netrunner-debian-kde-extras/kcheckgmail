@@ -17,7 +17,7 @@
     <number>0</number>
    </property>
    <item row="2" column="0" >
-    <widget class="Q3GroupBox" name="groupBox2" >
+    <widget class="QGroupBox" name="groupBox2" >
      <property name="title" >
       <string>Debug</string>
      </property>
@@ -36,7 +36,7 @@
     </widget>
    </item>
    <item row="3" column="0" >
-    <widget class="Q3GroupBox" name="groupBox3" >
+    <widget class="QGroupBox" name="groupBox3" >
      <property name="title" >
       <string>Fields displayed when only one email arrives</string>
      </property>
@@ -150,7 +150,7 @@
     </widget>
    </item>
    <item row="0" column="0" >
-    <widget class="Q3GroupBox" name="groupBox1" >
+    <widget class="QGroupBox" name="groupBox1" >
      <property name="title" >
       <string>Tray Icon</string>
      </property>
@@ -184,12 +184,6 @@
    <class>KUrlRequester</class>
    <extends>QFrame</extends>
    <header>kurlrequester.h</header>
-  </customwidget>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
   </customwidget>
   <customwidget>
    <class>Q3ButtonGroup</class>

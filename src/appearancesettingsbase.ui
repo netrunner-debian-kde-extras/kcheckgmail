@@ -19,7 +19,7 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="Q3GroupBox" name="groupBox1">
+    <widget class="QGroupBox" name="groupBox1">
      <property name="title">
       <string>Tray Icon</string>
      </property>
@@ -80,12 +80,6 @@ of unread messages:</string>
    <class>KColorButton</class>
    <extends>QPushButton</extends>
    <header>kcolorbutton.h</header>
-  </customwidget>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <includes>
