@@ -91,7 +91,7 @@
     </spacer>
    </item>
    <item row="1" column="0" >
-    <widget class="Q3ButtonGroup" name="buttonGroup1" >
+    <widget class="QGroupBox" name="groupBox4" >
      <property name="title" >
       <string>Browser</string>
      </property>
@@ -184,12 +184,6 @@
    <class>KUrlRequester</class>
    <extends>QFrame</extends>
    <header>kurlrequester.h</header>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends>Q3GroupBox</extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <includes>
