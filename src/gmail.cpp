@@ -439,29 +439,28 @@ void GMail::checkGMail()
 		emit checkStart();
 
 		QString url;
+		QLatin1String prefsUrl = QLatin1String(
+				QUrl::toPercentEncoding(Prefs::searchFor()));
 
 		if(!isGAP4D) {
 			url = QString(gGMailCheckURL).arg(
 				(Prefs::useHTTPS()
 					? "https" 
 					: "http" ),
-				QLatin1String(QUrl::toPercentEncoding(Prefs::searchFor())));
-
-			url.replace('@','%');
+				prefsUrl);
 		} else {
 			url = QString(gGAP4DCheckURL).arg(
 				(Prefs::useHTTPS()
 					? "https" 
 					: "http" ),
 				useDomain,
-				QLatin1String(QUrl::toPercentEncoding(Prefs::searchFor())));
-
-			url.replace('@','%');
+				prefsUrl);
 		}
+		url.replace('@','%');
 
 		if (d->buffer) {
 			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
-			return;
+		return;
 		}
 		d->buffer = new QBuffer;
 		d->buffer->open(QIODevice::WriteOnly);
