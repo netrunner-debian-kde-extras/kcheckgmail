@@ -41,7 +41,7 @@
 #include <QtDBus/QDBusError>
 //Added by qt3to4:
 #include <Q3TextStream>
-#include <Q3CString>
+#include <QByteArray>
 
 #include <kapplication.h>
 #include <kcharsets.h>
@@ -207,11 +207,10 @@ void GMail::slotGetWalletPassword(const QString& pass)
 
 	loginRedirection = "";
 	
-	Q3CString b(str.utf8());
-	QByteArray postData(b);
+	QByteArray postData(str.toUtf8());
 
 	// get rid of terminating 0x0
-	postData.truncate(b.length());
+	postData.truncate(postData.length() - 1);
 	
 	KIO::TransferJob *job = KIO::http_post(
 			LoginURL,
