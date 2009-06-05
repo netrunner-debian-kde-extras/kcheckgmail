@@ -211,7 +211,15 @@ void GMail::slotGetWalletPassword(const QString& pass)
 
 	// get rid of terminating 0x0
 	postData.truncate(postData.length() - 1);
+
 	
+	if (d->buffer) {
+		kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
+		return;
+	}
+	d->buffer = new QBuffer;
+	d->buffer->open(QIODevice::WriteOnly);
+
 	KIO::TransferJob *job = KIO::http_post(
 			LoginURL,
 			postData,
@@ -236,8 +244,7 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 	if(job->error() != 0) {
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
-		Q3CString str(data, data.size() + 1);
-		mLoginBuffer.append(str);
+		d->buffer->write(data.data(), data.size());
 	}
 }
 
@@ -256,12 +263,22 @@ void GMail::slotLoginResult(KJob *job)
 {	
 	if(job->error() != 0) {
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+
+		delete d->buffer;
+		d->buffer = 0;
+
 		mLoginLock->unlock();
 		emit loginDone(false, mLoginFromTimer, job->errorString());
 	} else {
 		
 		QString redirection;
 		
+		mLoginBuffer = QString(d->buffer->data());
+		mLoginBuffer.detach();
+
+		delete d->buffer;
+		d->buffer = 0;
+
 		redirection = getRedirectURL(mLoginBuffer);
 		dump2File("gmail_login.html", mLoginBuffer);
 		
@@ -362,6 +379,14 @@ void GMail::postLogin(QString url)
 		
 		mPostLoginBuffer = "";
 		
+		if (d->buffer) {
+			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
+			return;
+		}
+
+		d->buffer = new QBuffer;
+		d->buffer->open(QIODevice::WriteOnly);
+
 		kDebug() << k_funcinfo << "Starting job to " << url << endl;
 
 		KIO::TransferJob *job = KIO::get(url, KIO::Reload, KIO::HideProgressInfo);
@@ -384,8 +409,7 @@ void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 	if(job->error() != 0) {
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 	} else {
-		Q3CString str(data, data.size() + 1);
-		mPostLoginBuffer.append(str);
+		d->buffer->write(data.data(), data.size());
 	}
 }
 
@@ -394,6 +418,9 @@ void GMail::slotPostLoginResult(KJob *job)
 	if(job->error() != 0) {
 		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
 
+		delete d->buffer;
+		d->buffer = 0;
+
 		mLoginLock->unlock();
 		emit loginDone(false, mLoginFromTimer, job->errorString());
 	} else {
@@ -401,13 +428,20 @@ void GMail::slotPostLoginResult(KJob *job)
 		mLoginLock->unlock();
 		
 		if(isLoggedIn()) {
-			
+			delete d->buffer;
+			d->buffer = 0;
+
 			mPostLoginBuffer = "";
 			emit loginDone(true, mLoginFromTimer);
 			checkGMail();
 			
 		} else {
-			
+			mPostLoginBuffer = QString(d->buffer->data());
+			mPostLoginBuffer.detach();
+
+			delete d->buffer;
+			d->buffer = 0;
+
 			QString url = getRedirectURL(mPostLoginBuffer);
 			
 			if(url == QString::null) {
