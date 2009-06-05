@@ -52,7 +52,7 @@
 #include <qtooltip.h>
 #include <QHash>
 //Added by qt3to4:
-#include <Q3ValueList>
+#include <QList>
 #include <QPixmap>
 #include <ktoolinvocation.h>
 
@@ -320,8 +320,8 @@ void KCheckGmailCore::updateThreadMenu()
 
 	d->mThreadsMenu->clear();
         if(threads) {
-                Q3ValueList<QString> klist = threads->keys();
-                Q3ValueList<QString>::iterator iter = klist.begin();
+                QList<QString> klist = threads->keys();
+                QList<QString>::iterator iter = klist.begin();
 
                 kDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
 
@@ -728,8 +728,8 @@ QStringList KCheckGmailCore::getThreads()
 
 	if(threads) {
 
-		Q3ValueList<QString> klist = threads->keys();
-		Q3ValueList<QString>::iterator iter = klist.begin();
+		QList<QString> klist = threads->keys();
+		QList<QString>::iterator iter = klist.begin();
 		
 		while(iter != klist.end()) {
 			const GMailParser::Thread &t =d->mJSP->parser()->getThread(*iter);
