@@ -34,7 +34,7 @@
 #include <qtimer.h>
 #include <qtooltip.h>
 #include <qbitmap.h>
-#include <Q3MimeSourceFactory>
+//#include <Q3MimeSourceFactory>
 #include <QDesktopWidget>
 //Added by qt3to4:
 #include <QPixmap>
