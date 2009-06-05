@@ -24,7 +24,7 @@
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qmap.h>
-#include <q3valuevector.h>
+#include <QVector>
 //#include <vector>
 
 /**
@@ -156,7 +156,7 @@ private:
 	QMap<QString, unsigned int> mLabels; //<name, count>
 	QMap<QString, QString> eLabels; // <escaped name, name>
 	QMap<QString, Thread*> mThreads;
-	Q3ValueVector<QString> gGMailVersion;
+	QVector<QString> gGMailVersion;
 #ifdef DETECT_GLANGUAGE
 	QMap<QString, QString> gGMailLanguageCode;
 #endif
