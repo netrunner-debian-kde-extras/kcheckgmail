@@ -40,7 +40,7 @@
 #include <QtDBus/QtDBus>
 #include <QtDBus/QDBusError>
 //Added by qt3to4:
-#include <Q3TextStream>
+#include <QTextStream>
 #include <QByteArray>
 
 #include <kapplication.h>
@@ -726,7 +726,7 @@ void GMail::dump2File(const QString filename, const QString data)
 		
 	f.open( QIODevice::WriteOnly );
 		
-	Q3TextStream stream(&f);
+	QTextStream stream(&f);
 	stream << data;
 
 	f.close();
