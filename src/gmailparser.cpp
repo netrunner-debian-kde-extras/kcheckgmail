@@ -157,12 +157,12 @@ void GMailParser::parse(const QString &data)
 	 * mailsArrived refers to new messages in the parsed threads
 	 */
 	unsigned int arrivedMails = 0;
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		QString str = rx.cap(1);
 		QRegExp rxType("^\"([a-z]+)\",");
 
 		int tokPos = -1;
-		if((tokPos = rxType.search(str)) >= 0) {
+		if((tokPos = rxType.indexIn(str)) >= 0) {
 			QString tok = rxType.cap(1);
 			int tokLen = rxType.matchedLength();
 
@@ -279,7 +279,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 
 	unsigned int newMsgCount = 0;
 
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		Thread *t = new Thread;
 		t->id = mCurMsgId ++;
 		t->replyId = rx.cap(1);
@@ -316,7 +316,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 
 	pos = 0;
 	
-	while((pos = rx2.search(data, pos)) != -1) {
+	while((pos = rx2.indexIn(data, pos)) != -1) {
 		Thread *t = new Thread;
 		t->id = mCurMsgId ++;
 		t->replyId = rx2.cap(1);
@@ -485,7 +485,7 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 	QString data = _data;
 	int pos = 0;
 
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		QString str_name = rx.cap(1), str_val = rx.cap(2);
 		int val = str_val.toUInt();
 
@@ -531,7 +531,7 @@ void GMailParser::parseLabel(const QString &data)
 	
 	kDebug() << k_funcinfo << endl;
 
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		mLabels.insert(rx.cap(1), rx.cap(2).toUInt());
 		
 		QString k = rx.cap(1);
@@ -738,17 +738,17 @@ unsigned int GMailParser::unread(CountMode mode) const
 	QString box;
 	
 	if (mode == TotalCount) {
-		if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
+		if (rx.indexIn(Prefs::searchFor()) == -1 && rx2.indexIn(Prefs::searchFor()) == -1) {
 			// If none are specified gmail will return any unread mail (except spam and drafts)
 			// TODO: to fix this we need to count all messages (!drafts,!spam, inbox + labels)
 			mode = ParsedOnlyCount;
 			//box = "inbox";
-		} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
+		} else if (rx.indexIn(Prefs::searchFor()) != -1 && rx2.indexIn(Prefs::searchFor()) != -1) {
 			//there's no other way to know how many emails are in:inbox and in specified label:LABEL
 			mode = ParsedOnlyCount;
-		} else if (rx.search(Prefs::searchFor()) != -1) {
+		} else if (rx.indexIn(Prefs::searchFor()) != -1) {
 			box = rx.cap(1);
-		} else if (rx2.search(Prefs::searchFor()) != -1) {
+		} else if (rx2.indexIn(Prefs::searchFor()) != -1) {
 			box = rx2.cap(1);
 			
 			if (eLabels.contains(box)) {
@@ -824,7 +824,7 @@ QString GMailParser::convertEntities(QString data)
 				<< format.errorString() << endl;
 	}
 	
-	while(format.search(data) != -1) {
+	while(format.indexIn(data) != -1) {
 		id = format.cap(2);
 		found = format.cap(3);
 		if (found.length() == 0) {

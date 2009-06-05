@@ -362,7 +362,7 @@ void GMail::postLogin(QString url)
 					<< rx.errorString() << endl;
 		}
 		
-		found = rx.search(url);
+		found = rx.indexIn(url);
 		
 		if(found == -1) {
 			kWarning() <<  "This can't be a valid url!: " << url << endl;
@@ -559,7 +559,7 @@ void GMail::slotCheckResult(KJob *job)
 					<< rx2.errorString() << endl;
 		}
 
-		found = rx.search(mPageBuffer);
+		found = rx.indexIn(mPageBuffer);
 
 		if( found != -1 || !isLoggedIn() ) {
 			kWarning() << k_funcinfo << "User is not logged in!" << endl;
@@ -575,7 +575,7 @@ void GMail::slotCheckResult(KJob *job)
 			return;
 		}
 
-		found = rx2.search(mPageBuffer);
+		found = rx2.indexIn(mPageBuffer);
 
 		if( found != -1 ) {
 			kWarning() << k_funcinfo << "Gmail is unavailable because of server-side errors!" << endl;
@@ -818,7 +818,7 @@ bool GMail::cookieExists(QString cookieName,QString url)
 	}
 	
 	 
-	found = search.search(cookies);
+	found = search.indexIn(cookies);
 	ret = ( found != -1 );
 	
 	if(ret && cookieName.compare(ACTION_TOKEN_COOKIE) == 0) {
@@ -877,7 +877,7 @@ QString GMail::getRedirectURL(QString buffer)
 				<< jsRX.errorString() << endl;
 	}
 	
-	found = metaRX.search(buffer);
+	found = metaRX.indexIn(buffer);
 			
 	if( found == -1 ) {
 		return QString::null;
@@ -886,7 +886,7 @@ QString GMail::getRedirectURL(QString buffer)
 	url = KCharsets::resolveEntities(metaRX.cap(2));
 	
 	// now let's check if there's a JS redirection (location.replace)
-	found = jsRX.search(buffer);
+	found = jsRX.indexIn(buffer);
 	
 	if( found == -1 ) {
 		return url;
