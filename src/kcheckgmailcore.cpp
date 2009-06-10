@@ -159,7 +159,7 @@ void KCheckGmailCore::buidTrayPopupMenu()
 	d->menu->addAction(d->actionShowKNotifyDialog);
 	d->menu->addAction(d->actionShowPrefsDialog);
 
-	d->menu->insertSeparator();
+	d->menu->addSeparator();
 
 	d->menu->addAction(d->mLoginCheckMailAction);
 	d->mLoginCheckMailAction->setEnabled(false);
@@ -171,7 +171,7 @@ void KCheckGmailCore::buidTrayPopupMenu()
 		i18n("Th&reads"), d->mThreadsMenu);
 	d->mTray->contextMenu()->setItemEnabled(d->mThreadsMenuId, false);
 
-	d->menu->insertSeparator();
+	d->menu->addSeparator();
 
 	d->mHelpMenu = new KHelpMenu(d->menu, KGlobal::mainComponent().aboutData(), false, d->actions);
 	d->menu->insertItem(SmallIcon("help-contents"), KStandardGuiItem::help().text(), d->mHelpMenu->menu());
