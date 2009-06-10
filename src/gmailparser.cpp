@@ -291,7 +291,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->subject = cleanUpData(rx.cap(7));
 		t->snippet = cleanUpData(rx.cap(8));
 		t->labels = rx.cap(9);
-		t->attachments = QStringList::split(",", rx.cap(10));
+		t->attachments = rx.cap(10).split(",", QString::SkipEmptyParts);
 		t->msgId = rx.cap(11);
 		t->unknown2 = rx.cap(12).toUInt();
 		t->date_long = rx.cap(13);
@@ -328,7 +328,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->subject = cleanUpData(rx2.cap(7));
 		t->snippet = cleanUpData(rx2.cap(8));
 		t->labels = rx2.cap(9);
-		t->attachments = QStringList::split(",", rx.cap(10));
+		t->attachments = rx.cap(10).split(",", QString::SkipEmptyParts);
 		t->msgId = rx2.cap(11);
 		t->unknown2 = rx2.cap(12).toUInt();
 		t->date_long = rx2.cap(13);
@@ -372,7 +372,7 @@ void GMailParser::parseVersion(const QString &_data)
 	
 	kDebug() << k_funcinfo << "Version string: " << data << endl;
 	
-	QStringList list = QStringList::split(",",data);
+	QStringList list = data.split(",", QString::SkipEmptyParts);
 	if(list.size() != 5)
 		kWarning() << k_funcinfo << "Wrong number of elements: "
 				<< list.size() << ", should be: 5." << endl;
@@ -436,7 +436,7 @@ void GMailParser::parseVersion(const QString &_data)
 */
 void GMailParser::parseQuota(const QString &data)
 {	
-	QStringList list = QStringList::split(",",data);
+	QStringList list = data.split(",", QString::SkipEmptyParts);
 	if(list.size() == 4 || list.size() == 9) {
 		QStringList::Iterator iter = list.begin();
 		unsigned int i = 0;
