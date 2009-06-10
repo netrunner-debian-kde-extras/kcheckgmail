@@ -744,7 +744,7 @@ bool GMail::setDomainAdvice(QString url, QString advice)
 		return false;
 	}
 	
-	if (QString::compare(advice.lower(),getDomainAdvice(url).lower()) == 0) {
+	if (QString::compare(advice.toLower(),getDomainAdvice(url).toLower()) == 0) {
 		return true;
 	} else {
 		return false;
