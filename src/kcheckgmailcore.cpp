@@ -450,7 +450,8 @@ void KCheckGmailCore::slotLeftButtonClicked()
 		if(Prefs::catchAccidentalClick()) {
 			static QTimer *t = new QTimer(this);
 			if(!t->isActive()) {
-				t->start(ACCIDENTAL_CLICK_TIMEOUT, true);
+				t->setSingleShot(true);
+				t->start(ACCIDENTAL_CLICK_TIMEOUT);
 				slotLaunchBrowser();
 			}
 		} else
