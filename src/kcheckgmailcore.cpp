@@ -313,39 +313,38 @@ QString KCheckGmailCore::getUrlBase()
 
 void KCheckGmailCore::updateThreadMenu()
 {
-        QMap<QString, int> entries;
-        QMap<QString,bool> *threads = d->mJSP->parser()->getThreadList();
-        int numItems = 0;
+	QMap<QString, int> entries;
+	QMap<QString,bool> *threads = d->mJSP->parser()->getThreadList();
+	int numItems = 0;
 	int id = 0;
 
 	d->mThreadsMenu->clear();
-        if(threads) {
-                QList<QString> klist = threads->keys();
-                QList<QString>::iterator iter = klist.begin();
+	if(threads) {
+		QList<QString> klist = threads->keys();
+		QList<QString>::iterator iter = klist.begin();
 
-                kDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
-
-                while(iter != klist.end()) {
-                        const GMailParser::Thread &t = d->mJSP->parser()->getThread(*iter);
-                        if(!t.isNull) {
-                                QString str = t.senders;
-                                str += " - ";
-                                str += t.subject;
-                                str.replace("&","&&");
+		kDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
+		while(iter != klist.end()) {
+			const GMailParser::Thread &t = d->mJSP->parser()->getThread(*iter);
+			if(!t.isNull) {
+				QString str = t.senders;
+				str += " - ";
+				str += t.subject;
+				str.replace("&","&&");
 
 				// TODO: Add an hasAttach method
 				if (t.attachments.isEmpty())
 					id = d->mThreadsMenu->insertItem(str, t.id);
 				else
 					id = d->mThreadsMenu->insertItem(SmallIcon("mail-attachment"), str, t.id);
-				numItems ++;
-                        }
-			iter ++;
-                }
-                delete threads;
-                threads = 0;
-        }
 
+				numItems++;
+			}
+			iter++;
+		}
+		delete threads;
+		threads = 0;
+	}
 	d->mTray->contextMenu()->setItemEnabled(d->mThreadsMenuId, (numItems > 0));
 }
 
