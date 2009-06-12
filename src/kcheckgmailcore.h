@@ -93,7 +93,7 @@ private:
 
 	void initTray();
 	void initActions();
-	void buidTrayPopupMenu();
+	void buildTrayPopupMenu();
 	void initConfigDialog();
 	void makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray);
 	void start();

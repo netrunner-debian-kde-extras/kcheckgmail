@@ -67,7 +67,7 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent)
 
 	initTray();
 	initActions();
-	buidTrayPopupMenu();
+	buildTrayPopupMenu();
 	initConfigDialog();
 	makeConnections(d->mJSP, d->mTray);
 
@@ -146,7 +146,7 @@ void KCheckGmailCore::initActions()
 }
 
 
-void KCheckGmailCore::buidTrayPopupMenu()
+void KCheckGmailCore::buildTrayPopupMenu()
 {
 	d->menu = qobject_cast<KMenu *>(d->mTray->contextMenu());
 	d->menu->clear();
