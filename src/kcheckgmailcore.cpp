@@ -62,7 +62,7 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
 
 	initTray();
 	initActions();
-	buidTrayPopupMenu();
+	buildTrayPopupMenu();
 	initConfigDialog();
 	makeConnections(d->mJSP, d->mTray);
 
@@ -127,7 +127,7 @@ void KCheckGmailCore::initActions()
 }
 
 
-void KCheckGmailCore::buidTrayPopupMenu()
+void KCheckGmailCore::buildTrayPopupMenu()
 {
 	d->mThreadsMenu = new KPopupMenu(d->mTray, "KCheckGmail Threads menu");
 
