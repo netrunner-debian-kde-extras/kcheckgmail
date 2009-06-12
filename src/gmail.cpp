@@ -104,12 +104,24 @@ GMail::GMail(QObject* parent, const char* name)
 
 GMail::~GMail()
 {
-	if (mCheckLock->locked())
+	bool isLocked;
+
+	isLocked = true;
+	if (mCheckLock->tryLock()) {
+		mCheckLock->unlock();
+		isLocked = false;
+	}
+	if (isLocked)
 		mCheckLock->unlock();
 	delete mCheckLock;
 	mCheckLock = 0;
 
-	if (mLoginLock->locked())
+	isLocked = true;
+	if (mLoginLock->tryLock()) {
+		mLoginLock->unlock();
+		isLocked = false;
+	}
+	if (isLocked)
 		mLoginLock->unlock();
 	delete mLoginLock;
 	mLoginLock = 0;
@@ -153,8 +165,13 @@ void GMail::checkLoginParams()
 	}
 	
 	kDebug() << k_funcinfo << "Using " << useUsername << " as username and " << useDomain << " as domain" << endl;
-	
-	if(!mLoginLock->locked()) {
+
+	bool isLocked = true;
+	if (mLoginLock->tryLock()) {
+		mLoginLock->unlock();
+		isLocked = false;
+	}
+	if(!isLocked) {
 		
 		//Try to log out if a session already exists (because it might be from another address)
 		if(isLoggedIn(false)) {
@@ -351,8 +368,13 @@ void GMail::slotLoginResult(KJob *job)
 ///////////////////////////////////////////////////////////////////////////
 void GMail::postLogin(QString url)
 {
+	bool isLocked = true;
+	if (mLoginLock->tryLock()) {
+		mLoginLock->unlock();
+		isLocked = false;
+	}
 	// this is expected to be locked.
-	if(mLoginLock->locked()) {
+	if(isLocked) {
 		
 		static QRegExp rx("^(http[s]?://)(.*)$");
 		int found;
@@ -640,7 +662,12 @@ bool GMail::isLoggedIn(bool lockCheck)
 {
 	bool ret = false;
 	
-	if( !lockCheck || ( lockCheck && !mLoginLock->locked() ) ) {
+	bool isLocked = true;
+	if (mLoginLock->tryLock()) {
+		mLoginLock->unlock();
+		isLocked = false;
+	}
+	if( !lockCheck || ( lockCheck && !isLocked ) ) {
 		if(cookieExists(ACTION_TOKEN_COOKIE))
 			ret = true;
 		else kDebug() << k_funcinfo << ACTION_TOKEN_COOKIE << " wasn't found!" << endl;
@@ -847,7 +874,12 @@ void GMail::slotSessionChanged()
 {
 	logOut();
 	
-	if(mCheckLock->locked())
+	bool isLocked = true;
+	if (mCheckLock->tryLock()) {
+		mCheckLock->unlock();
+		isLocked = false;
+	}
+	if (isLocked)
 		mCheckLock->unlock();
 	
 	//Clearing values will force login
