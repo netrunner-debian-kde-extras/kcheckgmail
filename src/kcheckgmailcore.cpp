@@ -51,6 +51,7 @@
 #include <qfile.h>
 #include <qtooltip.h>
 #include <QHash>
+#include <QSignalMapper>
 //Added by qt3to4:
 #include <QList>
 #include <QPixmap>
@@ -138,6 +139,10 @@ void KCheckGmailCore::initActions()
 	d->actions->addAction("compose-mail", d->actionComposeMail);
 	connect(d->actionComposeMail, SIGNAL(triggered(bool)),
 		this, SLOT(slotComposeMail()));
+
+	d->threadsMapper = new QSignalMapper(this);
+	connect(d->threadsMapper, SIGNAL(mapped(int)),
+		this, SLOT(slotThreadActivated(int)));
 }
 
 
@@ -148,8 +153,6 @@ void KCheckGmailCore::buidTrayPopupMenu()
 
 	d->mThreadsMenu = new KMenu(d->menu);
 
-	connect(d->mThreadsMenu, SIGNAL(activated(int)),
-		SLOT(slotThreadActivated(int)));
 #if 0
 	connect(d->mThreadsMenu, SIGNAL(highlighted(int)),
 		SLOT(slotThreadsItemHighlighted(int)));
@@ -167,14 +170,17 @@ void KCheckGmailCore::buidTrayPopupMenu()
 	d->menu->addAction(d->actionLaunchBrowser);
 	d->menu->addAction(d->actionComposeMail);
 
-	d->mThreadsMenuId = d->menu->insertItem(SmallIcon("kcheckgmail"),
-		i18n("Th&reads"), d->mThreadsMenu);
-	d->mTray->contextMenu()->setItemEnabled(d->mThreadsMenuId, false);
+	d->mThreadsMenuAction = d->menu->addMenu(d->mThreadsMenu);
+	d->mThreadsMenuAction->setIcon(SmallIcon("kcheckgmail"));
+	d->mThreadsMenuAction->setText(i18n("Th&reads"));
+	d->mThreadsMenuAction->setEnabled(false);
 
 	d->menu->addSeparator();
 
 	d->mHelpMenu = new KHelpMenu(d->menu, KGlobal::mainComponent().aboutData(), false, d->actions);
-	d->menu->insertItem(SmallIcon("help-contents"), KStandardGuiItem::help().text(), d->mHelpMenu->menu());
+	d->mHelpMenu->menu()->setIcon(SmallIcon("help-contents"));
+	d->mHelpMenu->menu()->setTitle(KStandardGuiItem::help().text());
+	d->menu->addMenu(d->mHelpMenu->menu());
 }
 
 
@@ -316,8 +322,12 @@ void KCheckGmailCore::updateThreadMenu()
 	QMap<QString, int> entries;
 	QMap<QString,bool> *threads = d->mJSP->parser()->getThreadList();
 	int numItems = 0;
-	int id = 0;
 
+	/*
+	 * There is no need to unmap the mThreadsMenu actions. They are
+	 * automatically unmapped when they are destroyed.
+	 * QMenu::clear() destroys them.
+	 */
 	d->mThreadsMenu->clear();
 	if(threads) {
 		QList<QString> klist = threads->keys();
@@ -332,12 +342,17 @@ void KCheckGmailCore::updateThreadMenu()
 				str += t.subject;
 				str.replace("&","&&");
 
-				// TODO: Add an hasAttach method
-				if (t.attachments.isEmpty())
-					id = d->mThreadsMenu->insertItem(str, t.id);
-				else
-					id = d->mThreadsMenu->insertItem(SmallIcon("mail-attachment"), str, t.id);
+				QAction* action = new QAction(str, d->mThreadsMenu);
 
+				// TODO: Add an hasAttach method
+				if (!t.attachments.isEmpty())
+					action->setIcon(SmallIcon("mail-attachment"));
+
+				connect(action, SIGNAL(triggered(bool)),
+					d->threadsMapper, SLOT(map()));
+
+				d->threadsMapper->setMapping(action, t.id);
+				d->mThreadsMenu->addAction(action);
 				numItems++;
 			}
 			iter++;
@@ -345,7 +360,7 @@ void KCheckGmailCore::updateThreadMenu()
 		delete threads;
 		threads = 0;
 	}
-	d->mTray->contextMenu()->setItemEnabled(d->mThreadsMenuId, (numItems > 0));
+	d->mThreadsMenuAction->setEnabled(numItems > 0);
 }
 
 
