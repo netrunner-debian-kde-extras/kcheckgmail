@@ -1,4 +1,3 @@
-add_definitions(-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
 
 
@@ -29,7 +28,7 @@ kde4_add_kcfg_files(kcheckgmail_SRCS prefs.kcfgc)
 
 kde4_add_executable(kcheckgmail ${kcheckgmail_SRCS})
 
-target_link_libraries(kcheckgmail ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} ${KDE4_KDE3SUPPORT_LIBS})
+target_link_libraries(kcheckgmail ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} )
 
 install(TARGETS kcheckgmail ${INSTALL_TARGETS_DEFAULT_ARGS})
 
