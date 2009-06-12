@@ -47,7 +47,7 @@
 
 
 
-KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
+KCheckGmailTray::KCheckGmailTray(QWidget *parent)
 	: KSystemTrayIcon(parent),
 	mMailCount(0)
 {

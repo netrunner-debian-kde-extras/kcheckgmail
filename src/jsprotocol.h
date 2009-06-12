@@ -45,7 +45,7 @@ class JSProtocol : public QObject {
 	Q_OBJECT
 
 public:
-	JSProtocol(QObject* parent, const char* name = 0);
+	JSProtocol(QObject* parent);
 	~JSProtocol();
 
 	GMailParser* parser();

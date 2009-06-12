@@ -69,7 +69,7 @@ public:
 };
 
 
-GMail::GMail(QObject* parent, const char* name)
+GMail::GMail(QObject* parent)
 	: QObject(parent),
 	  d(new Private())
 {

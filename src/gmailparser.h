@@ -104,7 +104,7 @@ public:
 		ParsedOnlyCount
 	};
 		
-	GMailParser(QObject* parent = 0, const char* name = 0);
+	GMailParser(QObject* parent = 0);
 	virtual ~GMailParser();
 
 	void parse(const QString &data);

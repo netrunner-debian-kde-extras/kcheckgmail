@@ -47,7 +47,7 @@ class KCheckGmailTray : public KSystemTrayIcon
 {
 	Q_OBJECT
 public:
-	KCheckGmailTray(QWidget *parent = 0, const char *name = 0);
+	KCheckGmailTray(QWidget *parent = 0);
 	virtual ~KCheckGmailTray();
 
 	void takeScreenshotOfTrayIcon();

@@ -58,11 +58,11 @@
 #include <ktoolinvocation.h>
 
 
-KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
+KCheckGmailCore::KCheckGmailCore(QObject* parent)
 	: QObject(parent),
 	  d(new Private)
 {
-	d->mJSP = new JSProtocol(this, "JSProtocol");
+	d->mJSP = new JSProtocol(this);
 	d->actions = new KActionCollection(this);
 
 	initTray();
@@ -95,14 +95,14 @@ KCheckGmailCore::~KCheckGmailCore()
 
 KCheckGmailCore& KCheckGmailCore::instance()
 {
-	static KCheckGmailCore object(0, "KCheckGmailCore");
+	static KCheckGmailCore object(0);
 	return object;
 }
 
 
 void KCheckGmailCore::initTray()
 {
-	d->mTray = new KCheckGmailTray(0, "KCheckGmailTray");
+	d->mTray = new KCheckGmailTray(0);
 	connect(d->mTray, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 
 	connect(d->mTray, SIGNAL(leftButtonClicked()),

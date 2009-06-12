@@ -38,7 +38,7 @@
  * This class parses the resulting data of a call to
  * Gmail's JavaScript interface.
 */
-GMailParser::GMailParser(QObject* parent, const char* name) :
+GMailParser::GMailParser(QObject* parent) :
 		QObject(parent),
 		mInvites(0)
 {

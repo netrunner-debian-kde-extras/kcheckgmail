@@ -86,7 +86,7 @@ private slots:
 	void slotOpenButtonClicked();
 
 private:
-	KCheckGmailCore(QObject* parent = 0, const char* name = 0);
+	KCheckGmailCore(QObject* parent = 0);
 	virtual ~KCheckGmailCore();
 	KCheckGmailCore(KCheckGmailCore&);
 	KCheckGmailCore& operator=(const KCheckGmailCore&);
