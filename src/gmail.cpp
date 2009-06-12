@@ -645,7 +645,7 @@ void GMail::setInterval(unsigned int i, bool forceStart)
 		else
 			running = mTimer->isActive();
 		
-		mTimer->setInterval(MILLISECS(mInterval));
+		mTimer->start(MILLISECS(mInterval));
 		
 		//Prevent starting the timer when it wasn't needed to
 		if(!running)
