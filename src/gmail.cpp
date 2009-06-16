@@ -141,7 +141,7 @@ void GMail::checkLoginParams()
 	QString username = Prefs::gmailUsername();
 	const QString& password = GMailWalletManager::instance()->getHash();
 	
-	if(mUsername == username && mPasswordHash == password
+	if((mUsername == username && mPasswordHash == password)
 		  || username.length() == 0)
 		return;
 	
