@@ -37,6 +37,9 @@ int KCheckGmailApp::newInstance()
 		dbus.call("whereIAm");
 	} else {
 		const KCheckGmailCore& kcgmCore = KCheckGmailCore::instance();
+
+		// Avoid compiler warning about unused kcgmCore
+		Q_UNUSED(kcgmCore);
 		secondMe = true;
 	}
 	return 0;

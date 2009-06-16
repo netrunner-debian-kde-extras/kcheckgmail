@@ -757,6 +757,10 @@ void GMail::dump2File(const QString filename, const QString data)
 	stream << data;
 
 	f.close();
+#else
+	// Avoid compiler warnings about unused variables
+	Q_UNUSED (filename);
+	Q_UNUSED (data);
 #endif
 }
 
