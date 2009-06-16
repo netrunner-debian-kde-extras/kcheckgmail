@@ -35,6 +35,9 @@ int KCheckGmailApp::newInstance()
 		DCOPReply reply = execute.call( "whereAmI" );
 	} else {
 		const KCheckGmailCore& kcgmCore = KCheckGmailCore::instance();
+
+		// Avoid compiler warning about unused kcgmCore
+		Q_UNUSED(kcgmCore);
 		secondMe = true;
 	}
 	return 0;
