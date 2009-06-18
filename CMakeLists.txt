@@ -28,7 +28,7 @@ add_subdirectory( doc )
 
 ########### install files ###############
 
-
+kde4_create_manpage(man-kcheckgmail.1.docbook 1 INSTALL_DESTINATION ${MAN_INSTALL_DIR})
 
 
 #original Makefile.am contents follow:
