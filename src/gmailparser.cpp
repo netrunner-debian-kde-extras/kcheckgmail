@@ -378,7 +378,7 @@ void GMailParser::parseVersion(const QString &_data)
 				<< list.size() << ", should be: 5." << endl;
 	
 	QStringList::Iterator iter = list.begin();
-	unsigned int i = 0;
+	int i = 0;
 	while(iter != list.end()) {
 		QString str = *iter;
 		switch(i) {
