@@ -76,7 +76,7 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent)
 	QDBusConnection dbus = QDBusConnection::sessionBus();
 	dbus.registerObject("/kcheckgmail", this, QDBusConnection::ExportScriptableSlots);
 
-	d->mTray->showIcon();
+	d->mTray->show();
 	start();
 }
 
@@ -728,13 +728,13 @@ void KCheckGmailCore::checkMailNow()
 
 void KCheckGmailCore::showIcon()
 {
-	d->mTray->showIcon();
+	d->mTray->show();
 }
 
 
 void KCheckGmailCore::hideIcon()
 {
-	d->mTray->hideIcon();
+	d->mTray->hide();
 }
 
 

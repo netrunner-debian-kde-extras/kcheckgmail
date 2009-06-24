@@ -57,8 +57,6 @@ public:
     void stopAnim();
     void startAnim(unsigned int t);
 	void toggleAnim(bool restoreToState);
-	void showIcon();
-	void hideIcon();
 	void whereAmI();
 
 signals:

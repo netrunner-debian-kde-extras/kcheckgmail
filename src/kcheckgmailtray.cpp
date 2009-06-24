@@ -97,16 +97,6 @@ void KCheckGmailTray::slotMailCountChanged(int n)
 	updateCountImage(Prefs::trayIconUnreadMessagesColor());
 }
 
-void KCheckGmailTray::showIcon()
-{
-	show();
-}
-
-void KCheckGmailTray::hideIcon()
-{
-	hide();
-}
-
 
 void KCheckGmailTray::slotVersionMismatch()
 {
