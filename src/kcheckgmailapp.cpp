@@ -34,7 +34,7 @@ int KCheckGmailApp::newInstance()
 		QDBusInterface dbus("org.kcheckgmail.kcheckgmail",
 				    "/kcheckgmail",
 				    "org.kcheckgmail.kcheckgmail");
-		dbus.call("whereIAm");
+		dbus.call("whereAmI");
 	} else {
 		const KCheckGmailCore& kcgmCore = KCheckGmailCore::instance();
 
