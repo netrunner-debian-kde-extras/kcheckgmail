@@ -65,7 +65,7 @@ private slots:
 	void slotShowKNotifyDialog();
 	void slotShowPrefsDialog();
 
-	void slotLaunchBrowser(const QString &url = QString::null);
+	void slotLaunchBrowser(const QString &url = QString());
 	void slotComposeMail();
 
 	void slotLeftButtonClicked();

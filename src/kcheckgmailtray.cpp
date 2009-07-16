@@ -269,7 +269,7 @@ void KCheckGmailTray::slotgNameUpdate(QString name)
 	kDebug() << k_funcinfo << "Updating tooltip" << endl;
 	
 	//Trick to restore the tooltip
-	if(name == QString::null)
+	if(name == QString())
 		name = sname;
 	else
 		sname = name;

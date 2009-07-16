@@ -425,7 +425,7 @@ void KCheckGmailCore::slotLaunchBrowser(const QString &url)
 {
 	QString loadURL;
 
-	if(url == QString::null) {
+	if(url == QString()) {
 		loadURL = getUrlBase();
 		
 		if (Prefs::gMailSimpleInterface())
@@ -596,7 +596,7 @@ void KCheckGmailCore::slotSettingsChanged()
 							"<p>A search without an <i>in:</i> and <i>label:</i> will return all unread emails.</p>"
 							"<p>If what you want is to show the new emails in your inbox use <i>in:inbox</i> or leave empty.</p>"
 							"<p>Are you sure you want to proceed without specifying location?</p>"),
-       					QString::null,
+       					QString(),
        					KStandardGuiItem::yes(),
 					KStandardGuiItem::no(),
 					"no_location_check");
@@ -611,7 +611,7 @@ void KCheckGmailCore::slotSettingsChanged()
 							".</p>"
 							"<p>It should be set to ensure more unread messages are retrieved.</p>"
 							"<p>Are you sure you want to proceed?</p>"),
-					QString::null,
+					QString(),
 					KStandardGuiItem::yes(),
 					KStandardGuiItem::no(),
 					"is_unread_check");
@@ -767,7 +767,7 @@ QString KCheckGmailCore::getThreadSubject(QString msgId)
 	GMailParser::Thread t = d->mJSP->parser()->getThread(msgId);
 	
 	if (t.subject.isEmpty()) {
-		return QString::null;
+		return QString();
 	}
 	
 	return t.subject;
@@ -779,7 +779,7 @@ QString KCheckGmailCore::getThreadSender(QString msgId)
 	GMailParser::Thread t = d->mJSP->parser()->getThread(msgId);
 	
 	if (t.senders.isEmpty()) {
-		return QString::null;
+		return QString();
 	}
 	
 	return t.senders;
@@ -791,7 +791,7 @@ QString KCheckGmailCore::getThreadSnippet(QString msgId)
 	GMailParser::Thread t = d->mJSP->parser()->getThread(msgId);
 	
 	if (t.snippet.isEmpty()) {
-		return QString::null;
+		return QString();
 	}
 	
 	return t.snippet;

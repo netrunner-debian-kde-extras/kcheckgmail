@@ -147,7 +147,7 @@ void GMail::checkLoginParams()
 	
 	mUsername = username;
 	mPasswordHash = password;
-	sessionCookie = QString::null;
+	sessionCookie = QString();
 	
 	useUsername = mUsername;
 	useDomain = "";
@@ -299,7 +299,7 @@ void GMail::slotLoginResult(KJob *job)
 		redirection = getRedirectURL(mLoginBuffer);
 		dump2File("gmail_login.html", mLoginBuffer);
 		
-		if( redirection == QString::null ) {
+		if( redirection == QString() ) {
 			
 			if(!isLoggedIn(false)) {
 				if(mLoginBuffer.contains("onload") && (
@@ -466,7 +466,7 @@ void GMail::slotPostLoginResult(KJob *job)
 
 			QString url = getRedirectURL(mPostLoginBuffer);
 			
-			if(url == QString::null) {
+			if(url == QString()) {
 				dump2File("gmail_postlogin.html", mPostLoginBuffer);
 				mPostLoginBuffer = "";
 				
@@ -713,7 +713,7 @@ void GMail::logOut(bool force)
 		return;
 
 	alreadyRunning = true;
-	sessionCookie = QString::null;
+	sessionCookie = QString();
 	mTimer->stop();
 	
 	QString logoutUrl = (!isGAP4D)? gGMailLogOut : QString(gGAP4DLogOut).arg(useDomain);
@@ -792,7 +792,7 @@ QString GMail::getDomainAdvice(QString url)
 		QDBusError error = reply.error();
 		kWarning() << k_funcinfo << "D-BUS error while calling getDomainAdvice" << endl;
 		kDebug() << "Error description:" << error.message() << endl;
-		return QString::null;
+		return QString();
 	}
 
 	return reply.value();
@@ -821,7 +821,7 @@ QString GMail::findCookies(QString url)
 		QDBusError error = reply.error();
 		kWarning() << k_funcinfo << "D-BUS error while calling findCookies" << endl;
 		kWarning() << "Error description:" << error.message() << endl;
-		return QString::null;
+		return QString();
 	}
 	return reply.value();
 }
@@ -916,7 +916,7 @@ QString GMail::getRedirectURL(QString buffer)
 	found = metaRX.indexIn(buffer);
 			
 	if( found == -1 ) {
-		return QString::null;
+		return QString();
 	}
 	
 	url = KCharsets::resolveEntities(metaRX.cap(2));
