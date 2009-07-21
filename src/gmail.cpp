@@ -132,7 +132,7 @@ GMail::~GMail()
 
 void GMail::slotSetWalletPassword(bool)
 {
-	kDebug() << k_funcinfo << "now, check login params." << endl;
+	kDebug() << k_funcinfo << "now, check login params.";
 	checkLoginParams();
 }
 
@@ -157,14 +157,14 @@ void GMail::checkLoginParams()
 		
 		if ( QString::compare(mUsername.section("@",1),"gmail.com") != 0 &&
 			QString::compare(mUsername.section("@",1),"googlemail.com") != 0) {
-			kDebug() << k_funcinfo << mUsername << " seems to be a GAP4D account" << endl;
+			kDebug() << k_funcinfo << mUsername << " seems to be a GAP4D account";
 			isGAP4D = true;
 			useDomain = mUsername.section("@",1);
 		}
 		useUsername = mUsername.section("@",0,0);
 	}
 	
-	kDebug() << k_funcinfo << "Using " << useUsername << " as username and " << useDomain << " as domain" << endl;
+	kDebug() << k_funcinfo << "Using " << useUsername << " as username and " << useDomain << " as domain";
 
 	bool isLocked = true;
 	if (mLoginLock->tryLock()) {
@@ -175,7 +175,7 @@ void GMail::checkLoginParams()
 		
 		//Try to log out if a session already exists (because it might be from another address)
 		if(isLoggedIn(false)) {
-			kDebug() << k_funcinfo << "A gmail session was already open, logging out from it" << endl;
+			kDebug() << k_funcinfo << "A gmail session was already open, logging out from it";
 			logOut(true);
 		}
 		
@@ -196,7 +196,7 @@ void GMail::login()
 	if(mLoginLock->tryLock()) {
 		emit loginStart();
 		
-		kDebug() << k_funcinfo << "Waiting for wallet..." << endl;
+		kDebug() << k_funcinfo << "Waiting for wallet...";
 		// this will call back to gotWalletPassword().
 		// we will continue the process from there.
 		GMailWalletManager::instance()->get();
@@ -220,7 +220,7 @@ void GMail::slotGetWalletPassword(const QString& pass)
 			QLatin1String(QUrl::toPercentEncoding(pass)));
 	str.replace('@','%');
 
-	kDebug() << k_funcinfo << "Requesting login URL" << endl;
+	kDebug() << k_funcinfo << "Requesting login URL";
 
 	loginRedirection = "";
 	
@@ -231,7 +231,7 @@ void GMail::slotGetWalletPassword(const QString& pass)
 
 	
 	if (d->buffer) {
-		kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
+		kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen";
 		return;
 	}
 	d->buffer = new QBuffer;
@@ -259,7 +259,7 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 {
 
 	if(job->error() != 0) {
-		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+		kWarning() << k_funcinfo << "error: " << job->errorString();
 	} else {
 		d->buffer->write(data.data(), data.size());
 	}
@@ -267,10 +267,10 @@ void GMail::slotLoginData(KIO::Job *job, const QByteArray &data)
 
 void GMail::slotLoginRedirection(KIO::Job *job, const KUrl &url)
 {
-	kDebug() << k_funcinfo << url.url() << endl;
+	kDebug() << k_funcinfo << url.url();
 
 	if(job->error() != 0) {
-		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+		kWarning() << k_funcinfo << "error: " << job->errorString();
 	} else {
 		loginRedirection = url;
 	}
@@ -279,7 +279,7 @@ void GMail::slotLoginRedirection(KIO::Job *job, const KUrl &url)
 void GMail::slotLoginResult(KJob *job)
 {	
 	if(job->error() != 0) {
-		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+		kWarning() << k_funcinfo << "error: " << job->errorString();
 
 		delete d->buffer;
 		d->buffer = 0;
@@ -310,7 +310,7 @@ void GMail::slotLoginResult(KJob *job)
 					emit loginDone(false, mLoginFromTimer, i18n("Invalid username or password"));
 					return;
 				} else {
-					kWarning() << k_funcinfo << " Redirection couldn't be found!" << endl;
+					kWarning() << k_funcinfo << " Redirection couldn't be found!";
 					
 					mLoginLock->unlock();
 					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
@@ -319,10 +319,10 @@ void GMail::slotLoginResult(KJob *job)
 			} else if (mLoginBuffer.contains("?ui=html") && (
 						mLoginBuffer.contains("nocheckbrowser") ||
 						mLoginBuffer.contains("noscript") )) {
-				kDebug() << k_funcinfo << "Google is performing dirty JS check, bypassing it" << endl;
+				kDebug() << k_funcinfo << "Google is performing dirty JS check, bypassing it";
 				
 				if (loginRedirection.isEmpty()) {
-					kWarning() << k_funcinfo << "loginRedirection is empty!" << endl;
+					kWarning() << k_funcinfo << "loginRedirection is empty!";
 					mLoginLock->unlock();
 					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
 					return;
@@ -336,7 +336,7 @@ void GMail::slotLoginResult(KJob *job)
 				_url.setQuery("ui=html&zy=n");
 				
 				if (!_url.isValid()) {
-					kWarning() << k_funcinfo << "New _url is invalid!:" << _url.url() << endl;
+					kWarning() << k_funcinfo << "New _url is invalid!:" << _url.url();
 					mLoginLock->unlock();
 					// let's show a nice error message to the user instead
 					emit loginDone(false, mLoginFromTimer, i18n("GMail's login procedure has changed, check for new version"));
@@ -348,7 +348,7 @@ void GMail::slotLoginResult(KJob *job)
 				
 			} else {
 				//no more redirections?
-				kWarning() << k_funcinfo << "No redirection was found, but seems like we are logged in!" << endl;
+				kWarning() << k_funcinfo << "No redirection was found, but seems like we are logged in!";
 				
 				mLoginBuffer = "";
 				slotPostLoginResult(job);
@@ -387,7 +387,7 @@ void GMail::postLogin(QString url)
 		found = rx.indexIn(url);
 		
 		if(found == -1) {
-			kWarning() <<  "This can't be a valid url!: " << url << endl;
+			kWarning() <<  "This can't be a valid url!: " << url;
 			if (!KUrl(url).isValid()) {
 				kError() <<  "This is absolutely a non-valid URL!: " << url << endl;
 			}
@@ -402,14 +402,14 @@ void GMail::postLogin(QString url)
 		mPostLoginBuffer = "";
 		
 		if (d->buffer) {
-			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
+			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen";
 			return;
 		}
 
 		d->buffer = new QBuffer;
 		d->buffer->open(QIODevice::WriteOnly);
 
-		kDebug() << k_funcinfo << "Starting job to " << url << endl;
+		kDebug() << k_funcinfo << "Starting job to " << url;
 
 		KIO::TransferJob *job = KIO::get(url, KIO::Reload, KIO::HideProgressInfo);
 		job->addMetaData("cookies", "auto");
@@ -421,7 +421,7 @@ void GMail::postLogin(QString url)
 		connect(job, SIGNAL(data(KIO::Job*, const QByteArray&)),
 			SLOT(slotPostLoginData(KIO::Job*, const QByteArray&)));
 	} else {
-		kWarning() << k_funcinfo << "mLoginLock is not locked!" << endl;
+		kWarning() << k_funcinfo << "mLoginLock is not locked!";
 	}
 }
 
@@ -429,7 +429,7 @@ void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 {
 
 	if(job->error() != 0) {
-		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+		kWarning() << k_funcinfo << "error: " << job->errorString();
 	} else {
 		d->buffer->write(data.data(), data.size());
 	}
@@ -438,7 +438,7 @@ void GMail::slotPostLoginData(KIO::Job *job, const QByteArray &data)
 void GMail::slotPostLoginResult(KJob *job)
 {
 	if(job->error() != 0) {
-		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+		kWarning() << k_funcinfo << "error: " << job->errorString();
 
 		delete d->buffer;
 		d->buffer = 0;
@@ -473,7 +473,7 @@ void GMail::slotPostLoginResult(KJob *job)
 				emit loginDone(false, mLoginFromTimer, 
 				       i18n("Unknown error retrieving cookies"));
 			} else {
-				kDebug() << k_funcinfo << "Found another redirect!: " << url << endl;
+				kDebug() << k_funcinfo << "Found another redirect!: " << url;
 				mLoginLock->tryLock();
 				postLogin(url);
 			}
@@ -488,7 +488,7 @@ void GMail::slotPostLoginResult(KJob *job)
 void GMail::checkGMail()
 {
 	if(isLoggedIn() && mCheckLock->tryLock()) {
-		kDebug() << k_funcinfo << "Starting check..." << endl;
+		kDebug() << k_funcinfo << "Starting check...";
 		// stop timer. start again when we have some sort of result.
 		mTimer->stop();
 		emit checkStart();
@@ -514,13 +514,13 @@ void GMail::checkGMail()
 		url.replace('@','%');
 
 		if (d->buffer) {
-			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen" << endl;
+			kDebug() << k_funcinfo << "d->buffer isn't empty. Shouldn't happen";
 		return;
 		}
 		d->buffer = new QBuffer;
 		d->buffer->open(QIODevice::WriteOnly);
 
-		kDebug() << k_funcinfo << "GET: " << url << endl;
+		kDebug() << k_funcinfo << "GET: " << url;
 
 		KIO::TransferJob *job = KIO::get(url, KIO::Reload, KIO::HideProgressInfo);
 		job->addMetaData("cookies", "auto");
@@ -537,7 +537,7 @@ void GMail::checkGMail()
 void GMail::slotCheckData(KIO::Job *job, const QByteArray &data)
 {
 	if(job->error() != 0) {
-		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+		kWarning() << k_funcinfo << "error: " << job->errorString();
 	} else {
 		d->buffer->write(data.data(), data.size());
 	}
@@ -548,7 +548,7 @@ void GMail::slotCheckResult(KJob *job)
 {
 	if(job->error() != 0) {
 		// TODO: We should notify the user
-		kWarning() << k_funcinfo << "error: " << job->errorString() << endl;
+		kWarning() << k_funcinfo << "error: " << job->errorString();
 
 		delete d->buffer;
 		d->buffer = 0;
@@ -563,7 +563,7 @@ void GMail::slotCheckResult(KJob *job)
 		delete d->buffer;
 		d->buffer = 0;
 
-		kDebug() << k_funcinfo << "Check finished." << endl;
+		kDebug() << k_funcinfo << "Check finished.";
 
 		dump2File("gmail_data.html", mPageBuffer);
 
@@ -584,7 +584,7 @@ void GMail::slotCheckResult(KJob *job)
 		found = rx.indexIn(mPageBuffer);
 
 		if( found != -1 || !isLoggedIn() ) {
-			kWarning() << k_funcinfo << "User is not logged in!" << endl;
+			kWarning() << k_funcinfo << "User is not logged in!";
 
 			mPageBuffer = "";
 			mCheckLock->unlock();
@@ -600,7 +600,7 @@ void GMail::slotCheckResult(KJob *job)
 		found = rx2.indexIn(mPageBuffer);
 
 		if( found != -1 ) {
-			kWarning() << k_funcinfo << "Gmail is unavailable because of server-side errors!" << endl;
+			kWarning() << k_funcinfo << "Gmail is unavailable because of server-side errors!";
 
 			mPageBuffer = "";
 			mCheckLock->unlock();
@@ -670,8 +670,8 @@ bool GMail::isLoggedIn(bool lockCheck)
 	if( !lockCheck || ( lockCheck && !isLocked ) ) {
 		if(cookieExists(ACTION_TOKEN_COOKIE))
 			ret = true;
-		else kDebug() << k_funcinfo << ACTION_TOKEN_COOKIE << " wasn't found!" << endl;
-	} else kDebug() << "mLoginLock is locked" << endl;
+		else kDebug() << k_funcinfo << ACTION_TOKEN_COOKIE << " wasn't found!";
+	} else kDebug() << "mLoginLock is locked";
 
 	return ret;
 }
@@ -721,11 +721,11 @@ void GMail::logOut(bool force)
 	KIO::Job *job = KIO::get(logoutUrl, KIO::Reload, KIO::HideProgressInfo);
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
-	kDebug() << "Loging out! " << logoutUrl << endl;
+	kDebug() << "Loging out! " << logoutUrl;
 
 	// we really don't want async jobs here
 	result= KIO::NetAccess::synchronousRun(job, 0);
-	kDebug() << "Log out job done, with result: " << result << endl;
+	kDebug() << "Log out job done, with result: " << result;
 	alreadyRunning = false;
 }
 
@@ -736,7 +736,7 @@ void GMail::logOut()
 
 void GMail::slotLogOut()
 {
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 	logOut(true);
 }
 
@@ -747,7 +747,7 @@ void GMail::dump2File(const QString filename, const QString data)
 		
 	dump_dir += filename;
 	
-	kDebug() << k_funcinfo << "Dumping data to file " << dump_dir << endl;
+	kDebug() << k_funcinfo << "Dumping data to file " << dump_dir;
 		
 	QFile f(dump_dir);
 		
@@ -770,8 +770,8 @@ bool GMail::setDomainAdvice(QString url, QString advice)
 	QDBusReply<void> reply = kded.call("setDomainAdvice", url, advice);
 	if (!reply.isValid()) {
 		QDBusError error = reply.error();
-		kWarning() << k_funcinfo << "D-BUS error while calling setDomainAdvice" << endl;
-		kDebug() << "Error description:" << error.message() << endl;
+		kWarning() << k_funcinfo << "D-BUS error while calling setDomainAdvice";
+		kDebug() << "Error description:" << error.message();
 		return false;
 	}
 	
@@ -790,8 +790,8 @@ QString GMail::getDomainAdvice(QString url)
 	if (!reply.isValid())
 	{
 		QDBusError error = reply.error();
-		kWarning() << k_funcinfo << "D-BUS error while calling getDomainAdvice" << endl;
-		kDebug() << "Error description:" << error.message() << endl;
+		kWarning() << k_funcinfo << "D-BUS error while calling getDomainAdvice";
+		kDebug() << "Error description:" << error.message();
 		return QString();
 	}
 
@@ -819,8 +819,8 @@ QString GMail::findCookies(QString url)
 	if (!reply.isValid())
 	{
 		QDBusError error = reply.error();
-		kWarning() << k_funcinfo << "D-BUS error while calling findCookies" << endl;
-		kWarning() << "Error description:" << error.message() << endl;
+		kWarning() << k_funcinfo << "D-BUS error while calling findCookies";
+		kWarning() << "Error description:" << error.message();
 		return QString();
 	}
 	return reply.value();
@@ -828,7 +828,7 @@ QString GMail::findCookies(QString url)
 
 bool GMail::cookieExists(QString cookieName,QString url)
 {
-	kDebug() << k_funcinfo << "Searching for cookie " << cookieName << " at " << url << endl;;
+	kDebug() << k_funcinfo << "Searching for cookie " << cookieName << " at " << url;
 	
 	QString cookies;
 	int found;
@@ -864,7 +864,7 @@ bool GMail::cookieExists(QString cookieName,QString url)
 		}
 	}
 	
-	kDebug() << cookieName << " was " << (ret? "FOUND":"NOT FOUND") << endl;
+	kDebug() << cookieName << " was " << (ret? "FOUND":"NOT FOUND");
 	
 	return ret;
 }
@@ -899,7 +899,7 @@ QString GMail::getRedirectURL(QString buffer)
 	int found;
 	QString url, jsurl;
 	
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
 	metaRX.setMinimal(true);
 	if(!metaRX.isValid()) {
@@ -931,11 +931,11 @@ QString GMail::getRedirectURL(QString buffer)
 	
 	// if both match it's ok
 	if (url.compare(jsurl) == 0) {
-		kDebug() << k_funcinfo << "Found redirection to " << url << endl;
+		kDebug() << k_funcinfo << "Found redirection to " << url;
 		return url;
 	} else {
 		// otherwise use JS redirection
-		kDebug() << k_funcinfo << "META and JS redirections do not match! META: " << url << " JS: " << jsurl << endl;
+		kDebug() << k_funcinfo << "META and JS redirections do not match! META: " << url << " JS: " << jsurl;
 		return /*js*/url;
 	}
 	

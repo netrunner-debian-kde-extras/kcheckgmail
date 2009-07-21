@@ -41,12 +41,12 @@ bool GMailWalletManager::set(const QString &p)
 	mPassword = p;
 
 	if(Prefs::passwordFromWallet()) {
-		kDebug() << k_funcinfo << "PasswordFromWallet" << endl;
+		kDebug() << k_funcinfo << "PasswordFromWallet";
 		Prefs::setGmailPassword("");
 		Prefs::self()->writeConfig();
 		ret = storeWallet();
 	} else {
-		kDebug() << k_funcinfo << "PasswordFromKConfig" << endl;
+		kDebug() << k_funcinfo << "PasswordFromKConfig";
 		ret = storeKConfig();
 	}
 
@@ -57,35 +57,35 @@ bool GMailWalletManager::get()
 {
 	bool ret = true;
 
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
 	if(Prefs::passwordFromWallet()) {
-		kDebug() << k_funcinfo << "yeah, from wallet" << endl;
+		kDebug() << k_funcinfo << "yeah, from wallet";
 		
 		Prefs::setGmailPassword("");
 		Prefs::self()->writeConfig();
 		if(mWallet) {
-			kDebug() << k_funcinfo << "wallet exists" << endl;
+			kDebug() << k_funcinfo << "wallet exists";
 			if(mWallet->isOpen()) {
-				kDebug() << k_funcinfo << "wallet open" << endl;
+				kDebug() << k_funcinfo << "wallet open";
 				QString ret;
 				mWallet->readPassword("gmailPassword", ret);
-				kDebug() << k_funcinfo << "Got password" << endl;
+				kDebug() << k_funcinfo << "Got password";
 				KMD5 md5(ret.toUtf8());
 				mHash = md5.hexDigest();
 				emit getWalletPassword(ret);
 			}
 		} else {
-			kDebug() << k_funcinfo << "wallet NOT open, callback" << endl;
+			kDebug() << k_funcinfo << "wallet NOT open, callback";
 			ret = getWallet();
 		}
 	} else {
-		kDebug() << k_funcinfo << "from kconfig" << endl;
+		kDebug() << k_funcinfo << "from kconfig";
 		ret = getKConfig();
 	}
 
 
-	kDebug() << k_funcinfo << "return " << ret << endl;
+	kDebug() << k_funcinfo << "return " << ret;
 	
 	return ret;
 
@@ -94,14 +94,14 @@ bool GMailWalletManager::get()
 void GMailWalletManager::openWallet()
 {
 	if(!mWallet) {
-		kDebug() << k_funcinfo << "calling openWallet" << endl;
+		kDebug() << k_funcinfo << "calling openWallet";
 		mWallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(),
 		                    0, KWallet::Wallet::Asynchronous);
 		if(!mWallet)
 			KMessageBox::error(0, i18n("KCheckGMail could not open "
 				"the wallet. Please check your preferences."));
 		else {
-			kDebug() << k_funcinfo << "connecting wallet" << endl;
+			kDebug() << k_funcinfo << "connecting wallet";
 			connect(mWallet, SIGNAL(walletOpened(bool)), SLOT(slotWalletChangedStatus()));
 		}
 	}
@@ -110,20 +110,20 @@ void GMailWalletManager::openWallet()
 // Kopete is a strong influence here. Cheers to those guys!
 void GMailWalletManager::slotWalletChangedStatus()
 {
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
 	if(!mWallet)
-		kDebug() << k_funcinfo << "status changed but mWallet == 0" << endl;
+		kDebug() << k_funcinfo << "status changed but mWallet == 0";
 	else
 	if(mWallet->isOpen()) {
-		kDebug() << k_funcinfo << "Wallet Open!" << endl;
+		kDebug() << k_funcinfo << "Wallet Open!";
 		if(!mWallet->hasFolder(QString::fromLatin1("KCheckGmail"))) {
-			kDebug() << k_funcinfo << "Creating folder" << endl;
+			kDebug() << k_funcinfo << "Creating folder";
 			mWallet->createFolder(QString::fromLatin1("KCheckGmail"));
 		}
 
 		if(mWallet->setFolder(QString::fromLatin1("KCheckGmail"))) {
-			kDebug() << k_funcinfo << "Setting folder" << endl;
+			kDebug() << k_funcinfo << "Setting folder";
 			// success!
 			QObject::connect(mWallet, SIGNAL(walletClosed()), 
 				this, SLOT(slotCloseWallet()));
@@ -136,7 +136,7 @@ void GMailWalletManager::slotWalletChangedStatus()
 
 			QString ret;
 			mWallet->readPassword("gmailPassword", ret);
-			kDebug() << k_funcinfo << "Got pass: " << ret << endl;
+			kDebug() << k_funcinfo << "Got pass: " << ret;
 			KMD5 md5(ret.toUtf8());
 			mHash = md5.hexDigest();
 			emit getWalletPassword(ret);
@@ -144,14 +144,14 @@ void GMailWalletManager::slotWalletChangedStatus()
 
 		} else {
 			// opened OK, but we can't use it
-			kDebug() << k_funcinfo << "Could not set folder" << endl;
+			kDebug() << k_funcinfo << "Could not set folder";
 			delete mWallet;
 			mWallet = 0;
 		}
 
 
 	} else {
-		kDebug() << k_funcinfo << "Wallet not open!" << endl;
+		kDebug() << k_funcinfo << "Wallet not open!";
 		delete mWallet;
 		mWallet = 0;
 	}
@@ -166,16 +166,16 @@ void GMailWalletManager::slotCloseWallet()
 bool GMailWalletManager::storeWallet()
 {
 	bool ret = true;
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
 	if(KWallet::Wallet::isEnabled()) {
 		if(mWallet && mWallet->isOpen()) {
-			kDebug() << k_funcinfo << "Wallet open. Setting immediately." << endl;
+			kDebug() << k_funcinfo << "Wallet open. Setting immediately.";
 			mWallet->writePassword("gmailPassword", mPassword);
 			clearPassword();
 			emit setWalletPassword(true);
 		} else {
-			kDebug() << k_funcinfo << "Wallet Not Open.." << endl;
+			kDebug() << k_funcinfo << "Wallet Not Open..";
 			openWallet();
 		}
 	} else {
@@ -199,7 +199,7 @@ bool GMailWalletManager::storeWallet()
 bool GMailWalletManager::storeKConfig()
 {
 	bool ret = true;
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 	Prefs::setGmailPassword(mPassword);
 	Prefs::self()->writeConfig();
 	clearPassword();
@@ -210,17 +210,17 @@ bool GMailWalletManager::storeKConfig()
 bool GMailWalletManager::getWallet()
 {
 	bool ret = true;
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
 	if(KWallet::Wallet::isEnabled()) {
-		kDebug() << k_funcinfo << "it's enabled" << endl;
+		kDebug() << k_funcinfo << "it's enabled";
 		// just have to rely on not calling this method twice for now. No checks
 		// are in place.
 		if(mWallet && mWallet->isOpen()) {
-			kDebug() << k_funcinfo << "Wallet open." << endl;
+			kDebug() << k_funcinfo << "Wallet open.";
 			QString p;
 			mWallet->readPassword("gmailPassword", p);
-			kDebug() << k_funcinfo << "p=" << p << endl;
+			kDebug() << k_funcinfo << "p=" << p;
 			KMD5 md5(p.toUtf8());
 			mHash = md5.hexDigest();
 			emit getWalletPassword(p);
@@ -238,7 +238,7 @@ bool GMailWalletManager::getWallet()
 		} else
 			ret = getKConfig();
 		
-		kDebug() << k_funcinfo << "Returned from getKConfig()" << endl;
+		kDebug() << k_funcinfo << "Returned from getKConfig()";
 		
 	}
 	return ret;
@@ -247,7 +247,7 @@ bool GMailWalletManager::getWallet()
 bool GMailWalletManager::getKConfig()
 {
 	bool ret = true;
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
 	KMD5 md5(Prefs::gmailPassword().toUtf8());
 	mHash = md5.hexDigest();
@@ -258,7 +258,7 @@ bool GMailWalletManager::getKConfig()
 
 void GMailWalletManager::clearPassword()
 {
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
 	mPassword.fill('0');
 	mPassword = "";

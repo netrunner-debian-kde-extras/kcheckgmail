@@ -87,12 +87,12 @@ void JSProtocol::slotCountUpdate(unsigned int currentParsed)
 	int currentTotal = mParser->unread(GMailParser::TotalCount);
 	mCount.setCount(currentTotal, currentParsed);
 
-	kDebug() << k_funcinfo << endl;
-	kDebug() << "firstTime: " << firstTime << endl;
-	kDebug() << "previousParsed: " << mCount.previousParsed() << endl;
-	kDebug() << "currentParsed: " << currentParsed << endl;
-	kDebug() << "previousTotal: " << mCount.previousTotal() << endl;
-	kDebug() << "currentTotal: " << currentTotal << endl;
+	kDebug() << k_funcinfo;
+	kDebug() << "firstTime: " << firstTime;
+	kDebug() << "previousParsed: " << mCount.previousParsed();
+	kDebug() << "currentParsed: " << currentParsed;
+	kDebug() << "previousTotal: " << mCount.previousTotal();
+	kDebug() << "currentTotal: " << currentTotal;
 
 	if (firstTime) {
 		firstTime = false;

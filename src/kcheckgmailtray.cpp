@@ -133,7 +133,7 @@ void KCheckGmailTray::slotVersionMismatch()
  */
 void KCheckGmailTray::updateCountImage(QColor color)
 {
-	kDebug() << k_funcinfo << "Count=" << mMailCount << endl;
+	kDebug() << k_funcinfo << "Count=" << mMailCount;
 
 	if(mMailCount == 0)
 		setPixmapEmpty();
@@ -266,7 +266,7 @@ void KCheckGmailTray::takeScreenshotOfTrayIcon()
 void KCheckGmailTray::slotgNameUpdate(QString name)
 {
 	static QString sname;
-	kDebug() << k_funcinfo << "Updating tooltip" << endl;
+	kDebug() << k_funcinfo << "Updating tooltip";
 	
 	//Trick to restore the tooltip
 	if(name == QString())

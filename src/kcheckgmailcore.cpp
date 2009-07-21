@@ -252,7 +252,7 @@ void KCheckGmailCore::start()
 	static bool started = false;
 	
 	if(started) {
-		kWarning() << k_funcinfo << "Unexpected call!" << endl;
+		kWarning() << k_funcinfo << "Unexpected call!";
 	}
 	
 	//From RSIBreak
@@ -333,7 +333,7 @@ void KCheckGmailCore::updateThreadMenu()
 		QList<QString> klist = threads->keys();
 		QList<QString>::iterator iter = klist.begin();
 
-		kDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
+		kDebug() << k_funcinfo << "number of threads=" << klist.size();
 		while(iter != klist.end()) {
 			const GMailParser::Thread &t = d->mJSP->parser()->getThread(*iter);
 			if(!t.isNull) {
@@ -518,7 +518,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 		//TODO check mimetype return value
 		mimetype = KMimeType::findByPath(fileName, 0, true); // no disk access
 		iconFileName = KIconLoader::global()->iconPath(mimetype->iconName(), KIconLoader::Small);
-		kDebug() << "Attachment name: " << fileName << ", iconFileName: " << iconFileName << endl;
+		kDebug() << "Attachment name: " << fileName << ", iconFileName: " << iconFileName;
 		attachments.append(format.arg(iconFileName, fileName));
 	}
 
@@ -528,7 +528,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 	}
 
 	KNotification::event(QString::fromLatin1("gmail-mail-snippet"), message, QPixmap(), d->mThreadsMenu);
-	kDebug() << k_funcinfo << "Notification:" << "gmail-mail-snippet" << endl;
+	kDebug() << k_funcinfo << "Notification:" << "gmail-mail-snippet";
 }
 
 
@@ -557,10 +557,10 @@ void KCheckGmailCore::slotSettingsChanged()
 	const QString user = d->mConfigDialog->username();
 	int res;
 
-	kDebug() << k_funcinfo << passwd << endl;
+	kDebug() << k_funcinfo << passwd;
 	
 	if(passwd.length() == 0 ) {
-		kDebug() << k_funcinfo << "user: " << user << endl;
+		kDebug() << k_funcinfo << "user: " << user;
 		if(user.length() == 0) {
 			res = KMessageBox::warningYesNo(0, i18n("No account information has been entered. Do you want to quit?"));
 
@@ -573,15 +573,15 @@ void KCheckGmailCore::slotSettingsChanged()
 		}
 	} else {
 		
-		kDebug() << k_funcinfo << " strncmp: " << (passwd == QString("\007\007\007"))  << endl;
+		kDebug() << k_funcinfo << " strncmp: " << (passwd == QString("\007\007\007"));
 
 		if(passwd != QString("\007\007\007")) {
-			kDebug() << k_funcinfo << "setting wallet" << endl;
+			kDebug() << k_funcinfo << "setting wallet";
 			loginOk = GMailWalletManager::instance()->set(d->mConfigDialog->password());
 			d->mConfigDialog->erasePassword();
 			d->mConfigDialog->insertPassword("\007\007\007");
 		} else
-			kDebug() << k_funcinfo << "passwd unchanged: " << passwd << endl;
+			kDebug() << k_funcinfo << "passwd unchanged: " << passwd;
 		
 		d->mJSP->retriever()->setInterval(Prefs::interval());
 		
@@ -648,7 +648,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 		d->mTray->setPixmapEmpty();
 		KNotification::event(QString::fromLatin1("gmail-login-yes"), i18n("Now logged in to Gmail!"));
 
-		kDebug() << k_funcinfo << "Notification: gmail-login-yes" << endl;
+		kDebug() << k_funcinfo << "Notification: gmail-login-yes";
 
 		d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 	}
@@ -659,7 +659,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 
 void KCheckGmailCore::slotLoginStart()
 {
-	kDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 	d->mTray->setPixmapAuth();
 	d->mLoginCheckMailAction->setEnabled(false);
 	d->mTray->startAnim(200);
@@ -675,7 +675,7 @@ void KCheckGmailCore::slotCheckStart()
 void KCheckGmailCore::slotSessionChanged()
 {
 	KNotification::event(QString::fromLatin1("gmail-session-changed"), i18n("Another account has been opened, logging out from it!"));
-	kDebug() << k_funcinfo << "Notification: gmail-session-changed" << endl;
+	kDebug() << k_funcinfo << "Notification: gmail-session-changed";
 }
 
 
@@ -689,7 +689,7 @@ void KCheckGmailCore::slotLogingOut()
 {
 	d->mTray->setPixmapEmpty();
 	KNotification::event(QString::fromLatin1("gmail-login-yes"), i18n("Now logged in to Gmail!"));
-	kDebug() << k_funcinfo << "Notification: gmail-login-yes" << endl;
+	kDebug() << k_funcinfo << "Notification: gmail-login-yes";
 
 	d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 
