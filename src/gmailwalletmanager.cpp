@@ -117,12 +117,12 @@ void GMailWalletManager::slotWalletChangedStatus()
 	else
 	if(mWallet->isOpen()) {
 		kDebug() << k_funcinfo << "Wallet Open!";
-		if(!mWallet->hasFolder(QString::fromLatin1("KCheckGmail"))) {
+		if(!mWallet->hasFolder(QLatin1String("KCheckGmail"))) {
 			kDebug() << k_funcinfo << "Creating folder";
-			mWallet->createFolder(QString::fromLatin1("KCheckGmail"));
+			mWallet->createFolder(QLatin1String("KCheckGmail"));
 		}
 
-		if(mWallet->setFolder(QString::fromLatin1("KCheckGmail"))) {
+		if(mWallet->setFolder(QLatin1String("KCheckGmail"))) {
 			kDebug() << k_funcinfo << "Setting folder";
 			// success!
 			QObject::connect(mWallet, SIGNAL(walletClosed()), 

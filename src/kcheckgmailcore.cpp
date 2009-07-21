@@ -527,7 +527,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 				 attachments.join(", ")));
 	}
 
-	KNotification::event(QString::fromLatin1("gmail-mail-snippet"), message, QPixmap(), d->mThreadsMenu);
+	KNotification::event(QLatin1String("gmail-mail-snippet"), message, QPixmap(), d->mThreadsMenu);
 	kDebug() << k_funcinfo << "Notification:" << "gmail-mail-snippet";
 }
 
@@ -632,7 +632,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 
 	if (!ok) {
 		if (isExcuseNeeded) {
-			KNotification::event(QString::fromLatin1("gmail-login-no"),
+			KNotification::event(QLatin1String("gmail-login-no"),
 					i18n("An error occurred logging in to Gmail<br><b>%1</b>",
 						 message));
 
@@ -646,7 +646,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 		
 	} else {
 		d->mTray->setPixmapEmpty();
-		KNotification::event(QString::fromLatin1("gmail-login-yes"), i18n("Now logged in to Gmail!"));
+		KNotification::event(QLatin1String("gmail-login-yes"), i18n("Now logged in to Gmail!"));
 
 		kDebug() << k_funcinfo << "Notification: gmail-login-yes";
 
@@ -674,7 +674,7 @@ void KCheckGmailCore::slotCheckStart()
 
 void KCheckGmailCore::slotSessionChanged()
 {
-	KNotification::event(QString::fromLatin1("gmail-session-changed"), i18n("Another account has been opened, logging out from it!"));
+	KNotification::event(QLatin1String("gmail-session-changed"), i18n("Another account has been opened, logging out from it!"));
 	kDebug() << k_funcinfo << "Notification: gmail-session-changed";
 }
 
@@ -688,7 +688,7 @@ void KCheckGmailCore::slotCheckDone()
 void KCheckGmailCore::slotLogingOut()
 {
 	d->mTray->setPixmapEmpty();
-	KNotification::event(QString::fromLatin1("gmail-login-yes"), i18n("Now logged in to Gmail!"));
+	KNotification::event(QLatin1String("gmail-login-yes"), i18n("Now logged in to Gmail!"));
 	kDebug() << k_funcinfo << "Notification: gmail-login-yes";
 
 	d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));

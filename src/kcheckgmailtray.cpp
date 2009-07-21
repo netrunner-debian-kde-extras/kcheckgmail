@@ -89,7 +89,7 @@ void KCheckGmailTray::slotActivated(QSystemTrayIcon::ActivationReason reason)
 
 void KCheckGmailTray::slotNoUnreadMail()
 {
-	KNotification::event(QString::fromLatin1("no-unread-gmail"), i18n("There are no unread messages"));
+	KNotification::event(QLatin1String("no-unread-gmail"), i18n("There are no unread messages"));
 }
 
 void KCheckGmailTray::slotMailCountChanged(int n)
