@@ -1,8 +1,8 @@
 #ifndef __GMAIL_WALLET_MANAGER_H
 #define __GMAIL_WALLET_MANAGER_H
 
-#include <qobject.h>
-#include <qmutex.h>
+#include <QObject>
+#include <QMutex>
 #include <kwallet.h>
 
 

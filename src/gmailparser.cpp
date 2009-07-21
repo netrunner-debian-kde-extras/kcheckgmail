@@ -26,7 +26,7 @@
 #include "prefs.h"
 
 #include <kdebug.h>
-#include <qregexp.h>
+#include <QRegExp>
 //Added by qt3to4:
 #include <QList>
 #include <klocale.h>

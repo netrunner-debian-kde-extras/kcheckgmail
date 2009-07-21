@@ -20,7 +20,7 @@
 #ifndef KCHECKGMAIL_CORE_H
 #define KCHECKGMAIL_CORE_H
 
-#include <qobject.h>
+#include <QObject>
 
 #include <kdebug.h>
 

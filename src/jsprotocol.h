@@ -20,7 +20,7 @@
 #ifndef KCHECKGMAIL_JSPROTOCOL_H
 #define KCHECKGMAIL_JSPROTOCOL_H
 
-#include <qobject.h>
+#include <QObject>
 
 #include "gmailparser.h"
 #include "gmail.h"

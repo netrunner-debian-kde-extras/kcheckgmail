@@ -20,8 +20,8 @@
 #ifndef GMAIL_H
 #define GMAIL_H
 
-#include <qobject.h>
-#include <qstring.h>
+#include <QObject>
+#include <QString>
 #include <kurl.h>
 
 #include "gmailwalletmanager.h"

@@ -34,9 +34,9 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include <qmutex.h>
-#include <qregexp.h>
-#include <qtimer.h>
+#include <QMutex>
+#include <QRegExp>
+#include <QTimer>
 #include <QtDBus/QtDBus>
 #include <QtDBus/QDBusError>
 //Added by qt3to4:
@@ -47,7 +47,7 @@
 #include <kcharsets.h>
 
 #ifdef DUMP_PAGES
-#include <qfile.h>
+#include <QFile>
 #endif
 
 #define MILLISECS(x) (x * 1000)

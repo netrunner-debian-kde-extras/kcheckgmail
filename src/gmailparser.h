@@ -20,9 +20,9 @@
 #ifndef GMAIL_PARSER_H
 #define GMAIL_PARSER_H
 
-#include <qobject.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QObject>
+#include <QString>
+#include <QStringList>
 #include <qmap.h>
 #include <QVector>
 //#include <vector>

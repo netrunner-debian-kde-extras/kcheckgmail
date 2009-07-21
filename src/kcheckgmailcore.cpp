@@ -48,8 +48,8 @@
 #include <knotification.h>
 #include <QDBusConnection>
 
-#include <qfile.h>
-#include <qtooltip.h>
+#include <QFile>
+#include <QToolTip>
 #include <QHash>
 #include <QSignalMapper>
 //Added by qt3to4:

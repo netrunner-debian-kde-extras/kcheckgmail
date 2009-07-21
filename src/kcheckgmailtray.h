@@ -23,9 +23,9 @@
 
 #include <ksystemtrayicon.h>
 #include <kiconeffect.h>
-#include <qpixmap.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QPixmap>
+#include <QString>
+#include <QStringList>
 #include <qmap.h>
 //Added by qt3to4:
 #include <QMouseEvent>

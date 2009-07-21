@@ -30,10 +30,10 @@
 #include <kiconeffect.h>
 #include <kglobalsettings.h>
 
-#include <qpainter.h>
-#include <qtimer.h>
-#include <qtooltip.h>
-#include <qbitmap.h>
+#include <QPainter>
+#include <QTimer>
+#include <QToolTip>
+#include <QBitmap>
 //#include <Q3MimeSourceFactory>
 #include <QDesktopWidget>
 //Added by qt3to4:
