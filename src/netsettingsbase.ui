@@ -59,9 +59,6 @@
      <property name="text" >
       <string>&amp;Use https connections for checking mail</string>
      </property>
-     <property name="shortcut" >
-      <string>Alt+U</string>
-     </property>
      <property name="checked" >
       <bool>true</bool>
      </property>

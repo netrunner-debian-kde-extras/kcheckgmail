@@ -27,9 +27,6 @@
         <property name="text" >
          <string>Displa&amp;y an alert if GMail version changes</string>
         </property>
-        <property name="shortcut" >
-         <string>Alt+Y</string>
-        </property>
        </widget>
       </item>
      </layout>
@@ -45,9 +42,6 @@
        <widget class="QCheckBox" name="kcfg_DisplaySubjectOnSingleMail" >
         <property name="text" >
          <string>Sub&amp;ject</string>
-        </property>
-        <property name="shortcut" >
-         <string>Alt+J</string>
         </property>
         <property name="checked" >
          <bool>true</bool>
@@ -100,9 +94,6 @@
        <widget class="QRadioButton" name="kcfg_UseDefaultBrowser" >
         <property name="text" >
          <string>&amp;Use the default KDE browser</string>
-        </property>
-        <property name="shortcut" >
-         <string>Alt+U</string>
         </property>
         <property name="checked" >
          <bool>true</bool>
@@ -159,9 +150,6 @@
        <widget class="QCheckBox" name="kcfg_AllowLeftClickOpen" >
         <property name="text" >
          <string>Open &amp;browser to Gmail on left click</string>
-        </property>
-        <property name="shortcut" >
-         <string>Alt+B</string>
         </property>
        </widget>
       </item>
