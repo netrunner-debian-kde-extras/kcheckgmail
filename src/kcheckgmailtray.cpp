@@ -58,8 +58,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
 	QToolTip::add(this, i18n("KCheckGMail"));
-	
-	iconDisplayed = false;
 }
 
 
@@ -97,13 +95,11 @@ void KCheckGmailTray::slotMailCountChanged(int n)
 
 void KCheckGmailTray::showIcon()
 {
-	iconDisplayed = true;
 	show();
 }
 
 void KCheckGmailTray::hideIcon()
 {
-	iconDisplayed = false;
 	hide();
 }
 
@@ -177,7 +173,7 @@ void KCheckGmailTray::updateCountImage(QColor color)
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::whereAmI()
 {
-	if (!iconDisplayed)
+	if (!isShown())
 		showIcon();
 	
 	takeScreenshotOfTrayIcon();
@@ -190,7 +186,6 @@ void KCheckGmailTray::whereAmI()
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::takeScreenshotOfTrayIcon()
 {
-	
         // Process the events else the icon will not be there and the screenie will fail!
 	kapp->processEvents();
 

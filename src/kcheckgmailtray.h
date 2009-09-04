@@ -88,8 +88,6 @@ private:
 	QTimer *mLoginAnim;
 
 	int	mMailCount;
-	
-	bool iconDisplayed;
 };
 
 #endif // KCHECKGMAIL_TRAY_H
