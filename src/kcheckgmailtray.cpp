@@ -65,7 +65,6 @@ KCheckGmailTray::KCheckGmailTray(QWidget *parent)
 
 	setToolTip(i18n("KCheckGMail"));
 	
-	iconDisplayed = false;
 	connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
 		this, SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
 }
@@ -100,13 +99,11 @@ void KCheckGmailTray::slotMailCountChanged(int n)
 
 void KCheckGmailTray::showIcon()
 {
-	iconDisplayed = true;
 	show();
 }
 
 void KCheckGmailTray::hideIcon()
 {
-	iconDisplayed = false;
 	hide();
 }
 
@@ -188,7 +185,7 @@ void KCheckGmailTray::updateCountImage(QColor color)
 void KCheckGmailTray::whereAmI()
 {
 #if 0
-	if (!iconDisplayed)
+	if (!isShown())
 		showIcon();
 	
 	takeScreenshotOfTrayIcon();
