@@ -784,8 +784,9 @@ msgstr "Maintenant authentifié à Gmail"
 
 #. gmail-login-no - Name gmail-login-no - Comment
 #: eventsrc:5 eventsrc:6
+#, fuzzy
 msgid "Failed to login to Gmail"
-msgstr "L'authentification à failli"
+msgstr "Maintenant authentifié à GMail"
 
 #. gmail-version-mismatch - Name gmail-version-mismatch - Comment
 #: eventsrc:7 eventsrc:8
@@ -805,7 +806,7 @@ msgstr ""
 #. gmail-mail-snippet - Name
 #: eventsrc:11
 msgid "Mail Snippet"
-msgstr "Fragment de courriel"
+msgstr ""
 
 #. gmail-mail-snippet - Comment
 #: eventsrc:12
