@@ -71,14 +71,20 @@ void JSProtocol::slotLoginDone(bool ok, bool evtFromTimer, const QString &why)
 			evtFromTimer << " why=" << why << endl << endl;
 
 	if(!ok) {
-		mCount.reset();
-		firstTime = true;
+		slotLoggedOut();
 		if(why != lastExcuse || !evtFromTimer) {
 			lastExcuse = why;
 			excuseNeeded = true;
 		}
 	}
 	emit loginDone(ok, excuseNeeded, why);
+}
+
+
+void JSProtocol::slotLoggedOut()
+{
+	firstTime = true;
+	mCount.reset();
 }
 
 

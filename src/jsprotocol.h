@@ -60,6 +60,9 @@ signals:
 	void checkDone();
 	void loginDone(bool success, bool isExcuseNeeded, const QString& errmsg);
 
+public slots:
+	void slotLoggedOut();
+
 private slots:
 	void slotCountUpdate(unsigned int parsed);
 	void slotCheckDone(const QString& data);

@@ -621,6 +621,7 @@ void GMail::logOut(bool force)
 	result= KIO::NetAccess::synchronousRun(job, 0);
 	kdDebug() << "Log out job done, with result: " << result << endl;
 	alreadyRunning = false;
+	emit loggedOut();
 }
 
 void GMail::logOut()
