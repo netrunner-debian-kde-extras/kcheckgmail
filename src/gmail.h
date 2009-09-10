@@ -136,6 +136,7 @@ private slots:
 signals:
 	void loginStart();
 	void loginDone(bool success, bool spawnedFromTimer, const QString &why = QString());
+	void loggedOut();
 
 	void checkStart();
 	void checkDone(const QString &data);

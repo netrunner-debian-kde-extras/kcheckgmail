@@ -235,6 +235,9 @@ void KCheckGmailCore::makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray)
 	connect(mJSP->retriever(), SIGNAL(sessionChanged()),
 		this, SLOT(slotSessionChanged()));
 	
+	connect(mJSP->retriever(), SIGNAL(loggedOut()),
+		mJSP, SLOT(slotLoggedOut()));
+
 	connect(kapp, SIGNAL(aboutToQuit()),
 		mJSP->retriever(), SLOT(slotLogOut()));
 
