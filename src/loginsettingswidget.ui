@@ -82,14 +82,14 @@
         </spacer>
         <widget class="KPasswordEdit" row="1" column="1">
             <property name="name">
-                <cstring>gmailPassword</cstring>
+                <cstring>kcfg_GmailPassword</cstring>
             </property>
         </widget>
     </grid>
 </widget>
 <tabstops>
     <tabstop>kcfg_GmailUsername</tabstop>
-    <tabstop>gmailPassword</tabstop>
+    <tabstop>kcfg_GmailPassword</tabstop>
     <tabstop>kcfg_PasswordFromWallet</tabstop>
 </tabstops>
 <variables>
@@ -97,7 +97,6 @@
 </variables>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>klineedit.h</includehint>
     <includehint>kpassdlg.h</includehint>
 </includehints>
 </UI>
