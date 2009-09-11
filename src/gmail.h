@@ -43,7 +43,7 @@ public:
 	GMail(QObject* parent = 0);
 	virtual ~GMail();
 
-	void checkLoginParams();
+	void checkLoginParams(bool passwordChanged);
 	void setInterval(unsigned int i);
 	void setInterval(unsigned int i, bool forceStart);
 

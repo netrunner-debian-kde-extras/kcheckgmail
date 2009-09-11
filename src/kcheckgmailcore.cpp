@@ -306,7 +306,7 @@ void KCheckGmailCore::start()
 	
 	//Set interval and force the timer to start
 	d->mJSP->retriever()->setInterval(Prefs::interval(), true);
-	d->mJSP->retriever()->checkLoginParams();
+	d->mJSP->retriever()->checkLoginParams(true);
 	
 	started = true;
 }
@@ -588,7 +588,7 @@ void KCheckGmailCore::slotSettingsChanged()
 			kDebug() << k_funcinfo << "passwd unchanged: " << passwd;
 			// force a params check only if password was not changed as
 			// GMailWalletManager will take care of triggering the check if it was changed
-			d->mJSP->retriever()->checkLoginParams();
+			d->mJSP->retriever()->checkLoginParams(false);
 		}
 		
 		if (Prefs::searchFor().length() == 0) {
