@@ -60,6 +60,14 @@ ConfigDialog::~ConfigDialog()
 {
 }
 
+void ConfigDialog::slotCancel()
+{
+	mLoginSettings->kcfg_GmailPassword->erase();
+	mLoginSettings->kcfg_GmailPassword->insert("\007\007\007");
+
+	KConfigDialog::slotCancel();
+}
+
 void ConfigDialog::erasePassword()
 {
 	mLoginSettings->kcfg_GmailPassword->erase();

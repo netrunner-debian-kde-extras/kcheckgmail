@@ -32,6 +32,10 @@ namespace KCheckGmail {
 
 class ConfigDialog : public KConfigDialog {
 	Q_OBJECT
+
+protected slots:
+	virtual void slotCancel();
+
 public:
 	ConfigDialog(QWidget *parent, const char *name, KConfigSkeleton *config, DialogType dialogType = IconList, int dialogButtons = Ok|Cancel);
 	virtual ~ConfigDialog();
