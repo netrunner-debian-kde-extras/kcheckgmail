@@ -97,15 +97,15 @@ GMail::~GMail()
 void GMail::slotSetWalletPassword(bool)
 {
 	kdDebug() << k_funcinfo << "now, check login params." << endl;
-	checkLoginParams();
+	checkLoginParams(true);
 }
 
-void GMail::checkLoginParams()
+void GMail::checkLoginParams(bool passwordChanged)
 {
 	QString username = Prefs::gmailUsername();
 	const QString& password = GMailWalletManager::instance()->getHash();
 	
-	if((mUsername == username && mPasswordHash == password)
+	if((mUsername == username && !passwordChanged)
 		  || username.length() == 0)
 		return;
 	
@@ -490,7 +490,7 @@ void GMail::slotCheckResult(KIO::Job *job)
 			//Clearing values will force login
 			mUsername = "";
 			mPasswordHash = "";
-			checkLoginParams();
+			checkLoginParams(true);
 
 			return;
 		}
@@ -804,7 +804,7 @@ void GMail::slotSessionChanged()
 	//Clearing values will force login
 	mUsername = "";
 	mPasswordHash = "";
-	checkLoginParams();
+	checkLoginParams(true);
 }
 
 QString GMail::getRedirectURL(QString buffer)
