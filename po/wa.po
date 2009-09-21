@@ -5,7 +5,7 @@
 # Jean Cayron <jean.cayron@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: kcheckgmail\n"
+"Project-Id-Version: kcheckgmail 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-07-11 18:53-0500\n"
 "PO-Revision-Date: 2007-12-08 13:37+0100\n"

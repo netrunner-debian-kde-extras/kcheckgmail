@@ -5,7 +5,7 @@
 # Albert Montiel <alberm@users.sourceforge.net>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: ca\n"
+"Project-Id-Version: kcheckgmail 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-23 20:17-0500\n"
 "PO-Revision-Date: 2007-12-20 18:25+0100\n"
