@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcheckgmail 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 20:17-0500\n"
+"POT-Creation-Date: 2009-09-22 17:10+0100\n"
 "PO-Revision-Date: 2005-12-05 14:54+0900\n"
 "Last-Translator: ChoSeongWoo <syn333@gmail.com>\n"
 "Language-Team: Korean <>\n"
@@ -29,175 +29,214 @@ msgid ""
 "Your emails"
 msgstr "syn333@gmail.com"
 
-#: gmail.cpp:243
+#: configdialog.cpp:40
+msgid "Login"
+msgstr "로그인"
+
+#: configdialog.cpp:40
+msgid "Login Settings"
+msgstr "로그인 설정"
+
+#: configdialog.cpp:43
+msgid "Network"
+msgstr "네트워크"
+
+#: configdialog.cpp:43
+msgid "Network Settings"
+msgstr "네트워크 설정"
+
+#: configdialog.cpp:46
+msgid "Behavior"
+msgstr "동작"
+
+#: configdialog.cpp:46
+#, fuzzy
+msgid "Behavior Settings"
+msgstr "네트워크 설정"
+
+#: configdialog.cpp:49
+#, fuzzy
+msgid "Appearance Settings"
+msgstr "로그인 설정"
+
+#: configdialog.cpp:52
+msgid "Advanced"
+msgstr ""
+
+#: configdialog.cpp:52
+#, fuzzy
+msgid "Advanced Settings"
+msgstr "로그인 설정"
+
+#: gmail.cpp:252
 msgid "Invalid username or password"
 msgstr "사용자 이름이나 비밀번호가 틀림"
 
-#: gmail.cpp:249 gmail.cpp:260 gmail.cpp:275
+#: gmail.cpp:258 gmail.cpp:269 gmail.cpp:284
 msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
 
-#: gmail.cpp:386
+#: gmail.cpp:388
 msgid "Unknown error retrieving cookies"
 msgstr "쿠키를 받는 중 알 수 없는 오류"
 
-#: gmailparser.cpp:62
+#: gmailparser.cpp:65
 msgid "Spanish"
 msgstr ""
 
-#: gmailparser.cpp:63
+#: gmailparser.cpp:66
 msgid "French"
 msgstr ""
 
-#: gmailparser.cpp:64
+#: gmailparser.cpp:67
 msgid "Italian"
 msgstr ""
 
-#: gmailparser.cpp:65
+#: gmailparser.cpp:68
 msgid "German"
 msgstr ""
 
-#: gmailparser.cpp:66
+#: gmailparser.cpp:69
 msgid "English (US)"
 msgstr ""
 
-#: gmailparser.cpp:67
+#: gmailparser.cpp:70
 msgid "English (UK)"
 msgstr ""
 
-#: gmailparser.cpp:68
+#: gmailparser.cpp:71
 msgid "Portuguese"
 msgstr ""
 
-#: gmailparser.cpp:69
+#: gmailparser.cpp:72
 msgid "Turkish"
 msgstr ""
 
-#: gmailparser.cpp:70
+#: gmailparser.cpp:73
 msgid "Polish"
 msgstr ""
 
-#: gmailparser.cpp:71
+#: gmailparser.cpp:74
 msgid "Russian"
 msgstr ""
 
-#: gmailparser.cpp:72 gmailparser.cpp:83
+#: gmailparser.cpp:75 gmailparser.cpp:86
 msgid "Croatian"
 msgstr ""
 
-#: gmailparser.cpp:73
+#: gmailparser.cpp:76
 msgid "Dutch"
 msgstr ""
 
-#: gmailparser.cpp:74
+#: gmailparser.cpp:77
 msgid "Hungarian"
 msgstr ""
 
-#: gmailparser.cpp:75
+#: gmailparser.cpp:78
 msgid "Swedish"
 msgstr ""
 
-#: gmailparser.cpp:76
+#: gmailparser.cpp:79
 msgid "Norwegian"
 msgstr ""
 
-#: gmailparser.cpp:77
+#: gmailparser.cpp:80
 msgid "Lithuanian"
 msgstr ""
 
-#: gmailparser.cpp:78
+#: gmailparser.cpp:81
 msgid "Hebrew"
 msgstr ""
 
-#: gmailparser.cpp:79
+#: gmailparser.cpp:82
 msgid "Greek"
 msgstr ""
 
-#: gmailparser.cpp:80
+#: gmailparser.cpp:83
 msgid "Chinese (Simplified)"
 msgstr ""
 
-#: gmailparser.cpp:81
+#: gmailparser.cpp:84
 msgid "Chinese (Traditional)"
 msgstr ""
 
-#: gmailparser.cpp:82
+#: gmailparser.cpp:85
 msgid "Czech"
 msgstr ""
 
-#: gmailparser.cpp:84
+#: gmailparser.cpp:87
 msgid "Catalan"
 msgstr ""
 
-#: gmailparser.cpp:85
+#: gmailparser.cpp:88
 msgid "Arabic"
 msgstr ""
 
-#: gmailparser.cpp:86
+#: gmailparser.cpp:89
 msgid "Indonesian"
 msgstr ""
 
-#: gmailparser.cpp:87
+#: gmailparser.cpp:90
 msgid "Japanese"
 msgstr ""
 
-#: gmailparser.cpp:88
+#: gmailparser.cpp:91
 msgid "Korean"
 msgstr ""
 
-#: gmailparser.cpp:89
+#: gmailparser.cpp:92
 msgid "Hindi"
 msgstr ""
 
-#: gmailparser.cpp:90
+#: gmailparser.cpp:93
 msgid "Thai"
 msgstr ""
 
-#: gmailparser.cpp:91
+#: gmailparser.cpp:94
 msgid "Danish"
 msgstr ""
 
-#: gmailparser.cpp:92
+#: gmailparser.cpp:95
 msgid "Estonian"
 msgstr ""
 
-#: gmailparser.cpp:93
+#: gmailparser.cpp:96
 msgid "Icelandic"
 msgstr ""
 
-#: gmailparser.cpp:94
+#: gmailparser.cpp:97
 msgid "Latvian"
 msgstr ""
 
-#: gmailparser.cpp:95
+#: gmailparser.cpp:98
 msgid "Romanian"
 msgstr ""
 
-#: gmailparser.cpp:96
+#: gmailparser.cpp:99
 msgid "Slovak"
 msgstr ""
 
-#: gmailparser.cpp:97
+#: gmailparser.cpp:100
 msgid "Slovenian"
 msgstr ""
 
-#: gmailparser.cpp:98
+#: gmailparser.cpp:101
 msgid "Finnish"
 msgstr ""
 
-#: gmailparser.cpp:99
+#: gmailparser.cpp:102
 msgid "Tagalog"
 msgstr ""
 
-#: gmailparser.cpp:100
+#: gmailparser.cpp:103
 msgid "Vietnamese"
 msgstr ""
 
-#: gmailparser.cpp:101
+#: gmailparser.cpp:104
 msgid "Ukrainian"
 msgstr ""
 
-#: gmailparser.cpp:102
+#: gmailparser.cpp:105
 msgid "Bulgarian"
 msgstr ""
 
@@ -206,7 +245,7 @@ msgstr ""
 msgid "KCheckGMail could not open the wallet. Please check your preferences."
 msgstr "KCheckGmail은 KDE Wallet을 열 수 없습니다. 환경설정을 확인하세요."
 
-#: gmailwalletmanager.cpp:185
+#: gmailwalletmanager.cpp:183
 #, fuzzy
 msgid ""
 "KCheckGMail cannot store your password securely in your wallet. Do you want "
@@ -215,15 +254,15 @@ msgstr ""
 "KCheckGmail은 비밀번호를 암호화해서 저장할 수 없습니다. 대신에 설정 파일에 비"
 "밀번호를 암호화하지 않고 저장하겠습니까?"
 
-#: gmailwalletmanager.cpp:187
+#: gmailwalletmanager.cpp:185
 msgid "Unable to store secure password"
 msgstr "비밀번호를 암호화해서 저장할 수 없음"
 
-#: gmailwalletmanager.cpp:188 gmailwalletmanager.cpp:234
+#: gmailwalletmanager.cpp:186 gmailwalletmanager.cpp:233
 msgid "Store unsafe"
 msgstr "암호화하지 않고 저장"
 
-#: gmailwalletmanager.cpp:231
+#: gmailwalletmanager.cpp:230
 #, fuzzy
 msgid ""
 "KCheckGMail cannot retrieve your password from your wallet. Do you want to "
@@ -232,44 +271,44 @@ msgstr ""
 "KCheckGmail은 KDE Wallet으로부터 비밀번호를 받을 수 없습니다. 대신에 설정 파"
 "일에 비밀번호를 암호화하지 않고 저장하겠습니까?"
 
-#: gmailwalletmanager.cpp:233
+#: gmailwalletmanager.cpp:232
 msgid "Unable to retrieve secure password"
 msgstr "비밀번호를 암호화해서 받을 수 없음"
 
-#. Name
-#: kcheckgmailtray.cpp:89 kcheckgmailtray.cpp:143 kcheckgmailtray.cpp:536
-#: main.cpp:44 kcheckgmail.desktop:1
+#: kcheckgmailcore.cpp:114
 #, fuzzy
-msgid "KCheckGMail"
-msgstr "KCheckGmail"
-
-#: kcheckgmailtray.cpp:145
-msgid "Configure &Notifications..."
+msgid "Configure &Notifications"
 msgstr "알림 설정(&N)..."
 
-#: kcheckgmailtray.cpp:147
+#: kcheckgmailcore.cpp:116
 #, fuzzy
 msgid "&Configure KCheckGMail..."
 msgstr "KCheckGmail 설정(&C)..."
 
-#: kcheckgmailtray.cpp:150 kcheckgmailtray.cpp:534
+#: kcheckgmailcore.cpp:119 kcheckgmailcore.cpp:622
 msgid "Login and Chec&k Mail"
 msgstr "로그인해서 메일 확인(&K)"
 
-#: kcheckgmailtray.cpp:153
+#: kcheckgmailcore.cpp:122
 msgid "&Launch Browser"
 msgstr "브라우저 실행(&L)"
 
-#: kcheckgmailtray.cpp:155
+#: kcheckgmailcore.cpp:125
 msgid "Co&mpose Mail"
 msgstr ""
 
-#: kcheckgmailtray.cpp:157
+#: kcheckgmailcore.cpp:143 kcheckgmailcore.cpp:624 kcheckgmailtray.cpp:60
+#: main.cpp:45 kcheckgmail.desktop:2 eventsrc:3
+#, fuzzy
+msgid "KCheckGMail"
+msgstr "KCheckGmail"
+
+#: kcheckgmailcore.cpp:157
 #, fuzzy
 msgid "Th&reads"
 msgstr "쓰레드"
 
-#: kcheckgmailtray.cpp:201
+#: kcheckgmailcore.cpp:247
 msgid ""
 "<p><center>Welcome to KCheckGMail!</center></p><p>You can locate KCheckGMail "
 "here: </p><p><center><img source=\"systray_shot\"></center></p>When you "
@@ -277,11 +316,11 @@ msgid ""
 "Threads menu containing the newest email of your account."
 msgstr ""
 
-#: kcheckgmailtray.cpp:207
+#: kcheckgmailcore.cpp:253
 msgid "Welcome"
 msgstr ""
 
-#: kcheckgmailtray.cpp:217
+#: kcheckgmailcore.cpp:265
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
 "KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
@@ -291,50 +330,47 @@ msgid ""
 "Are you sure you want to use KCheckGMail?"
 msgstr ""
 
-#: kcheckgmailtray.cpp:223
+#: kcheckgmailcore.cpp:271
 msgid "Legal Information"
 msgstr ""
 
-#: kcheckgmailtray.cpp:349
+#: kcheckgmailcore.cpp:360
+msgid "<center><b>New mail arrived</b></center>"
+msgstr ""
+
+#: kcheckgmailcore.cpp:362
+msgid "<b>Sender:</b> <i>%1</i>"
+msgstr ""
+
+#: kcheckgmailcore.cpp:369
+msgid "<b>Subject:</b> <i>%1</i>"
+msgstr ""
+
+#: kcheckgmailcore.cpp:382
+#, fuzzy, c-format
+msgid ""
+"_n: There is <b>1</b> new mail message\n"
+"There are <b>%n</b> new mail messages"
+msgstr "<b>%1</b>개의 새 메일이 있습니다"
+
+#: kcheckgmailcore.cpp:486
+msgid ""
+"_: format used to display the attachments (%1 is the icon, %2 is the file "
+"name)\n"
+"<img src=\"%1\"> %2"
+msgstr ""
+
+#: kcheckgmailcore.cpp:500
 msgid ""
 "_n: Attachment: %1\n"
 "Attachments: %1"
 msgstr ""
 
-#: kcheckgmailtray.cpp:410
-msgid "Login"
-msgstr "로그인"
-
-#: kcheckgmailtray.cpp:410
-msgid "Login Settings"
-msgstr "로그인 설정"
-
-#: kcheckgmailtray.cpp:413
-msgid "Network"
-msgstr "네트워크"
-
-#: kcheckgmailtray.cpp:413
-msgid "Network Settings"
-msgstr "네트워크 설정"
-
-#: kcheckgmailtray.cpp:416
-msgid "Behavior"
-msgstr "동작"
-
-#: kcheckgmailtray.cpp:419
-msgid "Advanced"
-msgstr ""
-
-#: kcheckgmailtray.cpp:419
-#, fuzzy
-msgid "Advanced Settings"
-msgstr "로그인 설정"
-
-#: kcheckgmailtray.cpp:437
+#: kcheckgmailcore.cpp:537
 msgid "No account information has been entered. Do you want to quit?"
 msgstr ""
 
-#: kcheckgmailtray.cpp:467
+#: kcheckgmailcore.cpp:570
 msgid ""
 "<p>The search string you provided doesn't specify where to search for unread "
 "emails.</p><p>A search without an <i>in:</i> and <i>label:</i> will return "
@@ -343,46 +379,35 @@ msgid ""
 "proceed without specifying location?</p>"
 msgstr ""
 
-#: kcheckgmailtray.cpp:482
+#: kcheckgmailcore.cpp:586
 msgid ""
 "<p>The search string you provided doesn't contain <i>is:unread</i>.</p><p>It "
 "should be set to ensure more unread messages are retrieved.</p><p>Are you "
 "sure you want to proceed?</p>"
 msgstr ""
 
-#: kcheckgmailtray.cpp:528
+#: kcheckgmailcore.cpp:614
 msgid "An error occurred logging in to Gmail<br><b>%1</b>"
 msgstr "Gmail에 로그인하는 중 <b>%1</b> 오류가 발생했습니다"
 
-#: kcheckgmailtray.cpp:540
+#: kcheckgmailcore.cpp:628 kcheckgmailcore.cpp:669
 msgid "Now logged in to Gmail!"
 msgstr "Gmail에 로그인 성공"
 
-#: kcheckgmailtray.cpp:541
+#: kcheckgmailcore.cpp:632 kcheckgmailcore.cpp:672
 msgid "Chec&k Mail Now"
 msgstr "지금 메일 확인(&K)"
 
-#: kcheckgmailtray.cpp:578
-#, fuzzy, c-format
-msgid ""
-"_n: There is <b>1</b> new message\n"
-"There are <b>%n</b> new messages"
-msgstr "<b>%1</b>개의 새 메일이 있습니다"
-
-#: kcheckgmailtray.cpp:588
-msgid "New mail arrived: <i>%1</i>"
+#: kcheckgmailcore.cpp:655
+msgid "Another account has been opened, logging out from it!"
 msgstr ""
 
-#: kcheckgmailtray.cpp:596
+#: kcheckgmailtray.cpp:87
 #, fuzzy
 msgid "There are no unread messages"
 msgstr "<b>%1</b>개의 새 메일이 있습니다"
 
-#: kcheckgmailtray.cpp:643
-msgid "Another account has been opened, logging out from it!"
-msgstr ""
-
-#: kcheckgmailtray.cpp:755
+#: kcheckgmailtray.cpp:114
 #, fuzzy
 msgid ""
 "Gmail has been upgraded since this version of KCheckGMail was released. This "
@@ -392,49 +417,62 @@ msgstr ""
 "KCheckGmail이 나온 이후 Gmail이 변경되었습니다. 그래서 이상한 오류가 일어날 "
 "수도 있으므로 KCheckGmail이 새로 갱신되었는지 확인하세요."
 
-#: kcheckgmailtray.cpp:756
+#: kcheckgmailtray.cpp:115
 msgid "Version changed"
 msgstr "버전이 바뀜"
 
-#: kcheckgmailtray.cpp:817
+#: kcheckgmailtray.cpp:182
 msgid ""
 "<p>KCheckGMail is already running</p><p>You can find it here:</"
 "p><p><center><img source=\"systray_shot\"></center></p>"
 msgstr ""
 
-#: kcheckgmailtray.cpp:818
+#: kcheckgmailtray.cpp:183
 msgid "Already Running"
 msgstr ""
 
-#: kcheckgmailtray.cpp:896
+#: kcheckgmailtray.cpp:260
 #, c-format
 msgid "KCheckGMail - Notifying about new email for %1"
 msgstr ""
 
-#: main.cpp:37
+#: knotification.cpp:123 knotification.cpp:144
+#, fuzzy
+msgid "Notification"
+msgstr "알림 설정(&N)..."
+
+#: knotification.cpp:132 knotification.cpp:153
+msgid "Fatal"
+msgstr ""
+
+#: main.cpp:38
 msgid "Display legal information"
 msgstr ""
 
-#: main.cpp:47
+#: main.cpp:48
 #, fuzzy
 msgid ""
 "System tray application to display how many\n"
 "new email messages you have in your Gmail account."
 msgstr "Gmail 계정에 몇개의 메일이 있는지 시스템 트레이에 표시"
 
-#: main.cpp:55
+#: main.cpp:56
 msgid "Original author"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:57
 msgid "Maintainer"
 msgstr ""
 
 #: main.cpp:58
+msgid "Developer"
+msgstr ""
+
+#: main.cpp:59
 msgid "Everybody who helped testing and translating KCheckGMail"
 msgstr ""
 
-#: main.cpp:70
+#: main.cpp:71
 msgid ""
 "Legal Information:\n"
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
@@ -442,7 +480,7 @@ msgid ""
 "Inc."
 msgstr ""
 
-#: main.cpp:76
+#: main.cpp:77
 msgid "KCheckGMail is already running!\n"
 msgstr ""
 
@@ -452,158 +490,190 @@ msgstr ""
 msgid "AdvancedSettingsWidget"
 msgstr ""
 
-#. i18n: file advancedsettingswidget.ui line 61
-#: rc.cpp:6 rc.cpp:97
+#. i18n: file advancedsettingswidget.ui line 60
+#: rc.cpp:6 rc.cpp:115
 #, no-c-format
 msgid "Open Gmail in simple interface"
 msgstr ""
 
-#. i18n: file advancedsettingswidget.ui line 72
-#: rc.cpp:10 rc.cpp:91
+#. i18n: file advancedsettingswidget.ui line 71
+#: rc.cpp:9 rc.cpp:109
 #, no-c-format
 msgid "Search For:"
 msgstr ""
 
-#. i18n: file appletsettingswidget.ui line 16
-#: rc.cpp:13
-#, no-c-format
-msgid "AppletSettingsWidget"
-msgstr ""
-
-#. i18n: file appletsettingswidget.ui line 35
-#: rc.cpp:16
-#, no-c-format
-msgid "Debug"
-msgstr "디버그"
-
-#. i18n: file appletsettingswidget.ui line 46
-#: rc.cpp:19
+#. i18n: file appearancesettingswidget.ui line 17
+#: rc.cpp:12
 #, fuzzy, no-c-format
-msgid "Displa&y an alert if GMail version changes"
-msgstr "Gmail 버전이 바뀌면 알람 표시"
+msgid "AppearanceSettingsWidget"
+msgstr "로그인 설정"
 
-#. i18n: file appletsettingswidget.ui line 49
-#: rc.cpp:22
-#, no-c-format
-msgid "Alt+Y"
-msgstr ""
-
-#. i18n: file appletsettingswidget.ui line 59
-#: rc.cpp:25
-#, no-c-format
-msgid "Other"
-msgstr ""
-
-#. i18n: file appletsettingswidget.ui line 70
-#: rc.cpp:28
-#, no-c-format
-msgid "Display sub&ject when only one new email arrives"
-msgstr ""
-
-#. i18n: file appletsettingswidget.ui line 73
-#: rc.cpp:31
-#, no-c-format
-msgid "Alt+J"
-msgstr ""
-
-#. i18n: file appletsettingswidget.ui line 89
-#: rc.cpp:34
-#, no-c-format
-msgid "Browser"
-msgstr "브라우저"
-
-#. i18n: file appletsettingswidget.ui line 140
-#: rc.cpp:37
-#, fuzzy, no-c-format
-msgid "&Use the default KDE browser"
-msgstr "기본 KDE 브라우저를 사용"
-
-#. i18n: file appletsettingswidget.ui line 143
-#: rc.cpp:40 rc.cpp:70 rc.cpp:85
-#, no-c-format
-msgid "Alt+U"
-msgstr ""
-
-#. i18n: file appletsettingswidget.ui line 154
-#: rc.cpp:43
-#, no-c-format
-msgid "Use an alternative browser"
-msgstr "다른 브라우저를 사용"
-
-#. i18n: file appletsettingswidget.ui line 182
-#: rc.cpp:46
+#. i18n: file appearancesettingswidget.ui line 31
+#: rc.cpp:15 rc.cpp:64
 #, no-c-format
 msgid "Tray Icon"
 msgstr "트레이 아이콘"
 
-#. i18n: file appletsettingswidget.ui line 193
+#. i18n: file appearancesettingswidget.ui line 51
+#: rc.cpp:18
+#, no-c-format
+msgid ""
+"&Color used to display  the number\n"
+"of unread messages:"
+msgstr ""
+
+#. i18n: file appearancesettingswidget.ui line 65
+#: rc.cpp:22 rc.cpp:205
+#, no-c-format
+msgid "Tray icon number of unread messages color selector"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 16
+#: rc.cpp:25
+#, no-c-format
+msgid "AppletSettingsWidget"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 30
+#: rc.cpp:28
+#, no-c-format
+msgid "Debug"
+msgstr "디버그"
+
+#. i18n: file appletsettingswidget.ui line 41
+#: rc.cpp:31
+#, fuzzy, no-c-format
+msgid "Displa&y an alert if GMail version changes"
+msgstr "Gmail 버전이 바뀌면 알람 표시"
+
+#. i18n: file appletsettingswidget.ui line 44
+#: rc.cpp:34
+#, no-c-format
+msgid "Alt+Y"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 54
+#: rc.cpp:37
+#, no-c-format
+msgid "Fields displayed when only one email arrives"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 65
+#: rc.cpp:40
+#, no-c-format
+msgid "Sub&ject"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 68
+#: rc.cpp:43
+#, no-c-format
+msgid "Alt+J"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 79
+#: rc.cpp:46
+#, no-c-format
+msgid "Senders"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 90
 #: rc.cpp:49
+#, no-c-format
+msgid "Snippet"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 117
+#: rc.cpp:52
+#, no-c-format
+msgid "Browser"
+msgstr "브라우저"
+
+#. i18n: file appletsettingswidget.ui line 128
+#: rc.cpp:55
+#, fuzzy, no-c-format
+msgid "&Use the default KDE browser"
+msgstr "기본 KDE 브라우저를 사용"
+
+#. i18n: file appletsettingswidget.ui line 131
+#: rc.cpp:58 rc.cpp:88 rc.cpp:103
+#, no-c-format
+msgid "Alt+U"
+msgstr ""
+
+#. i18n: file appletsettingswidget.ui line 142
+#: rc.cpp:61
+#, no-c-format
+msgid "Use an alternative browser"
+msgstr "다른 브라우저를 사용"
+
+#. i18n: file appletsettingswidget.ui line 201
+#: rc.cpp:67
 #, fuzzy, no-c-format
 msgid "Open &browser to Gmail on left click"
 msgstr "마우스 왼쪽 단추를 누르면 브라우저를 열어 Gmail로 이동"
 
-#. i18n: file appletsettingswidget.ui line 196
-#: rc.cpp:52
+#. i18n: file appletsettingswidget.ui line 204
+#: rc.cpp:70
 #, no-c-format
 msgid "Alt+B"
 msgstr ""
 
-#. i18n: file appletsettingswidget.ui line 204
-#: rc.cpp:55 rc.cpp:145
+#. i18n: file appletsettingswidget.ui line 212
+#: rc.cpp:73 rc.cpp:163
 #, no-c-format
 msgid "Catch accidental left clicks when launching the browser"
 msgstr "브라우저가 실행 중일 때 마우스 왼쪽 단추를 누르면 Gmail로 이동"
 
 #. i18n: file loginsettingswidget.ui line 16
-#: rc.cpp:58
+#: rc.cpp:76
 #, no-c-format
 msgid "LoginSettingsWidget"
 msgstr ""
 
 #. i18n: file loginsettingswidget.ui line 35
-#: rc.cpp:61
+#: rc.cpp:79
 #, no-c-format
 msgid "Username:"
 msgstr "사용자 이름:"
 
 #. i18n: file loginsettingswidget.ui line 46
-#: rc.cpp:64
+#: rc.cpp:82
 #, no-c-format
 msgid "Password:"
 msgstr "비밀번호:"
 
 #. i18n: file loginsettingswidget.ui line 57
-#: rc.cpp:67
+#: rc.cpp:85
 #, fuzzy, no-c-format
 msgid "&Use KDE Wallet to store password"
 msgstr "비밀번호를 암호화하기 위해 KDE Wallet을 사용"
 
 #. i18n: file netsettingswidget.ui line 16
-#: rc.cpp:73
+#: rc.cpp:91
 #, no-c-format
 msgid "NetworkSettingsWidget"
 msgstr ""
 
-#. i18n: file netsettingswidget.ui line 44
-#: rc.cpp:76
+#. i18n: file netsettingswidget.ui line 47
+#: rc.cpp:94
 #, fuzzy, no-c-format
 msgid "Chec&king Interval"
 msgstr "확인 간격"
 
-#. i18n: file netsettingswidget.ui line 56
-#: rc.cpp:79
+#. i18n: file netsettingswidget.ui line 59
+#: rc.cpp:97
 #, no-c-format
 msgid " seconds"
 msgstr " 초"
 
-#. i18n: file netsettingswidget.ui line 64
-#: rc.cpp:82
+#. i18n: file netsettingswidget.ui line 67
+#: rc.cpp:100
 #, fuzzy, no-c-format
 msgid "&Use https connections for checking mail"
 msgstr "메일을 확인할 때 https 연결을 사용"
 
-#. i18n: file netsettingswidget.ui line 73
-#: rc.cpp:88
+#. i18n: file netsettingswidget.ui line 76
+#: rc.cpp:106
 #, no-c-format
 msgid ""
 "<blockquote>Use secure connections when checking for new mail. Note that the "
@@ -613,7 +683,7 @@ msgstr ""
 "에 관계없이 https 연결을 사용하므로 주의하세요.</blockquote>"
 
 #. i18n: file prefs.kcfg line 9
-#: rc.cpp:94
+#: rc.cpp:112
 #, no-c-format
 msgid ""
 "When checking for new email's this is the search query sent to Google Mail. "
@@ -621,7 +691,7 @@ msgid ""
 msgstr ""
 
 #. i18n: file prefs.kcfg line 14
-#: rc.cpp:100
+#: rc.cpp:118
 #, no-c-format
 msgid ""
 "This option lets you make KCheckGMail open Gmail using the simple interface "
@@ -629,25 +699,25 @@ msgid ""
 msgstr ""
 
 #. i18n: file prefs.kcfg line 19
-#: rc.cpp:103
+#: rc.cpp:121
 #, no-c-format
 msgid "Polling interval"
 msgstr "송신 간격"
 
 #. i18n: file prefs.kcfg line 23
-#: rc.cpp:106
+#: rc.cpp:124
 #, no-c-format
 msgid "How many seconds to wait before checking for new mail."
 msgstr "어느 정도의 간격으로 새 메일을 확인할지를 결정합니다."
 
 #. i18n: file prefs.kcfg line 26
-#: rc.cpp:109
+#: rc.cpp:127
 #, no-c-format
 msgid "Use https connections for checking mail"
 msgstr "메일을 확인할 때 https 연결을 사용"
 
 #. i18n: file prefs.kcfg line 28
-#: rc.cpp:112
+#: rc.cpp:130
 #, no-c-format
 msgid ""
 "Use secure connections when checking for new mail. Note that the login "
@@ -657,61 +727,61 @@ msgstr ""
 "https 연결을 사용하므로 주의하세요."
 
 #. i18n: file prefs.kcfg line 34
-#: rc.cpp:115
+#: rc.cpp:133
 #, no-c-format
 msgid "Username"
 msgstr "사용자 이름"
 
 #. i18n: file prefs.kcfg line 35
-#: rc.cpp:118
+#: rc.cpp:136
 #, no-c-format
 msgid "Your Gmail username or your Google Hosted Domain email address"
 msgstr ""
 
 #. i18n: file prefs.kcfg line 38
-#: rc.cpp:121
+#: rc.cpp:139
 #, no-c-format
 msgid "Password"
 msgstr "비밀번호"
 
 #. i18n: file prefs.kcfg line 39
-#: rc.cpp:124
+#: rc.cpp:142
 #, no-c-format
 msgid "Password for checking your Gmail account"
 msgstr "Gmail 계정의 비밀번호를 확인하세요"
 
 #. i18n: file prefs.kcfg line 42
-#: rc.cpp:127
+#: rc.cpp:145
 #, no-c-format
 msgid "Use KDE Wallet to store password"
 msgstr "비밀번호를 암호화하기 위해 KDE Wallet을 사용"
 
 #. i18n: file prefs.kcfg line 44
-#: rc.cpp:130
+#: rc.cpp:148
 #, no-c-format
 msgid "Use the KDE Wallet system to store your Gmail password."
 msgstr "Gmail 비밀번호를 저장하기 위해 KDE Wallet을 사용합니다."
 
 #. i18n: file prefs.kcfg line 47
-#: rc.cpp:133
+#: rc.cpp:151
 #, no-c-format
 msgid "Display an alert if GMail version changes"
 msgstr "Gmail 버전이 바뀌면 알람 표시"
 
 #. i18n: file prefs.kcfg line 49
-#: rc.cpp:136
+#: rc.cpp:154
 #, no-c-format
 msgid "If Google update the GMail code, display an alert"
 msgstr "Gmail이 새로 갱신되면 알람으로 표시"
 
 #. i18n: file prefs.kcfg line 55
-#: rc.cpp:139
+#: rc.cpp:157
 #, no-c-format
 msgid "Open browser to Gmail on left click"
 msgstr "마우스 왼쪽 단추를 누르면 브라우저를 열어 Gmail로 이동"
 
 #. i18n: file prefs.kcfg line 57
-#: rc.cpp:142
+#: rc.cpp:160
 #, fuzzy, no-c-format
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGMail icon is "
@@ -720,7 +790,7 @@ msgstr ""
 "사용하면, KCheckGmail 아이콘을 누를 때 기본 KDE 웹 브라우저를 띄웁니다."
 
 #. i18n: file prefs.kcfg line 62
-#: rc.cpp:148
+#: rc.cpp:166
 #, fuzzy, no-c-format
 msgid ""
 "If enabled, every time you click on the KCheckGMail icon will disable it for "
@@ -731,108 +801,126 @@ msgstr ""
 "아 하나 이상의 창이 실수로 열리는 것을 방지합니다."
 
 #. i18n: file prefs.kcfg line 65
-#: rc.cpp:151
+#: rc.cpp:169
 #, no-c-format
 msgid "Use the KDE default browser"
 msgstr "KDE 기본 브라우저를 사용"
 
 #. i18n: file prefs.kcfg line 67
-#: rc.cpp:154
+#: rc.cpp:172
 #, no-c-format
 msgid ""
 "Use whatever browser is configured as the KDE default to check your Gmail"
 msgstr "KDE 기본으로 설정된 어떤 브라우저라도 Gmail 확인하는데 사용"
 
 #. i18n: file prefs.kcfg line 70
-#: rc.cpp:157 rc.cpp:160
+#: rc.cpp:175 rc.cpp:178
 #, no-c-format
 msgid "Use a custom browser"
 msgstr "사용자 정의 브라우저 사용"
 
 #. i18n: file prefs.kcfg line 76
-#: rc.cpp:163
+#: rc.cpp:181
 #, no-c-format
 msgid "Use a custom browser other than the KDE default to check your Gmail"
 msgstr "Gmail을 확인할 때 KDE 기본 브라우저보다 사용자 정의 브라우저를 사용"
 
 #. i18n: file prefs.kcfg line 79
-#: rc.cpp:166
+#: rc.cpp:184
 #, no-c-format
-msgid "Display subject when only one new email arrives"
+msgid "Display sender"
 msgstr ""
 
-#. i18n: file prefs.kcfg line 81
-#: rc.cpp:169
+#. i18n: file prefs.kcfg line 80
+#: rc.cpp:187
 #, no-c-format
-msgid "Display message's subject when only one new email arrives"
+msgid "Display message sender"
 msgstr ""
 
-#. new-gmail-arrived - Name new-gmail-arrived - Comment
-#: eventsrc:1 eventsrc:2
-msgid "New Gmail Arrived"
+#. i18n: file prefs.kcfg line 84
+#: rc.cpp:190
+#, no-c-format
+msgid "Display subject"
 msgstr ""
 
-#. gmail-login-yes - Name gmail-login-yes - Comment
-#: eventsrc:3 eventsrc:4
-#, fuzzy
-msgid "Logged in to Gmail"
-msgstr "Gmail에 로그인 성공"
-
-#. gmail-login-no - Name gmail-login-no - Comment
-#: eventsrc:5 eventsrc:6
-#, fuzzy
-msgid "Failed to login to Gmail"
-msgstr "Gmail에 로그인 성공"
-
-#. gmail-version-mismatch - Name gmail-version-mismatch - Comment
-#: eventsrc:7 eventsrc:8
-#, fuzzy
-msgid "Gmail version has changed"
-msgstr "버전이 바뀜"
-
-#. gmail-session-changed - Name
-#: eventsrc:9
-msgid "New Gmail session is open"
+#. i18n: file prefs.kcfg line 85
+#: rc.cpp:193
+#, no-c-format
+msgid "Display message subject"
 msgstr ""
 
-#. gmail-session-changed - Comment
-#: eventsrc:10
-msgid "Another session has been opened"
+#. i18n: file prefs.kcfg line 89
+#: rc.cpp:196
+#, no-c-format
+msgid "Display snippet"
 msgstr ""
 
-#. gmail-mail-snippet - Name
-#: eventsrc:11
-msgid "Mail Snippet"
+#. i18n: file prefs.kcfg line 90
+#: rc.cpp:199
+#, no-c-format
+msgid "Display message snippet"
 msgstr ""
 
-#. gmail-mail-snippet - Comment
-#: eventsrc:12
-msgid "Email snippets when moving the mouse over a threads menu entry"
-msgstr ""
-
-#. no-unread-gmail - Name
-#: eventsrc:13
-msgid "No unread email"
-msgstr ""
-
-#. no-unread-gmail - Comment
-#: eventsrc:14
-#, fuzzy
-msgid "Dummy notification triggered when there are no unread messages"
+#. i18n: file prefs.kcfg line 97
+#: rc.cpp:202
+#, fuzzy, no-c-format
+msgid "Color used to display  the number of unread messages"
 msgstr "<b>%1</b>개의 새 메일이 있습니다"
 
-#. GenericName
-#: kcheckgmail.desktop:2
+#: kcheckgmail.desktop:5
 msgid "New email notifier"
 msgstr ""
 
-#. Comment
-#: kcheckgmail.desktop:3
+#: kcheckgmail.desktop:22
 #, fuzzy
 msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
 "account."
 msgstr "Gmail 계정에 몇개의 메일이 있는지 시스템 트레이에 표시"
+
+#: eventsrc:6 eventsrc:23
+msgid "New Gmail Arrived"
+msgstr ""
+
+#: eventsrc:43 eventsrc:62
+#, fuzzy
+msgid "Logged in to Gmail"
+msgstr "Gmail에 로그인 성공"
+
+#: eventsrc:84 eventsrc:104
+#, fuzzy
+msgid "Failed to login to Gmail"
+msgstr "Gmail에 로그인 성공"
+
+#: eventsrc:127 eventsrc:145
+#, fuzzy
+msgid "Gmail version has changed"
+msgstr "버전이 바뀜"
+
+#: eventsrc:166
+msgid "New Gmail session is open"
+msgstr ""
+
+#: eventsrc:182
+msgid "Another session has been opened"
+msgstr ""
+
+#: eventsrc:201
+msgid "Mail Snippet"
+msgstr ""
+
+#: eventsrc:215
+msgid "Email snippets when moving the mouse over a threads menu entry"
+msgstr ""
+
+#: eventsrc:230
+msgid "No unread email"
+msgstr ""
+
+#: eventsrc:244
+#, fuzzy
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "<b>%1</b>개의 새 메일이 있습니다"
 
 #~ msgid "Please enter a password"
 #~ msgstr "비밀번호를 넣으세요"

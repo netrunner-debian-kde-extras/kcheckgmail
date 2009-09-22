@@ -3,14 +3,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kcheckgmail 0.5.8\n"
-"POT-Creation-Date: 2009-09-18 18:50+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-22 17:10+0100\n"
 "PO-Revision-Date: 2007-07-17 16:54+0100\n"
 "Last-Translator: Luis Pereira <luis.artur.pereira@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: _translatorinfo.cpp:1
@@ -70,8 +70,7 @@ msgstr "Utilizador ou senha inválido"
 #: gmail.cpp:258 gmail.cpp:269 gmail.cpp:284
 msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
-"O procedimento de entrada do GMail mudou, verifique se existe uma nova "
-"versão"
+"O procedimento de entrada do GMail mudou, verifique se existe uma nova versão"
 
 #: gmail.cpp:388
 msgid "Unknown error retrieving cookies"
@@ -293,7 +292,7 @@ msgid "Co&mpose Mail"
 msgstr "Escrever &Mensagem"
 
 #: kcheckgmailcore.cpp:143 kcheckgmailcore.cpp:624 kcheckgmailtray.cpp:60
-#: main.cpp:45
+#: main.cpp:45 kcheckgmail.desktop:2 eventsrc:3
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
@@ -309,10 +308,9 @@ msgid ""
 "Threads menu containing the newest email of your account."
 msgstr ""
 "<p><center>Bemvindo ao KCheckGMail!</center></p><p>Pode encontrar o "
-"KCheckGMail aqui: </p><p><center><img "
-"source=\"systray_shot\"></center></p>Quando clica com o botão direito no "
-"ícone verá um menu, a partir do qual, pode ver o menu Últimas Mensagens "
-"Não Lidas."
+"KCheckGMail aqui: </p><p><center><img source=\"systray_shot\"></center></"
+"p>Quando clica com o botão direito no ícone verá um menu, a partir do qual, "
+"pode ver o menu Últimas Mensagens Não Lidas."
 
 #: kcheckgmailcore.cpp:253
 msgid "Welcome"
@@ -328,10 +326,10 @@ msgid ""
 "Are you sure you want to use KCheckGMail?"
 msgstr ""
 "Google, Gmail e Google Mail são marcas registadas do Google Inc.\n"
-"Nem o KCheckGMail nem os seus autores estão de maneira alguma associados "
-"nem têm o aval do Google Inc.\n"
-"Ao usar esta aplicação pode estar ou não a violar os Termos de Uso e/ou "
-"as Políticas de Programas do Gmail ou do Google Mail.\n"
+"Nem o KCheckGMail nem os seus autores estão de maneira alguma associados nem "
+"têm o aval do Google Inc.\n"
+"Ao usar esta aplicação pode estar ou não a violar os Termos de Uso e/ou as "
+"Políticas de Programas do Gmail ou do Google Mail.\n"
 "Tem a certeza que quer usar o KCheckGMail?"
 
 #: kcheckgmailcore.cpp:271
@@ -400,9 +398,9 @@ msgid ""
 "should be set to ensure more unread messages are retrieved.</p><p>Are you "
 "sure you want to proceed?</p>"
 msgstr ""
-"<p>A sequência que forneceu não contém <i>is:unread</i>.</p><p>Deverá "
-"ser ligada para assegurar que mais mensagens não lidas sejam "
-"obtidas.</p><p>Tem a certeza que quer continuar?</p>"
+"<p>A sequência que forneceu não contém <i>is:unread</i>.</p><p>Deverá ser "
+"ligada para assegurar que mais mensagens não lidas sejam obtidas.</p><p>Tem "
+"a certeza que quer continuar?</p>"
 
 #: kcheckgmailcore.cpp:614
 msgid "An error occurred logging in to Gmail<br><b>%1</b>"
@@ -430,9 +428,9 @@ msgid ""
 "may cause all sort of strange errors. Please check for an upgrade to "
 "KCheckGMail soon."
 msgstr ""
-"O Gmail foi actualizado desde que o KCheckGMail foi lançado. Este facto "
-"pode causar todo o tipo de erros. Por favor verifique brevemente a "
-"existência de uma actualização para o KCheckGMail."
+"O Gmail foi actualizado desde que o KCheckGMail foi lançado. Este facto pode "
+"causar todo o tipo de erros. Por favor verifique brevemente a existência de "
+"uma actualização para o KCheckGMail."
 
 #: kcheckgmailtray.cpp:115
 msgid "Version changed"
@@ -440,11 +438,11 @@ msgstr "A versão mudou"
 
 #: kcheckgmailtray.cpp:182
 msgid ""
-"<p>KCheckGMail is already running</p><p>You can find it "
-"here:</p><p><center><img source=\"systray_shot\"></center></p>"
+"<p>KCheckGMail is already running</p><p>You can find it here:</"
+"p><p><center><img source=\"systray_shot\"></center></p>"
 msgstr ""
-"<p>KCheckGMail já se encontra a correr</p><p>Pode-o encontrar "
-"aqui:</p><p><center><img source=\"systray_shot\"></center></p>"
+"<p>KCheckGMail já se encontra a correr</p><p>Pode-o encontrar aqui:</"
+"p><p><center><img source=\"systray_shot\"></center></p>"
 
 #: kcheckgmailtray.cpp:183
 msgid "Already Running"
@@ -706,8 +704,8 @@ msgid ""
 "<blockquote>Use secure connections when checking for new mail. Note that the "
 "login procedure uses https regardless of this setting.</blockquote>"
 msgstr ""
-"<blockquote>Usar ligações seguras para verificar a existência de "
-"mensagens novas. Note que o procedimento de acesso usa ligações https "
+"<blockquote>Usar ligações seguras para verificar a existência de mensagens "
+"novas. Note que o procedimento de acesso usa ligações https "
 "independentemente desta definição.</blockquote>"
 
 #. i18n: file prefs.kcfg line 9
@@ -718,8 +716,8 @@ msgid ""
 "Don't forget to add is:unread to improve the search."
 msgstr ""
 "Ao verificar se tem mensagens novas esta é a sequência de procura que é "
-"enviada ao Google Mail. Não se esqueça de adicionar is:unread para "
-"melhorar a procura."
+"enviada ao Google Mail. Não se esqueça de adicionar is:unread para melhorar "
+"a procura."
 
 #. i18n: file prefs.kcfg line 14
 #: rc.cpp:118
@@ -728,8 +726,8 @@ msgid ""
 "This option lets you make KCheckGMail open Gmail using the simple interface "
 "(only HTML) or the full interface (unmarked)."
 msgstr ""
-"Esta opção permite-lhe fazer o KCheckGMail abrir o Gmail usando o "
-"interface simples (só HTML) ou o interface completo (não marcado)."
+"Esta opção permite-lhe fazer o KCheckGMail abrir o Gmail usando o interface "
+"simples (só HTML) ou o interface completo (não marcado)."
 
 #. i18n: file prefs.kcfg line 19
 #: rc.cpp:121
@@ -757,9 +755,9 @@ msgid ""
 "Use secure connections when checking for new mail. Note that the login "
 "procedure uses https regardless of this setting."
 msgstr ""
-"Usar ligações seguras para verificar a existência de mensagens novas. "
-"Note que o procedimento de acesso usa ligações https independentemente "
-"desta definição."
+"Usar ligações seguras para verificar a existência de mensagens novas. Note "
+"que o procedimento de acesso usa ligações https independentemente desta "
+"definição."
 
 #. i18n: file prefs.kcfg line 34
 #: rc.cpp:133
@@ -824,8 +822,8 @@ msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGMail icon is "
 "clicked."
 msgstr ""
-"Se activo, quando o ícone do KCheckGmail for clicado, o navegador padrão "
-"do KDE será lançado."
+"Se activo, quando o ícone do KCheckGmail for clicado, o navegador padrão do "
+"KDE será lançado."
 
 #. i18n: file prefs.kcfg line 62
 #: rc.cpp:166
@@ -908,6 +906,61 @@ msgstr ""
 msgid "Color used to display  the number of unread messages"
 msgstr "Não há mensagens por ler"
 
+#: kcheckgmail.desktop:5
+msgid "New email notifier"
+msgstr "Notificador de mensagens novas"
+
+#: kcheckgmail.desktop:22
+msgid ""
+"A Kicker applet to display how many email messages you have in your Gmail "
+"account."
+msgstr ""
+"Uma 'applet' que inicia uma aplicação que mostra quantas mensagens por ler "
+"tem na sua conta Gmail."
+
+#: eventsrc:6 eventsrc:23
+msgid "New Gmail Arrived"
+msgstr "Nova Mensagem no Gmail"
+
+#: eventsrc:43 eventsrc:62
+msgid "Logged in to Gmail"
+msgstr "Ligado ao Gmail"
+
+#: eventsrc:84 eventsrc:104
+msgid "Failed to login to Gmail"
+msgstr "O acesso ao Gmail falhou"
+
+#: eventsrc:127 eventsrc:145
+msgid "Gmail version has changed"
+msgstr "A versão do Gmail mudou"
+
+#: eventsrc:166
+msgid "New Gmail session is open"
+msgstr "Uma nova sessão Gmail está aberta"
+
+#: eventsrc:182
+msgid "Another session has been opened"
+msgstr "Uma outra sessão foi iniciada"
+
+#: eventsrc:201
+#, fuzzy
+msgid "Mail Snippet"
+msgstr "Fragmento de mensagem"
+
+#: eventsrc:215
+msgid "Email snippets when moving the mouse over a threads menu entry"
+msgstr ""
+"Pedaços de mensagens quando passar o rato por cima do menu Últimas Mensagens "
+"Não Lidas"
+
+#: eventsrc:230
+msgid "No unread email"
+msgstr "Não existem mensagens por ler"
+
+#: eventsrc:244
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Notificação fictícia desencadeada quando não há mensagens por ler"
+
 #~ msgid "Other"
 #~ msgstr "Outras"
 
@@ -917,46 +970,6 @@ msgstr "Não há mensagens por ler"
 #~ msgid "Display message's subject when only one new email arrives"
 #~ msgstr ""
 #~ "Visualizar o assunto da mensagem quando chega apenas uma mensagem nova"
-
-#~ msgid "New Gmail Arrived"
-#~ msgstr "Nova Mensagem no Gmail"
-
-#~ msgid "Logged in to Gmail"
-#~ msgstr "Ligado ao Gmail"
-
-#~ msgid "Failed to login to Gmail"
-#~ msgstr "O acesso ao Gmail falhou"
-
-#~ msgid "Gmail version has changed"
-#~ msgstr "A versão do Gmail mudou"
-
-#~ msgid "New Gmail session is open"
-#~ msgstr "Uma nova sessão Gmail está aberta"
-
-#~ msgid "Another session has been opened"
-#~ msgstr "Uma outra sessão foi iniciada"
-
-#~ msgid "Email snippets when moving the mouse over a threads menu entry"
-#~ msgstr ""
-#~ "Pedaços de mensagens quando passar o rato por cima do menu Últimas "
-#~ "Mensagens Não Lidas"
-
-#~ msgid "No unread email"
-#~ msgstr "Não existem mensagens por ler"
-
-#~ msgid "Dummy notification triggered when there are no unread messages"
-#~ msgstr ""
-#~ "Notificação fictícia desencadeada quando não há mensagens por ler"
-
-#~ msgid "New email notifier"
-#~ msgstr "Notificador de mensagens novas"
-
-#~ msgid ""
-#~ "A Kicker applet to display how many email messages you have in your Gmail "
-#~ "account."
-#~ msgstr ""
-#~ "Uma 'applet' que inicia uma aplicação que mostra quantas mensagens por ler "
-#~ "tem na sua conta Gmail."
 
 #~ msgid "&Snooze"
 #~ msgstr "&Suspender Verificação"
