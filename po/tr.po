@@ -1,23 +1,20 @@
-# translation of tr.po to Turkish
-# translation of tr.po to
 # translation of kcheckgmail.pot to Turkish
 # Copyright (C) 2007 KCheckGmail
 # This file is distributed under the same license as the KCheckGmail package.
 #
-# Uğur Çetin <ugur.jnmbk@gmail.com>, 2006, 2007.
-# Uğur Çetin <jnmbk@users.sourceforge.net>, 2007.
+# Uğur Çetin <jnmbk@users.sourceforge.net>, 2006, 2007, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcheckgmail 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-22 17:10+0100\n"
-"PO-Revision-Date: 2007-07-09 16:31+0300\n"
+"PO-Revision-Date: 2009-10-07 09:24+0300\n"
 "Last-Translator: Uğur Çetin <jnmbk@users.sourceforge.net>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: _translatorinfo.cpp:1
@@ -53,14 +50,12 @@ msgid "Behavior"
 msgstr "Davranış"
 
 #: configdialog.cpp:46
-#, fuzzy
 msgid "Behavior Settings"
-msgstr "Ağ Ayarları"
+msgstr "Davranış Ayarları"
 
 #: configdialog.cpp:49
-#, fuzzy
 msgid "Appearance Settings"
-msgstr "Gelişmiş Ayarlar"
+msgstr "Görünüm Ayarları"
 
 #: configdialog.cpp:52
 msgid "Advanced"
@@ -277,7 +272,6 @@ msgid "Unable to retrieve secure password"
 msgstr "Güvenli parola alınamadı"
 
 #: kcheckgmailcore.cpp:114
-#, fuzzy
 msgid "Configure &Notifications"
 msgstr "&Bildirimleri Yapılandır"
 
@@ -342,20 +336,18 @@ msgid "Legal Information"
 msgstr "Yasal Uyarı"
 
 #: kcheckgmailcore.cpp:360
-#, fuzzy
 msgid "<center><b>New mail arrived</b></center>"
-msgstr "Yeni bir posta geldi: <i>%1</i>"
+msgstr "<center><b>Yeni posta geldi</b></center>"
 
 #: kcheckgmailcore.cpp:362
 msgid "<b>Sender:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Gönderen:</b> <i>%1</i>"
 
 #: kcheckgmailcore.cpp:369
 msgid "<b>Subject:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Konu:</b> <i>%1</i>"
 
-#: kcheckgmailcore.cpp:382
-#, fuzzy, c-format
+#: kcheckgmailcore.cpp:382, c-format
 msgid ""
 "_n: There is <b>1</b> new mail message\n"
 "There are <b>%n</b> new mail messages"
@@ -366,16 +358,13 @@ msgid ""
 "_: format used to display the attachments (%1 is the icon, %2 is the file "
 "name)\n"
 "<img src=\"%1\"> %2"
-msgstr ""
+msgstr "<img src=\"%1\"> %2"
 
 #: kcheckgmailcore.cpp:500
-#, fuzzy
 msgid ""
 "_n: Attachment: %1\n"
 "Attachments: %1"
-msgstr ""
-"%1\n"
-"Ekler: %2"
+msgstr "Ekler: %1"
 
 #: kcheckgmailcore.cpp:537
 msgid "No account information has been entered. Do you want to quit?"
@@ -457,14 +446,12 @@ msgid "KCheckGMail - Notifying about new email for %1"
 msgstr "KCheckGMail - %1 için yeni e-postaları haber veriyor"
 
 #: knotification.cpp:123 knotification.cpp:144
-#, fuzzy
 msgid "Notification"
-msgstr "&Bildirimleri Yapılandır"
+msgstr "Bildirim"
 
 #: knotification.cpp:132 knotification.cpp:153
-#, fuzzy
 msgid "Fatal"
-msgstr "Katalanca"
+msgstr "Ölümcül"
 
 #: main.cpp:38
 msgid "Display legal information"
@@ -488,7 +475,7 @@ msgstr "Bakımını yapan"
 
 #: main.cpp:58
 msgid "Developer"
-msgstr ""
+msgstr "Geliştirici"
 
 #: main.cpp:59
 msgid "Everybody who helped testing and translating KCheckGMail"
@@ -528,10 +515,9 @@ msgid "Search For:"
 msgstr "Ara:"
 
 #. i18n: file appearancesettingswidget.ui line 17
-#: rc.cpp:12
-#, fuzzy, no-c-format
+#: rc.cpp:12, no-c-format
 msgid "AppearanceSettingsWidget"
-msgstr "AdvancedSettingsWidget"
+msgstr "AppearanceSettingsWidget"
 
 #. i18n: file appearancesettingswidget.ui line 31
 #: rc.cpp:15 rc.cpp:64
@@ -546,12 +532,14 @@ msgid ""
 "&Color used to display  the number\n"
 "of unread messages:"
 msgstr ""
+"Okunmamış ileti sayısını gösterirken\n"
+"kullanılan &renk:"
 
 #. i18n: file appearancesettingswidget.ui line 65
 #: rc.cpp:22 rc.cpp:205
 #, no-c-format
 msgid "Tray icon number of unread messages color selector"
-msgstr ""
+msgstr "Sistem çekmecesindeki okunmamış ileti sayısının rengi"
 
 #. i18n: file appletsettingswidget.ui line 16
 #: rc.cpp:25
@@ -566,28 +554,25 @@ msgid "Debug"
 msgstr "Hata ayıkla"
 
 #. i18n: file appletsettingswidget.ui line 41
-#: rc.cpp:31
-#, fuzzy, no-c-format
+#: rc.cpp:31, no-c-format
 msgid "Displa&y an alert if GMail version changes"
-msgstr "Gmail sürümü değişirse uyarı göster"
+msgstr "GMail sürümü değişirse uyarı &göster"
 
 #. i18n: file appletsettingswidget.ui line 44
-#: rc.cpp:34
-#, fuzzy, no-c-format
+#: rc.cpp:34, no-c-format
 msgid "Alt+Y"
-msgstr "Alt+J"
+msgstr "Alt+Y"
 
 #. i18n: file appletsettingswidget.ui line 54
-#: rc.cpp:37
-#, fuzzy, no-c-format
+#: rc.cpp:37, no-c-format
 msgid "Fields displayed when only one email arrives"
-msgstr "Sadece bir e-posta elince konuyu göster"
+msgstr "Sadece bir e-posta gelince gösterilecek alanlar"
 
 #. i18n: file appletsettingswidget.ui line 65
 #: rc.cpp:40
 #, no-c-format
 msgid "Sub&ject"
-msgstr ""
+msgstr "&Konu"
 
 #. i18n: file appletsettingswidget.ui line 68
 #: rc.cpp:43
@@ -599,13 +584,12 @@ msgstr "Alt+J"
 #: rc.cpp:46
 #, no-c-format
 msgid "Senders"
-msgstr ""
+msgstr "Gönderenler"
 
 #. i18n: file appletsettingswidget.ui line 90
-#: rc.cpp:49
-#, fuzzy, no-c-format
+#: rc.cpp:49, no-c-format
 msgid "Snippet"
-msgstr "Posta Özetleri"
+msgstr "Özet"
 
 #. i18n: file appletsettingswidget.ui line 117
 #: rc.cpp:52
@@ -860,43 +844,41 @@ msgstr "Gmaile gitmek için KDE varsayılanı dışında bir tarayıcı kullanı
 #: rc.cpp:184
 #, no-c-format
 msgid "Display sender"
-msgstr ""
+msgstr "Göndereni göster"
 
 #. i18n: file prefs.kcfg line 80
 #: rc.cpp:187
 #, no-c-format
 msgid "Display message sender"
-msgstr ""
+msgstr "İletiyi göndereni göster"
 
 #. i18n: file prefs.kcfg line 84
 #: rc.cpp:190
 #, no-c-format
 msgid "Display subject"
-msgstr ""
+msgstr "Konuyu göster"
 
 #. i18n: file prefs.kcfg line 85
 #: rc.cpp:193
 #, no-c-format
 msgid "Display message subject"
-msgstr ""
+msgstr "İleti konusunu göster"
 
 #. i18n: file prefs.kcfg line 89
-#: rc.cpp:196
-#, fuzzy, no-c-format
+#: rc.cpp:196, no-c-format
 msgid "Display snippet"
-msgstr "Posta Özetleri"
+msgstr "Özeti göster"
 
 #. i18n: file prefs.kcfg line 90
 #: rc.cpp:199
 #, no-c-format
 msgid "Display message snippet"
-msgstr ""
+msgstr "İleti özetini göster"
 
 #. i18n: file prefs.kcfg line 97
-#: rc.cpp:202
-#, fuzzy, no-c-format
+#: rc.cpp:202, no-c-format
 msgid "Color used to display  the number of unread messages"
-msgstr "Okunmamış posta yok"
+msgstr "Okunmamış ileti sayısını gösterirken kullanılan renk"
 
 #: kcheckgmail.desktop:5
 msgid "New email notifier"
@@ -944,12 +926,11 @@ msgstr "Fareyi menüdeki bir konunun üzerine getirince görünen e-posta özetl
 
 #: eventsrc:230
 msgid "No unread email"
-msgstr ""
+msgstr "Okunmamış e-posta yok"
 
 #: eventsrc:244
-#, fuzzy
 msgid "Dummy notification triggered when there are no unread messages"
-msgstr "Okunmamış posta yok"
+msgstr "Okunmamış ileti yokken gerçekleştirilecek bildirim"
 
 #~ msgid "Other"
 #~ msgstr "Diğer"
