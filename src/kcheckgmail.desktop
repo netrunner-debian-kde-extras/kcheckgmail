@@ -19,6 +19,7 @@ GenericName[cs]=Hlídač nových emailů
 GenericName[ca]=Nou notificador de correu
 GenericName[ar]=منبه جديد بالبريد
 GenericName[et]=Uute e-kirjade teadustaja
+GenericName[el]=New email notifier
 Comment=A Kicker applet to display how many email messages you have in your Gmail account.
 Comment[zh_CN]=Kicker面板显示你已经收到了多少邮件
 Comment[tr]=Gmail hesabınızda kaç tane yeni e-posta olduğunu gösteren bir panel programcığıdır.

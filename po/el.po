@@ -1,16 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Glentadakis Dimitrios <dglent@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcheckgmail 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-22 17:10+0100\n"
-"PO-Revision-Date: 2008-05-12 20:55+0100\n"
+"PO-Revision-Date: 2009-10-07 22:45+0200\n"
 "Last-Translator: Glentadakis Dimitrios <dglent@gmail.com>\n"
-"Language-Team: Greek <dglent@gmail.com>\n"
+"Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,6 +17,7 @@ msgstr ""
 "X-Poedit-Country: GREECE\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: _translatorinfo.cpp:1
 msgid ""
@@ -52,14 +52,12 @@ msgid "Behavior"
 msgstr "Συμπεριφορά"
 
 #: configdialog.cpp:46
-#, fuzzy
 msgid "Behavior Settings"
-msgstr "Ρυθμίσεις δικτύου"
+msgstr "Ρυθμίσεις συμπεριφοράς"
 
 #: configdialog.cpp:49
-#, fuzzy
 msgid "Appearance Settings"
-msgstr "Επιπλέον ρυθμίσεις"
+msgstr "Ρυθμίσεις εμφάνισης"
 
 #: configdialog.cpp:52
 msgid "Advanced"
@@ -276,7 +274,6 @@ msgid "Unable to retrieve secure password"
 msgstr "Σφάλμα στην ανάκτηση κωδικού (secured)"
 
 #: kcheckgmailcore.cpp:114
-#, fuzzy
 msgid "Configure &Notifications"
 msgstr "Ρυθμίσεις Ειδοποιήσεων"
 
@@ -342,20 +339,18 @@ msgid "Legal Information"
 msgstr "Νομικές πληροφορίες"
 
 #: kcheckgmailcore.cpp:360
-#, fuzzy
 msgid "<center><b>New mail arrived</b></center>"
-msgstr "Έφτασε νέα αλληλογραφία: <i>%1</i>"
+msgstr "<center><b>Έφτασε νέα αλληλογραφία</b></center>"
 
 #: kcheckgmailcore.cpp:362
 msgid "<b>Sender:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Αποστολέας:</b> <i>%1</i>"
 
 #: kcheckgmailcore.cpp:369
 msgid "<b>Subject:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Θέμα:</b> <i>%1</i>"
 
-#: kcheckgmailcore.cpp:382
-#, fuzzy, c-format
+#: kcheckgmailcore.cpp:382, c-format
 msgid ""
 "_n: There is <b>1</b> new mail message\n"
 "There are <b>%n</b> new mail messages"
@@ -369,6 +364,9 @@ msgid ""
 "name)\n"
 "<img src=\"%1\"> %2"
 msgstr ""
+"μορφή που χρησιμοποιείται για την προβολή των συνημμένων (%1 είναι το "
+"εικονίδιο, % είναι το όνομα αρχείου)\n"
+"<img src=\"%1\"> %2"
 
 #: kcheckgmailcore.cpp:500
 msgid ""
@@ -459,14 +457,12 @@ msgid "KCheckGMail - Notifying about new email for %1"
 msgstr "KCheckGMail - Ειδοποίηση νέων μηνυμάτων για %1"
 
 #: knotification.cpp:123 knotification.cpp:144
-#, fuzzy
 msgid "Notification"
-msgstr "Ρυθμίσεις Ειδοποιήσεων"
+msgstr "Ειδοποίηση"
 
 #: knotification.cpp:132 knotification.cpp:153
-#, fuzzy
 msgid "Fatal"
-msgstr "Καταλανικά"
+msgstr "Μοιραίο"
 
 #: main.cpp:38
 msgid "Display legal information"
@@ -491,7 +487,7 @@ msgstr "Συντηρητής"
 
 #: main.cpp:58
 msgid "Developer"
-msgstr ""
+msgstr "Προγραμματιστής"
 
 #: main.cpp:59
 msgid "Everybody who helped testing and translating KCheckGMail"
@@ -533,10 +529,9 @@ msgid "Search For:"
 msgstr "Αναζήτηση για :"
 
 #. i18n: file appearancesettingswidget.ui line 17
-#: rc.cpp:12
-#, fuzzy, no-c-format
+#: rc.cpp:12, no-c-format
 msgid "AppearanceSettingsWidget"
-msgstr "AdvancedSettingsWidget"
+msgstr "AppearanceSettingsWidget"
 
 #. i18n: file appearancesettingswidget.ui line 31
 #: rc.cpp:15 rc.cpp:64
@@ -551,12 +546,16 @@ msgid ""
 "&Color used to display  the number\n"
 "of unread messages:"
 msgstr ""
+"Το χρώμα για την εμφάνιση του αριθμού\n"
+"των μη αναγνωσμένων μηνυμάτων:"
 
 #. i18n: file appearancesettingswidget.ui line 65
 #: rc.cpp:22 rc.cpp:205
 #, no-c-format
 msgid "Tray icon number of unread messages color selector"
 msgstr ""
+"Επιλογέας χρώματος για τον αριθμό των μη αναγνωσμένων μηνυμάτων στο "
+"εικονίδιο συστήματος"
 
 #. i18n: file appletsettingswidget.ui line 16
 #: rc.cpp:25
@@ -583,17 +582,15 @@ msgid "Alt+Y"
 msgstr "Alt+Y"
 
 #. i18n: file appletsettingswidget.ui line 54
-#: rc.cpp:37
-#, fuzzy, no-c-format
+#: rc.cpp:37, no-c-format
 msgid "Fields displayed when only one email arrives"
-msgstr ""
-"Εμφανίζει το θέμα του μηνύματος  μόνο κατά την άφιξη ενός νέου μηνύματος"
+msgstr "Τα πεδία που θα εμφανίζονται κατά την παραλαβή μιας μόνο αλληλογραφίας"
 
 #. i18n: file appletsettingswidget.ui line 65
 #: rc.cpp:40
 #, no-c-format
 msgid "Sub&ject"
-msgstr ""
+msgstr "Θέμα"
 
 #. i18n: file appletsettingswidget.ui line 68
 #: rc.cpp:43
@@ -605,13 +602,12 @@ msgstr "Alt+J"
 #: rc.cpp:46
 #, no-c-format
 msgid "Senders"
-msgstr ""
+msgstr "Αποστολείς"
 
 #. i18n: file appletsettingswidget.ui line 90
-#: rc.cpp:49
-#, fuzzy, no-c-format
+#: rc.cpp:49, no-c-format
 msgid "Snippet"
-msgstr "Mail Snippet"
+msgstr "Απόσπασμα"
 
 #. i18n: file appletsettingswidget.ui line 117
 #: rc.cpp:52
@@ -872,43 +868,43 @@ msgstr ""
 #: rc.cpp:184
 #, no-c-format
 msgid "Display sender"
-msgstr ""
+msgstr "Προβολή αποστολέα"
 
 #. i18n: file prefs.kcfg line 80
 #: rc.cpp:187
 #, no-c-format
 msgid "Display message sender"
-msgstr ""
+msgstr "Προβολή του αποστολέα του μηνύματος"
 
 #. i18n: file prefs.kcfg line 84
 #: rc.cpp:190
 #, no-c-format
 msgid "Display subject"
-msgstr ""
+msgstr "Προβολή του θέματος"
 
 #. i18n: file prefs.kcfg line 85
 #: rc.cpp:193
 #, no-c-format
 msgid "Display message subject"
-msgstr ""
+msgstr "Προβολή του θέματος του μηνύματος"
 
 #. i18n: file prefs.kcfg line 89
-#: rc.cpp:196
-#, fuzzy, no-c-format
+#: rc.cpp:196, no-c-format
 msgid "Display snippet"
-msgstr "Mail Snippet"
+msgstr "Προβολή αποσπάσματος"
 
 #. i18n: file prefs.kcfg line 90
 #: rc.cpp:199
 #, no-c-format
 msgid "Display message snippet"
-msgstr ""
+msgstr "Προβολή αποσπάσματος του μηνύματος"
 
 #. i18n: file prefs.kcfg line 97
-#: rc.cpp:202
-#, fuzzy, no-c-format
+#: rc.cpp:202, no-c-format
 msgid "Color used to display  the number of unread messages"
-msgstr "Δεν έχετε νέα μηνύματα"
+msgstr ""
+"Χρώμα που χρησιμοποιείται για την απεικόνιση του αριθμού των μη αναγνωσμένων "
+"μηνυμάτων"
 
 #: kcheckgmail.desktop:5
 msgid "New email notifier"
