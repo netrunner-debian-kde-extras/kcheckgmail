@@ -5,9 +5,9 @@ msgstr ""
 "Project-Id-Version: kcheckgmail 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-22 17:10+0100\n"
-"PO-Revision-Date: 2007-07-17 16:54+0100\n"
 "Last-Translator: Luis Pereira <luis.artur.pereira@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
+"PO-Revision-Date: 2009-10-09 15:46+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,14 +46,12 @@ msgid "Behavior"
 msgstr "Comportamento"
 
 #: configdialog.cpp:46
-#, fuzzy
 msgid "Behavior Settings"
-msgstr "Definições de rede"
+msgstr "Definições de comportamento"
 
 #: configdialog.cpp:49
-#, fuzzy
 msgid "Appearance Settings"
-msgstr "Definições avançadas"
+msgstr "Definições de aparência"
 
 #: configdialog.cpp:52
 msgid "Advanced"
@@ -69,8 +67,7 @@ msgstr "Utilizador ou senha inválido"
 
 #: gmail.cpp:258 gmail.cpp:269 gmail.cpp:284
 msgid "GMail's login procedure has changed, check for new version"
-msgstr ""
-"O procedimento de entrada do GMail mudou, verifique se existe uma nova versão"
+msgstr "O procedimento de entrada do GMail mudou, verifique se existe uma nova versão"
 
 #: gmail.cpp:388
 msgid "Unknown error retrieving cookies"
@@ -271,9 +268,8 @@ msgid "Unable to retrieve secure password"
 msgstr "Não é possível obter a senha de um modo seguro"
 
 #: kcheckgmailcore.cpp:114
-#, fuzzy
 msgid "Configure &Notifications"
-msgstr "Configurar as &Notificações..."
+msgstr "Configurar as &Notificações"
 
 #: kcheckgmailcore.cpp:116
 msgid "&Configure KCheckGMail..."
@@ -337,20 +333,19 @@ msgid "Legal Information"
 msgstr "Informação legal"
 
 #: kcheckgmailcore.cpp:360
-#, fuzzy
 msgid "<center><b>New mail arrived</b></center>"
-msgstr "Chegou uma mensagem nova: <i>%1</i>"
+msgstr "<center><b>Chegou uma mensagem nova</b></center>"
 
 #: kcheckgmailcore.cpp:362
 msgid "<b>Sender:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Remetente:</b> <i>%1</i>"
 
 #: kcheckgmailcore.cpp:369
 msgid "<b>Subject:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Assunto:</b> <i>%1</i>"
 
 #: kcheckgmailcore.cpp:382
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "_n: There is <b>1</b> new mail message\n"
 "There are <b>%n</b> new mail messages"
@@ -363,16 +358,15 @@ msgid ""
 "_: format used to display the attachments (%1 is the icon, %2 is the file "
 "name)\n"
 "<img src=\"%1\"> %2"
-msgstr ""
+msgstr "<img src=\"%1\"> %2"
 
 #: kcheckgmailcore.cpp:500
-#, fuzzy
 msgid ""
 "_n: Attachment: %1\n"
 "Attachments: %1"
 msgstr ""
-"Anexo: %2\n"
-"Anexos: %2"
+"Anexo: %1\n"
+"Anexos: %1"
 
 #: kcheckgmailcore.cpp:537
 msgid "No account information has been entered. Do you want to quit?"
@@ -430,7 +424,7 @@ msgid ""
 msgstr ""
 "O Gmail foi actualizado desde que o KCheckGMail foi lançado. Este facto pode "
 "causar todo o tipo de erros. Por favor verifique brevemente a existência de "
-"uma actualização para o KCheckGMail."
+"uma atualização para o KCheckGMail."
 
 #: kcheckgmailtray.cpp:115
 msgid "Version changed"
@@ -454,14 +448,12 @@ msgid "KCheckGMail - Notifying about new email for %1"
 msgstr "KCheckGMail - Notificador sobre mensagens novas para %1"
 
 #: knotification.cpp:123 knotification.cpp:144
-#, fuzzy
 msgid "Notification"
-msgstr "Configurar as &Notificações..."
+msgstr "Notificação"
 
 #: knotification.cpp:132 knotification.cpp:153
-#, fuzzy
 msgid "Fatal"
-msgstr "Catalão"
+msgstr "Fatal"
 
 #: main.cpp:38
 msgid "Display legal information"
@@ -485,7 +477,7 @@ msgstr "Manutenção"
 
 #: main.cpp:58
 msgid "Developer"
-msgstr ""
+msgstr "Desenvolvimento"
 
 #: main.cpp:59
 msgid "Everybody who helped testing and translating KCheckGMail"
@@ -527,7 +519,7 @@ msgstr "Procurar:"
 
 #. i18n: file appearancesettingswidget.ui line 17
 #: rc.cpp:12
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "AppearanceSettingsWidget"
 msgstr "AdvancedSettingsWidget"
 
@@ -544,12 +536,14 @@ msgid ""
 "&Color used to display  the number\n"
 "of unread messages:"
 msgstr ""
+"&Cor usada para a visualização do número\n"
+"de mensagens não lidas:"
 
 #. i18n: file appearancesettingswidget.ui line 65
 #: rc.cpp:22 rc.cpp:205
 #, no-c-format
 msgid "Tray icon number of unread messages color selector"
-msgstr ""
+msgstr "Seletor da cor do número de mensagens não lidas (no ícone de bandeja)"
 
 #. i18n: file appletsettingswidget.ui line 16
 #: rc.cpp:25
@@ -565,45 +559,45 @@ msgstr "Depurar"
 
 #. i18n: file appletsettingswidget.ui line 41
 #: rc.cpp:31
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Displa&y an alert if GMail version changes"
-msgstr "Emitir um alerta se a versão do GMail mudar"
+msgstr "&Emitir um alerta se a versão do GMail mudar"
 
 #. i18n: file appletsettingswidget.ui line 44
 #: rc.cpp:34
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Alt+Y"
-msgstr "Alt+V"
+msgstr "Alt+E"
 
 #. i18n: file appletsettingswidget.ui line 54
 #: rc.cpp:37
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Fields displayed when only one email arrives"
-msgstr "Visualizar o assunto quando chega apenas uma mensagem nova"
+msgstr "Campos visualizados quando chega apenas uma mensagem nova"
 
 #. i18n: file appletsettingswidget.ui line 65
 #: rc.cpp:40
 #, no-c-format
 msgid "Sub&ject"
-msgstr ""
+msgstr "A&ssunto"
 
 #. i18n: file appletsettingswidget.ui line 68
 #: rc.cpp:43
 #, no-c-format
 msgid "Alt+J"
-msgstr "Alt+V"
+msgstr "Alt+S"
 
 #. i18n: file appletsettingswidget.ui line 79
 #: rc.cpp:46
 #, no-c-format
 msgid "Senders"
-msgstr ""
+msgstr "&Remetentes"
 
 #. i18n: file appletsettingswidget.ui line 90
 #: rc.cpp:49
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Snippet"
-msgstr "Fragmento de mensagem"
+msgstr "&Fragmento de mensagem"
 
 #. i18n: file appletsettingswidget.ui line 117
 #: rc.cpp:52
@@ -739,8 +733,7 @@ msgstr "Intervalo de verificação"
 #: rc.cpp:124
 #, no-c-format
 msgid "How many seconds to wait before checking for new mail."
-msgstr ""
-"Quantos segundos se espera antes de verificar se existem mensagens novas."
+msgstr "Quantos segundos se espera antes de verificar se existem mensagens novas."
 
 #. i18n: file prefs.kcfg line 26
 #: rc.cpp:127
@@ -770,7 +763,7 @@ msgstr "Utilizador"
 #, no-c-format
 msgid "Your Gmail username or your Google Hosted Domain email address"
 msgstr ""
-"O seu nome de utilizador no Gmail ou o endereço de correio electrónico do "
+"O seu nome de utilizador no Gmail ou o endereço de correio electródico do "
 "seu Domínio Alojado no Google"
 
 #. i18n: file prefs.kcfg line 38
@@ -822,7 +815,7 @@ msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGMail icon is "
 "clicked."
 msgstr ""
-"Se activo, quando o ícone do KCheckGmail for clicado, o navegador padrão do "
+"Se ativo, quando o ícone do KCheckGmail for clicado, o navegador padrão do "
 "KDE será lançado."
 
 #. i18n: file prefs.kcfg line 62
@@ -834,7 +827,7 @@ msgid ""
 "window"
 msgstr ""
 "Se activo, cada vez que clicar no ícone do KCheckGmail, este será "
-"desactivado durante alguns segundos, prevenindo assim que abra mais do que "
+"desativado durante alguns segundos, prevenindo assim que abra mais do que "
 "uma janela acidentalmente"
 
 #. i18n: file prefs.kcfg line 65
@@ -846,8 +839,7 @@ msgstr "Usar o navegador padrão do KDE"
 #. i18n: file prefs.kcfg line 67
 #: rc.cpp:172
 #, no-c-format
-msgid ""
-"Use whatever browser is configured as the KDE default to check your Gmail"
+msgid "Use whatever browser is configured as the KDE default to check your Gmail"
 msgstr ""
 "Usar o navegador que estiver definido como padrão do KDE para verificar o "
 "Gmail"
@@ -868,43 +860,43 @@ msgstr "Usar um navegador diferente do padrão do KDE para verificar o Gmail"
 #: rc.cpp:184
 #, no-c-format
 msgid "Display sender"
-msgstr ""
+msgstr "Mostrar o remetente"
 
 #. i18n: file prefs.kcfg line 80
 #: rc.cpp:187
 #, no-c-format
 msgid "Display message sender"
-msgstr ""
+msgstr "Mostrar o remetente da mensagem"
 
 #. i18n: file prefs.kcfg line 84
 #: rc.cpp:190
 #, no-c-format
 msgid "Display subject"
-msgstr ""
+msgstr "Mostrar o assunto"
 
 #. i18n: file prefs.kcfg line 85
 #: rc.cpp:193
 #, no-c-format
 msgid "Display message subject"
-msgstr ""
+msgstr "Mostrar o assunto da mensagem"
 
 #. i18n: file prefs.kcfg line 89
 #: rc.cpp:196
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Display snippet"
-msgstr "Fragmento de mensagem"
+msgstr "Mostrar o fragmento"
 
 #. i18n: file prefs.kcfg line 90
 #: rc.cpp:199
 #, no-c-format
 msgid "Display message snippet"
-msgstr ""
+msgstr "Mostrar o fragmento de mensagem"
 
 #. i18n: file prefs.kcfg line 97
 #: rc.cpp:202
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Color used to display  the number of unread messages"
-msgstr "Não há mensagens por ler"
+msgstr "Cor usada para mostrar  o número de mensagens por ler"
 
 #: kcheckgmail.desktop:5
 msgid "New email notifier"
@@ -943,7 +935,6 @@ msgid "Another session has been opened"
 msgstr "Uma outra sessão foi iniciada"
 
 #: eventsrc:201
-#, fuzzy
 msgid "Mail Snippet"
 msgstr "Fragmento de mensagem"
 
@@ -961,40 +952,3 @@ msgstr "Não existem mensagens por ler"
 msgid "Dummy notification triggered when there are no unread messages"
 msgstr "Notificação fictícia desencadeada quando não há mensagens por ler"
 
-#~ msgid "Other"
-#~ msgstr "Outras"
-
-#~ msgid "Display sub&ject when only one new email arrives"
-#~ msgstr "&Visualizar o assunto quando chega apenas uma mensagem nova"
-
-#~ msgid "Display message's subject when only one new email arrives"
-#~ msgstr ""
-#~ "Visualizar o assunto da mensagem quando chega apenas uma mensagem nova"
-
-#~ msgid "&Snooze"
-#~ msgstr "&Suspender Verificação"
-
-#~ msgid "KCheckGMail - Snoozing"
-#~ msgstr "KCheckGMail - Suspenso"
-
-#~ msgid "Snoo&ze Period"
-#~ msgstr "Período de &Suspensão"
-
-#~ msgid " minutes"
-#~ msgstr "minutos"
-
-#~ msgid "Snooze period"
-#~ msgstr "Período de suspensão"
-
-#~ msgid "How many minutes to snooze."
-#~ msgstr "Durante quantos minutos deve ficar suspenso."
-
-#~ msgid "Only search for new messages in inbox"
-#~ msgstr "Procurar novas mensagens apenas na caixa de entrada"
-
-#~ msgid ""
-#~ "By disabling this option new messages are searched in anywhere (this "
-#~ "includes spam, trash, etc)."
-#~ msgstr ""
-#~ "Ao desactivar esta opção as mensagens novas passarão a ser procuradas em "
-#~ "todos os sitios (incluindo spam, lixo, etc)."
