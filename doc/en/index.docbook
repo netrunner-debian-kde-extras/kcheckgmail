@@ -93,7 +93,7 @@
     <sect1 id="dcop-interface">
       <title>DCOP Interface</title>
 
-      <para>Since version 0.5.8 &kcheckgmail; provides a more useful DCOP interface:
+      <para>Since version 0.5.7 &kcheckgmail; provides a more useful DCOP interface:
 	<screen>
 <prompt>%</prompt> <userinput><command>dcop kcheckgmail KCheckGmailIface</command></userinput>
 int mailCount()
