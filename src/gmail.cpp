@@ -59,10 +59,11 @@ GMail::GMail(QObject* parent, const char* name) : QObject(parent, name)
 	isGAP4D = false;
 	
 	//Any % should be replaced with @ due to a problem with QString not looking for escaped %
-	gGMailLoginURL = "https://www.google.com/accounts/ServiceLoginAuth?service=mail";
+	gGMailLoginURL = "https://www.google.com/accounts/ServiceLogin?service=mail";
+	gGMailAuthURL = "https://www.google.com/accounts/ServiceLoginAuth?service=mail";
 	gGMailLoginPOSTFormat = "Email=%1&Passwd=%2&signIn=Sign+in&service=mail"
 			"&continue=http@3A@2F@2Fmail.google.com@2Fmail@3F"
-			"&ltmpl=default&ltmplcache=2&rm=false&rmShown=1";
+			"&ltmpl=default&ltmplcache=2&rm=false&rmShown=1&GALX=%3";
 	gGMailCheckURL = "%1://mail.google.com/mail/?search=query"
 			"&q=%2&as_subset=unread&view=tl&start=0&init=1&ui=1";
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
@@ -162,21 +163,55 @@ void GMail::login()
 	}
 }
 
+QString GMail::findGALXCookie()
+{
+	bool result;
+	int pos;
+	QString cookies, cookieValue;
+
+	KIO::Job *job = KIO::get(gGMailLoginURL, true, false);
+	job->addMetaData("cookies", "auto");
+	job->addMetaData("cache", "reload");
+
+	result = KIO::NetAccess::synchronousRun(job, 0);
+	if (result) {
+		cookies = findCookies(gGMailLoginURL);
+		cookies += ";";
+
+		QRegExp search(" (" + QRegExp::escape("GALX") + ")=([^;]*)");
+		if(!search.isValid()) {
+			kdWarning() << k_funcinfo << "Invalid RX!\n"
+					<< search.errorString() << endl;
+		}
+
+		pos = search.search(cookies);
+		if (pos != -1) {
+			cookieValue = search.cap(2);
+			return cookieValue;
+		}
+	}
+	return QString();
+}
+
 void GMail::slotGetWalletPassword(const QString& pass)
 {
-	QString str, LoginPOSTFormat, LoginURL;
+	QString str, LoginPOSTFormat, AuthURL;
+	QString GALXValue;
+
+	GALXValue = findGALXCookie();
 	
 	if(isGAP4D) {
 		LoginPOSTFormat = QString(gGAP4DLoginPOSTFormat).replace("%3",useDomain);
-		LoginURL = QString(gGAP4DLoginURL).arg(useDomain).replace('@','%');
+		AuthURL = QString(gGAP4DLoginURL).arg(useDomain).replace('@','%');
 	} else {
 		LoginPOSTFormat = gGMailLoginPOSTFormat;
-		LoginURL = gGMailLoginURL;
+		AuthURL = gGMailAuthURL;
 	}
 	
 	str = QString(LoginPOSTFormat).arg(
 			KURL::encode_string(useUsername),
-			KURL::encode_string(pass)
+			KURL::encode_string(pass),
+			KURL::encode_string(GALXValue)
 					  ).replace('@','%');
 	kdDebug() << k_funcinfo << "Requesting login URL" << endl;
 
@@ -189,7 +224,7 @@ void GMail::slotGetWalletPassword(const QString& pass)
 	postData.truncate(b.length());
 	
 	KIO::TransferJob *job = KIO::http_post(
-			LoginURL,
+			AuthURL,
 			postData,
    			false);
 	job->addMetaData("content-type", "Content-Type: application/x-www-form-urlencoded");
