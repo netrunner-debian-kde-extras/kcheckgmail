@@ -101,7 +101,7 @@ private:
 	QTimer *mTimer;
 	
 	//Normal GMail
-	QString gGMailLoginURL, gGMailLoginPOSTFormat, gGMailCheckURL, gGMailLogOut;
+	QString gGMailLoginURL, gGMailAuthURL, gGMailLoginPOSTFormat, gGMailCheckURL, gGMailLogOut;
 
 	//GAP4D: Google Applications for Domains
 	QString gGAP4DLoginURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
@@ -111,6 +111,8 @@ private:
 	class Private;
 	Private* d;
 	
+	QString findGALXCookie();
+
 public slots:
 	void slotCheckGmail();
 	void slotGetWalletPassword(const QString&);
