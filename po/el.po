@@ -1,17 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Glentadakis Dimitrios <dglent@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: KCheckGMail_el\n"
-"Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?"
-"group_id=116095&atid=673717\n"
+"Report-Msgid-Bugs-To: http://sourceforge."
+"net/tracker/?group_id=116095&atid=673717\n"
 "POT-Creation-Date: 2009-05-28 12:19-0700\n"
-"PO-Revision-Date: 2008-05-12 20:55+0100\n"
+"PO-Revision-Date: 2009-10-21 21:26+0200\n"
 "Last-Translator: Glentadakis Dimitrios <dglent@gmail.com>\n"
-"Language-Team: Greek <dglent@gmail.com>\n"
+"Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,6 +18,7 @@ msgstr ""
 "X-Poedit-Country: GREECE\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: configdialog.cpp:38
 msgid "Login"
@@ -41,18 +41,16 @@ msgid "Behavior"
 msgstr "Συμπεριφορά"
 
 #: configdialog.cpp:46
-#, fuzzy
 msgid "Behavior Settings"
-msgstr "Ρυθμίσεις δικτύου"
+msgstr "Ρυθμίσεις συμπεριφοράς"
 
 #: configdialog.cpp:50
 msgid "Appearance"
-msgstr ""
+msgstr "Εμφάνιση"
 
 #: configdialog.cpp:50
-#, fuzzy
 msgid "Appearance Settings"
-msgstr "Επιπλέον ρυθμίσεις"
+msgstr "Ρυθμίσεις εμφάνισης"
 
 #: configdialog.cpp:54
 msgid "Advanced"
@@ -269,7 +267,6 @@ msgid "Unable to retrieve secure password"
 msgstr "Σφάλμα στην ανάκτηση κωδικού (secured)"
 
 #: kcheckgmailcore.cpp:117
-#, fuzzy
 msgid "Configure &Notifications"
 msgstr "Ρυθμίσεις Ειδοποιήσεων"
 
@@ -335,48 +332,42 @@ msgid "Legal Information"
 msgstr "Νομικές πληροφορίες"
 
 #: kcheckgmailcore.cpp:371
-#, fuzzy
 msgid "<center><b>New mail arrived</b></center>"
-msgstr "Έφτασε νέα αλληλογραφία: <i>%1</i>"
+msgstr "<center><b>Έφτασε νέα αλληλογραφία</b></center>"
 
 #: kcheckgmailcore.cpp:373
 #, kde-format
 msgid "<b>Sender:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Αποστολέας:</b> <i>%1</i>"
 
 #: kcheckgmailcore.cpp:380
 #, kde-format
 msgid "<b>Subject:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Θέμα:</b> <i>%1</i>"
 
-#: kcheckgmailcore.cpp:392
-#, fuzzy, kde-format
+#: kcheckgmailcore.cpp:392, kde-format
 msgid "There is <b>1</b> new mail message"
 msgid_plural "There are <b>%1</b> new mail messages"
-msgstr[0] ""
-"Έχετε <b>1</b> νέο μήνυμα\n"
-"Έχετε <b>%n</b> νέα μηνύματα"
-msgstr[1] ""
-"Έχετε <b>1</b> νέο μήνυμα\n"
-"Έχετε <b>%n</b> νέα μηνύματα"
+msgstr[0] "Έχετε <b>1</b> νέο μήνυμα"
+msgstr[1] "Έχετε <b>%1</b> νέα μηνύματα"
 
 #: kcheckgmailcore.cpp:497
 #, kde-format
 msgctxt ""
 "format used to display the attachments (%1 is the icon, %2 is the file name)"
 msgid "<img src=\"%1\"> %2"
-msgstr ""
+msgstr "<img src=\"%1\"> %2"
 
 #: kcheckgmailcore.cpp:511
 #, kde-format
 msgid "Attachment: %2"
 msgid_plural "Attachments: %2"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Συνημμένο: %2"
+msgstr[1] "Συνημμένα: %2"
 
 #: kcheckgmailcore.cpp:528
 msgid "Open"
-msgstr ""
+msgstr "Άνοιγμα"
 
 #: kcheckgmailcore.cpp:550
 msgid "No account information has been entered. Do you want to quit?"
@@ -474,10 +465,13 @@ msgid ""
 "(C) 2007 Raphael Geissert\n"
 "(C) 2007 Luís Pereira"
 msgstr ""
+"(C) 2004 Matthew Wlazlo\n"
+"(C) 2007 Raphael Geissert\n"
+"(C) 2007 Luís Pereira"
 
 #: main.cpp:55
 msgid "Matthew Wlazlo"
-msgstr ""
+msgstr "Matthew Wlazlo"
 
 #: main.cpp:55
 msgid "Original author"
@@ -489,15 +483,15 @@ msgstr "Συντηρητής"
 
 #: main.cpp:56
 msgid "Raphael Geissert"
-msgstr ""
+msgstr "Raphael Geissert"
 
 #: main.cpp:57
 msgid "Developer"
-msgstr ""
+msgstr "Προγραμματιστής"
 
 #: main.cpp:57
 msgid "Luís Pereira"
-msgstr ""
+msgstr "Luís Pereira"
 
 #: main.cpp:58
 msgid "Everybody who helped testing and translating KCheckGMail"
@@ -549,9 +543,8 @@ msgstr "Αναζήτηση για :"
 #. i18n: file: appearancesettingsbase.ui:15
 #. i18n: ectx: property (windowTitle), widget (QWidget, AppearanceSettingsBase)
 #: rc.cpp:12
-#, fuzzy
 msgid "AppearanceSettingsWidget"
-msgstr "AdvancedSettingsWidget"
+msgstr "AppearanceSettingsWidget"
 
 #. i18n: file: appearancesettingsbase.ui:24
 #. i18n: ectx: property (title), widget (Q3GroupBox, groupBox1)
@@ -568,6 +561,8 @@ msgid ""
 "&Color used to display  the number\n"
 "of unread messages:"
 msgstr ""
+"Το χρώμα για την εμφάνιση του αριθμού\n"
+"των μη αναγνωσμένων μηνυμάτων:"
 
 #. i18n: file: appearancesettingsbase.ui:46
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_TrayIconUnreadMessagesColor)
@@ -576,6 +571,8 @@ msgstr ""
 #: rc.cpp:22 rc.cpp:205
 msgid "Tray icon number of unread messages color selector"
 msgstr ""
+"Επιλογέας χρώματος για τον αριθμό των μη αναγνωσμένων μηνυμάτων στο "
+"εικονίδιο συστήματος"
 
 #. i18n: file: appletsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AppletSettingsBase)
@@ -598,29 +595,26 @@ msgstr "Ειδοποίησ&η όταν αλλάζει η έκδοση του GMa
 #. i18n: file: appletsettingsbase.ui:41
 #. i18n: ectx: property (title), widget (Q3GroupBox, groupBox3)
 #: rc.cpp:37
-#, fuzzy
 msgid "Fields displayed when only one email arrives"
-msgstr ""
-"Εμφανίζει το θέμα του μηνύματος  μόνο κατά την άφιξη ενός νέου μηνύματος"
+msgstr "Τα πεδία που θα εμφανίζονται κατά την παραλαβή μιας μόνο αλληλογραφίας"
 
 #. i18n: file: appletsettingsbase.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySubjectOnSingleMail)
 #: rc.cpp:40
 msgid "Sub&ject"
-msgstr ""
+msgstr "Θέμα"
 
 #. i18n: file: appletsettingsbase.ui:60
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySenderOnSingleMail)
 #: rc.cpp:46
 msgid "Senders"
-msgstr ""
+msgstr "Αποστολείς"
 
 #. i18n: file: appletsettingsbase.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySnippetOnSingleMail)
 #: rc.cpp:49
-#, fuzzy
 msgid "Snippet"
-msgstr "Mail Snippet"
+msgstr "Απόσπασμα"
 
 #. i18n: file: appletsettingsbase.ui:96
 #. i18n: ectx: property (title), widget (Q3ButtonGroup, buttonGroup1)
@@ -873,45 +867,45 @@ msgstr ""
 #. i18n: ectx: label, entry (DisplaySenderOnSingleMail), group (Applet Settings)
 #: rc.cpp:184
 msgid "Display sender"
-msgstr ""
+msgstr "Προβολή αποστολέα"
 
 #. i18n: file: prefs.kcfg:80
 #. i18n: ectx: whatsthis, entry (DisplaySenderOnSingleMail), group (Applet Settings)
 #: rc.cpp:187
 msgid "Display message sender"
-msgstr ""
+msgstr "Προβολή του αποστολέα του μηνύματος"
 
 #. i18n: file: prefs.kcfg:84
 #. i18n: ectx: label, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
 #: rc.cpp:190
 msgid "Display subject"
-msgstr ""
+msgstr "Προβολή του θέματος"
 
 #. i18n: file: prefs.kcfg:85
 #. i18n: ectx: whatsthis, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
 #: rc.cpp:193
 msgid "Display message subject"
-msgstr ""
+msgstr "Προβολή του θέματος του μηνύματος"
 
 #. i18n: file: prefs.kcfg:89
 #. i18n: ectx: label, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
 #: rc.cpp:196
-#, fuzzy
 msgid "Display snippet"
-msgstr "Mail Snippet"
+msgstr "Προβολή αποσπάσματος"
 
 #. i18n: file: prefs.kcfg:90
 #. i18n: ectx: whatsthis, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
 #: rc.cpp:199
 msgid "Display message snippet"
-msgstr ""
+msgstr "Προβολή αποσπάσματος του μηνύματος"
 
 #. i18n: file: prefs.kcfg:97
 #. i18n: ectx: label, entry (TrayIconUnreadMessagesColor), group (Appearance Settings)
 #: rc.cpp:202
-#, fuzzy
 msgid "Color used to display  the number of unread messages"
-msgstr "Δεν έχετε νέα μηνύματα"
+msgstr ""
+"Χρώμα που χρησιμοποιείται για την απεικόνιση του αριθμού των μη αναγνωσμένων "
+"μηνυμάτων"
 
 #~ msgid ""
 #~ "_: NAME OF TRANSLATORS\n"
