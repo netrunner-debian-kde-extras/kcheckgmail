@@ -50,7 +50,7 @@ public:
 	KCheckGmailTray(QWidget *parent = 0);
 	virtual ~KCheckGmailTray();
 
-	void takeScreenshotOfTrayIcon();
+	QString takeScreenshotOfTrayIcon();
 
 	void setPixmapAuth();
 	void setPixmapEmpty();

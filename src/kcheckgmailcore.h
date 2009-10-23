@@ -85,6 +85,8 @@ private slots:
 	void slotLogingOut();
 	void slotOpenButtonClicked();
 
+	void slotStart();
+
 private:
 	KCheckGmailCore(QObject* parent = 0);
 	virtual ~KCheckGmailCore();
@@ -96,7 +98,6 @@ private:
 	void buildTrayPopupMenu();
 	void initConfigDialog();
 	void makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray);
-	void start();
 
 	QString getUrlBase();
 

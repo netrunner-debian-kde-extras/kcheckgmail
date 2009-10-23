@@ -62,10 +62,11 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent)
 	: QObject(parent),
 	  d(new Private)
 {
+	initTray();
+
 	d->mJSP = new JSProtocol(this);
 	d->actions = new KActionCollection(this);
 
-	initTray();
 	initActions();
 	buildTrayPopupMenu();
 	initConfigDialog();
@@ -76,8 +77,7 @@ KCheckGmailCore::KCheckGmailCore(QObject* parent)
 	QDBusConnection dbus = QDBusConnection::sessionBus();
 	dbus.registerObject("/kcheckgmail", this, QDBusConnection::ExportScriptableSlots);
 
-	d->mTray->show();
-	start();
+	QTimer::singleShot(2000, this, SLOT(slotStart()));
 }
 
 KCheckGmailCore::~KCheckGmailCore()
@@ -103,6 +103,8 @@ KCheckGmailCore& KCheckGmailCore::instance()
 void KCheckGmailCore::initTray()
 {
 	d->mTray = new KCheckGmailTray(0);
+	d->mTray->show();
+
 	connect(d->mTray, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 
 	connect(d->mTray, SIGNAL(leftButtonClicked()),
@@ -250,7 +252,7 @@ void KCheckGmailCore::makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray)
 }
 
 
-void KCheckGmailCore::start()
+void KCheckGmailCore::slotStart()
 {
 	static bool started = false;
 	
@@ -260,21 +262,21 @@ void KCheckGmailCore::start()
 	
 	//From RSIBreak
 	if(KMessageBox::shouldBeShownContinue("welcome_to_kcheckgmail")) {
-#if 0
-		d->mTray->takeScreenshotOfTrayIcon();
+		QString systray_shot = d->mTray->takeScreenshotOfTrayIcon();
+		const QString imgTag = QString::fromLatin1("<img src=\"%1\"/>").arg(systray_shot);
 		KMessageBox::information(0,
 					 i18n("<p><center>Welcome to KCheckGMail!</center></p>"
 							 "<p>You can locate KCheckGMail here: </p>"
-							 "<p><center><img source=\"systray_shot\"></center></p>"
+							 "<p><center>%1</center></p>"
 							 "When you right-click on that icon you will see "
 							 "a menu, from which you can see the Threads "
-							 "menu containing the newest email of your account."),
+							 "menu containing the newest email of your account."
+							 , imgTag),
 					 i18n("Welcome"));
 
 		KMessageBox::saveDontShowAgainContinue("welcome_to_kcheckgmail");
 
 		Prefs::self()->setTrayIconUnreadMessagesColor(QColor("blue"));
-#endif
 	}
 	
 	if(KMessageBox::shouldBeShownContinue("kcheckgmail_continue_legal")) {
