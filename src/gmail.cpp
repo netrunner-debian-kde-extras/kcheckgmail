@@ -479,21 +479,17 @@ void GMail::slotPostLoginResult(KJob *job)
 		
 		mLoginLock->unlock();
 		
-		if(isLoggedIn()) {
-			delete d->buffer;
-			d->buffer = 0;
+		mPostLoginBuffer = QString(d->buffer->data());
+		mPostLoginBuffer.detach();
 
+		delete d->buffer;
+		d->buffer = 0;
+
+		if(isLoggedIn()) {
 			mPostLoginBuffer = "";
 			emit loginDone(true, mLoginFromTimer);
 			checkGMail();
-			
 		} else {
-			mPostLoginBuffer = QString(d->buffer->data());
-			mPostLoginBuffer.detach();
-
-			delete d->buffer;
-			d->buffer = 0;
-
 			QString url = getRedirectURL(mPostLoginBuffer);
 			
 			if(url == QString()) {
