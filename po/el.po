@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KCheckGMail_el\n"
-"Report-Msgid-Bugs-To: http://sourceforge."
-"net/tracker/?group_id=116095&atid=673717\n"
-"POT-Creation-Date: 2009-05-28 12:19-0700\n"
+"Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?"
+"group_id=116095&atid=673717\n"
+"POT-Creation-Date: 2009-10-28 12:11+0000\n"
 "PO-Revision-Date: 2009-10-21 21:26+0200\n"
 "Last-Translator: Glentadakis Dimitrios <dglent@gmail.com>\n"
 "Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
@@ -60,15 +60,15 @@ msgstr "Επιπλέον"
 msgid "Advanced Settings"
 msgstr "Επιπλέον ρυθμίσεις"
 
-#: gmail.cpp:276
+#: gmail.cpp:345
 msgid "Invalid username or password"
 msgstr "Άγνωστος χρήστης ή κωδικός πρόσβασης"
 
-#: gmail.cpp:282 gmail.cpp:293 gmail.cpp:308
+#: gmail.cpp:351 gmail.cpp:362 gmail.cpp:377
 msgid "GMail's login procedure has changed, check for new version"
 msgstr "Το Gmail έχει αλλάξει τον τρόπο σύνδεσης ,,,"
 
-#: gmail.cpp:418
+#: gmail.cpp:500
 msgid "Unknown error retrieving cookies"
 msgstr "Σφάλμα στην λήψη cookies"
 
@@ -266,52 +266,53 @@ msgstr ""
 msgid "Unable to retrieve secure password"
 msgstr "Σφάλμα στην ανάκτηση κωδικού (secured)"
 
-#: kcheckgmailcore.cpp:117
+#: kcheckgmailcore.cpp:120
 msgid "Configure &Notifications"
 msgstr "Ρυθμίσεις Ειδοποιήσεων"
 
-#: kcheckgmailcore.cpp:122
+#: kcheckgmailcore.cpp:125
 msgid "&Configure KCheckGMail..."
 msgstr "&Ιδιότητες KCheckGMail..."
 
-#: kcheckgmailcore.cpp:127 kcheckgmailcore.cpp:629
+#: kcheckgmailcore.cpp:130 kcheckgmailcore.cpp:655
 msgid "Login and Chec&k Mail"
 msgstr "Σύν&δεση και έλεγχος μηνυμάτων"
 
-#: kcheckgmailcore.cpp:132
+#: kcheckgmailcore.cpp:135
 msgid "&Launch Browser"
 msgstr "&Εκκίνηση Browser"
 
-#: kcheckgmailcore.cpp:137
+#: kcheckgmailcore.cpp:140
 msgid "Co&mpose Mail"
 msgstr "Σύ&νθεση νέου μηνύματος"
 
-#: kcheckgmailcore.cpp:157 kcheckgmailcore.cpp:630 kcheckgmailtray.cpp:66
+#: kcheckgmailcore.cpp:162 kcheckgmailcore.cpp:656 kcheckgmailtray.cpp:68
 #: main.cpp:41
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
-#: kcheckgmailcore.cpp:171
+#: kcheckgmailcore.cpp:177
 msgid "Th&reads"
 msgstr "Μηνύματα"
 
-#: kcheckgmailcore.cpp:257
+#: kcheckgmailcore.cpp:268
+#, fuzzy, kde-format
 msgid ""
 "<p><center>Welcome to KCheckGMail!</center></p><p>You can locate KCheckGMail "
-"here: </p><p><center><img source=\"systray_shot\"></center></p>When you "
-"right-click on that icon you will see a menu, from which you can see the "
-"Threads menu containing the newest email of your account."
+"here: </p><p><center>%1</center></p>When you right-click on that icon you "
+"will see a menu, from which you can see the Threads menu containing the "
+"newest email of your account."
 msgstr ""
 "<p><center>Καλωσήλθατε στο KCheckGMail!</center></p><p>Μπορείτε να βρείτε το "
 "KCheckGMail εδώ: </p><p><center><img source=\"systray_shot\"></center></p>Με "
 "δεξί κλικ στο εικονίδιο έχετε το μενού, που μπορείτε να δείτε την λίστα με "
 "τα νέα μηνύματα."
 
-#: kcheckgmailcore.cpp:263
+#: kcheckgmailcore.cpp:275
 msgid "Welcome"
 msgstr "Καλώς Ορίσατε"
 
-#: kcheckgmailcore.cpp:276
+#: kcheckgmailcore.cpp:287
 msgid ""
 "Google, Gmail and Google Mail are registered trademarks of Google Inc.\n"
 "KCheckGMail nor its authors are in any way affiliated nor endorsed by Google "
@@ -327,53 +328,54 @@ msgstr ""
 "όρους χρήσης και του προγράμματος ή Google Mail.\n"
 "Είστε σίγουρος ότι θέλετε να συνεχίσετε την χρήση του KCheckGMail ;"
 
-#: kcheckgmailcore.cpp:282
+#: kcheckgmailcore.cpp:293
 msgid "Legal Information"
 msgstr "Νομικές πληροφορίες"
 
-#: kcheckgmailcore.cpp:371
+#: kcheckgmailcore.cpp:390
 msgid "<center><b>New mail arrived</b></center>"
 msgstr "<center><b>Έφτασε νέα αλληλογραφία</b></center>"
 
-#: kcheckgmailcore.cpp:373
+#: kcheckgmailcore.cpp:392
 #, kde-format
 msgid "<b>Sender:</b> <i>%1</i>"
 msgstr "<b>Αποστολέας:</b> <i>%1</i>"
 
-#: kcheckgmailcore.cpp:380
+#: kcheckgmailcore.cpp:399
 #, kde-format
 msgid "<b>Subject:</b> <i>%1</i>"
 msgstr "<b>Θέμα:</b> <i>%1</i>"
 
-#: kcheckgmailcore.cpp:392, kde-format
+#: kcheckgmailcore.cpp:411
+#, kde-format
 msgid "There is <b>1</b> new mail message"
 msgid_plural "There are <b>%1</b> new mail messages"
 msgstr[0] "Έχετε <b>1</b> νέο μήνυμα"
 msgstr[1] "Έχετε <b>%1</b> νέα μηνύματα"
 
-#: kcheckgmailcore.cpp:497
+#: kcheckgmailcore.cpp:517
 #, kde-format
 msgctxt ""
 "format used to display the attachments (%1 is the icon, %2 is the file name)"
 msgid "<img src=\"%1\"> %2"
 msgstr "<img src=\"%1\"> %2"
 
-#: kcheckgmailcore.cpp:511
+#: kcheckgmailcore.cpp:531
 #, kde-format
 msgid "Attachment: %2"
 msgid_plural "Attachments: %2"
 msgstr[0] "Συνημμένο: %2"
 msgstr[1] "Συνημμένα: %2"
 
-#: kcheckgmailcore.cpp:528
+#: kcheckgmailcore.cpp:548
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: kcheckgmailcore.cpp:550
+#: kcheckgmailcore.cpp:570
 msgid "No account information has been entered. Do you want to quit?"
 msgstr "Δεν έχετε εισάγει λογαριασμό. Θέλετε να κλείσετε την εφαρμογή ;"
 
-#: kcheckgmailcore.cpp:580
+#: kcheckgmailcore.cpp:603
 msgid ""
 "<p>The search string you provided doesn't specify where to search for unread "
 "emails.</p><p>A search without an <i>in:</i> and <i>label:</i> will return "
@@ -388,7 +390,7 @@ msgstr ""
 "κενό.</p><p>Είστε σίγουρος ότι θέλετε να συνεχίσετε χωρίς να ορίσετε "
 "συγκεκριμένη τοποθεσία ;</p>"
 
-#: kcheckgmailcore.cpp:595
+#: kcheckgmailcore.cpp:619
 msgid ""
 "<p>The search string you provided doesn't contain <i>is:unread</i>.</p><p>It "
 "should be set to ensure more unread messages are retrieved.</p><p>Are you "
@@ -398,29 +400,29 @@ msgstr ""
 "πρέπει να ρυθμιστεί ώστε να διασφαλίσει ότι θα ανακτηθούν τα μη αναγνωσμένα "
 "μηνύματα.</p><p>Είστε σίγουρος ότι θέλετε να συνεχίσετε ;</p>"
 
-#: kcheckgmailcore.cpp:621
+#: kcheckgmailcore.cpp:647
 #, kde-format
 msgid "An error occurred logging in to Gmail<br><b>%1</b>"
 msgstr "Σφάλμα κατά την σύνδεση στο Gmail<br><b>%1</b>"
 
-#: kcheckgmailcore.cpp:634 kcheckgmailcore.cpp:676
+#: kcheckgmailcore.cpp:660 kcheckgmailcore.cpp:701
 msgid "Now logged in to Gmail!"
 msgstr "Σύνδεση με Gmail !"
 
-#: kcheckgmailcore.cpp:638 kcheckgmailcore.cpp:679
+#: kcheckgmailcore.cpp:664 kcheckgmailcore.cpp:704
 msgid "Chec&k Mail Now"
 msgstr "Έλεγχος για &νέα μηνύματα"
 
-#: kcheckgmailcore.cpp:662
+#: kcheckgmailcore.cpp:687
 msgid "Another account has been opened, logging out from it!"
 msgstr ""
 "Είστε ήδη συνδεδεμένος σε άλλο λογαριασμό, αποσυνδεθείτε πρώτα από αυτόν."
 
-#: kcheckgmailtray.cpp:92
+#: kcheckgmailtray.cpp:93
 msgid "There are no unread messages"
 msgstr "Δεν έχετε νέα μηνύματα"
 
-#: kcheckgmailtray.cpp:121
+#: kcheckgmailtray.cpp:110
 msgid ""
 "Gmail has been upgraded since this version of KCheckGMail was released. This "
 "may cause all sort of strange errors. Please check for an upgrade to "
@@ -429,23 +431,24 @@ msgstr ""
 "Το Gmail έχει αναβαθμιστεί, επειδή αυτό μπορεί να προκαλέσει σφάλματα "
 "ασυμβατότητας, ελέγξτε σύντομα για αναβαθμίσεις του KCheckGMail."
 
-#: kcheckgmailtray.cpp:122
+#: kcheckgmailtray.cpp:111
 msgid "Version changed"
 msgstr "Η έκδοση του Gmail έχει αλλάξει"
 
-#: kcheckgmailtray.cpp:197
+#: kcheckgmailtray.cpp:184
+#, fuzzy, kde-format
 msgid ""
 "<p>KCheckGMail is already running</p><p>You can find it here:</"
-"p><p><center><img source=\"systray_shot\"></center></p>"
+"p><p><p><center>%1</center></p></p>"
 msgstr ""
 "<p>Το KCheckGMail είναι ήδη σε λειτουργία</p><p>Μπορείτε να το βρείτε εδώ:</"
 "p><p><center><img source=\"systray_shot\"></center></p>"
 
-#: kcheckgmailtray.cpp:198
+#: kcheckgmailtray.cpp:185
 msgid "Already Running"
 msgstr "Η εφαρμογή εκτελείται ήδη"
 
-#: kcheckgmailtray.cpp:277
+#: kcheckgmailtray.cpp:259
 #, kde-format
 msgid "KCheckGMail - Notifying about new email for %1"
 msgstr "KCheckGMail - Ειδοποίηση νέων μηνυμάτων για %1"
@@ -528,7 +531,7 @@ msgstr "AdvancedSettingsWidget"
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_gMailSimpleInterface)
 #. i18n: file: prefs.kcfg:12
 #. i18n: ectx: label, entry (gMailSimpleInterface), group (Advanced Settings)
-#: rc.cpp:6 rc.cpp:115
+#: rc.cpp:6 rc.cpp:97
 msgid "Open Gmail in simple interface"
 msgstr "Άνοιγμα του Gmail σε απλό interface"
 
@@ -536,7 +539,7 @@ msgstr "Άνοιγμα του Gmail σε απλό interface"
 #. i18n: ectx: property (text), widget (QLabel, searchLabel)
 #. i18n: file: prefs.kcfg:7
 #. i18n: ectx: label, entry (searchFor), group (Advanced Settings)
-#: rc.cpp:9 rc.cpp:109
+#: rc.cpp:9 rc.cpp:91
 msgid "Search For:"
 msgstr "Αναζήτηση για :"
 
@@ -547,10 +550,10 @@ msgid "AppearanceSettingsWidget"
 msgstr "AppearanceSettingsWidget"
 
 #. i18n: file: appearancesettingsbase.ui:24
-#. i18n: ectx: property (title), widget (Q3GroupBox, groupBox1)
-#. i18n: file: appletsettingsbase.ui:155
-#. i18n: ectx: property (title), widget (Q3GroupBox, groupBox1)
-#: rc.cpp:15 rc.cpp:64
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#. i18n: file: appletsettingsbase.ui:146
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: rc.cpp:15 rc.cpp:55
 msgid "Tray Icon"
 msgstr "Εμφάνιση εικονιδίου συστήματος"
 
@@ -568,7 +571,7 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_TrayIconUnreadMessagesColor)
 #. i18n: file: prefs.kcfg:98
 #. i18n: ectx: whatsthis, entry (TrayIconUnreadMessagesColor), group (Appearance Settings)
-#: rc.cpp:22 rc.cpp:205
+#: rc.cpp:22 rc.cpp:187
 msgid "Tray icon number of unread messages color selector"
 msgstr ""
 "Επιλογέας χρώματος για τον αριθμό των μη αναγνωσμένων μηνυμάτων στο "
@@ -581,7 +584,7 @@ msgid "AppletSettingsWidget"
 msgstr "AppletSettingsWidget"
 
 #. i18n: file: appletsettingsbase.ui:22
-#. i18n: ectx: property (title), widget (Q3GroupBox, groupBox2)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
 #: rc.cpp:28
 msgid "Debug"
 msgstr "Debug"
@@ -592,107 +595,107 @@ msgstr "Debug"
 msgid "Displa&y an alert if GMail version changes"
 msgstr "Ειδοποίησ&η όταν αλλάζει η έκδοση του GMail"
 
-#. i18n: file: appletsettingsbase.ui:41
-#. i18n: ectx: property (title), widget (Q3GroupBox, groupBox3)
-#: rc.cpp:37
+#. i18n: file: appletsettingsbase.ui:38
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox3)
+#: rc.cpp:34
 msgid "Fields displayed when only one email arrives"
 msgstr "Τα πεδία που θα εμφανίζονται κατά την παραλαβή μιας μόνο αλληλογραφίας"
 
-#. i18n: file: appletsettingsbase.ui:47
+#. i18n: file: appletsettingsbase.ui:44
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySubjectOnSingleMail)
-#: rc.cpp:40
+#: rc.cpp:37
 msgid "Sub&ject"
 msgstr "Θέμα"
 
-#. i18n: file: appletsettingsbase.ui:60
+#. i18n: file: appletsettingsbase.ui:54
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySenderOnSingleMail)
-#: rc.cpp:46
+#: rc.cpp:40
 msgid "Senders"
 msgstr "Αποστολείς"
 
-#. i18n: file: appletsettingsbase.ui:70
+#. i18n: file: appletsettingsbase.ui:64
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySnippetOnSingleMail)
-#: rc.cpp:49
+#: rc.cpp:43
 msgid "Snippet"
 msgstr "Απόσπασμα"
 
-#. i18n: file: appletsettingsbase.ui:96
-#. i18n: ectx: property (title), widget (Q3ButtonGroup, buttonGroup1)
-#: rc.cpp:52
+#. i18n: file: appletsettingsbase.ui:90
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
+#: rc.cpp:46
 msgid "Browser"
 msgstr "Περιηγητής (Browser]"
 
-#. i18n: file: appletsettingsbase.ui:102
+#. i18n: file: appletsettingsbase.ui:96
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_UseDefaultBrowser)
-#: rc.cpp:55
+#: rc.cpp:49
 msgid "&Use the default KDE browser"
 msgstr "Χρήση του προεπιλεγμένου KDE browser"
 
-#. i18n: file: appletsettingsbase.ui:115
+#. i18n: file: appletsettingsbase.ui:106
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_UseAltBrowser)
-#: rc.cpp:61
+#: rc.cpp:52
 msgid "Use an alternative browser"
 msgstr "Χρήση εναλλακτικού browser"
 
-#. i18n: file: appletsettingsbase.ui:161
+#. i18n: file: appletsettingsbase.ui:152
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AllowLeftClickOpen)
-#: rc.cpp:67
+#: rc.cpp:58
 msgid "Open &browser to Gmail on left click"
 msgstr "Άνοιγμα &browser στο Gmail με δεξί κλικ"
 
-#. i18n: file: appletsettingsbase.ui:171
+#. i18n: file: appletsettingsbase.ui:159
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_CatchAccidentalClick)
 #. i18n: file: prefs.kcfg:60
 #. i18n: ectx: label, entry (CatchAccidentalClick), group (Applet Settings)
-#: rc.cpp:73 rc.cpp:163
+#: rc.cpp:61 rc.cpp:145
 msgid "Catch accidental left clicks when launching the browser"
 msgstr "Catch accidental left clicks when launching the browser"
 
 #. i18n: file: loginsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, LoginSettingsBase)
-#: rc.cpp:76
+#: rc.cpp:64
 msgid "LoginSettingsWidget"
 msgstr "LoginSettingsWidget"
 
 #. i18n: file: loginsettingsbase.ui:25
 #. i18n: ectx: property (text), widget (QLabel, usernameLabel)
-#: rc.cpp:79
+#: rc.cpp:67
 msgid "Username:"
 msgstr "Όνομα χρήστη:"
 
-#. i18n: file: loginsettingsbase.ui:38
+#. i18n: file: loginsettingsbase.ui:35
 #. i18n: ectx: property (text), widget (QLabel, passwordLabel)
-#: rc.cpp:82
+#: rc.cpp:70
 msgid "Password:"
 msgstr "Κωδικός πρόσβασης:"
 
-#. i18n: file: loginsettingsbase.ui:51
+#. i18n: file: loginsettingsbase.ui:45
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PasswordFromWallet)
-#: rc.cpp:85
+#: rc.cpp:73
 msgid "&Use KDE Wallet to store password"
 msgstr "&Χρησιμοποιήστε το KDE Wallet για την αποθήκευση του κωδικού σας."
 
 #. i18n: file: netsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, NetworkSettingsBase)
-#: rc.cpp:91
+#: rc.cpp:76
 msgid "NetworkSettingsWidget"
 msgstr "NetworkSettingsWidget"
 
 #. i18n: file: netsettingsbase.ui:38
 #. i18n: ectx: property (label), widget (KIntNumInput, kcfg_Interval)
-#: rc.cpp:94
+#: rc.cpp:79
 msgid "Chec&king Interval"
 msgstr "Έλεγχος νέων μηνυμάτων ανά"
 
 #. i18n: file: netsettingsbase.ui:44
 #. i18n: ectx: property (suffix), widget (KIntNumInput, kcfg_Interval)
-#: rc.cpp:97
+#: rc.cpp:82
 msgid " seconds"
 msgstr " δευτερόλεπτα"
 
 #. i18n: file: netsettingsbase.ui:57
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_UseHTTPS)
-#: rc.cpp:100
+#: rc.cpp:85
 msgid ""
 "<blockquote>Use secure connections when checking for new mail. Note that the "
 "login procedure uses https regardless of this setting.</blockquote>"
@@ -703,13 +706,13 @@ msgstr ""
 
 #. i18n: file: netsettingsbase.ui:60
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_UseHTTPS)
-#: rc.cpp:103
+#: rc.cpp:88
 msgid "&Use https connections for checking mail"
 msgstr "Χρήση https σύνδεσης για τον έλεγχο των μηνυμάτων"
 
 #. i18n: file: prefs.kcfg:9
 #. i18n: ectx: whatsthis, entry (searchFor), group (Advanced Settings)
-#: rc.cpp:112
+#: rc.cpp:94
 msgid ""
 "When checking for new email's this is the search query sent to Google Mail. "
 "Don't forget to add is:unread to improve the search."
@@ -720,7 +723,7 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:14
 #. i18n: ectx: whatsthis, entry (gMailSimpleInterface), group (Advanced Settings)
-#: rc.cpp:118
+#: rc.cpp:100
 msgid ""
 "This option lets you make KCheckGMail open Gmail using the simple interface "
 "(only HTML) or the full interface (unmarked)."
@@ -730,25 +733,25 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:19
 #. i18n: ectx: label, entry (Interval), group (Network Settings)
-#: rc.cpp:121
+#: rc.cpp:103
 msgid "Polling interval"
 msgstr "Polling interval"
 
 #. i18n: file: prefs.kcfg:23
 #. i18n: ectx: whatsthis, entry (Interval), group (Network Settings)
-#: rc.cpp:124
+#: rc.cpp:106
 msgid "How many seconds to wait before checking for new mail."
 msgstr "Αναμονή σε δευτερόλεπτα μέχρι τον επόμενο έλεγχο για νέα μηνύματα."
 
 #. i18n: file: prefs.kcfg:26
 #. i18n: ectx: label, entry (UseHTTPS), group (Network Settings)
-#: rc.cpp:127
+#: rc.cpp:109
 msgid "Use https connections for checking mail"
 msgstr "Χρήση https σύνδεσης για τον έλεγχο των μηνυμάτων"
 
 #. i18n: file: prefs.kcfg:28
 #. i18n: ectx: whatsthis, entry (UseHTTPS), group (Network Settings)
-#: rc.cpp:130
+#: rc.cpp:112
 msgid ""
 "Use secure connections when checking for new mail. Note that the login "
 "procedure uses https regardless of this setting."
@@ -758,63 +761,63 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:34
 #. i18n: ectx: label, entry (GmailUsername), group (Gmail Settings)
-#: rc.cpp:133
+#: rc.cpp:115
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
 #. i18n: file: prefs.kcfg:35
 #. i18n: ectx: whatsthis, entry (GmailUsername), group (Gmail Settings)
-#: rc.cpp:136
+#: rc.cpp:118
 msgid "Your Gmail username or your Google Hosted Domain email address"
 msgstr ""
 "Το όνομα χρήστη στο Gmail ή την  Google Hosted Domain email διεύθυνσή σας"
 
 #. i18n: file: prefs.kcfg:38
 #. i18n: ectx: label, entry (GmailPassword), group (Gmail Settings)
-#: rc.cpp:139
+#: rc.cpp:121
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
 #. i18n: file: prefs.kcfg:39
 #. i18n: ectx: whatsthis, entry (GmailPassword), group (Gmail Settings)
-#: rc.cpp:142
+#: rc.cpp:124
 msgid "Password for checking your Gmail account"
 msgstr "Κωδικός πρόσβασης στο Gmail"
 
 #. i18n: file: prefs.kcfg:42
 #. i18n: ectx: label, entry (PasswordFromWallet), group (Gmail Settings)
-#: rc.cpp:145
+#: rc.cpp:127
 msgid "Use KDE Wallet to store password"
 msgstr "Χρησιμοποιήστε το KDE Wallet για την αποθήκευση του κωδικού"
 
 #. i18n: file: prefs.kcfg:44
 #. i18n: ectx: whatsthis, entry (PasswordFromWallet), group (Gmail Settings)
-#: rc.cpp:148
+#: rc.cpp:130
 msgid "Use the KDE Wallet system to store your Gmail password."
 msgstr ""
 "Χρησιμοποιείστε το KDE Wallet για την αποθήκευση του κωδικού σας Gmail."
 
 #. i18n: file: prefs.kcfg:47
 #. i18n: ectx: label, entry (AlertVersionChange), group (Gmail Settings)
-#: rc.cpp:151
+#: rc.cpp:133
 msgid "Display an alert if GMail version changes"
 msgstr "Εμφάνιση ειδοποίησης, όταν υπάρξει νέα έκδοση Gmail"
 
 #. i18n: file: prefs.kcfg:49
 #. i18n: ectx: whatsthis, entry (AlertVersionChange), group (Gmail Settings)
-#: rc.cpp:154
+#: rc.cpp:136
 msgid "If Google update the GMail code, display an alert"
 msgstr "Εμφάνιση ειδοποίησης, όταν υπάρξει νέα έκδοση Gmail"
 
 #. i18n: file: prefs.kcfg:55
 #. i18n: ectx: label, entry (AllowLeftClickOpen), group (Applet Settings)
-#: rc.cpp:157
+#: rc.cpp:139
 msgid "Open browser to Gmail on left click"
 msgstr "Άνοιγμα &browser στο Gmail με δεξί κλικ"
 
 #. i18n: file: prefs.kcfg:57
 #. i18n: ectx: whatsthis, entry (AllowLeftClickOpen), group (Applet Settings)
-#: rc.cpp:160
+#: rc.cpp:142
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGMail icon is "
 "clicked."
@@ -824,7 +827,7 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:62
 #. i18n: ectx: whatsthis, entry (CatchAccidentalClick), group (Applet Settings)
-#: rc.cpp:166
+#: rc.cpp:148
 msgid ""
 "If enabled, every time you click on the KCheckGMail icon will disable it for "
 "a few seconds, thus preventing you from accidentaly opening more than one "
@@ -836,13 +839,13 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:65
 #. i18n: ectx: label, entry (UseDefaultBrowser), group (Applet Settings)
-#: rc.cpp:169
+#: rc.cpp:151
 msgid "Use the KDE default browser"
 msgstr "Χρήση του προεπιλεγμένου KDE browser"
 
 #. i18n: file: prefs.kcfg:67
 #. i18n: ectx: whatsthis, entry (UseDefaultBrowser), group (Applet Settings)
-#: rc.cpp:172
+#: rc.cpp:154
 msgid ""
 "Use whatever browser is configured as the KDE default to check your Gmail"
 msgstr "Χρήση του προεπιλεγμένου KDE browser"
@@ -851,13 +854,13 @@ msgstr "Χρήση του προεπιλεγμένου KDE browser"
 #. i18n: ectx: label, entry (UseAltBrowser), group (Applet Settings)
 #. i18n: file: prefs.kcfg:74
 #. i18n: ectx: label, entry (CustomBrowser), group (Applet Settings)
-#: rc.cpp:175 rc.cpp:178
+#: rc.cpp:157 rc.cpp:160
 msgid "Use a custom browser"
 msgstr "Χρήση εναλλακτικού browser."
 
 #. i18n: file: prefs.kcfg:76
 #. i18n: ectx: whatsthis, entry (CustomBrowser), group (Applet Settings)
-#: rc.cpp:181
+#: rc.cpp:163
 msgid "Use a custom browser other than the KDE default to check your Gmail"
 msgstr ""
 "Χρησιμοποιήστε εναλλακτικό, από τον προεπιλεγμένο KDE, browser για τον "
@@ -865,47 +868,161 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:79
 #. i18n: ectx: label, entry (DisplaySenderOnSingleMail), group (Applet Settings)
-#: rc.cpp:184
+#: rc.cpp:166
 msgid "Display sender"
 msgstr "Προβολή αποστολέα"
 
 #. i18n: file: prefs.kcfg:80
 #. i18n: ectx: whatsthis, entry (DisplaySenderOnSingleMail), group (Applet Settings)
-#: rc.cpp:187
+#: rc.cpp:169
 msgid "Display message sender"
 msgstr "Προβολή του αποστολέα του μηνύματος"
 
 #. i18n: file: prefs.kcfg:84
 #. i18n: ectx: label, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
-#: rc.cpp:190
+#: rc.cpp:172
 msgid "Display subject"
 msgstr "Προβολή του θέματος"
 
 #. i18n: file: prefs.kcfg:85
 #. i18n: ectx: whatsthis, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
-#: rc.cpp:193
+#: rc.cpp:175
 msgid "Display message subject"
 msgstr "Προβολή του θέματος του μηνύματος"
 
 #. i18n: file: prefs.kcfg:89
 #. i18n: ectx: label, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
-#: rc.cpp:196
+#: rc.cpp:178
 msgid "Display snippet"
 msgstr "Προβολή αποσπάσματος"
 
 #. i18n: file: prefs.kcfg:90
 #. i18n: ectx: whatsthis, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
-#: rc.cpp:199
+#: rc.cpp:181
 msgid "Display message snippet"
 msgstr "Προβολή αποσπάσματος του μηνύματος"
 
 #. i18n: file: prefs.kcfg:97
 #. i18n: ectx: label, entry (TrayIconUnreadMessagesColor), group (Appearance Settings)
-#: rc.cpp:202
+#: rc.cpp:184
 msgid "Color used to display  the number of unread messages"
 msgstr ""
 "Χρώμα που χρησιμοποιείται για την απεικόνιση του αριθμού των μη αναγνωσμένων "
 "μηνυμάτων"
+
+#: kcheckgmail.desktop:2
+#, fuzzy
+msgctxt "Name"
+msgid "KCheckGMail"
+msgstr "KCheckGMail"
+
+#: kcheckgmail.desktop:5
+#, fuzzy
+msgctxt "GenericName"
+msgid "New email notifier"
+msgstr "New email notifier"
+
+#: kcheckgmail.desktop:22
+#, fuzzy
+msgctxt "Comment"
+msgid ""
+"A Kicker applet to display how many email messages you have in your Gmail "
+"account."
+msgstr ""
+"Μία εφαρμογή Kicker που σας εμφανίζει τα νέα μηνύματα του Gmail λογαριασμού "
+"σας"
+
+#: kcheckgmail.notifyrc:3
+#, fuzzy
+msgctxt "Comment"
+msgid "KCheckGMail"
+msgstr "KCheckGMail"
+
+#: kcheckgmail.notifyrc:6
+#, fuzzy
+msgctxt "Name"
+msgid "New Gmail Arrived"
+msgstr "Έχετε νέο μήνυμα."
+
+#: kcheckgmail.notifyrc:23
+#, fuzzy
+msgctxt "Comment"
+msgid "New Gmail Arrived"
+msgstr "Έχετε νέο μήνυμα."
+
+#: kcheckgmail.notifyrc:43
+#, fuzzy
+msgctxt "Name"
+msgid "Logged in to Gmail"
+msgstr "Σύνδεση στο Gmail : ΟΚ"
+
+#: kcheckgmail.notifyrc:62
+#, fuzzy
+msgctxt "Comment"
+msgid "Logged in to Gmail"
+msgstr "Σύνδεση στο Gmail : ΟΚ"
+
+#: kcheckgmail.notifyrc:84
+#, fuzzy
+msgctxt "Name"
+msgid "Failed to login to Gmail"
+msgstr "Σφάλμα κατά την σύνδεση με το Gmail"
+
+#: kcheckgmail.notifyrc:104
+#, fuzzy
+msgctxt "Comment"
+msgid "Failed to login to Gmail"
+msgstr "Σφάλμα κατά την σύνδεση με το Gmail"
+
+#: kcheckgmail.notifyrc:127
+#, fuzzy
+msgctxt "Name"
+msgid "Gmail version has changed"
+msgstr "Η έκδοση του gmail έχει αλλάξει"
+
+#: kcheckgmail.notifyrc:145
+#, fuzzy
+msgctxt "Comment"
+msgid "Gmail version has changed"
+msgstr "Η έκδοση του gmail έχει αλλάξει"
+
+#: kcheckgmail.notifyrc:166
+#, fuzzy
+msgctxt "Name"
+msgid "New Gmail session is open"
+msgstr "Έχει ανοιχτεί νέα σύνδεση Gmail"
+
+#: kcheckgmail.notifyrc:182
+#, fuzzy
+msgctxt "Comment"
+msgid "Another session has been opened"
+msgstr "Μια άλλη σύνδεση είναι ήδη ανοικτή"
+
+#: kcheckgmail.notifyrc:201
+#, fuzzy
+msgctxt "Name"
+msgid "Mail Snippet"
+msgstr "Απόσπασμα"
+
+#: kcheckgmail.notifyrc:215
+#, fuzzy
+msgctxt "Comment"
+msgid "Email snippets when moving the mouse over a threads menu entry"
+msgstr ""
+"Εμφανίζει την επικεφαλίδα του μηνύματος όταν μετακινείτε το ποντίκι επάνω "
+"στο μήνυμα"
+
+#: kcheckgmail.notifyrc:230
+#, fuzzy
+msgctxt "Name"
+msgid "No unread email"
+msgstr "Κανένα μη αναγνωσμένο μήνυμα"
+
+#: kcheckgmail.notifyrc:244
+#, fuzzy
+msgctxt "Comment"
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Dummy notification triggered when there are no unread messages"
 
 #~ msgid ""
 #~ "_: NAME OF TRANSLATORS\n"
@@ -944,42 +1061,3 @@ msgstr ""
 
 #~ msgid "Display message's subject when only one new email arrives"
 #~ msgstr "Εμφανίζει το θέμα του μηνύματος μόνο όταν υπάρχει νέο μήνυμα."
-
-#~ msgid "New Gmail Arrived"
-#~ msgstr "Έχετε νέο μήνυμα."
-
-#~ msgid "Logged in to Gmail"
-#~ msgstr "Σύνδεση στο Gmail : ΟΚ"
-
-#~ msgid "Failed to login to Gmail"
-#~ msgstr "Σφάλμα κατά την σύνδεση με το Gmail"
-
-#~ msgid "Gmail version has changed"
-#~ msgstr "Η έκδοση του gmail έχει αλλάξει"
-
-#~ msgid "New Gmail session is open"
-#~ msgstr "Έχει ανοιχτεί νέα σύνδεση Gmail"
-
-#~ msgid "Another session has been opened"
-#~ msgstr "Μια άλλη σύνδεση είναι ήδη ανοικτή"
-
-#~ msgid "Email snippets when moving the mouse over a threads menu entry"
-#~ msgstr ""
-#~ "Εμφανίζει την επικεφαλίδα του μηνύματος όταν μετακινείτε το ποντίκι επάνω "
-#~ "στο μήνυμα"
-
-#~ msgid "No unread email"
-#~ msgstr "Κανένα μη αναγνωσμένο μήνυμα"
-
-#~ msgid "Dummy notification triggered when there are no unread messages"
-#~ msgstr "Dummy notification triggered when there are no unread messages"
-
-#~ msgid "New email notifier"
-#~ msgstr "New email notifier"
-
-#~ msgid ""
-#~ "A Kicker applet to display how many email messages you have in your Gmail "
-#~ "account."
-#~ msgstr ""
-#~ "Μία εφαρμογή Kicker που σας εμφανίζει τα νέα μηνύματα του Gmail "
-#~ "λογαριασμού σας"
