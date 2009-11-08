@@ -372,7 +372,7 @@ kcheckgmail_SOURCES=  \
 	 kcheckgmailiface_skel.cpp advancedsettingswidget.cpp appearancesettingswidget.cpp appletsettingswidget.cpp loginsettingswidget.cpp netsettingswidget.cpp prefs.cpp
 
 kcheckgmail_LDFLAGS = $(KDE_PLUGIN) $(all_libraries)
-kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
+kcheckgmail_LDADD = $(LIB_QT) $(LIB_KDECORE) $(LIB_KDEUI) $(LIB_KIO) -lDCOP -lkwalletclient
 #>- METASOURCES = AUTO
 noinst_HEADERS = advancedsettingswidget.h appletsettingswidget.h configdialog.h \
 	gmail.h gmail_constants.h gmailparser.h gmailwalletmanager.h jsprotocol.h \

@@ -9,7 +9,7 @@ kcheckgmail_SOURCES = advancedsettingswidget.ui appearancesettingswidget.ui \
 	kcheckgmailtray.cpp loginsettingswidget.ui mailcounter.cpp main.cpp netsettingswidget.ui \
 	prefs.kcfgc
 kcheckgmail_LDFLAGS = $(KDE_PLUGIN) $(all_libraries)
-kcheckgmail_LDADD = $(LIB_KDEUI) $(LIB_KIO) -lkwalletclient
+kcheckgmail_LDADD = $(LIB_QT) $(LIB_KDECORE) $(LIB_KDEUI) $(LIB_KIO) -lDCOP -lkwalletclient
 
 METASOURCES = AUTO
 
