@@ -68,10 +68,11 @@ GMail::GMail(QObject* parent, const char* name) : QObject(parent, name)
 			"&q=%2&as_subset=unread&view=tl&start=0&init=1&ui=1";
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
 	
-	gGAP4DLoginURL = "https://www.google.com/a/%1/LoginAction";
+	gGAP4DLoginURL = "https://www.google.com/a/%1/ServiceLogin?service=mail";
+	gGAP4DAuthURL = "https://www.google.com/a/%1/LoginAction";
 	gGAP4DLoginPOSTFormat = "Email=%1&Passwd=%2&signIn=Sign+in&service=mail"
-			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%3"
-			"&ltmpl=default&ltmplcache=2&rm=false&rmShown=1";
+			"&ltmpl=default&ltmplcache=2&rm=false&rmShown=1&GALX=%3"
+			"&continue=http@3A@2F@2Fmail.google.com@2Fa@2F%4";
 	gGAP4DCheckURL = "%1://mail.google.com/a/%2/?search=query"
 			"&q=%3&as_subset=unread&view=tl&start=0&init=1&ui=1";
 	gGAP4DLogOut = "https://mail.google.com/a/%1/?logout";
@@ -167,15 +168,21 @@ QString GMail::findGALXCookie()
 {
 	bool result;
 	int pos;
-	QString cookies, cookieValue;
+	QString cookies, cookieValue, loginURL;
 
-	KIO::Job *job = KIO::get(gGMailLoginURL, true, false);
+	if (isGAP4D) {
+		loginURL = QString(gGAP4DLoginURL).arg(useDomain);
+	} else {
+		loginURL = gGMailLoginURL;
+	}
+
+	KIO::Job *job = KIO::get(loginURL, true, false);
 	job->addMetaData("cookies", "auto");
 	job->addMetaData("cache", "reload");
 
 	result = KIO::NetAccess::synchronousRun(job, 0);
 	if (result) {
-		cookies = findCookies(gGMailLoginURL);
+		cookies = findCookies(loginURL);
 		cookies += ";";
 
 		QRegExp search(" (" + QRegExp::escape("GALX") + ")=([^;]*)");
@@ -201,8 +208,8 @@ void GMail::slotGetWalletPassword(const QString& pass)
 	GALXValue = findGALXCookie();
 	
 	if(isGAP4D) {
-		LoginPOSTFormat = QString(gGAP4DLoginPOSTFormat).replace("%3",useDomain);
-		AuthURL = QString(gGAP4DLoginURL).arg(useDomain).replace('@','%');
+		LoginPOSTFormat = QString(gGAP4DLoginPOSTFormat).replace("%4",useDomain);
+		AuthURL = QString(gGAP4DAuthURL).arg(useDomain).replace('@','%');
 	} else {
 		LoginPOSTFormat = gGMailLoginPOSTFormat;
 		AuthURL = gGMailAuthURL;
