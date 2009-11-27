@@ -104,7 +104,7 @@ private:
 	QString gGMailLoginURL, gGMailAuthURL, gGMailLoginPOSTFormat, gGMailCheckURL, gGMailLogOut;
 
 	//GAP4D: Google Applications for Domains
-	QString gGAP4DLoginURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
+	QString gGAP4DLoginURL, gGAP4DAuthURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
 
 	KUrl loginRedirection;
 
