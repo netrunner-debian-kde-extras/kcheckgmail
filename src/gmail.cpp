@@ -80,12 +80,15 @@ GMail::GMail(QObject* parent)
 	isGAP4D = false;
 	
 	//Any % should be replaced with @ due to a problem with QString not looking for escaped %
-	gGMailLoginURL = "https://www.google.com/accounts/ServiceLogin?service=mail";
-	gGMailAuthURL = "https://www.google.com/accounts/ServiceLoginAuth?service=mail";
-	gGMailLoginPOSTFormat = "ltmpl=default&ltmplcache=2"
-			"&continue=http@3A@2F@2Fmail.google.com@2Fmail@2F@3F?ui@3Dhtml"
-			"&service=mail&rm=false&scc=1&GALX=%1&Email=%2&Passwd=%3&"
-			"PersistentCookie=yes&rmShown=1&signIn=Sign+in&asts=";
+	gGMailLoginURL = "https://www.google.com/accounts/ServiceLogin?"
+			"service=mail";
+	gGMailAuthURL = "https://www.google.com/accounts/ServiceLoginAuth?"
+			"service=mail";
+	gGMailLoginPOSTFormat = "ltmpl=default&ltmplcache=2&continue="
+			"http@3A@2F@2Fmail.google.com@2Fmail@2F@3F?ui@3Dhtml"
+			"&service=mail&rm=false&scc=1&GALX=%1&Email=%2"
+			"&Passwd=%3&PersistentCookie=yes&rmShown=1"
+			"&signIn=Sign+in&asts=";
 	gGMailCheckURL = "%1://mail.google.com/mail/?search=query"
 			"&q=%2&as_subset=unread&view=tl&start=0&init=1&ui=1";
 	gGMailLogOut = "https://mail.google.com/mail/?logout";
