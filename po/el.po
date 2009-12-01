@@ -5,10 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KCheckGMail_el\n"
-"Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?"
-"group_id=116095&atid=673717\n"
+"Report-Msgid-Bugs-To: http://sourceforge."
+"net/tracker/?group_id=116095&atid=673717\n"
 "POT-Creation-Date: 2009-10-28 12:11+0000\n"
-"PO-Revision-Date: 2009-10-21 21:26+0200\n"
+"PO-Revision-Date: 2009-10-31 23:58+0100\n"
 "Last-Translator: Glentadakis Dimitrios <dglent@gmail.com>\n"
 "Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -295,17 +295,18 @@ msgstr "KCheckGMail"
 msgid "Th&reads"
 msgstr "Μηνύματα"
 
-#: kcheckgmailcore.cpp:268
-#, fuzzy, kde-format
+#: kcheckgmailcore.cpp:268, kde-format
 msgid ""
 "<p><center>Welcome to KCheckGMail!</center></p><p>You can locate KCheckGMail "
 "here: </p><p><center>%1</center></p>When you right-click on that icon you "
 "will see a menu, from which you can see the Threads menu containing the "
 "newest email of your account."
 msgstr ""
-"<p><center>Καλωσήλθατε στο KCheckGMail!</center></p><p>Μπορείτε να βρείτε το "
-"KCheckGMail εδώ: </p><p><center><img source=\"systray_shot\"></center></p>Με "
-"δεξί κλικ στο εικονίδιο έχετε το μενού, που μπορείτε να δείτε την λίστα με "
+"<p><center>Καλώς ορίσατε στο KCheckGMail!</center></p><p>Μπορείτε να βρείτε "
+"το "
+"KCheckGMail εδώ: </p><p><center>%1></center></p>Με "
+"δεξί κλικ στο εικονίδιο θα δείτε ένα μενού, από το οποίο μπορείτε να δείτε "
+"την λίστα με "
 "τα νέα μηνύματα."
 
 #: kcheckgmailcore.cpp:275
@@ -435,14 +436,13 @@ msgstr ""
 msgid "Version changed"
 msgstr "Η έκδοση του Gmail έχει αλλάξει"
 
-#: kcheckgmailtray.cpp:184
-#, fuzzy, kde-format
+#: kcheckgmailtray.cpp:184, kde-format
 msgid ""
 "<p>KCheckGMail is already running</p><p>You can find it here:</"
 "p><p><p><center>%1</center></p></p>"
 msgstr ""
 "<p>Το KCheckGMail είναι ήδη σε λειτουργία</p><p>Μπορείτε να το βρείτε εδώ:</"
-"p><p><center><img source=\"systray_shot\"></center></p>"
+"p><p><p><center>%1</center></p></p>"
 
 #: kcheckgmailtray.cpp:185
 msgid "Already Running"
@@ -649,7 +649,7 @@ msgstr "Άνοιγμα &browser στο Gmail με δεξί κλικ"
 #. i18n: ectx: label, entry (CatchAccidentalClick), group (Applet Settings)
 #: rc.cpp:61 rc.cpp:145
 msgid "Catch accidental left clicks when launching the browser"
-msgstr "Catch accidental left clicks when launching the browser"
+msgstr "Σύλληψη των τυχαίων αριστερών κλικ κατά την εκκίνηση του περιηγητή"
 
 #. i18n: file: loginsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, LoginSettingsBase)
@@ -911,118 +911,101 @@ msgstr ""
 "μηνυμάτων"
 
 #: kcheckgmail.desktop:2
-#, fuzzy
 msgctxt "Name"
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: kcheckgmail.desktop:5
-#, fuzzy
 msgctxt "GenericName"
 msgid "New email notifier"
-msgstr "New email notifier"
+msgstr "Ειδοποιητής νέας αλληλογραφίας"
 
 #: kcheckgmail.desktop:22
-#, fuzzy
 msgctxt "Comment"
 msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
 "account."
 msgstr ""
-"Μία εφαρμογή Kicker που σας εμφανίζει τα νέα μηνύματα του Gmail λογαριασμού "
-"σας"
+"Μία εφαρμογή πλαισίου συστήματος που εμφανίζει πόσα νέα μηνύματα "
+"αλληλογραφίας έχετε στον λογαριασμό "
+"σας Gmail."
 
 #: kcheckgmail.notifyrc:3
-#, fuzzy
 msgctxt "Comment"
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: kcheckgmail.notifyrc:6
-#, fuzzy
 msgctxt "Name"
 msgid "New Gmail Arrived"
-msgstr "Έχετε νέο μήνυμα."
+msgstr "Έφτασε νέα αλληλογραφία"
 
 #: kcheckgmail.notifyrc:23
-#, fuzzy
 msgctxt "Comment"
 msgid "New Gmail Arrived"
-msgstr "Έχετε νέο μήνυμα."
+msgstr "Έφτασε νέα αλληλογραφία"
 
 #: kcheckgmail.notifyrc:43
-#, fuzzy
 msgctxt "Name"
 msgid "Logged in to Gmail"
-msgstr "Σύνδεση στο Gmail : ΟΚ"
+msgstr "Έγινε σύνδεση με το Gmail"
 
 #: kcheckgmail.notifyrc:62
-#, fuzzy
 msgctxt "Comment"
 msgid "Logged in to Gmail"
-msgstr "Σύνδεση στο Gmail : ΟΚ"
+msgstr "Έγινε σύνδεση με το Gmail"
 
 #: kcheckgmail.notifyrc:84
-#, fuzzy
 msgctxt "Name"
 msgid "Failed to login to Gmail"
-msgstr "Σφάλμα κατά την σύνδεση με το Gmail"
+msgstr "Η σύνδεση με το Gmail απέτυχε"
 
 #: kcheckgmail.notifyrc:104
-#, fuzzy
 msgctxt "Comment"
 msgid "Failed to login to Gmail"
-msgstr "Σφάλμα κατά την σύνδεση με το Gmail"
+msgstr "Η σύνδεση με το Gmail απέτυχε"
 
 #: kcheckgmail.notifyrc:127
-#, fuzzy
 msgctxt "Name"
 msgid "Gmail version has changed"
-msgstr "Η έκδοση του gmail έχει αλλάξει"
+msgstr "Η έκδοση του Gmail έχει αλλάξει"
 
 #: kcheckgmail.notifyrc:145
-#, fuzzy
 msgctxt "Comment"
 msgid "Gmail version has changed"
-msgstr "Η έκδοση του gmail έχει αλλάξει"
+msgstr "Η έκδοση του Gmail έχει αλλάξει"
 
 #: kcheckgmail.notifyrc:166
-#, fuzzy
 msgctxt "Name"
 msgid "New Gmail session is open"
-msgstr "Έχει ανοιχτεί νέα σύνδεση Gmail"
+msgstr "Έχει ανοιχτεί νέα συνεδρία με το Gmail"
 
 #: kcheckgmail.notifyrc:182
-#, fuzzy
 msgctxt "Comment"
 msgid "Another session has been opened"
-msgstr "Μια άλλη σύνδεση είναι ήδη ανοικτή"
+msgstr "Μια άλλη συνεδρία είναι ήδη ανοικτή"
 
 #: kcheckgmail.notifyrc:201
-#, fuzzy
 msgctxt "Name"
 msgid "Mail Snippet"
-msgstr "Απόσπασμα"
+msgstr "Απόσπασμα αλληλογραφίας"
 
 #: kcheckgmail.notifyrc:215
-#, fuzzy
 msgctxt "Comment"
 msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr ""
-"Εμφανίζει την επικεφαλίδα του μηνύματος όταν μετακινείτε το ποντίκι επάνω "
+"Εμφανίζει απόσπασμα του μηνύματος όταν μετακινείτε το ποντίκι επάνω "
 "στο μήνυμα"
 
 #: kcheckgmail.notifyrc:230
-#, fuzzy
 msgctxt "Name"
 msgid "No unread email"
-msgstr "Κανένα μη αναγνωσμένο μήνυμα"
+msgstr "Καμία μη αναγνωσμένη αλληλογραφία"
 
 #: kcheckgmail.notifyrc:244
-#, fuzzy
 msgctxt "Comment"
 msgid "Dummy notification triggered when there are no unread messages"
-msgstr "Dummy notification triggered when there are no unread messages"
+msgstr "Εμφάνιση ειδοποίησης όταν δεν υπάρχουν μη αναγνωσμένα μηνύματα"
 
 #~ msgid ""
 #~ "_: NAME OF TRANSLATORS\n"
