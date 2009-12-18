@@ -20,7 +20,7 @@
 #ifndef KCHECKGMAIL_JSPROTOCOL_H
 #define KCHECKGMAIL_JSPROTOCOL_H
 
-#include <qobject.h>
+#include <QObject>
 
 #include "gmailparser.h"
 #include "gmail.h"
@@ -45,7 +45,7 @@ class JSProtocol : public QObject {
 	Q_OBJECT
 
 public:
-	JSProtocol(QObject* parent, const char* name = 0);
+	JSProtocol(QObject* parent);
 	~JSProtocol();
 
 	GMailParser* parser();

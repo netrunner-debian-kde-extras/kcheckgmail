@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# Adapted from KMess
+# http://trac.kmess.org/browser/trunk/kmess/po/maketrans
+# Revision 4600
+#
+#
+# Extract all messages from the source code.
+# The messages are saved into kcheckgmail.pot
+#
+# Script based on:
+#   http://techbase.kde.org/index.php?title=Development/Tutorials/Localization/i18n_Build_Systems#Theory:_The_xgettext_toolchain
+#
+
+
+BASEDIR="../src/"           # root of translatable sources
+PROJECT="kcheckgmail"       # project name
+BUGADDR="http://sourceforge.net/tracker/?group_id=116095&atid=673717"
+WDIR=`pwd`
+
+
+EXTRACTRC=/usr/bin/extractrc   # needs KDE 4 version!
+RC_LIST=$WDIR/rcfiles.list
+IN_LIST=$WDIR/infiles.list
+RC_CPP=$WDIR/rc.cpp
+
+# Additional string for KAboutData
+echo 'i18nc("NAME OF TRANSLATORS","Your names");' > $RC_CPP
+echo 'i18nc("EMAIL OF TRANSLATORS","Your emails");' >> $RC_CPP
+
+# Parse .ui files
+echo "extracting translations from *.ui files.."
+cd $BASEDIR
+find . -name '*.ui' -o -name '*.rc' -o -name '*.kcfg' | sort >> $RC_LIST
+xargs --arg-file=$RC_LIST ${EXTRACTRC} > $RC_CPP
+
+# Parse .cpp files
+echo "extracting translations from *.cpp files.."
+echo "rc.cpp" > $IN_LIST
+find . -name '*.cpp' -o -name '*.h' -o -name '*.c' | sort >> $IN_LIST
+
+cd $WDIR
+xgettext --from-code=UTF-8 --language=C++ --kde \
+         --sort-by-file --indent \
+         -ci18n \
+         -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
+         -kki18n:1 -kki18nc:1c,2 -kki18np:1,2 -kki18ncp:1c,2,3 \
+         -kI18N_NOOP:1 -kI18N_NOOP2:1c,2 -kaliasLocale \
+         --debug \
+         --msgid-bugs-address="$BUGADDR" \
+         --exclude-file=kcheckgmail.pot.ignore \
+         --files-from=$IN_LIST -D $BASEDIR -D $WDIR \
+         -o $PROJECT.pot || { echo "error while calling xgettext. aborting."; exit 1; }
+
+# Cleanup
+rm $IN_LIST
+rm $RC_LIST
+rm $RC_CPP
+echo "Done"
+

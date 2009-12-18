@@ -20,17 +20,18 @@
 #include "kcheckgmailcore.h"
 #include "kcheckgmailcore_p.h"
 #include "kcheckgmailtray.h"
-#include "knotification.h"
 #include "jsprotocol.h"
 #include "configdialog.h"
 #include "gmailwalletmanager.h"
 #include "prefs.h"
+#include "kcheckgmailadaptor.h"
 
 #include <cstdlib>
 #include <kapplication.h>
 #include <klocale.h>
 #include <kactioncollection.h>
-#include <kpopupmenu.h>
+#include <kaction.h>
+#include <kmenu.h>
 #include <kconfigdialog.h>
 #include <kconfig.h>
 #include <kiconeffect.h>
@@ -40,40 +41,43 @@
 #include <kiconloader.h>
 #include <kmacroexpander.h>
 #include <krun.h>
-#include <kaboutapplication.h>
-#include <knotifydialog.h>
+#include <k3aboutapplication.h>
+#include <knotifyconfigwidget.h>
 #include <kmessagebox.h>
 #include <kdialog.h>
-#include <kdialogbase.h>
-#include <knotifyclient.h>
-#include <dcopclient.h>
+#include <knotification.h>
+#include <QDBusConnection>
 
-#include <qfile.h>
-#include <qtooltip.h>
+#include <QFile>
+#include <QToolTip>
+#include <QHash>
+#include <QSignalMapper>
+//Added by qt3to4:
+#include <QList>
+#include <QPixmap>
+#include <ktoolinvocation.h>
 
 
-KCheckGmailCore::KCheckGmailCore(QObject* parent, const char* name)
-	: DCOPObject("KCheckGmailIface"),
-	  QObject(parent, name),
+KCheckGmailCore::KCheckGmailCore(QObject* parent)
+	: QObject(parent),
 	  d(new Private)
 {
-	d->mJSP = new JSProtocol(this, "JSProtocol");
+	initTray();
+
+	d->mJSP = new JSProtocol(this);
 	d->actions = new KActionCollection(this);
 
-	initTray();
 	initActions();
 	buildTrayPopupMenu();
 	initConfigDialog();
 	makeConnections(d->mJSP, d->mTray);
 
-	// register with dcop
-	if(!kapp->dcopClient()->isRegistered()) {
-		kapp->dcopClient()->registerAs(kapp->name());
-	}
-	kapp->dcopClient()->setDefaultObject(objId());
+	// D-Bus
+	(void) new KcheckgmailAdaptor(this);
+	QDBusConnection dbus = QDBusConnection::sessionBus();
+	dbus.registerObject("/kcheckgmail", this, QDBusConnection::ExportScriptableSlots);
 
-	d->mTray->showIcon();
-	start();
+	QTimer::singleShot(2000, this, SLOT(slotStart()));
 }
 
 KCheckGmailCore::~KCheckGmailCore()
@@ -91,14 +95,16 @@ KCheckGmailCore::~KCheckGmailCore()
 
 KCheckGmailCore& KCheckGmailCore::instance()
 {
-	static KCheckGmailCore object(0, "KCheckGmailCore");
+	static KCheckGmailCore object(0);
 	return object;
 }
 
 
 void KCheckGmailCore::initTray()
 {
-	d->mTray = new KCheckGmailTray(0, "KCheckGmailTray");
+	d->mTray = new KCheckGmailTray(0);
+	d->mTray->show();
+
 	connect(d->mTray, SIGNAL(quitSelected()), kapp, SLOT(quit()));
 
 	connect(d->mTray, SIGNAL(leftButtonClicked()),
@@ -111,56 +117,72 @@ void KCheckGmailCore::initTray()
 
 void KCheckGmailCore::initActions()
 {
-	d->actionShowKNotifyDialog = new KAction(i18n("Configure &Notifications"), "knotify", "", this, SLOT(slotShowKNotifyDialog()), d->actions);
+	d->actionShowKNotifyDialog = new KAction(KIcon("preferences-desktop-notification"), i18n("Configure &Notifications"), this);
+	d->actions->addAction("configure-notifications", d->actionShowKNotifyDialog);
+	connect(d->actionShowKNotifyDialog, SIGNAL(triggered(bool)),
+		this, SLOT(slotShowKNotifyDialog()));
 
-	d->actionShowPrefsDialog = new KAction(i18n("&Configure KCheckGMail..."), "configure", "",
-		this, SLOT( slotShowPrefsDialog()), d->actions);
+	d->actionShowPrefsDialog = new KAction(KIcon("configure"), i18n("&Configure KCheckGMail..."), this);
+	d->actions->addAction("configure", d->actionShowPrefsDialog);
+	connect(d->actionShowPrefsDialog, SIGNAL(triggered(bool)),
+		this, SLOT(slotShowPrefsDialog()));
 
-	d->mLoginCheckMailAction = new KAction(i18n("Login and Chec&k Mail"), "launch", "",
-		d->mJSP->retriever(), SLOT(slotCheckGmail()), d->actions);
+	d->mLoginCheckMailAction = new KAction(KIcon("mail-receive"), i18n("Login and Chec&k Mail"), this);
+	d->actions->addAction("check-mail", d->mLoginCheckMailAction);
+	connect(d->mLoginCheckMailAction, SIGNAL(triggered(bool)),
+		d->mJSP->retriever(), SLOT(slotCheckGmail()));
 
-	d->actionLaunchBrowser = new KAction(i18n("&Launch Browser"), "konqueror", "",
-		this, SLOT(slotLaunchBrowser()), d->actions);
+	d->actionLaunchBrowser = new KAction(KIcon("konqueror"), i18n("&Launch Browser"), this);
+	d->actions->addAction("launch-browser", d->actionLaunchBrowser);
+	connect(d->actionLaunchBrowser, SIGNAL(triggered(bool)),
+		this, SLOT(slotLaunchBrowser()));
 
-	d->actionComposeMail = new KAction(i18n("Co&mpose Mail"), "email", "",
-		this, SLOT(slotComposeMail()), d->actions );
+	d->actionComposeMail = new KAction(KIcon("email"), i18n("Co&mpose Mail"), this);
+	d->actions->addAction("compose-mail", d->actionComposeMail);
+	connect(d->actionComposeMail, SIGNAL(triggered(bool)),
+		this, SLOT(slotComposeMail()));
+
+	d->threadsMapper = new QSignalMapper(this);
+	connect(d->threadsMapper, SIGNAL(mapped(int)),
+		this, SLOT(slotThreadActivated(int)));
 }
 
 
 void KCheckGmailCore::buildTrayPopupMenu()
 {
-	d->mThreadsMenu = new KPopupMenu(d->mTray, "KCheckGmail Threads menu");
-
-	connect(d->mThreadsMenu, SIGNAL(activated(int)),
-		SLOT(slotThreadActivated(int)));
-
-	connect(d->mThreadsMenu, SIGNAL(highlighted(int)),
-		SLOT(slotThreadsItemHighlighted(int)));
-
-	d->menu = d->mTray->contextMenu();
+	d->menu = qobject_cast<KMenu *>(d->mTray->contextMenu());
 	d->menu->clear();
 
-	d->menu->insertTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
+	d->mThreadsMenu = new KMenu(d->menu);
 
-	d->actionShowKNotifyDialog->plug( d->menu );
-	d->actionShowPrefsDialog->plug(d->menu);
+#if 0
+	connect(d->mThreadsMenu, SIGNAL(highlighted(int)),
+		SLOT(slotThreadsItemHighlighted(int)));
+#endif
+	d->menu->addTitle(SmallIcon("kcheckgmail"), i18n("KCheckGMail"));
 
-	d->menu->insertSeparator();
+	d->menu->addAction(d->actionShowKNotifyDialog);
+	d->menu->addAction(d->actionShowPrefsDialog);
 
-	d->mLoginCheckMailAction->plug(d->menu);
+	d->menu->addSeparator();
+
+	d->menu->addAction(d->mLoginCheckMailAction);
 	d->mLoginCheckMailAction->setEnabled(false);
 
-	d->actionLaunchBrowser->plug(d->menu);
-	d->actionComposeMail->plug(d->menu);
+	d->menu->addAction(d->actionLaunchBrowser);
+	d->menu->addAction(d->actionComposeMail);
 
-	d->mThreadsMenuId = d->menu->insertItem(SmallIcon("kcheckgmail"),
-		i18n("Th&reads"), d->mThreadsMenu);
-	d->mTray->contextMenu()->setItemEnabled(d->mThreadsMenuId, false);
+	d->mThreadsMenuAction = d->menu->addMenu(d->mThreadsMenu);
+	d->mThreadsMenuAction->setIcon(SmallIcon("kcheckgmail"));
+	d->mThreadsMenuAction->setText(i18n("Th&reads"));
+	d->mThreadsMenuAction->setEnabled(false);
 
-	d->menu->insertSeparator();
+	d->menu->addSeparator();
 
-	d->mHelpMenu = new KHelpMenu(d->mTray, KGlobal::instance()->aboutData(), false, d->actions);
-	d->menu->insertItem(SmallIcon("help"), KStdGuiItem::help().text(), d->mHelpMenu->menu());
+	d->mHelpMenu = new KHelpMenu(d->menu, KGlobal::mainComponent().aboutData(), false, d->actions);
+	d->mHelpMenu->menu()->setIcon(SmallIcon("help-contents"));
+	d->mHelpMenu->menu()->setTitle(KStandardGuiItem::help().text());
+	d->menu->addMenu(d->mHelpMenu->menu());
 }
 
 
@@ -168,11 +190,9 @@ void KCheckGmailCore::initConfigDialog()
 {
 	d->mConfigDialog = new ConfigDialog(0,
 					  "KCheckGmailSettingsDialog",
-					  Prefs::self(),
-					  KDialogBase::IconList,
-					  KDialogBase::Ok | KDialogBase::Cancel);
+					  Prefs::self());
 
-	connect(d->mConfigDialog, SIGNAL(settingsChanged()),
+	connect(d->mConfigDialog, SIGNAL(finished()),
 		this, SLOT(slotSettingsChanged()));
 }
 
@@ -220,7 +240,7 @@ void KCheckGmailCore::makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray)
 	connect(mJSP->retriever(), SIGNAL(loggedOut()),
 		mJSP, SLOT(slotLoggedOut()));
 
-	connect(kapp, SIGNAL(shutDown()),
+	connect(kapp, SIGNAL(aboutToQuit()),
 		mJSP->retriever(), SLOT(slotLogOut()));
 
 
@@ -232,24 +252,26 @@ void KCheckGmailCore::makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray)
 }
 
 
-void KCheckGmailCore::start()
+void KCheckGmailCore::slotStart()
 {
 	static bool started = false;
 	
 	if(started) {
-		kdWarning() << k_funcinfo << "Unexpected call!" << endl;
+		kWarning() << k_funcinfo << "Unexpected call!";
 	}
 	
 	//From RSIBreak
 	if(KMessageBox::shouldBeShownContinue("welcome_to_kcheckgmail")) {
-		d->mTray->takeScreenshotOfTrayIcon();
+		QString systray_shot = d->mTray->takeScreenshotOfTrayIcon();
+		const QString imgTag = QString::fromLatin1("<img src=\"%1\"/>").arg(systray_shot);
 		KMessageBox::information(0,
 					 i18n("<p><center>Welcome to KCheckGMail!</center></p>"
 							 "<p>You can locate KCheckGMail here: </p>"
-							 "<p><center><img source=\"systray_shot\"></center></p>"
+							 "<p><center>%1</center></p>"
 							 "When you right-click on that icon you will see "
 							 "a menu, from which you can see the Threads "
-							 "menu containing the newest email of your account."),
+							 "menu containing the newest email of your account."
+							 , imgTag),
 					 i18n("Welcome"));
 
 		KMessageBox::saveDontShowAgainContinue("welcome_to_kcheckgmail");
@@ -302,40 +324,48 @@ QString KCheckGmailCore::getUrlBase()
 
 void KCheckGmailCore::updateThreadMenu()
 {
-        QMap<QString, int> entries;
-        QMap<QString,bool> *threads = d->mJSP->parser()->getThreadList();
-        int numItems = 0;
-	int id = 0;
+	QMap<QString, int> entries;
+	QMap<QString,bool> *threads = d->mJSP->parser()->getThreadList();
+	int numItems = 0;
 
+	/*
+	 * There is no need to unmap the mThreadsMenu actions. They are
+	 * automatically unmapped when they are destroyed.
+	 * QMenu::clear() destroys them.
+	 */
 	d->mThreadsMenu->clear();
-        if(threads) {
-                QValueList<QString> klist = threads->keys();
-                QValueList<QString>::iterator iter = klist.begin();
+	if(threads) {
+		QList<QString> klist = threads->keys();
+		QList<QString>::iterator iter = klist.begin();
 
-                kdDebug() << k_funcinfo << "number of threads=" << klist.size() << endl;
+		kDebug() << k_funcinfo << "number of threads=" << klist.size();
+		while(iter != klist.end()) {
+			const GMailParser::Thread &t = d->mJSP->parser()->getThread(*iter);
+			if(!t.isNull) {
+				QString str = t.senders;
+				str += " - ";
+				str += t.subject;
+				str.replace("&","&&");
 
-                while(iter != klist.end()) {
-                        const GMailParser::Thread &t = d->mJSP->parser()->getThread(*iter);
-                        if(!t.isNull) {
-                                QString str = t.senders;
-                                str += " - ";
-                                str += t.subject;
-                                str.replace("&","&&");
+				QAction* action = new QAction(str, d->mThreadsMenu);
 
 				// TODO: Add an hasAttach method
-				if (t.attachments.isEmpty())
-					id = d->mThreadsMenu->insertItem(str, t.id);
-				else
-					id = d->mThreadsMenu->insertItem(SmallIcon("attach"), str, t.id);
-				numItems ++;
-                        }
-			iter ++;
-                }
-                delete threads;
-                threads = 0;
-        }
+				if (!t.attachments.isEmpty())
+					action->setIcon(SmallIcon("mail-attachment"));
 
-	d->mTray->contextMenu()->setItemEnabled(d->mThreadsMenuId, (numItems > 0));
+				connect(action, SIGNAL(triggered(bool)),
+					d->threadsMapper, SLOT(map()));
+
+				d->threadsMapper->setMapping(action, t.id);
+				d->mThreadsMenu->addAction(action);
+				numItems++;
+			}
+			iter++;
+		}
+		delete threads;
+		threads = 0;
+	}
+	d->mThreadsMenuAction->setEnabled(numItems > 0);
 }
 
 
@@ -359,14 +389,14 @@ QString KCheckGmailCore::newEmailNotifyMessage(unsigned int n, bool showSender, 
 			QString str;
 			str = i18n("<center><b>New mail arrived</b></center>");
 			if (showSender) {
-				str.append(i18n("<b>Sender:</b> <i>%1</i>").arg(t.senders));
+				str.append(i18n("<b>Sender:</b> <i>%1</i>", t.senders));
 				newLine = true;
 			}
 			if (showSubject) {
 				if (newLine) {
 					str.append("<br>");
 				}
-				str.append( i18n("<b>Subject:</b> <i>%1</i>").arg(t.subject));
+				str.append( i18n("<b>Subject:</b> <i>%1</i>", t.subject));
 				newLine = true;
 			}
 			if (showSnippet) {
@@ -378,14 +408,14 @@ QString KCheckGmailCore::newEmailNotifyMessage(unsigned int n, bool showSender, 
 			return str;
 		}
 	}
-	return i18n("There is <b>1</b> new mail message",
-		   "There are <b>%n</b> new mail messages", n);
+	return i18np("There is <b>1</b> new mail message",
+		   "There are <b>%1</b> new mail messages", n);
 }
 
 
 void KCheckGmailCore::slotShowKNotifyDialog()
 {
-	KNotifyDialog::configure(d->mTray);
+	KNotifyConfigWidget::configure(0);
 }
 
 
@@ -400,7 +430,7 @@ void KCheckGmailCore::slotLaunchBrowser(const QString &url)
 {
 	QString loadURL;
 
-	if(url == QString::null) {
+	if(url == QString()) {
 		loadURL = getUrlBase();
 		
 		if (Prefs::gMailSimpleInterface())
@@ -409,13 +439,13 @@ void KCheckGmailCore::slotLaunchBrowser(const QString &url)
 		loadURL = url;
 
 	if(Prefs::useDefaultBrowser())
-		kapp->invokeBrowser(loadURL);
+		KToolInvocation::invokeBrowser(loadURL);
 	else {
 		QString s = Prefs::customBrowser();
-		QMap<QChar,QString> map;
-		map.insert('u', loadURL);
-		s = KMacroExpander::expandMacrosShellQuote(s, map);
-		KRun::runCommand(QFile::encodeName(s));
+		QHash<QChar,QString> hash;
+		hash.insert('u', loadURL);
+		s = KMacroExpander::expandMacrosShellQuote(s, hash);
+		KRun::runCommand(QFile::encodeName(s), 0);
 	}
 }
 
@@ -439,7 +469,8 @@ void KCheckGmailCore::slotLeftButtonClicked()
 		if(Prefs::catchAccidentalClick()) {
 			static QTimer *t = new QTimer(this);
 			if(!t->isActive()) {
-				t->start(ACCIDENTAL_CLICK_TIMEOUT, true);
+				t->setSingleShot(true);
+				t->start(ACCIDENTAL_CLICK_TIMEOUT);
 				slotLaunchBrowser();
 			}
 		} else
@@ -479,30 +510,30 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 
 	QStringList::ConstIterator it = t.attachments.begin();
 	QStringList attachments;
-	QString message = t.snippet, iconType, iconFileName, format, fileName;
+	QString message = t.snippet, iconFileName, format, fileName;
 	unsigned int attachmentsCount = 0;
 	KMimeType::Ptr mimetype;
 
-	format = i18n("format used to display the attachments (%1 is the icon, %2 is the file name)", "<img src=\"%1\"> %2");
+	format = i18nc("format used to display the attachments (%1 is the icon, %2 is the file name)", "<img src=\"%1\"> %2");
 
 	for (; it != t.attachments.end(); ++it ) {
 		attachmentsCount++;
 		fileName = *it; // attachment filename
 
+		//TODO check mimetype return value
 		mimetype = KMimeType::findByPath(fileName, 0, true); // no disk access
-		iconType = mimetype->icon(QString::null, false);
-		iconFileName = KGlobal::instance()->iconLoader()->iconPath(iconType, KIcon::Small);
-		kdDebug() << "Attachment name: " << fileName << ", iconType: " << iconType << endl;
+		iconFileName = KIconLoader::global()->iconPath(mimetype->iconName(), KIconLoader::Small);
+		kDebug() << "Attachment name: " << fileName << ", iconFileName: " << iconFileName;
 		attachments.append(format.arg(iconFileName, fileName));
 	}
 
 	if (attachmentsCount > 0) {
-		message.append("<br>" + i18n("Attachment: %1", "Attachments: %1", attachmentsCount)
-				.arg(attachments.join(", ")));
+		message.append("<br>" + i18np("Attachment: %2", "Attachments: %2", attachmentsCount,
+				 attachments.join(", ")));
 	}
 
-	KNotifyClient::event(d->mThreadsMenu->winId(), "gmail-mail-snippet", message);
-	kdDebug() << k_funcinfo << "Notification:" << "gmail-mail-snippet" << endl;
+	KNotification::event(QLatin1String("gmail-mail-snippet"), message, QPixmap(), d->mThreadsMenu);
+	kDebug() << k_funcinfo << "Notification:" << "gmail-mail-snippet";
 }
 
 
@@ -510,14 +541,16 @@ void KCheckGmailCore::slotMailArrived(unsigned int n)
 {
 	QString str = newEmailNotifyMessage(n, Prefs::displaySenderOnSingleMail(), Prefs::displaySubjectOnSingleMail(), Prefs::displaySnippetOnSingleMail());
 
+	KNotification *notify = new KNotification("new-gmail-arrived");
+	notify->setText(str);
+
 	if (n == 1) {
-		connect(KNotification::event("new-gmail-arrived", str, QPixmap(), 
-					d->mTray, i18n("Open")), SIGNAL(activated(unsigned int )),
-					SLOT(slotOpenButtonClicked()));
-	} else {
-		KNotification::event("new-gmail-arrived", str, QPixmap(), d->mTray);
+		notify->setActions(QStringList(i18n("Open")));
+		connect(notify, SIGNAL(activated(unsigned int)),
+			this, SLOT(slotOpenButtonClicked()));
 	}
-	kdDebug() << k_funcinfo << "Notification: new-gmail-arrived" \
+	notify->sendEvent();
+	kDebug() << k_funcinfo << "Notification: new-gmail-arrived" \
 				<< " number of emails:" << n << endl;
 }
 
@@ -525,14 +558,14 @@ void KCheckGmailCore::slotMailArrived(unsigned int n)
 void KCheckGmailCore::slotSettingsChanged()
 {
 	bool loginOk = true;
-	const char *passwd = d->mConfigDialog->password();
+	QString passwd = d->mConfigDialog->password();
 	const QString user = d->mConfigDialog->username();
 	int res;
 
-	kdDebug() << k_funcinfo << passwd << endl;
+	kDebug() << k_funcinfo << passwd;
 	
-	if(strlen(passwd) == 0 ) {
-		kdDebug() << k_funcinfo << "user: " << user << endl;
+	if(passwd.length() == 0 ) {
+		kDebug() << k_funcinfo << "user: " << user;
 		if(user.length() == 0) {
 			res = KMessageBox::warningYesNo(0, i18n("No account information has been entered. Do you want to quit?"));
 
@@ -546,15 +579,15 @@ void KCheckGmailCore::slotSettingsChanged()
 		}
 	} else {
 		
-		kdDebug() << k_funcinfo << " strncmp: " << strncmp(passwd, "\007\007\007", 3) << endl;
+		kDebug() << k_funcinfo << " strncmp: " << (passwd == QString("\007\007\007"));
 
-		if( strncmp(passwd, "\007\007\007", 3) != 0) {
-			kdDebug() << k_funcinfo << "setting wallet" << endl;
+		if(passwd != QString("\007\007\007")) {
+			kDebug() << k_funcinfo << "setting wallet";
 			loginOk = GMailWalletManager::instance()->set(d->mConfigDialog->password());
 			d->mConfigDialog->erasePassword();
 			d->mConfigDialog->insertPassword("\007\007\007");
 		} else {
-			kdDebug() << k_funcinfo << "passwd unchanged: " << passwd << endl;
+			kDebug() << k_funcinfo << "passwd unchanged: " << passwd;
 			// force a params check only if password was not changed as
 			// GMailWalletManager will take care of triggering the check if it was changed
 			d->mJSP->retriever()->checkLoginParams(false);
@@ -562,7 +595,7 @@ void KCheckGmailCore::slotSettingsChanged()
 		
 		if (Prefs::searchFor().length() == 0) {
 			Prefs::setSearchFor("in:inbox is:unread");
-			Prefs::writeConfig();
+			Prefs::self()->writeConfig();
 		}
 		
 		if (Prefs::searchFor().contains("in:") == 0 && Prefs::searchFor().contains("label:") == 0) {
@@ -571,9 +604,9 @@ void KCheckGmailCore::slotSettingsChanged()
 							"<p>A search without an <i>in:</i> and <i>label:</i> will return all unread emails.</p>"
 							"<p>If what you want is to show the new emails in your inbox use <i>in:inbox</i> or leave empty.</p>"
 							"<p>Are you sure you want to proceed without specifying location?</p>"),
-       					QString::null,
-       					KStdGuiItem::yes(),
-					KStdGuiItem::no(),
+       					QString(),
+       					KStandardGuiItem::yes(),
+					KStandardGuiItem::no(),
 					"no_location_check");
 
 			if( res == KMessageBox::No ) {
@@ -587,9 +620,9 @@ void KCheckGmailCore::slotSettingsChanged()
 							".</p>"
 							"<p>It should be set to ensure more unread messages are retrieved.</p>"
 							"<p>Are you sure you want to proceed?</p>"),
-					QString::null,
-					KStdGuiItem::yes(),
-					KStdGuiItem::no(),
+					QString(),
+					KStandardGuiItem::yes(),
+					KStandardGuiItem::no(),
 					"is_unread_check");
 
 			if( res == KMessageBox::No ) {
@@ -610,24 +643,23 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 
 	if (!ok) {
 		if (isExcuseNeeded) {
-			KNotifyClient::event(d->mTray->winId(), "gmail-login-no",
-					i18n("An error occurred logging in to Gmail<br><b>%1</b>")
-						.arg(message));
+			KNotification::event(QLatin1String("gmail-login-no"),
+					i18n("An error occurred logging in to Gmail<br><b>%1</b>",
+						 message));
 
-			kdDebug() << k_funcinfo << "Notification: gmail-login-no" \
+			kDebug() << k_funcinfo << "Notification: gmail-login-no" \
 						<< " error message:" << message << endl;
 		}
 
 		d->mTray->setPixmapAuth();
 		d->mLoginCheckMailAction->setText(i18n("Login and Chec&k Mail"));
-		QToolTip::remove( d->mTray );
-		QToolTip::add(d->mTray, i18n("KCheckGMail"));
+		d->mTray->setToolTip(i18n("KCheckGMail"));
 		
 	} else {
 		d->mTray->setPixmapEmpty();
-		KNotifyClient::event(d->mTray->winId(), "gmail-login-yes", i18n("Now logged in to Gmail!"));
+		KNotification::event(QLatin1String("gmail-login-yes"), i18n("Now logged in to Gmail!"));
 
-		kdDebug() << k_funcinfo << "Notification: gmail-login-yes" << endl;
+		kDebug() << k_funcinfo << "Notification: gmail-login-yes";
 
 		d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 	}
@@ -637,7 +669,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 
 void KCheckGmailCore::slotLoginStart()
 {
-	kdDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 	d->mTray->setPixmapAuth();
 	d->mLoginCheckMailAction->setEnabled(false);
 	d->mTray->startAnim(200);
@@ -652,8 +684,8 @@ void KCheckGmailCore::slotCheckStart()
 
 void KCheckGmailCore::slotSessionChanged()
 {
-	KNotifyClient::event(d->mTray->winId(), "gmail-session-changed", i18n("Another account has been opened, logging out from it!"));
-	kdDebug() << k_funcinfo << "Notification: gmail-session-changed" << endl;
+	KNotification::event(QLatin1String("gmail-session-changed"), i18n("Another account has been opened, logging out from it!"));
+	kDebug() << k_funcinfo << "Notification: gmail-session-changed";
 }
 
 
@@ -666,8 +698,8 @@ void KCheckGmailCore::slotCheckDone()
 void KCheckGmailCore::slotLogingOut()
 {
 	d->mTray->setPixmapEmpty();
-	KNotifyClient::event(d->mTray->winId(), "gmail-login-yes", i18n("Now logged in to Gmail!"));
-	kdDebug() << k_funcinfo << "Notification: gmail-login-yes" << endl;
+	KNotification::event(QLatin1String("gmail-login-yes"), i18n("Now logged in to Gmail!"));
+	kDebug() << k_funcinfo << "Notification: gmail-login-yes";
 
 	d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 
@@ -698,13 +730,13 @@ void KCheckGmailCore::checkMailNow()
 
 void KCheckGmailCore::showIcon()
 {
-	d->mTray->showIcon();
+	d->mTray->show();
 }
 
 
 void KCheckGmailCore::hideIcon()
 {
-	d->mTray->hideIcon();
+	d->mTray->hide();
 }
 
 
@@ -721,8 +753,8 @@ QStringList KCheckGmailCore::getThreads()
 
 	if(threads) {
 
-		QValueList<QString> klist = threads->keys();
-		QValueList<QString>::iterator iter = klist.begin();
+		QList<QString> klist = threads->keys();
+		QList<QString>::iterator iter = klist.begin();
 		
 		while(iter != klist.end()) {
 			const GMailParser::Thread &t =d->mJSP->parser()->getThread(*iter);
@@ -745,7 +777,7 @@ QString KCheckGmailCore::getThreadSubject(QString msgId)
 	GMailParser::Thread t = d->mJSP->parser()->getThread(msgId);
 	
 	if (t.subject.isEmpty()) {
-		return QString::null;
+		return QString();
 	}
 	
 	return t.subject;
@@ -757,7 +789,7 @@ QString KCheckGmailCore::getThreadSender(QString msgId)
 	GMailParser::Thread t = d->mJSP->parser()->getThread(msgId);
 	
 	if (t.senders.isEmpty()) {
-		return QString::null;
+		return QString();
 	}
 	
 	return t.senders;
@@ -769,7 +801,7 @@ QString KCheckGmailCore::getThreadSnippet(QString msgId)
 	GMailParser::Thread t = d->mJSP->parser()->getThread(msgId);
 	
 	if (t.snippet.isEmpty()) {
-		return QString::null;
+		return QString();
 	}
 	
 	return t.snippet;

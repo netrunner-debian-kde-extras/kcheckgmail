@@ -20,13 +20,14 @@
 #ifndef GMAIL_H
 #define GMAIL_H
 
-#include <qobject.h>
-#include <qstring.h>
+#include <QObject>
+#include <QString>
 #include <kurl.h>
 
 #include "gmailwalletmanager.h"
 
 namespace KIO { class Job; }
+class KJob;
 
 class QTimer;
 class QMutex;
@@ -39,7 +40,7 @@ class GMail : public QObject
 {
 	Q_OBJECT
 public:
-	GMail(QObject* parent = 0, const char* name = 0);
+	GMail(QObject* parent = 0);
 	virtual ~GMail();
 
 	void checkLoginParams(bool passwordChanged);
@@ -100,13 +101,18 @@ private:
 	QTimer *mTimer;
 	
 	//Normal GMail
-	QString gGMailLoginURL, gGMailLoginPOSTFormat, gGMailCheckURL, gGMailLogOut;
+	QString gGMailLoginURL, gGMailAuthURL, gGMailLoginPOSTFormat, gGMailCheckURL, gGMailLogOut;
 
 	//GAP4D: Google Applications for Domains
-	QString gGAP4DLoginURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
+	QString gGAP4DLoginURL, gGAP4DAuthURL, gGAP4DLoginPOSTFormat, gGAP4DCheckURL, gGAP4DLogOut;
 
-	KURL loginRedirection;
+	KUrl loginRedirection;
+
+	class Private;
+	Private* d;
 	
+	QString findGALXCookie();
+
 public slots:
 	void slotCheckGmail();
 	void slotGetWalletPassword(const QString&);
@@ -114,16 +120,16 @@ public slots:
 	void slotLogOut();
 
 protected slots:
-	void slotLoginResult(KIO::Job*);
+	void slotLoginResult(KJob*);
 	void slotLoginData(KIO::Job*, const QByteArray&);
-	void slotLoginRedirection(KIO::Job *job, const KURL &url);
+	void slotLoginRedirection(KIO::Job *job, const KUrl &url);
 
-	void slotPostLoginResult(KIO::Job*);
+	void slotPostLoginResult(KJob*);
 	void slotPostLoginData(KIO::Job*, const QByteArray&);
 
 	void slotTimeout();
 
-	void slotCheckResult(KIO::Job*);
+	void slotCheckResult(KJob*);
 	void slotCheckData(KIO::Job*, const QByteArray&);
 	
 private slots:
@@ -131,7 +137,7 @@ private slots:
 
 signals:
 	void loginStart();
-	void loginDone(bool success, bool spawnedFromTimer, const QString &why = QString::null);
+	void loginDone(bool success, bool spawnedFromTimer, const QString &why = QString());
 	void loggedOut();
 
 	void checkStart();

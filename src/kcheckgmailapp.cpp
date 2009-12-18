@@ -21,7 +21,7 @@
 #include "kcheckgmailapp.h"
 #include "kcheckgmailcore.h"
 
-#include <dcopref.h>
+#include <QDBusInterface>
 
 KCheckGmailApp::KCheckGmailApp()
 {
@@ -31,8 +31,10 @@ int KCheckGmailApp::newInstance()
 {
 	static bool secondMe=false;
 	if (secondMe) {
-		DCOPRef execute( "kcheckgmail", "KCheckGmailIface" );
-		DCOPReply reply = execute.call( "whereAmI" );
+		QDBusInterface dbus("org.kcheckgmail.kcheckgmail",
+				    "/kcheckgmail",
+				    "org.kcheckgmail.kcheckgmail");
+		dbus.call("whereAmI");
 	} else {
 		const KCheckGmailCore& kcgmCore = KCheckGmailCore::instance();
 

@@ -21,12 +21,14 @@
 #ifndef KCHECKGMAIL_TRAY_H
 #define KCHECKGMAIL_TRAY_H
 
-#include <ksystemtray.h>
+#include <ksystemtrayicon.h>
 #include <kiconeffect.h>
-#include <qpixmap.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QPixmap>
+#include <QString>
+#include <QStringList>
 #include <qmap.h>
+//Added by qt3to4:
+#include <QMouseEvent>
 
 
 
@@ -41,22 +43,20 @@ class LoginSettingsWidget;
 class QTimer;
 class KAction;
 
-class KCheckGmailTray : public KSystemTray
+class KCheckGmailTray : public KSystemTrayIcon
 {
 	Q_OBJECT
 public:
-	KCheckGmailTray(QWidget *parent = 0, const char *name = 0);
+	KCheckGmailTray(QWidget *parent = 0);
 	virtual ~KCheckGmailTray();
 
-	void takeScreenshotOfTrayIcon();
+	QString takeScreenshotOfTrayIcon();
 
 	void setPixmapAuth();
 	void setPixmapEmpty();
     void stopAnim();
     void startAnim(unsigned int t);
 	void toggleAnim(bool restoreToState);
-	void showIcon();
-	void hideIcon();
 	void whereAmI();
 
 signals:
@@ -77,6 +77,9 @@ public slots:
 	void slotToggleLoginAnim();
 
 	void changeCountColor(QColor color);
+
+private slots:
+	void slotActivated(QSystemTrayIcon::ActivationReason reason);
 
 private:
 	void updateCountImage(QColor color);

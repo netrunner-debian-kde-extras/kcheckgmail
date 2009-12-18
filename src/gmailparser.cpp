@@ -26,7 +26,9 @@
 #include "prefs.h"
 
 #include <kdebug.h>
-#include <qregexp.h>
+#include <QRegExp>
+//Added by qt3to4:
+#include <QList>
 #include <klocale.h>
 #include <kcharsets.h>
 
@@ -36,8 +38,8 @@
  * This class parses the resulting data of a call to
  * Gmail's JavaScript interface.
 */
-GMailParser::GMailParser(QObject* parent, const char* name) :
-		QObject(parent, name),
+GMailParser::GMailParser(QObject* parent) :
+		QObject(parent),
 		mInvites(0)
 {
 	mSummary.inbox = 0;
@@ -122,7 +124,7 @@ GMailParser::~GMailParser()
  *
  * @param _data Gmail's JavaScript response
 */
-void GMailParser::parse(const QString &_data)
+void GMailParser::parse(const QString &data)
 {
 	static QRegExp rx("D\\(\\[(.*)\\][\\s\\n]*\\);");
 	int pos = 0;
@@ -130,7 +132,7 @@ void GMailParser::parse(const QString &_data)
 	rx.setMinimal(true);
 
 	if(!rx.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX!\n"
+		kWarning() << k_funcinfo << "Invalid RX!\n"
 			<< rx.errorString() << endl;
 	} 
 
@@ -140,28 +142,27 @@ void GMailParser::parse(const QString &_data)
 	freeThreadList();
 	
 	if(oldMap) {
-		kdDebug() << k_funcinfo << "oldmap.size=" << oldMap->size() << endl;
+		kDebug() << k_funcinfo << "oldmap.size=" << oldMap->size();
 		if (oldMap->begin().key() > previousLatestThread) {
 			previousLatestThread = oldMap->begin().key();
 		}
 	} else {
-		kdDebug() << k_funcinfo << "no oldmap" << endl;
+		kDebug() << k_funcinfo << "no oldmap";
 	}
 	
-	kdDebug() << k_funcinfo << "previousLatestThread=" << previousLatestThread << endl;
+	kDebug() << k_funcinfo << "previousLatestThread=" << previousLatestThread;
 
-	QString data = QString::fromUtf8(_data);
 
 	/*
 	 * mailsArrived refers to new messages in the parsed threads
 	 */
 	unsigned int arrivedMails = 0;
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		QString str = rx.cap(1);
 		QRegExp rxType("^\"([a-z]+)\",");
 
 		int tokPos = -1;
-		if((tokPos = rxType.search(str)) >= 0) {
+		if((tokPos = rxType.indexIn(str)) >= 0) {
 			QString tok = rxType.cap(1);
 			int tokLen = rxType.matchedLength();
 
@@ -262,12 +263,12 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	rx2.setMinimal(true);
 
 	if(!rx.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX!\n"
+		kWarning() << k_funcinfo << "Invalid RX!\n"
 				<< rx.errorString() << endl;
 	}
 
 	if(!rx2.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX2!\n"
+		kWarning() << k_funcinfo << "Invalid RX2!\n"
 				<< rx2.errorString() << endl;
 	}
 	
@@ -278,7 +279,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 
 	unsigned int newMsgCount = 0;
 
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		Thread *t = new Thread;
 		t->id = mCurMsgId ++;
 		t->replyId = rx.cap(1);
@@ -290,7 +291,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->subject = cleanUpData(rx.cap(7));
 		t->snippet = cleanUpData(rx.cap(8));
 		t->labels = rx.cap(9);
-		t->attachments = QStringList::split(",", rx.cap(10));
+		t->attachments = rx.cap(10).split(",", QString::SkipEmptyParts);
 		t->msgId = rx.cap(11);
 		t->unknown2 = rx.cap(12).toUInt();
 		t->date_long = rx.cap(13);
@@ -299,12 +300,12 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 
 		if(t->isNew && (t->msgId > previousLatestThread || t->replyId > previousLatestThread) && (!oldMap || 
 				 (oldMap->find(t->msgId) == oldMap->end()))) {
-			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
+			kDebug() << "Message [" << t->msgId << "] is new.";
 			t->isNew = true;
 			newMsgCount ++;
 		} else {
 			t->isNew = false;
-			kdDebug() << "Message [" << t->msgId << "] is NOT new." << endl;
+			kDebug() << "Message [" << t->msgId << "] is NOT new.";
 		}
 
 		// (re-)insert
@@ -315,7 +316,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 
 	pos = 0;
 	
-	while((pos = rx2.search(data, pos)) != -1) {
+	while((pos = rx2.indexIn(data, pos)) != -1) {
 		Thread *t = new Thread;
 		t->id = mCurMsgId ++;
 		t->replyId = rx2.cap(1);
@@ -327,7 +328,7 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		t->subject = cleanUpData(rx2.cap(7));
 		t->snippet = cleanUpData(rx2.cap(8));
 		t->labels = rx2.cap(9);
-		t->attachments = QStringList::split(",", rx.cap(10));
+		t->attachments = rx.cap(10).split(",", QString::SkipEmptyParts);
 		t->msgId = rx2.cap(11);
 		t->unknown2 = rx2.cap(12).toUInt();
 		t->date_long = rx2.cap(13);
@@ -336,11 +337,11 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 
 		if(t->isNew && (t->msgId > previousLatestThread || t->replyId > previousLatestThread) && (!oldMap || 
 				 (oldMap->find(t->msgId) == oldMap->end()))) {
-			kdDebug() << "Message [" << t->msgId << "] is new." << endl;
+			kDebug() << "Message [" << t->msgId << "] is new.";
 			t->isNew = true;
 			newMsgCount ++;
 		} else {
-			kdDebug() << "Message [" << t->msgId << "] is NOT new." << endl;
+			kDebug() << "Message [" << t->msgId << "] is NOT new.";
 			t->isNew = false;
 		}
 
@@ -350,9 +351,9 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		pos += rx2.matchedLength();
 	}
 
-	kdDebug() << k_funcinfo << "Finished searching for threads in: " << endl;
-	kdDebug() << data << endl;
-	kdDebug() << k_funcinfo << "newMsgCount: " << newMsgCount << endl;
+	kDebug() << k_funcinfo << "Finished searching for threads in: ";
+	kDebug() << data;
+	kDebug() << k_funcinfo << "newMsgCount: " << newMsgCount;
 
 	return newMsgCount;
 }
@@ -369,15 +370,15 @@ void GMailParser::parseVersion(const QString &_data)
 	QString data = _data;
 	data.remove('"');
 	
-	kdDebug() << k_funcinfo << "Version string: " << data << endl;
+	kDebug() << k_funcinfo << "Version string: " << data;
 	
-	QStringList list = QStringList::split(",",data);
+	QStringList list = data.split(",", QString::SkipEmptyParts);
 	if(list.size() != 5)
-		kdWarning() << k_funcinfo << "Wrong number of elements: "
+		kWarning() << k_funcinfo << "Wrong number of elements: "
 				<< list.size() << ", should be: 5." << endl;
 	
 	QStringList::Iterator iter = list.begin();
-	unsigned int i = 0;
+	int i = 0;
 	while(iter != list.end()) {
 		QString str = *iter;
 		switch(i) {
@@ -397,13 +398,13 @@ void GMailParser::parseVersion(const QString &_data)
 				mVersion.version = str;
 				break;
 			default:
-				kdWarning() << k_funcinfo << "Unknown version token: " << str << "(" << i <<")" << endl;
+				kWarning() << k_funcinfo << "Unknown version token: " << str << "(" << i <<")";
 				break;
 		}
 		iter++;
 		i++;
 	}
-	kdDebug() << "Gmail version " << mVersion.version << endl;
+	kDebug() << "Gmail version " << mVersion.version;
 	
 	bool ok = false;
 	
@@ -414,13 +415,13 @@ void GMailParser::parseVersion(const QString &_data)
 	
 #ifdef DETECT_GLANGUAGE
 	if(gGMailLanguageCode.contains(mVersion.language))
-		kdDebug() << "Gmail language: " << gGMailLanguageCode[mVersion.language] << endl;
+		kDebug() << "Gmail language: " << gGMailLanguageCode[mVersion.language];
 	else
-		kdWarning() << k_funcinfo << "Unknown language code: " << mVersion.language << endl;
+		kWarning() << k_funcinfo << "Unknown language code: " << mVersion.language;
 #endif
 	
 	if(!ok) {
-		kdWarning() << k_funcinfo << "Gmail version " << mVersion.version << " is not supported, check for updates!" << endl;
+		kWarning() << k_funcinfo << "Gmail version " << mVersion.version << " is not supported, check for updates!";
 		emit versionMismatch();
 	}
 }
@@ -435,7 +436,7 @@ void GMailParser::parseVersion(const QString &_data)
 */
 void GMailParser::parseQuota(const QString &data)
 {	
-	QStringList list = QStringList::split(",",data);
+	QStringList list = data.split(",", QString::SkipEmptyParts);
 	if(list.size() == 4 || list.size() == 9) {
 		QStringList::Iterator iter = list.begin();
 		unsigned int i = 0;
@@ -462,7 +463,7 @@ void GMailParser::parseQuota(const QString &data)
 			i++;
 		}
 	} else
-		kdWarning() << k_funcinfo << "Wrong number of elements in qu: "
+		kWarning() << k_funcinfo << "Wrong number of elements in qu: "
 			<< list.size() << ", should be 4 or 9." << endl;
 }
 
@@ -478,13 +479,13 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 	static QRegExp rx("\"([a-z]+)\",([0-9]+)");
 
 	if(!rx.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX!\n"
+		kWarning() << k_funcinfo << "Invalid RX!\n"
 			<< rx.errorString() << endl;
 	}
 	QString data = _data;
 	int pos = 0;
 
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		QString str_name = rx.cap(1), str_val = rx.cap(2);
 		int val = str_val.toUInt();
 
@@ -494,11 +495,11 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 			mSummary.drafts = val;
 		else if( QString::compare(str_name,"spam") == 0)
 			mSummary.spam = val;
-		else kdWarning() << k_funcinfo << "unkown identifier " << str_name << endl;
+		else kWarning() << k_funcinfo << "unkown identifier " << str_name;
 
 		pos += rx.matchedLength();
 	}
-	kdDebug() << k_funcinfo << endl  
+	kDebug() << k_funcinfo << endl  
 		<< "inbox=" << mSummary.inbox << "\n"
 		<< "drafts=" << mSummary.drafts << "\n"
 		<< "spam=" << mSummary.spam << "\n" << endl;
@@ -520,7 +521,7 @@ void GMailParser::parseLabel(const QString &data)
 		);
 
 	if(!rx.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX!\n"
+		kWarning() << k_funcinfo << "Invalid RX!\n"
 			<< rx.errorString() << endl;
 	}
 	int pos = 0;
@@ -528,16 +529,16 @@ void GMailParser::parseLabel(const QString &data)
 	mLabels.clear();
 	eLabels.clear();
 	
-	kdDebug() << k_funcinfo << endl;
+	kDebug() << k_funcinfo;
 
-	while((pos = rx.search(data, pos)) != -1) {
+	while((pos = rx.indexIn(data, pos)) != -1) {
 		mLabels.insert(rx.cap(1), rx.cap(2).toUInt());
 		
 		QString k = rx.cap(1);
 		k.replace(" ", "-");
 		eLabels.insert(k, rx.cap(1));
 		
-		kdDebug() << rx.cap(1) << " has " << rx.cap(2) << " unread messages" << endl;
+		kDebug() << rx.cap(1) << " has " << rx.cap(2) << " unread messages";
 		pos += rx.matchedLength();
 	}
 }
@@ -556,7 +557,7 @@ void GMailParser::parseInvite(const QString &data)
 	if(!ok) {
 		mInvites = 0;
 	}
-	kdDebug() << k_funcinfo << "Invites=" << mInvites << endl;
+	kDebug() << k_funcinfo << "Invites=" << mInvites;
 }
 
 /**
@@ -574,7 +575,7 @@ void GMailParser::parseGName(const QString &data)
 	
 	if(newName != gName) {
 		gName = newName;
-		kdDebug() << "Gaia name: " << gName << endl;
+		kDebug() << "Gaia name: " << gName;
 		emit gNameUpdate(gName);
 	}
 }
@@ -595,8 +596,8 @@ QMap<QString, bool> *GMailParser::getThreadList() const
 	if(!mThreads.isEmpty()) {
 		ret = new QMap<QString, bool>();
 
-		QValueList<QString> klist = mThreads.keys();
-		QValueList<QString>::iterator iter = klist.begin();
+		QList<QString> klist = mThreads.keys();
+		QList<QString>::iterator iter = klist.begin();
 
 		while(iter != klist.end()) {
 			Thread *t = mThreads[*iter];
@@ -703,7 +704,7 @@ unsigned int GMailParser::unread(CountMode mode, QString box) const
 			if (mLabels.contains(box))
 				return mLabels[box];
 		}
-		kdWarning() << k_funcinfo << "The box " << box << " doesn't exist! returning value as if mode=ParsedOnlyCount" << endl;
+		kWarning() << k_funcinfo << "The box " << box << " doesn't exist! returning value as if mode=ParsedOnlyCount";
 	}
 	
 	QMap<QString, bool> *lst = getThreadList();
@@ -738,28 +739,28 @@ unsigned int GMailParser::unread(CountMode mode) const
 	
 	int pos;
 	if (mode == TotalCount) {
-		if (rx.search(Prefs::searchFor()) == -1 && rx2.search(Prefs::searchFor()) == -1) {
+		if (rx.indexIn(Prefs::searchFor()) == -1 && rx2.indexIn(Prefs::searchFor()) == -1) {
 			// If none are specified gmail will return any unread mail (except spam and drafts)
 			// TODO: to fix this we need to count all messages (!drafts,!spam, inbox + labels)
 			mode = ParsedOnlyCount;
 			//box = "inbox";
-		} else if (rx.search(Prefs::searchFor()) != -1 && rx2.search(Prefs::searchFor()) != -1) {
+		} else if (rx.indexIn(Prefs::searchFor()) != -1 && rx2.indexIn(Prefs::searchFor()) != -1) {
 			//there's no other way to know how many emails are in:inbox and in specified label:LABEL
 			mode = ParsedOnlyCount;
-		} else if ((pos = rx.search(Prefs::searchFor())) != -1) {
+		} else if ((pos = rx.indexIn(Prefs::searchFor())) != -1) {
 			box = rx.cap(1);
 
 			pos += rx.matchedLength();
 			// make sure there is only one in: in the search string
-			if (rx.search(Prefs::searchFor(), pos) != -1) {
+			if (rx.indexIn(Prefs::searchFor(), pos) != -1) {
 				mode = ParsedOnlyCount;
 			}
-		} else if ((pos = rx2.search(Prefs::searchFor())) != -1) {
+		} else if ((pos = rx2.indexIn(Prefs::searchFor())) != -1) {
 			box = rx2.cap(1);
 
 			pos += rx2.matchedLength();
 			// make sure there is only one label: in the search string
-			if (rx2.search(Prefs::searchFor(), pos) != -1) {
+			if (rx2.indexIn(Prefs::searchFor(), pos) != -1) {
 				mode = ParsedOnlyCount;
 			} else if (eLabels.contains(box)) {
 				box = eLabels[box];
@@ -779,8 +780,8 @@ void GMailParser::freeThreadList()
 {
 	if(!mThreads.isEmpty()) {
 
-		QValueList<QString> klist = mThreads.keys();
-		QValueList<QString>::iterator iter = klist.begin();
+		QList<QString> klist = mThreads.keys();
+		QList<QString>::iterator iter = klist.begin();
 
 		while(iter != klist.end()) {
 			Thread *t = mThreads[*iter];
@@ -806,7 +807,7 @@ QString GMailParser::stripTags(QString data)
 	static QRegExp tags("<[^>]+>|</[^>]+>|<[^>]+/>");
 	
 	if(!tags.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX!\n"
+		kWarning() << k_funcinfo << "Invalid RX!\n"
 				<< tags.errorString() << endl;
 	}
 	
@@ -830,11 +831,11 @@ QString GMailParser::convertEntities(QString data)
 	static QRegExp format("\\\\((u)([0-9a-zA-Z]{4})|(x)([0-9a-zA-Z]{2}))");
 	
 	if(!format.isValid()) {
-		kdWarning() << k_funcinfo << "Invalid RX!\n"
+		kWarning() << k_funcinfo << "Invalid RX!\n"
 				<< format.errorString() << endl;
 	}
 	
-	while(format.search(data) != -1) {
+	while(format.indexIn(data) != -1) {
 		id = format.cap(2);
 		found = format.cap(3);
 		if (found.length() == 0) {

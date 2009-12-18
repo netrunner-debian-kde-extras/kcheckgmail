@@ -20,11 +20,11 @@
 #ifndef GMAIL_PARSER_H
 #define GMAIL_PARSER_H
 
-#include <qobject.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QObject>
+#include <QString>
+#include <QStringList>
 #include <qmap.h>
-#include <qvaluevector.h>
+#include <QVector>
 //#include <vector>
 
 /**
@@ -104,7 +104,7 @@ public:
 		ParsedOnlyCount
 	};
 		
-	GMailParser(QObject* parent = 0, const char* name = 0);
+	GMailParser(QObject* parent = 0);
 	virtual ~GMailParser();
 
 	void parse(const QString &data);
@@ -156,7 +156,7 @@ private:
 	QMap<QString, unsigned int> mLabels; //<name, count>
 	QMap<QString, QString> eLabels; // <escaped name, name>
 	QMap<QString, Thread*> mThreads;
-	QValueVector<QString> gGMailVersion;
+	QVector<QString> gGMailVersion;
 #ifdef DETECT_GLANGUAGE
 	QMap<QString, QString> gGMailLanguageCode;
 #endif

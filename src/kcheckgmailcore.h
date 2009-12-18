@@ -20,8 +20,7 @@
 #ifndef KCHECKGMAIL_CORE_H
 #define KCHECKGMAIL_CORE_H
 
-#include <qobject.h>
-#include "kcheckgmailiface.h"
+#include <QObject>
 
 #include <kdebug.h>
 
@@ -33,8 +32,9 @@ namespace KCheckGmail {
 	class JSProtocol;
 };
 
-class KPopupMenu;
+class KMenu;
 class KActionCollection;
+class QColor;
 using KCheckGmail::JSProtocol;
 
 
@@ -45,9 +45,14 @@ using KCheckGmail::JSProtocol;
  * KCheckGmailTray
  *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>
  *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>
+ *
+ * KCheckGmailIface
+ *   Copyright (C) 2005 by James Stembridge <jstembridge@gmail.com>
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>
  */
-class KCheckGmailCore : public QObject, virtual public KCheckGmailIface {
+class KCheckGmailCore : public QObject {
 	Q_OBJECT
+        Q_CLASSINFO("D-Bus Interface", "org.kcheckgmail.kcheckgmail")
 
 public:
 	static KCheckGmailCore& instance();
@@ -60,7 +65,7 @@ private slots:
 	void slotShowKNotifyDialog();
 	void slotShowPrefsDialog();
 
-	void slotLaunchBrowser(const QString &url = QString::null);
+	void slotLaunchBrowser(const QString &url = QString());
 	void slotComposeMail();
 
 	void slotLeftButtonClicked();
@@ -80,8 +85,10 @@ private slots:
 	void slotLogingOut();
 	void slotOpenButtonClicked();
 
+	void slotStart();
+
 private:
-	KCheckGmailCore(QObject* parent = 0, const char* name = 0);
+	KCheckGmailCore(QObject* parent = 0);
 	virtual ~KCheckGmailCore();
 	KCheckGmailCore(KCheckGmailCore&);
 	KCheckGmailCore& operator=(const KCheckGmailCore&);
@@ -91,26 +98,26 @@ private:
 	void buildTrayPopupMenu();
 	void initConfigDialog();
 	void makeConnections(JSProtocol* mJSP, KCheckGmailTray* mTray);
-	void start();
 
 	QString getUrlBase();
 
 	QString newEmailNotifyMessage(unsigned int n, bool showSender, bool showSubject, bool showSnippet);
 
-	// dcop call implementations
-	int mailCount() const;
-	void checkMailNow();
-	void showIcon();
-	void hideIcon();
-	void whereAmI();
-	QStringList getThreads();
-	QString getThreadSubject(QString msgId);
-	QString getThreadSender(QString msgId);
-	QString getThreadSnippet(QString msgId);
-	QStringList getThreadAttachments(QString msgId);
-	bool isNewThread(QString msgId);
-	QMap<QString, unsigned int> getLabels();
-	QString getGaiaName();
+public Q_SLOTS:
+	// D-Bus callable implementations
+	Q_SCRIPTABLE int mailCount() const;
+	Q_SCRIPTABLE void checkMailNow();
+	Q_SCRIPTABLE void showIcon();
+	Q_SCRIPTABLE void hideIcon();
+	Q_SCRIPTABLE void whereAmI();
+	Q_SCRIPTABLE QStringList getThreads();
+	Q_SCRIPTABLE QString getThreadSubject(QString msgId);
+	Q_SCRIPTABLE QString getThreadSender(QString msgId);
+	Q_SCRIPTABLE QString getThreadSnippet(QString msgId);
+	Q_SCRIPTABLE QStringList getThreadAttachments(QString msgId);
+	Q_SCRIPTABLE bool isNewThread(QString msgId);
+	Q_SCRIPTABLE QMap<QString, unsigned int> getLabels();
+	Q_SCRIPTABLE QString getGaiaName();
 
 private:
 	class Private;

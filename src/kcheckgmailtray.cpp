@@ -25,13 +25,23 @@
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <knotifyclient.h>
+#include <knotification.h>
+#include <kcolorscheme.h>
 #include <kiconeffect.h>
+#include <kglobalsettings.h>
+#include <KTemporaryFile>
 
-#include <qpainter.h>
-#include <qtimer.h>
-#include <qtooltip.h>
-#include <qbitmap.h>
+
+#include <QPainter>
+#include <QTimer>
+#include <QToolTip>
+#include <QBitmap>
+//#include <Q3MimeSourceFactory>
+#include <QDesktopWidget>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QMouseEvent>
+#include <QX11Info>
 
 #include "kcheckgmailtray.h"
 #include "prefs.h"
@@ -39,41 +49,37 @@
 
 
 
-KCheckGmailTray::KCheckGmailTray(QWidget *parent, const char *name)
-	: KSystemTray(parent, name),
+KCheckGmailTray::KCheckGmailTray(QWidget *parent)
+	: KSystemTrayIcon(parent),
 	mMailCount(0)
 {
-	mPixGmail = KSystemTray::loadIcon("kcheckgmail");
+	mPixGmail = KSystemTrayIcon::loadIcon("kcheckgmail").pixmap(KIconLoader::SizeSmallMedium);
 	mLightIconImage = mIconEffect.apply(mPixGmail,
 						KIconEffect::ToGamma,
 						0.90,
 						Qt::red,
-						false);
-	setPixmap(mPixGmail);
+						false).toImage();
+	setIcon(mPixGmail);
 
-	mLoginAnim = new QTimer(this, "KCheckGmail::login");
+	mLoginAnim = new QTimer(this);
 	connect(mLoginAnim, SIGNAL(timeout()), 
 		this, SLOT(slotToggleLoginAnim()));
 
-	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-
-	QToolTip::add(this, i18n("KCheckGMail"));
+	setToolTip(i18n("KCheckGMail"));
+	
+	connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+		this, SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
 }
 
 
 KCheckGmailTray::~KCheckGmailTray()
 {
-    QToolTip::remove(this);
 }
 
-
-void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
+void KCheckGmailTray::slotActivated(QSystemTrayIcon::ActivationReason reason)
 {
-	if(ev->button() == QMouseEvent::LeftButton) {
+	if (reason == QSystemTrayIcon::Trigger)
 		emit leftButtonClicked();
-	} else
-		KSystemTray::mousePressEvent(ev);
-
 }
 
 
@@ -84,23 +90,13 @@ void KCheckGmailTray::mousePressEvent(QMouseEvent *ev)
 
 void KCheckGmailTray::slotNoUnreadMail()
 {
-	KNotifyClient::event(winId(), "no-unread-gmail", i18n("There are no unread messages"));
+	KNotification::event(QLatin1String("no-unread-gmail"), i18n("There are no unread messages"));
 }
 
 void KCheckGmailTray::slotMailCountChanged(int n)
 {
 	mMailCount = n;
 	updateCountImage(Prefs::trayIconUnreadMessagesColor());
-}
-
-void KCheckGmailTray::showIcon()
-{
-	show();
-}
-
-void KCheckGmailTray::hideIcon()
-{
-	hide();
 }
 
 
@@ -126,143 +122,146 @@ void KCheckGmailTray::slotVersionMismatch()
  */
 void KCheckGmailTray::updateCountImage(QColor color)
 {
-	kdDebug() << k_funcinfo << "Count=" << mMailCount << endl;
+	kDebug() << k_funcinfo << "Count=" << mMailCount;
 
 	if(mMailCount == 0)
 		setPixmapEmpty();
 	else {
-		// based on code from kmail
-		int w = mPixGmail.width();
-		int h = mPixGmail.height();
+		// adapted from KMSystemTray::updateCount()
 
-		QString countString = QString::number(mMailCount);
+		int oldPixmapWidth = mPixGmail.size().width();
+
+		QString countString = QString::number( mMailCount );
 		QFont countFont = KGlobalSettings::generalFont();
 		countFont.setBold(true);
 
 		// decrease the size of the font for the number of unread messages if the
 		// number doesn't fit into the available space
-		float countFontSize = countFont.pointSizeFloat();
-		QFontMetrics qfm(countFont);
-		int width = qfm.width(countString);
-
-		if(width > w) {
-			countFontSize *= float(w) / float(width);
-			countFont.setPointSizeFloat( countFontSize );
+		float countFontSize = countFont.pointSizeF();
+		QFontMetrics qfm( countFont );
+		int width = qfm.width( countString );
+		if( width > (oldPixmapWidth - 2) )
+		{
+		  countFontSize *= float( oldPixmapWidth - 2 ) / float( width );
+		  countFont.setPointSizeF( countFontSize );
 		}
 
-		QPixmap numberPixmap(w, h);
-		numberPixmap.fill(Qt::lightGray);
-		QPainter p(&numberPixmap);
-		p.setFont(countFont);
-		p.setPen(color);
-		p.drawText(numberPixmap.rect(), Qt::AlignCenter, countString);
-		numberPixmap.setMask(numberPixmap.createHeuristicMask());
-		QImage numberImage = numberPixmap.convertToImage();
-
-		// do the overlay
+		// Overlay the light KCheckGmail image with the number image
 		QImage iconWithNumberImage = mLightIconImage.copy();
-		KIconEffect::overlay(iconWithNumberImage, numberImage);
+		QPainter p( &iconWithNumberImage );
+		p.setFont( countFont );
+		KColorScheme scheme( QPalette::Active, KColorScheme::View );
 
-		// convert from QImage to QPixmap
-		QPixmap iconWithNumber;
-		iconWithNumber.convertFromImage(iconWithNumberImage);
-		setPixmap(iconWithNumber);
+		qfm = QFontMetrics( countFont );
+		QRect boundingRect = qfm.tightBoundingRect( countString );
+		boundingRect.adjust( 0, 0, 0, 2 );
+		boundingRect.setHeight( qMin( boundingRect.height(), oldPixmapWidth ) );
+		boundingRect.moveTo( (oldPixmapWidth - boundingRect.width()) / 2,
+				    ((oldPixmapWidth - boundingRect.height()) / 2) - 1 );
+		p.setOpacity( 0.7 );
+		p.setBrush( scheme.background( KColorScheme::LinkBackground ) );
+		p.setPen( scheme.background( KColorScheme::LinkBackground ).color() );
+		p.drawRoundedRect( boundingRect, 2.0, 2.0 );
+
+		p.setBrush( Qt::NoBrush );
+//		p.setPen( scheme.foreground( KColorScheme::LinkText ).color() );
+		p.setPen(color);
+		p.setOpacity( 1.0 );
+		p.drawText( iconWithNumberImage.rect(), Qt::AlignCenter, countString );
+
+		setIcon( QPixmap::fromImage( iconWithNumberImage ) );
 	}
 }
 
 //from rsibreak: rsiwidget.cpp
 void KCheckGmailTray::whereAmI()
 {
-	if (!isShown())
-		showIcon();
-	
-	takeScreenshotOfTrayIcon();
-	
+	show();
+
+	QString systray_shot = takeScreenshotOfTrayIcon();
+	const QString imgTag = QString::fromLatin1("<img src=\"%1\"/>").arg(systray_shot);
 	KMessageBox::information(0,
-				 i18n("<p>KCheckGMail is already running</p><p>You can find it here:</p><p><center><img source=\"systray_shot\"></center></p>"),
+				 i18n("<p>KCheckGMail is already running</p><p>You can find it here:</p><p><p><center>%1</center></p></p>", imgTag),
 				 i18n("Already Running"));
 }
 
-//from rsibreak: rsiwidget.cpp
-void KCheckGmailTray::takeScreenshotOfTrayIcon()
+QString KCheckGmailTray::takeScreenshotOfTrayIcon()
 {
         // Process the events else the icon will not be there and the screenie will fail!
 	kapp->processEvents();
 
-        // ********************************************************************************
-        // This block is copied from Konversation - KonversationMainWindow::queryClose()
-        // The part about the border is copied from  KSystemTray::displayCloseMessage()
-	//
-        // Compute size and position of the pixmap to be grabbed:
-	QPoint g = this-> pos();
-
-        //Catch invalid positions (2007 - Raphael Geissert)
-        if (g.x() < 0) {
-            g.setX(0);
-        }
-        if (g.y() < 0) {
-            g.setY(0);
-        }
-        g = this->mapToGlobal( g );
-
+	// Taken from Akregator TrayIcon::takeScreenshot()
+	const QRect rect = geometry();
+	const QPoint g = rect.topLeft();
 	int desktopWidth  = kapp->desktop()->width();
 	int desktopHeight = kapp->desktop()->height();
-	int tw = this->width();
-	int th = this->height();
+	int tw = rect.width();
+	int th = rect.height();
 	int w = desktopWidth / 4;
 	int h = desktopHeight / 9;
-	
-	int x = g.x() + tw/2 - w/2;               // Center the rectange in the systray icon
+	int x = g.x() + tw/2 - w/2; // Center the rectange in the systray icon
 	int y = g.y() + th/2 - h/2;
-	if ( x < 0 )                 x = 0;       // Move the rectangle to stay in the desktop limits
-	if ( y < 0 )                 y = 0;
-	if ( x + w > desktopWidth )  x = desktopWidth - w;
-	if ( y + h > desktopHeight ) y = desktopHeight - h;
+	if (x < 0)
+		x = 0; // Move the rectangle to stay in the desktop limits
+	if (y < 0)
+		y = 0;
+	if (x + w > desktopWidth)
+		x = desktopWidth - w;
+	if (y + h > desktopHeight)
+		y = desktopHeight - h;
 
-        // Grab the desktop and draw a circle around the icon:
-	QPixmap shot = QPixmap::grabWindow( qt_xrootwin(),  x,  y,  w,  h );
-	QPainter painter( &shot );
+	// Grab the desktop and draw a circle around the icon:
+	QPixmap shot = QPixmap::grabWindow(QApplication::desktop()->winId(), x, y, w, h);
+	QPainter painter(&shot);
+	painter.setRenderHint( QPainter::Antialiasing );
 	const int MARGINS = 6;
 	const int WIDTH   = 3;
 	int ax = g.x() - x - MARGINS -1;
 	int ay = g.y() - y - MARGINS -1;
-	painter.setPen(  QPen( Qt::red,  WIDTH ) );
-	painter.drawArc( ax,  ay,  tw + 2*MARGINS,  th + 2*MARGINS,  0,  16*360 );
+	painter.setPen( QPen(Qt::red/*KApplication::palette().active().highlight()*/, WIDTH) );
+	painter.drawArc(ax, ay, tw + 2*MARGINS, th + 2*MARGINS, 0, 16*360);
 	painter.end();
 
-        // Then, we add a border around the image to make it more visible:
-	QPixmap finalShot(w + 2, h + 2);
-	finalShot.fill(KApplication::palette().active().foreground());
+	// Paint the border
+	const int BORDER = 1;
+	QPixmap finalShot(w + 2*BORDER, h + 2*BORDER);
+	finalShot.fill( KApplication::palette().color( QPalette::Foreground ));
 	painter.begin(&finalShot);
-	painter.drawPixmap(1, 1, shot);
+	painter.drawPixmap(BORDER, BORDER, shot);
 	painter.end();
+//	return shot; // not finalShot?? -fo
 
-        // Associate source to image and show the dialog:
-	QMimeSourceFactory::defaultFactory()->setPixmap( "systray_shot", finalShot );
+	// End of Taken from Akregator
 
-        // End copied block
-        // ********************************************************************************
+	QString filename;
+	KTemporaryFile* tmpfile = new KTemporaryFile;
+	tmpfile->setAutoRemove(false);
+	if (tmpfile->open()) {
+		filename = tmpfile->fileName();
+		shot.save(tmpfile, "png");
+		tmpfile->close();
+	}
+	return filename;
 }
 
 
 void KCheckGmailTray::slotgNameUpdate(QString name)
 {
 	static QString sname;
-	kdDebug() << k_funcinfo << "Updating tooltip" << endl;
+	kDebug() << k_funcinfo << "Updating tooltip";
 	
 	//Trick to restore the tooltip
-	if(name == QString::null)
+	if(name == QString())
 		name = sname;
 	else
 		sname = name;
 	
-	QToolTip::remove( this );
-	QToolTip::add(this, i18n("KCheckGMail - Notifying about new email for %1").arg(name));
+	setToolTip(i18n("KCheckGMail - Notifying about new email for %1", name));
 }
 
 void KCheckGmailTray::setPixmapAuth()
 {
-	setPixmap(mIconEffect.apply(mPixGmail, 
+	setIcon(mIconEffect.apply(mPixGmail,
 		  KIconEffect::Colorize,
 		  0.60,
 		  Qt::lightGray,
@@ -271,7 +270,7 @@ void KCheckGmailTray::setPixmapAuth()
 
 void KCheckGmailTray::setPixmapEmpty()
 {
-	setPixmap(mPixGmail);
+	setIcon(mPixGmail);
 }
 
 void KCheckGmailTray::toggleAnim(bool restoreToState)

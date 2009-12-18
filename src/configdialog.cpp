@@ -19,40 +19,42 @@
 #include "configdialog.h"
 #include "prefs.h"
 
-#include "appletsettingswidget.h"
-#include "loginsettingswidget.h"
-#include "netsettingswidget.h"
-#include "appearancesettingswidget.h"
-#include "advancedsettingswidget.h"
-
-#include <kpassdlg.h>
+#include <kpassworddialog.h>
 #include <klocale.h>
 
 namespace KCheckGmail {
 
-ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* config, DialogType dialogType, int dialogButtons)
- : KConfigDialog(parent, name, config, dialogType, dialogButtons)
+ConfigDialog::ConfigDialog(QWidget* parent, const char* name,  KConfigSkeleton* config)
+ : KConfigDialog(parent, name, config)
 {
 
 	// Copied from KCheckGmailTray::initConfigDialog();
 
-	mLoginSettings = new LoginSettingsWidget(this, "LoginSettings");
-	addPage(mLoginSettings, i18n("Login"), "kcheckgmail", i18n("Login Settings"));
+	setFaceType(KPageDialog::List);
+	setButtons(Ok | Cancel);
 
-	NetworkSettingsWidget *nwid = new NetworkSettingsWidget(this, "NetworkSettings");
-	addPage(nwid, i18n("Network"), "www", i18n("Network Settings"));
+	QWidget* lwid = new QWidget();
+	mLoginSettings.setupUi(lwid);
+	addPage(lwid, i18n("Login"), "user-properties", i18n("Login Settings"), true);
 
-	AppletSettingsWidget *awid = new AppletSettingsWidget(this, "AppletSettings");
-	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior Settings"));
+	QWidget* nwid = new QWidget();
+	mNetworkSettings.setupUi(nwid);
+	addPage(nwid, i18n("Network"), "preferences-system-network", i18n("Network Settings"), true);
 
-	AppearanceSettingsWidget *apw = new AppearanceSettingsWidget(this, "AppearanceSettings");
-	addPage(apw, i18n("Appearance"), "fonts", i18n("Appearance Settings"));
+	QWidget* awid = new QWidget();
+	mAppletSettings.setupUi(awid);
+	addPage(awid, i18n("Behavior"), "configure", i18n("Behavior Settings"), true);
 
-	AdvancedSettingsWidget *cwid = new AdvancedSettingsWidget(this, "AdvancedSettings");
-	addPage(cwid, i18n("Advanced"), "package_settings", i18n("Advanced Settings"));
+	QWidget* apwid = new QWidget();
+	mAppearanceSettings.setupUi(apwid);
+	addPage(apwid, i18n("Appearance"), "preferences-desktop-theme", i18n("Appearance Settings"), true);
 
-	mLoginSettings->kcfg_GmailPassword->erase();
-	mLoginSettings->kcfg_GmailPassword->insert("\007\007\007");
+	QWidget* adwid = new QWidget();
+	mAdvancedSettings.setupUi(adwid);
+	addPage(adwid, i18n("Advanced"), "preferences-system-settings", i18n("Advanced Settings"), true);
+
+	mLoginSettings.gmailPassword->clear();
+	mLoginSettings.gmailPassword->setText("\007\007\007");
 }
 
 
@@ -60,32 +62,24 @@ ConfigDialog::~ConfigDialog()
 {
 }
 
-void ConfigDialog::slotCancel()
-{
-	mLoginSettings->kcfg_GmailPassword->erase();
-	mLoginSettings->kcfg_GmailPassword->insert("\007\007\007");
-
-	KConfigDialog::slotCancel();
-}
-
 void ConfigDialog::erasePassword()
 {
-	mLoginSettings->kcfg_GmailPassword->erase();
+	mLoginSettings.gmailPassword->clear();
 }
 
 void ConfigDialog::insertPassword(const char* passwd)
 {
-	mLoginSettings->kcfg_GmailPassword->insert(passwd);
+	mLoginSettings.gmailPassword->insert(passwd);
 }
 
-const char* ConfigDialog::password() const
+QString ConfigDialog::password() const
 {
-	return mLoginSettings->kcfg_GmailPassword->password();
+	return mLoginSettings.gmailPassword->text();
 }
 
 QString ConfigDialog::username() const
 {
-	return mLoginSettings->kcfg_GmailUsername->originalText();
+	return mLoginSettings.kcfg_GmailUsername->originalText();
 }
 
 } // namespace KCheckGmail

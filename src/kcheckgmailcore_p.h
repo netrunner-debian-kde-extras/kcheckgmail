@@ -34,12 +34,13 @@ using KCheckGmail::JSProtocol;
 using KCheckGmail::ConfigDialog;
 
 class KActioncollection;
+class QAction;
 class KAction;
+class QSignalMapper;
 class KPopupmenu;
 class KConfig;
 class KIconeffect;
 class KMimetype;
-class KGlobal;
 class KHelpMenu;
 class KIconloader;
 
@@ -61,9 +62,10 @@ public:
 	KAction* actionLaunchBrowser;
 	KAction* actionComposeMail;
 
-	KPopupMenu* menu;
-	KPopupMenu* mThreadsMenu;
-	int mThreadsMenuId;
+	KMenu* menu;
+	KMenu* mThreadsMenu;
+	QAction* mThreadsMenuAction;
+	QSignalMapper* threadsMapper;
 	KHelpMenu* mHelpMenu;
 
 	ConfigDialog* mConfigDialog;
@@ -88,7 +90,8 @@ KCheckGmailCore::Private::Private()
 
 	  menu(0),
 	  mThreadsMenu(0),
-	  mThreadsMenuId(0),
+	  mThreadsMenuAction(0),
+	  threadsMapper(0),
 	  mHelpMenu(0),
 
 	  mConfigDialog(0),

@@ -23,30 +23,31 @@
 #include <kconfigdialog.h>
 #include <klineedit.h>
 
-class LoginSettingsWidget;
-class NetworkSettingsWidget;
-class AppletSettingsWidget;
-class AdvancedSettingsWidget;
+#include "ui_appletsettingsbase.h"
+#include "ui_loginsettingsbase.h"
+#include "ui_netsettingsbase.h"
+#include "ui_appearancesettingsbase.h"
+#include "ui_advancedsettingsbase.h"
 
 namespace KCheckGmail {
 
 class ConfigDialog : public KConfigDialog {
 	Q_OBJECT
-
-protected slots:
-	virtual void slotCancel();
-
 public:
-	ConfigDialog(QWidget *parent, const char *name, KConfigSkeleton *config, DialogType dialogType = IconList, int dialogButtons = Ok|Cancel);
+	ConfigDialog(QWidget *parent, const char *name, KConfigSkeleton *config);
 	virtual ~ConfigDialog();
 
 	void erasePassword();
 	void insertPassword(const char* passw);
-	const char* password() const;
+	QString password() const;
 	QString username() const;
 
 private:
-	LoginSettingsWidget* mLoginSettings;
+	Ui::LoginSettingsBase mLoginSettings;
+	Ui::NetworkSettingsBase mNetworkSettings;
+	Ui::AppletSettingsBase mAppletSettings;
+	Ui::AppearanceSettingsBase mAppearanceSettings;
+	Ui::AdvancedSettingsBase mAdvancedSettings;
 };
 
 } // namespace KCheckGmail

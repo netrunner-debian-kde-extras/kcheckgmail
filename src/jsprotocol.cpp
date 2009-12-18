@@ -23,10 +23,10 @@
 
 namespace KCheckGmail {
 
-JSProtocol::JSProtocol(QObject* parent, const char* name)
-	: QObject(parent, name),
-	  mParser(new GMailParser(this, "JS_GMailParser")),
-	  mGmail(new GMail(this, "JS_GMailNetwork")),
+JSProtocol::JSProtocol(QObject* parent)
+	: QObject(parent),
+	  mParser(new GMailParser(this)),
+	  mGmail(new GMail(this)),
 	  firstTime(true)
 {
 	connect(mParser, SIGNAL(countUpdate(unsigned int)),
@@ -67,7 +67,7 @@ void JSProtocol::slotLoginDone(bool ok, bool evtFromTimer, const QString &why)
 	static QString lastExcuse = "";
 	bool excuseNeeded = false;
 
-	kdDebug() << k_funcinfo << endl << "ok=" << ok << " evtFromTimer=" <<
+	kDebug() << k_funcinfo << endl << "ok=" << ok << " evtFromTimer=" <<
 			evtFromTimer << " why=" << why << endl << endl;
 
 	if(!ok) {
@@ -93,12 +93,12 @@ void JSProtocol::slotCountUpdate(unsigned int currentParsed)
 	int currentTotal = mParser->unread(GMailParser::TotalCount);
 	mCount.setCount(currentTotal, currentParsed);
 
-	kdDebug() << k_funcinfo << endl;
-	kdDebug() << "firstTime: " << firstTime << endl;
-	kdDebug() << "previousParsed: " << mCount.previousParsed() << endl;
-	kdDebug() << "currentParsed: " << currentParsed << endl;
-	kdDebug() << "previousTotal: " << mCount.previousTotal() << endl;
-	kdDebug() << "currentTotal: " << currentTotal << endl;
+	kDebug() << k_funcinfo;
+	kDebug() << "firstTime: " << firstTime;
+	kDebug() << "previousParsed: " << mCount.previousParsed();
+	kDebug() << "currentParsed: " << currentParsed;
+	kDebug() << "previousTotal: " << mCount.previousTotal();
+	kDebug() << "currentTotal: " << currentTotal;
 
 	if (firstTime) {
 		firstTime = false;
