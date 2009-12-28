@@ -32,7 +32,7 @@ echo 'i18nc("EMAIL OF TRANSLATORS","Your emails");' >> $RC_CPP
 echo "extracting translations from *.ui files.."
 cd $BASEDIR
 find . -name '*.ui' -o -name '*.rc' -o -name '*.kcfg' | sort >> $RC_LIST
-xargs --arg-file=$RC_LIST ${EXTRACTRC} > $RC_CPP
+xargs --arg-file=$RC_LIST ${EXTRACTRC} >> $RC_CPP
 
 # Parse .cpp files
 echo "extracting translations from *.cpp files.."
