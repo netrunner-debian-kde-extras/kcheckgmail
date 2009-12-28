@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?"
 "group_id=116095&atid=673717\n"
-"POT-Creation-Date: 2009-10-28 12:11+0000\n"
+"POT-Creation-Date: 2009-12-28 15:39+0000\n"
 "PO-Revision-Date: 2007-03-25 01:18+0100\n"
 "Last-Translator: Peter Mendel <peter.mendel@gmail.com>\n"
 "Language-Team: Slovenčina <sk@li.org>\n"
@@ -64,15 +64,15 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Nastavenie appletu"
 
-#: gmail.cpp:345
+#: gmail.cpp:358
 msgid "Invalid username or password"
 msgstr "Chybné prihlasovacie meno alebo heslo"
 
-#: gmail.cpp:351 gmail.cpp:362 gmail.cpp:377
+#: gmail.cpp:364 gmail.cpp:375 gmail.cpp:390
 msgid "GMail's login procedure has changed, check for new version"
 msgstr ""
 
-#: gmail.cpp:500
+#: gmail.cpp:513
 msgid "Unknown error retrieving cookies"
 msgstr "Neznáma chyba pri prijímaní cookies"
 
@@ -505,9 +505,21 @@ msgstr ""
 msgid "KCheckGMail is already running!\n"
 msgstr ""
 
+#: rc.cpp:1
+#, fuzzy
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Vaše prihlasovacie meno do schánky GMail"
+
+#: rc.cpp:2
+#, fuzzy
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Vaše prihlasovacie meno do schánky GMail"
+
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
-#: rc.cpp:3
+#: rc.cpp:5
 #, fuzzy
 msgid "AdvancedSettingsWidget"
 msgstr "Programm Einstellungsfenster"
@@ -516,7 +528,7 @@ msgstr "Programm Einstellungsfenster"
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_gMailSimpleInterface)
 #. i18n: file: prefs.kcfg:12
 #. i18n: ectx: label, entry (gMailSimpleInterface), group (Advanced Settings)
-#: rc.cpp:6 rc.cpp:97
+#: rc.cpp:8 rc.cpp:99
 msgid "Open Gmail in simple interface"
 msgstr ""
 
@@ -524,13 +536,13 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, searchLabel)
 #. i18n: file: prefs.kcfg:7
 #. i18n: ectx: label, entry (searchFor), group (Advanced Settings)
-#: rc.cpp:9 rc.cpp:91
+#: rc.cpp:11 rc.cpp:93
 msgid "Search For:"
 msgstr ""
 
 #. i18n: file: appearancesettingsbase.ui:15
 #. i18n: ectx: property (windowTitle), widget (QWidget, AppearanceSettingsBase)
-#: rc.cpp:12
+#: rc.cpp:14
 #, fuzzy
 msgid "AppearanceSettingsWidget"
 msgstr "Programm Einstellungsfenster"
@@ -539,13 +551,13 @@ msgstr "Programm Einstellungsfenster"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #. i18n: file: appletsettingsbase.ui:146
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
-#: rc.cpp:15 rc.cpp:55
+#: rc.cpp:17 rc.cpp:57
 msgid "Tray Icon"
 msgstr "Tray ikona"
 
 #. i18n: file: appearancesettingsbase.ui:33
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: rc.cpp:18
+#: rc.cpp:20
 msgid ""
 "&Color used to display  the number\n"
 "of unread messages:"
@@ -555,76 +567,76 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_TrayIconUnreadMessagesColor)
 #. i18n: file: prefs.kcfg:98
 #. i18n: ectx: whatsthis, entry (TrayIconUnreadMessagesColor), group (Appearance Settings)
-#: rc.cpp:22 rc.cpp:187
+#: rc.cpp:24 rc.cpp:189
 msgid "Tray icon number of unread messages color selector"
 msgstr ""
 
 #. i18n: file: appletsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AppletSettingsBase)
-#: rc.cpp:25
+#: rc.cpp:27
 msgid "AppletSettingsWidget"
 msgstr "Programm Einstellungsfenster"
 
 #. i18n: file: appletsettingsbase.ui:22
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
-#: rc.cpp:28
+#: rc.cpp:30
 msgid "Debug"
 msgstr "Ladenie"
 
 #. i18n: file: appletsettingsbase.ui:28
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AlertVersionChange)
-#: rc.cpp:31
+#: rc.cpp:33
 #, fuzzy
 msgid "Displa&y an alert if GMail version changes"
 msgstr "Zobraziť upozornenie pri zmene verzii GMailu"
 
 #. i18n: file: appletsettingsbase.ui:38
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox3)
-#: rc.cpp:34
+#: rc.cpp:36
 msgid "Fields displayed when only one email arrives"
 msgstr ""
 
 #. i18n: file: appletsettingsbase.ui:44
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySubjectOnSingleMail)
-#: rc.cpp:37
+#: rc.cpp:39
 msgid "Sub&ject"
 msgstr ""
 
 #. i18n: file: appletsettingsbase.ui:54
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySenderOnSingleMail)
-#: rc.cpp:40
+#: rc.cpp:42
 msgid "Senders"
 msgstr ""
 
 #. i18n: file: appletsettingsbase.ui:64
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySnippetOnSingleMail)
-#: rc.cpp:43
+#: rc.cpp:45
 #, fuzzy
 msgid "Snippet"
 msgstr "Applet"
 
 #. i18n: file: appletsettingsbase.ui:90
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
-#: rc.cpp:46
+#: rc.cpp:48
 msgid "Browser"
 msgstr "Internetový prehliadač"
 
 #. i18n: file: appletsettingsbase.ui:96
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_UseDefaultBrowser)
-#: rc.cpp:49
+#: rc.cpp:51
 #, fuzzy
 msgid "&Use the default KDE browser"
 msgstr "Použi štandardný KDE internetový prehliadač"
 
 #. i18n: file: appletsettingsbase.ui:106
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_UseAltBrowser)
-#: rc.cpp:52
+#: rc.cpp:54
 msgid "Use an alternative browser"
 msgstr "Použi alternatívny internetový prehliadač"
 
 #. i18n: file: appletsettingsbase.ui:152
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AllowLeftClickOpen)
-#: rc.cpp:58
+#: rc.cpp:60
 #, fuzzy
 msgid "Open &browser to Gmail on left click"
 msgstr "Otvoriť prehliadač pri kliknutí na ikonu"
@@ -633,57 +645,57 @@ msgstr "Otvoriť prehliadač pri kliknutí na ikonu"
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_CatchAccidentalClick)
 #. i18n: file: prefs.kcfg:60
 #. i18n: ectx: label, entry (CatchAccidentalClick), group (Applet Settings)
-#: rc.cpp:61 rc.cpp:145
+#: rc.cpp:63 rc.cpp:147
 msgid "Catch accidental left clicks when launching the browser"
 msgstr "Zachytiť náhodný klik pri spúšťaní prehliadača"
 
 #. i18n: file: loginsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, LoginSettingsBase)
-#: rc.cpp:64
+#: rc.cpp:66
 msgid "LoginSettingsWidget"
 msgstr "Nastavenia prihlasovania"
 
 #. i18n: file: loginsettingsbase.ui:25
 #. i18n: ectx: property (text), widget (QLabel, usernameLabel)
-#: rc.cpp:67
+#: rc.cpp:69
 msgid "Username:"
 msgstr "Prihlasovacie meno:"
 
 #. i18n: file: loginsettingsbase.ui:35
 #. i18n: ectx: property (text), widget (QLabel, passwordLabel)
-#: rc.cpp:70
+#: rc.cpp:72
 msgid "Password:"
 msgstr "Heslo:"
 
 #. i18n: file: loginsettingsbase.ui:45
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PasswordFromWallet)
-#: rc.cpp:73
+#: rc.cpp:75
 #, fuzzy
 msgid "&Use KDE Wallet to store password"
 msgstr "Použiť KDE Wallet na ukladanie hesla"
 
 #. i18n: file: netsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, NetworkSettingsBase)
-#: rc.cpp:76
+#: rc.cpp:78
 msgid "NetworkSettingsWidget"
 msgstr "Nastavenie siete"
 
 #. i18n: file: netsettingsbase.ui:38
 #. i18n: ectx: property (label), widget (KIntNumInput, kcfg_Interval)
-#: rc.cpp:79
+#: rc.cpp:81
 #, fuzzy
 msgid "Chec&king Interval"
 msgstr "Interval kontroly"
 
 #. i18n: file: netsettingsbase.ui:44
 #. i18n: ectx: property (suffix), widget (KIntNumInput, kcfg_Interval)
-#: rc.cpp:82
+#: rc.cpp:84
 msgid " seconds"
 msgstr " sekúnd"
 
 #. i18n: file: netsettingsbase.ui:57
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_UseHTTPS)
-#: rc.cpp:85
+#: rc.cpp:87
 msgid ""
 "<blockquote>Use secure connections when checking for new mail. Note that the "
 "login procedure uses https regardless of this setting.</blockquote>"
@@ -691,13 +703,13 @@ msgstr ""
 
 #. i18n: file: netsettingsbase.ui:60
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_UseHTTPS)
-#: rc.cpp:88
+#: rc.cpp:90
 msgid "&Use https connections for checking mail"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:9
 #. i18n: ectx: whatsthis, entry (searchFor), group (Advanced Settings)
-#: rc.cpp:94
+#: rc.cpp:96
 msgid ""
 "When checking for new email's this is the search query sent to Google Mail. "
 "Don't forget to add is:unread to improve the search."
@@ -705,7 +717,7 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:14
 #. i18n: ectx: whatsthis, entry (gMailSimpleInterface), group (Advanced Settings)
-#: rc.cpp:100
+#: rc.cpp:102
 msgid ""
 "This option lets you make KCheckGMail open Gmail using the simple interface "
 "(only HTML) or the full interface (unmarked)."
@@ -713,25 +725,25 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:19
 #. i18n: ectx: label, entry (Interval), group (Network Settings)
-#: rc.cpp:103
+#: rc.cpp:105
 msgid "Polling interval"
 msgstr "Deliaci interval ???"
 
 #. i18n: file: prefs.kcfg:23
 #. i18n: ectx: whatsthis, entry (Interval), group (Network Settings)
-#: rc.cpp:106
+#: rc.cpp:108
 msgid "How many seconds to wait before checking for new mail."
 msgstr "Koľko sekúnd čakať pred kontrolou novej pošty"
 
 #. i18n: file: prefs.kcfg:26
 #. i18n: ectx: label, entry (UseHTTPS), group (Network Settings)
-#: rc.cpp:109
+#: rc.cpp:111
 msgid "Use https connections for checking mail"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:28
 #. i18n: ectx: whatsthis, entry (UseHTTPS), group (Network Settings)
-#: rc.cpp:112
+#: rc.cpp:114
 msgid ""
 "Use secure connections when checking for new mail. Note that the login "
 "procedure uses https regardless of this setting."
@@ -739,61 +751,61 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:34
 #. i18n: ectx: label, entry (GmailUsername), group (Gmail Settings)
-#: rc.cpp:115
+#: rc.cpp:117
 msgid "Username"
 msgstr "Prihlasovacie meno"
 
 #. i18n: file: prefs.kcfg:35
 #. i18n: ectx: whatsthis, entry (GmailUsername), group (Gmail Settings)
-#: rc.cpp:118
+#: rc.cpp:120
 msgid "Your Gmail username or your Google Hosted Domain email address"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:38
 #. i18n: ectx: label, entry (GmailPassword), group (Gmail Settings)
-#: rc.cpp:121
+#: rc.cpp:123
 msgid "Password"
 msgstr "Heslo"
 
 #. i18n: file: prefs.kcfg:39
 #. i18n: ectx: whatsthis, entry (GmailPassword), group (Gmail Settings)
-#: rc.cpp:124
+#: rc.cpp:126
 msgid "Password for checking your Gmail account"
 msgstr "Heslo pre kontrolu vašej pošty v schránke GMail"
 
 #. i18n: file: prefs.kcfg:42
 #. i18n: ectx: label, entry (PasswordFromWallet), group (Gmail Settings)
-#: rc.cpp:127
+#: rc.cpp:129
 msgid "Use KDE Wallet to store password"
 msgstr "Použiť KDE Wallet na ukladanie hesla"
 
 #. i18n: file: prefs.kcfg:44
 #. i18n: ectx: whatsthis, entry (PasswordFromWallet), group (Gmail Settings)
-#: rc.cpp:130
+#: rc.cpp:132
 msgid "Use the KDE Wallet system to store your Gmail password."
 msgstr "Použiť systém KDE Wallet na uloženie GMail hesla."
 
 #. i18n: file: prefs.kcfg:47
 #. i18n: ectx: label, entry (AlertVersionChange), group (Gmail Settings)
-#: rc.cpp:133
+#: rc.cpp:135
 msgid "Display an alert if GMail version changes"
 msgstr "Zobraziť upozornenie pri zmene verzii GMailu"
 
 #. i18n: file: prefs.kcfg:49
 #. i18n: ectx: whatsthis, entry (AlertVersionChange), group (Gmail Settings)
-#: rc.cpp:136
+#: rc.cpp:138
 msgid "If Google update the GMail code, display an alert"
 msgstr "Zobraziť výstražné okno, ak Google zmení kód GMailu."
 
 #. i18n: file: prefs.kcfg:55
 #. i18n: ectx: label, entry (AllowLeftClickOpen), group (Applet Settings)
-#: rc.cpp:139
+#: rc.cpp:141
 msgid "Open browser to Gmail on left click"
 msgstr "Otvoriť prehliadač pri kliknutí na ikonu"
 
 #. i18n: file: prefs.kcfg:57
 #. i18n: ectx: whatsthis, entry (AllowLeftClickOpen), group (Applet Settings)
-#: rc.cpp:142
+#: rc.cpp:144
 #, fuzzy
 msgid ""
 "If enabled, launch the default KDE web browser when the KCheckGMail icon is "
@@ -802,7 +814,7 @@ msgstr "Pri kliknutí na ikonu KCheckGmail spustiť internetový prehliadač."
 
 #. i18n: file: prefs.kcfg:62
 #. i18n: ectx: whatsthis, entry (CatchAccidentalClick), group (Applet Settings)
-#: rc.cpp:148
+#: rc.cpp:150
 #, fuzzy
 msgid ""
 "If enabled, every time you click on the KCheckGMail icon will disable it for "
@@ -814,13 +826,13 @@ msgstr ""
 
 #. i18n: file: prefs.kcfg:65
 #. i18n: ectx: label, entry (UseDefaultBrowser), group (Applet Settings)
-#: rc.cpp:151
+#: rc.cpp:153
 msgid "Use the KDE default browser"
 msgstr "Použiť štandardný KDE internetový prehliadač"
 
 #. i18n: file: prefs.kcfg:67
 #. i18n: ectx: whatsthis, entry (UseDefaultBrowser), group (Applet Settings)
-#: rc.cpp:154
+#: rc.cpp:156
 msgid ""
 "Use whatever browser is configured as the KDE default to check your Gmail"
 msgstr ""
@@ -831,71 +843,156 @@ msgstr ""
 #. i18n: ectx: label, entry (UseAltBrowser), group (Applet Settings)
 #. i18n: file: prefs.kcfg:74
 #. i18n: ectx: label, entry (CustomBrowser), group (Applet Settings)
-#: rc.cpp:157 rc.cpp:160
+#: rc.cpp:159 rc.cpp:162
 msgid "Use a custom browser"
 msgstr "Použiť alternatívny prehliadač"
 
 #. i18n: file: prefs.kcfg:76
 #. i18n: ectx: whatsthis, entry (CustomBrowser), group (Applet Settings)
-#: rc.cpp:163
+#: rc.cpp:165
 msgid "Use a custom browser other than the KDE default to check your Gmail"
 msgstr "Na kontrolu pošty použi iný ako štandardný internetový prehliadač"
 
 #. i18n: file: prefs.kcfg:79
 #. i18n: ectx: label, entry (DisplaySenderOnSingleMail), group (Applet Settings)
-#: rc.cpp:166
+#: rc.cpp:168
 msgid "Display sender"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:80
 #. i18n: ectx: whatsthis, entry (DisplaySenderOnSingleMail), group (Applet Settings)
-#: rc.cpp:169
+#: rc.cpp:171
 msgid "Display message sender"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:84
 #. i18n: ectx: label, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
-#: rc.cpp:172
+#: rc.cpp:174
 msgid "Display subject"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:85
 #. i18n: ectx: whatsthis, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
-#: rc.cpp:175
+#: rc.cpp:177
 msgid "Display message subject"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:89
 #. i18n: ectx: label, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
-#: rc.cpp:178
+#: rc.cpp:180
 msgid "Display snippet"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:90
 #. i18n: ectx: whatsthis, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
-#: rc.cpp:181
+#: rc.cpp:183
 msgid "Display message snippet"
 msgstr ""
 
 #. i18n: file: prefs.kcfg:97
 #. i18n: ectx: label, entry (TrayIconUnreadMessagesColor), group (Appearance Settings)
-#: rc.cpp:184
+#: rc.cpp:186
 #, fuzzy
 msgid "Color used to display  the number of unread messages"
 msgstr "Máte <b>%1</b> nové správy"
 
-#: kcheckgmail.desktop:2
+#: src/kcheckgmail.notifyrc:3
+#, fuzzy
+msgctxt "Comment"
+msgid "KCheckGMail"
+msgstr "KCheckGmail"
+
+#: src/kcheckgmail.notifyrc:6
+msgctxt "Name"
+msgid "New Gmail Arrived"
+msgstr ""
+
+#: src/kcheckgmail.notifyrc:23
+msgctxt "Comment"
+msgid "New Gmail Arrived"
+msgstr ""
+
+#: src/kcheckgmail.notifyrc:43
+#, fuzzy
+msgctxt "Name"
+msgid "Logged in to Gmail"
+msgstr "Prihlasujem sa do schránky GMail"
+
+#: src/kcheckgmail.notifyrc:62
+#, fuzzy
+msgctxt "Comment"
+msgid "Logged in to Gmail"
+msgstr "Prihlasujem sa do schránky GMail"
+
+#: src/kcheckgmail.notifyrc:84
+#, fuzzy
+msgctxt "Name"
+msgid "Failed to login to Gmail"
+msgstr "Prihlasujem sa do schránky GMail"
+
+#: src/kcheckgmail.notifyrc:104
+#, fuzzy
+msgctxt "Comment"
+msgid "Failed to login to Gmail"
+msgstr "Prihlasujem sa do schránky GMail"
+
+#: src/kcheckgmail.notifyrc:127
+#, fuzzy
+msgctxt "Name"
+msgid "Gmail version has changed"
+msgstr "Zmenená verzia"
+
+#: src/kcheckgmail.notifyrc:145
+#, fuzzy
+msgctxt "Comment"
+msgid "Gmail version has changed"
+msgstr "Zmenená verzia"
+
+#: src/kcheckgmail.notifyrc:166
+#, fuzzy
+msgctxt "Name"
+msgid "New Gmail session is open"
+msgstr "Zmenená verzia"
+
+#: src/kcheckgmail.notifyrc:182
+msgctxt "Comment"
+msgid "Another session has been opened"
+msgstr ""
+
+#: src/kcheckgmail.notifyrc:201
+#, fuzzy
+msgctxt "Name"
+msgid "Mail Snippet"
+msgstr "Applet"
+
+#: src/kcheckgmail.notifyrc:216
+msgctxt "Comment"
+msgid "Email snippets when moving the mouse over a threads menu entry"
+msgstr ""
+
+#: src/kcheckgmail.notifyrc:231
+msgctxt "Name"
+msgid "No unread email"
+msgstr ""
+
+#: src/kcheckgmail.notifyrc:245
+#, fuzzy
+msgctxt "Comment"
+msgid "Dummy notification triggered when there are no unread messages"
+msgstr "Máte <b>%1</b> nové správy"
+
+#: src/kcheckgmail.desktop:2
 #, fuzzy
 msgctxt "Name"
 msgid "KCheckGMail"
 msgstr "KCheckGmail"
 
-#: kcheckgmail.desktop:5
+#: src/kcheckgmail.desktop:5
 msgctxt "GenericName"
 msgid "New email notifier"
 msgstr ""
 
-#: kcheckgmail.desktop:22
+#: src/kcheckgmail.desktop:23
 #, fuzzy
 msgctxt "Comment"
 msgid ""
@@ -904,91 +1001,6 @@ msgid ""
 msgstr ""
 "Aplikácia v tray paneli zobrazujúca počet nových správ v poštovej schánke "
 "GMail."
-
-#: kcheckgmail.notifyrc:3
-#, fuzzy
-msgctxt "Comment"
-msgid "KCheckGMail"
-msgstr "KCheckGmail"
-
-#: kcheckgmail.notifyrc:6
-msgctxt "Name"
-msgid "New Gmail Arrived"
-msgstr ""
-
-#: kcheckgmail.notifyrc:23
-msgctxt "Comment"
-msgid "New Gmail Arrived"
-msgstr ""
-
-#: kcheckgmail.notifyrc:43
-#, fuzzy
-msgctxt "Name"
-msgid "Logged in to Gmail"
-msgstr "Prihlasujem sa do schránky GMail"
-
-#: kcheckgmail.notifyrc:62
-#, fuzzy
-msgctxt "Comment"
-msgid "Logged in to Gmail"
-msgstr "Prihlasujem sa do schránky GMail"
-
-#: kcheckgmail.notifyrc:84
-#, fuzzy
-msgctxt "Name"
-msgid "Failed to login to Gmail"
-msgstr "Prihlasujem sa do schránky GMail"
-
-#: kcheckgmail.notifyrc:104
-#, fuzzy
-msgctxt "Comment"
-msgid "Failed to login to Gmail"
-msgstr "Prihlasujem sa do schránky GMail"
-
-#: kcheckgmail.notifyrc:127
-#, fuzzy
-msgctxt "Name"
-msgid "Gmail version has changed"
-msgstr "Zmenená verzia"
-
-#: kcheckgmail.notifyrc:145
-#, fuzzy
-msgctxt "Comment"
-msgid "Gmail version has changed"
-msgstr "Zmenená verzia"
-
-#: kcheckgmail.notifyrc:166
-#, fuzzy
-msgctxt "Name"
-msgid "New Gmail session is open"
-msgstr "Zmenená verzia"
-
-#: kcheckgmail.notifyrc:182
-msgctxt "Comment"
-msgid "Another session has been opened"
-msgstr ""
-
-#: kcheckgmail.notifyrc:201
-#, fuzzy
-msgctxt "Name"
-msgid "Mail Snippet"
-msgstr "Applet"
-
-#: kcheckgmail.notifyrc:215
-msgctxt "Comment"
-msgid "Email snippets when moving the mouse over a threads menu entry"
-msgstr ""
-
-#: kcheckgmail.notifyrc:230
-msgctxt "Name"
-msgid "No unread email"
-msgstr ""
-
-#: kcheckgmail.notifyrc:244
-#, fuzzy
-msgctxt "Comment"
-msgid "Dummy notification triggered when there are no unread messages"
-msgstr "Máte <b>%1</b> nové správy"
 
 #~ msgid ""
 #~ "_: NAME OF TRANSLATORS\n"
@@ -1020,6 +1032,3 @@ msgstr "Máte <b>%1</b> nové správy"
 
 #~ msgid "Italian Translation"
 #~ msgstr "Taliančina"
-
-#~ msgid "Your Gmail username"
-#~ msgstr "Vaše prihlasovacie meno do schánky GMail"
