@@ -137,7 +137,7 @@ void KCheckGmailCore::initActions()
 	connect(d->actionLaunchBrowser, SIGNAL(triggered(bool)),
 		this, SLOT(slotLaunchBrowser()));
 
-	d->actionComposeMail = new KAction(KIcon("email"), i18n("Co&mpose Mail"), this);
+	d->actionComposeMail = new KAction(KIcon("mail-message-new"), i18n("Co&mpose Mail"), this);
 	d->actions->addAction("compose-mail", d->actionComposeMail);
 	connect(d->actionComposeMail, SIGNAL(triggered(bool)),
 		this, SLOT(slotComposeMail()));
