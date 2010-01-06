@@ -812,7 +812,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "If enabled, every time you click on the KCheckGMail icon will disable it for "
-"a few seconds, thus preventing you from accidentaly opening more than one "
+"a few seconds, thus preventing you from accidentally opening more than one "
 "window"
 msgstr ""
 "사용하면, KCheckGmail 아이콘을 누를 때마다 몇 초 사이에 다시 누르는 것을 막"

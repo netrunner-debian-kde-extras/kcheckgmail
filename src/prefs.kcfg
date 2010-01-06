@@ -59,7 +59,7 @@
 		<entry name="CatchAccidentalClick" type="Bool">
 			<label>Catch accidental left clicks when launching the browser</label>
 			<default>true</default>
-			<whatsthis>If enabled, every time you click on the KCheckGMail icon will disable it for a few seconds, thus preventing you from accidentaly opening more than one window</whatsthis>
+			<whatsthis>If enabled, every time you click on the KCheckGMail icon will disable it for a few seconds, thus preventing you from accidentally opening more than one window</whatsthis>
 		</entry>
 		<entry name="UseDefaultBrowser" type="Bool">
 			<label>Use the KDE default browser</label>

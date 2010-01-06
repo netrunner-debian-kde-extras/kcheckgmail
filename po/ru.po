@@ -819,7 +819,7 @@ msgstr "Запускать браузер KDE по умолчанию при к�
 #, fuzzy
 msgid ""
 "If enabled, every time you click on the KCheckGMail icon will disable it for "
-"a few seconds, thus preventing you from accidentaly opening more than one "
+"a few seconds, thus preventing you from accidentally opening more than one "
 "window"
 msgstr ""
 "После клика на значке KCheckGmail запрещать запуск браузера по клику на "

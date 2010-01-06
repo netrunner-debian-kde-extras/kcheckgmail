@@ -495,7 +495,7 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 			mSummary.drafts = val;
 		else if( QString::compare(str_name,"spam") == 0)
 			mSummary.spam = val;
-		else kWarning() << k_funcinfo << "unkown identifier " << str_name;
+		else kWarning() << k_funcinfo << "unknown identifier " << str_name;
 
 		pos += rx.matchedLength();
 	}

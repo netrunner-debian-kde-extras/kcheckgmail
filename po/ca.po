@@ -839,7 +839,7 @@ msgstr ""
 #: rc.cpp:150
 msgid ""
 "If enabled, every time you click on the KCheckGMail icon will disable it for "
-"a few seconds, thus preventing you from accidentaly opening more than one "
+"a few seconds, thus preventing you from accidentally opening more than one "
 "window"
 msgstr ""
 "Si està habilitat, cada vegada que premis en la icona de KCheckGMail es "
