@@ -348,7 +348,7 @@ msgstr "<b>Asunto:</b> <i>%1</i>"
 msgid "There is <b>1</b> new mail message"
 msgid_plural "There are <b>%1</b> new mail messages"
 msgstr[0] ""
-"Hay <b>1</b> mensaje nuevo\n"
+"Hay <b>1</b> mensaje nuevo"
 msgstr[1] ""
 "Hay <b>%n</b> mensajes nuevos"
 
@@ -573,7 +573,7 @@ msgid ""
 "of unread messages:"
 msgstr ""
 "&Color del indicador del número\n"
-"de mensajes sin leer\n"
+"de mensajes sin leer"
 
 #. i18n: file: appearancesettingsbase.ui:46
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_TrayIconUnreadMessagesColor)
