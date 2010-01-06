@@ -350,7 +350,7 @@ msgid_plural "There are <b>%1</b> new mail messages"
 msgstr[0] ""
 "Hay <b>1</b> mensaje nuevo"
 msgstr[1] ""
-"Hay <b>%n</b> mensajes nuevos"
+"Hay <b>%1</b> mensajes nuevos"
 
 #: kcheckgmailcore.cpp:517
 #, kde-format
