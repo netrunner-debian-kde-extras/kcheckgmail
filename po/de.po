@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?"
 "group_id=116095&atid=673717\n"
-"POT-Creation-Date: 2009-12-28 15:39+0000\n"
+"POT-Creation-Date: 2010-01-08 06:36-0800\n"
 "PO-Revision-Date: 2004-11-11 15:22+0100\n"
 "Last-Translator: Patrick Trettenbrein <patrick.trettenbrein@gmx.net>\n"
 "Language-Team:  <de@li.org>\n"
@@ -920,64 +920,64 @@ msgctxt "Name"
 msgid "Logged in to Gmail"
 msgstr "Erfolgreich bei GMail angemeldet!"
 
-#: src/kcheckgmail.notifyrc:62
+#: src/kcheckgmail.notifyrc:61
 #, fuzzy
 msgctxt "Comment"
 msgid "Logged in to Gmail"
 msgstr "Erfolgreich bei GMail angemeldet!"
 
-#: src/kcheckgmail.notifyrc:84
+#: src/kcheckgmail.notifyrc:82
 #, fuzzy
 msgctxt "Name"
 msgid "Failed to login to Gmail"
 msgstr "Erfolgreich bei GMail angemeldet!"
 
-#: src/kcheckgmail.notifyrc:104
+#: src/kcheckgmail.notifyrc:101
 #, fuzzy
 msgctxt "Comment"
 msgid "Failed to login to Gmail"
 msgstr "Erfolgreich bei GMail angemeldet!"
 
-#: src/kcheckgmail.notifyrc:127
+#: src/kcheckgmail.notifyrc:123
 #, fuzzy
 msgctxt "Name"
 msgid "Gmail version has changed"
 msgstr "Version geändert"
 
-#: src/kcheckgmail.notifyrc:145
+#: src/kcheckgmail.notifyrc:140
 #, fuzzy
 msgctxt "Comment"
 msgid "Gmail version has changed"
 msgstr "Version geändert"
 
-#: src/kcheckgmail.notifyrc:166
+#: src/kcheckgmail.notifyrc:160
 #, fuzzy
 msgctxt "Name"
 msgid "New Gmail session is open"
 msgstr "Version geändert"
 
-#: src/kcheckgmail.notifyrc:182
+#: src/kcheckgmail.notifyrc:177
 msgctxt "Comment"
 msgid "Another session has been opened"
 msgstr ""
 
-#: src/kcheckgmail.notifyrc:201
+#: src/kcheckgmail.notifyrc:197
 #, fuzzy
 msgctxt "Name"
 msgid "Mail Snippet"
 msgstr "Programm"
 
-#: src/kcheckgmail.notifyrc:216
+#: src/kcheckgmail.notifyrc:213
 msgctxt "Comment"
 msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr ""
 
-#: src/kcheckgmail.notifyrc:231
+#: src/kcheckgmail.notifyrc:230
 msgctxt "Name"
 msgid "No unread email"
 msgstr ""
 
-#: src/kcheckgmail.notifyrc:245
+#: src/kcheckgmail.notifyrc:244
 #, fuzzy
 msgctxt "Comment"
 msgid "Dummy notification triggered when there are no unread messages"
