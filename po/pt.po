@@ -1,18 +1,19 @@
 # KCheckGMail translation to Portuguese (Portugal).
-# Luis Pereira <luis.artur.pereira@gmail.com>, 2007.
+# Luís Pereira <luis.artur.pereira@gmail.com>, 2007, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: KCheckGMail 0.5.6\n"
-"Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?"
-"group_id=116095&atid=673717\n"
+"Report-Msgid-Bugs-To: http://sourceforge."
+"net/tracker/?group_id=116095&atid=673717\n"
 "POT-Creation-Date: 2010-01-08 06:36-0800\n"
-"PO-Revision-Date: 2007-07-17 16:54+0100\n"
-"Last-Translator: Luis Pereira <luis.artur.pereira@gmail.com>\n"
+"PO-Revision-Date: 2010-01-08 09:58-0800\n"
+"Last-Translator: Luís Pereira\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: configdialog.cpp:38
 msgid "Login"
@@ -35,18 +36,16 @@ msgid "Behavior"
 msgstr "Comportamento"
 
 #: configdialog.cpp:46
-#, fuzzy
 msgid "Behavior Settings"
-msgstr "Definições de rede"
+msgstr "Definições de de comportamento"
 
 #: configdialog.cpp:50
 msgid "Appearance"
-msgstr ""
+msgstr "Aparência"
 
 #: configdialog.cpp:50
-#, fuzzy
 msgid "Appearance Settings"
-msgstr "Definições avançadas"
+msgstr "Definições de Aparência"
 
 #: configdialog.cpp:54
 msgid "Advanced"
@@ -264,9 +263,8 @@ msgid "Unable to retrieve secure password"
 msgstr "Não é possível obter a senha de um modo seguro"
 
 #: kcheckgmailcore.cpp:120
-#, fuzzy
 msgid "Configure &Notifications"
-msgstr "Configurar as &Notificações..."
+msgstr "Configurar as &Notificações"
 
 #: kcheckgmailcore.cpp:125
 msgid "&Configure KCheckGMail..."
@@ -293,8 +291,7 @@ msgstr "KCheckGMail"
 msgid "Th&reads"
 msgstr "Últimas Mensagens &Não Lidas"
 
-#: kcheckgmailcore.cpp:268
-#, fuzzy, kde-format
+#: kcheckgmailcore.cpp:268, kde-format
 msgid ""
 "<p><center>Welcome to KCheckGMail!</center></p><p>You can locate KCheckGMail "
 "here: </p><p><center>%1</center></p>When you right-click on that icon you "
@@ -302,8 +299,8 @@ msgid ""
 "newest email of your account."
 msgstr ""
 "<p><center>Bemvindo ao KCheckGMail!</center></p><p>Pode encontrar o "
-"KCheckGMail aqui: </p><p><center><img source=\"systray_shot\"></center></"
-"p>Quando clica com o botão direito no ícone verá um menu, a partir do qual, "
+"KCheckGMail aqui: </p><p><center>%1</center></p>Quando clica com o "
+"botão direito no ícone verá um menu, a partir do qual, "
 "pode ver o menu Últimas Mensagens Não Lidas."
 
 #: kcheckgmailcore.cpp:275
@@ -331,48 +328,42 @@ msgid "Legal Information"
 msgstr "Informação legal"
 
 #: kcheckgmailcore.cpp:390
-#, fuzzy
 msgid "<center><b>New mail arrived</b></center>"
-msgstr "Chegou uma mensagem nova: <i>%1</i>"
+msgstr "<center><b>Chegou uma mensagem nova</b></center>"
 
 #: kcheckgmailcore.cpp:392
 #, kde-format
 msgid "<b>Sender:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Remetente:</b> <i>%1</i>"
 
 #: kcheckgmailcore.cpp:399
 #, kde-format
 msgid "<b>Subject:</b> <i>%1</i>"
-msgstr ""
+msgstr "<b>Assunto:</b> <i>%1</i>"
 
-#: kcheckgmailcore.cpp:411
-#, fuzzy, kde-format
+#: kcheckgmailcore.cpp:411, kde-format
 msgid "There is <b>1</b> new mail message"
 msgid_plural "There are <b>%1</b> new mail messages"
-msgstr[0] ""
-"Existe <b>1</b> mensagem nova\n"
-"Existem <b>%n</b> mensagens novas"
-msgstr[1] ""
-"Existe <b>1</b> mensagem nova\n"
-"Existem <b>%n</b> mensagens novas"
+msgstr[0] "Existe <b>1</b> mensagem nova"
+msgstr[1] "Existem <b>%1</b> mensagens novas"
 
 #: kcheckgmailcore.cpp:517
 #, kde-format
 msgctxt ""
 "format used to display the attachments (%1 is the icon, %2 is the file name)"
 msgid "<img src=\"%1\"> %2"
-msgstr ""
+msgstr "<img src=\"%1\"> %2"
 
 #: kcheckgmailcore.cpp:531
 #, kde-format
 msgid "Attachment: %2"
 msgid_plural "Attachments: %2"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Anexo: %2"
+msgstr[1] "Anexos: %2"
 
 #: kcheckgmailcore.cpp:548
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #: kcheckgmailcore.cpp:570
 msgid "No account information has been entered. Do you want to quit?"
@@ -437,14 +428,13 @@ msgstr ""
 msgid "Version changed"
 msgstr "A versão mudou"
 
-#: kcheckgmailtray.cpp:184
-#, fuzzy, kde-format
+#: kcheckgmailtray.cpp:184, kde-format
 msgid ""
 "<p>KCheckGMail is already running</p><p>You can find it here:</"
 "p><p><p><center>%1</center></p></p>"
 msgstr ""
 "<p>KCheckGMail já se encontra a correr</p><p>Pode-o encontrar aqui:</"
-"p><p><center><img source=\"systray_shot\"></center></p>"
+"p><p><center>%1</center></p></p>"
 
 #: kcheckgmailtray.cpp:185
 msgid "Already Running"
@@ -469,10 +459,13 @@ msgid ""
 "(C) 2007 Raphael Geissert\n"
 "(C) 2007 Luís Pereira"
 msgstr ""
+"(C) 2004 Matthew Wlazlo\n"
+"(C) 2007 Raphael Geissert\n"
+"(C) 2007 Luís Pereira"
 
 #: main.cpp:55
 msgid "Matthew Wlazlo"
-msgstr ""
+msgstr "Matthew Wlazlo"
 
 #: main.cpp:55
 msgid "Original author"
@@ -484,15 +477,15 @@ msgstr "Manutenção"
 
 #: main.cpp:56
 msgid "Raphael Geissert"
-msgstr ""
+msgstr "Raphael Geissert"
 
 #: main.cpp:57
 msgid "Developer"
-msgstr ""
+msgstr "Desenvolviment"
 
 #: main.cpp:57
 msgid "Luís Pereira"
-msgstr ""
+msgstr "Luís Pereira"
 
 #: main.cpp:58
 msgid "Everybody who helped testing and translating KCheckGMail"
@@ -521,13 +514,12 @@ msgstr "O KCheckGMail já está a correr!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Luís Pereira"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Não existem mensagens por ler"
+msgstr "luis.artur.pereira@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -554,9 +546,8 @@ msgstr "Procurar:"
 #. i18n: file: appearancesettingsbase.ui:15
 #. i18n: ectx: property (windowTitle), widget (QWidget, AppearanceSettingsBase)
 #: rc.cpp:14
-#, fuzzy
 msgid "AppearanceSettingsWidget"
-msgstr "AdvancedSettingsWidget"
+msgstr "AppearanceSettingsWidget"
 
 #. i18n: file: appearancesettingsbase.ui:24
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
@@ -573,6 +564,8 @@ msgid ""
 "&Color used to display  the number\n"
 "of unread messages:"
 msgstr ""
+"&Cor usada para a visualização do número\n"
+"de mensagens não lidas:"
 
 #. i18n: file: appearancesettingsbase.ui:46
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_TrayIconUnreadMessagesColor)
@@ -580,7 +573,7 @@ msgstr ""
 #. i18n: ectx: whatsthis, entry (TrayIconUnreadMessagesColor), group (Appearance Settings)
 #: rc.cpp:24 rc.cpp:189
 msgid "Tray icon number of unread messages color selector"
-msgstr ""
+msgstr "Seletor da cor do número de mensagens não lidas (no ícone de bandeja)"
 
 #. i18n: file: appletsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AppletSettingsBase)
@@ -597,35 +590,32 @@ msgstr "Depurar"
 #. i18n: file: appletsettingsbase.ui:28
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AlertVersionChange)
 #: rc.cpp:33
-#, fuzzy
 msgid "Displa&y an alert if GMail version changes"
-msgstr "Emitir um alerta se a versão do GMail mudar"
+msgstr "&Emitir um alerta se a versão do GMail mudar"
 
 #. i18n: file: appletsettingsbase.ui:38
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox3)
 #: rc.cpp:36
-#, fuzzy
 msgid "Fields displayed when only one email arrives"
-msgstr "Visualizar o assunto quando chega apenas uma mensagem nova"
+msgstr "Campos visualizados quando chega apenas uma mensagem nova"
 
 #. i18n: file: appletsettingsbase.ui:44
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySubjectOnSingleMail)
 #: rc.cpp:39
 msgid "Sub&ject"
-msgstr ""
+msgstr "A&ssunto"
 
 #. i18n: file: appletsettingsbase.ui:54
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySenderOnSingleMail)
 #: rc.cpp:42
 msgid "Senders"
-msgstr ""
+msgstr "&Remetentes"
 
 #. i18n: file: appletsettingsbase.ui:64
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DisplaySnippetOnSingleMail)
 #: rc.cpp:45
-#, fuzzy
 msgid "Snippet"
-msgstr "Fragmento de mensagem"
+msgstr "&Fragmento de mensagem"
 
 #. i18n: file: appletsettingsbase.ui:90
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
@@ -882,120 +872,105 @@ msgstr "Usar um navegador diferente do padrão do KDE para verificar o Gmail"
 #. i18n: ectx: label, entry (DisplaySenderOnSingleMail), group (Applet Settings)
 #: rc.cpp:168
 msgid "Display sender"
-msgstr ""
+msgstr "Mostrar o remetente"
 
 #. i18n: file: prefs.kcfg:80
 #. i18n: ectx: whatsthis, entry (DisplaySenderOnSingleMail), group (Applet Settings)
 #: rc.cpp:171
 msgid "Display message sender"
-msgstr ""
+msgstr "Mostrar o remetente da mensagem"
 
 #. i18n: file: prefs.kcfg:84
 #. i18n: ectx: label, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
 #: rc.cpp:174
 msgid "Display subject"
-msgstr ""
+msgstr "Mostrar o assunto"
 
 #. i18n: file: prefs.kcfg:85
 #. i18n: ectx: whatsthis, entry (DisplaySubjectOnSingleMail), group (Applet Settings)
 #: rc.cpp:177
 msgid "Display message subject"
-msgstr ""
+msgstr "Mostrar o assunto da mensagem"
 
 #. i18n: file: prefs.kcfg:89
 #. i18n: ectx: label, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
 #: rc.cpp:180
-#, fuzzy
 msgid "Display snippet"
-msgstr "Fragmento de mensagem"
+msgstr "Mostrar o fragmento"
 
 #. i18n: file: prefs.kcfg:90
 #. i18n: ectx: whatsthis, entry (DisplaySnippetOnSingleMail), group (Applet Settings)
 #: rc.cpp:183
 msgid "Display message snippet"
-msgstr ""
+msgstr "Mostrar o fragmento de mensagem"
 
 #. i18n: file: prefs.kcfg:97
 #. i18n: ectx: label, entry (TrayIconUnreadMessagesColor), group (Appearance Settings)
 #: rc.cpp:186
-#, fuzzy
 msgid "Color used to display  the number of unread messages"
-msgstr "Não há mensagens por ler"
+msgstr "\"Cor usada para mostrar  o número de mensagens por ler"
 
 #: src/kcheckgmail.notifyrc:3
-#, fuzzy
 msgctxt "Comment"
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: src/kcheckgmail.notifyrc:6
-#, fuzzy
 msgctxt "Name"
 msgid "New Gmail Arrived"
 msgstr "Nova Mensagem no Gmail"
 
 #: src/kcheckgmail.notifyrc:23
-#, fuzzy
 msgctxt "Comment"
 msgid "New Gmail Arrived"
 msgstr "Nova Mensagem no Gmail"
 
 #: src/kcheckgmail.notifyrc:43
-#, fuzzy
 msgctxt "Name"
 msgid "Logged in to Gmail"
 msgstr "Ligado ao Gmail"
 
 #: src/kcheckgmail.notifyrc:61
-#, fuzzy
 msgctxt "Comment"
 msgid "Logged in to Gmail"
 msgstr "Ligado ao Gmail"
 
 #: src/kcheckgmail.notifyrc:82
-#, fuzzy
 msgctxt "Name"
 msgid "Failed to login to Gmail"
 msgstr "O acesso ao Gmail falhou"
 
 #: src/kcheckgmail.notifyrc:101
-#, fuzzy
 msgctxt "Comment"
 msgid "Failed to login to Gmail"
 msgstr "O acesso ao Gmail falhou"
 
 #: src/kcheckgmail.notifyrc:123
-#, fuzzy
 msgctxt "Name"
 msgid "Gmail version has changed"
 msgstr "A versão do Gmail mudou"
 
 #: src/kcheckgmail.notifyrc:140
-#, fuzzy
 msgctxt "Comment"
 msgid "Gmail version has changed"
 msgstr "A versão do Gmail mudou"
 
 #: src/kcheckgmail.notifyrc:160
-#, fuzzy
 msgctxt "Name"
 msgid "New Gmail session is open"
 msgstr "Uma nova sessão Gmail está aberta"
 
 #: src/kcheckgmail.notifyrc:177
-#, fuzzy
 msgctxt "Comment"
 msgid "Another session has been opened"
 msgstr "Uma outra sessão foi iniciada"
 
 #: src/kcheckgmail.notifyrc:197
-#, fuzzy
 msgctxt "Name"
 msgid "Mail Snippet"
 msgstr "Fragmento de mensagem"
 
 #: src/kcheckgmail.notifyrc:213
-#, fuzzy
 msgctxt "Comment"
 msgid "Email snippets when moving the mouse over a threads menu entry"
 msgstr ""
@@ -1003,31 +978,26 @@ msgstr ""
 "Não Lidas"
 
 #: src/kcheckgmail.notifyrc:230
-#, fuzzy
 msgctxt "Name"
 msgid "No unread email"
 msgstr "Não existem mensagens por ler"
 
 #: src/kcheckgmail.notifyrc:244
-#, fuzzy
 msgctxt "Comment"
 msgid "Dummy notification triggered when there are no unread messages"
 msgstr "Notificação fictícia desencadeada quando não há mensagens por ler"
 
 #: src/kcheckgmail.desktop:2
-#, fuzzy
 msgctxt "Name"
 msgid "KCheckGMail"
 msgstr "KCheckGMail"
 
 #: src/kcheckgmail.desktop:5
-#, fuzzy
 msgctxt "GenericName"
 msgid "New email notifier"
 msgstr "Notificador de mensagens novas"
 
 #: src/kcheckgmail.desktop:23
-#, fuzzy
 msgctxt "Comment"
 msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
