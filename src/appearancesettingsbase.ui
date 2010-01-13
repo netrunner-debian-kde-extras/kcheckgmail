@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author>Luis Pereira &lt;luis.artur.pereira@gmail.com&gt;</author>
+ <author>Luís Pereira &lt;luis.artur.pereira@gmail.com&gt;</author>
  <class>AppearanceSettingsBase</class>
  <widget class="QWidget" name="AppearanceSettingsBase">
   <property name="geometry">
