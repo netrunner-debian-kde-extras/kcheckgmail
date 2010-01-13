@@ -3,7 +3,7 @@ project(kcheckgmail)
 # Check for cmake minimum for KDE 4.0.0
 cmake_minimum_required(VERSION 2.4.5)
 
-set(KCHECKGMAIL_VERSION "0.5.8-dev")
+set(KCHECKGMAIL_VERSION "0.6.0")
 
 find_package(KDE4 REQUIRED)
 
