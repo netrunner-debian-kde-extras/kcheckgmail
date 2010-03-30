@@ -41,7 +41,6 @@
 #include <kiconloader.h>
 #include <kmacroexpander.h>
 #include <krun.h>
-#include <k3aboutapplication.h>
 #include <knotifyconfigwidget.h>
 #include <kmessagebox.h>
 #include <kdialog.h>
