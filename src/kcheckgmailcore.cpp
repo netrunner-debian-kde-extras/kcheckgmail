@@ -1,6 +1,17 @@
 /***************************************************************************
  *   Copyright (C) 2008 by Luís Pereira <luis.artur.pereira@gmail.com>     *
  *                                                                         *
+ *   This class contains code moved (and sometimes modified) from the      *
+ *   following classes:                                                    *
+ *                                                                         *
+ * KCheckGmailTray                                                         *
+ *   Copyright (C) 2004 by Matthew Wlazlo <mwlazlo@gmail.com>              *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
+ *                                                                         *
+ * KCheckGmailIface                                                        *
+ *   Copyright (C) 2005 by James Stembridge <jstembridge@gmail.com>        *
+ *   Copyright (C) 2007 by Raphael Geissert <atomo64@gmail.com>            *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
