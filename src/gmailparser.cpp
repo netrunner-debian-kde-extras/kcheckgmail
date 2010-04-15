@@ -132,8 +132,8 @@ void GMailParser::parse(const QString &data)
 	rx.setMinimal(true);
 
 	if(!rx.isValid()) {
-		kWarning() << k_funcinfo << "Invalid RX!\n"
-			<< rx.errorString() << endl;
+		kWarning() << "Invalid RX!\n"
+			<< rx.errorString();
 	} 
 
 	mCurMsgId = 0;
@@ -142,15 +142,15 @@ void GMailParser::parse(const QString &data)
 	freeThreadList();
 	
 	if(oldMap) {
-		kDebug() << k_funcinfo << "oldmap.size=" << oldMap->size();
+		kDebug() << "oldmap.size=" << oldMap->size();
 		if (oldMap->begin().key() > previousLatestThread) {
 			previousLatestThread = oldMap->begin().key();
 		}
 	} else {
-		kDebug() << k_funcinfo << "no oldmap";
+		kDebug() << "no oldmap";
 	}
 	
-	kDebug() << k_funcinfo << "previousLatestThread=" << previousLatestThread;
+	kDebug() << "previousLatestThread=" << previousLatestThread;
 
 
 	/*
@@ -263,13 +263,13 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 	rx2.setMinimal(true);
 
 	if(!rx.isValid()) {
-		kWarning() << k_funcinfo << "Invalid RX!\n"
-				<< rx.errorString() << endl;
+		kWarning() << "Invalid RX!\n"
+				<< rx.errorString();
 	}
 
 	if(!rx2.isValid()) {
-		kWarning() << k_funcinfo << "Invalid RX2!\n"
-				<< rx2.errorString() << endl;
+		kWarning() << "Invalid RX2!\n"
+				<< rx2.errorString();
 	}
 	
 	/*
@@ -351,9 +351,9 @@ uint GMailParser::parseThread(const QString &_data, const QMap<QString,bool>* ol
 		pos += rx2.matchedLength();
 	}
 
-	kDebug() << k_funcinfo << "Finished searching for threads in: ";
+	kDebug() << "Finished searching for threads in: ";
 	kDebug() << data;
-	kDebug() << k_funcinfo << "newMsgCount: " << newMsgCount;
+	kDebug() << "newMsgCount: " << newMsgCount;
 
 	return newMsgCount;
 }
@@ -370,12 +370,12 @@ void GMailParser::parseVersion(const QString &_data)
 	QString data = _data;
 	data.remove('"');
 	
-	kDebug() << k_funcinfo << "Version string: " << data;
+	kDebug() << "Version string: " << data;
 	
 	QStringList list = data.split(",", QString::SkipEmptyParts);
 	if(list.size() != 5)
-		kWarning() << k_funcinfo << "Wrong number of elements: "
-				<< list.size() << ", should be: 5." << endl;
+		kWarning() << "Wrong number of elements: "
+				<< list.size() << ", should be: 5.";
 	
 	QStringList::Iterator iter = list.begin();
 	int i = 0;
@@ -398,7 +398,7 @@ void GMailParser::parseVersion(const QString &_data)
 				mVersion.version = str;
 				break;
 			default:
-				kWarning() << k_funcinfo << "Unknown version token: " << str << "(" << i <<")";
+				kWarning() << "Unknown version token: " << str << "(" << i <<")";
 				break;
 		}
 		iter++;
@@ -417,11 +417,11 @@ void GMailParser::parseVersion(const QString &_data)
 	if(gGMailLanguageCode.contains(mVersion.language))
 		kDebug() << "Gmail language: " << gGMailLanguageCode[mVersion.language];
 	else
-		kWarning() << k_funcinfo << "Unknown language code: " << mVersion.language;
+		kWarning() << "Unknown language code: " << mVersion.language;
 #endif
 	
 	if(!ok) {
-		kWarning() << k_funcinfo << "Gmail version " << mVersion.version << " is not supported, check for updates!";
+		kWarning() << "Gmail version " << mVersion.version << " is not supported, check for updates!";
 		emit versionMismatch();
 	}
 }
@@ -463,8 +463,8 @@ void GMailParser::parseQuota(const QString &data)
 			i++;
 		}
 	} else
-		kWarning() << k_funcinfo << "Wrong number of elements in qu: "
-			<< list.size() << ", should be 4 or 9." << endl;
+		kWarning() << "Wrong number of elements in qu: "
+			<< list.size() << ", should be 4 or 9.";
 }
 
 /**
@@ -479,8 +479,8 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 	static QRegExp rx("\"([a-z]+)\",([0-9]+)");
 
 	if(!rx.isValid()) {
-		kWarning() << k_funcinfo << "Invalid RX!\n"
-			<< rx.errorString() << endl;
+		kWarning() << "Invalid RX!\n"
+			<< rx.errorString();
 	}
 	QString data = _data;
 	int pos = 0;
@@ -495,14 +495,14 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 			mSummary.drafts = val;
 		else if( QString::compare(str_name,"spam") == 0)
 			mSummary.spam = val;
-		else kWarning() << k_funcinfo << "unknown identifier " << str_name;
+		else kWarning() << "unknown identifier " << str_name;
 
 		pos += rx.matchedLength();
 	}
-	kDebug() << k_funcinfo << endl  
+	kDebug() << endl
 		<< "inbox=" << mSummary.inbox << "\n"
 		<< "drafts=" << mSummary.drafts << "\n"
-		<< "spam=" << mSummary.spam << "\n" << endl;
+		<< "spam=" << mSummary.spam << "\n";
 }
 
 /**
@@ -521,15 +521,15 @@ void GMailParser::parseLabel(const QString &data)
 		);
 
 	if(!rx.isValid()) {
-		kWarning() << k_funcinfo << "Invalid RX!\n"
-			<< rx.errorString() << endl;
+		kWarning() << "Invalid RX!\n"
+			<< rx.errorString();
 	}
 	int pos = 0;
 	
 	mLabels.clear();
 	eLabels.clear();
 	
-	kDebug() << k_funcinfo;
+	kDebug();
 
 	while((pos = rx.indexIn(data, pos)) != -1) {
 		mLabels.insert(rx.cap(1), rx.cap(2).toUInt());
@@ -557,7 +557,7 @@ void GMailParser::parseInvite(const QString &data)
 	if(!ok) {
 		mInvites = 0;
 	}
-	kDebug() << k_funcinfo << "Invites=" << mInvites;
+	kDebug() << "Invites=" << mInvites;
 }
 
 /**
@@ -704,7 +704,7 @@ unsigned int GMailParser::unread(CountMode mode, QString box) const
 			if (mLabels.contains(box))
 				return mLabels[box];
 		}
-		kWarning() << k_funcinfo << "The box " << box << " doesn't exist! returning value as if mode=ParsedOnlyCount";
+		kWarning() << "The box " << box << " doesn't exist! returning value as if mode=ParsedOnlyCount";
 	}
 	
 	QMap<QString, bool> *lst = getThreadList();
@@ -807,8 +807,8 @@ QString GMailParser::stripTags(QString data)
 	static QRegExp tags("<[^>]+>|</[^>]+>|<[^>]+/>");
 	
 	if(!tags.isValid()) {
-		kWarning() << k_funcinfo << "Invalid RX!\n"
-				<< tags.errorString() << endl;
+		kWarning() << "Invalid RX!\n"
+				<< tags.errorString();
 	}
 	
 	data.remove(tags);
@@ -831,8 +831,8 @@ QString GMailParser::convertEntities(QString data)
 	static QRegExp format("\\\\((u)([0-9a-zA-Z]{4})|(x)([0-9a-zA-Z]{2}))");
 	
 	if(!format.isValid()) {
-		kWarning() << k_funcinfo << "Invalid RX!\n"
-				<< format.errorString() << endl;
+		kWarning() << "Invalid RX!\n"
+				<< format.errorString();
 	}
 	
 	while(format.indexIn(data) != -1) {

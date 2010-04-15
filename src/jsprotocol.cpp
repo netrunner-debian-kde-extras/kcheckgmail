@@ -78,8 +78,8 @@ void JSProtocol::slotLoginDone(bool ok, bool evtFromTimer, const QString &why)
 	static QString lastExcuse = "";
 	bool excuseNeeded = false;
 
-	kDebug() << k_funcinfo << endl << "ok=" << ok << " evtFromTimer=" <<
-			evtFromTimer << " why=" << why << endl << endl;
+	kDebug() << endl << "ok=" << ok << " evtFromTimer=" <<
+			evtFromTimer << " why=" << why;
 
 	if(!ok) {
 		slotLoggedOut();
@@ -104,7 +104,7 @@ void JSProtocol::slotCountUpdate(unsigned int currentParsed)
 	int currentTotal = mParser->unread(GMailParser::TotalCount);
 	mCount.setCount(currentTotal, currentParsed);
 
-	kDebug() << k_funcinfo;
+	kDebug();
 	kDebug() << "firstTime: " << firstTime;
 	kDebug() << "previousParsed: " << mCount.previousParsed();
 	kDebug() << "currentParsed: " << currentParsed;

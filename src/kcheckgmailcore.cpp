@@ -267,7 +267,7 @@ void KCheckGmailCore::slotStart()
 	static bool started = false;
 	
 	if(started) {
-		kWarning() << k_funcinfo << "Unexpected call!";
+		kWarning() << "Unexpected call!";
 	}
 	
 	//From RSIBreak
@@ -348,7 +348,7 @@ void KCheckGmailCore::updateThreadMenu()
 		QList<QString> klist = threads->keys();
 		QList<QString>::iterator iter = klist.begin();
 
-		kDebug() << k_funcinfo << "number of threads=" << klist.size();
+		kDebug() << "number of threads=" << klist.size();
 		while(iter != klist.end()) {
 			const GMailParser::Thread &t = d->mJSP->parser()->getThread(*iter);
 			if(!t.isNull) {
@@ -543,7 +543,7 @@ void KCheckGmailCore::slotThreadsItemHighlighted(int n)
 	}
 
 	KNotification::event(QLatin1String("gmail-mail-snippet"), message, QPixmap(), d->mThreadsMenu);
-	kDebug() << k_funcinfo << "Notification:" << "gmail-mail-snippet";
+	kDebug() << "Notification:" << "gmail-mail-snippet";
 }
 
 
@@ -560,8 +560,8 @@ void KCheckGmailCore::slotMailArrived(unsigned int n)
 			this, SLOT(slotOpenButtonClicked()));
 	}
 	notify->sendEvent();
-	kDebug() << k_funcinfo << "Notification: new-gmail-arrived" \
-				<< " number of emails:" << n << endl;
+	kDebug() << "Notification: new-gmail-arrived" \
+				<< " number of emails:" << n;
 }
 
 
@@ -572,10 +572,10 @@ void KCheckGmailCore::slotSettingsChanged()
 	const QString user = d->mConfigDialog->username();
 	int res;
 
-	kDebug() << k_funcinfo << passwd;
+	kDebug() << passwd;
 	
 	if(passwd.length() == 0 ) {
-		kDebug() << k_funcinfo << "user: " << user;
+		kDebug() << "user: " << user;
 		if(user.length() == 0) {
 			res = KMessageBox::warningYesNo(0, i18n("No account information has been entered. Do you want to quit?"));
 
@@ -589,15 +589,15 @@ void KCheckGmailCore::slotSettingsChanged()
 		}
 	} else {
 		
-		kDebug() << k_funcinfo << " strncmp: " << (passwd == QString("\007\007\007"));
+		kDebug() << " strncmp: " << (passwd == QString("\007\007\007"));
 
 		if(passwd != QString("\007\007\007")) {
-			kDebug() << k_funcinfo << "setting wallet";
+			kDebug() << "setting wallet";
 			loginOk = GMailWalletManager::instance()->set(d->mConfigDialog->password());
 			d->mConfigDialog->erasePassword();
 			d->mConfigDialog->insertPassword("\007\007\007");
 		} else {
-			kDebug() << k_funcinfo << "passwd unchanged: " << passwd;
+			kDebug() << "passwd unchanged: " << passwd;
 			// force a params check only if password was not changed as
 			// GMailWalletManager will take care of triggering the check if it was changed
 			d->mJSP->retriever()->checkLoginParams(false);
@@ -657,8 +657,8 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 					i18n("An error occurred logging in to Gmail<br><b>%1</b>",
 						 message));
 
-			kDebug() << k_funcinfo << "Notification: gmail-login-no" \
-						<< " error message:" << message << endl;
+			kDebug() << "Notification: gmail-login-no" \
+						<< " error message:" << message;
 		}
 
 		d->mTray->setPixmapAuth();
@@ -669,7 +669,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 		d->mTray->setPixmapEmpty();
 		KNotification::event(QLatin1String("gmail-login-yes"), i18n("Now logged in to Gmail!"));
 
-		kDebug() << k_funcinfo << "Notification: gmail-login-yes";
+		kDebug() << "Notification: gmail-login-yes";
 
 		d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 	}
@@ -679,7 +679,7 @@ void KCheckGmailCore::slotLoginDone(bool ok, bool isExcuseNeeded, const QString&
 
 void KCheckGmailCore::slotLoginStart()
 {
-	kDebug() << k_funcinfo;
+	kDebug();
 	d->mTray->setPixmapAuth();
 	d->mLoginCheckMailAction->setEnabled(false);
 	d->mTray->startAnim(200);
@@ -695,7 +695,7 @@ void KCheckGmailCore::slotCheckStart()
 void KCheckGmailCore::slotSessionChanged()
 {
 	KNotification::event(QLatin1String("gmail-session-changed"), i18n("Another account has been opened, logging out from it!"));
-	kDebug() << k_funcinfo << "Notification: gmail-session-changed";
+	kDebug() << "Notification: gmail-session-changed";
 }
 
 
@@ -709,7 +709,7 @@ void KCheckGmailCore::slotLogingOut()
 {
 	d->mTray->setPixmapEmpty();
 	KNotification::event(QLatin1String("gmail-login-yes"), i18n("Now logged in to Gmail!"));
-	kDebug() << k_funcinfo << "Notification: gmail-login-yes";
+	kDebug() << "Notification: gmail-login-yes";
 
 	d->mLoginCheckMailAction->setText(i18n("Chec&k Mail Now"));
 
