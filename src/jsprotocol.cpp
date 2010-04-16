@@ -104,7 +104,6 @@ void JSProtocol::slotCountUpdate(unsigned int currentParsed)
 	int currentTotal = mParser->unread(GMailParser::TotalCount);
 	mCount.setCount(currentTotal, currentParsed);
 
-	kDebug();
 	kDebug() << "firstTime: " << firstTime;
 	kDebug() << "previousParsed: " << mCount.previousParsed();
 	kDebug() << "currentParsed: " << currentParsed;
