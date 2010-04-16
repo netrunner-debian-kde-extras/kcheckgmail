@@ -500,9 +500,9 @@ void GMailParser::parseDefaultSummary(const QString &_data)
 		pos += rx.matchedLength();
 	}
 	kDebug() << endl
-		<< "inbox=" << mSummary.inbox << "\n"
-		<< "drafts=" << mSummary.drafts << "\n"
-		<< "spam=" << mSummary.spam << "\n";
+		 << "inbox=" << mSummary.inbox << endl
+		 << "drafts=" << mSummary.drafts << endl
+		 << "spam=" << mSummary.spam;
 }
 
 /**
