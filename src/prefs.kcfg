@@ -72,7 +72,6 @@
 		</entry>
 		<entry name="CustomBrowser" type="Path">
 			<label>Use a custom browser</label>
-			<default>firefox %u</default>
 			<whatsthis>Use a custom browser other than the KDE default to check your Gmail</whatsthis>
 		</entry>
 		<entry name="DisplaySenderOnSingleMail" type="Bool">
