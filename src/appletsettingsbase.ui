@@ -141,6 +141,13 @@
         </item>
        </layout>
       </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Use '%u' to insert the URL in the alternative browser</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
