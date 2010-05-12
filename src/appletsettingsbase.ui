@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>AppletSettingsBase</class>
- <widget class="QWidget" name="AppletSettingsBase" >
-  <property name="geometry" >
+ <widget class="QWidget" name="AppletSettingsBase">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,22 +10,22 @@
     <height>425</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>AppletSettingsWidget</string>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin">
     <number>0</number>
    </property>
-   <item row="2" column="0" >
-    <widget class="QGroupBox" name="groupBox2" >
-     <property name="title" >
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="groupBox2">
+     <property name="title">
       <string>Debug</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="kcfg_AlertVersionChange" >
-        <property name="text" >
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="kcfg_AlertVersionChange">
+        <property name="text">
          <string>Displa&amp;y an alert if GMail version changes</string>
         </property>
        </widget>
@@ -32,35 +33,35 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" >
-    <widget class="QGroupBox" name="groupBox3" >
-     <property name="title" >
+   <item row="3" column="0">
+    <widget class="QGroupBox" name="groupBox3">
+     <property name="title">
       <string>Fields displayed when only one email arrives</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="1" column="0" >
-       <widget class="QCheckBox" name="kcfg_DisplaySubjectOnSingleMail" >
-        <property name="text" >
+     <layout class="QGridLayout">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="kcfg_DisplaySubjectOnSingleMail">
+        <property name="text">
          <string>Sub&amp;ject</string>
         </property>
-        <property name="checked" >
+        <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="kcfg_DisplaySenderOnSingleMail" >
-        <property name="text" >
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="kcfg_DisplaySenderOnSingleMail">
+        <property name="text">
          <string>Senders</string>
         </property>
-        <property name="checked" >
+        <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QCheckBox" name="kcfg_DisplaySnippetOnSingleMail" >
-        <property name="text" >
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="kcfg_DisplaySnippetOnSingleMail">
+        <property name="text">
          <string>Snippet</string>
         </property>
        </widget>
@@ -68,15 +69,15 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="0" >
-    <spacer name="spacer3" >
-     <property name="orientation" >
+   <item row="4" column="0">
+    <spacer name="spacer3">
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>16</height>
@@ -84,40 +85,40 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" >
-    <widget class="QGroupBox" name="groupBox4" >
-     <property name="title" >
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox4">
+     <property name="title">
       <string>Browser</string>
      </property>
-     <layout class="QGridLayout" >
-      <item row="0" column="0" >
-       <widget class="QRadioButton" name="kcfg_UseDefaultBrowser" >
-        <property name="text" >
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="kcfg_UseDefaultBrowser">
+        <property name="text">
          <string>&amp;Use the default KDE browser</string>
         </property>
-        <property name="checked" >
+        <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QRadioButton" name="kcfg_UseAltBrowser" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="kcfg_UseAltBrowser">
+        <property name="text">
          <string>Use an alternative browser</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <layout class="QHBoxLayout" >
+      <item row="2" column="0">
+       <layout class="QHBoxLayout">
         <item>
-         <spacer name="spacer9" >
-          <property name="orientation" >
+         <spacer name="spacer9">
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeType" >
+          <property name="sizeType">
            <enum>QSizePolicy::Fixed</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>22</width>
             <height>26</height>
@@ -126,11 +127,11 @@
          </spacer>
         </item>
         <item>
-         <widget class="KUrlRequester" name="kcfg_CustomBrowser" >
-          <property name="enabled" >
+         <widget class="KUrlRequester" name="kcfg_CustomBrowser">
+          <property name="enabled">
            <bool>false</bool>
           </property>
-          <property name="showLocalProtocol" stdset="0" >
+          <property name="showLocalProtocol" stdset="0">
            <bool>true</bool>
           </property>
          </widget>
@@ -140,22 +141,22 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="groupBox1" >
-     <property name="title" >
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox1">
+     <property name="title">
       <string>Tray Icon</string>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QVBoxLayout">
       <item>
-       <widget class="QCheckBox" name="kcfg_AllowLeftClickOpen" >
-        <property name="text" >
+       <widget class="QCheckBox" name="kcfg_AllowLeftClickOpen">
+        <property name="text">
          <string>Open &amp;browser to Gmail on left click</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="kcfg_CatchAccidentalClick" >
-        <property name="text" >
+       <widget class="QCheckBox" name="kcfg_CatchAccidentalClick">
+        <property name="text">
          <string>Catch accidental left clicks when launching the browser</string>
         </property>
        </widget>
@@ -165,7 +166,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
@@ -175,8 +176,8 @@
   </customwidget>
  </customwidgets>
  <includes>
-  <include location="local" >kurlrequester.h</include>
-  <include location="local" >klineedit.h</include>
+  <include location="local">kurlrequester.h</include>
+  <include location="local">klineedit.h</include>
  </includes>
  <resources/>
  <connections>
@@ -186,11 +187,11 @@
    <receiver>kcfg_CustomBrowser</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>20</x>
      <y>20</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>
