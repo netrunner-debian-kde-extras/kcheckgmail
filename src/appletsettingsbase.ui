@@ -134,6 +134,9 @@
           <property name="showLocalProtocol" stdset="0">
            <bool>true</bool>
           </property>
+          <property name="kcfg_property" stdset="0">
+           <cstring>text</cstring>
+          </property>
          </widget>
         </item>
        </layout>
