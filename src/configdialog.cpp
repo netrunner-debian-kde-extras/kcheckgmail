@@ -21,6 +21,7 @@
 
 #include <kpassworddialog.h>
 #include <klocale.h>
+#include <KMessageBox>
 
 namespace KCheckGmail {
 
@@ -81,6 +82,19 @@ QString ConfigDialog::username() const
 {
 	return mLoginSettings.kcfg_GmailUsername->originalText();
 }
+
+void ConfigDialog::slotButtonClicked(int button)
+{
+       if (button == KDialog::Ok) {
+               if(mAppletSettings.kcfg_CustomBrowser->text().isEmpty()) {
+                       KMessageBox::error(0,
+                       i18n("You have to specify a console command to launch the alternative browser"));
+                       return;
+               }
+	}
+	KConfigDialog::slotButtonClicked(button);
+}
+
 
 } // namespace KCheckGmail
 

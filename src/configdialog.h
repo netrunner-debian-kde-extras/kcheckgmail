@@ -42,6 +42,9 @@ public:
 	QString password() const;
 	QString username() const;
 
+protected Q_SLOTS:
+	virtual void slotButtonClicked(int button);
+
 private:
 	Ui::LoginSettingsBase mLoginSettings;
 	Ui::NetworkSettingsBase mNetworkSettings;
