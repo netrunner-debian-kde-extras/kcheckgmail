@@ -522,20 +522,14 @@ msgid "KCheckGMail is already running!\n"
 msgstr "KCheckGMail körs redan!\n"
 
 #: rc.cpp:1
-#, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-"Daniel Nylander\n"
-"Niklas Åkerström"
+msgstr "Daniel Nylander,Niklas Åkerström"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-"po@danielnylander.se\n"
-"nille.kungen@gmail.com"
+msgstr "po@danielnylander.se,nille.kungen@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
