@@ -523,12 +523,12 @@ msgstr "KCheckGMail jau paleistas!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Andrius Štikonas"
 
 #: rc.cpp:2
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "stikonas@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1027,16 +1027,6 @@ msgid ""
 msgstr ""
 "Sistemos dėklo programa rodo kiek\n"
 "naujų el. pašto laiškų jūs turite Gmail paskyroje."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Andrius Štikonas"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "stikonas@gmail.com"
 
 #, fuzzy
 #~ msgid ""

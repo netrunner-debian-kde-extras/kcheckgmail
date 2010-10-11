@@ -524,13 +524,12 @@ msgstr "Το KCheckGMail είναι ήδη σε λειτουργία!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Γλενταδάκης Δημήτρης"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Καμία μη αναγνωσμένη αλληλογραφία"
+msgstr "dglent@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1016,16 +1015,6 @@ msgid ""
 msgstr ""
 "Μία εφαρμογή πλαισίου συστήματος που εμφανίζει πόσα νέα μηνύματα "
 "αλληλογραφίας έχετε στον λογαριασμό σας Gmail."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Γλενταδάκης Δημήτρης"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "dglent@gmail.com"
 
 #~ msgid ""
 #~ "_n: Attachment: %1\n"

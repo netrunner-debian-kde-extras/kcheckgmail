@@ -526,13 +526,13 @@ msgstr "KCheckGMail est ddja enondé!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Djan Cayron"
 
 #: rc.cpp:2
 #, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Pont d' emile nén léjhou"
+msgstr "jean.cayron@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1017,16 +1017,6 @@ msgid ""
 msgstr ""
 "Programe del boesse ås imådjetes po dire cobén vs\n"
 "avoz d' noveas emiles dins vosse conte Gmail."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Djan Cayron"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "jean.cayron@gmail.com"
 
 #, fuzzy
 #~ msgid ""

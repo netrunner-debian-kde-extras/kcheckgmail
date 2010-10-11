@@ -537,12 +537,12 @@ msgstr "KCheckGMail مشغل دائماً!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "عبدالعزيز الشريف"
 
 #: rc.cpp:2
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "a.a-a.s@hotmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1033,16 +1033,6 @@ msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
 "account."
 msgstr "بريمج يبين عدد الرسائل الإلكترونية في حساب GMail التي لديك."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "عبدالعزيز الشريف"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "a.a-a.s@hotmail.com"
 
 #, fuzzy
 #~ msgid ""

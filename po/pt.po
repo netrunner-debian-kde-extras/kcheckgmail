@@ -1006,16 +1006,6 @@ msgstr ""
 "Uma 'applet' que inicia uma aplicação que mostra quantas mensagens por ler "
 "tem na sua conta Gmail."
 
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Luís Pereira"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "luis.artur.pereira@gmail.com"
-
 #, fuzzy
 #~ msgid ""
 #~ "_n: Attachment: %1\n"

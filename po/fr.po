@@ -514,13 +514,12 @@ msgstr ""
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Alexis Bunel,Raphael Geissert"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Aucun nouveau message"
+msgstr "alexisbunel@gmail.com,atomo64@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1012,16 +1011,6 @@ msgid ""
 msgstr ""
 "Un applet kicker qui affiche le nombre de nouveaux messages sur un compte "
 "Gmail."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Alexis Bunel,Raphael Geissert"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "alexisbunel@gmail.com,atomo64@gmail.com"
 
 #~ msgid ""
 #~ "_n: %1\n"

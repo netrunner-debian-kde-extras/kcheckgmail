@@ -532,13 +532,13 @@ msgstr "KCheckGMail jest już uruchomiony!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Łukasz Derkacz, Jarosław Kamper (poprzedni tłumacz)"
 
 #: rc.cpp:2
 #, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Brak nieprzeczytanych wiadomości"
+msgstr "lderkacz@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1040,16 +1040,6 @@ msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
 "account."
 msgstr "Aplet panelu do pokazywania zawartości Twojej skrzynki pocztowej Gmail"
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Łukasz Derkacz, Jarosław Kamper (poprzedni tłumacz)"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "lderkacz@gmail.com"
 
 #~ msgid ""
 #~ "_n: %1\n"

@@ -1001,16 +1001,6 @@ msgid ""
 msgstr "Kicker aplet zobrazujicí počet nových emailů v GMail účtu."
 
 #~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Jirka Vilim"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "web@tets.cz"
-
-#~ msgid ""
 #~ "_n: Attachment: %1\n"
 #~ "Attachments: %1"
 #~ msgstr ""

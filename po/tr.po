@@ -519,12 +519,12 @@ msgstr "KCheckGMail zaten çalışıyor!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Uğur Çetin"
 
 #: rc.cpp:2
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "jnmbk@users.sourceforge.net"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1019,16 +1019,6 @@ msgid ""
 msgstr ""
 "Gmail hesabınızda kaç tane yeni e-posta olduğunu gösteren bir panel "
 "programcığıdır."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Uğur Çetin"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "jnmbk@users.sourceforge.net"
 
 #, fuzzy
 #~ msgid ""

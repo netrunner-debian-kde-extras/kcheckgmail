@@ -1000,16 +1000,6 @@ msgstr ""
 "Süsteemisalve aplett, mis näitab, mitu lugemata kirja sinu Gmaili kontol on."
 
 #~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Mihkel Tõnnov"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "mihhkel@gmail.com"
-
-#~ msgid ""
 #~ "_: format used to display the attachments (%1 is the icon, %2 is the file "
 #~ "name)\n"
 #~ "<img src=\"%1\"> %2"

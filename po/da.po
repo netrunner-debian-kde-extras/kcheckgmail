@@ -524,13 +524,13 @@ msgstr "KCheckGMail kører allerede!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Christian Damsgaard"
 
 #: rc.cpp:2
 #, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Ingen ulæst e-mail"
+msgstr "chr.damsgaard@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1027,18 +1027,6 @@ msgid ""
 msgstr ""
 "En lille program til Statusfeltet, der viser hvormange e-mails du har på din "
 "Gmail konto."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr ""
-#~ "_: OVERSÆTTERNES NAVNE\n"
-#~ "Christian Damsgaard"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "_: OVERSÆTTERNES E-MAIL-ADDRESSERchr.damsgaard@gmail.com"
 
 #~ msgid ""
 #~ "_n: Attachment: %1\n"

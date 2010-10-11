@@ -504,16 +504,14 @@ msgid "KCheckGMail is already running!\n"
 msgstr ""
 
 #: rc.cpp:1
-#, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ihr GMail Benutzername"
+msgstr "Patrick Trettenbrein"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Ihr GMail Benutzername"
+msgstr "patrick.trettenbrein@kdemail.net"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1003,16 +1001,6 @@ msgid ""
 msgstr ""
 "Systemabschnitt Programm um die Anzahl der\n"
 "Nachrichten in einem GMail Account anzuzeigen"
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Patrick Trettenbrein"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "patrick.trettenbrein@kdemail.net"
 
 #, fuzzy
 #~ msgid ""

@@ -526,13 +526,12 @@ msgstr "KCheckGMail è già in esecuzione!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Samuele Kaplun"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Nessuno messaggio da leggere"
+msgstr "Samuele.Kaplun@cern.ch"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1041,16 +1040,6 @@ msgid ""
 msgstr ""
 "Un'applet di Kicker per visualizzare quanti messaggi di posta elettronica "
 "sono presenti nel tuo account di Gmail."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Samuele Kaplun"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "Samuele.Kaplun@cern.ch"
 
 #, fuzzy
 #~ msgid ""

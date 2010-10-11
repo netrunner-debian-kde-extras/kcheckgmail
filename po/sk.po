@@ -506,16 +506,14 @@ msgid "KCheckGMail is already running!\n"
 msgstr ""
 
 #: rc.cpp:1
-#, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Vaše prihlasovacie meno do schánky GMail"
+msgstr "Peter Mendel"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Vaše prihlasovacie meno do schánky GMail"
+msgstr "peter.mendel@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1002,15 +1000,6 @@ msgstr ""
 "Aplikácia v tray paneli zobrazujúca počet nových správ v poštovej schánke "
 "GMail."
 
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Peter Mendel"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "peter.mendel@gmail.com"
 
 #, fuzzy
 #~ msgid ""

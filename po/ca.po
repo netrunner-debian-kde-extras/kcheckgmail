@@ -1012,16 +1012,6 @@ msgstr ""
 "de Gmail."
 
 #~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Albert Montiel"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "alberm@users.sourceforge.net"
-
-#~ msgid ""
 #~ "_n: Attachment: %1\n"
 #~ "Attachments: %1"
 #~ msgstr ""

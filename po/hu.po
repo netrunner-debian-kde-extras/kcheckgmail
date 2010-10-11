@@ -526,13 +526,12 @@ msgstr "A KCheckGMail már fut!\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Peter Avramucz"
 
 #: rc.cpp:2
-#, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Nincs olvasatlan levél"
+msgstr "muczyjoe@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1040,16 +1039,6 @@ msgid ""
 "account."
 msgstr ""
 "Egy Kicker alkalmazás, amely jelzi, hogy hány email van a GMail fiókjában."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Peter Avramucz"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "muczyjoe@gmail.com "
 
 #~ msgid ""
 #~ "_n: Attachment: %1\n"

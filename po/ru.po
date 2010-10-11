@@ -505,13 +505,13 @@ msgstr "KCheckGMail уже запущен!\n"
 #, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ваше имя пользователя в Gmail"
+msgstr "Дудалев Михаил, Шильдяков Алексей"
 
 #: rc.cpp:2
 #, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Нет непрочитанных сообщений"
+msgstr "dudalev@gmail.com, ashl1future@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1005,16 +1005,6 @@ msgid ""
 msgstr ""
 "Аплет Kicker, показывающая количество показывающая количество писем в Вашем "
 "Gmail."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Дудалев Михаил,Шильдяков Алексей"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "dudalev@gmail.com,ashl1future@gmail.com"
 
 #~ msgid ""
 #~ "_n: Attachment: %1\n"

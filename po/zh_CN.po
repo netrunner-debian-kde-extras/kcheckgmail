@@ -506,13 +506,13 @@ msgstr "KCheckGmail已经运行！\n"
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "没有未读油价"
 
 #: rc.cpp:2
 #, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "没有未读油价"
+msgstr "email"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1001,16 +1001,6 @@ msgid ""
 "A Kicker applet to display how many email messages you have in your Gmail "
 "account."
 msgstr "Kicker面板显示你已经收到了多少邮件"
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "你的账号"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "email"
 
 #~ msgid ""
 #~ "_n: Attachment: %1\n"

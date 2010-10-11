@@ -525,13 +525,17 @@ msgstr "KCheckGMail körs redan!\n"
 #, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ditt Gmail-användarnamn"
+msgstr ""
+"Daniel Nylander\n"
+"Niklas Åkerström"
 
 #: rc.cpp:2
 #, fuzzy
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Ditt Gmail-användarnamn"
+msgstr ""
+"po@danielnylander.se\n"
+"nille.kungen@gmail.com"
 
 #. i18n: file: advancedsettingsbase.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, AdvancedSettingsBase)
@@ -1033,20 +1037,6 @@ msgid ""
 msgstr ""
 "Panelprogram som visar hur många e-postmeddelanden\n"
 "du har i ditt Gmail-konto."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr ""
-#~ "Daniel Nylander\n"
-#~ "Niklas Åkerström"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr ""
-#~ "po@danielnylander.se\n"
-#~ "nille.kungen@gmail.com"
 
 #~ msgid ""
 #~ "_n: Attachment: %1\n"
